@@ -26,6 +26,14 @@ In particolare si ha
 \]
 \end{theorem}
 
+\begin{exercise}[punto di frontiera]
+  \label{ex:punto-di-frontiera}
+Sia $\gamma\colon [0,1] \to X$ una curva continua in uno 
+spazio topologico $X$ e sia $A\subset X$ tale che 
+$\gamma(0)\in A$ e $\gamma(1)\notin A$.
+Dimostrare che esiste $t \in [0,1]$ tale che $\gamma(t) \in \partial A$.
+\end{exercise}
+
 \chapter{integrali multipli}
 
 \section{integrale di Riemann}
@@ -519,7 +527,7 @@ Si vedano appunti di Analisi Uno.
 
 \begin{theorem}[formula dell'area]
 Sia $\phi\colon [0,1]^n \to \RR^n$
-una funzione di classe $C^1$ tale che $\det D\phi(x)\neq 0$ per ogni $x\in [0,1]^n$.
+una funzione iniettiva, di classe $C^1$, tale che $\det D\phi(x)\neq 0$ per ogni $x\in [0,1]^n$.
 
 Allora $\phi(E)$ è misurabile e si ha
 \begin{equation}\label{eq:area}
@@ -528,77 +536,86 @@ Allora $\phi(E)$ è misurabile e si ha
 \end{theorem}
 %
 \begin{proof}
-\emph{Passo 0: dimostriamo che $\phi([0,1]^n)$ è misurabile.}
-Per il teorema di invertibilità locale per ogni punto interno di $[0,1]^n$
-esiste un intorno che viene mandato da $\phi$ in un intorno del punto di arrivo.
-Questo significa che punti interni a $[0,1]^n$ vengono mandati in punti interni a $\phi([0,1]^n)$
+Poniamo $Q=[0,1]^n$.
+\emph{Passo 1: dimostriamo che $\phi(Q)$ è misurabile.}
+Per il teorema di invertibilità locale, ogni punto $\vec x \in (0,1)^n$
+ha un intorno che viene mandato, tramite $\phi$, in un intorno del punto di arrivo $\phi(\vec x)$.
+Questo significa che punti interni a $Q$ vengono mandati in punti interni a $\phi(Q)$
 e di conseguenza 
 \[
-  \partial \phi([0,1]^n) \subset \phi(\partial [0,1]^n).
+  \partial \phi(Q) \subset \phi(\partial Q).
 \]
-Dunque per ogni $N$ sappiamo che $\partial \phi([0,1]^n)$ è contenuta nell'immagine 
+Dunque per ogni $N$ sappiamo che $\partial \phi(Q)$ è contenuta nell'immagine 
 dei cubetti $Q^n_{\vec k}\subset [0,1]^n$ che toccano la frontiera di $[0,1]^n$.
-Il numero di questi cubetti è di poco inferiore a $2n 2^{(n-1)N}$.
-Visto che $D\phi$ è continua, per Weierstrass esiste $L>0$ tale che $\Abs{D\phi(\vec x)} \le L$ per ogni $\vec x\in [0,1]^n$.
-Per la disuguaglianza di Lagrange troviamo la condizione di Lipschitz:
+Il numero di questi cubetti è di poco inferiore a $2n\cdot 2^{(n-1)N}$.
+Visto che $D\phi$ è continua, per Weierstrass esiste $L>0$ tale che $\Abs{D\phi(\vec x)} \le L$ per ogni $\vec x\in Q$.
+Dalla disuguaglianza di Lagrange troviamo la condizione di Lipschitz:
 \[
-\abs{\phi(\vec x) - \phi(\vec x')} \le L \abs{\vec x - \vec x'}, \qquad \forall \vec x,\vec x' \in [0,1]^n.
+\abs{\phi(\vec x) - \phi(\vec x')} \le L \abs{\vec x - \vec x'}, \qquad \forall \vec x,\vec x' \in Q.
 \]
-Questo ci dice che il diametro di $\phi(Q^N_{\vec k})$ si stima con $L$ volte il diametro di $Q^N_{\vec k}$,
+Fissato un cubetto $Q^N_{\vec k}\subset Q$, 
+deduciamo che il diametro di $\phi(Q^N_{\vec k})$ si stima con $L$ volte il diametro di $Q^N_{\vec k}$,
 ovvero con $L \sqrt n 2^{-N}$.
 Dunque $\phi(Q^N_{\vec k})$ può essere coperto con $(L\sqrt n +1)^n$ cubetti di lato $2^{-N}$.
 Da questo deduciamo che 
 \[
-  S^N(1_{\partial \phi([0,1]^n)}) \le 2n 2^{(n-1)N}\cdot (L\sqrt n + 1)^n S^N(1_{\partial [0,1]^n})
+  S^N(1_{\partial \phi([0,1]^n)}) \le 2n\cdot 2^{(n-1)N}\cdot (L\sqrt n + 1)^n \cdot S^N(1_{\partial [0,1]^n})
 \]
-e quindi, facendo tendere $N\to +\infty$, troviamo che $S^*(1_{\partial \phi([0,1]^n)}) = 0$.
-Visto che $S_*(1_{\partial \phi([0,1]^n)}) \ge 0$ si ottiene che $\partial \phi([0,1]^n)$ è misurabile 
-di misura nulla. Dunque $\phi([0,1]^n)$ è misurabile.
+e quindi, facendo tendere $N\to +\infty$, troviamo che 
+$S^*(1_{\partial \phi(Q)}) = 0 \cdot S^*(1_{\partial Q})=0$.
+Visto che ovviamente $S_*(1_{\partial \phi(Q)}) \ge 0$, 
+si ottiene che $\partial \phi(Q)$ è misurabile 
+di misura nulla. Dunque $\phi(Q)$ è misurabile.
 
-\emph{Passo 1 [lemma del cubo interno/esterno]: 
-se esiste $\eps>0$ tale che 
+\emph{Passo 2 (lemma del cubo interno/esterno): 
+se esiste $\eps\in(0,\frac 1 4)$ tale che 
 \[
-  \abs{\phi(\vec x)-\vec x} \le \eps, \qquad \forall \vec x \in [0,1]^n
+  \abs{\phi(\vec x)-\vec x} \le \eps, \qquad \forall \vec x \in Q
 \]
-allora 
+allora }
 \[
   (1-2\eps)^n
-  \le \abs{\phi([0,1]^n)}
+  \le \abs{\phi(Q)}
   \le (1+2\eps)^n.
 \]
-}
 Chiaramente 
 \[
-    \phi([0,1]^n) \subset [-\eps,1+\eps]^n
+    \phi(Q) \subset [-\eps,1+\eps]^n
 \]
-perché ogni punto di $[0,1]^n$ viene spostato al massimo di $\eps$, 
-e quindi si ottiene, per monotonia della misura esterna,
+perché ogni punto di $Q$ viene spostato al massimo di $\eps$. 
+Quindi si ottiene, per monotonia della misura,
 \[
-    \abs{\phi([0,1]^n)} \le (1+2\eps)^n.
+    \abs{\phi(Q)} \le (1+2\eps)^n.
 \]
 Per mostrare l'altra disuguaglianza  
 \[
-   \abs{\phi([0,1]^n)} \ge (1-2\eps)^n
+   \abs{\phi(Q)} \ge (1-2\eps)^n
 \]
 basterà dimostrare che vale anche 
 \[
-  \phi([0,1]^n) \supset [\eps,1-\eps]^n.
+  \phi(Q) \supset (\eps,1-\eps)^n.
 \]
 Questo risulta meno ovvio.
-Supponiamo per assurdo che esista un punto $y_1 \in (\eps,1-\eps)^n \setminus \phi([0,1]^n)$ 
-e prendiamo il punto $y_0\in \phi([0,1]^n)$ di minima distanza da $y_1$.
-Sia $x_0\in [0,1]^n$ tale che $\phi(x_0)=y_0$.
-Visto che $y_0$ dista più di $\eps$ dalla frontiera di $[\eps,1-\eps]^n$, 
-deduciamo che $x_0$ è un punto interno a $(0,1)^n$. 
-Essendo $\det D\phi(x_0)\neq 0$ possiamo applicare il teorema di invertibilità locale 
-e trovare un intorno di $x_0$ che viene mandato da $\phi$ modo biunivoco in un intorno di $y_0$.
-In particolare $y_0$ dovrebbe essere un punto interno a $\phi([0,1]^n)$, ma allora 
-$y_0$ non può essere il punto di minima distanza da $y_1$, perché in un suo intorno ci sono 
-certamente punti più vicini a $y_1$. L'assurdo conclude il Passo.
+Supponiamo per assurdo che esista $y \in (\eps,1-\eps)^n \setminus \phi(Q)$.
+Consideriamo il punto $\vec p=(\frac 12, \dots, \frac 12)$ centro 
+del cubo unitario $Q$ e sia $\vec q=\phi(\vec p)$ la sua immagine. 
+Visto che $\abs{\vec q-\vec p} = \abs{\phi(\vec p)-\vec p} \le \eps$ 
+e $\eps \le \frac 1 4$ possiamo garantire che
+$\vec q \in (\eps,1-\eps)^n$.
+Dunque l'intero segmento $\sigma = [\vec q,\vec y]$ è contenuto 
+in $(\eps,1-\eps)^n$ essendo quest'ultimo un convesso.
+Visto che $\vec q\in \phi(Q)$ mentre $\vec y \notin \phi(Q)$,
+deve esistere un punto $\vec z\in \sigma\cap \partial \phi(Q)$
+(esercizio~\ref{ex:punto-di-frontiera}).
+Ma abbiamo già mostrato (Passo 1) che $\partial (\phi(Q)) \subset \phi(\partial Q)$
+dunque $\vec z=\phi(\vec x)$ con $\vec x \in \partial Q$. 
+Ma allora $\abs{\vec z-\vec x} = \abs{\phi(\vec x)- \vec x} \le \eps$ 
+e dunque $\vec z\not \in (\eps,1-\eps)^n$, 
+contraddicendo $\vec z \in \sigma \subset (\eps,1-\eps)^n$.
 
-\emph{Passo 2: se esiste $\eps>0$ tale che 
+\emph{Passo 3: se esiste $\eps>0$ tale che 
 \[
-  \Abs{ D\phi(\vec x) - I} \le \frac{\eps}{\sqrt n}, \qquad \forall \vec x \in [0,1]^n
+  \Abs{ D\phi(\vec x) - I} \le \frac{\eps}{\sqrt n} \qquad \forall \vec x \in [0,1]^n,
 \]
 (dove $I$ è la matrice identità)
 allora
@@ -614,9 +631,9 @@ Applicando la disuguaglianza di Lagrange si ottiene dunque:
 \[
 \abs{\phi(x) - \phi(0) - x} = \abs{\psi(x)-\psi(0)} \le \frac \eps {\sqrt n} \abs{x} \le \eps
 \]
-e la conclusione del Passo 2 segue dal Passo 1 applicato alla funzione $\phi(\vec x) - \phi(0)$.
+e la conclusione segue dal passo precedente applicato alla funzione $\phi(\vec x) - \phi(0)$.
 
-\emph{Passo 3: supponiamo che esista una matrice invertibile $M$ e un $\eps>0$ tali che
+\emph{Passo 4: supponiamo che esista una matrice invertibile $M$ e un $\eps>0$ tali che
 \[
   \Abs{D\phi(\vec x) - M} \le \frac{\eps}{\Abs{M^{-1}} \sqrt n}, \qquad \forall \vec x \in [0,1]^n.
 \]
@@ -629,20 +646,20 @@ Consideriamo la funzione $\psi(\vec x) = M^{-1} \phi(\vec x)$ per la quale si ha
 \[
   \Abs{D\psi(\vec x)-I} 
   = \Abs{M^{-1} (D\phi(\vec x)-M)} 
-  \le \Abs{M^{-1}} \Abs{D\phi(\vec x)-M}
+  \le \Abs{M^{-1}} \cdot \Abs{D\phi(\vec x)-M}
   \le \frac{\eps}{\sqrt n}.
 \]
-Dunque applicando il passo precedente alla funzione $\psi$ otteniamo 
+Applicando il passo precedente alla funzione $\psi$ otteniamo 
 \[
 (1-2\eps)^n \le \abs{\psi([0,1]^n)} \le (1+2\eps)^n.
 \]
-Per il Teorema \ref{th:geometria_determinante} si ha
+Ricordando il Teorema \ref{th:geometria_determinante} si ha
 \[
-  \abs{\psi([0,1]^n)} = \abs{(M^{-1}(\phi)([0,1]^n))}
+  \abs{\psi([0,1]^n)} = \abs{M^{-1}(\phi([0,1]^n))}
   = \abs{\det M^{-1}} \cdot \abs{\phi([0,1]^n)}
   = \frac{\abs{\phi([0,1]^n)}}{\abs{\det M}}
 \]
-che conclude il Passo corrente.
+che conclude il passo corrente.
 \end{proof}
 
 

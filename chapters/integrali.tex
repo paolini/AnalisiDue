@@ -639,7 +639,7 @@ e la conclusione segue dal passo precedente applicato alla funzione $\phi(\vec x
 \]
 allora
 \[
-(1-2\eps)^n \le \frac{\abs{\phi([0,1]^n)}}{\det M} \le (1+2\eps)^n.
+(1-2\eps)^n \le \frac{\abs{\phi([0,1]^n)}}{\abs{\det M}} \le (1+2\eps)^n.
 \]}
 
 Consideriamo la funzione $\psi(\vec x) = M^{-1} \phi(\vec x)$ per la quale si ha  
@@ -660,6 +660,100 @@ Ricordando il Teorema \ref{th:geometria_determinante} si ha
   = \frac{\abs{\phi([0,1]^n)}}{\abs{\det M}}
 \]
 che conclude il passo corrente.
+
+\emph{Passo 5: mostriamo che per ogni cubetto $Q^N_{\vec k}\subset [0,1]^n$
+se esiste una matrice invertibile $M$ ed $\eps>0$ tali che 
+\[
+  \Abs{D\phi(x)-M} \le \frac{\eps}{\Abs{M^{-1}} \sqrt n}, \qquad \forall x\in Q^N_{\vec k},
+\]
+allora 
+\[
+(1-2\eps)^n \le \frac{\abs{\phi(Q^N_{\vec k})}}{\int_{Q^N_{\vec k}}\abs{\det M}\, dx} \le (1+2\eps)^n.
+\]
+}
+Sia $\vec x^N_{\vec k} = 2^{-N}\vec k$ il vertice del cubetto $Q^N_{\vec k}$.
+Basta considerare la funzione $\psi\colon Q\to \RR^n$ 
+definita da $\psi(\vec x) = 2^N(\phi(\vec x^N_{\vec k} + 2^{-N}\vec x)-\phi(\vec x^N_{\vec k}))$ 
+e osservare che
+\begin{gather*}
+  D\psi(\vec x) 
+  = D\phi(\vec x^N_{\vec k} + 2^{-N}\vec x), \qquad \psi(0)=0\\
+  \int_{Q^N_{\vec k}} \abs{\det M}\, d\vec x
+  = 2^{nN}\cdot\abs{\det M}, \qquad
+  \abs{\psi(Q)} = 2^{nN} \cdot \abs{\phi(Q^N_{\vec k})}
+\end{gather*}
+cosicché si può applicare il passo precedente alla funzione $\psi$
+per ottenere quanto affermato.
+
+\emph{Conclusione.}
+Sia $\eps>0$ fissato. 
+Visto che $D\phi(x)$ è continua e invertibile su $Q$,
+anche le funzioni $\abs{\det D\phi(x)}$ e $\Abs{(D\phi(x))^{-1}}$
+sono definite e continue su $Q$. 
+Per il teorema di Weiestrass 
+esistono $\lambda<+\infty$, $\mu<+\infty$ 
+\[
+ \vec x \in Q \implies 
+ \begin{cases}
+  \Abs{(D\phi(\vec x))^{-1}} \le \lambda,\\
+  \abs{\det D\phi(\vec x)} \le \mu.
+ \end{cases}
+\]
+Per il teorema di Heine-Cantor  
+per ogni $\eps>0$ esiste $N\in \NN$ tale che 
+\[
+ \vec x, \vec x' \in Q^N_{\vec k}\subset Q \implies
+ \begin{cases}
+  \Abs{D\phi(\vec x) - D\phi(\vec x')} \le \frac{\eps}{\lambda \sqrt n},\\
+  \abs{\det D\phi(\vec x) - \det D\phi(\vec x')} \le \eps.
+ \end{cases}
+\]
+Per ogni cubetto $Q^N_{\vec k} \subset Q$ sia $\vec x^N_{\vec k} \defeq 2^{-N}\vec k$ 
+il vertice del cubetto e sia $M^N_{\vec k} \defeq D\phi(\vec x^N_{\vec k})$.
+Allora sono soddisfatte le condizioni per applicare il passo precedente, e si 
+ottiene 
+\[
+(1-2\eps)^n \le \frac{\abs{\phi(Q^N_{\vec k})}}{\int_{Q^N_{\vec k}}\abs{\det M^N_{\vec k}}\, d\vec x} \le (1+2\eps)^n.
+\]
+Osservando che 
+\[
+ 0 < 1-(1-2\eps)^n < (1+2\eps)^n - 1 = 2n\eps + o(\eps) \qquad \text{per $\eps\to 0^+$},
+\]
+e ricordando che
+\[
+\int_{Q^N_{\vec k}} \abs{\det M^N_{\vec k}}
+= 2^{nN} \abs{\det M^N_{\vec k}} \le 2^{nN} \mu,
+\]
+possiamo riscrivere le disuguaglianze precedenti nella forma
+\[
+\abs{\abs{\phi(Q^N_{\vec k})} - \int_{Q^N_{\vec k}} \abs{\det M^N_{\vec k}}}
+\le (2n\eps + o(\eps))\cdot 2^{-Nm} \mu.
+\]
+Inoltre, visto che
+\[
+ \abs{\int_{Q^N_{\vec k}} \abs{\det D\phi(\vec x)}\, dx - 
+ \int_{Q^N_{\vec k}} \abs{\det M^N_{\vec k}}\, d\vec x}
+ \le \int_{Q^N_{\vec k}} \abs{\det D\phi(\vec x) - \det M^N_{\vec k}}\, d\vec x
+ \le 2^{-Nn} \eps
+\]
+otteniamo infine 
+\[
+\abs{\abs{\phi(Q^N_{\vec k})} - \int_{Q^N_{\vec k}} \abs{\det D\phi}}
+\le (2n\eps + o(\eps))\cdot 2^{-Nm} \mu + 2^{-Nn} \eps.
+\]
+Visto che $\phi$ è iniettiva, 
+le parti interne degli insiemi $\phi(Q^N_{\vec k})$ sono a due a due disgiunte 
+dunque, sommando su tutti i cubetti $Q^N_{\vec k}\subset Q$,
+si ottiene
+\begin{align*}
+\abs{\abs{\phi(Q)} - \int_Q \abs{\det D\phi}}
+&=\abs{\sum_{Q^N_{\vec k}\subset Q} \Enclose{
+  \abs{\phi(Q^N_{\vec k})} - \int_{Q^N_{\vec k}} \abs{\det D\phi}}} \\
+&\le \sum_{Q^N_{\vec k}\subset Q} 
+  \abs{\abs{\phi(Q^N_{\vec k})} - \int_{Q^N_{\vec k}} \abs{\det D\phi}}\\
+  &\le (2n\eps + o(\eps))\cdot \mu + \eps.
+\end{align*}
+Facendo tendere $\eps\to 0^+$ si conclude la dimostrazione.
 \end{proof}
 
 

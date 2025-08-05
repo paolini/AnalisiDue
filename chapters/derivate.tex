@@ -1,0 +1,36 @@
+\chapter{funzioni di più variabili}
+
+Norme equivalenti sullo spazio delle matrici. Lipschitzianità delle funzioni $C^1$.
+Le funzioni continue mandano compatti in compatti.
+Se $A,B$ sono compatti, se $f\colon A\to B$ e continua e bigettiva allora 
+$f^{-1}$ è continua (cioè $f$ è un omeomorfismo).
+
+%Definire $C^1(A)$ come lo spazio delle funzioni su $A$ che possono essere 
+%estese di classe $C^1$ ad un aperto contenente $A$.
+
+\begin{theorem}[Lagrange vettoriale]
+  \label{th:lagrange}
+Sia $\Omega\subset \RR^n$ un aperto convesso, 
+sia $\vec f\colon \Omega\to \RR^m$ una funzione differenziabile.
+Allora dati $\vec x,\vec y \in \Omega$, $\vec x\neq \vec y$, 
+esiste $\vec z \in [\vec x,\vec y]$ (il segmento che congiunge $\vec x$ e $\vec y$)
+tale che 
+\[
+ \abs{\vec f(\vec y)- \vec f(\vec x)}^2
+ =  D\vec f(\vec z)[\vec y-\vec x]\cdot (\vec f(\vec y)-\vec f(\vec x)).
+\]
+In particolare si ha 
+\[
+\abs{\vec f(\vec y)- \vec f(\vec x)}
+\le \max_{\vec z\in [\vec x,\vec y]} \abs{D\vec f(\vec z)} \cdot \abs{\vec y-\vec x}.
+\]
+\end{theorem}
+
+\begin{exercise}[punto di frontiera]
+  \label{ex:punto-di-frontiera}
+Sia $\gamma\colon [0,1] \to X$ una curva continua in uno 
+spazio topologico $X$ e sia $A\subset X$ tale che 
+$\gamma(0)\in A$ e $\gamma(1)\notin A$.
+Dimostrare che esiste $t \in [0,1]$ tale che $\gamma(t) \in \partial A$.
+\end{exercise}
+

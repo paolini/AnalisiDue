@@ -1,13 +1,3 @@
-\chapter{funzioni di più variabili}
-
-Norme equivalenti sullo spazio delle matrici. Lipschitzianità delle funzioni $C^1$.
-Le funzioni continue mandano compatti in compatti.
-Se $A,B$ sono compatti, se $f\colon A\to B$ e continua e bigettiva allora 
-$f^{-1}$ è continua (cioè $f$ è un omeomorfismo).
-
-Definire $C^1(A)$ come lo spazio delle funzioni su $A$ che possono essere 
-estese di classe $C^1$ ad un aperto contenente $A$.
-
 \chapter{integrali multipli}
 
 \section{integrale di Riemann}
@@ -371,6 +361,7 @@ e passando al limite nei troncamenti.
 \end{proof}
 
 \begin{theorem}[integrabilità funzioni continue]
+  \label{th:continua_integrabile}
 Sia $A\subset \RR^n$ un insieme chiuso PJ-misurabile e $f\colon A \to \RR$ una funzione 
 continua. Allora $f$ è localmente R-integrabile. 
 Se inoltre $\abs{A}<+\infty$ e $f$ 
@@ -422,8 +413,41 @@ scrivere
   \int_A f(x)\, dx = \int_A f.
 \]
 
+\begin{theorem}[integrabilità del prodotto]
+Sia $f\colon \RR^n\to \RR$ una funzione continua e $g\colon \RR^n\to \RR$ 
+una funzione R-integrabile. Allora $f\cdot g$ è R-integrabile.
+\end{theorem}
+\begin{proof}
+\emph{Passo 1. Supponiamo $f,g\ge 0$, $f,g$ limitate con supporto limitato.}
+Sia $M_f=\sup f$, $M_g=\sup g$.
+Definiamo, per $A\subset \RR$,
+\[
+  \osc A = \sup A - \inf A.
+\]
+Fissiamo $\eps>0$.
+Essendo $f$ uniformemente continua, se $N$ è abbastanza grande 
+per ogni $\vec k\in \ZZ^n$ si ha $\osc f(Q^N_{\vec k})\le \eps$.
+Dunque:
+\begin{align*}
+S^N(f\cdot g) - S_N(f\cdot g)
+&= \sum_{\vec k\in \ZZ^n} \osc (f\cdot g)(Q^N_{\vec k})\\
+&\le \sum_{\vec k}\Enclose{\sup f(Q^N_{\vec k}) \cdot \sup g(Q^N_{\vec k})
+  -\inf f(Q^N_{\vec k})\cdot \inf g(Q^N_{\vec k})} \\
+&= \sum_{\vec k}\Enclose{\sup f(Q^N_{\vec k}) \osc g(Q^N_{\vec k}) 
+  + \osc f(Q^N_{\vec k})\cdot \inf g(Q^N_{\vec k})}\\
+&\le M_f (S^N(g)-S_N(g)) + \eps M_g.
+\end{align*}
+Facendo tendere $N\to +\infty$ si ottiene 
+\[
+S^*(f\cdot g)- S_*(f\cdot g) 
+\le M_f (S^*(g)-S_*(g)) + \eps M_g = \eps M_g
+\]
+essendo $g$ R-integrabile.
+Facendo tendere $\eps\to 0$ si ottiene infine $S^*(f\cdot g)=S_*(f\cdot g)$ 
+che è quanto volevamo dimostrare.
+\end{proof}
 
-\begin{theorem}[Fubini-Tonelli]
+\begin{theorem}[Fubini-Tonelli, formule di riduzione]
 Sia $f\colon \RR^n\times \RR^m \to \RR$ R-integrabile
 tale che per ogni $\vec x\in \RR^n$ la funzione $\vec y \mapsto f(\vec x,\vec y)$ 
 risulti anch'essa R-integrabile su $\RR^m$.
@@ -522,7 +546,8 @@ Inoltre
 e passando al limite per $N\to +\infty$ si ottiene la stima enunciata.
 \end{proof}
 
-\begin{theorem}[formula dell'area]
+\begin{theorem}[formula del volume]
+  \label{th:formula_volume}
 Sia $\Omega\subset \RR^n$ un aperto limitato, $PJ$-misurabile e sia 
 $\phi\colon \bar \Omega\to \RR^n$
 una funzione di classe $C^1$ che ristretta ad $\Omega$ risulti essere 
@@ -560,8 +585,8 @@ Essendo $\phi\in C^1(\bar \Omega)$ si intende che $\phi$ è la restrizione
 di una funzione $\C^1$ definita su un aperto $U\supset \bar \Omega$.
 Sia $N$ abbastanza grande in modo tale che se $Q^N_{\vec k}$ interseca 
 $\Omega$ allora $Q^N_{\vec k}\subset U$. 
-Sia $L = \max_{\vec x \in Q^N_{\vec k}\subset U} \Abs{D\phi(\vec x)}$.
-su ogni $Q^N_{\vec k}$ risulta che $\phi$ è $L$-lipschitz.
+Sia $L = \max\ENCLOSE{\Abs{D\phi(\vec x)}\colon \vec x \in Q^N_{\vec k}\subset U }$.
+Su ogni $Q^N_{\vec k}$ risulta che $\phi$ è $L$-lipschitz.
 Dunque $\phi(Q^N_{\vec k})$ ha diametro non superiore a 
 $L \sqrt n 2^{-N}$ e quindi può essere ricoperto con non più di 
 $(L\sqrt n + 1)^n$ cubetti di lato $2^{-N}$.
@@ -697,172 +722,91 @@ come atteso,
 \]
 
 \emph{Conclusione.} 
-Per definizione di $C^1(\bar \Omega)$ esiste un aperto $U\supset \bar \Omega$
-per cui la funzione $\phi$ può essere estesa, di classe $C^1$ su tutto $U$.
-Prendiamo $N\in \NN$ abbastanza grande per cui ogni cubo $Q^N_{\vec k}$ 
-che interseca $\bar \Omega$ sia contenuto in $U$.
-Sia $E^N$ l'unione di tali cubi. Visto che $\Abs{D\phi}$ è continua su $E^N$ 
-per Weiestrass sappiamo che esiste $L<+\infty$ tale che 
-per ogni $\vec x \in E^N$ si ha $\Abs{D\phi(\vec x)}\le L$.
-Sia $J^N$ l'insieme degli indici $\vec j$ per cui il cubo $Q^N_{\vec j}$
-interseca $\bar \Omega$ ma non è interamente contenuto in $\bar\Omega$.
-Visto che $\phi$ è $L$-lipschitz su ogni $Q^N_{\vec j}$
-si ha $\abs{\phi(Q^N_{\vec j})} \le L^n 2^{-nN}$ e 
-visto che $\partial \phi(\bar \Omega)\subset \phi(\partial \Omega)$ si ha
-\[
-S^N(1_{\partial \phi(\Omega)})
-\le S^N(1_{\phi(\partial \Omega)})
-\le \sum_{\vec j \in J} S^N(1_{\phi(Q^N_{\vec j})})
-\le L^N \sum_{\vec j\in J} \sum_{\vec j\in J} 2^{-nN}
-\le L^N S^N(1_{\partial \Omega}).
-\]
-Visto che $\Omega$ è misurabile, per $N\to+\infty$ si ha 
-$S^N(1_{\partial \Omega})\to \abs{\partial \Omega}=0$ e quindi 
-fissato $\eps>0$ possiamo trovare $N$ abbastanza grande in modo tale 
-che 
-\[
-  \sum_{j\in J^N} \le \eps.
-\]
+Nel passo 1 abbiamo visto che $\partial \phi(\Omega)$ è misurabile 
+e che per ogni $\eps>0$ è possibile trovare un $N\in \NN$ abbastanza grande 
+per cui i cubetti $Q^N_{\vec j}$ che coprono $\partial \Omega$ hanno 
+area totale così piccola da far sì che $\bigcup_j \phi(Q^N_{\vec j})$ 
+abbia misura inferiore a $\eps$.
 Fissato questo valore di $N$ consideriamo 
 $K^N = \ENCLOSE{\vec k \in ZZ^n\colon Q^N_{\vec k}\subset \Omega}$
 e $E^N$ l'unione di tali cubetti.
+Per concludere la dimostrazione sarà sufficiente dimostrare che per i 
+cubetti $Q^N_{\vec k}$, con $k\in K^N$ si ha 
+\[
+  \int_{Q^N_{\vec k}} \abs{\det D\phi} = \abs{\phi(Q^N_{\vec k})}.
+\]
 Visto che $\det D\phi \neq 0$ su $E^N\subset \Omega$ possiamo considerare 
 il minimo $\lambda = \min_{\vec x \in E^N} \Abs{D\phi(\vec x)^{-1}}^{-1}$ 
 e si ha $\lambda>0$.
-Per il passo precedente sappiamo che 
-\[
-  \int_{E_n} \abs{\det D\phi} = \abs{\phi(E_n)}
-\]
-e dunque 
-\begin{align*}
-  S^N(\det D\phi) \le S^N(1_)
-\end{align*}
-
-
-Visto che $\Abs{D\phi}$ è una funzione continua su $\bar \Omega$, 
-ammette massimo $\Abs{D\phi(\vec x)}\le L< +\infty$ per ogni $\vec x 
-Abbiamo già mostrato che $\abs{\partial \Omega}=0$
+Il risultato segue quindi dal passo precedente.
 \end{proof}
 
-
 \begin{theorem}[cambio di variabile]
-Sia $E\subset \RR^n$ un chiuso misurabile, $\phi\colon E \to \RR^n$
-una funzione di classe $C^1$, 
-$\phi$ iniettiva se ristretta alla parte interna di $E$,
-$f\colon \phi(E)\to \RR$ una funzione 
+Sia $\Omega\subset \RR^n$ un aperto limitato, PJ-misurabile e 
+sia $\phi\colon \bar \Omega \to \RR^n$
+una funzione di classe $C^1$,
+che ristretta ad $\Omega$ sia iniettiva ed abbia $\det D\phi\neq 0$. 
+Sia  $f\colon \phi(\bar \Omega)\to \RR$ una funzione 
 continua. Allora
 \[
-    \int_E f(\phi(\vec x))\abs{\det D \phi(\vec x)}\, d \vec x
+    \int_\Omega f(\phi(\vec x))\cdot \abs{\det D \phi(\vec x)}\, d \vec x
     =
-    \int_{\RR^n} f(\vec y) \, d \vec y.
+    \int_{\phi(\Omega)} f(\vec y) \, d \vec y.
+\]
+
+La formula si ricorda con la seguente mnemonica:
+\[
+\begin{cases}
+   \vec y = \phi(\vec x)\\
+   d {\vec y} = \abs{\det D\phi(\vec x)}\, d\vec x
+\end{cases}
 \]
 \end{theorem}
 
 \begin{proof}
-\emph{Caso 1: supponiamo $E$ compatto.}
-Allora $\Abs{D\phi}$ ha massimo $L$ su $E$, e $f$ ha massimo $M$ 
-su $\phi(E)$. 
+Per la formula di volume, teorema~\ref{th:formula_volume},
+sappiamo che $\phi(\Omega)$ è PJ-misurabile. 
+Per il teorema~\ref{th:continua_integrabile} 
+di integrabilità delle funzioni continue, sappiamo 
+che la funzione $f(\vec y)$ è integrabile su $\phi(\Omega)$
+e la funzione $f(\phi(\vec x))\cdot \abs{\det D\phi(\vec x)}$
+è integrabile su $\Omega$.
 
-Visto che $D\phi$ è continua su $E$, è anche uniformemente continua e 
-usando il teorema di Lagrange si può mostrare che per ogni $\eps>0$ 
-esiste $\delta>$ tale che
+Per ogni $\vec k\in \ZZ$ e $N\in \NN$ definiamo
+$\vec x^N_{\vec k} = 2^{-N} \vec k$, 
+$f^N_{\vec k} = f(\phi(\vec x^N_{\vec k}))$,
+$Q^N_{\vec k} = 2^{-N}(\vec k+[0,1]^n)$,
+$\Omega^N_{\vec k} = \Omega\cap Q^N_{\vec k}$.
+Fissiamo $\eps>0$.
+Essendo $f\circ \phi$ continua su $\bar \Omega$ tale funzione 
+è anche uniformemente continua. 
+Dunque per $N$ sufficientemente grande si ha 
 \[
- \abs{\vec x - \vec y}<\delta 
- \implies 
- \abs{\phi(\vec x)-\phi(\vec y)-D\phi(\vec y)(\vec x - \vec y)}
- \le \eps (\vec x - \vec y).
+\vec x\in \Omega^N_{\vec k} 
+\implies
+\abs{f(\phi(\vec x))-f^N_{\vec k}} \le \eps.
 \]
-Sia dato $\eps\in(0,1)$.
-Sia $N\in \NN$ abbastanza grande in modo che, posto
+Allora per la formula di volume, teorema~\ref{th:formula_volume},
+per ogni $\vec k$ si ha 
 \begin{align*}
-  K&=\ENCLOSE{\vec k\in \ZZ^n\colon Q^N_{\vec k}\subset E},\\
-  K'&=\ENCLOSE{\vec k\in \ZZ^n\setminus K \colon Q^N_{\vec k}\cap E\neq \emptyset}.
+  \int_{\Omega^N_{\vec k}} f^N_{\vec k} \abs{\det D\phi(x)}\, d\vec x 
+  &= f^N_{\vec k}\cdot \abs{\phi(\Omega^N_{\vec k})}
+  = \int_{\phi(\Omega^N_{\vec k})} f^N_{\vec k} \, d\vec y.
 \end{align*}
-e posto, per $\vec k \in K$,dove 
+Allora
+\begin{align*}
+  \lefteqn{\abs{\int_{\Omega^N_{\vec k}} f(\phi(\vec x))\abs{\det D\phi(\vec x)}\, d\vec x
+  - \int_{\phi(\Omega^N_{\vec k})} f(\vec y)\, d\vec y}}\\
+  &\le 
+  \int_{\Omega^N_{\vec k}} \abs{f(\phi(\vec x))-f^N_{\vec k}} \abs{\det D\phi(\vec x)}\, d\vec x
+  + \int_{\phi(\Omega^N_{\vec k})} \abs{f^N_{\vec k} - f(\vec y)}\, d\vec y \\
+  & \le 2 \eps \abs{\phi(\Omega^N_{\vec k})}.
+\end{align*}
+Sommando su $\vec k$ si ottiene 
 \[
-  \deg(\phi,\vec y) = \sum_{\phi(\vec x)=\vec y} \sgn \det \phi(\vec x).
+  \abs{\int_\Omega f(\phi(\vec x))\, d\vec x - \int_{\phi(\Omega)}f(\vec y)\, d\vec y}
+  \le 2 \eps \sum_{\vec k} \abs{\phi(\Omega^N_{\vec k})}
+  = 2 \eps \abs{\phi(\Omega)}.      
 \]
-
-\begin{gather*}
-  \vec x^N_{\vec k} = 2^{-N}\vec k,\\
-  f^N_{\vec k} = f(\phi(\vec x^N_{\vec k})),\\ 
-  \Phi^N_{\vec k} = D\phi(\vec x^N_{\vec k}), 
-\end{gather*}
-si abbia
-\begin{gather*}
-  M L^d (S^N(1_E)-S_N(1_E)) < \eps,\\
-  \forall \vec k\in K \colon \forall \vec x \in Q^N_{\vec k}\colon
-    \abs{f(\phi(\vec x))-f^N_{\vec k}} < \eps,\\
-  \forall \vec k\in K \colon \forall \vec x \in Q^N_{\vec k}\colon
-    \abs{\phi(\vec x) - \phi(\vec x^N_{\vec k})-\Phi^N_{\vec k}[\vec x-\vec x^N_{\vec k}]} < \eps 2^{-N}.
-\end{gather*}
-
-Per il Lemma, sappiamo che se $\vec k \in K$ allora $\phi(Q^N_{\vec k})$ è PJ-misurabile 
-e si ha 
-\[
- \abs{\phi(Q^N_{\vec k})} 
- \le (L\sqrt n)^d 2^{-nN}
-\]
-
-\begin{align*}
-  \abs{\int_{\phi(E)} f(\vec y)\, d\vec y 
-  - \sum_{\vec k \in K} \int_{\phi(Q^N_{\vec k})} f(\vec y)\, d\vec y}
-  &\le M \cdot \#K' \cdot (\sqrt n K 2^{-N})^n \\
-  &\le M (S^N(1_E)-S_N(1_E)) (\sqrt n K)^n
-  \le \eps 
-\end{align*}
-
-\begin{align*}
-\sum_{\vec k \in K}\int_{\phi(Q^N_{\vec k})} \abs{f(\vec y) - f^N_{\vec k}}\, d\vec y
-&\le  \abs{\phi(E)} \eps 
-\end{align*}
-
-Ora notiamo che siccome per $\vec x \in Q^N_{\vec k}$ si ha 
-\[
-  \abs{
-    \phi(\vec x) - \phi(\vec x^N_{\vec k}) 
-    - \Phi^N_{\vec k}(\vec x - \vec x^N_{\vec k})} \le \eps 2^{-N}
-\]
-risulta 
-\begin{align*}
- \phi(Q^N_{\vec k}) - \phi(\vec x^N_{\vec k}) \subset \Phi(Q^N_{\vec k})+B_{\eps 2^{-N}}
-\end{align*}
-
-\begin{align*}
-\sum_{\vec k \in K}
-  \int_{\phi(Q^N_{\vec k})} f^N_{\vec k}\, d\vec y 
-= \sum_{\vec k in K} f^N_{\vec k} \abs{\phi(Q^N_{\vec k})}
-\end{align*}
-
-***
-
-Per Taylor per ogni $N\in \NN$ e $\vec k\in \ZZ^n$,
-posto ${\vec x}^N_{\vec k} = 2^{-N}\vec k$ e $\Phi^N_{\vec k}=D\phi({\vec x}^N_{\vec k})$,
-si ha 
-\begin{align*}
-  \phi(\vec x) &= \phi({\vec x}^N_{\vec k}) + \Phi^N_{\vec k} (\vec x - {\vec x}^N_{\vec k}) + \eps 2^{-Nn}\\
-  f(\phi(\vec x)) &= F^N_{\vec k} + \eps\\
-  \abs{f(\vec x)} & \le M\\
-  \abs{\det D\phi(\vec x)} & \le M\\
-\end{align*}
-cosicché
-\begin{align}
-  \abs{
-    F^N_{\vec k}  2^{-Nn} \det \Phi^N_{\vec k}
-    - \int_{Q^N_{\vec k}} f(\phi(\vec x)) \det D\phi(\vec x)\, dx
-  }
-  &\le \int_{Q^N_{\vec k}}  \Enclose{M \eps 2^{-nN} + \eps M}\, dx \\
-  &\le 2M\eps 2^{-nN}. 
-\end{align}
-ma 
-\begin{align*}
-    F^N_{\vec k} 2^{-nN} \det \Phi^N_{\vec k} 
-    &= F^N_{\vec k}\abs{\phi(Q^N_{\vec k})}.
-\end{align*}
-e
-\begin{align*}
-  \int_{\phi(Q^N_{\vec k})} f(\vec y) \deg(\phi,\vec y)\, dy 
-  &=
-  \sum
-\end{align*}
+La dimostrazione si conclude facendo tendere $\eps\to 0$.
 \end{proof}

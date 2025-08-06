@@ -3,13 +3,13 @@
 \section{integrale di Riemann}
 Se $x,y\in \RR$ definiamo:
 \[
-    x \vee y = \max\ENCLOSE{x,y},
+    x \vee y \defeq \max\ENCLOSE{x,y},
     \quad
-    x \wedge y = \min\ENCLOSE{x,y},
+    x \wedge y \defeq \min\ENCLOSE{x,y},
     \quad
-    x^+ = x \vee 0,
+    x^+ \defeq x \vee 0,
     \quad
-    x^- = (-x)^+ = -(x\wedge 0).
+    x^- \defeq (-x)^+ \defeq -(x\wedge 0).
 \]
 Si ha
 \[
@@ -28,14 +28,14 @@ Sia $A\subset \RR^n$ e $f\colon A \to \RR$.
 Definiamo il \emph{supporto} di $f$ come 
 \[
  \spt f 
-    = \overline{\ENCLOSE{\vec x \in A \colon f(\vec x) \neq 0}}
+    \defeq \overline{\ENCLOSE{\vec x \in A \colon f(\vec x) \neq 0}}
     = \overline{f^{-1}(\RR\setminus\ENCLOSE{0})}.
 \]
 
 Dato $A\subset \RR^n$ definiamo la \emph{funzione caratteristica}
 di $A$ come $1_A\colon \RR^n \to \RR$,
 \[
-  1_A(\vec x) = \begin{cases}
+  1_A(\vec x) \defeq \begin{cases}
     1 & \text{se $\vec x \in A$,}\\
     0 & \text{altrimenti.}
   \end{cases}
@@ -44,7 +44,7 @@ di $A$ come $1_A\colon \RR^n \to \RR$,
 Per $\vec k \in \ZZ^d$ e $N\in \NN$ definiamo 
 il cubetto 
 \[
-  Q^N_{\vec k} = \frac{\vec k + [0,1]^d}{2^N}.
+  Q^N_{\vec k} \defeq \frac{\vec k + [0,1]^d}{2^N}.
 \]
 Si tratta di un cubetto di lato $2^{-N}$ con gli spigoli paralleli 
 agli assi cartesiani e con un vertice nel punto $2^{-N} \vec k$.
@@ -57,8 +57,8 @@ Sia $f\colon \RR^n \to \RR$ una funzione limitata,
 con supporto limitato.
 Definiamo le somme superiori e inferiori sulla $N$-esima suddivisione in cubi:
 \begin{align*}
-    S^N(f) &= 2^{-nN}\sum_{\vec k\in \ZZ^n} \sup f(Q^N_{\vec k}), \\
-    S_N(f) &= 2^{-nN}\sum_{\vec k\in \ZZ^n} \inf f(Q^N_{\vec k}).
+    S^N(f) &\defeq 2^{-nN}\sum_{\vec k\in \ZZ^n} \sup f(Q^N_{\vec k}), \\
+    S_N(f) &\defeq 2^{-nN}\sum_{\vec k\in \ZZ^n} \inf f(Q^N_{\vec k}).
 \end{align*}
 Visto che il supporto di $f$ è limitato, queste somme sono in realtà 
 somme finite. Visto che $f$ è limitata, ogni addendo è finito e dunque 
@@ -67,13 +67,19 @@ Osservando che $N\mapsto S^N(f)$ è decrescente
 mentre $N\mapsto S_N(f)$ è crescente, definiamo
 l'integrale superiore e inferiore:
 \begin{align*}
-    S^*(f) &= \lim_{N\to +\infty} S^N(f) \in \RR, \\
-    S_*(f) &= \lim_{N\to +\infty} S_N(f) \in \RR.
+    S^*(f) &\defeq \inf_N S^N(f) = \lim_{N\to +\infty} S^N(f) \in \RR, \\
+    S_*(f) &\defeq \sup_N S_N(f) = \lim_{N\to +\infty} S_N(f) \in \RR.
 \end{align*}
 Se $S^*(f)=S_*(f)$ diremo che $f$ è Riemann integrabile (o R-integrabile)
 e scriveremo
 \[
-  \int f = S^*(f) = S_*(f).
+  \int\!\! f = S^*(f) = S_*(f).
+\]
+
+Volendo rendere esplicita la variabile di integrazione, potremo
+usare la notazione equivalente
+\[
+  \int\!\! f(x)\, dx \defeq \int\!\! f.
 \]
 \end{definition}
 
@@ -81,23 +87,17 @@ e scriveremo
 Siano $f,g\colon \RR^n\to\RR$ due funzioni limitate con supporto limitato.
 Se $f$ e $g$ sono $R$-integrabili si ha:
 \[
-  f \le g \implies \int_A f \le \int_A g.
+  f \le g \implies \int\!\! f \le \int\!\! g.
 \]
 \end{theorem}
 %
 \begin{proof}
 Se $f\le g$, per ogni $N\in \NN$ e ogni $\vec k \in \ZZ^n$ si ha 
-\[
-    \sup f(Q^N_{\vec k}) \le \sup g(Q^N_{\vec k}) 
-\]
+$\sup f(Q^N_{\vec k}) \le \sup g(Q^N_{\vec k})$
 da cui 
-\[
-    S^N(f) \le S^N(g)
-\]
-e passando al limite per $N\to +\infty$,
-\[
-  S^*(f) \le S^*(g)
-\]
+$S^N(f) \le S^N(g)$.
+Passando al limite per $N\to +\infty$ si ottiene
+$S^*(f) \le S^*(g)$
 che è la tesi se $f$ e $g$ sono R-integrabili.
 \end{proof}
 
@@ -105,12 +105,12 @@ che è la tesi se $f$ e $g$ sono R-integrabili.
 Siano $f,g\colon \RR^n \to \RR$ funzioni limitate con supporto limitato.
 Se $f,g$ sono R-integrabili allora $f+g$ è R-integrabile e si ha 
 \[
-    \int (f+g) = \int f + \int g.
+    \int (f+g) = \int\!\! f + \int\!\! g.
 \]
-Se $f$ è R-integrabile e $\lambda\in \RR$ anche $\lambda f$ è R-integrabile 
+Se $f$ è R-integrabile e $c\in \RR$ è costante, anche $c f$ è R-integrabile 
 e si ha 
 \[
-    \int \lambda f = \lambda \int f.
+    \int\!\! c f = c \!\int\!\! f.
 \]
 \end{theorem}
 \begin{proof}
@@ -130,21 +130,21 @@ e passando al limite per $N\to +\infty$
    S_*(f) + S_*(g) \le S_*(f+g) \le S^*(f+g) \le S^*(f) + S^*(g).
 \]
 Se $f$ e $g$ sono R-integrabili si ottiene dunque che anche $f+g$ 
-è R-integrabile e inoltre $\int (f+g) = \int f + \int g$.
+è R-integrabile e inoltre $\int (f+g) = \int\! f + \int\! g$.
 
-Se $\lambda \ge 0$ si ha 
+Se $c \ge 0$ si ha 
 \[
-   S^N(\lambda f) = \lambda S^N(f), \qquad S_N(\lambda f) = \lambda S_N(f)
+   S^N(c f) = c S^N(f), \qquad S_N(c f) = c S_N(f)
 \]
 e quindi se $f$ è R-integrabile si conclude 
-che $\lambda f$ è R-integrabile e $\int \lambda f = \lambda \int f$.
+che $c f$ è R-integrabile e $\int\! c f = c \int\! f$.
 
-Se $\lambda = -1$ si osserva che per ogni $N\in \NN$, $\vec k\in \ZZ^n$, 
+Se $c = -1$ si osserva che per ogni $N\in \NN$, $\vec k\in \ZZ^n$, 
 si ha 
 \[
-   \sup (-f)(Q^N_{\vec k}) = -\inf f(Q^N_{\vec k}),
+   \sup_{Q^N_{\vec k}} (-f) = -\inf_{Q^N_{\vec k}} f,
    \qquad 
-   \inf (-f)(Q^N_{\vec k}) = -\sup f(Q^N_{\vec k}),
+   \inf_{Q^N_{\vec k}} (-f) = -\sup_{Q^N_{\vec k}} f,
 \]
 da cui 
 \[
@@ -155,9 +155,9 @@ e quindi, per $N\to +\infty$ si ottiene
   S^*(-f) = -S_*(f), \qquad S_*(-f) = - S^*(f).
 \]
 Se $f$ è R-integrabile deduciamo che anche $-f$ lo è e si ha 
-$\int (-f) = -\int f$.
+$\int (-f) = -\int\! f$.
 
-Combinando i casi precedenti si ottiene il caso generale $\lambda \in \RR$.
+Combinando i casi precedenti si ottiene il caso generale $c \in \RR$.
 \end{proof}
 
 \begin{theorem}[proprietà di reticolo]
@@ -165,9 +165,9 @@ Sia $f\colon \RR^n \to \RR$ una funzione limitata con supporto limitato.
 Se $f$ è R-integrabile allora anche $\abs{f}$, $f^+$ e $f^-$ sono 
 R-integrabili e si ha 
 \[
-  \abs{\int f} \le \int \abs f = \int f^+ + \int f^-, 
+  \abs{\int\!\! f} \le \int\! \abs f = \int\!\! f^+ + \int\!\! f^-, 
   \qquad 
- \int f = \int f^+ - \int f^-.
+ \int\!\! f = \int\!\! f^+ - \int\!\! f^-.
 \]
 \end{theorem}
 \begin{proof}
@@ -177,9 +177,9 @@ Dalla proprietà generale
 \]
 si ottiene che per ogni $N\in \NN$, $\vec k \in \ZZ^n$, vale
 \[
-  \sup \abs{f}(Q^N_{\vec k}) - \inf \abs{f}(Q^N_{\vec k})
+  \sup_{Q^N_{\vec k}} \abs{f} - \inf_{Q^N_{\vec k}} \abs{f}
   \le 
-  \sup f(Q^N_{\vec k}) - \inf f(Q^N_{\vec k})
+  \sup_{Q^N_{\vec k}} f - \inf_{Q^N_{\vec k}} f
 \]
 e quindi 
 \[
@@ -196,14 +196,14 @@ e dunque per linearità se $f$ è R-integrabile avendo già dimostrato
 che anche $\abs f$ è R-integrabile, si ottiene che pure $f^+
 $ e $f^-$ sono R-integrabili ed essendo $f=f^+-f^-$, $\abs f = f^+ + f^-$ si ottiene 
 \[
-  \int f = \int f^+ - \int f^-, \qquad 
-  \int \abs f = \int f^+ + \int f^-.
+  \int\!\! f = \int\!\! f^+ - \int\!\! f^-, \qquad 
+  \int\! \abs f = \int\!\! f^+ + \int\!\! f^-.
 \]
 Per la convessità del valore assoluto si ottiene infine
 \[
- \abs{\int f} = \abs{\int f^+ - \int f^-} 
- \le \abs {\int f^+} + \abs{\int f^-}
- = \int f^+ + \int f^- = \int \abs f.
+ \abs{\int\!\! f} = \abs{\int\!\! f^+ - \int\!\! f^-} 
+ \le \abs {\int\!\! f^+} + \abs{\int\!\! f^-}
+ = \int\!\! f^+ + \int\!\! f^- = \int\! \abs f.
 \]
 \end{proof}
 
@@ -217,58 +217,68 @@ La funzione $f_R$ è limitata ed ha supporto limitato.
 Se $f_R$ è Riemann-integrabile per ogni $R>0$ diremo che $f$ è localmente R-integrabile 
 e visto che $R\mapsto f_R(\vec x)$ è crescente possiamo definire
 \[
- \int f = \lim_{R\to+\infty} \int f_R \in [0,+\infty].
+ \int\!\! f \defeq \lim_{R\to+\infty} \int\!\! f_R \in [0,+\infty].
 \]
-Se $\int f<+\infty$ diremo che $f$ è R-integrabile (avendo supposto $f\ge 0$)
+Se $\int\!\! f<+\infty$ diremo che $f$ è R-integrabile (avendo supposto $f\ge 0$)
 
 Se $f\colon \RR^n\to \RR$ possiamo scrivere $f= f^+-f^-$ con $f^+,f^-$ funzioni non negative.
 Se $f^+$ e $f^-$ sono localmente R-integrabili e se 
-$\int f^+$ e $\int f^-$ non sono entrabi infiniti possiamo definire 
+$\int\!\! f^+$ e $\int\!\! f^-$ non sono entrambi infiniti possiamo definire 
 \[
-  \int f = \int f^+ - \int f^- \in [-\infty,+\infty].
+  \int\!\! f = \int\!\! f^+ - \int\!\! f^- \in [-\infty,+\infty].
 \]
-Se $\int f$ è finito diremo che $f$ è $R$-integrabile.
+Se $\int\!\! f$ è finito diremo che $f$ è $R$-integrabile.
 \end{definition}
 
 \begin{definition}
-Dato $E\subset \RR^n$ diremo che $E$ è \emph{Peano-Jordan misurabile} 
-(o PJ-misurabile) se la funzione caratteristica $1_E$ è localmente 
-R-integrabile. In tal caso definiamo la misura di $E$ come 
+Dato $E\subset \RR^n$ potremo definire la misura (di Peano-Jordan) esterna 
+e interna di $E$ come 
+\begin{align*}
+ m^N(E) &\defeq S^N(1_E), & m^*(E) &\defeq S^*(1_E),\\
+ m_N(E) &\defeq S_N(1_E), & m_*(E) &\defeq S_*(1_E).
+\end{align*}
+
+Diremo che $E$ è \emph{Peano-Jordan misurabile} 
+(PJ-misurabile) se la funzione caratteristica $1_E$ è localmente 
+R-integrabile,
+ovvero se $m^*(E\cap[-R,R]^n) = m_*(E\cap[-R,R]^n)$ per ogni $R>0$.
+In tal caso definiamo la misura di $E$ come 
 \[
-\abs{E} = \int 1_E \in [0,+\infty].
-\] 
+\abs{E} \defeq \int\!\! 1_E \in [0,+\infty] = \lim_{R\to+\infty} \abs{E\cap[-R,R]^n}.
+\]
+
 
 Se $A\subset \RR^n$ è PJ-misurabile e $f\colon A \to \RR$
 è una funzione qualunque, possiamo considerare l'estensione 
-$\tilde f\colon \RR^n \to \RR$ definita da 
+$f_A\colon \RR^n \to \RR$ definita da 
 \[
- \tilde f(\vec x) = \begin{cases}
+ f_A(\vec x) = \begin{cases}
     f(\vec x) & \text{se $x\in A$,}\\
     0 & \text{altrimenti.}
  \end{cases}
 \]
-Diremo che $f$ è localmente R-integrabile in $A$ se $\tilde f$ 
+Diremo che $f$ è localmente R-integrabile in $A$ se $f_A$ 
 è localmente R-integrabile. 
 Scriveremo:
 \[
- \int_A f = \int \tilde f
+ \int_A f = \int\!\! f_A
 \]
-se $\int \tilde f$ è definito.
+se $\int f_A$ è definito.
 Se inoltre $\int_A f$ è finito diremo che $f$ è R-integrabile
 su $A$.
 
 Volendo rendere esplicita la variabile di integrazione, potremo 
 scrivere 
 \[
-  \int_A f(x)\, dx = \int_A f.
+  \int_A f(x)\, dx \defeq \int_A f.
 \]
 \end{definition}
 
 \begin{remark}[caso $n=1$]
 Nel caso $n=1$ se $f\colon [a,b]\to \RR$ è una funzione limitata,
 si osserva che la suddivisione in cubetti di lato $2^{-N}$ induce una partizione 
-su $[a,b]$ e la definizione di Riemann integrabilità data sopra coincide con la 
-usuale Riemann integrabilità definita tramite suddivisioni arbitrarie.
+su $[a,b]$ e la definizione di Riemann-integrabilità data sopra coincide con la 
+usuale Riemann-integrabilità definita tramite suddivisioni arbitrarie.
 
 Nel caso $f\colon(a,b)\to \RR$ con $(a,b)$ non limitato oppure $f$ non limitata,
 la definizione data sopra corrisponde invece alla \emph{assoluta convergenza} 
@@ -286,7 +296,7 @@ Inoltre si ha
 \]
 \end{theorem}
 \begin{proof}
-Per la misurabilità di $E\setminus F$ e di $E\cap F$, basta osservare che 
+Per ottenere la misurabilità di $E\setminus F$ e di $E\cap F$, basta osservare che 
 \begin{align*}
   1_{E\setminus F} &= (1_E - 1_F)^+\\
   1_{E\cap F} &= 1_E - 1_{E\setminus F}\\
@@ -295,11 +305,11 @@ Per la misurabilità di $E\setminus F$ e di $E\cap F$, basta osservare che
 e usare le proprietà di reticolo.
 Osservando poi che 
 \[
- 1_E + 1_F = 1_{E\cup F} + 1_{E\cap F}
+  1_{E\cup F} + 1_{E\cap F} = 1_E + 1_F 
 \]
 si ottiene la formula
 \[
-\abs{E} + \abs{F} = \abs{E\cup F} + \abs{E\cap F}.
+  \abs{E\cup F} + \abs{E\cap F} = \abs{E} + \abs{F}.
 \]
 
 Supponiamo ora che $E$ sia limitato
@@ -320,14 +330,14 @@ Ma allora la disuguaglianza precedente risulta valida
 per un cubetto $Q^N_{\vec k'}$ adiacente a $Q^N_{\vec k}$.
 Dunque si deve avere 
 \[
-  S^N(1_{\partial E})\le 3^n (S^N(1_E)-S_N(1_E))
+  m^N(\partial E)\le 3^n (m^N(E)-m_N(E))
 \]
-(dove $3^n-1$ è il numero di cubetti adiacenti ad un cubetto fissato)
+(in quanto $3^n-1$ è il numero di cubetti adiacenti ad un cubetto fissato)
 e per $N\to +\infty$ si ottiene 
 \[
-  S^*(1_{\partial E}) \le 3^n (S^*(1_E)-S_*(1_E)) = 0, 
+  m^*(\partial E) \le 3^n (m^*(E)-m_*(E)) = 0, 
   \qquad 
-  S_*(1_{\partial E})\ge 0.
+  m_*(\partial E)\ge 0.
 \]
 Dunque $\partial E$ è misurabile e $\abs{\partial E} = 0$.
 
@@ -347,31 +357,31 @@ come:
   E_f = \ENCLOSE{(\vec x,y)\in A\times \RR \colon 0 \le y \le f(\vec x)} \subset \RR^{n+1}.
 \]
 Se $A\subset \RR^n$ è PJ-misurabile ed $f$ è localmente integrabile 
-allora $E_{f^+}$ ed $E_{f^-}$ sono localmente misurabili e se non
-hanno entrambi misura infinita si ha 
+allora $E_{f^+}$ ed $E_{f^-}$ sono localmente misurabili e, se non
+hanno entrambi misura infinita, si ha 
 \[
   \int_A f = \abs{E_{f^+}} - \abs{E_{f^-}}.
 \]
 \end{theorem}
 
 \begin{proof}
-Supponiamo $f\ge 0$, $f$ limitata, $A$ limitato PJ-misurabile.
+Supponiamo $f\ge 0$, $f$ limitata, $A$ limitato e PJ-misurabile.
 In tal caso si può osservare che 
 per ogni cubetto $n$-dimensionale che tocca la base $A$, 
 i cubetti $(n+1)$-dimensionali che coprono il grafico di $f$ 
 sono al massimo due in più rispetto all'altezza della colonna, 
-ovvero del $\sup$ di $f$ 
-sul cubetto base. Per i cubetti interni si ha invece l'opposto. Cioè:
+ovvero del $\sup$ di $f$ sul cubetto base. 
+Per i cubetti interni si ha invece l'opposto. Cioè:
 \begin{align*}
-    0 & \le S^N(1_{E_{f^+}}) - S^N(f) \le 2\cdot 2^{-N} S^N(1_A),\\
-    0 & \le S_N(f) - S_N(1_{E_{f^+}}) \le 2\cdot 2^{-N} S^N(1_A)
+    0 & \le m^N(E_{f^+}) - S^N(f) \le 2\cdot 2^{-N} m^N(A),\\
+    0 & \le S_N(f) - m_N(E_{f^+}) \le 2\cdot 2^{-N} m^N(A)
 \end{align*}
 e, per $N\to +\infty$, si ottiene 
 \begin{align*}
-  0 &\le S^*(1_{E_{f^+}}) - S^*(f) \le 0\cdot S^*(1_A), \\
-  0 &\le S_*(f) - S_*(1_{E_{f^+}}) \le 0\cdot S^*(1_A), 
+  0 &\le m^*(E_{f^+}) - S^*(f) \le 0\cdot m^*(A), \\
+  0 &\le S_*(f) - m_*(E_{f^+}) \le 0\cdot m^*(A), 
 \end{align*}
-ovvero $\abs{E_{f^+}}=\int f$, come volevamo dimostrare.
+ovvero $\abs{E_{f^+}}=\int\! f$, come volevamo dimostrare.
 
 Gli altri casi vengono di conseguenza separando parte positiva e parte negativa 
 e passando al limite nei troncamenti.
@@ -394,12 +404,12 @@ Per il teorema di Heine-Cantor esiste $\delta>0$ tale
 che se $\vec x_1,\vec x_2\in A$ e $\abs{\vec x_1 -\vec x_2}<\delta$ 
 allora $\abs{f(\vec x_1)-f(\vec x_2)}< \eps$. 
 Scegliamo $N\in \NN$ abbastanza grande in modo che si abbia $2^{-N}\sqrt n < \delta$
-e in modo che $S^N(1_{\partial A})<\eps$.
+e in modo che $m^N(\partial A)<\eps$.
 Allora si ha
 \[
   S^N(f) - S_N(f) 
   = 2^{-nN}\sum_{\vec k} (\max f(Q^N_{\vec k})-\min f(Q^N_{\vec k})) 
-  \le 2^{-nN}\eps S^N(1_A).
+  \le 2^{-nN}\eps m^N(A).
 \]
 Visto che $f$ è limitata e $A$ è limitato, $S^N(f)$ è limitata in $N$ 
 e facendo tendere $N\to+\infty$ si ottiene 
@@ -438,14 +448,14 @@ Supponiamo che $f$ sia una funzione R-integrabile,
 limitata con supporto limitato.
 Allora posto 
 \[
-    g(\vec x) = \int f(\vec x, \vec y)\, d\vec y\\
+    g(\vec x) = \int\!\! f(\vec x, \vec y)\, d\vec y\\
 \]
 si ha
 \begin{align*}
     S^N(g)
     &= 2^{-nN} \sum_{\vec k\in \ZZ^n} 
         \sup_{\vec x\in Q^N_{\vec k}}
-            \int f(\vec x,\vec y)\, dy\\
+            \int\!\! f(\vec x,\vec y)\, dy\\
     &\le 2^{-nN} \sum_{\vec k\in \ZZ^n} 
         \sup_{\vec x\in Q^N_{\vec k}}
                 S^N(f(\vec x,\cdot))\\
@@ -459,10 +469,8 @@ si ha
             \sup_{f(Q^N_{\vec k}\times Q^N_{\vec j})}\\
     &= S^N(f)
 \end{align*}
-ed analogamente si trova
-\[
-    S_N(g) \ge S_N(f).
-\]
+ed analogamente si trova $S_N(g) \ge S_N(f)$.
+
 Passando al limite otteniamo quindi 
 \[
    S_*(f) \le S_*(g) \le S^*(g) \le S^*(f)
@@ -489,122 +497,209 @@ Allora se $E\subset \RR^n$ è PJ-misurabile si ha
 Si vedano appunti di Analisi Uno.
 \end{proof}
 
-\begin{theorem}[formula dell'area]
-Sia $\phi\colon [0,1]^n \to \RR^n$
-una funzione iniettiva, di classe $C^1$, tale che $\det D\phi(x)\neq 0$ per ogni $x\in [0,1]^n$.
-
-Allora $\phi(E)$ è misurabile e si ha
-\begin{equation}\label{eq:area}
- \abs{\phi(E)} = \int_E \abs{\det D\phi}.
+\begin{lemma}[misura delle immagini Lipschitziane]
+  \label{lm:misura-immagine-lipschitz}
+Sia $E \subset \RR^n$ e sia $\phi\colon E \to \RR^m$ una 
+funzione $L$-lipschitziana, ovvero tale che
+\[
+  \abs{\phi(\vec x) - \phi(\vec y)} \le L \abs{\vec x - \vec y}, 
+  \qquad \forall \vec x,\vec y \in E.
+\]
+Allora 
+\begin{equation}\label{eq:misura-immagine-lipschitz}
+   m^*(\phi(E)) \le (L\sqrt n + 1)^m \cdot m^*(E).
 \end{equation}
+
+Se $\Omega\subset \RR^n$ è un aperto limitato PJ-misurabile,
+se $\phi \colon \bar \Omega\subset \RR^n \to \RR^n$ 
+è una funzione $L$-lipschitziana, 
+che ristretta ad $\Omega$ è di classe $C^1$ e 
+$\det D\phi(\vec x)\neq 0$ per ogni $\vec x\in \Omega$,  
+allora 
+dunque $\phi(\Omega)$ è PJ-misurabile.
+Inoltre si $\partial \phi(\Omega) \subset \phi(\partial \Omega)$
+sono misurabili di misura nulla
+e $\overline{\phi(\Omega)} = \phi(\bar \Omega)$ è misurabile.
+\end{lemma}
+%
+\begin{proof}
+\emph{Prima parte.}
+Definiamo il \emph{diametro} di un insieme $A\subset \RR^n$ come
+\[
+  \diam(A) \defeq \sup_{\vec x,\vec y\in A} \abs{\vec x - \vec y}.
+\]
+Chiaramente si ha $\diam(\phi(A)) \le L \cdot \diam(A)$
+e dunque se $Q^N_{\vec k}$ è un cubetto di lato $2^{-N}$
+il suo diametro è $2^{-N}\sqrt n$ e quindi 
+il diametro di $F^N_{\vec k} \defeq \phi(Q^N_{\vec k}\cap \Omega)$ 
+è al massimo $L \cdot 2^{-N}\sqrt n$. 
+Dunque $F^N_{\vec k}$ 
+è contenuto in un cubo allineato agli assi cartesiani, di lato 
+$L\sqrt n \cdot 2^{-N}$ e tale cubo può essere ricoperto 
+con non più di $(L\sqrt n + 1)^m$ cubetti 
+di lato $2^{-N}$, da cui
+\[
+ m^N(\phi(E)) \le 2^m (L\sqrt n + 1)^m \cdot m^N(E).
+\]
+Passando al limite per $N\to +\infty$ si ottiene~\eqref{eq:misura-immagine-lipschitz}.
+
+\emph{Seconda parte.}
+Visto che $\bar \Omega$ è compatto e $\phi$ è continua, 
+sappiamo che $\phi(\bar \Omega)$ è compatto e dunque 
+$\partial \phi(\Omega)\subset \phi(\bar \Omega)$.
+Ma $\phi\in C^1(\Omega)$ e $\det D\phi(\vec x)\neq 0$,
+dunque per il teorema di invertibilità locale
+possiamo affermare che ogni punto $\vec x\in \Omega$ ha un intorno
+che viene mandato, tramite $\phi$, in un intorno del punto di arrivo 
+$\phi(\vec x)$.
+Questo significa che punti interni a $\Omega$ vengono mandati 
+in punti interni a $\phi(\Omega)$
+e dunque che la frontiera di $\phi(\Omega)$ è contenuta nell'immagine 
+della frontiera di $\Omega$.
+Per continuità sappiamo che $\phi(\bar \Omega) \subset \overline{\phi(\Omega)}$ 
+e per compattezza sappiamo che $\overline {\phi(\bar \Omega)} = \phi(\bar \Omega)$.
+Dunque $\phi(\bar \Omega) = \overline{\phi(\Omega)}$. 
+
+Per concludere che $\phi(\Omega)$ e $\overline{\phi(\Omega)}$ sono misurabili basta dimostrare che 
+$\abs{\partial (\phi(\Omega))}=0$ cioè che $m^*(\partial (\phi(\Omega)))= 0$.
+Grazie all'osservazione precedente, ci basta dunque dimostrare
+che $m^*(\phi(\partial \Omega)) = 0$.
+E questo è vero in quanto \eqref{eq:misura-immagine-lipschitz}
+ci dice che
+\[
+ 0 \le m^*(\phi(\partial \Omega)) 
+ \le (L\sqrt n+1)^n \cdot m^*(\partial \Omega) = 0
+\]
+se $\Omega$ è PJ-misurabile e $\phi$ è $L$-lipschitziana.
+\end{proof}
+
+
+\begin{theorem}[formula dell'area]
+  \label{th:formula-area}
+Sia $\Omega\subset \RR^n$ un aperto convesso limitato PJ-misurabile.
+Sia $\phi\colon \bar \Omega \to \RR^n$ una funzione di 
+classe $C^1$ (significa che $\phi$ può essere estesa ad una funzione $C^1$ su 
+un aperto contenente $\bar \Omega$) 
+tale che $\phi$ è iniettiva su $\Omega$ 
+e $\det D \phi(\vec x)\neq 0$ per ogni $\vec x\in \Omega$.
+
+Allora $\phi(\Omega)$ è PJ-misurabile e si ha 
+\[
+  \abs{\phi(\Omega)} 
+    = \int_{\Omega} \abs{\det D\phi}.
+\]
+
+%Sia $Q=[0,1]^n$ e sia $\phi\colon Q \to \RR^n$
+%una funzione iniettiva su $(0,1)^n$, di classe $C^1$, tale che $\det D\phi(x)\neq 0$ per ogni $x\in [0,1]^n$.
+
+%Allora $\phi(Q)$ è misurabile e si ha
+%\begin{equation}\label{eq:area}
+% \abs{\phi(Q)} = \int_{Q} \abs{\det D\phi}.
+%\end{equation}
+%
+%Notiamo che il teorema~\ref{th:cambio-variabili} ci dirà che questo risultato 
+%è vero in ipotesi leggermente più generali.
 \end{theorem}
 %
 \begin{proof}
-Poniamo $Q=[0,1]^n$.
-\emph{Passo 1: dimostriamo che $\phi(Q)$ è misurabile.}
-Per il teorema di invertibilità locale, ogni punto $\vec x \in (0,1)^n$
-ha un intorno che viene mandato, tramite $\phi$, in un intorno del punto di arrivo $\phi(\vec x)$.
-Questo significa che punti interni a $Q$ vengono mandati in punti interni a $\phi(Q)$
-e di conseguenza 
+\emph{Passo 1: dimostriamo che $\phi(\Omega)$ è misurabile.}
+Essendo $\Omega$ convesso possiamo applicare il teorema~\ref{th:lagrange} di Lagrange 
+per ottenere la condizione di Lipschitz:
 \[
-  \partial \phi(Q) \subset \phi(\partial Q).
+\abs{\phi(\vec x) - \phi(\vec x')} \le L \abs{\vec x - \vec x'}, \qquad \forall \vec x,\vec x' \in \Omega.
 \]
-Dunque per ogni $N$ sappiamo che $\partial \phi(Q)$ è contenuta nell'immagine 
-dei cubetti $Q^n_{\vec k}\subset [0,1]^n$ che toccano la frontiera di $[0,1]^n$.
-Il numero di questi cubetti è di poco inferiore a $2n\cdot 2^{(n-1)N}$.
-Visto che $D\phi$ è continua, per Weierstrass esiste $L>0$ tale che $\Abs{D\phi(\vec x)} \le L$ per ogni $\vec x\in Q$.
-Dalla disuguaglianza di Lagrange troviamo la condizione di Lipschitz:
-\[
-\abs{\phi(\vec x) - \phi(\vec x')} \le L \abs{\vec x - \vec x'}, \qquad \forall \vec x,\vec x' \in Q.
-\]
-Fissato un cubetto $Q^N_{\vec k}\subset Q$, 
-deduciamo che il diametro di $\phi(Q^N_{\vec k})$ si stima con $L$ volte il diametro di $Q^N_{\vec k}$,
-ovvero con $L \sqrt n 2^{-N}$.
-Dunque $\phi(Q^N_{\vec k})$ può essere coperto con $(L\sqrt n +1)^n$ cubetti di lato $2^{-N}$.
-Da questo deduciamo che 
-\[
-  S^N(1_{\partial \phi([0,1]^n)}) \le 2n\cdot 2^{(n-1)N}\cdot (L\sqrt n + 1)^n \cdot S^N(1_{\partial [0,1]^n})
-\]
-e quindi, facendo tendere $N\to +\infty$, troviamo che 
-$S^*(1_{\partial \phi(Q)}) = 0 \cdot S^*(1_{\partial Q})=0$.
-Visto che ovviamente $S_*(1_{\partial \phi(Q)}) \ge 0$, 
-si ottiene che $\partial \phi(Q)$ è misurabile 
-di misura nulla. Dunque $\phi(Q)$ è misurabile.
+Per continuità la condizione si estende a tutte le coppie $\vec x, \vec x' \in \bar \Omega$.
+Possiamo quindi applicare il Lemma~\ref{lm:misura-immagine-lipschitz} 
+per ottenre la misurabilità di $\phi(\Omega)$ e di $\phi(\bar \Omega)$.
+% \[
+%   m^*(\partial (\phi(\Omega)))
+%   \le (L\sqrt n + 1)^n \cdot m^*(\partial \Omega).
+% \]
+% Visto che $\Omega$ è PJ-misurabile, si ha $m^*(\partial \Omega)=0$,
+% dunque anche $\partial \phi(\Omega)$ è misurabile 
+% di misura nulla e, di conseguenza, $\phi(\Omega)$ è misurabile.
+% Per continuità di $\phi$ abbiamo $\phi(\bar \Omega) \subset \overline{\phi(\Omega)}$
+% e per compattezza di $\bar \Omega$ si ha $\overline{\phi(\bar \Omega)} = \phi(\bar \Omega)$,
+% dunque $\overline{\phi(\Omega)} = \phi(\bar \Omega)$.
+% Essendo $\bar \Omega$ compatto anche $\phi(\bar \Omega)$ è compatto, 
+% dunque $\overline{\phi(\Omega)} \subset \phi(\bar \Omega)$
+% Ovviamente anche $\phi(\bar \Omega) = \overline{\phi(\Omega)}$ è misurabile.
 
 \emph{Passo 2 (lemma del cubo interno/esterno): 
-se esiste $\eps\in(0,\frac 1 4)$ tale che 
+se $\Omega = (0,1)^n$ è il cubo unitario  
+ed esiste $\eps\in(0,\frac 1 4)$ tale che 
 \[
-  \abs{\phi(\vec x)-\vec x} \le \eps, \qquad \forall \vec x \in Q
+  \abs{\phi(\vec x)-\vec x} \le \eps, \qquad \forall \vec x \in \bar \Omega,
 \]
 allora }
 \[
   (1-2\eps)^n
-  \le \abs{\phi(Q)}
+  \le \abs{\phi(\Omega)}
   \le (1+2\eps)^n.
 \]
 Chiaramente 
 \[
-    \phi(Q) \subset [-\eps,1+\eps]^n
+    \phi(\Omega) \subset [-\eps,1+\eps]^n
 \]
-perché ogni punto di $Q$ viene spostato al massimo di $\eps$. 
+perché ogni punto di $\Omega$ viene spostato al massimo di $\eps$. 
 Quindi si ottiene, per monotonia della misura,
 \[
-    \abs{\phi(Q)} \le (1+2\eps)^n.
+    \abs{\phi(\Omega)} \le (1+2\eps)^n.
 \]
-Per mostrare l'altra disuguaglianza  
+Per ottener l'altra disuguaglianza  
 \[
-   \abs{\phi(Q)} \ge (1-2\eps)^n
+   \abs{\phi(\Omega)} \ge (1-2\eps)^n
 \]
 basterà dimostrare che vale anche 
 \[
-  \phi(Q) \supset (\eps,1-\eps)^n.
+  \phi(\Omega) \supset (\eps,1-\eps)^n.
 \]
-Questo risulta meno ovvio.
-Supponiamo per assurdo che esista $y \in (\eps,1-\eps)^n \setminus \phi(Q)$.
+Supponiamo per assurdo che esista $\vec y \in (\eps,1-\eps)^n \setminus \phi(\Omega)$.
 Consideriamo il punto $\vec p=(\frac 12, \dots, \frac 12)$ centro 
-del cubo unitario $Q$ e sia $\vec q=\phi(\vec p)$ la sua immagine. 
+del cubo $\Omega$ e sia $\vec q=\phi(\vec p)$ la sua immagine. 
 Visto che $\abs{\vec q-\vec p} = \abs{\phi(\vec p)-\vec p} \le \eps$ 
 e $\eps \le \frac 1 4$ possiamo garantire che
 $\vec q \in (\eps,1-\eps)^n$.
 Dunque l'intero segmento $\sigma = [\vec q,\vec y]$ è contenuto 
 in $(\eps,1-\eps)^n$ essendo quest'ultimo un convesso.
-Visto che $\vec q\in \phi(Q)$ mentre $\vec y \notin \phi(Q)$,
-deve esistere un punto $\vec z\in \sigma\cap \partial \phi(Q)$
+Visto che $\vec q\in \phi(\Omega)$ mentre $\vec y \notin \phi(\Omega)$,
+deve esistere un punto $\vec z\in \sigma\cap \partial \phi(\Omega)$
 (esercizio~\ref{ex:punto-di-frontiera}).
-Ma abbiamo già mostrato (Passo 1) che $\partial (\phi(Q)) \subset \phi(\partial Q)$
-dunque $\vec z=\phi(\vec x)$ con $\vec x \in \partial Q$. 
+Ma abbiamo già mostrato (Passo 1) che $\partial (\phi(\Omega)) \subset \phi(\partial \Omega)$
+dunque $\vec z=\phi(\vec x)$ con $\vec x \in \partial \Omega$. 
 Ma allora $\abs{\vec z-\vec x} = \abs{\phi(\vec x)- \vec x} \le \eps$ 
 e dunque $\vec z\not \in (\eps,1-\eps)^n$, 
 contraddicendo $\vec z \in \sigma \subset (\eps,1-\eps)^n$.
 
-\emph{Passo 3: se esiste $\eps>0$ tale che 
+\emph{Passo 3: se $\Omega=(0,1)^n$ ed esiste $\eps>0$ tale che 
 \[
-  \Abs{ D\phi(\vec x) - I} \le \frac{\eps}{\sqrt n} \qquad \forall \vec x \in [0,1]^n,
+  \Abs{ D\phi(\vec x) - I} \le \frac{\eps}{\sqrt n} \qquad \forall \vec x \in \bar \Omega,
 \]
 (dove $I$ è la matrice identità)
 allora
 \[
- (1-2\eps)^n \le \abs{\phi([0,1]^n)} \le (1+2\eps)^n.
+ (1-2\eps)^n \le \abs{\phi(\Omega)} \le (1+2\eps)^n.
 \]
 }
 Se consideriamo la funzione $\psi(x) = \phi(x) - x$ osserviamo che $\psi(0)=\phi(0)$ e
 \[
 \Abs{D\psi(\vec x)} = \Abs{D\phi(\vec x) -I} \le \frac{\eps}{\sqrt n}.
 \]
-Applicando la disuguaglianza di Lagrange si ottiene dunque:
+Applicando la disuguaglianza di Lagrange (teorema~\ref{th:lagrange}) si ottiene dunque:
 \[
 \abs{\phi(x) - \phi(0) - x} = \abs{\psi(x)-\psi(0)} \le \frac \eps {\sqrt n} \abs{x} \le \eps
 \]
 e la conclusione segue dal passo precedente applicato alla funzione $\phi(\vec x) - \phi(0)$.
 
-\emph{Passo 4: supponiamo che esista una matrice invertibile $M$ e un $\eps>0$ tali che
+\emph{Passo 4: supponiamo $\Omega=(0,1)^n$ e che esista una matrice invertibile $M$ e un $\eps>0$ tali che
 \[
-  \Abs{D\phi(\vec x) - M} \le \frac{\eps}{\Abs{M^{-1}} \sqrt n}, \qquad \forall \vec x \in [0,1]^n.
+  \Abs{D\phi(\vec x) - M} \le \frac{\eps}{\Abs{M^{-1}} \sqrt n}, \qquad \forall \vec x \in \bar \Omega.
 \]
 allora
-\[
-(1-2\eps)^n \le \frac{\abs{\phi([0,1]^n)}}{\abs{\det M}} \le (1+2\eps)^n.
-\]}
+\begin{equation}\label{eq:475681}
+(1-2\eps)^n \le \frac{\abs{\phi(\Omega)}}{\abs{\det M}} \le (1+2\eps)^n.
+\end{equation}
+}
 
 Consideriamo la funzione $\psi(\vec x) = M^{-1} \phi(\vec x)$ per la quale si ha  
 \[
@@ -615,24 +710,24 @@ Consideriamo la funzione $\psi(\vec x) = M^{-1} \phi(\vec x)$ per la quale si ha
 \]
 Applicando il passo precedente alla funzione $\psi$ otteniamo 
 \[
-(1-2\eps)^n \le \abs{\psi([0,1]^n)} \le (1+2\eps)^n.
+(1-2\eps)^n \le \abs{\psi(\Omega)} \le (1+2\eps)^n.
 \]
 Ricordando il Teorema \ref{th:geometria_determinante} si ha
 \[
-  \abs{\psi([0,1]^n)} = \abs{M^{-1}(\phi([0,1]^n))}
-  = \abs{\det M^{-1}} \cdot \abs{\phi([0,1]^n)}
-  = \frac{\abs{\phi([0,1]^n)}}{\abs{\det M}}
+  \abs{\psi(\Omega)} = \abs{M^{-1}(\phi(\Omega))}
+  = \abs{\det M^{-1}} \cdot \abs{\phi(\Omega)}
+  = \frac{\abs{\phi(\Omega)}}{\abs{\det M}}
 \]
-che conclude il passo corrente.
+da cui si ottiene~\eqref{eq:475681}.
 
-\emph{Passo 5: mostriamo che per ogni cubetto $Q^N_{\vec k}\subset [0,1]^n$
-se esiste una matrice invertibile $M$ ed $\eps>0$ tali che 
+\emph{Passo 5: se $Q^N_{\vec k}\subset \bar \Omega$ è un cubetto di lato $2^{-N}$
+e se esistono una matrice invertibile $M$ ed $\eps>0$ tali che per ogni $\vec x \in Q^N_{\vec k}$
 \[
-  \Abs{D\phi(x)-M} \le \frac{\eps}{\Abs{M^{-1}} \sqrt n}, \qquad \forall x\in Q^N_{\vec k},
+  \Abs{D\phi(x)-M} \le \frac{\eps}{\Abs{M^{-1}} \sqrt n},
 \]
-allora 
+allora
 \[
-(1-2\eps)^n \le \frac{\abs{\phi(Q^N_{\vec k})}}{\int_{Q^N_{\vec k}}\abs{\det M}\, dx} \le (1+2\eps)^n.
+(1-2\eps)^n \le \frac{\abs{\phi(Q^N_{\vec k})}}{2^{-nN}\abs{\det M}} \le (1+2\eps)^n.
 \]
 }
 Sia $\vec x^N_{\vec k} = 2^{-N}\vec k$ il vertice del cubetto $Q^N_{\vec k}$.
@@ -640,57 +735,85 @@ Basta considerare la funzione $\psi\colon Q\to \RR^n$
 definita da $\psi(\vec x) = 2^N(\phi(\vec x^N_{\vec k} + 2^{-N}\vec x)-\phi(\vec x^N_{\vec k}))$ 
 e osservare che
 \begin{gather*}
-  D\psi(\vec x) 
+  D\psi(\vec x)
   = D\phi(\vec x^N_{\vec k} + 2^{-N}\vec x), \qquad \psi(0)=0\\
-  \int_{Q^N_{\vec k}} \abs{\det M}\, d\vec x
-  = 2^{nN}\cdot\abs{\det M}, \qquad
+%  \int_{Q^N_{\vec k}} \abs{\det M}\, d\vec x
+%  = 2^{nN}\cdot\abs{\det M}, \qquad
   \abs{\psi(Q)} = 2^{nN} \cdot \abs{\phi(Q^N_{\vec k})}
 \end{gather*}
 cosicché si può applicare il passo precedente alla funzione $\psi$
 per ottenere quanto affermato.
 
-\emph{Conclusione.}
-Sia $\eps>0$ fissato. 
-Visto che $D\phi(x)$ è continua e invertibile su $Q$,
-anche le funzioni $\abs{\det D\phi(x)}$ e $\Abs{(D\phi(x))^{-1}}$
-sono definite e continue su $Q$. 
-Per il teorema di Weiestrass 
-esistono $\lambda<+\infty$, $\mu<+\infty$ 
+\emph{Passo 6: conclusione.}
+Essendo $\bar \Omega$ compatto e $D\phi$ continua, 
+anche $\abs{\det D\phi}$ è continua e, per il teorema di Weierstrass,
+esistono $L,\mu<+\infty$ tali che per ogni $\vec x \in \bar \Omega$ si ha
 \[
- \vec x \in Q \implies 
- \begin{cases}
-  \Abs{(D\phi(\vec x))^{-1}} \le \lambda,\\
+  \abs{D\phi(\vec x)} \le L,
+  \qquad
   \abs{\det D\phi(\vec x)} \le \mu.
- \end{cases}
 \]
-Per il teorema di Heine-Cantor  
-per ogni $\eps>0$ esiste $N\in \NN$ tale che 
+
+Fissiamo $\eps>0$.
+Visto che $\Omega$ è misurabile esiste $M\in \NN$ abbastanza grande in modo che 
 \[
- \vec x, \vec x' \in Q^N_{\vec k}\subset Q \implies
- \begin{cases}
-  \Abs{D\phi(\vec x) - D\phi(\vec x')} \le \frac{\eps}{\lambda \sqrt n},\\
-  \abs{\det D\phi(\vec x) - \det D\phi(\vec x')} \le \eps.
- \end{cases}
+  m^M(\bar \Omega)-m_M(\Omega) < \frac{\eps}{(\sqrt n L +1)^n + \mu}.
 \]
-Per ogni cubetto $Q^N_{\vec k} \subset Q$ sia $\vec x^N_{\vec k} \defeq 2^{-N}\vec k$ 
+Consideriamo il compatto $\Omega_M$ che è l'unione di tutti i cubetti $Q^M_{\vec k}$
+contenuti interamente in $\Omega$.
+Per il Lemma~\ref{lm:misura-immagine-lipschitz} si ha 
+\[
+ m^*(\phi(\Omega_M)) 
+ \le (L\sqrt n + 1)^n \cdot \abs{\Omega_M} 
+ \le (L\sqrt n + 1)^n \cdot (m^M(\bar \Omega) - m_M(\Omega))
+ \le \eps.
+\]
+D'altra parte anche 
+\[
+\int_{\Omega\setminus \Omega_M} \abs{\det D\phi}
+\le \mu \abs{\Omega\setminus \Omega_M} \le \eps
+\]
+dunque per concludere la dimostrazione basterà mostrare che 
+\begin{equation}\label{eq:39254}
+  \abs{\phi(\Omega_M)} = \int_{\Omega_M} \abs{\det D\phi} 
+\end{equation}
+in quanto 
+\[
+   \abs{\abs{\phi(\Omega)} - \int_{\Omega} \abs{\det D\phi}}
+   \le \abs{\abs{\phi(\Omega_M)} - \int_{\Omega_M} \abs{\det D\phi}} + 2\eps
+\]
+e il risultato seguirebbe immediatamente facendo tendere $\eps\to 0^+$.
+
+Per dimostrare~\eqref{eq:39254} andremo a suddividere i cubetti di lato $2^{-M}$
+che formano $\Omega_M$ in cubetti ancora più piccoli.
+Fissato $\eps>0$,
+per il teorema di Heine-Cantor  
+esiste $N\in \NN$ tale che 
+per ogni $\vec x, \vec x' \in Q^N_{\vec k}\cap \Omega$ si ha
+\[
+  \Abs{D\phi(\vec x) - D\phi(\vec x')} \le \frac{\eps}{\lambda \sqrt n},
+  \qquad
+  \abs{\det D\phi(\vec x) - \det D\phi(\vec x')} \le \eps.
+\]
+Per ogni cubetto $Q^N_{\vec k} \subset \Omega_m$ sia $\vec x^N_{\vec k} \defeq 2^{-N}\vec k$ 
 il vertice del cubetto e sia $M^N_{\vec k} \defeq D\phi(\vec x^N_{\vec k})$.
 Allora sono soddisfatte le condizioni per applicare il passo precedente, e si 
 ottiene 
 \[
-(1-2\eps)^n \le \frac{\abs{\phi(Q^N_{\vec k})}}{\int_{Q^N_{\vec k}}\abs{\det M^N_{\vec k}}\, d\vec x} \le (1+2\eps)^n.
+(1-2\eps)^n \le \frac{\abs{\phi(Q^N_{\vec k})}}{2^{-Nn}\abs{\det M^N_{\vec k}}} \le (1+2\eps)^n.
 \]
 Osservando che 
 \[
  0 < 1-(1-2\eps)^n < (1+2\eps)^n - 1 = 2n\eps + o(\eps) \qquad \text{per $\eps\to 0^+$},
 \]
 e ricordando che
-\[
-\int_{Q^N_{\vec k}} \abs{\det M^N_{\vec k}}
-= 2^{nN} \abs{\det M^N_{\vec k}} \le 2^{nN} \mu,
-\]
+$
+%\int_{Q^N_{\vec k}} \abs{\det M^N_{\vec k}}
+= 2^{nN} \abs{\det M^N_{\vec k}} \le 2^{nN} \mu
+$,
 possiamo riscrivere le disuguaglianze precedenti nella forma
 \[
-\abs{\abs{\phi(Q^N_{\vec k})} - \int_{Q^N_{\vec k}} \abs{\det M^N_{\vec k}}}
+\abs{\abs{\phi(Q^N_{\vec k})} - 2^{-Nn} \abs{\det M^N_{\vec k}}}
 \le (2n\eps + o(\eps))\cdot 2^{-Nm} \mu.
 \]
 Inoltre, visto che
@@ -703,39 +826,81 @@ Inoltre, visto che
 otteniamo infine 
 \[
 \abs{\abs{\phi(Q^N_{\vec k})} - \int_{Q^N_{\vec k}} \abs{\det D\phi}}
+= \abs{\abs{\phi(Q^N_{\vec k})} - 2^{-Nn} \abs{\det D\phi}}
 \le (2n\eps + o(\eps))\cdot 2^{-Nm} \mu + 2^{-Nn} \eps.
 \]
-Visto che $\phi$ è iniettiva, 
+Visto che $\phi$ è iniettiva su $\Omega_M\subset \Omega$, 
 le parti interne degli insiemi $\phi(Q^N_{\vec k})$ sono a due a due disgiunte 
-dunque, sommando su tutti i cubetti $Q^N_{\vec k}\subset Q$,
+dunque, sommando su tutti i cubetti $Q^N_{\vec k}\subset K_0$,
 si ottiene
 \begin{align*}
-\abs{\abs{\phi(Q)} - \int_Q \abs{\det D\phi}}
-&=\abs{\sum_{Q^N_{\vec k}\subset Q}
-  \abs{\phi(Q^N_{\vec k})} - \sum_{Q^N_{\vec k}\subset Q}\int_{Q^N_{\vec k}} \abs{\det D\phi}} \\
-&\le \sum_{Q^N_{\vec k}\subset Q} 
+\abs{\abs{\phi(\Omega_M)} - \int_{\Omega_M} \abs{\det D\phi}}
+&=\abs{\sum_{Q^N_{\vec k}\subset \Omega_M}
+  \abs{\phi(Q^N_{\vec k})} - \sum_{Q^N_{\vec k}\subset \Omega_M}\int_{Q^N_{\vec k}} \abs{\det D\phi}} \\
+&\le \sum_{Q^N_{\vec k}\subset \Omega_M} 
   \abs{\abs{\phi(Q^N_{\vec k})} - \int_{Q^N_{\vec k}} \abs{\det D\phi}}\\
   &\le (2n\eps + o(\eps))\cdot \mu + \eps.
 \end{align*}
-Facendo tendere $\eps\to 0^+$ si conclude la dimostrazione.
+Facendo tendere $\eps\to 0^+$ si ottiene~\eqref{eq:39254}, concludendo la dimostrazione.
 \end{proof}
 
 
-\begin{theorem}[cambio di variabile]
-Sia $E\subset \RR^n$ un chiuso misurabile, $\phi\colon E \to \RR^n$
+\begin{theorem}[cambio di variabili]
+  \label{th:cambio-variabili}
+Sia $\Omega \subset \RR^n$ un aperto convesso $PJ$-misurabile, 
+$\phi\colon \bar \Omega \to \RR^n$
 una funzione di classe $C^1$, 
-$\phi$ iniettiva se ristretta alla parte interna di $E$,
-$f\colon \phi(E)\to \RR$ una funzione 
-continua. Allora
+$\phi$ iniettiva se ristretta ad $\Omega$,
+$\det\phi(x)\neq 0$ per ogni $x\in \Omega$.
+Allora $\phi(\Omega)$ è misurabile e 
+se $f\colon \phi(\Omega)\to\RR$ è una funzione localmente integrabile,
+si ha 
 \[
-    \int_E f(\phi(\vec x))\abs{\det D \phi(\vec x)}\, d \vec x
+    \int_\Omega f(\phi(\vec x))\cdot \abs{\det D \phi(\vec x)}\, d \vec x
     =
-    \int_{\RR^n} f(\vec y) \, d \vec y.
+    \int_{\phi(\Omega)} f(\vec y) \, d \vec y.
 \]
 \end{theorem}
 
 \begin{proof}
-\emph{Caso 1: supponiamo $E$ compatto.}
+  \emph{Case 1: supponiamo che $\Omega$ sia limitato e che $f$ sia limitata.}
+Siano $L,M,\sigma$ costanti positive tali che 
+per ogni $\vec x\in \bar \Omega$ si abbia
+\[
+  \abs{f(x)} \le M, \qquad
+  \Abs{D\phi(\vec x)} \le L.
+\]
+Essendo $\Omega$ convesso, possiamo applicare il 
+teorema~\ref{th:lagrange} di Lagrange 
+per ottenere la condizione di Lipschitz:
+\[
+  \abs{\phi(\vec x) - \phi(\vec y)} \le \Abs{D\phi(\vec z)}L.
+\]
+Per il Lemma~\ref{lm:misura-immagine-lipschitz} troviamo 
+dunque che $\phi(\Omega)$ è misurabile.
+Dato $N\in \NN$ consideriamo l'insieme compatto
+\[
+  \Omega^N \defeq \bigcup_{Q^N_{\vec k}\subset \Omega} Q^N_{\vec k}
+\]
+formato dai cubetti di lato $2^{-N}$ contenuti in $\Omega$.
+Posto $F^N_{\vec k} \defeq \sup \phi(Q^N_{\vec k})\in \RR$,
+si ha, usando la definizione di integrale Riemann,
+e il teorema~\ref{th:formula-area}:
+\begin{align*}
+  S^N(f) 
+    &= \sum_{Q^N_{\vec k}\subset \Omega} F^N_{\vec k} \cdot \abs{Q^N_{\vec k}}
+       + \sum_{Q^N_{\vec k}\cap \Omega  \emptyset} F^N_{\vec k} \cdot \abs{Q^N_{\vec k}\cap \Omega}\\
+    &= \sum_{\vec k \in \ZZ^n} F^N_{\vec k} \cdot \abs{\phi(\phi^{-1}(Q^N_{\vec k}))}\\
+    &= \sum_{\vec k \in \ZZ^n} F^N_{\vec k} \cdot 
+      \int_{\phi^{-1}(Q^N_{\vec k})} \abs{\det D\phi(\vec x)}\, d\vec x
+    = \sum_{\vec k \in \ZZ^n} 
+      \int_{\phi^{-1}(Q^N_{\vec k})} F^N_{\vec k} \abs{\det D\phi(\vec x)}\, d\vec x\\
+    &\ge \int_{\Omega} f(\phi(\vec x)) \abs{\det D\phi(\vec x)}\, d\vec x.
+\end{align*}
+
+
+*************
+  \emph{Caso 1: supponiamo $E$ compatto.}
 Allora $\Abs{D\phi}$ ha massimo $L$ su $E$, e $f$ ha massimo $M$ 
 su $\phi(E)$. 
 

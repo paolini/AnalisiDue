@@ -41,10 +41,10 @@ di $A$ come $1_A\colon \RR^n \to \RR$,
   \end{cases}
 \]
 
-Per $\vec k \in \ZZ^d$ e $N\in \NN$ definiamo 
+Per $\vec k \in \ZZ^n$ e $N\in \NN$ definiamo 
 il cubetto 
 \[
-  Q^N_{\vec k} = \frac{\vec k + [0,1]^d}{2^N}.
+  Q^N_{\vec k} = \frac{\vec k + [0,1]^n}{2^N}.
 \]
 Si tratta di un cubetto di lato $2^{-N}$ con gli spigoli paralleli 
 agli assi cartesiani e con un vertice nel punto $2^{-N} \vec k$.
@@ -81,7 +81,7 @@ e scriveremo
 Siano $f,g\colon \RR^n\to\RR$ due funzioni limitate con supporto limitato.
 Se $f$ e $g$ sono $R$-integrabili si ha:
 \[
-  f \le g \implies \int_A f \le \int_A g.
+  f \le g \implies \int f \le \int g.
 \]
 \end{theorem}
 %
@@ -211,7 +211,7 @@ Per la convessità del valore assoluto si ottiene infine
 Se $f\colon \RR^n \to [0,+\infty]$ è una funzione (non negativa), per ogni $R>0$ 
 possiamo definire il troncamento $f_R$ 
 \[
-  f_R = (f \cdot 1_{[-R,R]^n}) \vee R.
+  f_R = (f \wedge R) \cdot 1_{[-R,R]^n}.
 \]
 La funzione $f_R$ è limitata ed ha supporto limitato.
 Se $f_R$ è Riemann-integrabile per ogni $R>0$ diremo che $f$ è localmente R-integrabile 
@@ -219,11 +219,11 @@ e visto che $R\mapsto f_R(\vec x)$ è crescente possiamo definire
 \[
  \int f = \lim_{R\to+\infty} \int f_R \in [0,+\infty].
 \]
-Se $\int f<+\infty$ diremo che $f$ è R-integrabile (avendo supposto $f\ge 0$)
+Se $\int f<+\infty$ diremo che $f$ è R-integrabile (avendo supposto $f\ge 0$).
 
 Se $f\colon \RR^n\to \RR$ possiamo scrivere $f= f^+-f^-$ con $f^+,f^-$ funzioni non negative.
 Se $f^+$ e $f^-$ sono localmente R-integrabili e se 
-$\int f^+$ e $\int f^-$ non sono entrabi infiniti possiamo definire 
+$\int f^+$ e $\int f^-$ non sono entrambi infiniti possiamo definire 
 \[
   \int f = \int f^+ - \int f^- \in [-\infty,+\infty].
 \]
@@ -320,12 +320,12 @@ Ma allora la disuguaglianza precedente risulta valida
 per un cubetto $Q^N_{\vec k'}$ adiacente a $Q^N_{\vec k}$.
 Dunque si deve avere 
 \[
-  S^N(1_{\partial E})\le 3^n (S^N(1_E)-S_N(1_E))
+  S^N(1_{\partial E})\le (3^n-1)\,(S^N(1_E)-S_N(1_E))
 \]
 (dove $3^n-1$ è il numero di cubetti adiacenti ad un cubetto fissato)
 e per $N\to +\infty$ si ottiene 
 \[
-  S^*(1_{\partial E}) \le 3^n (S^*(1_E)-S_*(1_E)) = 0, 
+  S^*(1_{\partial E}) \le (3^n-1)\,(S^*(1_E)-S_*(1_E)) = 0, 
   \qquad 
   S_*(1_{\partial E})\ge 0.
 \]
@@ -385,7 +385,7 @@ Se inoltre $\abs{A}<+\infty$ e $f$
 \end{theorem}
 %
 \begin{proof}
-\emph{Passo 1: supponiamo $A$ compatto RJ-misurabile, 
+\emph{Passo 1: supponiamo $A$ compatto PJ-misurabile, 
 $f$ continua, limitata, non negativa.}
 Per il teorema di Weierstrass esiste $M>0$ tale che $0\le f(x) \le M$ per 
 ogni $\vec x \in A$.
@@ -456,7 +456,7 @@ si ha
                     f(\vec x, \vec y) \\
     &\le 2^{-(n+m)N} \sum_{\vec k\in \ZZ^n} 
         \sum_{\vec j \in \ZZ^m} 
-            \sup_{f(Q^N_{\vec k}\times Q^N_{\vec j})}\\
+        \sup f(Q^N_{\vec k}\times Q^N_{\vec j})\\
     &= S^N(f)
 \end{align*}
 ed analogamente si trova
@@ -493,7 +493,7 @@ Si vedano appunti di Analisi Uno.
 Sia $\phi\colon [0,1]^n \to \RR^n$
 una funzione iniettiva, di classe $C^1$, tale che $\det D\phi(x)\neq 0$ per ogni $x\in [0,1]^n$.
 
-Allora $\phi(E)$ è misurabile e si ha
+Allora, per ogni insieme PJ-misurabile $E\subset [0,1]^n$, $\phi(E)$ è misurabile e si ha
 \begin{equation}\label{eq:area}
  \abs{\phi(E)} = \int_E \abs{\det D\phi}.
 \end{equation}
@@ -654,7 +654,7 @@ Sia $\eps>0$ fissato.
 Visto che $D\phi(x)$ è continua e invertibile su $Q$,
 anche le funzioni $\abs{\det D\phi(x)}$ e $\Abs{(D\phi(x))^{-1}}$
 sono definite e continue su $Q$. 
-Per il teorema di Weiestrass 
+Per il teorema di Weierstrass 
 esistono $\lambda<+\infty$, $\mu<+\infty$ 
 \[
  \vec x \in Q \implies 
@@ -691,7 +691,7 @@ e ricordando che
 possiamo riscrivere le disuguaglianze precedenti nella forma
 \[
 \abs{\abs{\phi(Q^N_{\vec k})} - \int_{Q^N_{\vec k}} \abs{\det M^N_{\vec k}}}
-\le (2n\eps + o(\eps))\cdot 2^{-Nm} \mu.
+\le (2n\eps + o(\eps))\cdot 2^{-Nn} \mu.
 \]
 Inoltre, visto che
 \[
@@ -730,7 +730,7 @@ continua. Allora
 \[
     \int_E f(\phi(\vec x))\abs{\det D \phi(\vec x)}\, d \vec x
     =
-    \int_{\RR^n} f(\vec y) \, d \vec y.
+  \int_{\phi(E)} f(\vec y) \, d \vec y.
 \]
 \end{theorem}
 
@@ -741,7 +741,7 @@ su $\phi(E)$.
 
 Visto che $D\phi$ è continua su $E$, è anche uniformemente continua e 
 usando il teorema di Lagrange si può mostrare che per ogni $\eps>0$ 
-esiste $\delta>$ tale che
+esiste $\delta>0$ tale che
 \[
  \abs{\vec x - \vec y}<\delta 
  \implies 

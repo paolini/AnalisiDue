@@ -721,6 +721,20 @@ Facendo tendere $\eps\to 0^+$ si conclude la dimostrazione.
 \end{proof}
 
 
+\begin{proposition}[interno in interno per mappe localmente iniettive]
+Se $E\subset \RR^n$ e $\phi\colon E\to \RR^n$ è continua e localmente iniettiva sull'interno di $E$, allora $\phi(\operatorname{int} E)\subset \operatorname{int} \phi(E)$.
+In particolare, se $\phi\in C^1(E)$ e $\det D\phi\ne 0$ su $\operatorname{int}E$, allora $\phi$ manda punti interni in punti interni.
+\end{proposition}
+\begin{proof}
+Sia $x\in \operatorname{int}E$. Per localmente iniettiva, esiste $\eps>0$ tale che la palla chiusa $\overline B_\eps(x)\subset \operatorname{int}E$ e $\phi$ sia iniettiva su $\overline B_\eps(x)$.
+La restrizione $\phi\colon \overline B_\eps(x)\to \RR^n$ è una bigezione continua da un compatto in uno spazio di Hausdorff, dunque è un omeomorfismo sulla sua immagine $L\defeq \phi(\overline B_\eps(x))$, che è compatta.
+Perciò $\partial L = \phi(\partial B_\eps(x))$. Poiché $\phi(x)\notin \phi(\partial B_\eps(x))$ e $\partial B_\eps(x)$ è compatta, la distanza
+\[
+  \delta \defeq \dist\bigl(\phi(x),\partial L\bigr) > 0.
+\]
+Ne segue che $B_\delta(\phi(x))\subset L\subset \phi(E)$, cioè $\phi(x)\in \operatorname{int}\phi(E)$. Il caso $C^1$ con $\det D\phi\ne 0$ discende dal teorema dell'inversa, che garantisce l'iniettività locale.
+\end{proof}
+
 \begin{theorem}[cambio di variabile]
 Sia $E\subset \RR^n$ un chiuso misurabile, $\phi\colon E \to \RR^n$
 una funzione di classe $C^1$, 

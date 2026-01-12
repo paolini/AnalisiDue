@@ -285,6 +285,54 @@ la definizione data sopra corrisponde invece alla \emph{assoluta convergenza}
 dell'integrale improprio.
 \end{remark}
 
+\begin{exercise}[misurabilità dei rettangoli cartesiano]
+  \label{ex:misura_rettangolo}
+Dati $\vec a,\vec b\in \RR^n$ con $a_k\le b_k$ per ogni $k=1,\ldots,n$,
+il rettangolo cartesiano
+\[
+  R(\vec a, \vec b) = [a_1,b_1]\times \dots [a_n,b_n]
+\]  
+è PJ-misurabile e si ha 
+\[
+    \abs{R(\vec a, \vec b)} = \prod_{k=1}^n (b_k - a_k).
+\]
+
+In particolare ogni cubetto $Q^N_{\vec k}$ è PJ-misurabile e si ha 
+$\abs{Q^N_{\vec k}} = 2^{-nN}$.
+\end{exercise}
+\begin{proof}
+Osseviamo che 
+\[
+  Q^N_{\vec k} = [2^{-N} k_1, 2^{-N}(k_1+1)] \times \dots \times [2^{-N} k_n, 2^{-N}(k_n+1)]
+\]
+è un rettangolo cartesiano.
+Fissato $N$ si ha $Q^N_{\vec k} \subset R(\vec a,\vec b)$
+per tutti i $\vec k = (k_1,\dots,k_n) \in \ZZ^n$ tali
+che
+\[
+  2^N a_j \le k_j \le 2^N b_j + 1 \qquad \text{per ogni } j=1,\ldots,n.  
+\]
+Dunque il numero di cubetti $Q^N_{\vec k}$ contenuti in $R(\vec a,\vec b)$ 
+è non inferiore a 
+\[
+  \prod_{j=1}^n (2^N(b_j-a_j)-3)
+\]
+e quindi 
+\[
+  m_N(R(\vec a,\vec b)) 
+    \ge 2^{-nN} \prod_{j=1}^n (2^N(b_j-a_j)-3)
+    = \prod_{j=1}^n (b_j - a_j - 3\cdot 2^{-N})
+    \to \prod_{j=1}^n (b_j - a_j) \quad \text{per } N\to +\infty.
+\]
+In maniera analoga si dimostra che 
+\[
+  m^N(R(\vec a,\vec b)) 
+  \le \prod_{j=1}^n (b_j - a_j + 3\cdot 2^{-N})
+  \to \prod_{j=1}^n (b_j - a_j) \quad \text{per } N\to +\infty.
+\]
+Si ottiene dunque il risultato voluto.
+\end{proof}
+
 \begin{theorem}[algebra dei misurabili]
 Se $E,F\subset \RR^n$ sono PJ-misurabili allora anche $\bar E$, $\partial E$, 
 $E\setminus F$, $E\cap F$ ed $E\cup F$ sono PJ-misurabili.
@@ -482,19 +530,143 @@ e risulta $\int f = \int g$, come volevamo dimostrare.
 Gli altri casi si ottengono di conseguenza.
 \end{proof}
 
+\begin{theorem}[principio di Cavalieri]
+Sia $E \subset \RR^n\times \RR^m$ un insieme PJ-misurabile 
+tale che per ogni $\vec x \in \RR^n$ la sezione 
+$  E_{\vec x} = \ENCLOSE{\vec y \in \RR^m \colon (\vec x, \vec y) \in E} $ 
+sia PJ-misurabile in $\RR^m$.
+Allora
+\[
+  \abs{E} = \int_{\RR^n} \abs{E_{\vec x}}\, d\vec x.
+\]
+
+In particolare se $E,F\subset \RR^n\times \RR^m$ sono PJ-misurabili 
+e per ogni $x\in \RR^n$ si ha $\abs{E_{\vec x}} = \abs{F_{\vec x}}$,
+allora $\abs{E} = \abs{F}$.
+\end{theorem}
+\begin{proof}
+Si applica il teorema di Fubini-Tonelli alla funzione caratteristica 
+$1_E\colon \RR^n\times \RR^m \to \RR$:
+\begin{align*}
+  \abs{E} &= \int_{\RR^n\times \RR^m} 1_E
+  = \int_{\RR^n} \Enclose{\int_{\RR^m} 1_E(\vec x, \vec y)\, d\vec y}\, d\vec x\\
+  &= \int_{\RR^n} \Enclose{\int_{\RR^m} 1_{E_{\vec x}}(\vec y)\, d\vec y}\, d\vec x
+  = \int_{\RR^n} \abs{E_{\vec x}}\, d \vec x.
+\end{align*}
+\end{proof}
+
+Una \emph{matrice di permutazione} è una matrice che rappresenta 
+una applicazione lineare $L\colon \RR^n\to \RR^n$ che permuta 
+gli elementi della base canonica: 
+$L (x_1,\dots,x_n) = (x_{\sigma(1)},\dots,x_{sigma(n)})$.
+Una \emph{mossa elementare} su $\RR^n$ 
+è una applicazione lineare $L$ che aggiunge ad una componente del vettore 
+$\vec x$ un multiplo fissato di un'altra coordinata:
+$L(x_1,\dots, x_n) = (x_1, \dots, x_j + \lambda x_k, \dots x_n)$
+con $k\neq j$.
+Chiamiamo \emph{matrice elementare} una matrice che si ottiene 
+come prodotto di matrici di permutazione e mosse elementari.
+Visto che le matrici di permutazione hanno determinante $\pm 1$
+e le mosse elementari hanno sempre determinante $1$, 
+tutte le matrici elementari hanno determinante $\pm 1$.
+
+
+\begin{theorem}[riduzione a scala di Gauss]
+\label{th:riduzione_gauss}
+Sia $M$ una matrice $m\times n$ qualunque. 
+
+Allora esistono $A$ matrice elementare $m\times m$,
+e $B$ matrice elementare $n\times n$ tali che
+\[
+  A M B^t = \Delta
+\]
+è una matrice diagonale.
+\end{theorem}
+
 \begin{theorem}[significato geometrico del determinante]
   \label{th:geometria_determinante}
 Sia $L\colon \RR^n\to \RR^n$ una applicazione lineare affine
 \[
   L(\vec x) = M\vec x + \vec q.
 \]
-Allora se $E\subset \RR^n$ è PJ-misurabile si ha 
-\[
+Allora se $E\subset \RR^n$ è PJ-misurabile anche $L(E)$ è PJ-misurabile 
+e si ha 
+\begin{equation}\label{eq:geometria_determinante}
   \abs{L(E)} = \abs{\det M} \cdot \abs{E}.
-\]
+\end{equation}
 \end{theorem}
 \begin{proof}
-Si vedano appunti di Analisi Uno.
+
+\emph{Osservazione.}
+Fissato $L$ se dimostriamo 
+\eqref{eq:geometria_determinante}
+su ogni cubetto $E=Q^N_{\vec k}$, allora approssimando opportunamente 
+$E$ dall'interno e dall'esterno con cubetti di taglia $2^{-N}$, 
+e usando l'additività della misura,
+si ottiene
+\[
+  \abs{\det M} \cdot m_N(L(E)) \le m^N(L(E)) \le \abs{\det M}\cdot m^N(E).
+\]
+Passando al limite per $N\to +\infty$ si ottiene il risultato 
+voluto con tale $L$.
+
+\emph{Passo 1: supponiamo che $M$ sia una matrice di permutazione
+(cioè $M(e_k) = e_{\sigma(k)}$ per una qualche permutazione $\sigma$ di
+$\{1,\ldots,n\}$).
+Per l'osservazione possiamo supporre che $E$ sia un cubetto $Q^N_{\vec k}$.
+In tal caso il risultato è immediato in quanto $L(Q^N_{\vec k}) = Q^N_{M(\vec k)}+\vec q$,
+dunque $\abs{L(E)} = 2^{-nN} = \abs{E}$ (per l'esercizio~\ref{ex:misura_rettangolo})
+Visto che $\abs{\det M} = 1$ questo è il risultato voluto. 
+}
+\emph{Passo 2: supponiamo che $M$ sia una matrice diagonale
+(cioè $M(e_k) = \lambda_k e_k$ per ogni $k=1,\ldots,n$) e $\vec q=0$}.
+Supponendo che $E$ sia un rettangolo $[a_1,b_1]\times \dots \times [a_n,b_n]$,
+si osserva che 
+\[
+  L(E) = \prod_{k=1}^n [\lambda_k a_k, \lambda_k b_k]
+\]
+(se $\lambda_k < 0$ gli estremi del rettangolo sono invertiti).
+Dunque per l'esercizio~\ref{ex:misura_rettangolo} si ha
+\[
+  \abs{L(E)} = \prod_{k=1}^n \abs{\lambda_k}\cdot \abs{b_k-a_k}
+  = \abs{\prod_{k=1}^n \lambda_k } \cdot \prod_{k=1}^n \abs{b_k - a_k} 
+  = \abs{\det M} \cdot \abs{E}.
+\]
+
+\emph{Passo 3: supponiamo che $L$ sia della forma 
+$L(x_1,\dots,x_n)=(x_1,\dots,x_{n-2}, x_{n-1} + \lambda x_n, x_n)$}
+In questo caso $L(Q^N_{\vec k})$ è un parallelepipedo con stessa base 
+e stessa altezza di $Q^N_{\vec k}$ e dunque, per il teorema~\ref{th:cavalieri}
+di Cavalieri si ottiene $\abs{L(Q^N_{\vec k})} = \abs{Q^N_{\vec k}}$.
+Chiaramente si ha $\det L = 1$ e quindi questo è quanto volevamo dimostrare.
+Più precisamente si può osservare che posto, per $t\in \RR$,
+\[
+  (L(Q^N_{\vec k}))_t 
+  = \ENCLOSE{\vec y \in \RR^{n-1} \colon (\vec y,t) \in L(Q^N_{\vec k})},
+\]
+e posto $\vec k' = (k_1,\ldots,k_{n-1})\in \ZZ^{n-1}$ si ha
+$(\vec y,t) \in L(Q^N_{\vec k})$ se e solo se
+$t\in [2^{-N} k_n, 2^{-N}(k_n+1)]$ e
+$\vec y \in Q^N_{\vec k'} + \lambda t e_{n-1}$.
+Dunque
+\[
+  (L(Q^N_{\vec k}))_t 
+  = Q^N_{\vec k'} + t e_{n-1}
+\]
+e $\abs{(L(Q^N_{\vec k}))_t} = 2^{-(n-1)N}$.
+Dunque, per il principio di Cavalieri, si ottiene
+\[
+  \abs{L(Q^N_{\vec k})}
+  = \int_{2^{-N} k_n}^{2^{-N}(k_n+1)} \abs{(L(Q^N_{\vec k}))_t}\, dt
+  = 2^{-N} \cdot 2^{-(n-1)N} 
+  = 2^{-nN} = \abs{Q^N_{\vec k}}.
+\]
+
+Il procedimento di riduzione a scala di Gauss 
+è un procedimento per cui 
+\[
+   
+\]
 \end{proof}
 
 \begin{theorem}[formula dell'area]

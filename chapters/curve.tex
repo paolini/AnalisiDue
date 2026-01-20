@@ -1,3 +1,58 @@
+Sia $X$ uno spazio metrico. Una funzione $\vec u\colon [a,b] \to X$
+viene chiamata \emph{curva}.
+
+\begin{definition}[lunghezza di una curva]
+Diremo che $P$ è una \emph{suddivisione} di $[a,b]$ se
+$P$ è un sottoinsieme finito di $[a,b]$ che contiene gli estremi $a$ e $b$.
+Dunque $P = \{ t_0, t_1, \dots, t_N\}$ con $a=t_0 < t_1 < \dots < t_N = b$.
+Ad ogni suddivisione $P$ di $[a,b]$ possiamo associare la
+ lunghezza della poligonale $u(t_0), u(t_1), \dots, u(t_N)$ cioè
+\[
+  \ell(u, P) \defeq \sum_{k=1}^N d(u(t_{k-1}), u(t_k)).
+\]
+Definiamo la
+\emph{lunghezza} della curva $\vec u$ nell'intervallo $[a,b]$ come
+\[
+    \ell(\vec u, a, b) = \sup \ENCLOSE{ \ell(\vec u, P) \st P \text{ suddivisione di } [a,b] }.
+\]
+
+Se la lunghezza è finita, diremo che la curva è \emph{rettificabile}.
+Se l'intervallo $[a,b]$ è chiaro dal contesto, scriveremo semplicemente
+$\ell(\vec u)$ invece che $\ell(u,a,b)$ per indicare la lunghezza della curva.
+\end{definition}
+
+\begin{theorem}[proprietà della lunghezza]
+Sia $\vec u \colon [a,b] \to X$ una curva in uno spazio metrico $X$.
+\begin{enumerate}
+\item per ogni $c\in [a,b]$ si ha
+    \[
+    \ell(u,a,b) = \ell(u,a,c) + \ell(u,c,b) \qquad \text{(additività);}
+     \]
+\item $\ell(u,a,b) \ge d(u(a), u(b))$ (disuguaglianza triangolare);
+\end{enumerate}
+\end{theorem}
+\begin{proof}
+Data una suddivisione $P$ di $[a,c]$ e una suddivisione $Q$ di $[c,b]$,
+la loro unione $P\cup Q$ è una suddivisione di $[a,b]$. Dunque 
+\[
+    \ell(u,a,b) \ge \ell(u,P\cup Q) = \ell(u,P) + \ell(u,Q)
+\] 
+da cui, per l'abitrarietà di $P$ e $Q$ si ottiene 
+la disuguaglianza $\ell(u,a,b) \ge \ell(u,a,c) + \ell(u,c,b)$.
+Viceversa se $P$ è una suddivisione di $[a,b]$ possiamo 
+considerare le due suddivisioni $P_1 = (P\cup\ENCLOSE{c}) \cap [a,c]$ e
+$P_2 = (P\cup\ENCLOSE{c}) \cap [c,b]$ e ottenere 
+\[
+\ell(u,P) \le \ell(u,P\cup \ENCLOSE{c})
+= \ell(u,P_1) + \ell(u,P_2) \le \ell(u,a,c) + \ell(u,c,b).
+\]
+Dall'arbitrarietà di $P$ si ottiene la disuguaglianza opposta
+$\ell(u,a,b) \le \ell(u,a,c) + \ell(u,c,b)$.
+
+La disuguaglianza triangolare è ovvia considerando la suddivisione
+$P = \{ a,b\}$ per cui $\ell(u,a,b) \ge \ell(u,P) = d(u(a), u(b))$.
+\end{proof}
+
 \begin{theorem}[riparametrizzazione]
 Sia $\vec u \colon [a,b] \to X$ una curva in uno spazio metrico $X$ 
 e sia $\phi \colon [A,B] \to [a,b]$ una funzione bigettiva, monotona.

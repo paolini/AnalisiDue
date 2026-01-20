@@ -847,45 +847,38 @@ Facendo tendere $\eps\to 0^+$ si ottiene~\eqref{eq:39254}, concludendo la dimost
 
 \begin{theorem}[cambio di variabili]
   \label{th:cambio-variabili}
-Sia $\Omega \subset \RR^n$ un aperto convesso $PJ$-misurabile, 
-$\phi\colon \bar \Omega \to \RR^n$
-una funzione di classe $C^1$, 
-$\phi$ iniettiva se ristretta ad $\Omega$,
-$\det\phi(x)\neq 0$ per ogni $x\in \Omega$.
-Allora $\phi(\Omega)$ è misurabile e 
-se $f\colon \phi(\Omega)\to\RR$ è una funzione localmente integrabile,
-si ha 
+Siano $\Omega\subset \RR^n$ e $\phi\colon \bar \Omega \to \RR^n$ 
+come nelle ipotesi del teorema~\ref{th:formula-area}
+e sia $f\colon \phi(\Omega)\to\RR$ una funzione
+Riemann-integrabile, limitata.
+Allora
 \[
-    \int_\Omega f(\phi(\vec x))\cdot \abs{\det D \phi(\vec x)}\, d \vec x
-    =
-    \int_{\phi(\Omega)} f(\vec y) \, d \vec y.
+  \int_{\phi(\Omega)} f(\vec y) \, d \vec y
+  =
+  \int_\Omega f(\phi(\vec x))\cdot \abs{\det D \phi(\vec x)}\, d \vec x.
+\]
+
+La formula si memorizza mediante la sostituzione formale:
+\[
+\begin{cases}
+  \vec y = \phi(\vec x),\\
+  d \vec y = \abs{\det D\phi(\vec x)}\, d\vec x.
+\end{cases}
 \]
 \end{theorem}
 
 \begin{proof}
-  \emph{Case 1: supponiamo che $\Omega$ sia limitato e che $f$ sia limitata.}
 Siano $L,M,\sigma$ costanti positive tali che 
 per ogni $\vec x\in \bar \Omega$ si abbia
 \[
   \abs{f(x)} \le M, \qquad
   \Abs{D\phi(\vec x)} \le L.
 \]
-Essendo $\Omega$ convesso, possiamo applicare il 
-teorema~\ref{th:lagrange} di Lagrange 
-per ottenere la condizione di Lipschitz:
-\[
-  \abs{\phi(\vec x) - \phi(\vec y)} \le \Abs{D\phi(\vec z)}L.
-\]
-Per il Lemma~\ref{lm:misura-immagine-lipschitz} troviamo 
-dunque che $\phi(\Omega)$ è misurabile.
-Dato $N\in \NN$ consideriamo l'insieme compatto
-\[
-  \Omega^N \defeq \bigcup_{Q^N_{\vec k}\subset \Omega} Q^N_{\vec k}
-\]
-formato dai cubetti di lato $2^{-N}$ contenuti in $\Omega$.
-Posto $F^N_{\vec k} \defeq \sup \phi(Q^N_{\vec k})\in \RR$,
-si ha, usando la definizione di integrale Riemann,
-e il teorema~\ref{th:formula-area}:
+Osserviamo che se $Q^N_{\vec k} \cap \Omega \neq \emptyset$, 
+le ipotesi del teorema~\ref{th:formula-area} sono soddisfatte 
+anche per $\phi$ ristretta a $Q^N_{\vec k}\cap \bar \Omega$.
+Dunque per ogni $N\in \NN$, posto $F^N_{\vec k}$ l'estremo 
+superiore di $f$ su $\phi(Q^N_{\vec k}\cap \Omega)$,
 \begin{align*}
   S^N(f) 
     &= \sum_{Q^N_{\vec k}\subset \Omega} F^N_{\vec k} \cdot \abs{Q^N_{\vec k}}

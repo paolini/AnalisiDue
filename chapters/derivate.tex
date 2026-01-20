@@ -34,3 +34,108 @@ $\gamma(0)\in A$ e $\gamma(1)\notin A$.
 Dimostrare che esiste $t \in [0,1]$ tale che $\gamma(t) \in \partial A$.
 \end{exercise}
 
+
+
+\begin{theorem}[Teorema spettrale]
+Sia $V$ uno spazio euclideo di dimensione $n$ e sia 
+$A\colon V\times V \to \RR$ 
+una forma bilineare simmetrica.
+Allora esiste una base ortonormale $v_1,\dots,v_n$ di $V$
+tale che $L(v_j,v_k) = 0$ se $j\neq k$. 
+
+Equivalentemente, se $A$ è una matrice reale simmetrica $n\times n$,
+allora esiste una matrice ortogonale $P$ (cioè $P^t=P^{-1}$) tale che
+$P^t A P$ è diagonale.
+\end{theorem}
+%
+\begin{proof}
+La corrispondenza tra i due enunciati si ottiene 
+considerando la matrice $P$ le cui colonne sono i vettori
+$v_1,\dots,v_n$.
+
+Faremo la dimostrazione per induzione sulla dimensione $n$ di $V$.
+Se $n=0$ il risultato è banale. 
+Supponiamo dunque $n>0$ e supponiamo per induzione che il teorema sia vero
+per spazi di dimensione $n-1$.
+
+Senza perdere di generalità possiamo supporre che sia $V = \RR^n$.
+Consideriamo la funzione $f(x) = x^t A x$, $f\colon \RR^n\to \RR$ e restringiamo 
+la funzione $f$ alla sfera unitaria $S^{n-1} = \{ x \in \RR^n \colon \abs{x} = 1\}$.
+Per il teorema di Weiestrass $f$ ha minimo in un punto $v_1$ su $S^{n-1}$ 
+e per il teorema dei moltiplicatori di Lagrange
+esiste $\lambda \in \RR$ tale che $\nabla f(v_1) = \lambda \nabla g(v_1)$
+dove $g(x) = \abs{x}^2$. Ma $\nabla f(x) = 2 A x$ e $\nabla g(x) = 2 x$, quindi si ottiene
+$A v_1 = \lambda v_1$.
+
+Sia $V_1 = v_1^\perp$ lo spazio ortogonale a $v_1$ (rispetto al prodotto scalare canonico di $\RR^n$).
+Visto che $A$ è simmetrico, se $(w,v_1)=0$ allora 
+$(Aw,v_1) = (Av_1,w) = \lambda (v_1,w) = 0$.
+Questo significa che $A$ manda $V_1$ in se stesso.
+L'ipotesi induttiva garantisce dunque l'esistenza di una base ortonormale 
+$v_2,\dots,v_n$ per cui $(Av_j,v_k) = 0$ se $j\neq k$, $j,k\ge 2$.
+Ma per $k\ge 2$ si ha anche $(Av_k,v_1) = (Av_1,v_k) = \lambda (v_1,v_k) = 0$.
+Dunque la base ortonormale $v_1, v_2,\dots,v_n$ soddisfa la tesi.
+\end{proof}
+
+
+\begin{theorem}[Teorema di decomposizione singolare]
+Sia $V$ uno spazio vettoriale euclideo di dimensione $n$ e sia
+sia $W$ uno spazio vettoriale euclideo di dimensione $m$.
+Sia $L\colon V\to W$ una applicazione lineare.
+Allora esistono basi ortonormali $v_1,\dots,v_n$ di $V$ e 
+$w_1,\dots,w_m$ di $W$ tali che $(L v_k,w_j) = 0$ se $j\neq k$.
+
+Equivalentemente se $L$ è una matrice reale $m\times n$ esistono 
+due matrici ortogonali $U$ di ordine $m$ e $V$ di ordine $n$ tali che
+$ U^t L V$ è una matrice diagonale $m\times n$.
+\end{theorem}
+
+\begin{proof}
+Nel caso $n=0$ o $m=0$ la dimostrazione è banale perché uno dei due spazi 
+avrà una base vuota e per l'altro qualunque base ortonormale va bene. 
+Supponiamo dunque $n>0$ e $m>0$ e supponiamo per induzione 
+che il teorema sia vero per spazi di dimensione $n-1$ e $m-1$.
+
+Consideriamo la funzione $f\colon \RR^n\times \RR^m \to \RR$ definita da
+$f(x,y) = (L x, y)$.
+Restringiamo $f$ al compatto $K=S^{n-1}\times S^{m-1}$
+formato dai punti $(x,y)\in\RR^n\times \RR^m$ tali che $\abs{x} = 1$ e $\abs{y} = 1$.
+Posto $g_1(x,y) = \frac 1 2 \abs{x}^2$ e $g_2(x,y) = \frac 1 2 \abs{y}^2$,
+si ha $K=\{(x,y) \colon g_1(x,y) = \frac 1 2, g_2(x,y) = \frac 1 2\}$.
+Per il teorema di Weiestrass $f$ ha minimo in un punto $(v_1,w_1)\in K$ 
+e per il teorema dei moltiplicatori di Lagrange, si deve avere
+$\nabla f(v_1,w_1) = \lambda \nabla g_1(v_1,w_1) + \mu \nabla g_2(v_1,w_1)$.
+Un facile calcolo mostra che $\nabla f(x,y) = (L^t y, L x)$,
+mentre $\nabla g_1(x,y) = (x,0)$ e $\nabla g_2(x,y) = (0,y)$. 
+Dunque si ottiene
+\[
+L^t w_1 = \lambda v_1, \qquad L v_1 = \mu w_1.
+\]
+Sia $V_1 = v_1^\perp \subset \RR^n$ e sia $W_1 = w_1^\perp \subset \RR^m$.
+Mostriamo che $L$ manda $V_1$ in $W_1$. 
+Infatti se $x\in V_1$ allora $(x,v_1) = 0$ e quindi
+\[
+(L x, w_1) = (x, L^t w_1) = (x, \lambda v_1) = 0.
+\]
+Inoltre $w_1$ è ortogonale a $L(V_1)$, in quanto 
+se $y = L x$ per qualche $x\in V_1$ allora
+\[
+(y,w_1) = (L x, w_1) = (x, L^t w_1) = (x, \lambda v_1) = 0.
+\]
+Per ipotesi induttiva esistono delle basi ortonormali $v_2,\dots, v_n$ di $V_1$ 
+e $w_2,\dots,w_m$ di $W_1$ tali che
+$(L v_k, w_j) = 0$ se $j\neq k$, $j\ge w$, $k\ge 2$.
+Ovviamente $v_1,v_2,\dots, v_n$ è una base ortonormale di $V$ e
+$w_1,w_2,\dots,w_m$ è una base ortonormale di $W$.
+Per $j\ge 2$ si ha 
+\[   
+  (L v_1, w_j) = \mu (w_1, w_j) = 0 
+\]
+e per $k\ge 2$ 
+\[
+  (L v_k, w_1) = (v_k, L^t w_1) = (v_k, \lambda v_1) = 0
+\]
+dunque la tesi $(L v_k, w_j) = 0$ è verificata per ogni $k\neq j$.
+\end{proof}
+
+

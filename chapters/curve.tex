@@ -1,0 +1,229 @@
+\begin{theorem}[riparametrizzazione]
+Sia $\vec u \colon [a,b] \to X$ una curva in uno spazio metrico $X$ 
+e sia $\phi \colon [A,B] \to [a,b]$ una funzione bigettiva, monotona.
+
+Allora posto $\vec v = \vec u \circ \phi$ si ha
+\[
+  \ell(\vec u, a, b) = \ell(\vec v, A, B).
+\]
+
+Osservazione: $\phi$ bigettiva e monotona implica che $\phi^{-1}$ è anch'essa
+bigettiva e monotona e che $\phi$ e $\phi^{-1}$ sono continue.
+\end{theorem}
+\begin{proof}
+La dimostrazione è ovvia, perché $\phi$ induce una corrispondenza biunivoca 
+tra le suddivisioni di $[a,b]$ e quelle di $[A,B]$ che conserva le
+lunghezze delle curve spezzate.
+\end{proof}
+
+\begin{definition}[equivalenza di curve]
+Due curve $\vec u \colon [a,b] \to X$ e $\vec v \colon [A,B] \to X$ 
+si dicono essere \emph{equivalenti} se esiste una funzione
+$\phi \colon [A,B] \to [a,b]$ bigettiva e crescente tale che 
+\[
+    \vec u = \vec v \circ \phi.
+\]
+
+Osservazione: se una curva ha dei tratti su cui è costante, in base 
+a questa definizione tutte le curve equivalenti avranno anch'esse dei corrispondenti 
+tratti costanti. Si potrebbe decidere che per valutare l'equivalenza 
+tra due curve si debbano prima eliminare i tratti costanti.
+\end{definition}
+
+\begin{definition}[lunghezza d'arco]
+Sia $\vec u \colon [a,b] \to X$ una curva rettificabile in uno spazio metrico $X$.
+Sia $L = \ell(\vec u, a, b)$ la lunghezza della curva.
+La \emph{lunghezza d'arco} di $\vec u$ è la funzione $s\colon [a,b] \to [0,L]$ 
+definita da
+\[
+  s(t) = \ell(\vec u, a, t).
+\]
+\end{definition}
+
+Chiaramente la funzione $s$ è crescente. 
+Se $\vec u$ non ha intervalli su cui è costante allora $s$ è strettamente crescente,
+altrimenti $s$ è costante sugli intervalli in cui $\vec u$ è costante.
+Si nota infatti che $\ell(\vec u, t_1, t_2) = 0$ se e solo se $\vec u$ è costante su $[t_1,t_2]$.
+
+\begin{theorem}[continuità della lunghezza d'arco]
+Sia $\vec u \colon [a,b] \to X$ una curva continua rettificabile in uno spazio metrico $X$.
+Allora la funzione lunghezza d'arco $s\colon [a,b] \to [0,L]$ è continua.
+\end{theorem}
+\begin{proof}
+Fissato $t_0 \in [a,b]$ dobbiamo mostrare che $s$ è continua in $t_0$.
+Mostreremo che $s(t)\to s(t_0)$ per $t\to t_0^+$, il caso $t\to t_0^-$ si tratta 
+in maniera analoga.
+
+Visto che $s$ è una funzione crescente le eventuali discontinuità sono 
+discontinuità \emph{a salto}. 
+Se non fosse continua a destra nel punto $t_0$ si avrebbe
+\[
+    \lambda = \inf_{t>t_0} s(t) - s(t_0) > 0.
+\]
+Visto che $\vec u$ è continua, esiste $\delta>0$ tale che per ogni $t \in [t_0, t_0+\delta]$
+si ha $d(\vec u(t), \vec u(t_0)) < \frac \lambda 2$.
+Visto che $\vec u$ è rettificabile, esistono $t_0<t_1<\dots < t_N \le t_0+\delta$
+tali che 
+\[
+  \ell(\vec u, t_0, t_0+\delta) \le \sum_{k=1}^N d(\vec u(t_{k-1}), \vec u(t_k)) + \frac \lambda 2.
+\]
+Ma 
+\[
+    \ell(\vec u, t_0, t_0+\delta) = \sum_{k=1}^N \ell(\vec u, t_{k-1}, t_k)
+\]
+dunque 
+\[
+  d(\vec u(t_0), \vec u(t_1)) \ge \ell (\vec u, t_0,t_1) - \frac \lambda 2
+  = s(t_1)-s(t_0) - \frac \lambda 2 
+  \ge \lambda - \frac \lambda 2 = \frac \lambda 2.
+\]
+Questo contraddice la scelta di $\delta$ e conclude la dimostrazione.
+\end{proof}
+
+\begin{theorem}[semicontinuità della lunghezza]
+Sia $u_n\colon [a,b] \to X$ una successione di curve continue
+in uno spazio metrico $X$ che converge uniformemente
+ad una curva continua $\vec u \colon [a,b] \to X$.
+Allora 
+\[
+  \ell(\vec u, a, b) \le \liminf_{n\to \infty} \ell(\vec u_n, a, b).
+\]
+\end{theorem}
+\begin{proof}
+Per ogni $\eps>0$ esiste $n$ tale che $d_\infty(\vec u_n, \vec u) < \eps$.
+Se $P={t_0,\dots, t_N}$ è una suddivisione di $[a,b]$
+allora
+\[
+    \ell(u,P) \defeq \sum_{k=1}^N d(u(t_{k-1}), u(t_k))
+     \le \sum_{k=1}^N \bigl( d(u_n(t_{k-1}), u_n(t_k)) + 2\eps \bigr)
+        = \ell(u_n,P) + 2 N \eps.
+\]
+Dunque 
+\[
+ \ell(u,a,b) \le \ell(u,P) \le \ell(u_n,a,b) + 2N\eps 
+ \le \liminf_{k\to \infty} \ell(u_k,a,b) + 2N\eps.
+\]
+??? rivedere ???
+\end{proof}
+
+\begin{theorem}[Ascoli-Arzelà]
+Siano $\vec u_n \colon [a,b] \to \RR$ funzioni tali che 
+    \begin{enumerate}
+    \item le funzioni $\vec u_n$ sono uniformemente limitate, cioè esiste
+    $M>0$ tale che per ogni $n$ e per ogni $t\in [a,b]$ si ha 
+    $\abs{\vec u_n(t)} \le M$;
+    \item le funzioni $\vec u_n$ sono equicontinue, cioè per ogni $\eps>0$ esiste 
+    $\delta>0$ tale che per ogni $n$ e per ogni $t_1,t_2 \in [a,b]$ si ha 
+    \[
+    \abs{t_1-t_2}<\delta \implies 
+    \abs{\vec u_n(t_1) - \vec u_n(t_2)} < \eps.
+    \]
+    \end{enumerate} 
+Allora esiste una sottosuccessione $\vec u_{n_k}$ che converge uniformemente
+ad una funzione continua $\vec u \colon [a,b] \to \RR$.
+\end{theorem}   
+
+\begin{proof}
+\emph{Claim: per ogni $\eps>0$ esiste $n_k\in \NN$ successione strettamente 
+crescente di indici, 
+tale che $\Abs{\vec u_{n_k}(t) - \vec u_{n_j}(t)}_\infty < \eps$ per ogni $k,j\in \NN$.}
+Dato $\delta>0$ scegliamo $N\in \NN$ tale che $N \delta < b-a$ e 
+consideriamo $a=x_0 < x_1 < x_2 < \dots < x_N=b$ con $x_{i+1}-x_i < \delta$.
+La successione $(u_n(x_1), u_n(x_2), \dots, u_n(x_N))\in \RR^N$ 
+è limitata dunque, per il teorema di Bolzano-Weierstrass,
+ammette una estratta $(u_{n_k}(x_1),\dots,u_{n_k}(x_N))$ convergente in $\RR^N$.
+Tale successione è quindi di Cauchy in $\RR^N$. 
+Dunque 
+dato $\eps>0$ se $k,j$ sono sufficientemente grandi e per ogni $n=1,\dots,N$ si ha
+\[
+  \abs{u_{n_k}(x_n) - u_{n_j}(x_n)} < \eps.
+\]
+A meno di eliminare i primi indici della successione possiamo supporre che
+questa disuguaglianza valga per ogni $k,j\in \NN$.
+
+Ora, per l'equicontinuità, per ogni $t\in [a,b]$ esiste $x_n$ tale che
+$\abs{t - x_n} < \delta$ e dunque
+\begin{align*}
+  \abs{u_{n_k}(t) - u_{n_j}(t)} 
+  &\le \abs{u_{n_k}(t) - u_{n_k}(x_n)} + \abs{u_{n_k}(x_n) - u_{n_j}(x_n)} + \abs{u_{n_j}(x_n) - u_{n_j}(t)} \\
+  &\le \eps + \eps + \eps = 3 \eps.
+\end{align*}
+Questo conclude la dimostrazione del claim.
+
+\emph{Conclusione.}
+Trovo $n_k^1$ tale che $\Abs{u_{n_k^1} - u_{n_j^1}}_\infty < 1$ per ogni $k,j$.
+Poi trovo $n_k^2$ sottosuccessione estratta di $n_k^1$ tale che
+$\Abs{u_{n_k^2} - u_{n_j^2}}_\infty < \frac 1 2$ e, 
+procedendo in questo modo per induzione,
+\[
+  \Abs{u_{n_k^m} - u_{n_j^m}}_\infty < \frac 1 m \qquad \forall k,j \in \NN.
+\]
+La successione diagonale $u_{n_k^k}$ ha la proprietà che
+\[
+  \Abs{u_{n_k^k} - u_{n_j^j}} \le \frac 1 k \qquad \forall j\ge k.
+\]
+Quindi $u_{n_k^k}$ è di Cauchy in $C^0([a,b],\RR)$ rispetto alla distanza 
+uniforme e, per la completezza di tale spazio, converge uniformemente 
+ad una funzione continua $u \colon [a,b] \to \RR$.
+\end{proof}
+
+La stessa dimostrazione permette di dimostrare il seguente risultato 
+più astratto.
+
+\begin{abstract}[Ascoli-Arzelà più astratto]
+Sia $X$ uno spazio metrico compatto, $Y$ uno spazio metrico. 
+Sia $u_n\colon X \to Y$ una successione di funzioni tali che 
+\begin{enumerate}
+    \item per ogni $x\in X$ la successione $u_n(x)$ è relativamente compatta 
+    in $Y$ (cioè ammette una estratta convergente);
+    \item le funzioni $u_n$ sono equicontinue.
+\end{enumerate}
+Allora esiste una sottosuccessione $u_{n_k}$ che converge uniformemente
+ad una funzione continua $u\colon X \to Y$.
+\end{abstract}
+
+Come applicazione del teorema di Ascoli-Arzelà
+proponiamo il seguente importante risultato.
+
+\begin{theorem}[esistenza delle geodetiche]
+    Sia $X$ uno spazio metrico completo, proprio 
+    (cioè ogni chiuso limitato è compatto), 
+    e sia $G(x,y)$ l'insieme di tutte le curve continue di lunghezza finita 
+    $u\colon [0,1] \to X$
+    tali che $u(0) = x$ e $u(1) = y$.
+    Allora, se $G(x,y)$ non è vuoto, il funzionale \emph{lunghezza}
+    $\ell\colon G \to \RR$ ammette un minimo.
+\end{thorem}
+\begin{proof}
+    Sia $L = \inf\ell(G)$ e sia 
+    $u_n\in G(x,y)$ una successione minimizzante,
+    cioè tale che $\ell(u_n) \to L$.
+    Posto $L_n = \ell(u_n)$ posso considerare la riparametrizzazione 
+    di $u_n$ per lunghezza d'arco. 
+    Questo mi dà una curva $\tilde u_n \colon [0,L_n] \to X$
+    che è $1$-lipschitziana in quanto 
+    $\ell(\tilde u_n, s,t) = t-s$.
+    Le curve $v_n \colon [0,1] \to X$ definite da
+    \[
+        v_n(t) = \tilde u_n (L_n t)
+    \]
+    saranno invece $L_n$-lipschitziane. 
+    Poiché $L_n\to L<+\infty$ esiste $M = \max L_n < +\infty$ 
+    e le curve $v_n$ sono tutte $M$-lipschitziane e dunque 
+    sono equicontinue. 
+    Tutte queste curve sono contenute nella chiusura della 
+    palla di centro $x$ e raggio $M$, che è compatta
+    perché abbiamo supposto $X$ proprio.
+    Dunque, per il teorema di Ascoli-Arzelà, esiste una sottosuccessione 
+    $v_{n_k}$ che converge uniformemente ad una curva continua
+    $v\colon [0,1] \to X$.
+    La curva $v$ è $M$-lipschitziana in quanto limite uniforme di 
+    $M$-lipschitziane, dunque è di lunghezza finita e 
+    appartiene a $G(x,y)$.
+    Infine, per la semicontinuità inferiore della lunghezza
+    \[
+        \ell(v) \le \liminf_{k\to \infty} \ell(v_{n_k}) = L,
+    \]
+    dunque $v$ è una curva di lunghezza minima.
+\end{proof}
+

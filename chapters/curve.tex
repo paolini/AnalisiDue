@@ -1,3 +1,5 @@
+\section{Curve e lunghezza}
+
 Sia $X$ uno spazio metrico. Una funzione $\vec u\colon [a,b] \to X$
 viene chiamata \emph{curva}.
 
@@ -13,7 +15,7 @@ Ad ogni suddivisione $P$ di $[a,b]$ possiamo associare la
 Definiamo la
 \emph{lunghezza} della curva $\vec u$ nell'intervallo $[a,b]$ come
 \[
-    \ell(\vec u, a, b) = \sup \ENCLOSE{ \ell(\vec u, P) \st P \text{ suddivisione di } [a,b] }.
+    \ell(\vec u, a, b) = \sup \ENCLOSE{ \ell(\vec u, P) \colon P \text{ suddivisione di } [a,b] }.
 \]
 
 Se la lunghezza è finita, diremo che la curva è \emph{rettificabile}.
@@ -51,6 +53,50 @@ $\ell(u,a,b) \le \ell(u,a,c) + \ell(u,c,b)$.
 
 La disuguaglianza triangolare è ovvia considerando la suddivisione
 $P = \{ a,b\}$ per cui $\ell(u,a,b) \ge \ell(u,P) = d(u(a), u(b))$.
+\end{proof}
+
+\begin{theorem}[formula della lunghezza]
+    Sia $\vec u \colon [a,b] \to \RR^n$ una curva di classe $C^1$.
+    Allora la curva è rettificabile e la sua lunghezza è data da
+    \[
+      \ell(\vec u, a, b) = \int_a^b \abs{\vec u'(t)} \, dt.
+    \]
+\end{theorem}
+\begin{proof}
+Sia $a = t_0 < t_1 < \dots < t_N = b$ una suddivisione $P$ di $[a,b]$.
+Osserviamo che 
+\[
+  u(t_{k+1}) - u(t_k) = \int_{t_k}^{t_{k+1}} u'(t) \, dt
+\]
+da cui 
+\[
+ \abs{u(t_{k+1})-u(t_k)} \le \int_{t_k}^{t_{k+1}} \abs{u'(t)} \, dt
+\]
+e quindi 
+\[
+  \ell(\vec u, P) \le \int_a^b \abs{\vec u'(t)} \, dt.
+\]
+
+D'altra parte $u'$ è continua in $[a,b]$ dunque è uniformemente continua.
+Dato $\eps>0$ esiste $\delta>0$ tale che
+\[
+  \abs{t-s} < \delta \implies \abs{u'(t) - u'(s)} < \eps.
+\]
+Visto che $\abs{u'}$ è integrabile (in quanto continua) esiste una suddivisione
+$a = t_0 < t_1 < \dots < t_N = b$ con $t_{k+1}-t_k < \delta$ per cui
+\[
+\abs{\int_a^b \abs{u'(t)} \, dt - \sum_{k=0}^{N-1} \inf_{t\in [t_k, t_{k+1}]} \abs{u'(t_k)} (t_{k+1}-t_k)} < \eps.
+\]
+Allora 
+\begin{align*}
+  \int_a^b \abs{u'(t)} \, dt
+    &\le \sum_{k=0}^{N-1} \abs{u'(t_k)} (t_{k+1}-t_k) + \eps \\
+    &\le \sum_{k=0}^{N-1} \abs{ \int_{t_k}^{t_{k+1}} u'(t_k) \, dt } + \sum_{k=0}^{N-1} \abs{u'(t_k)} (t_{k+1}-t_k) - \abs{ \int_{t_k}^{t_{k+1}} u'(t) \, dt } + \eps \\
+    &\le \sum_{k=0}^{N-1} \abs{ \int_{t_k}^{t_{k+1}} \Enclose{u'(t_k) - u'(t)} \, dt + \int_{t_k}^{t_{k+1}}u'(t)\, dt} + \eps \\
+    &\le \sum_{k=0}^{N-1} \Enclose{ \eps (t_{k+1}-t_k) + \int_{t_k}^{t_{k+1}} \abs{u'(t)} \, dt} + \eps \\
+    &=  \sum_{k=0}^{N-1}  \abs{u(t_{k+1}- u(t_k))} + \eps 
+    \le \ell(u,a,b) + \eps.
+\end{align*}
 \end{proof}
 
 \begin{theorem}[riparametrizzazione]
@@ -225,7 +271,7 @@ ad una funzione continua $u \colon [a,b] \to \RR$.
 La stessa dimostrazione permette di dimostrare il seguente risultato 
 più astratto.
 
-\begin{abstract}[Ascoli-Arzelà più astratto]
+\begin{theorem}[Ascoli-Arzelà più astratto]
 Sia $X$ uno spazio metrico compatto, $Y$ uno spazio metrico. 
 Sia $u_n\colon X \to Y$ una successione di funzioni tali che 
 \begin{enumerate}
@@ -235,10 +281,36 @@ Sia $u_n\colon X \to Y$ una successione di funzioni tali che
 \end{enumerate}
 Allora esiste una sottosuccessione $u_{n_k}$ che converge uniformemente
 ad una funzione continua $u\colon X \to Y$.
-\end{abstract}
+\end{theorem}
 
 Come applicazione del teorema di Ascoli-Arzelà
 proponiamo il seguente importante risultato.
+
+\begin{lemma}[taglio dei lacci]
+Sia $u\colon [a,b]\to X$ una curva continua non semplice.
+Allora esistono $\bar t \in [a,b]$, e $\delta\in (0,b-\bar t]$
+tali che $u(\bar t) = u(\bar t + \delta)$
+e posto $\tilde u\colon [a, b-\delta] \to X$
+\[
+  \tilde u (t) = \begin{cases}
+    u(t) & \text{se } t\in [a,\bar t], \\
+    u(t+\delta) & \text{se } t\in [\bar t, b-\delta]
+  \end{cases}
+\]
+la curva $\tilde u$ risulta essere semplice e continua, con gli 
+stessi estremi di $u$.
+Chiaramente 
+\[
+    \ell(\tilde u) \le \ell(u,a,\bar t) + \ell(u,\bar t + \delta, b)
+    \le \ell(u).
+\]
+\end{lemma}
+\begin{proof}
+Basta considerare 
+\[
+  \bar t = \inf \ENCLOSE{t\in[a,b]\colon \exists s\in(t,b]\, u(t)=u(s)}.
+\]
+\end{proof}
 
 \begin{theorem}[esistenza delle geodetiche]
     Sia $X$ uno spazio metrico completo, proprio 
@@ -248,11 +320,13 @@ proponiamo il seguente importante risultato.
     tali che $u(0) = x$ e $u(1) = y$.
     Allora, se $G(x,y)$ non è vuoto, il funzionale \emph{lunghezza}
     $\ell\colon G \to \RR$ ammette un minimo.
-\end{thorem}
+\end{theorem}
 \begin{proof}
     Sia $L = \inf\ell(G)$ e sia 
     $u_n\in G(x,y)$ una successione minimizzante,
     cioè tale che $\ell(u_n) \to L$.
+    Posso supporre che le curve $u_n$ siano semplici (iniettive)
+    perché altrimenti posso prendere 
     Posto $L_n = \ell(u_n)$ posso considerare la riparametrizzazione 
     di $u_n$ per lunghezza d'arco. 
     Questo mi dà una curva $\tilde u_n \colon [0,L_n] \to X$

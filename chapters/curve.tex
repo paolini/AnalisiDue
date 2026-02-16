@@ -1,4 +1,4 @@
-\section{Curve e lunghezza}
+\chapter{curve e lunghezza}
 
 Sia $X$ uno spazio metrico. Una funzione $u\colon [a,b] \to X$
 viene chiamata \emph{curva}.
@@ -129,6 +129,33 @@ Allora
 Dall'arbitrarietà di $\eps>0$ si ottiene la disuguaglianza opposta e la tesi.
 \end{proof}
 
+\section{riparametrizzazioni}
+
+Se $u\colon [a,b] \to X$ è una curva e $\phi\colon [A,B] \to [a,b]$ è una funzione, 
+possiamo considerare la curva $v\colon [A,B] \to X$ definita da
+\[
+  v(s) = u(\phi(s)), \qquad s\in [A,B].
+\]
+Se $u$ è continua e $\phi$ è continua e crescente, la curva $v$ rappresenta 
+lo stesso tragitto di $u$ percorso però con una diversa velocità. 
+I punti attraversati sono gli stessi, nello stesso ordine, ma l'istante in cui 
+vengono raggiunti è diverso.
+Se $\phi:[A,B] \to [a,b]$ è strettamente crescente e continua
+allora $\phi$ è invertibile e si possono mettere in corrispondenza biunivoca 
+i parametri delle due curve $u(t)$ e $v(s)$ ponendo $t=\phi(s)$ per cui:
+\[
+  v(s) = u(\phi(s)) \qquad \text{e} \qquad u(t) = v(\phi^{-1}(t)).
+\]
+Risulta però utile considerare anche riparametrizzazioni che non sono 
+strettamente crescenti o che non sono continue.
+Ad esempio se $u$ ha dei tratti costanti, ha senso considerare una riparametrizzazione 
+che salta i tratti costanti, senza fermarsi su di essi. 
+Una tale riparametrizzazione presenterà dei salti, 
+ma il tragitto percorso è in effetti lo stesso. 
+Viceversa può essere utile considerare una riparametrizzazione che si ferma 
+per un certo tempo su un punto: tale riparametrizzazione avrà un tratto costante 
+e quindi non sarà strettamente crescente e non sarà invertibile.
+
 \begin{theorem}[riparametrizzazione]
 Sia $u \colon [a,b] \to X$ una curva in uno spazio metrico $X$ 
 e sia $\phi \colon [A,B] \to [a,b]$ una funzione.
@@ -155,6 +182,7 @@ si ha:
 \]
 \end{enumerate}
 \end{theorem}
+%
 \begin{proof}
 Dimostriamo il primo punto, dove si suppone che $\phi:[A,B] \to [a,b]$ 
 sia monotona. Per fissare le idee supponiamo $\phi$ sia crescente.
@@ -207,9 +235,9 @@ Sia $u \colon [a,b] \to X$ una curva rettificabile in uno spazio metrico $X$.
 Sia $L = \ell(u)$ la lunghezza della curva.
 La \emph{lunghezza d'arco} di $u$ è la funzione $\sigma\colon [a,b] \to [0,L]$ 
 definita da
-\[
-  \sigma(t) = \ell_a^t(u).
-\]
+\begin{equation}\label{def:lunghezza_arco}
+  \sigma(t) \defeq \ell_a^t(u)
+\end{equation}
 \end{definition}
 
 Chiaramente la funzione $\sigma$ è crescente ma potrebbe non essere strettamente crescente 
@@ -218,7 +246,9 @@ Chiaramente la funzione $\sigma$ è crescente ma potrebbe non essere strettament
 \begin{theorem}[continuità della lunghezza d'arco]
 Sia $u \colon [a,b] \to X$ una curva continua rettificabile, di lunghezza $L$, 
 in uno spazio metrico $X$.
-Allora la funzione lunghezza d'arco $\sigma\colon [a,b] \to [0,L]$ è continua.
+Allora la funzione lunghezza d'arco $\sigma\colon [a,b] \to [0,L]$,
+$\sigma(t) = \ell_a^t(u)$,
+è continua.
 \end{theorem}
 \begin{proof}
 Fissato $t_0\in [a,b)$
@@ -266,19 +296,67 @@ Ma questo è vero per ogni $\eps>0$, dunque si ottiene, come volevamo dimostrare
 \]
 \end{proof}
 
-\begin{definition}[equivalenza di curve]
-Due curve $\vec u \colon [a,b] \to X$ e $\vec v \colon [A,B] \to X$ 
-si dicono essere \emph{equivalenti} se esiste una funzione
-$\phi \colon [A,B] \to [a,b]$ bigettiva e crescente tale che 
+Grazie al teorema precedente sappiamo che se $u\colon [a,b] \to X$ è una curva continua e rettificabile, 
+allora la sua lunghezza d'arco $\sigma\colon[a,b] \to [0,L]$ è monotona e continua.
+Dunque possiamo definire una \emph{inversa sinistra di $\sigma$} 
+come la funzione $\tau\colon [0,L] \to [a,b]$ definita da
 \[
-    \vec u = \vec v \circ \phi.
+  \tau(s) = \min \ENCLOSE{t\colon \sigma(t)=s}.
+\]
+La curva riparametrizzata $\tilde u\colon [0,L] \to X$ definita da:
+\[
+  \tilde u(s) = u(\tau(s))
+\]
+si chiama \emph{riparametrizzazione per lunghezza d'arco} di $u$.
+La funzione $\tau$ è strettamente crescente e può avere delle discontinuità 
+di tipo salto. Se $s_0$ è un punto in cui $\tau$ ha un salto denotiamo con 
+$\tau(s_0^-)$ e $\tau(s_0^+)$ i limiti sinistro e destro di $\tau$ in $s_0$.
+Posto $I = [\tau(s_0^-), \tau(s_0^+)]$ 
+l'intervallo di salto di $\tau$ in $s_0$, 
+si ha che $\sigma$ è costante su $I$ e dunque anche $u$ è costante su $I$.
+Dunque $\tilde u$ risulta essere continua anche nei punti in cui $\tau$ non lo è.
+Inoltre, per il teorema~\ref{th:riparametrizzazione}, si ha che 
+\[
+  \ell_0^s(\tilde u) = s
+\]
+cioè, come si dice, $\tilde u$ è parametrizzata per lunghezza d'arco, in quanto 
+la lunghezza del tratto di curva che va da $0$ a $s$ è proprio $s$.
+
+Siamo riusciti, senza usare le derivate, a definire la curva $\tilde u$ che percorre 
+lo stesso tragitto di $u$ ma con una velocità costante unitaria. 
+Se $X=\RR^n$ e $u$ è di classe $C^1$ con $u'(t)\neq 0$ per ogni $t\in[a,b]$,
+allora si ha 
+\[
+  \sigma(t) = \int_a^t \abs{u'(t)}\, dt 
+  \quad\implies\quad
+  \sigma'(t) = \abs{u'(t)} 
+\]
+e dunque posto $\tilde u(s) = u(\tau(s))$ con $\tau(s) = \sigma^{-1}(s)$ si ha
+\[
+ \abs{\tilde u'(s)}
+ = \abs{\frac{d}{ds} u(\sigma^{-1}(s))}
+ = \frac{\abs{u'(\tau(s))}}{\sigma'(\sigma^{-1}(s))}
+ = \frac{\abs{u'(\tau(s))}}{\abs{u'(\tau(s))}} = 1.
 \]
 
-Osservazione: se una curva ha dei tratti su cui è costante, in base 
-a questa definizione tutte le curve equivalenti avranno anch'esse dei corrispondenti 
-tratti costanti. Si potrebbe decidere che per valutare l'equivalenza 
-tra due curve si debbano prima eliminare i tratti costanti.
+\mynote{
+Sebbene la derivata di una curva a valori in uno spazio metrico $X$ non possa essere definita
+se $X$ non ha una struttura di spazio vettoriale, 
+le osservazioni precedenti mostrano che può avere senso definire il modulo 
+della derivata, cioè la velocità, di una curva $u\colon [a,b] \to X$,
+che viene chiamato \emph{derivata metrica} di $u$ e si indica con $\abs{u'}$:
+\[
+ \abs{u'(t_0)} \defeq \lim_{t\to t_0} \frac{d(u(t),u(t_0))}{t-t_0}.
+\]
+}
+
+\begin{definition}[equivalenza di curve]
+Due curve continue rettificabili $u \colon [a,b] \to X$ e $v \colon [A,B] \to X$ 
+si dicono essere \emph{equivalenti} se le loro riparametrizzazioni per 
+lunghezza d'arco coincidono.
 \end{definition}
+
+\section{Ascoli-Arzelà}
 
 \begin{theorem}[Ascoli-Arzelà]
 Siano $\vec u_n \colon [a,b] \to \RR$ funzioni tali che 
@@ -359,33 +437,6 @@ ad una funzione continua $u\colon X \to Y$.
 Come applicazione del teorema di Ascoli-Arzelà
 proponiamo il seguente importante risultato.
 
-\begin{lemma}[taglio dei lacci]
-Sia $u\colon [a,b]\to X$ una curva continua non semplice.
-????
-Allora esistono $\bar t \in [a,b]$, e $\delta\in (0,b-\bar t]$
-tali che $u(\bar t) = u(\bar t + \delta)$
-e posto $\tilde u\colon [a, b-\delta] \to X$
-\[
-  \tilde u (t) = \begin{cases}
-    u(t) & \text{se } t\in [a,\bar t], \\
-    u(t+\delta) & \text{se } t\in [\bar t, b-\delta]
-  \end{cases}
-\]
-la curva $\tilde u$ risulta essere semplice e continua, con gli 
-stessi estremi di $u$.
-Chiaramente 
-\[
-    \ell(\tilde u) \le \ell(u,a,\bar t) + \ell(u,\bar t + \delta, b)
-    \le \ell(u).
-\]
-\end{lemma}
-\begin{proof}
-Basta considerare 
-\[
-  \bar t = \inf \ENCLOSE{t\in[a,b]\colon \exists s\in(t,b]\, u(t)=u(s)}.
-\]
-\end{proof}
-
 \begin{theorem}[esistenza delle geodetiche]
     Sia $X$ uno spazio metrico completo, proprio 
     (cioè ogni chiuso limitato è compatto), 
@@ -399,8 +450,6 @@ Basta considerare
     Sia $L = \inf\ell(G)$ e sia 
     $u_n\in G(x,y)$ una successione minimizzante,
     cioè tale che $\ell(u_n) \to L$.
-    Posso supporre che le curve $u_n$ siano semplici (iniettive)
-    perché altrimenti posso prendere 
     Posto $L_n = \ell(u_n)$ posso considerare la riparametrizzazione 
     di $u_n$ per lunghezza d'arco. 
     Questo mi dà una curva $\tilde u_n \colon [0,L_n] \to X$
@@ -411,13 +460,15 @@ Basta considerare
         v_n(t) = \tilde u_n (L_n t)
     \]
     saranno invece $L_n$-lipschitziane. 
+    Per il teorema~\ref{th:riparametrizzazione} si ha $\ell(v_n) = \ell(\tilde u_n) = \ell(u_n)$
+    dunque $v_n\in G(x,y)$ e $\ell(v_n) = L_n$.
     Poiché $L_n\to L<+\infty$ esiste $M = \max L_n < +\infty$ 
     e le curve $v_n$ sono tutte $M$-lipschitziane e dunque 
     sono equicontinue. 
     Tutte queste curve sono contenute nella chiusura della 
     palla di centro $x$ e raggio $M$, che è compatta
     perché abbiamo supposto $X$ proprio.
-    Dunque, per il teorema di Ascoli-Arzelà, esiste una sottosuccessione 
+    Dunque, per il teorema di Ascoli-Arzelà, esiste una estratta 
     $v_{n_k}$ che converge uniformemente ad una curva continua
     $v\colon [0,1] \to X$.
     La curva $v$ è $M$-lipschitziana in quanto limite uniforme di 

@@ -643,14 +643,14 @@ una funzione \emph{dominante} come richiesto nelle ipotesi del teorema.
 
 L'idea è dunque quella di ricondurre l'integrale non assolutamente convergente 
 ad un integrale assolutamente convergente mediante integrazione per parti, 
-come si faceva ad Analisi Uno per dimostrare che l'integrale $\int_\pi^{\+infty} \frac{\sin x}{x}\, dx$ 
+come si faceva ad Analisi Uno per dimostrare che l'integrale $\int_\pi^{+\infty} \frac{\sin x}{x}\, dx$ 
 è convergente.
 
 
 In effetti si ha 
 \begin{align*}
 F(0) - F(x) 
- = \int_0^{+\infty} \frac{\sin t}{t}\, dt  - \int_0^{+\infty} \frac{\sin t}{t}e^{-xt}\, dt \\
+ = \int_0^{+\infty} \frac{\sin t}{t}\, dt  - \int_0^{+\infty} \frac{\sin t}{t}e^{-xt}\, dt
  & = \int_0^{+\infty} \frac{\sin t}{t}\enclose{1-e^{-xt}}\, dt.
 \end{align*}
 Ora spezziamo l'integrale sui due intervalli $\closeinterval{0}{\pi}$ 
@@ -666,9 +666,7 @@ Sul secondo intervallo invece dobbiamo operare l'integrazione per parti:
     - \int_{\pi}^{+\infty} \frac{\cos t}{t^2}\, dt \\
   &= -\frac{1}{\pi} - \int_{\pi}^{+\infty} \frac {\cos t}{t^2}\, dt.\\
 \end{align*}
-Si ha poi (tralasciamo i dettagli di calcolo, 
-si tratta di integrare due volte per parti come 
-abbiamo fatto nell'esempio~\ref{ex:48864}):
+Si ha poi (tralasciamo i dettagli di calcolo):
 \[
 \int \sin t\cdot e^{-tx}\, dt 
 = -h(x,t)

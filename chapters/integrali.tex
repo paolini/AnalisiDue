@@ -49,7 +49,7 @@ il cubetto
 Si tratta di un cubetto di lato $2^{-N}$ con gli spigoli paralleli 
 agli assi cartesiani e con un vertice nel punto $2^{-N} \vec k$.
 Il volume di $Q^N_{\vec k}$ sarà quindi $2^{-nN}$.
-Useremo questi cubetti per misurare gli insiemi.
+Useremo questi cubetti per misurare il volume di insiemi arbitrari.
 
 \begin{definition}[integrale di Riemann]
   \label{def:integrale_riemann}
@@ -274,6 +274,19 @@ scrivere
 \]
 \end{definition}
 
+\begin{remark}
+Visto che $\sup_{Q^N_{\vec k}} 1_E = 1$ se $Q^N_{\vec k}$ tocca $E$ e $0$ altrimenti,
+mentre $\inf_{Q^N_{\vec k}} 1_E = 1$ se $Q^N_{\vec k}$ è contenuto in $E$
+e $0$ altrimenti,
+si osserva che:
+\begin{align*}
+ m^N(E) &= 2^{-nN} \cdot \# \ENCLOSE{\vec k\in \ZZ^N\colon Q_{\vec k}^N \cap E \neq \emptyset},\\
+  m_N(E) &= 2^{-nN} \cdot \# \ENCLOSE{\vec k\in \ZZ^N\colon Q_{\vec k}^N \subset E}
+\end{align*}
+e dunque $m^N(E)$ è il volume dell'unione dei cubetti $Q^N_{\vec k}$ che ricoprono $E$ 
+mentre $m_N(E)$ è il volume dell'unione dei cubetti $Q^N_{\vec k}$ che sono contenuti in $E$.
+\end{remark}
+
 \begin{remark}[caso $n=1$]
 Nel caso $n=1$ se $f\colon [a,b]\to \RR$ è una funzione limitata,
 si osserva che la suddivisione in cubetti di lato $2^{-N}$ induce una partizione 
@@ -285,12 +298,12 @@ la definizione data sopra corrisponde invece alla \emph{assoluta convergenza}
 dell'integrale improprio.
 \end{remark}
 
-\begin{exercise}[misurabilità dei rettangoli cartesiano]
+\begin{exercise}[misurabilità dei rettangoli cartesiani]
   \label{ex:misura_rettangolo}
 Dati $\vec a,\vec b\in \RR^n$ con $a_k\le b_k$ per ogni $k=1,\ldots,n$,
 il rettangolo cartesiano
 \[
-  R(\vec a, \vec b) = [a_1,b_1]\times \dots [a_n,b_n]
+  R(\vec a, \vec b) = [a_1,b_1]\times \dots \times [a_n,b_n]
 \]  
 è PJ-misurabile e si ha 
 \[
@@ -301,7 +314,7 @@ In particolare ogni cubetto $Q^N_{\vec k}$ è PJ-misurabile e si ha
 $\abs{Q^N_{\vec k}} = 2^{-nN}$.
 \end{exercise}
 \begin{proof}
-Osseviamo che 
+Osserviamo che
 \[
   Q^N_{\vec k} = [2^{-N} k_1, 2^{-N}(k_1+1)] \times \dots \times [2^{-N} k_n, 2^{-N}(k_n+1)]
 \]

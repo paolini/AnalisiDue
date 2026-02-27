@@ -1,0 +1,50 @@
+
+\begin{exercise}[formula per il volume della palla $n$-dimensionale]
+Il volume della palla unitaria di $\RR^n$ è dato da:
+\[
+  \omega_n = \frac{\pi^{n/2}}{(n/2)!}
+\]
+Dove si intende $0!=1$, $(\frac 1 2)!=\frac{\sqrt{\pi}}{2}$, 
+$x! = x \cdot (x-1)!$.
+\end{exercise}
+\begin{proof}
+L'impostazione del volume parte dalla definizione per ricorrenza della palla $n$-dimensionale:
+$$\omega_n = \int_{-1}^1 \omega_{n-1} (\sqrt{1-x^2})^{n-1} dx$$
+
+Applicando la sostituzione $x = \cos t$, da cui otteniamo $dx = -\sin t dt$ e $\sqrt{1-x^2} = \sin t$, l'integrale diventa:
+$$\omega_n = -\int_{\pi}^0 \omega_{n-1} (\sin t)^{n-1} \sin t dt = \omega_{n-1} \int_0^{\pi} \sin^n t dt$$
+
+Definiamo la successione di integrali:
+$$I_n = \int_0^{\pi} \sin^n t dt$$
+
+Sapendo che i casi base sono $I_0 = \pi$ e $I_1 = 2$, ricaviamo la formula ricorsiva generale:
+$$I_n = \frac{n-1}{n} I_{n-2}$$
+
+Sviluppando per induzione i termini pari e dispari, otteniamo i seguenti prodotti:
+\begin{itemize}
+    \item \textbf{Per indici pari:} $I_{2n} = \frac{(2n-1)!!}{(2n)!!} \pi$
+    \item \textbf{Per indici dispari:} $I_{2n+1} = \frac{(2n)!!}{(2n+1)!!} 2$
+\end{itemize}
+
+La relazione per il volume è $\omega_n = I_n I_{n-1} \omega_{n-2}$. Sostituendo le espressioni trovate per una dimensione pari $2n$, si ottiene:
+$$\omega_{2n} = \frac{(2n-1)!!}{(2n)!!} \pi \frac{(2n-2)!!}{(2n-1)!!} 2 \omega_{2n-2} = \frac{2\pi}{2n} \omega_{2n-2}$$
+
+Sviluppando la produttoria fino a $\omega_0$ (con $\omega_0 = 1$), arriviamo alla forma chiusa:
+$$\omega_{2n} = \frac{2\pi}{2n} \cdot \frac{2\pi}{2n-2} \dots \frac{2\pi}{2} \omega_0 = \frac{2^n \pi^n}{(2n)!!} = \frac{\pi^n}{n!}$$
+
+Per una dimensione dispari $2n+1$, la relazione ricorsiva si imposta in modo analogo:
+$$\omega_{2n+1} = \frac{(2n)!!}{(2n+1)!!} 2 \frac{(2n-1)!!}{(2n)!!} \pi \omega_{2n-1} = \frac{2\pi}{2n+1} \omega_{2n-1}$$
+
+Sviluppando la produttoria fino a $\omega_1 = 2$:
+$$\omega_{2n+1} = \frac{2\pi}{2n+1} \cdot \frac{2\pi}{2n-1} \dots \frac{2\pi}{3} \omega_1$$
+
+Sostituendo $\omega_1 = 2$, possiamo raggruppare i termini al numeratore:
+$$\omega_{2n+1} = \frac{2^{n+1} \pi^n}{(2n+1)!!}$$
+
+Sfruttando l'identità per il semifattoriale, ovvero $(n+\frac{1}{2})! = \frac{(2n+1)!!}{2^n} \frac{\sqrt{\pi}}{2}$, isoliamo il doppio fattoriale $(2n+1)!! = \frac{2^{n+1}}{\sqrt{\pi}} (n+\frac{1}{2})!$ e lo sostituiamo:
+$$\omega_{2n+1} = \frac{2^{n+1} \pi^n}{\frac{2^{n+1}}{\sqrt{\pi}} (n+\frac{1}{2})!} = \frac{\pi^{n+\frac{1}{2}}}{(n+\frac{1}{2})!}$$
+
+Unificando i risultati per una generica dimensione $k$ (sia essa pari o dispari), il volume della palla $k$-dimensionale risulta essere:
+$$\omega_k = \frac{\pi^{k/2}}{(k/2)!}$$
+
+\end{proof}

@@ -9,5 +9,5 @@ AnalisiDue.ind
 AnalisiDue.mw
 AnalisiDue.toc
 AnalisiDue.pdf
-chapters/*.aux
 AnalisiDue.myaux
+*.aux

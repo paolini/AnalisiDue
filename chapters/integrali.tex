@@ -544,6 +544,7 @@ Gli altri casi si ottengono di conseguenza.
 \end{proof}
 
 \begin{theorem}[principio di Cavalieri]
+  \label{th:cavalieri}
 Sia $E \subset \RR^n\times \RR^m$ un insieme PJ-misurabile 
 tale che per ogni $\vec x \in \RR^n$ la sezione 
 $  E_{\vec x} = \ENCLOSE{\vec y \in \RR^m \colon (\vec x, \vec y) \in E} $ 
@@ -584,6 +585,59 @@ e le mosse elementari hanno sempre determinante $1$,
 tutte le matrici elementari hanno determinante $\pm 1$.
 
 
+\begin{definition}[matrice elementare]
+Dati $k,j\in \{1,\ldots,n\}$ con $k\neq j$ e $\alpha \in \RR$
+consideriamo la matrice $M=M(k,j,\alpha)$ 
+definita sulla base canonica $e_1,\dots, e_n$ da 
+\[
+   M e_i = \begin{cases}
+      e_i & \text{se $i\neq k$}\\
+      e_i + \alpha e_j & \text{se $i=k$}.
+   \end{cases}
+\]
+Ovvero $M$ è una matrice che si ottiene mettendo il valore $\alpha$
+nella matrice identità in una posizione dove c'era uno zero:
+\[
+   M = \begin{pmatrix}
+    1 & 0 & \dots & 0 & \dots & 0\\
+    0 & 1 & \dots & \alpha & \dots & 0\\
+    \vdots & \vdots & \ddots & \vdots & \ddots & \vdots\\
+    0 & 0 & \dots & 1 & \dots & 0\\
+    \vdots & \vdots & \ddots & \vdots & \ddots & \vdots\\
+    0 & 0 & \dots & 0 & \dots & 1
+   \end{pmatrix}.
+\]
+In altre parole la trasformazione lineare associata ad $M$ 
+agisce sullo spazio generato dai due vettori $e_j$ ed $e_k$
+come la matrice $2\times 2$
+\[
+  \begin{pmatrix}
+    1 & \alpha\\
+    0 & 1
+  \end{pmatrix}
+\]
+e come l'identità su tutti gli altri vettori della base canonica.
+
+Quando la matrice $M$ viene moltiplicata a sinistra 
+di una matrice $A$ di dimensione $m\times n$
+si ottiene una matrice $M A$ che è la matrice ottenuta da $A$
+aggiungendo $\alpha$ volte la $j$-esima riga di $A$
+alla $k$-esima riga di $A$.
+
+Viceversa quando la matrice $M$ viene moltiplicata a destra ad una matrice $A$ di dimensione $m\times n$
+si ottiene una matrice $A M$ che si ottiene da $A$ aggiungendo $\alpha$ volte la $k$-esima colonna di $A$
+alla $j$-esima colonna di $A$.
+
+Una \emph{matrice di permutazione} è una matrice $M$ che permuta gli elementi 
+della base canonica. 
+Più precisamente data una bigezione $\sigma: \ENCLOSE{1,\ldots,n} \to \ENCLOSE{1,\ldots,n}$, 
+si ha $M(e_k) = e_{\sigma(k)}$ per ogni $k=1,\ldots,n$.
+
+Una \emph{matrice elementare} è una matrice che si ottiene come prodotto di matrici di permutazione e mosse elementari.
+Le matrici elementari sono banalmente invertibili 
+ed hanno tutte determinante $\pm 1$.
+\end{definition}
+
 \begin{theorem}[riduzione a scala di Gauss]
 \label{th:riduzione_gauss}
 Sia $M$ una matrice $m\times n$ qualunque. 
@@ -610,10 +664,11 @@ e si ha
 \end{theorem}
 \begin{proof}
 
-\emph{Osservazione.}
+\emph{Osservazione 1.}
 Fissato $L$ se dimostriamo 
 \eqref{eq:geometria_determinante}
-su ogni cubetto $E=Q^N_{\vec k}$, allora approssimando opportunamente 
+su ogni cubetto $Q^N_{\vec k}$, 
+allora approssimando opportunamente 
 $E$ dall'interno e dall'esterno con cubetti di taglia $2^{-N}$, 
 e usando l'additività della misura,
 si ottiene
@@ -623,14 +678,31 @@ si ottiene
 Passando al limite per $N\to +\infty$ si ottiene il risultato 
 voluto con tale $L$.
 
+\emph{Osservazione 2.}
+Se per ogni $E$ l'equazione 
+\eqref{eq:geometria_determinante} è verificata per $L_1$ e per $L_2$ 
+allora è verificata anche per 
+$L_1\circ L_2$. 
+Infatti
+\[
+  \abs{L_1(L_2(E))} = \abs{\det M_1} \cdot \abs{L_2(E)} = \abs{\det M_1} \cdot \abs{\det M_2} \cdot \abs{E}
+  = \abs{\det(M_1M_2)}\cdot\abs{E}.
+\]
+
+\emph{Passo 0: supponiamo $M$ sia la matrice identità.}
+In tal caso $L$ è una traslazione e dunque $L(E) = E + \vec q$.
+Se $E$ è un cubetto $Q^N_{\vec k}$ allora $L(E)$ 
+è un cubetto di lato $2^{-N}$ allineato agli assi coordinati.
+Dunque $\abs{L(E)} = 2^{-nN} = \abs{E}$ per l'esercizio~\ref{ex:misura_rettangolo}.
+
 \emph{Passo 1: supponiamo che $M$ sia una matrice di permutazione
 (cioè $M(e_k) = e_{\sigma(k)}$ per una qualche permutazione $\sigma$ di
-$\{1,\ldots,n\}$).
+$\{1,\ldots,n\}$)}.
 Per l'osservazione possiamo supporre che $E$ sia un cubetto $Q^N_{\vec k}$.
 In tal caso il risultato è immediato in quanto $L(Q^N_{\vec k}) = Q^N_{M(\vec k)}+\vec q$,
 dunque $\abs{L(E)} = 2^{-nN} = \abs{E}$ (per l'esercizio~\ref{ex:misura_rettangolo})
 Visto che $\abs{\det M} = 1$ questo è il risultato voluto. 
-}
+
 \emph{Passo 2: supponiamo che $M$ sia una matrice diagonale
 (cioè $M(e_k) = \lambda_k e_k$ per ogni $k=1,\ldots,n$) e $\vec q=0$}.
 Supponendo che $E$ sia un rettangolo $[a_1,b_1]\times \dots \times [a_n,b_n]$,
@@ -675,11 +747,18 @@ Dunque, per il principio di Cavalieri, si ottiene
   = 2^{-nN} = \abs{Q^N_{\vec k}}.
 \]
 
-Il procedimento di riduzione a scala di Gauss 
-è un procedimento per cui possiamo trovare delle matrici 
+\emph{Caso generale.}
+Grazie al teorema~\ref{th:riduzione_gauss} di riduzione a scala di Gauss,
+possiamo trovare
 $A,B$ matrici elementari tali che
 $AMB^t$ 
-sia una matrice diagonale.
+sia una matrice diagonale $\Delta$. 
+Ovvero
+\[
+   M = A^{-1} \Delta (B^t)^{-1}.
+\]
+Visto che abbiamo già dimostrato che l'equazione~\eqref{eq:geometria_determinante} è verificata per $A^{-1}$, per $\Delta$ e per $(B^t)^{-1}$,
+dall'osservazione 2 si ottiene che è verificata anche per $M$ e dunque per $L$.
 \end{proof}
 
 \begin{theorem}[formula dell'area]
@@ -710,8 +789,7 @@ se $\phi \colon \bar \Omega\subset \RR^n \to \RR^n$
 è una funzione $L$-lipschitziana, 
 che ristretta ad $\Omega$ è di classe $C^1$ e 
 $\det D\phi(\vec x)\neq 0$ per ogni $\vec x\in \Omega$,  
-allora 
-dunque $\phi(\Omega)$ è PJ-misurabile.
+allora $\phi(\Omega)$ è PJ-misurabile.
 Inoltre si $\partial \phi(\Omega) \subset \phi(\partial \Omega)$
 sono misurabili di misura nulla
 e $\overline{\phi(\Omega)} = \phi(\bar \Omega)$ è misurabile.
@@ -750,13 +828,19 @@ $\phi(\vec x)$.
 Questo significa che punti interni a $\Omega$ vengono mandati 
 in punti interni a $\phi(\Omega)$
 e dunque che la frontiera di $\phi(\Omega)$ è contenuta nell'immagine 
-della frontiera di $\Omega$.
+della frontiera di $\Omega$:
+\[
+  \partial \phi(\Omega) 
+    \subset \overline{\phi(\Omega)} \setminus \phi(\Omega)
+    \subset \phi(\bar \Omega) \setminus \phi(\Omega) 
+    \subset \phi(\partial \Omega).
+\]
 Per continuità sappiamo che $\phi(\bar \Omega) \subset \overline{\phi(\Omega)}$ 
 e per compattezza sappiamo che $\overline {\phi(\bar \Omega)} = \phi(\bar \Omega)$.
 Dunque $\phi(\bar \Omega) = \overline{\phi(\Omega)}$. 
 
 Per concludere che $\phi(\Omega)$ e $\overline{\phi(\Omega)}$ sono misurabili basta dimostrare che 
-$\abs{\partial (\phi(\Omega))}=0$ cioè che $m^*(\partial (\phi(\Omega)))= 0$.
+$\abs{\partial (\phi(\Omega))}=0$ cioè che $m^*(\partial \phi(\Omega))= 0$.
 Grazie all'osservazione precedente, ci basta dunque dimostrare
 che $m^*(\phi(\partial \Omega)) = 0$.
 E questo è vero in quanto \eqref{eq:misura-immagine-lipschitz}
@@ -783,6 +867,7 @@ Allora $\phi(\Omega)$ è PJ-misurabile e si ha
   \abs{\phi(\Omega)} 
     = \int_{\Omega} \abs{\det D\phi}.
 \]
+\end{theorem}
 
 %Sia $Q=[0,1]^n$ e sia $\phi\colon Q \to \RR^n$
 %una funzione iniettiva su $(0,1)^n$, di classe $C^1$, tale che $\det D\phi(x)\neq 0$ per ogni $x\in [0,1]^n$.
@@ -794,18 +879,22 @@ Allora $\phi(\Omega)$ è PJ-misurabile e si ha
 %
 %Notiamo che il teorema~\ref{th:cambio-variabili} ci dirà che questo risultato 
 %è vero in ipotesi leggermente più generali.
-\end{theorem}
 %
 \begin{proof}
 \emph{Passo 1: dimostriamo che $\phi(\Omega)$ è misurabile.}
-Essendo $\Omega$ convesso possiamo applicare il teorema~\ref{th:lagrange} di Lagrange 
+Visto che $\phi$ è di classe $\C^1$
+sul compatto $\bar \Omega$, 
+esiste $L\in \RR$ tale che $\abs{D\phi(\vec x)} \le L$ per ogni $\vec x \in \bar \Omega$.
+Essendo $\Omega$ convesso 
+possiamo applicare il teorema~\ref{th:lagrange} di Lagrange 
 per ottenere la condizione di Lipschitz:
 \[
 \abs{\phi(\vec x) - \phi(\vec x')} \le L \abs{\vec x - \vec x'}, \qquad \forall \vec x,\vec x' \in \Omega.
 \]
 Per continuità la condizione si estende a tutte le coppie $\vec x, \vec x' \in \bar \Omega$.
 Possiamo quindi applicare il Lemma~\ref{lm:misura-immagine-lipschitz} 
-per ottenre la misurabilità di $\phi(\Omega)$ e di $\phi(\bar \Omega)$.
+per ottenere la misurabilità di $\phi(\Omega)$ e di $\phi(\bar \Omega)$.
+Lo stesso lemma ci dice anche che $\partial \phi(\Omega) \subset \phi(\partial \Omega)$.
 % \[
 %   m^*(\partial (\phi(\Omega)))
 %   \le (L\sqrt n + 1)^n \cdot m^*(\partial \Omega).
@@ -820,6 +909,9 @@ per ottenre la misurabilità di $\phi(\Omega)$ e di $\phi(\bar \Omega)$.
 % dunque $\overline{\phi(\Omega)} \subset \phi(\bar \Omega)$
 % Ovviamente anche $\phi(\bar \Omega) = \overline{\phi(\Omega)}$ è misurabile.
 
+\begin{figure}
+\centering \includegraphics[height=2cm]{cubo-interno.png}
+\end{figure}
 \emph{Passo 2 (lemma del cubo interno/esterno): 
 se $\Omega = (0,1)^n$ è il cubo unitario  
 ed esiste $\eps\in(0,\frac 1 4)$ tale che 
@@ -833,38 +925,34 @@ allora }
   \le (1+2\eps)^n.
 \]
 Chiaramente 
-\[
+$
     \phi(\Omega) \subset [-\eps,1+\eps]^n
-\]
+$
 perché ogni punto di $\Omega$ viene spostato al massimo di $\eps$. 
 Quindi si ottiene, per monotonia della misura,
-\[
-    \abs{\phi(\Omega)} \le (1+2\eps)^n.
-\]
-Per ottener l'altra disuguaglianza  
-\[
-   \abs{\phi(\Omega)} \ge (1-2\eps)^n
-\]
+$\abs{\phi(\Omega)} \le (1+2\eps)^n$.
+Per ottenere l'altra disuguaglianza  
+$\abs{\phi(\Omega)} \ge (1-2\eps)^n$
 basterà dimostrare che vale anche 
-\[
-  \phi(\Omega) \supset (\eps,1-\eps)^n.
-\]
+$\phi(\Omega) \supset (\eps,1-\eps)^n$.
+
 Supponiamo per assurdo che esista $\vec y \in (\eps,1-\eps)^n \setminus \phi(\Omega)$.
 Consideriamo il punto $\vec p=(\frac 12, \dots, \frac 12)$ centro 
 del cubo $\Omega$ e sia $\vec q=\phi(\vec p)$ la sua immagine. 
 Visto che $\abs{\vec q-\vec p} = \abs{\phi(\vec p)-\vec p} \le \eps$ 
 e $\eps \le \frac 1 4$ possiamo garantire che
 $\vec q \in (\eps,1-\eps)^n$.
-Dunque l'intero segmento $\sigma = [\vec q,\vec y]$ è contenuto 
+Dunque l'intero segmento $[\vec q,\vec y]$ è contenuto 
 in $(\eps,1-\eps)^n$ essendo quest'ultimo un convesso.
 Visto che $\vec q\in \phi(\Omega)$ mentre $\vec y \notin \phi(\Omega)$,
-deve esistere un punto $\vec z\in \sigma\cap \partial \phi(\Omega)$
+deve esistere un punto $\vec z\in [\vec q, \vec y]\cap \partial \phi(\Omega)$
 (esercizio~\ref{ex:punto-di-frontiera}).
-Ma abbiamo già mostrato (Passo 1) che $\partial (\phi(\Omega)) \subset \phi(\partial \Omega)$
+Ma abbiamo già mostrato (Passo 1) che $\partial \phi(\Omega) \subset \phi(\partial \Omega)$
 dunque $\vec z=\phi(\vec x)$ con $\vec x \in \partial \Omega$. 
 Ma allora $\abs{\vec z-\vec x} = \abs{\phi(\vec x)- \vec x} \le \eps$ 
-e dunque $\vec z\not \in (\eps,1-\eps)^n$, 
-contraddicendo $\vec z \in \sigma \subset (\eps,1-\eps)^n$.
+e dunque
+$\vec z\not \in (\eps,1-\eps)^n$, 
+contraddicendo $\vec z \in [\vec q, \vec y] \subset (\eps,1-\eps)^n$.
 
 \emph{Passo 3: se $\Omega=(0,1)^n$ ed esiste $\eps>0$ tale che 
 \[

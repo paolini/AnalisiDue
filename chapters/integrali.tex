@@ -761,15 +761,15 @@ Visto che abbiamo già dimostrato che l'equazione~\eqref{eq:geometria_determinan
 dall'osservazione 2 si ottiene che è verificata anche per $M$ e dunque per $L$.
 \end{proof}
 
-\begin{theorem}[formula dell'area]
-Sia $\phi\colon [0,1]^n \to \RR^n$
-una funzione iniettiva, di classe $C^1$, tale che $\det D\phi(x)\neq 0$ per ogni $x\in [0,1]^n$.
-
-Allora, per ogni insieme PJ-misurabile $E\subset [0,1]^n$, $\phi(E)$ è misurabile e si ha
-\begin{equation}\label{eq:area}
- \abs{\phi(E)} = \int_E \abs{\det D\phi}.
-\end{equation}
-\end{theorem}
+% \begin{theorem}[formula dell'area]
+% Sia $\phi\colon [0,1]^n \to \RR^n$
+% una funzione iniettiva, di classe $C^1$, tale che $\det D\phi(x)\neq 0$ per ogni $x\in [0,1]^n$.
+% 
+% Allora, per ogni insieme PJ-misurabile $E\subset [0,1]^n$, $\phi(E)$ è misurabile e si ha
+% \begin{equation}\label{eq:area}
+%  \abs{\phi(E)} = \int_E \abs{\det D\phi}.
+% \end{equation}
+% \end{theorem}
  
 \begin{lemma}[misura delle immagini Lipschitziane]
   \label{lm:misura-immagine-lipschitz}
@@ -869,17 +869,6 @@ Allora $\phi(\Omega)$ è PJ-misurabile e si ha
 \]
 \end{theorem}
 
-%Sia $Q=[0,1]^n$ e sia $\phi\colon Q \to \RR^n$
-%una funzione iniettiva su $(0,1)^n$, di classe $C^1$, tale che $\det D\phi(x)\neq 0$ per ogni $x\in [0,1]^n$.
-
-%Allora $\phi(Q)$ è misurabile e si ha
-%\begin{equation}\label{eq:area}
-% \abs{\phi(Q)} = \int_{Q} \abs{\det D\phi}.
-%\end{equation}
-%
-%Notiamo che il teorema~\ref{th:cambio-variabili} ci dirà che questo risultato 
-%è vero in ipotesi leggermente più generali.
-%
 \begin{proof}
 \emph{Passo 1: dimostriamo che $\phi(\Omega)$ è misurabile.}
 Visto che $\phi$ è di classe $\C^1$
@@ -1043,11 +1032,13 @@ Visto che $\Omega$ è misurabile esiste $M\in \NN$ abbastanza grande in modo che
   m^M(\bar \Omega)-m_M(\Omega) < \frac{\eps}{(\sqrt n L +1)^n + \mu}.
 \]
 Consideriamo il compatto $\Omega_M$ che è l'unione di tutti i cubetti $Q^M_{\vec k}$
-contenuti interamente in $\Omega$.
+contenuti interamente in $\Omega$ e $\Omega^M$ il compatto unione 
+di tutti i cubetti che intersecano $\partial \Omega$.
+Così $\abs{\Omega^M} = m^M(\bar \Omega)$ e $\abs{\Omega_M} = m_M(\Omega)$.
+
 Per il Lemma~\ref{lm:misura-immagine-lipschitz} si ha 
 \[
- m^*(\phi(\Omega_M)) 
- \le (L\sqrt n + 1)^n \cdot \abs{\Omega_M} 
+ m^*(\phi(\Omega^M \setminus \Omega_M)) 
  \le (L\sqrt n + 1)^n \cdot (m^M(\bar \Omega) - m_M(\Omega))
  \le \eps.
 \]
@@ -1072,13 +1063,14 @@ che formano $\Omega_M$ in cubetti ancora più piccoli.
 Fissato $\eps>0$,
 per il teorema di Heine-Cantor  
 esiste $N\in \NN$ tale che 
+per ogni $\vec k\in \ZZ^n$ con $Q^N_{\vec k} \subset \Omega_M$ e 
 per ogni $\vec x, \vec x' \in Q^N_{\vec k}\cap \Omega$ si ha
 \[
-  \Abs{D\phi(\vec x) - D\phi(\vec x')} \le \frac{\eps}{\lambda \sqrt n},
+  \Abs{D\phi(\vec x) - D\phi(\vec x')} \le \frac{\eps}{L \sqrt n},
   \qquad
   \abs{\det D\phi(\vec x) - \det D\phi(\vec x')} \le \eps.
 \]
-Per ogni cubetto $Q^N_{\vec k} \subset \Omega_m$ sia $\vec x^N_{\vec k} \defeq 2^{-N}\vec k$ 
+Per ogni cubetto $Q^N_{\vec k} \subset \Omega_M$ sia $\vec x^N_{\vec k} \defeq 2^{-N}\vec k$ 
 il vertice del cubetto e sia $M^N_{\vec k} \defeq D\phi(\vec x^N_{\vec k})$.
 Allora sono soddisfatte le condizioni per applicare il passo precedente, e si 
 ottiene 
@@ -1096,7 +1088,7 @@ $
 $,
 possiamo riscrivere le disuguaglianze precedenti nella forma
 \[
-\abs{\abs{\phi(Q^N_{\vec k})} - 2^{-Nn} \abs{\det M^N_{\vec k}}}
+\abs{\rule{0pt}{1.1em}\abs{\phi(Q^N_{\vec k})} - 2^{-Nn} \abs{\det M^N_{\vec k}}}
 \le (2n\eps + o(\eps))\cdot 2^{-Nm} \mu.
 \]
 Inoltre, visto che
@@ -1109,7 +1101,7 @@ Inoltre, visto che
 otteniamo infine 
 \[
 \abs{\abs{\phi(Q^N_{\vec k})} - \int_{Q^N_{\vec k}} \abs{\det D\phi}}
-= \abs{\abs{\phi(Q^N_{\vec k})} - 2^{-Nn} \abs{\det D\phi}}
+= \abs{\rule{0pt}{1.1em}\abs{\phi(Q^N_{\vec k})} - 2^{-Nn} \abs{\det D\phi}}
 \le (2n\eps + o(\eps))\cdot 2^{-Nm} \mu + 2^{-Nn} \eps.
 \]
 Visto che $\phi$ è iniettiva su $\Omega_M\subset \Omega$, 

@@ -449,6 +449,7 @@ e passando al limite nei troncamenti.
 \end{proof}
 
 \begin{theorem}[integrabilità funzioni continue]
+  \label{th:continua_integrabile}
 Sia $A\subset \RR^n$ un insieme chiuso PJ-misurabile e $f\colon A \to \RR$ una funzione 
 continua. Allora $f$ è localmente R-integrabile. 
 Se inoltre $\abs{A}<+\infty$ e $f$ 
@@ -580,7 +581,7 @@ Sia $\Omega$ un aperto di $\RR^n$ e sia $f\in C^1(\Omega,\RR)$.
 Se $\vec x,\vec y \in E$ e $[\vec x,\vec y]$ (il segmento che congiunge 
 $\vec x$ e $\vec y$) è contenuto in $\Omega$, allora si ha
 \[
-  \abs{f(\vec x) - f(\vec y)} \le \sup_{\vec z \in [\vec x,\vec y]} \Abs{Df(\vec z)}{\vec x - \vec y}.
+  \abs{f(\vec x) - f(\vec y)} \le \sup_{\vec z \in [\vec x,\vec y]} \Abs{Df(\vec z)}\cdot\abs{\vec x - \vec y}.
 \]
 \end{lemma}
 \begin{proof}
@@ -591,7 +592,7 @@ Allora $\phi$ è di classe $C^1$ e si ha
 &= \abs{\phi(1) - \phi(0)}
 = \abs{\int_0^1 \phi'(t)\, dt}\\
 & \le \int_0^1 \abs{Df(\vec y + t(\vec x - \vec y))(\vec x - \vec y)}\, dt \\
-& \le \sup_{\vec z \in [\vec x,\vec y]} \Abs{Df(\vec z)}{\vec x - \vec y}.
+& \le \sup_{\vec z \in [\vec x,\vec y]} \Abs{Df(\vec z)}\cdot \abs{\vec x - \vec y}.
 \end{align*}
 \end{proof}
 
@@ -616,7 +617,7 @@ la funzione distanza da $\partial \Omega$ è continua e positiva su $K$
 dunque ha un minimo positivo per il teorema di Weiestrass).
 Sia $K_\delta = \ENCLOSE{\vec z\in \RR^n\colon \dist(\vec z, K) \le \delta}$.
 Possiamo definire $M = \max\ENCLOSE{\abs{f(\vec x)}\colon x \in K_{\delta}}$
-e $\lambda = \max\ENCLOSE{\norm{Df(\vec x)}\colon \vec x \in K_{\delta}}$,
+e $\lambda = \max\ENCLOSE{\abs{Df(\vec x)}\colon \vec x \in K_{\delta}}$,
 in quanto $K_\delta$ è compatto e sia $\abs{f}$ che $\abs{Df}$ sono continue.
 
 Ora se $\vec x,\vec y \in K$ e $\abs{\vec x - \vec y} < \delta$
@@ -658,7 +659,7 @@ Per $A\subset \RR^n$ definiamo il diametro di $A$ come
 E' facile verificare che se $\phi$ è $L$-lipschitziana allora
 $\diam \phi(A) \le L \diam A$ per ogni $A\subset \RR^n$.
 Consideriamo un cubetto diadico $Q^N_{\vec k}$ che tocca $E$.
-Il diametro di $Q_N_{\vec k}$ è $\sqrt n \cdot 2^{-N}$ e dunque 
+Il diametro di $Q^N_{\vec k}$ è $\sqrt n \cdot 2^{-N}$ e dunque 
 il diametro di $\phi(Q^N_{\vec k}\cap E)$ è al più $\sqrt n L \cdot 2^{-N}$.
 Significa che $\phi(Q^N_{\vec k}\cap E)$ è contenuto 
 in un cubo di lato $\sqrt n L \cdot 2^{-N}$ 
@@ -678,11 +679,14 @@ Passando al limite per $N\to +\infty$ si ottiene il risultato voluto.
 \label{lm:misurabile_C1}
 Sia $\Omega$ un aperto di $\RR^n$ e sia $\phi\in C^1(\Omega,\RR^n)$
 tale che $\det \phi(\vec x) \neq 0$ per ogni $\vec x \in \Omega$.
-Allora se $E\Subset \Omega$ 
+Allora $\phi(\Omega)$ è un aperto di $\RR^n$ e 
+se $E\Subset \Omega$ 
 (significa che $\bar E$ è compatto e contenuto in $\Omega$)
-si ha $\partial (\phi(E)) \subset \phi(\partial E)$ e dunque 
-se $E$ è PJ-misurabile anche $\phi(E)$ è PJ-misurabile.
+si ha $\phi(E)\Subset \phi(\Omega)$, 
+e $\partial (\phi(E)) \subset \phi(\partial E)$. 
+Se, inoltre, $E$ è PJ-misurabile anche $\phi(E)$ è PJ-misurabile.
 \end{lemma}
+%
 \begin{proof}
 Per il teorema di invertibilità locale 
 se $\vec x \in \Omega$ essendo $\det D\phi(\vec x) \neq 0$ esiste un intorno $U$ di $\vec x$
@@ -895,23 +899,22 @@ dall'osservazione 2 si ottiene che è verificata anche per $M$ e dunque per $L$.
 
 \begin{theorem}[formula dell'area]
   \label{th:formula-area}
-Sia $\Omega\subset \RR^n$ un aperto, 
-$\phi\colon \bar \Omega \to \RR^n$ una funzione di 
-classe $C^1$  
-tale che $\phi$ è iniettiva su $\Omega$ 
-e $\det D \phi(\vec x)\neq 0$ per ogni $\vec x\in \Omega$.
+Sia $\Omega$ un aperto di $\RR^n$, 
+$\phi\colon \Omega \to \RR^n$ una funzione di 
+classe $C^1$, iniettiva, 
+e tale che $\det D \phi(\vec x)\neq 0$ per ogni $\vec x\in \Omega$.
 
-Allora per ogni $E\subset \Omega$ limitato 
-e PJ-misurabile si ha
+Allora per ogni $E\Subset \Omega$,
+$E$ PJ-misurabile si ha
 che $\phi(E)$ è PJ-misurabile e 
-\[
+\begin{equation}\label{eq:formula-area}
   \abs{\phi(E)} 
     = \int_{E} \abs{\det D\phi}.
-\]
+\end{equation}
 \end{theorem}
 
 \begin{proof}
-\emph{Passo 1: misurabilità.} 
+\emph{Passo 1 (misurabilità).} 
 Il lemma~\ref{lm:misurabile_C1} ci dice che $\phi(E)$ è PJ-misurabile.
 
 \begin{figure}
@@ -960,17 +963,20 @@ e dunque
 $\vec z\not \in (\eps,1-\eps)^n$, 
 contraddicendo $\vec z \in [\vec q, \vec y] \subset (\eps,1-\eps)^n$.
 
-\emph{Conclusione.}
+\emph{Passo 3: formula dell'area.}
 Sia $\eps>0$ fissato.
 Sia $A$ un aperto tale che  $E \Subset A \Subset \Omega$.
 Dato $N\in \NN$ definiamo $E^N$ l'unione dei cubetti 
 diadici $Q^N_{\vec k}$ che intersecano $E$ 
 e $E_N$ l'unione dei cubetti diadici $Q^N_{\vec k}$ che sono contenuti in $E$.
+Sia $L = \max_{\vec x \in \bar A} \Abs{D\phi(\vec x)}$.
 Affermiamo che è possibile scegliere $N$ sufficientemente grande 
 affinché:
 \begin{gather}
   \label{eq:shme1}
   E^N \subset A,\\
+  \label{eq:shme3}
+  0\le \abs{E \setminus E_N} \le \frac{\eps}{(\sqrt n L)^n},\\
   \label{eq:shme2}
   \abs{\vec x - \vec x'}\le \sqrt{n}2^{-N} \implies \Abs{(D\phi(\vec x))^{-1} D\phi(\vec x') - I} \le \frac{\eps}{\sqrt{n}}.
 \end{gather}
@@ -1000,14 +1006,16 @@ e dunque, per la condizione~\eqref{eq:shme2},
 Applicando il lemma~\ref{lm:disuguaglianza_lagrange} alla funzione $\psi(x)-x$ si ottiene che
 \[
 \abs{\psi(\vec x) - \vec x} 
-= \abs{(\psi(\vec x) - \vec x)-(\psi(0)-0)}\le \eps \qquad \forall \vec x \in [0,1]^n.
+= \abs{(\psi(\vec x) - \vec x)-(\psi(0)-0)}
+\le \frac{\eps}{\sqrt n} \abs{\vec x}
+\le \eps \qquad \forall \vec x \in [0,1]^n.
 \]
 Il passo precedente ci dice allora che 
 \[
    (1-\eps)^n \le \abs{\psi([0,1]^n)} \le (1+\eps)^n.
 \]
 Visto che, a meno di una traslazione,
-$\phi(Q^N_{\vec k})$ coincide con $2^{-N} D\phi(2^{-N}\vec k) \psi([0,1]^n)$,
+$\phi(Q^N_{\vec k})$ coincide con $2^{-N} D\phi(2^{-N}\vec k) [\psi([0,1]^n)]$,
 per il teorema~\ref{th:geometria_determinante} si ottiene
 $\abs{\phi(Q^N_{\vec k})} = 2^{-nN} \abs{\det D\phi(2^{-N}\vec k)} \cdot \abs{\psi([0,1]^n)}$
 e dunque
@@ -1016,10 +1024,103 @@ e dunque
   \le \frac{\abs{\phi(Q^N_{\vec k})}}{\abs{Q^N_{\vec k}}\cdot \abs{\det D\phi(2^{-N}\vec k)}}
   \le (1+\eps)^n.
 \]
-Dunque 
-\begin{align*}
-%%%
-\end{align*}
+Visto che 
+\[
+  \inf_{Q^N_{\vec k}} \abs{\det D\phi} 
+    \le \abs{\det D\phi(2^{-N}\vec k)} 
+    \le \sup_{Q^N_{\vec k}} \abs{\det D\phi}
+\]
+si ottiene 
+\[
+  (1-\eps)^n S_N(\abs{\det D\phi})
+  \le \sum_{Q^N_{\vec k}\subset E} \abs{\phi(Q^N_{\vec k})}
+  \le (1+\eps)^n S^N(\abs{\det D\phi})
+\]
+e, grazie all'ipotesi~\eqref{eq:shme3}, si ha 
+$0\le \abs{\phi(E\setminus E_N)} \le \eps$,
+e dunque
+\[
+  \abs{\phi(E)} - \eps 
+  \le \abs{E_N} 
+  = \sum_{Q^N_{\vec k}\subset E} \abs{\phi(Q^N_{\vec k})} 
+  \le \abs{\phi(E)}.
+\]
+Allora
+\[
+(1-\eps)^n S_N(\abs{\det D\phi}) 
+\le \abs{\phi(E)} 
+\le \eps + (1+\eps)^n S^N(\abs{\det D\phi})
+\]
+passando al limite per $N\to +\infty$ e poi per $\eps\to 0^+$, 
+si ottiene
+\[
+  S_*(\abs{\det D\phi}) \le \abs{\phi(E)} \le S^*(\abs{\det D\phi}).
+\]
+Ma $\abs{\det D\phi}$ è Riemann-integrabile su $E$ 
+grazie al teorema~\ref{th:continua_integrabile} e quindi
+si ottiene~\eqref{eq:formula-area}.
+\end{proof}
+
+\begin{theorem}[formula del cambio di variabile]
+\label{th:cambio_variabile}
+Sia $\Omega$ un aperto di $\RR^n$, 
+$\phi\colon \Omega \to \RR^n$ una funzione di classe $C^1$, iniettiva, 
+e tale che $\det D \phi(\vec x)\neq 0$ per ogni $\vec x\in \Omega$.
+Sia $E \Subset \Omega$  $PJ$-misurabile e sia $f\colon \phi(E) \to \RR$ una funzione limitata 
+e $R$-integrabile.
+
+Allora $(f\circ \phi)\cdot \abs{\det D\phi}$ è limitata e $R$-integrabile su $E$ 
+e si ha
+\begin{equation}
+  \label{eq:cambio_variabile}
+  \int_{\phi(E)} f (\vec y)\, d\vec y 
+  = \int_E f(\phi(\vec x)) \cdot \abs{\det D\phi(\vec x)}\, d\vec x.
+\end{equation}
+\end{theorem}
+
+\begin{proof}
+
+\emph{Passo 1: supponiamo $f$ sia una funzione caratteristica.}
+  Cioè $f = 1_{F}$ per un qualche $F\Subset \phi(E)$, $F$ PJ-misurabile.
+  Visto che $\det D\phi\neq 0$ e $\phi\colon \Omega\to \phi(\Omega)$ è in
+  vertibile, per il teorema di invertibilità locale sappiamo 
+  che anche la funzione inversa $\phi^{-1}\colon \phi(\Omega)\to \Omega$ è di classe $C^1$.
+  Dunque $E=\phi^{-1}(F)\Subset \Omega$ è PJ-misurabile per il lemma~\ref{lm:lipschitz_C1} 
+  e il lemma~\ref{lm:misura_lipschitz}.
+  Allora per il teorema~\ref{th:formula-area} si ha
+  \[
+  \int f(\vec y)\, d\vec y
+  = \abs{F} = \abs{\phi(E)} = \int 1_E(\vec x) \cdot \abs{\det D\phi(\vec x)}\, d\vec x
+  = \int f(\phi(\vec x)) \cdot \abs{\det D\phi(\vec x)}\, d\vec x.
+  \]
+
+\emph{Passo 2: supponiamo $f$ sia una funzione semplice.}
+Cioè $f$ costante all'interno dei cubetti diadici. 
+Denotiamo con $C^N_{\vec j}$ la parte interna di $Q^N_{\vec j}$ osservando 
+che il bordo di un cubetto ha misura nulla e quindi 
+il valore di $f$ sul bordo del cubetto è irrilevante quando 
+se ne calcola l'integrale.
+Diremo che $f$ è \emph{semplice} se può essere scritta nella forma
+\[
+   f(\vec y) = \sum_{\vec j} \beta_{\vec j} 1_{C^N_{\vec j}}
+\]
+con $\beta_{\vec j}\in \RR$. Assumiamo sempre che $f$ abbia supporto 
+in $\phi(E) \Subset \phi(\Omega)$ cosicché $\beta_{\vec j} \neq 0$ 
+solo per un numero finito di indici $\vec j$.
+
+Allora, per il teorema~\ref{th:formula-area} (formula dell'area), si ha
+\[
+\int_E 1_{C^N}(\phi(\vec x)) \abs{\det D\phi(\vec x)}\, d\vec x
+= \int_{\phi^{-1}(C^N_{\vec j})} \abs{\det D\phi(\vec x)}\, d\vec x
+= \abs{C^N_{\vec j}}.
+\]
+Per la linearità dell'integrale, si ottiene
+\[
+  \int_E f(\phi(\vec x)) \cdot \abs{\det D\phi(\vec x)}\, d\vec x
+  = \sum_{\vec j} \beta_{\vec j} \int_E 1_{C^N_{\vec j}}(\phi(\vec x)) \abs{\det D\phi(\vec x)}\, d\vec x
+  = \sum_{\vec j} \beta_{\vec j} \abs{C^N_{\vec j}}
+  = \int_{\phi(E)} f(\vec y)\, d\vec y.
+\]
 \end{proof}
 
 

@@ -1,0 +1,179 @@
+
+\subsection*{Coordinate polari}
+
+Calcoliamo
+\[
+\iint_{B_R(0)} 1 \, dx\,dy
+\]
+dove $B_R(0)$ è il disco di raggio $R$ centrato nell'origine.
+
+
+Cambio di variabili:
+\[
+\begin{cases}
+x = \rho \cos\theta \\
+y = \rho \sin\theta
+\end{cases}
+\]
+
+Dominio:
+\[
+0 \le \rho \le R,
+\qquad
+0 \le \theta \le 2\pi
+\]
+
+Jacobiano:
+\[
+J_\varphi =
+\begin{vmatrix}
+\cos\theta & -\rho\sin\theta \\
+\sin\theta & \rho\cos\theta
+\end{vmatrix}
+= \rho
+\]
+
+Quindi:
+\[
+dx\,dy = \rho \, d\rho\, d\theta
+\]
+
+L’integrale diventa:
+\[
+\iint_{B_R(0)} 1\, dx\,dy
+=
+\int_0^{2\pi} \int_0^R \rho \, d\rho\, d\theta
+\]
+
+Calcolo:
+\[
+\int_0^R \rho \, d\rho = \frac{R^2}{2}
+\]
+
+\[
+\int_0^{2\pi} d\theta = 2\pi
+\]
+
+Risultato:
+\[
+\iint_{B_R(0)} 1\, dx\,dy
+=
+\frac{R^2}{2} \cdot 2\pi
+=
+\pi R^2
+\]
+
+\section*{Coordinate cilindriche}
+
+\[
+\begin{cases}
+x = \rho \cos\theta \\
+y = \rho \sin\theta \\
+z = z
+\end{cases}
+\]
+
+Jacobiano:
+\[
+J = \rho
+\]
+
+Elemento di volume:
+\[
+dx\,dy\,dz = \rho \, d\rho\, d\theta\, dz
+\]
+
+\section*{Coordinate sferiche}
+
+%\documentclass[tikz,border=5pt]{standalone}
+%\usepackage{amsmath}
+%\usetikzlibrary{arrows.meta}
+
+\begin{figure}
+\begin{tikzpicture}[scale=3, >=Latex]
+% Assi
+\draw[->] (0,0,0) -- (1.2,0,0) node[below] {$x$};
+\draw[->] (0,0,0) -- (0,1.2,0) node[left] {$y$};
+\draw[->] (0,0,0) -- (0,0,1.2) node[left] {$z$};
+
+% Parametri del punto
+\def\r{1}
+\def\theta{40}   % angolo azimutale
+\def\phi{50}     % angolo polare
+
+% Coordinate cartesiane del punto
+\pgfmathsetmacro{\px}{\r*sin(\phi)*cos(\theta)}
+\pgfmathsetmacro{\py}{\r*sin(\phi)*sin(\theta)}
+\pgfmathsetmacro{\pz}{\r*cos(\phi)}
+
+% Punto P
+\coordinate (P) at (\px,\py,\pz);
+
+% Raggio rho
+\draw[thick] (0,0,0) -- (P) node[midway, right] {$\rho$};
+
+% Proiezione sul piano xy
+\coordinate (Q) at (\px,\py,0);
+\draw[dashed] (P) -- (Q);
+\draw[dashed] (0,0,0) -- (Q);
+
+% Angolo theta nel piano xy
+\draw (0.3,0,0) arc[start angle=0, end angle=\theta, radius=0.3];
+\node at (0.45,0.15,0) {$\theta$};
+
+% Angolo phi dal semiasse z
+\draw (0,0,0.4) arc[start angle=90, end angle={90-\phi}, radius=0.4];
+\node at (0.15,0,0.55) {$\varphi$};
+
+% Punto P
+\fill (P) circle (0.5pt);
+\node[right] at (P) {$P(\rho,\theta,\varphi)$};
+
+\end{tikzpicture}
+\end{figure}
+
+\[
+\begin{cases}
+x = \rho \sin\varphi \cos\theta \\
+y = \rho \sin\varphi \sin\theta \\
+z = \rho \cos\varphi
+\end{cases}
+\]
+
+con:
+\[
+\rho \ge 0,
+\qquad
+0 \le \theta \le 2\pi,
+\qquad
+0 \le \varphi \le \pi
+\]
+
+Jacobiano:
+\[
+J = \rho^2 \sin\varphi
+\]
+
+Elemento di volume:
+\[
+dx\,dy\,dz
+=
+\rho^2 \sin\varphi
+\, d\rho\, d\varphi\, d\theta
+\]
+
+\section*{Formula generale di cambio di variabili}
+
+Se $\varphi : U \to \mathbb{R}^n$ è un diffeomorfismo regolare, allora:
+
+\[
+\int_{\varphi(U)}
+f(x)\, dx
+=
+\int_U
+f(\varphi(u))
+\left| \det D\varphi(u) \right|
+\, du
+\]
+
+\end{document}

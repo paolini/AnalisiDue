@@ -569,6 +569,139 @@ $1_E\colon \RR^n\times \RR^m \to \RR$:
 \end{align*}
 \end{proof}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{la formula del cambiamento di variabile}
+
+\begin{lemma}[disuguaglianza di Lagrange]
+  \label{lm:disuguaglianza_lagrange}
+Sia $\Omega$ un aperto di $\RR^n$ e sia $f\in C^1(\Omega,\RR)$.
+Se $\vec x,\vec y \in E$ e $[\vec x,\vec y]$ (il segmento che congiunge 
+$\vec x$ e $\vec y$) è contenuto in $\Omega$, allora si ha
+\[
+  \abs{f(\vec x) - f(\vec y)} \le \sup_{\vec z \in [\vec x,\vec y]} \Abs{Df(\vec z)}{\vec x - \vec y}.
+\]
+\end{lemma}
+\begin{proof}
+Sia $\phi(t) = f(\vec y + t(\vec x - \vec y))$.
+Allora $\phi$ è di classe $C^1$ e si ha
+\begin{align*}
+\abs{f(\vec x) - f(\vec y)}
+&= \abs{\phi(1) - \phi(0)}
+= \abs{\int_0^1 \phi'(t)\, dt}\\
+& \le \int_0^1 \abs{Df(\vec y + t(\vec x - \vec y))(\vec x - \vec y)}\, dt \\
+& \le \sup_{\vec z \in [\vec x,\vec y]} \Abs{Df(\vec z)}{\vec x - \vec y}.
+\end{align*}
+\end{proof}
+
+\begin{lemma}[condizione di lipschitz per le funzioni $C^1$]
+  \label{lm:lipschitz_C1}
+  Sia $\Omega$ un aperto di $\RR^n$ e sia $f\in C^1(\Omega,\RR^m)$.
+  Per ogni compatto $K\subset \Omega$ 
+  la funzione $f$ è lipschitizata su $K$.
+  Ovvero esiste $L$ (dipendente da $K$)
+  tale che
+  per ogni $\vec x,\vec y \in K$ si ha
+  \[
+    \abs{f(\vec x) - f(\vec y)} \le L \abs{\vec x - \vec y}.
+  \]
+\end{lemma}
+%
+\begin{proof}
+Visto che $K$ è compatto esiste $\delta>0$ 
+tale che per ogni $x\in K$ si ha $B_{2\delta}(x)\subset \Omega$
+(è sufficiente osservare che 
+la funzione distanza da $\partial \Omega$ è continua e positiva su $K$
+dunque ha un minimo positivo per il teorema di Weiestrass).
+Sia $K_\delta = \ENCLOSE{\vec z\in \RR^n\colon \dist(\vec z, K) \le \delta}$.
+Possiamo definire $M = \max\ENCLOSE{\abs{f(\vec x)}\colon x \in K_{\delta}}$
+e $\lambda = \max\ENCLOSE{\norm{Df(\vec x)}\colon \vec x \in K_{\delta}}$,
+in quanto $K_\delta$ è compatto e sia $\abs{f}$ che $\abs{Df}$ sono continue.
+
+Ora se $\vec x,\vec y \in K$ e $\abs{\vec x - \vec y} < \delta$
+la palla centrata in $\vec x$ di raggio $\delta$ contiene anche $\vec y$ e dunque
+il segmento $[\vec x, \vec y]$ è contenuto in $K_\delta\subset \Omega$.
+Grazie al lemma~\ref{lm:disuguaglianza_lagrange} si ottiene dunque 
+\[
+  \abs{f(\vec y) - f(\vec x)} \le \lambda \abs{\vec y - \vec x}.
+\]
+
+Se invece $\vec x,\vec y \in K$ e $\abs{\vec x - \vec y} \ge \delta$ allora,
+banalmente,
+\[
+\abs{f(\vec y)-f(\vec x)}
+\le 2 M 
+\le \frac{2M}{\delta}\abs{\vec y - \vec x}.
+\]
+
+Prendendo $L = \max\ENCLOSE{\lambda, \frac{2M}{\delta}}$ 
+si ottiene dunque che $f$ è $L$-lipschitziana 
+su $K$.
+\end{proof}
+
+\begin{lemma}[misura delle immagini lipschitziane]
+  \label{lm:misura_lipschitz}
+Sia $E\subset \RR^n$ ed $\phi\colon E \to \RR^n$ 
+una funzione $L$-lipschitziana.
+Allora 
+\[
+  m^*(f(E)) \le (\sqrt n L)^n m^*(E).
+\]
+(dove $m^*$ è la misura esterna di Peano-Jordan).
+\end{lemma}
+\begin{proof}
+Per $A\subset \RR^n$ definiamo il diametro di $A$ come
+\[
+ \diam A \defeq \sup\{\abs{\vec x - \vec y}\colon \vec x, \vec y \in A\}.
+\]
+E' facile verificare che se $\phi$ è $L$-lipschitziana allora
+$\diam \phi(A) \le L \diam A$ per ogni $A\subset \RR^n$.
+Consideriamo un cubetto diadico $Q^N_{\vec k}$ che tocca $E$.
+Il diametro di $Q_N_{\vec k}$ è $\sqrt n \cdot 2^{-N}$ e dunque 
+il diametro di $\phi(Q^N_{\vec k}\cap E)$ è al più $\sqrt n L \cdot 2^{-N}$.
+Significa che $\phi(Q^N_{\vec k}\cap E)$ è contenuto 
+in un cubo di lato $\sqrt n L \cdot 2^{-N}$ 
+che ha misura $(\sqrt n L)^n \cdot 2^{-nN}$.
+E' immediato verificare che $m^N(A\cup B)\le m^N(A) + m^N(B)$ 
+e quindi $m^*(A\cup B)\le m^*(A) + m^*(B)$.
+Dunque si ottiene:
+\[
+  m^*(\phi(E)) \le \sum_{Q^N_{\vec k}\cap E \neq \emptyset} m^*(\phi(Q^N_{\vec k}\cap E))
+  \le \sum_{Q^N_{\vec k}\cap E \neq \emptyset} (\sqrt n L)^n \cdot 2^{-nN}
+  = (\sqrt n L)^n m^N(E).
+\]
+Passando al limite per $N\to +\infty$ si ottiene il risultato voluto.
+\end{proof}
+
+\begin{lemma}[misurabilità delle immagini $C^1$]
+\label{lm:misurabile_C1}
+Sia $\Omega$ un aperto di $\RR^n$ e sia $\phi\in C^1(\Omega,\RR^n)$
+tale che $\det \phi(\vec x) \neq 0$ per ogni $\vec x \in \Omega$.
+Allora se $E\Subset \Omega$ 
+(significa che $\bar E$ è compatto e contenuto in $\Omega$)
+si ha $\partial (\phi(E)) \subset \phi(\partial E)$ e dunque 
+se $E$ è PJ-misurabile anche $\phi(E)$ è PJ-misurabile.
+\end{lemma}
+\begin{proof}
+Per il teorema di invertibilità locale 
+se $\vec x \in \Omega$ essendo $\det D\phi(\vec x) \neq 0$ esiste un intorno $U$ di $\vec x$
+tale che $\phi$ è un diffeomorfismo da $U$ a $\phi(U)$.
+In particolare $\phi(U)$ è un intorno di $\phi(\vec x)$ 
+e dunque $\phi$ manda punti interni ad $E$ 
+in punti interni a $\phi(E)$.
+D'altra parte $\partial(\phi(E))\subset \overline{\phi(E)} \subset \phi(\bar E)$
+in quanto $\bar E$ è compatto e $\phi$, essendo continua, manda compatti in compatti.
+Significa che i punti di $\partial(\phi(E))$ 
+possono solo provenire da $\partial E$ 
+e dunque $\partial(\phi(E)) \subset \phi(\partial E)$.
+
+Se $E$ è PJ-misurabile allora $\partial E$ ha misura nulla.
+Per il lemma~\ref{lm:lipschitz_C1} la funzione $\phi$ è lipschitziana su $\bar E$
+e per il lemma~\ref{lm:misura_lipschitz} $\phi(\partial E)$ ha misura nulla.
+Significa che $\phi(E)$ è PJ-misurabile.
+\end{proof}
+
 Una \emph{matrice di permutazione} è una matrice che rappresenta 
 una applicazione lineare $L\colon \RR^n\to \RR^n$ che permuta 
 gli elementi della base canonica: 
@@ -583,7 +716,6 @@ come prodotto di matrici di permutazione e mosse elementari.
 Visto che le matrici di permutazione hanno determinante $\pm 1$
 e le mosse elementari hanno sempre determinante $1$, 
 tutte le matrici elementari hanno determinante $\pm 1$.
-
 
 \begin{definition}[matrice elementare]
 Dati $k,j\in \{1,\ldots,n\}$ con $k\neq j$ e $\alpha \in \RR$
@@ -761,362 +893,133 @@ Visto che abbiamo già dimostrato che l'equazione~\eqref{eq:geometria_determinan
 dall'osservazione 2 si ottiene che è verificata anche per $M$ e dunque per $L$.
 \end{proof}
 
-% \begin{theorem}[formula dell'area]
-% Sia $\phi\colon [0,1]^n \to \RR^n$
-% una funzione iniettiva, di classe $C^1$, tale che $\det D\phi(x)\neq 0$ per ogni $x\in [0,1]^n$.
-% 
-% Allora, per ogni insieme PJ-misurabile $E\subset [0,1]^n$, $\phi(E)$ è misurabile e si ha
-% \begin{equation}\label{eq:area}
-%  \abs{\phi(E)} = \int_E \abs{\det D\phi}.
-% \end{equation}
-% \end{theorem}
- 
-\begin{lemma}[misura delle immagini Lipschitziane]
-  \label{lm:misura-immagine-lipschitz}
-Sia $E \subset \RR^n$ e sia $\phi\colon E \to \RR^m$ una 
-funzione $L$-lipschitziana, ovvero tale che
-\[
-  \abs{\phi(\vec x) - \phi(\vec y)} \le L \abs{\vec x - \vec y}, 
-  \qquad \forall \vec x,\vec y \in E.
-\]
-Allora 
-\begin{equation}\label{eq:misura-immagine-lipschitz}
-   m^*(\phi(E)) \le (L\sqrt n + 1)^m \cdot m^*(E).
-\end{equation}
-
-Se $\Omega\subset \RR^n$ è un aperto limitato PJ-misurabile,
-se $\phi \colon \bar \Omega\subset \RR^n \to \RR^n$ 
-è una funzione $L$-lipschitziana, 
-che ristretta ad $\Omega$ è di classe $C^1$ e 
-$\det D\phi(\vec x)\neq 0$ per ogni $\vec x\in \Omega$,  
-allora $\phi(\Omega)$ è PJ-misurabile.
-Inoltre si $\partial \phi(\Omega) \subset \phi(\partial \Omega)$
-sono misurabili di misura nulla
-e $\overline{\phi(\Omega)} = \phi(\bar \Omega)$ è misurabile.
-\end{lemma}
-%
-\begin{proof}
-\emph{Prima parte.}
-Definiamo il \emph{diametro} di un insieme $A\subset \RR^n$ come
-\[
-  \diam(A) \defeq \sup_{\vec x,\vec y\in A} \abs{\vec x - \vec y}.
-\]
-Chiaramente si ha $\diam(\phi(A)) \le L \cdot \diam(A)$
-e dunque se $Q^N_{\vec k}$ è un cubetto di lato $2^{-N}$
-il suo diametro è $2^{-N}\sqrt n$ e quindi 
-il diametro di $F^N_{\vec k} \defeq \phi(Q^N_{\vec k}\cap \Omega)$ 
-è al massimo $L \cdot 2^{-N}\sqrt n$. 
-Dunque $F^N_{\vec k}$ 
-è contenuto in un cubo allineato agli assi cartesiani, di lato 
-$L\sqrt n \cdot 2^{-N}$ e tale cubo può essere ricoperto 
-con non più di $(L\sqrt n + 1)^m$ cubetti 
-di lato $2^{-N}$, da cui
-\[
- m^N(\phi(E)) \le 2^m (L\sqrt n + 1)^m \cdot m^N(E).
-\]
-Passando al limite per $N\to +\infty$ si ottiene~\eqref{eq:misura-immagine-lipschitz}.
-
-\emph{Seconda parte.}
-Visto che $\bar \Omega$ è compatto e $\phi$ è continua, 
-sappiamo che $\phi(\bar \Omega)$ è compatto e dunque 
-$\partial \phi(\Omega)\subset \phi(\bar \Omega)$.
-Ma $\phi\in C^1(\Omega)$ e $\det D\phi(\vec x)\neq 0$,
-dunque per il teorema di invertibilità locale
-possiamo affermare che ogni punto $\vec x\in \Omega$ ha un intorno
-che viene mandato, tramite $\phi$, in un intorno del punto di arrivo 
-$\phi(\vec x)$.
-Questo significa che punti interni a $\Omega$ vengono mandati 
-in punti interni a $\phi(\Omega)$
-e dunque che la frontiera di $\phi(\Omega)$ è contenuta nell'immagine 
-della frontiera di $\Omega$:
-\[
-  \partial \phi(\Omega) 
-    \subset \overline{\phi(\Omega)} \setminus \phi(\Omega)
-    \subset \phi(\bar \Omega) \setminus \phi(\Omega) 
-    \subset \phi(\partial \Omega).
-\]
-Per continuità sappiamo che $\phi(\bar \Omega) \subset \overline{\phi(\Omega)}$ 
-e per compattezza sappiamo che $\overline {\phi(\bar \Omega)} = \phi(\bar \Omega)$.
-Dunque $\phi(\bar \Omega) = \overline{\phi(\Omega)}$. 
-
-Per concludere che $\phi(\Omega)$ e $\overline{\phi(\Omega)}$ sono misurabili basta dimostrare che 
-$\abs{\partial (\phi(\Omega))}=0$ cioè che $m^*(\partial \phi(\Omega))= 0$.
-Grazie all'osservazione precedente, ci basta dunque dimostrare
-che $m^*(\phi(\partial \Omega)) = 0$.
-E questo è vero in quanto \eqref{eq:misura-immagine-lipschitz}
-ci dice che
-\[
- 0 \le m^*(\phi(\partial \Omega)) 
- \le (L\sqrt n+1)^n \cdot m^*(\partial \Omega) = 0
-\]
-se $\Omega$ è PJ-misurabile e $\phi$ è $L$-lipschitziana.
-\end{proof}
-
-
 \begin{theorem}[formula dell'area]
   \label{th:formula-area}
-Sia $\Omega\subset \RR^n$ un aperto convesso limitato PJ-misurabile.
-Sia $\phi\colon \bar \Omega \to \RR^n$ una funzione di 
-classe $C^1$ (significa che $\phi$ può essere estesa ad una funzione $C^1$ su 
-un aperto contenente $\bar \Omega$) 
+Sia $\Omega\subset \RR^n$ un aperto, 
+$\phi\colon \bar \Omega \to \RR^n$ una funzione di 
+classe $C^1$  
 tale che $\phi$ è iniettiva su $\Omega$ 
 e $\det D \phi(\vec x)\neq 0$ per ogni $\vec x\in \Omega$.
 
-Allora $\phi(\Omega)$ è PJ-misurabile e si ha 
+Allora per ogni $E\subset \Omega$ limitato 
+e PJ-misurabile si ha
+che $\phi(E)$ è PJ-misurabile e 
 \[
-  \abs{\phi(\Omega)} 
-    = \int_{\Omega} \abs{\det D\phi}.
+  \abs{\phi(E)} 
+    = \int_{E} \abs{\det D\phi}.
 \]
 \end{theorem}
 
 \begin{proof}
-\emph{Passo 1: dimostriamo che $\phi(\Omega)$ è misurabile.}
-Visto che $\phi$ è di classe $\C^1$
-sul compatto $\bar \Omega$, 
-esiste $L\in \RR$ tale che $\abs{D\phi(\vec x)} \le L$ per ogni $\vec x \in \bar \Omega$.
-Essendo $\Omega$ convesso 
-possiamo applicare il teorema~\ref{th:lagrange} di Lagrange 
-per ottenere la condizione di Lipschitz:
-\[
-\abs{\phi(\vec x) - \phi(\vec x')} \le L \abs{\vec x - \vec x'}, \qquad \forall \vec x,\vec x' \in \Omega.
-\]
-Per continuità la condizione si estende a tutte le coppie $\vec x, \vec x' \in \bar \Omega$.
-Possiamo quindi applicare il Lemma~\ref{lm:misura-immagine-lipschitz} 
-per ottenere la misurabilità di $\phi(\Omega)$ e di $\phi(\bar \Omega)$.
-Lo stesso lemma ci dice anche che $\partial \phi(\Omega) \subset \phi(\partial \Omega)$.
-% \[
-%   m^*(\partial (\phi(\Omega)))
-%   \le (L\sqrt n + 1)^n \cdot m^*(\partial \Omega).
-% \]
-% Visto che $\Omega$ è PJ-misurabile, si ha $m^*(\partial \Omega)=0$,
-% dunque anche $\partial \phi(\Omega)$ è misurabile 
-% di misura nulla e, di conseguenza, $\phi(\Omega)$ è misurabile.
-% Per continuità di $\phi$ abbiamo $\phi(\bar \Omega) \subset \overline{\phi(\Omega)}$
-% e per compattezza di $\bar \Omega$ si ha $\overline{\phi(\bar \Omega)} = \phi(\bar \Omega)$,
-% dunque $\overline{\phi(\Omega)} = \phi(\bar \Omega)$.
-% Essendo $\bar \Omega$ compatto anche $\phi(\bar \Omega)$ è compatto, 
-% dunque $\overline{\phi(\Omega)} \subset \phi(\bar \Omega)$
-% Ovviamente anche $\phi(\bar \Omega) = \overline{\phi(\Omega)}$ è misurabile.
+\emph{Passo 1: misurabilità.} 
+Il lemma~\ref{lm:misurabile_C1} ci dice che $\phi(E)$ è PJ-misurabile.
 
 \begin{figure}
 \centering \includegraphics[height=2cm]{cubo-interno.png}
 \end{figure}
 \emph{Passo 2 (lemma del cubo interno/esterno): 
-se $\Omega = (0,1)^n$ è il cubo unitario  
+se $E = [0,1]^n \subset \Omega$  
 ed esiste $\eps\in(0,\frac 1 4)$ tale che 
 \[
-  \abs{\phi(\vec x)-\vec x} \le \eps, \qquad \forall \vec x \in \bar \Omega,
+  \abs{\phi(\vec x)-\vec x} \le \eps, \qquad \forall \vec x \in E,
 \]
 allora }
 \[
   (1-2\eps)^n
-  \le \abs{\phi(\Omega)}
+  \le \abs{\phi(E)}
   \le (1+2\eps)^n.
 \]
 Chiaramente 
 $
-    \phi(\Omega) \subset [-\eps,1+\eps]^n
+    \phi(E) \subset [-\eps,1+\eps]^n
 $
-perché ogni punto di $\Omega$ viene spostato al massimo di $\eps$. 
+perché ogni punto di $E$ viene spostato al massimo di $\eps$. 
 Quindi si ottiene, per monotonia della misura,
-$\abs{\phi(\Omega)} \le (1+2\eps)^n$.
+$\abs{\phi(E)} \le (1+2\eps)^n$.
 Per ottenere l'altra disuguaglianza  
-$\abs{\phi(\Omega)} \ge (1-2\eps)^n$
+$\abs{\phi(E)} \ge (1-2\eps)^n$
 basterà dimostrare che vale anche 
-$\phi(\Omega) \supset (\eps,1-\eps)^n$.
+l'inclusione opposta
+$\phi(E) \supset (\eps,1-\eps)^n$.
 
-Supponiamo per assurdo che esista $\vec y \in (\eps,1-\eps)^n \setminus \phi(\Omega)$.
+Supponiamo per assurdo che esista $\vec y \in (\eps,1-\eps)^n \setminus \phi(E)$.
 Consideriamo il punto $\vec p=(\frac 12, \dots, \frac 12)$ centro 
-del cubo $\Omega$ e sia $\vec q=\phi(\vec p)$ la sua immagine. 
+del cubo $E$ e sia $\vec q=\phi(\vec p)$ la sua immagine. 
 Visto che $\abs{\vec q-\vec p} = \abs{\phi(\vec p)-\vec p} \le \eps$ 
 e $\eps \le \frac 1 4$ possiamo garantire che
 $\vec q \in (\eps,1-\eps)^n$.
 Dunque l'intero segmento $[\vec q,\vec y]$ è contenuto 
 in $(\eps,1-\eps)^n$ essendo quest'ultimo un convesso.
-Visto che $\vec q\in \phi(\Omega)$ mentre $\vec y \notin \phi(\Omega)$,
-deve esistere un punto $\vec z\in [\vec q, \vec y]\cap \partial \phi(\Omega)$
+Visto che $\vec q\in \phi(E)$ mentre $\vec y \notin \phi(E)$,
+deve esistere un punto $\vec z\in [\vec q, \vec y]\cap \partial \phi(E)$
 (esercizio~\ref{ex:punto-di-frontiera}).
-Ma abbiamo già mostrato (Passo 1) che $\partial \phi(\Omega) \subset \phi(\partial \Omega)$
-dunque $\vec z=\phi(\vec x)$ con $\vec x \in \partial \Omega$. 
+Ma abbiamo già mostrato (Passo 1) che $\partial \phi(E) \subset \phi(\partial E)$
+dunque $\vec z=\phi(\vec x)$ con $\vec x \in \partial E$. 
 Ma allora $\abs{\vec z-\vec x} = \abs{\phi(\vec x)- \vec x} \le \eps$ 
 e dunque
 $\vec z\not \in (\eps,1-\eps)^n$, 
 contraddicendo $\vec z \in [\vec q, \vec y] \subset (\eps,1-\eps)^n$.
 
-\emph{Passo 3: se $\Omega=(0,1)^n$ ed esiste $\eps>0$ tale che 
-\[
-  \Abs{ D\phi(\vec x) - I} \le \frac{\eps}{\sqrt n} \qquad \forall \vec x \in \bar \Omega,
-\]
-(dove $I$ è la matrice identità)
-allora
-\[
- (1-2\eps)^n \le \abs{\phi(\Omega)} \le (1+2\eps)^n.
-\]
-}
-Se consideriamo la funzione $\psi(x) = \phi(x) - x$ osserviamo che $\psi(0)=\phi(0)$ e
-\[
-\Abs{D\psi(\vec x)} = \Abs{D\phi(\vec x) -I} \le \frac{\eps}{\sqrt n}.
-\]
-Applicando la disuguaglianza di Lagrange (teorema~\ref{th:lagrange}) si ottiene dunque:
-\[
-\abs{\phi(x) - \phi(0) - x} = \abs{\psi(x)-\psi(0)} \le \frac \eps {\sqrt n} \abs{x} \le \eps
-\]
-e la conclusione segue dal passo precedente applicato alla funzione $\phi(\vec x) - \phi(0)$.
+\emph{Conclusione.}
+Sia $\eps>0$ fissato.
+Sia $A$ un aperto tale che  $E \Subset A \Subset \Omega$.
+Dato $N\in \NN$ definiamo $E^N$ l'unione dei cubetti 
+diadici $Q^N_{\vec k}$ che intersecano $E$ 
+e $E_N$ l'unione dei cubetti diadici $Q^N_{\vec k}$ che sono contenuti in $E$.
+Affermiamo che è possibile scegliere $N$ sufficientemente grande 
+affinché:
+\begin{gather}
+  \label{eq:shme1}
+  E^N \subset A,\\
+  \label{eq:shme2}
+  \abs{\vec x - \vec x'}\le \sqrt{n}2^{-N} \implies \Abs{(D\phi(\vec x))^{-1} D\phi(\vec x') - I} \le \frac{\eps}{\sqrt{n}}.
+\end{gather}
+La condizione~\eqref{eq:shme2} si ottiene 
+grazie all'uniforme continuità di $D\phi$ su $\bar A$.
 
-\emph{Passo 4: supponiamo $\Omega=(0,1)^n$ e che esista una matrice invertibile $M$ e un $\eps>0$ tali che
+Fissato un cubetto $Q^N_{\vec k}\subset E$ 
+consideriamo la traformazione $\psi$ che prende 
+il cubo $[0,1]^n$ lo manda tramite un riscalamento in $Q^N_{\vec k}$,
+applica $\phi$ e poi riporta l'immagine in $[0,1]^n$
+tramite l'inversa di una mappa affine che approssima $\phi$
+e un riscalamento inverso.
+Precisamente $\psi\colon[0,1]^n \to \RR^n$ è definita da
 \[
-  \Abs{D\phi(\vec x) - M} \le \frac{\eps}{\Abs{M^{-1}} \sqrt n}, \qquad \forall \vec x \in \bar \Omega.
+\psi(\vec x) 
+  = 2^N D\phi(2^{-N}\vec k)^{-1}[\phi(2^{-N}(\vec x + \vec k)) - \phi(2^{-N}\vec k)].
 \]
-allora
-\begin{equation}\label{eq:475681}
-(1-2\eps)^n \le \frac{\abs{\phi(\Omega)}}{\abs{\det M}} \le (1+2\eps)^n.
-\end{equation}
-}
-
-Consideriamo la funzione $\psi(\vec x) = M^{-1} \phi(\vec x)$ per la quale si ha  
+Un calcolo mostra che 
 \[
-  \Abs{D\psi(\vec x)-I} 
-  = \Abs{M^{-1} (D\phi(\vec x)-M)} 
-  \le \Abs{M^{-1}} \cdot \Abs{D\phi(\vec x)-M}
-  \le \frac{\eps}{\sqrt n}.
+\psi(0) = 0, \qquad
+D\psi(\vec x) = D\phi(2^{-N}\vec k)^{-1} D\phi(2^{-N}(\vec x + \vec k))
 \]
-Applicando il passo precedente alla funzione $\psi$ otteniamo 
+e dunque, per la condizione~\eqref{eq:shme2},
 \[
-(1-2\eps)^n \le \abs{\psi(\Omega)} \le (1+2\eps)^n.
+\Abs{D\psi(\vec x) - I} \le \frac{\eps}{\sqrt{n}}.
 \]
-Ricordando il Teorema \ref{th:geometria_determinante} si ha
+Applicando il lemma~\ref{lm:disuguaglianza_lagrange} alla funzione $\psi(x)-x$ si ottiene che
 \[
-  \abs{\psi(\Omega)} = \abs{M^{-1}(\phi(\Omega))}
-  = \abs{\det M^{-1}} \cdot \abs{\phi(\Omega)}
-  = \frac{\abs{\phi(\Omega)}}{\abs{\det M}}
+\abs{\psi(\vec x) - \vec x} 
+= \abs{(\psi(\vec x) - \vec x)-(\psi(0)-0)}\le \eps \qquad \forall \vec x \in [0,1]^n.
 \]
-da cui si ottiene~\eqref{eq:475681}.
-
-\emph{Passo 5: se $Q^N_{\vec k}\subset \bar \Omega$ è un cubetto di lato $2^{-N}$
-e se esistono una matrice invertibile $M$ ed $\eps>0$ tali che per ogni $\vec x \in Q^N_{\vec k}$
+Il passo precedente ci dice allora che 
 \[
-  \Abs{D\phi(x)-M} \le \frac{\eps}{\Abs{M^{-1}} \sqrt n},
+   (1-\eps)^n \le \abs{\psi([0,1]^n)} \le (1+\eps)^n.
 \]
-allora
+Visto che, a meno di una traslazione,
+$\phi(Q^N_{\vec k})$ coincide con $2^{-N} D\phi(2^{-N}\vec k) \psi([0,1]^n)$,
+per il teorema~\ref{th:geometria_determinante} si ottiene
+$\abs{\phi(Q^N_{\vec k})} = 2^{-nN} \abs{\det D\phi(2^{-N}\vec k)} \cdot \abs{\psi([0,1]^n)}$
+e dunque
 \[
-(1-2\eps)^n \le \frac{\abs{\phi(Q^N_{\vec k})}}{2^{-nN}\abs{\det M}} \le (1+2\eps)^n.
+  (1-\eps)^n 
+  \le \frac{\abs{\phi(Q^N_{\vec k})}}{\abs{Q^N_{\vec k}}\cdot \abs{\det D\phi(2^{-N}\vec k)}}
+  \le (1+\eps)^n.
 \]
-}
-Sia $\vec x^N_{\vec k} = 2^{-N}\vec k$ il vertice del cubetto $Q^N_{\vec k}$.
-Basta considerare la funzione $\psi\colon Q\to \RR^n$ 
-definita da $\psi(\vec x) = 2^N(\phi(\vec x^N_{\vec k} + 2^{-N}\vec x)-\phi(\vec x^N_{\vec k}))$ 
-e osservare che
-\begin{gather*}
-  D\psi(\vec x)
-  = D\phi(\vec x^N_{\vec k} + 2^{-N}\vec x), \qquad \psi(0)=0\\
-%  \int_{Q^N_{\vec k}} \abs{\det M}\, d\vec x
-%  = 2^{nN}\cdot\abs{\det M}, \qquad
-  \abs{\psi(Q)} = 2^{nN} \cdot \abs{\phi(Q^N_{\vec k})}
-\end{gather*}
-cosicché si può applicare il passo precedente alla funzione $\psi$
-per ottenere quanto affermato.
-
-\emph{Passo 6: conclusione.}
-Essendo $\bar \Omega$ compatto e $D\phi$ continua, 
-anche $\abs{\det D\phi}$ è continua e, per il teorema di Weierstrass,
-esistono $L,\mu<+\infty$ tali che per ogni $\vec x \in \bar \Omega$ si ha
-\[
-  \abs{D\phi(\vec x)} \le L,
-  \qquad
-  \abs{\det D\phi(\vec x)} \le \mu.
-\]
-
-Fissiamo $\eps>0$.
-Visto che $\Omega$ è misurabile esiste $M\in \NN$ abbastanza grande in modo che 
-\[
-  m^M(\bar \Omega)-m_M(\Omega) < \frac{\eps}{(\sqrt n L +1)^n + \mu}.
-\]
-Consideriamo il compatto $\Omega_M$ che è l'unione di tutti i cubetti $Q^M_{\vec k}$
-contenuti interamente in $\Omega$ e $\Omega^M$ il compatto unione 
-di tutti i cubetti che intersecano $\partial \Omega$.
-Così $\abs{\Omega^M} = m^M(\bar \Omega)$ e $\abs{\Omega_M} = m_M(\Omega)$.
-
-Per il Lemma~\ref{lm:misura-immagine-lipschitz} si ha 
-\[
- m^*(\phi(\Omega^M \setminus \Omega_M)) 
- \le (L\sqrt n + 1)^n \cdot (m^M(\bar \Omega) - m_M(\Omega))
- \le \eps.
-\]
-D'altra parte anche 
-\[
-\int_{\Omega\setminus \Omega_M} \abs{\det D\phi}
-\le \mu \abs{\Omega\setminus \Omega_M} \le \eps
-\]
-dunque per concludere la dimostrazione basterà mostrare che 
-\begin{equation}\label{eq:39254}
-  \abs{\phi(\Omega_M)} = \int_{\Omega_M} \abs{\det D\phi} 
-\end{equation}
-in quanto 
-\[
-   \abs{\abs{\phi(\Omega)} - \int_{\Omega} \abs{\det D\phi}}
-   \le \abs{\abs{\phi(\Omega_M)} - \int_{\Omega_M} \abs{\det D\phi}} + 2\eps
-\]
-e il risultato seguirebbe immediatamente facendo tendere $\eps\to 0^+$.
-
-Per dimostrare~\eqref{eq:39254} andremo a suddividere i cubetti di lato $2^{-M}$
-che formano $\Omega_M$ in cubetti ancora più piccoli.
-Fissato $\eps>0$,
-per il teorema di Heine-Cantor  
-esiste $N\in \NN$ tale che 
-per ogni $\vec k\in \ZZ^n$ con $Q^N_{\vec k} \subset \Omega_M$ e 
-per ogni $\vec x, \vec x' \in Q^N_{\vec k}\cap \Omega$ si ha
-\[
-  \Abs{D\phi(\vec x) - D\phi(\vec x')} \le \frac{\eps}{L \sqrt n},
-  \qquad
-  \abs{\det D\phi(\vec x) - \det D\phi(\vec x')} \le \eps.
-\]
-Per ogni cubetto $Q^N_{\vec k} \subset \Omega_M$ sia $\vec x^N_{\vec k} \defeq 2^{-N}\vec k$ 
-il vertice del cubetto e sia $M^N_{\vec k} \defeq D\phi(\vec x^N_{\vec k})$.
-Allora sono soddisfatte le condizioni per applicare il passo precedente, e si 
-ottiene 
-\[
-(1-2\eps)^n \le \frac{\abs{\phi(Q^N_{\vec k})}}{2^{-Nn}\abs{\det M^N_{\vec k}}} \le (1+2\eps)^n.
-\]
-Osservando che 
-\[
- 0 < 1-(1-2\eps)^n < (1+2\eps)^n - 1 = 2n\eps + o(\eps) \qquad \text{per $\eps\to 0^+$},
-\]
-e ricordando che
-$
-%\int_{Q^N_{\vec k}} \abs{\det M^N_{\vec k}}
-= 2^{nN} \abs{\det M^N_{\vec k}} \le 2^{nN} \mu
-$,
-possiamo riscrivere le disuguaglianze precedenti nella forma
-\[
-\abs{\rule{0pt}{1.1em}\abs{\phi(Q^N_{\vec k})} - 2^{-Nn} \abs{\det M^N_{\vec k}}}
-\le (2n\eps + o(\eps))\cdot 2^{-Nm} \mu.
-\]
-Inoltre, visto che
-\[
- \abs{\int_{Q^N_{\vec k}} \abs{\det D\phi(\vec x)}\, dx - 
- \int_{Q^N_{\vec k}} \abs{\det M^N_{\vec k}}\, d\vec x}
- \le \int_{Q^N_{\vec k}} \abs{\det D\phi(\vec x) - \det M^N_{\vec k}}\, d\vec x
- \le 2^{-Nn} \eps
-\]
-otteniamo infine 
-\[
-\abs{\abs{\phi(Q^N_{\vec k})} - \int_{Q^N_{\vec k}} \abs{\det D\phi}}
-= \abs{\rule{0pt}{1.1em}\abs{\phi(Q^N_{\vec k})} - 2^{-Nn} \abs{\det D\phi}}
-\le (2n\eps + o(\eps))\cdot 2^{-Nm} \mu + 2^{-Nn} \eps.
-\]
-Visto che $\phi$ è iniettiva su $\Omega_M\subset \Omega$, 
-le parti interne degli insiemi $\phi(Q^N_{\vec k})$ sono a due a due disgiunte 
-dunque, sommando su tutti i cubetti $Q^N_{\vec k}\subset K_0$,
-si ottiene
+Dunque 
 \begin{align*}
-\abs{\abs{\phi(\Omega_M)} - \int_{\Omega_M} \abs{\det D\phi}}
-&=\abs{\sum_{Q^N_{\vec k}\subset \Omega_M}
-  \abs{\phi(Q^N_{\vec k})} - \sum_{Q^N_{\vec k}\subset \Omega_M}\int_{Q^N_{\vec k}} \abs{\det D\phi}} \\
-&\le \sum_{Q^N_{\vec k}\subset \Omega_M} 
-  \abs{\abs{\phi(Q^N_{\vec k})} - \int_{Q^N_{\vec k}} \abs{\det D\phi}}\\
-  &\le (2n\eps + o(\eps))\cdot \mu + \eps.
+%%%
 \end{align*}
-Facendo tendere $\eps\to 0^+$ si ottiene~\eqref{eq:39254}, concludendo la dimostrazione.
 \end{proof}
 
 

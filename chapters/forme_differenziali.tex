@@ -2,10 +2,10 @@
 
 \section{forme differenziali lineari}
 
-Se $f\colon \Omega\subset \RR^n \to \RR$ è una funzione differenziabile il suo 
-differenziale $df \colon \Omega \to \mathcal L (\RR^n, \RR)$ è una forma differenziale lineare
+Se $f\colon A\subset \RR^n \to \RR$ è una funzione differenziabile il suo 
+differenziale $df \colon A \to \mathcal L (\RR^n, \RR)$ è una forma differenziale lineare
 ($1$-forma).
-Si tratta di una funzione che ad ogni punto $x\in \Omega$ associa una forma lineare 
+Si tratta di una funzione che ad ogni punto $x\in A$ associa una forma lineare 
 $df(x)\colon \RR^n \to \RR$ e dunque ad ogni $v\in \RR^n$ associa un numero reale 
 $df(x)[v]$. 
 Se sfruttiamo il prodotto scalare standard su $\RR^n$ 
@@ -17,9 +17,9 @@ Infatti il prodotto scalare su uno spazio vettoriale $V$
 induce un isomorfismo $V \to V^*$, $v \mapsto (w \mapsto v \cdot w)$.
 
 \begin{definition}[forme differenziali lineari]
-    Sia $\Omega\subset \RR^n$ un aperto.
-    Denotiamo con $\Lambda^1(\Omega)$ l'insieme di tutte le funzioni $\omega\colon \Omega \to (\RR^n)^*$
-    che ad ogni punto $x\in \Omega$ associano una forma lineare $\omega(x)\colon \RR^n \to \RR$.
+    Sia $A\subset \RR^n$ un aperto.
+    Denotiamo con $A^1(A)$ l'insieme di tutte le funzioni $\omega\colon A \to (\RR^n)^*$
+    che ad ogni punto $x\in A$ associano una forma lineare $\omega(x)\colon \RR^n \to \RR$.
 \end{definition}
 
 Grazie all'isomorfismo dato dal prodotto scalare sappiamo 
@@ -38,16 +38,16 @@ Possiamo allora osservare che il differenziale $dx_k$
     0 & j\neq k.
   \end{cases}  
 \]
-In effetti per ogni $p\in \Omega$ le applicazioni lineari 
+In effetti per ogni $p\in A$ le applicazioni lineari 
 $dx_1(p), \dots, dx_n(p)$ sono una base di $(\RR^n)^*$. 
-Significa che ogni $\omega \in \Lambda^1(\Omega)$ può essere scritto 
+Significa che ogni $\omega \in \Omega^1(A)$ può essere scritto 
 nella forma 
 \[
    \omega(p) = \xi_1 dx_1 + \xi_2 dx_2 + \dots + \xi_n dx_n.
 \]
 Dunque c'è un isomorfismo $\omega \mapsto \xi$ che mette in 
-corrispondenza le forme differenziali lineari $\omega \in \Lambda^1(\Omega)$ 
-con i campi vettoriali $\xi \colon \Omega\to \RR^n$.
+corrispondenza le forme differenziali lineari $\omega \in A^1(A)$ 
+con i campi vettoriali $\xi \colon A\to \RR^n$.
 In questo isomorfismo:
 \[
   \omega(p)[v] = \xi(p) \cdot v.
@@ -55,7 +55,7 @@ In questo isomorfismo:
 
 \section{integrale di una forma differenziale}
 
-Se $u\colon [a,b]\to \Omega\subset \RR^n$ è una curva regolare e $\omega\in \Lambda^1(\Omega)$ 
+Se $u\colon [a,b]\to A\subset \RR^n$ è una curva regolare e $\omega\in \Omega^1(A)$ 
 è una $1$-forma differenziale, possiamo definire l'integrale della forma differenziale lungo la curva:
 \[
  \int_u \omega \defeq \int_a^b \omega(u(t))[u'(t)]\, dt.
@@ -78,22 +78,22 @@ Dunque la formula del cambio di variabile garantisce l'uguaglianza
 &= \int_a^b \omega(t)[u'(t)]\, dt = \int_u \omega.
 \end{align*}
 
-In generale se $\phi \colon \Omega\subset \RR^m \to \RR^n$ 
-il differenziale $d\phi(x)$ calcolato in un punto $x\in \Omega$
+In generale se $\phi \colon A\subset \RR^m \to \RR^n$ 
+il differenziale $d\phi(x)$ calcolato in un punto $x\in A$
 manda i vettori di $\RR^m$ nei vettori di $\RR^n$ 
-e permette quindi di definire una forma differenziale su $\Omega$
-se abbiamo una forma differenziale su $\phi(\Omega)$
+e permette quindi di definire una forma differenziale su $A$
+se abbiamo una forma differenziale su $\phi(A)$
 (la forma differenziale viene \emph{tirata indietro} dal codominio al dominio di $\phi$).
 Formalmente si definisce il \emph{pull-back}
-$\phi^*\colon \Lambda^1(\phi(\Omega)) \to \Lambda^1(\Omega)$ 
+$\phi^*\colon \Omega^1(\phi(A)) \to \Omega^1(A)$ 
 tramite la formula
 \[
    (\phi^* \omega)(x)[v] = \omega(\phi(x))[d\phi(x)[v]].
 \]
 
-Osserviamo che se $u\colon I\to \Omega\subset \RR^n$ 
+Osserviamo che se $u\colon I\to A\subset \RR^n$ 
 con $I$ un intervallo di $\RR$ 
-allora $\phi^* \omega \in \Lambda^1(I)$. 
+allora $\phi^* \omega \in \Omega^1(I)$. 
 Ma questo spazio ha dimensione $1$, ed è generato dal differenziale 
 $dt$ dell'identità $t\mapsto t$. 
 In effetti se pensiamo all'integrale 
@@ -111,8 +111,8 @@ in quanto (qui $e_1=1$ è l'unico vettore della base canonica di $\RR$)
 \section{forme chiuse, forme esatte}
 
 \begin{definition}[forma esatta]
-Una forma differenziale $\omega\in \Lambda^1(\Omega)$ si dice essere \emph{esatta}
-se esiste $f\colon \Omega\to \RR$ tale che $\omega = df$.
+Una forma differenziale $\omega\in \Omega^1(A)$ si dice essere \emph{esatta}
+se esiste $f\colon A\to \RR$ tale che $\omega = df$.
 \end{definition}
 
 L'integrale di un differenziale esatto risulta banale. Se $\omega = df$
@@ -131,8 +131,8 @@ Se dobbiamo calcolare l'integrale di una forma differenziale $\omega$ sarà dunq
 interessante capire se tale forma è esatta.
 
 Osserviamo innanzitutto che non tutte le forme differenziali lineari 
-sono il differenziale di una funzione $f\colon \Omega\to \RR$.
-Infatti se $f\in C^2(\Omega)$ e $\omega = df$
+sono il differenziale di una funzione $f\colon A\to \RR$.
+Infatti se $f\in C^2(A)$ e $\omega = df$
 allora 
 \[
     \omega = \xi_1 dx_1 + \dots + \xi_n dx_n
@@ -143,8 +143,8 @@ e, per il teorema di Schwartz si ha
 \end{equation}
 
 \begin{definition}[forma chiusa]
-Sia $\omega\in \Lambda^1(\Omega)$ una $1$-forma di classe $C^1$
-ovvero tale che esiste $\xi\in C^1(\Omega,\RR^n)$ tale che 
+Sia $\omega\in \Omega^1(A)$ una $1$-forma di classe $C^1$
+ovvero tale che esiste $\xi\in C^1(A,\RR^n)$ tale che 
 $\omega(x)[v] = \xi(x)\cdot v$. 
 Diremo che $\omega$ è chiusa se vale~\eqref{eq:forma-chiusa}
 \end{definition}
@@ -156,7 +156,7 @@ Abbiamo quindi dimostrato il seguente teorema.
 \begin{theorem}[condizione necessaria per l'integrabilità]
 \label{th:forma-chiusa}
 Se $\omega$ è una $1$-forma di classe $C^1$ ed esiste 
-$f\in C^1(\Omega)$ tale che $\omega = df$ allora $\omega$ è chiusa. 
+$f\in C^1(A)$ tale che $\omega = df$ allora $\omega$ è chiusa. 
 \end{theorem}
 
 Per le funzioni di una variabile la codizione~\eqref{eq:forma-chiusa} è vuota, 
@@ -166,7 +166,7 @@ per il teorema fondamentale del calcolo.
 In più variabili la condizione non è vuota. 
 
 \begin{example}[forma differenziale non chiusa]
-Sia $\omega(x,y) = y dx$, $\omega \in \Lambda^1(\RR^2)$ è una forma di classe $C^\infty$ 
+Sia $\omega(x,y) = y dx$, $\omega \in \Omega^1(\RR^2)$ è una forma di classe $C^\infty$ 
 associata al campo vettoriale $\xi(x,y) = (y,0)$.
 L'equazione~\eqref{eq:forma-chiusa} diventa $1=0$ e dunque questa forma non è chiusa e non 
 può essere il differenziale di una funzione.
@@ -174,17 +174,17 @@ può essere il differenziale di una funzione.
 
 \begin{theorem}[Lemma di Poincaré]
     \label{th:lemma-poincare}
-Sia $\Omega$ un aperto \emph{stellato} di $\RR^n$
-(cioè esiste $x\in \Omega$ tale che per ogni $y\in \Omega$ si ha $[x,y]\subset \Omega$). 
-Sia $\omega\in \Lambda^1(\Omega)$ una forma differenziale chiusa.
+Sia $A$ un aperto \emph{stellato} di $\RR^n$
+(cioè esiste $x\in A$ tale che per ogni $y\in A$ si ha $[x,y]\subset A$). 
+Sia $\omega\in \Omega^1(A)$ una forma differenziale chiusa.
 Allora $\omega$ è esatta 
-(cioè esiste $f\colon \Omega\to \RR$ tale che $df = \omega$).
+(cioè esiste $f\colon A\to \RR$ tale che $df = \omega$).
 \end{theorem}
 %
 \begin{proof}
-Senza perdita di generalità possiamo supporre $x=0 \in \Omega$.
+Senza perdita di generalità possiamo supporre $x=0 \in A$.
 Sia $\xi$ il campo vettoriale che rappresenta $\omega$.
-Definiamo $f\colon \Omega\to\RR$ come
+Definiamo $f\colon A\to\RR$ come
 \[
    f(x) = \int_{[0,x]} \omega = \int_0^1 \xi(tx)\cdot x\, dt 
    = \int_0^1 \sum_j x_j \xi_j(tx) \, dt.
@@ -211,8 +211,8 @@ Significa che $\omega = df$ come volevamo dimostrare.
 
 
 \begin{example}[forma chiusa ma non esatta]
-Si consideri $\Omega=\RR^2\setminus\ENCLOSE{(0,0)}$.
-Sia $\omega\in \Lambda^1(\Omega)$ 
+Si consideri $A=\RR^2\setminus\ENCLOSE{(0,0)}$.
+Sia $\omega\in \Omega^1(A)$ 
 \[
 \omega \defeq \frac{- y dx + x dy}{x^2+y^2}.
 \]
@@ -235,7 +235,7 @@ Allora da verifica diretta si osserva che
 e quindi effettivamente $\omega$ è chiusa.
 Se la forma fosse esatta si avrebbe $\int_u \omega=0$ 
 su ogni curva chiusa $u$.
-Prendiamo invece $u\colon [0,2\pi]\to \Omega$ la circonferenza
+Prendiamo invece $u\colon [0,2\pi]\to A$ la circonferenza
 di raggio $\rho$:
 $u(t) = \rho (\cos t,\sin t)$.
 Cioè $x=\rho \cos t$, $y=\rho \sin t$, 
@@ -250,8 +250,8 @@ Dunque $\omega$ non può essere esatta.
 \end{proof}
 
 L'esempio precedente non viola il teorema~\ref{th:lemma-poincare}
-perché $\Omega$ è un esempio di aperto non stellato.
-Osserviamo che se da $\Omega$ rimuoviamo l'asse delle $y$,
+perché $A$ è un esempio di aperto non stellato.
+Osserviamo che se da $A$ rimuoviamo l'asse delle $y$,
 la funzione 
 \[
   f(x,y) = \arctg \frac{y}{x}
@@ -264,3 +264,273 @@ df = \frac{1}{1+ \frac{y^2}{x^2}}\cdot
 \]
 Si capisce dunque che l'esattezza di una forma chiusa dipende sostanzialmente 
 dal dominio in cui la forma è definita.
+
+\section{$k$-forme}
+
+Una funzione $\lambda\colon (\RR^n)^k$, 
+$(v_1,\dots, v_k)\mapsto \lambda[v_1,\dots, v_k]$
+con $v_1,\dots, v_k \in \RR^n$
+si dice essere \emph{multilineare} se ogni 
+$v_k \mapsto \lambda[v_1,\dots, v_k]$ 
+è lineare e se scambiando due ingressi $v_k$, $v_j$ 
+il risultato cambia segno.
+
+\begin{definition}[applicazioni multilineari alternanti]
+Sia $V$ è uno spazio vettoriale reale.
+Denotiamo con $\Lambda^k(V)$
+l'insieme delle applicazioni multilineari alternanti.
+
+Cioè $\lambda \in \Lambda^k(V)$ se 
+$\lambda\colon (V)^k\to \RR$ e
+\begin{enumerate}
+\item è lineare nella prima entrata:
+\[
+    \lambda[tv + s v', v_2, \dots, v_k] 
+    = t\lambda[v,v_2,\dots,v_k]
+    + s \lambda[v',v_2,\vdots, v_k],
+\]
+\item è alternante:
+\[
+    \lambda[v_{\sigma(1)}, \dots v_{\sigma(k)}] = 
+    (-1)^\sigma \lambda[v_1,\dots, v_k]
+    \]
+per ogni $\sigma$ permutazione degli indici $\ENCLOSE{1,\dots,k}$
+dove $(-1)^\sigma$ è il segno della permutazione.
+\end{enumerate}
+\end{definition}
+
+La definizione assiomatica del determinante 
+ci dà questo importante esempio.
+\begin{example}
+Sia $\lambda\in \Lambda^n(\RR^n)$. 
+Allora esiste $c\in \RR$ tale che 
+\[ 
+    \lambda[v_1, \dots, v_n] = c \det \begin{pmatrix}
+    v_1, \dots, v_n
+    \end{pmatrix}.
+\]
+\end{example}
+
+\begin{definition}[$k$-forme differenziali]
+Sia $A$ un aperto di $\RR^n$.
+Una $k$-forma differenziale $\omega$ è una funzione 
+$\omega\colon A \to \Lambda^k(\RR^n)$.
+L'insieme delle $k$-forme su $A$ si denota con $\Omega^k(A)$.
+\end{definition}
+
+Abbiamo già considerato lo spazio delle $1$-forme e abbiamo 
+visto che possono essere rappresentate nella forma 
+\[
+  \omega = \xi_1 dx_1 + \dots + \xi_n dx_n, \qquad \omega(x)[v] = \xi(x)\cdot v
+\]
+con $\xi\colon A \to \RR^n$.
+
+Le $0$-forme sono banalmente le funzioni scalari, in quanto $\Lambda^0(\RR^n)= \RR$
+e dunque $f \in \Omega^k(A)$ significa $f\colon A \to \RR$.
+
+Visto che $\Lambda^n(\RR^n)$ contiene solamente i multipli del determinante, 
+anche le $n$-forme in $\RR^n$ si rappresentano con una funzione $f\colon A\to\RR$, 
+\[
+ \omega(x)[v_1,\dots,v_n] = f(x) \det(v_1, \dots, v_n),\qquad f(x) = \omega(x)[e_1,\dots,e_n].
+\]
+
+I casi intermedi sono più complicati da capire.
+Se $\lambda\in \Lambda^k(\RR^n)$ sappiamo che se scambiamo due vettori 
+in $\lambda[v_1,\dots,v_n]$ il risultato cambia segno. 
+In particolare se ci sono due vettori uguali $v_k=v_j$ con $k\neq j$, il risultato 
+è nullo, in quanto scambiandoli dovrebbe cambiare segno ma si ottiene lo stesso risultato.
+Dunque $\lambda$ è non nullo solamente sulle $k$-uple di vettori $(v_1,\dots,v_k)$ 
+che non hanno ripetizioni. E il valore su una $k$-upla determina il valore su tutte le sue 
+permutazioni. 
+Si capisce dunque che la $\dim \Lambda^k(\RR^n) = {k \choose n}$.
+
+Infatti abbiamo già visto che $\dim \Lambda^0(\RR^n)=\dim \Lambda^n(\RR^n) = 1$.
+
+Proviamo a capire come è fatta $\Omega^2(\RR^n)$. 
+Consideriamo $dx_1,\dots, dx_n \in \Omega^1(\RR^n)$. 
+Sono definiti in modo che $dx_k(p)[v] = v_k$.
+Definiamo allora 
+$dx_k \wedge dx_j\in \Omega^2(\RR^n)$ tramite
+\[
+    (dx_k\wedge dx_j)(p) [v,w] = dx_k(p)[v] dx_j(p)[w] - dx_k(p)[w] dx_j(p)[v]
+      = v_k w_j - v_j w_k. 
+\]
+E' chiaro che questa è una forma bilineare alternante.
+E, dalla discussione precedente, è chiaro che ogni forma bilineare alternante 
+è combinazione lineare di queste.
+Infatti se $\omega \in \Omega^2(\RR^n)$ 
+posto $\xi_{jk}(x) = \omega(x)[v_j,v_k]$ per ogni $1\le j<k\le n$
+si ha 
+\[
+  \omega(x) = \sum_{1\le j < k \le n} \xi_{jk}(x) dx_j\wedge dx_k.
+\] 
+
+\begin{example}[$2$-forme in $\RR^3$]
+Sia $\omega \in \Omega^2(\RR^3)$. 
+Denotiamo con $x,y,z$ le tre coordinate di $\RR^3$ (invece che $x_1,x_2,x_3$).
+Allora
+\[
+  \omega = \xi_{12} dx\wedge dy + \xi_{13} dx\wedge dz + \xi_{23} dy \wedge dz.
+\] 
+Notiamo che si ha $dy\wedge dx = - dx\wedge dy$ e lo stesso per le altre coordinate.
+Dunque si potrebbe anche scrivere 
+\[
+ \omega = \xi_{23} dy \wedge dz - \xi_{13} dz\wedge dx + \xi_{12} dx\wedge dy.
+\]
+\end{example}
+
+Possiamo definire il \emph{differenziale} $d\omega$ di una forma differenziale $\omega$, 
+definendo il differenziale delle forme \emph{elementari}
+\[
+  d( f dx_{j_1} \wedge \dots  \wedge dx_{j_k})
+  = \sum_i \frac{\partial f}{\partial x_i} x_i \wedge dx_{j_1} \wedge \dots \wedge dx_{j_k}.
+\]
+Lo si capisce con un esempio.
+
+\begin{example}[calcolo del differenziale]
+Sia $\omega\in \Omega(\RR^3)$, $\omega = f dx \wedge dy - g dy\wedge dz$ con $f,g\colon \RR^3\to \RR$.
+Allora 
+\begin{align*}
+  d\omega 
+  &= df \wedge dx \wedge dy - dg \wedge dy \wedge dz
+  = (f_x dx + f_y dy + f_z dz) \wedge dx \wedge dy - (g_x dx + g_y dy + g_z dz)\wedge dy \wedge dz\\
+  = f_z dz\wedge dx \wedge dy - g_x dx \wedge dy \wedge dz \\
+  = (f_z - g_x) dx \wedge dy \wedge dz.
+\end{align*}
+Ricordiamo che termini come $dx\wedge dx \wedge dy$ o $dy \wedge dx \wedge dy$ sono nulli in quanto 
+si ripete due volte lo stesso differenziali. 
+Invece $dz\wedge dx \wedge dy = dx \wedge dy \wedge dz$ perché si tratta di una permutazione 
+pari (due trasposizioni). Si avrebbe invece $dx\wedge dz\wedge dy = - dx\wedge dy\wedge dz$.
+\end{example} 
+
+\section{$k$-forme in $\RR^3$}
+
+\begin{definition}[prodotto vettore]
+Siano $v,w\in \RR^3$.
+Definiamo il \emph{prodotto vettore} $v\times w\in \RR^3$ 
+come il vettore $\xi$ che rappresenta l'applicazione lineare $\lambda\in (\RR^3)^*$:
+\[
+ \lambda[u] = \det\enclose{u,v,w}.
+\]
+Cioè $u\times v$ è univocamente determinato dalla proprietà 
+\[
+  u \cdot (v\times w) = \det\enclose{u, v, w} \qquad\text{(prodotto triplo)}.
+\]
+valida per ogni $u,v,w\in \RR^3$.
+\end{definition}
+
+In coordinate, se $\xi = v\times w$ con $v=(v_1,v_2,v_3)$, $w=(w_1,w_2,w_3)$
+si ha dunque $\xi=(\xi_1,\xi_2,\xi_3)$ 
+con
+\begin{align*}
+  \xi_1 &= e_1 \cdot \xi = \det\enclose{e_1,v,w} = v_2 w_3 - v_3 w_2,\\ 
+  \xi_2 &= e_2 \cdot \xi = \det\enclose{e_2,v,w} = v_3 w_1 - v_1 w_3,\\
+  \xi_3 &= e_2 \cdot \xi = \det\enclose{e_3,v,w} = v_1 w_2 - v_2 w_1.
+\end{align*}\
+Più espressivamente si può scrivere
+\[
+  \xi = \det\begin{pmatrix}
+    e_1 & v_1 & w_1 \\ e_2 & v_2 & w_2 \\ e_3 & v_3 & w_3
+  \end{pmatrix}
+  = (v_2 w_3 - v_3 w_2) e_1 + (v_3 w_1 - v_1 w_3) e_2 + (v_1 w_2 - v_w w_1) e_3. 
+\]
+
+\begin{definition}[rotore]
+Sia $A$ un aperto di $\RR^3$ e $\xi \colon A \to \RR^3$ una funzione differenziabile.
+Definiamo allora il \emph{rotore} di $\xi$ come il vettore $\rot \xi \in \RR^3$ 
+definito da 
+\[
+   \rot \xi = \nabla \times \xi
+    = \det \begin{pmatrix}
+    e_1 & \partial_x & \xi_1 \\
+    e_2 & \partial_y & \xi_2 \\
+    e_3 & \partial_z & \xi_3 
+    \end{pmatrix}
+    = \begin{pmatrix}
+    \frac{\partial \xi_3}{\partial y} - \frac{\partial \xi_2}{\partial z} \smallskip \\
+    \frac{\partial \xi_1}{\partial_z} - \frac{\partial \xi_3}{\partial x} \smallskip \\
+    \frac{\partial \xi_2}{\partial x} - \frac{\partial \xi_1}{\partial y}
+    \end{pmatrix}.
+\]
+
+Ricordiamo anche gli operatori \emph{gradiente} e \emph{divergenza}
+\[
+  \grad f = \nabla f = \begin{pmatrix}
+     \frac{\partial f}{\partial x} \smallskip \\
+     \frac{\partial f}{\partial y} \smallskip \\
+     \frac{\partial f}{\partial z}
+  \end{pmatrix}, \qquad 
+  \div f = \nabla \cdot \xi = \frac{\partial \xi_1}{\partial x} + \frac{\partial \xi_2}{\partial y} + \frac{\partial \xi_3}{\partial z}.
+\]
+In tutte queste notazioni abbiamo usato l'operatore \emph{nabla}: $\nabla = (\partial_x, \partial_y, \partial z)$
+dove $\partial_x = \frac{\partial}{\partial x}$, $\partial y = \frac{\partial}{\partial y}$, $\partial_z = \frac{\partial}{\partial z}$:
+\end{definition}
+
+Abbiamo già visto che una $1$-forma $\omega$ in un aperto $A$ di $\RR^3$ può essere rappresentata 
+con un capo vettoriale $\xi\colon A \subset \RR^3 \to \RR^3$ 
+in modo tale che si abbia 
+\[
+  \omega(x,y,z)[v] = \xi(x,y,z)\cdot v.
+\]
+
+Se consideriamo $f\colon A\subset \RR^3\to \RR$ una $0$-forma, 
+e $\omega = df$, il vettore che rappresenta $\omega$ è $\grad f$:
+\[
+df = \frac{\partial f}{\partial x}\, dx 
++ \frac{\partial f}{\partial y} dy\, \frac{\partial f}{\partial z}\, dz.
+\]
+
+Se $\omega\in \Omega^1(A)$, possiamo scrivere $\omega$ nella forma 
+\[
+ \omega = \vec g_1\, dx + \vec g_2\, dy + \vec g_3\, dz
+\]
+in modo che $\vec g \colon A\to\RR^3$ sia il campo vettoriale che rappresenta $\omega$.
+In questo caso si ha 
+\begin{align*}
+    d\omega &= (\partial_x \vec g_1 dx + \partial_y \vec g_1 dy + \partial z \vec g_3 dz)\wedge dx 
+    + (\partial x \vec g_2 dx + \partial y \vec g_2 dy + \partial z \vec g_3 dz)\wedge dy \\
+    & \quad + (\partial x \vec g_3 dx + \partial y \vec g_3 dy + \partial z \vec g_3 dz)\wedge dz \\    
+    &= (\partial_y \vec g_3 - \partial_z \vec g_2)\, dy \wedge dz
+       + (\partial_z \vec g_1 - \partial_x \vec g_3)\, dz\wedge dx 
+       + (\partial_x \vec g_2 - \partial_y \vec g_1)\, dx \wedge dy
+    &= (\rot \vec g)_1 \, dy \wedge dz
+       + (\rot \vec g)_2\, dz\wedge dx 
+       + (\rot \vec g)_3\, dx \wedge dy.
+\end{align*}
+Dunque se rappresentiamo $\omega\in \Omega^2(A)$, $A\subset\RR^3$ tramite 
+il campo vettoriale $\xi\colon A\to \RR^3$
+definito da 
+\[
+\xi_1(\vec p) = \omega(\vec p)[e_2,e_3], \qquad
+\xi_2(\vec p) = \omega(\vec p)[e_3,e_1], \qquad
+\xi_3(\vec p) = \omega(\vec p)[e_1,e_2]
+\]
+si avrà
+\begin{equation}\label{eq:fkjtpd}
+  \omega = \xi_1\, dy \wedge dz + \xi_2\, dz\wedge dx + \xi_3\, dx\wedge dy.
+\end{equation}
+In tal caso il campo vettoriale che rappresenta $d\omega$ sarà
+$\rot \xi$.
+
+Consideriamo infine $\omega \in \Omega^2(A)$ una $2$-forma 
+definita su un aperto $A\subset\RR^3$.
+Sappiamo che $\omega$ si rappresenta tramite un campo
+vettoriale $\xi \colon A \subset \RR^3 \to \RR^3$  
+come in~\eqref{eq:fkjtpd}.
+Osserviamo che allora si ha 
+\[
+  \omega[v,w] 
+  = \xi_1 (v_1 w_3 - v_3 w_2) + \xi_2 (v_3 w_1 - v_1 w_3)
+   + \xi_3 (v_1 w_2 - v_2 w_1) 
+   = \det \enclose{\xi, v, w} = \xi \cdot (v\times w).
+\]
+Inoltre
+\begin{align*}
+ d\omega &= (\partial_x \xi_1 dx + \partial_y \xi_1 dy + \partial_z \xi_1 dz) \wedge dy \wedge dz 
+        + (\partial_x \xi_2 dx + \partial_y \xi_2 dy + \partial_z \xi_2 dz) \wedge dz \wedge dx \\
+    &\quad + (\partial_x \xi_3 dx + \partial_y \xi_3 dy + \partial_z \xi_3 dz) \wedge dx \wedge dy \\
+    &= (\partial_x \xi_1 + \partial_y \xi_2 + \partial_z \xi_3)\, dx \wedge dy \wedge dz\\
+    &= (\div \xi)\, dx \wedge dy \wedge dz.
+\end{align*}
+Dunque la funzione che rappresenta la $3$-forma $d\omega$ 
+è la divergenza del campo vettoriale che rappresenta la $2$-forma $\omega$.

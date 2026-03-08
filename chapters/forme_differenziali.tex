@@ -1,0 +1,123 @@
+\chapter{Forme Differenziali} 
+
+\section{forme differenziali lineari}
+
+Se $f\colon \Omega\subset \RR^n \to \RR$ è una funzione differenziabile il suo 
+differenziale $df \colon \Omega \to \mathcal L (\RR^n, \RR)$ è una forma differenziale lineare
+($1$-forma).
+Si tratta di una funzione che ad ogni punto $x\in \Omega$ associa una forma lineare 
+$df(x)\colon \RR^n \to \RR$ e dunque ad ogni $v\in \RR^n$ associa un numero reale 
+$df(x)[v]$. 
+Se sfruttiamo il prodotto scalare standard su $\RR^n$ 
+possiamo identificare l'applicazione lineare $df(x)$ con il vettore $\nabla f(x)$:
+\[
+    df(x)[v] = \frac{\partial f}{\partial v}(x) = \nabla f(x) \cdot v.
+\]
+Infatti il prodotto scalare su uno spazio vettoriale $V$ 
+induce un isomorfismo $V \to V^*$, $v \mapsto (w \mapsto v \cdot w)$.
+
+\begin{definition}[forme differenziali lineari]
+    Sia $\Omega\subset \RR^n$ un aperto.
+    Denotiamo con $\Lambda^1(\Omega)$ l'insieme di tutte le funzioni $\omega\colon \Omega \to (\RR^n)^*$
+    che ad ogni punto $x\in \Omega$ associano una forma lineare $\omega(x)\colon \RR^n \to \RR$.
+\end{definition}
+
+Grazie all'isomorfismo dato dal prodotto scalare sappiamo 
+che la dimensione di $(\RR^n)^*$ è $n$. 
+Determiniamo una base canonica di questo spazio.
+Denotiamo con $e_1, \dots e_n$ la base canonica di $\RR^n$.
+Denotiamo con $x_1, \dots x_n$ le funzioni $\RR^n \to \RR$ 
+che ad ogni punto $p\in \RR^n$ associano la $k$-esima coordinata di $p$:
+$x_k(p) = p_k = p\cdot e_k$.
+Possiamo allora osservare che il differenziale $dx_k$ 
+è tale che
+\[
+  dx_k(p)[e_j] = \frac{\partial x_k}{x_j} = \delta_{jk} 
+  = \begin{cases}
+    1 & j=k\\
+    0 & j\neq k.
+  \end{cases}  
+\]
+In effetti per ogni $p\in \Omega$ le applicazioni lineari 
+$dx_1(p), \dots, dx_n(p)$ sono una base di $(\RR^n)^*$. 
+Significa che ogni $\omega \in \Lambda^1(\Omega)$ può essere scritto 
+nella forma 
+\[
+   \omega(p) = \xi_1 dx_1 + \xi_2 dx_2 + \dots + \xi_n dx_n.
+\]
+Dunque c'è un isomorfismo $\omega \mapsto \xi$ che mette in 
+corrispondenza le forme differenziali lineari $\omega \in \Lambda^1(\Omega)$ 
+con i campi vettoriali $\xi \colon \Omega\to \RR^n$.
+In questo isomorfismo:
+\[
+  \omega(p)[v] = \xi(p) \cdot v.
+\]
+
+\section{integrale di una forma differenziale}
+
+Se $u\colon [a,b]\to \Omega\subset \RR^n$ è una curva regolare e $\omega\in \Lambda^1(\Omega)$ 
+è una $1$-forma differenziale, possiamo definire l'integrale della forma differenziale lungo la curva:
+\[
+ \int_u \omega \defeq = \int_a^b \omega(u(t))[u'(t)]\, dt.
+\]
+Osserviamo che se $\omeg$ si rappresenta con il campo vettoriale $\xi$, si ha $\omega(x)[v] = \xi(x)\cdot v$ 
+e dunque 
+\[
+ \int_u \omega = \int_a^b \xi(u(t))\cdot u'(t)\, dt.
+\]
+Questo integrale si chiama \emph{circuitazione} di $\xi$ lungo $u$.
+Osserviamo che questo integrale è indipendente dalla parametrizzazione della curva $u$
+(se si mantiene l'orientazione)
+in quanto posto $t=\phi(s)$ si ha $(u\circ \phi)'(s)\, ds = u'(\phi(s)) \phi'(s)\, ds = u'(t)\, dt$
+e se $\phi\colon [A,B]\to [a,b]$ con $\phi(A)=a$ e $\phi(B)=b$ 
+la formula del cambio di variabile garantisce l'uguaglianza
+\[
+\int_(u\circ \phi) \omega = 
+\int_A^B \omega(u(\phi(s)))[(u\circ \phi)'(s)]\, ds
+= \int_A^B \omega(u(\phi(s)))[u'(\phi(s))] \phi'(s)\, ds
+= \int_a^b \omega(t)[u'(t)]\, dt = \int_u \omega.
+\]
+
+\section{forme chiuse, forme esatte}
+
+Osserviamo che non tutte le forme differenziali lineari sono il differenziale
+di una funzione $f\colon \Omega\to \RR$.
+Infatti se $f\in C^2(\Omega)$ e $\omega = df$
+allora 
+\[
+    \omega = \xi_1 dx_1 + \dots + \xi_n dx_n
+\]
+e, per il teorema di Schwartz si ha 
+\begin{equation}\label{eq:forma-chiusa}
+  \frac{\partial \xi_k}{\partial x_j} = \frac{\partial \xi_j}{\partial x_k}.
+\end{equation}
+
+\begin{definition}[forma chiusa]
+Sia $\omega\in \Lambda^1(\Omega)$ una $1$-forma di classe $C^1$
+ovvero tale che esiste $\xi\in C^1(\Omega,\RR^n)$ tale che 
+$\omega(x)[v] = \xi(x)\cdot v$. 
+Diremo che $\omega$ è chiusa se vale\eqref{eq:forma-chiusa}
+\end{definition}
+
+Se $df = \omega$ diremo che $f$ è una primitiva di $\omega$ 
+e diremo che $\omega$ è integrabile. 
+
+\begin{theorem}[condizione necessaria per l'integrabilità]
+\label{th:forma-chiusa}
+Se $\omega$ è una $1$-forma di classe $C^1$ ed esiste 
+$f\in C^2(\Omega)$ tale che $\omega = df$ allora $\omega$ è chiusa. 
+\end{theorem}
+
+Per le funzioni di una variabile la codizione~\eqref{eq:forma-chiusa} è vuota, 
+perché necessariamente $k=j=1$. 
+E, in effetti, tutte le funzioni continue, in una variabile, sono integrabili 
+per il teorema fondamentale del calcolo. 
+
+In più variabili la condizione non è vuota. 
+\begin{example}[forma differenziale non chiusa]
+Sia $\omega(x,y) = y dx + dy$, $\omega \in \Lambda^1(\RR^2)$ è una forma di classe $C^\infty$ 
+associata al campo vettoriale $\xi(x,y) = (y,1)$.
+L'equazione~\eqref{eq:forma-chiusa} diventa $1=0$ e dunque questa forma non è chiusa e non 
+può essere il differenziale di una funzione.
+\end{example}
+

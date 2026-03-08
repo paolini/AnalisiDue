@@ -60,7 +60,7 @@ Se $u\colon [a,b]\to \Omega\subset \RR^n$ è una curva regolare e $\omega\in \La
 \[
  \int_u \omega \defeq = \int_a^b \omega(u(t))[u'(t)]\, dt.
 \]
-Osserviamo che se $\omeg$ si rappresenta con il campo vettoriale $\xi$, si ha $\omega(x)[v] = \xi(x)\cdot v$ 
+Osserviamo che se $\omega$ si rappresenta con il campo vettoriale $\xi$, si ha $\omega(x)[v] = \xi(x)\cdot v$ 
 e dunque 
 \[
  \int_u \omega = \int_a^b \xi(u(t))\cdot u'(t)\, dt.
@@ -78,7 +78,55 @@ la formula del cambio di variabile garantisce l'uguaglianza
 = \int_a^b \omega(t)[u'(t)]\, dt = \int_u \omega.
 \]
 
+In generale se $\phi \colon \Omega\subset \RR^m \to \RR^n$ 
+il differenziale $d\phi(x)$ calcolato in un punto $x\in \Omega$
+manda i vettori di $\RR^m$ nei vettori di $\RR^n$ 
+e permette quindi di definire una forma differenziale su $\Omega$
+se abbiamo una forma differenziale su $\phi(\Omega)$
+(la forma differenziale viene \emph{tirata indietro} dal codominio al dominio di $\phi$).
+Formalmente si definisce il \emph{pull-back}
+$\phi^*\colon \Lambda^1(\phi(\Omega)) \to \Lambda^1(\Omega)$ 
+tramite la formula
+\[
+   (\phi^* \omega)(x)[v] = \omega(\phi(x))[d\phi(x)[v]].
+\]
+
+Osserviamo che se $u\colon I\to \Omega\subset \RR^n$ 
+con $I$ un intervallo di $\RR$ 
+allora $\phi^* \omega \in \Lambda^1(I)$. 
+Ma questo spazio ha dimensione $1$, ed è generato dal differenziale 
+$dt$ dell'identità $t\mapsto t$. 
+In effetti se pensiamo all'integrale 
+\[
+\int_a^b f(t)\, dt
+\]
+come all'integrazione della forma differenziale $f(t)\, dt$ 
+sull'intervallo $[a,b]$, possiamo notare che si ha
+\[
+ \int_u \omega = \int_I u^* \omega
+\]
+in quanto (qui $e_1=1$ è l'unico vettore della base canonica di $\RR$)
+\[
+  u^* \omega(t)[e_1] = \omega(u(t))[u'(t)]\, dt.
+\]
+
+L'integrale di un differenziale esatto risulta banale ed indipendente 
+dalla curva:
+\[
+ \int_u df = \int_a^b df(u(t))[u'(t)]\, dt 
+ = \int_a^b \frac{\partial f(u(t))}{u'(t)}\, u'(t) \, dt
+ = \int_a^b (f\circ u)'(t) \, dt 
+ = f(u(b)) - f(u(a)).
+\]
+Inoltre se la curva è chiusa, cioè se $u(b) = u(a)$ 
+si trova immediatamente $\int_u df = 0$.
+
 \section{forme chiuse, forme esatte}
+
+\begin{definition}[forma esatta]
+Una forma differenziale $\omega\in \Lambda^1(\Omega)$ si dice essere \emph{esatta}
+se esiste $f\colon \Omega\to \RR$ tale che $\omega = df$.
+\end{definition}
 
 Osserviamo che non tutte le forme differenziali lineari sono il differenziale
 di una funzione $f\colon \Omega\to \RR$.
@@ -120,4 +168,40 @@ associata al campo vettoriale $\xi(x,y) = (y,1)$.
 L'equazione~\eqref{eq:forma-chiusa} diventa $1=0$ e dunque questa forma non è chiusa e non 
 può essere il differenziale di una funzione.
 \end{example}
+
+\begin{theorem}[Lemma di Poincaré]
+Sia $\Omega$ un aperto \emph{stellato} di $\RR^n$
+(cioè esiste $x\in \Omega$ tale che per ogni $y\in \Omega$ si ha $[x,y]\subset \Omega$). 
+Sia $\omega\in \Lambda^1(\Omega)$ una forma differenziale chiusa.
+Allora $\omega$ è esatta 
+(cioè esiste $f\colon \Omega\to \RR$ tale che $df = \omega$).
+\end{theorem}
+%
+\begin{proof}
+Senza perdita di generalità possiamo supporre $x=0 \in \Omega$.
+Sia $\xi$ il campo vettoriale che rappresenta $\omega$.
+Definiamo $f\colon \Omega\to\RR$ come
+\[
+   f(x) = \int_[0,x] \omega = \int_0^1 \xi(tx)\cdot x\, dt 
+   = \int_0^1 \sum_j x_j \xi_j(tx) \, dt.
+\]
+Ricordiamo che se $\omega$ è chiusa si ha $\frac{\partial \xi_j}{\partial x_k} = \frac{\xi_k}{\partial x_j}$.
+Si ha 
+\begin{align*}
+ \frac{\partial}
+ {\partial x_k}\sum_j x_j \xi_j(tx)
+ &=  \sum_j \sum_i \delta_{ik} t x_j \frac{\partial \xi_j}{\partial x_i}(tx)
+    + \sum_j \delta_{jk} \xi_j(tx)\\
+ &= \sum_j t x_j \frac{\partial \xi_j}{\partial x_k}(tx) + \xi_k(tx)\\
+ &= \sum_j t x_j \frac{\partial \xi_k}{\partial x_j}(tx) + \xi_k(tx)\\
+ &= t \frac{d}{dt} \xi_k(tx) + \xi_k(tx) 
+  = \frac{d}{dt} \enclose{t \xi_k(tx)}. 
+\end{align*}
+Dunque 
+\[
+ \frac{\partial f}{\partial x_k}(x) = \int_0^1 \frac{d}{dt} \enclose{t\xi_k(tx)}\, dt 
+ = \Enclose{t\xi_k(tx)}_0^1 = \xi_k(x).
+\]
+Significa che $\omega = df$ come volevamo dimostrare.
+\end{proof}
 

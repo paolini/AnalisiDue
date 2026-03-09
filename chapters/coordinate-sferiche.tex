@@ -1,19 +1,14 @@
+\section{Esempi di calcolo di integrali multipli}
 
 \subsection*{Coordinate polari}
-
-Calcoliamo
+Se la funzione integranda o il dominio di integrazione hanno una 
+simmetria circolare può essere conveniente effettuare un cambio di
+variabili in coordinate polari:
 \[
-\iint_{B_R(0)} 1 \, dx\,dy
-\]
-dove $B_R(0)$ è il disco di raggio $R$ centrato nell'origine.
-
-
-Cambio di variabili:
-\[
-\begin{cases}
-x = \rho \cos\theta \\
-y = \rho \sin\theta
-\end{cases}
+    \begin{cases}
+        x = \rho \cos\theta, \\
+        y = \rho \sin\theta.
+    \end{cases}
 \]
 
 Dominio:
@@ -37,6 +32,13 @@ Quindi:
 \[
 dx\,dy = \rho \, d\rho\, d\theta
 \]
+
+
+Calcoliamo l'area del cerchio di raggio $R$ centrato nell'origine, cioè l'integrale:
+\[
+\iint_{B_R(0)} 1 \, dx\,dy.
+\]
+
 
 L’integrale diventa:
 \[

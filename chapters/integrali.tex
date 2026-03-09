@@ -228,6 +228,10 @@ $\int\!\! f^+$ e $\int\!\! f^-$ non sono entrambi infiniti possiamo definire
   \int\!\! f = \int\!\! f^+ - \int\!\! f^- \in [-\infty,+\infty].
 \]
 Se $\int\!\! f$ è finito diremo che $f$ è $R$-integrabile.
+
+Si osservi che se $f=f^+ - f^-$ è integrabile allora anche 
+$\abs{f} = f^+ + f^-$ è integrabile, quindi l'integrabilità va intesa 
+in senso \emph{assoluto}.
 \end{definition}
 
 \begin{definition}
@@ -346,6 +350,25 @@ In maniera analoga si dimostra che
 Si ottiene dunque il risultato voluto.
 \end{proof}
 
+\begin{exercise}[gli iperpiani hanno misura nulla]
+  \label{ex:iperpiani_misura_nulla}
+Se $H\subset \RR^n$ è un iperpiano $(n-1)$-dimensionale, 
+allora $H$ ha misura nulla.
+\end{exercise}
+\begin{proof}
+E' sufficiente dimostrare che $H\cap [0,1]^n$ ha misura nulla.
+Per fare questo basta verificare che fissato $N\in \NN$ il numero 
+di cubetti $Q^N_{\vec k}\subset [0,1]^n$ 
+che toccano $H$ è al più $2\cdot 2^{N(n-1)}$ 
+(si può supporre che la normale ad $H$ definisca un angolo minore di 45 gradi con 
+l'asse $x_n$ e osservare che la proiezione dei cubi su $\RR^{n-1}$ può far sovrapporre 
+al più due dei cubi che toccano $H$). 
+Dunque
+\[
+  m^N(H\cap [0,1]^n) \le 2\cdot 2^{N(n-1)} \cdot 2^{-nN} = 2\cdot 2^{-N} \to 0 \quad \text{per } N\to +\infty.
+\]
+\end{proof}
+
 \begin{theorem}[algebra dei misurabili]
 Se $E,F\subset \RR^n$ sono PJ-misurabili allora anche $\bar E$, $\partial E$, 
 $E\setminus F$, $E\cap F$ ed $E\cup F$ sono PJ-misurabili.
@@ -412,6 +435,7 @@ da cui $\abs{\bar A}=\abs{A}$.
 \end{proof}
 
 \begin{theorem}[significato geometrico dell'integrale]
+  \label{th:significato-geometrico-integrale}
 Se $f\colon A\subset \RR^n \to \RR$ definiamo la parte positiva dell'epigrafico di $f$
 come:
 \[
@@ -447,6 +471,13 @@ ovvero $\abs{E_{f^+}}=\int\! f$, come volevamo dimostrare.
 Gli altri casi vengono di conseguenza separando parte positiva e parte negativa 
 e passando al limite nei troncamenti.
 \end{proof}
+
+\begin{remark}[assoluta integrabilità]
+Abbiamo già osservato che se $f$ è R-integrabile
+anche $\abs{f}$ lo è (assoluta integrabilità).
+Se la funzione $f$ non è limitata oppure se il suo dominio non è limitato, 
+l'integrale generalizzato coincide con 
+\end{remark}
 
 \begin{theorem}[integrabilità funzioni continue]
   \label{th:continua_integrabile}
@@ -798,8 +829,8 @@ e si ha
   \abs{L(E)} = \abs{\det M} \cdot \abs{E}.
 \end{equation}
 \end{theorem}
+%
 \begin{proof}
-
 \emph{Osservazione 1.}
 Fissato $L$ se dimostriamo 
 \eqref{eq:geometria_determinante}
@@ -1072,18 +1103,17 @@ e $R$-integrabile.
 Allora $(f\circ \phi)\cdot \abs{\det D\phi}$ è limitata e $R$-integrabile su $E$ 
 e si ha
 \begin{equation}
-  \label{eq:cambio_variabile}
+  \label{eq:cambio-variabile}
   \int_{\phi(E)} f (\vec y)\, d\vec y 
   = \int_E f(\phi(\vec x)) \cdot \abs{\det D\phi(\vec x)}\, d\vec x.
 \end{equation}
 \end{theorem}
 
 \begin{proof}
-
 \emph{Passo 1: supponiamo $f$ sia una funzione caratteristica.}
-  Cioè $f = 1_{F}$ per un qualche $F\Subset \phi(E)$, $F$ PJ-misurabile.
-  Visto che $\det D\phi\neq 0$ e $\phi\colon \Omega\to \phi(\Omega)$ è in
-  vertibile, per il teorema di invertibilità locale sappiamo 
+  Cioè $f = 1_{F}$ per un qualche $F\Subset \phi(\Omega)$, con $F$ PJ-misurabile.
+  Visto che $\det D\phi\neq 0$ e $\phi\colon \Omega\to \phi(\Omega)$ è 
+  invertibile, per il teorema di invertibilità locale sappiamo 
   che anche la funzione inversa $\phi^{-1}\colon \phi(\Omega)\to \Omega$ è di classe $C^1$.
   Dunque $E=\phi^{-1}(F)\Subset \Omega$ è PJ-misurabile per il lemma~\ref{lm:lipschitz_C1} 
   e il lemma~\ref{lm:misura_lipschitz}.
@@ -1095,201 +1125,47 @@ e si ha
   \]
 
 \emph{Passo 2: supponiamo $f$ sia una funzione semplice.}
-Cioè $f$ costante all'interno dei cubetti diadici. 
-Denotiamo con $C^N_{\vec j}$ la parte interna di $Q^N_{\vec j}$ osservando 
-che il bordo di un cubetto ha misura nulla e quindi 
-il valore di $f$ sul bordo del cubetto è irrilevante quando 
-se ne calcola l'integrale.
-Diremo che $f$ è \emph{semplice} se può essere scritta nella forma
+Cioè $f$ sia combinazione lineare di funzioni caratteristiche:
 \[
-   f(\vec y) = \sum_{\vec j} \beta_{\vec j} 1_{C^N_{\vec j}}
+   f = \sum_{j=1}^n \alpha_j 1_{F_j}.
 \]
-con $\beta_{\vec j}\in \RR$. Assumiamo sempre che $f$ abbia supporto 
-in $\phi(E) \Subset \phi(\Omega)$ cosicché $\beta_{\vec j} \neq 0$ 
-solo per un numero finito di indici $\vec j$.
+Visto che ambo i membri di \eqref{eq:cambio-variabile} sono lineari in $f$,
+si ottiene l'integrabilità e l'uguaglianza anche su questa classe di funzioni.
 
-Allora, per il teorema~\ref{th:formula-area} (formula dell'area), si ha
-\[
-\int_E 1_{C^N}(\phi(\vec x)) \abs{\det D\phi(\vec x)}\, d\vec x
-= \int_{\phi^{-1}(C^N_{\vec j})} \abs{\det D\phi(\vec x)}\, d\vec x
-= \abs{C^N_{\vec j}}.
-\]
-Per la linearità dell'integrale, si ottiene
-\[
-  \int_E f(\phi(\vec x)) \cdot \abs{\det D\phi(\vec x)}\, d\vec x
-  = \sum_{\vec j} \beta_{\vec j} \int_E 1_{C^N_{\vec j}}(\phi(\vec x)) \abs{\det D\phi(\vec x)}\, d\vec x
-  = \sum_{\vec j} \beta_{\vec j} \abs{C^N_{\vec j}}
-  = \int_{\phi(E)} f(\vec y)\, d\vec y.
-\]
+\emph{Conclusione.} Se $f$ è una funzione limitata, R-integrabile, con supporto
+compatto in $\phi(\Omega)$, per definizione di R-integrabilità 
+le funzioni semplici $f_N = \sum \alpha_j 1_{Q^N_j}$ 
+e $f_N = \sum \beta_j 1_{Q^N_j}$ con $\alpha_j = \inf f(Q^N_j)$ e $\beta_j = \sup f(Q^N_j)$
+hanno la proprietà che $\int f_N = S_N(f)$ e $\int g_N = S^N(f)$ e che $f_N(\vec x) \le f(\vec x) \le g_N(\vec x)$ 
+per ogni $x$ che non sia nella frontiera di un qualche cubetto.
+Ma allora 
+\begin{align*}
+  S^N((f\circ \phi)\cdot \abs{\det D\phi})
+  \le \int (f^N\circ\phi)\cdot \abs{\det D\phi}
+  = \int f^N \to \int f\\
+  S_N((f\circ \phi)\cdot \abs{\det D\phi})
+  \ge \int (f_N\circ \phi)\cdot \abs{\det D\phi}
+  = \int f_N \to \int f
+\end{align*}
+da cui segue il risultato.
 \end{proof}
 
+\begin{remark}
+Più in generale siano $E,F$ aperti misurabili di $\RR^n$ (non necessariamente limitati),
+$\phi\colon E\to F$ invertibile, di classe $C^1$, con $\det D\phi\neq 0$,
+sia $f$ integrabile su $F$ e, infine, sia anche $(f\circ \phi)\cdot \abs{\det D\phi}$ 
+integrabile su $E$.
+Allora vale comunque~\eqref{eq:cambio-variabile}
 
-\begin{proposition}[interno in interno per mappe localmente iniettive]
-Se $E\subset \RR^n$ e $\phi\colon E\to \RR^n$ è continua e localmente iniettiva sull'interno di $E$, allora $\phi(\operatorname{int} E)\subset \operatorname{int} \phi(E)$.
-In particolare, se $\phi\in C^1(E)$ e $\det D\phi\ne 0$ su $\operatorname{int}E$, allora $\phi$ manda punti interni in punti interni.
-\end{proposition}
-\begin{proof}
-Sia $x\in \operatorname{int}E$. Per localmente iniettiva, esiste $\eps>0$ tale che la palla chiusa $\overline B_\eps(x)\subset \operatorname{int}E$ e $\phi$ sia iniettiva su $\overline B_\eps(x)$.
-La restrizione $\phi\colon \overline B_\eps(x)\to \RR^n$ è una bigezione continua da un compatto in uno spazio di Hausdorff, dunque è un omeomorfismo sulla sua immagine $L\defeq \phi(\overline B_\eps(x))$, che è compatta.
-Perciò $\partial L = \phi(\partial B_\eps(x))$. Poiché $\phi(x)\notin \phi(\partial B_\eps(x))$ e $\partial B_\eps(x)$ è compatta, la distanza
-\[
-  \delta \defeq \dist\bigl(\phi(x),\partial L\bigr) > 0.
-\]
-Ne segue che $B_\delta(\phi(x))\subset L\subset \phi(E)$, cioè $\phi(x)\in \operatorname{int}\phi(E)$. Il caso $C^1$ con $\det D\phi\ne 0$ discende dal teorema dell'inversa, che garantisce l'iniettività locale.
-\end{proof}
-
-\begin{theorem}[cambio di variabile]
-  \label{th:cambio-variabili}
-Siano $\Omega\subset \RR^n$ e $\phi\colon \bar \Omega \to \RR^n$ 
-come nelle ipotesi del teorema~\ref{th:formula-area}
-e sia $f\colon \phi(\Omega)\to\RR$ una funzione
-Riemann-integrabile, limitata.
-Allora
-\[
-  \int_{\phi(\Omega)} f(\vec y) \, d \vec y
-  =
-  \int_\Omega f(\phi(\vec x))\cdot \abs{\det D \phi(\vec x)}\, d \vec x.
-\]
-
-La formula si memorizza mediante la sostituzione formale:
-\[
-\begin{cases}
-  \vec y = \phi(\vec x),\\
-  d \vec y = \abs{\det D\phi(\vec x)}\, d\vec x.
-\end{cases}
-\]
-\end{theorem}
-
-\begin{proof}
-Siano $L,M,\sigma$ costanti positive tali che 
-per ogni $\vec x\in \bar \Omega$ si abbia
-\[
-  \abs{f(x)} \le M, \qquad
-  \Abs{D\phi(\vec x)} \le L.
-\]
-Osserviamo che se $Q^N_{\vec k} \cap \Omega \neq \emptyset$, 
-le ipotesi del teorema~\ref{th:formula-area} sono soddisfatte 
-anche per $\phi$ ristretta a $Q^N_{\vec k}\cap \bar \Omega$.
-Dunque per ogni $N\in \NN$, posto $F^N_{\vec k}$ l'estremo 
-superiore di $f$ su $\phi(Q^N_{\vec k}\cap \Omega)$,
+Si può infatti approssimare $E$ dall'interno con compatti misurabili $E_N$ e approssimare 
+$F$ dall'interno con $F_N=\phi(E_N)$. 
+Vale allora l'uguaglianza~\eqref{eq:cambio-variabile} su $E_N$.
+Ma per l'ipotesi di integrabilità di $f$ e di $f\circ \phi \cdot \abs{\det D\phi}$ 
+si ha
 \begin{align*}
-  S^N(f) 
-    &= \sum_{Q^N_{\vec k}\subset \Omega} F^N_{\vec k} \cdot \abs{Q^N_{\vec k}}
-       + \sum_{Q^N_{\vec k}\cap \Omega  \emptyset} F^N_{\vec k} \cdot \abs{Q^N_{\vec k}\cap \Omega}\\
-    &= \sum_{\vec k \in \ZZ^n} F^N_{\vec k} \cdot \abs{\phi(\phi^{-1}(Q^N_{\vec k}))}\\
-    &= \sum_{\vec k \in \ZZ^n} F^N_{\vec k} \cdot 
-      \int_{\phi^{-1}(Q^N_{\vec k})} \abs{\det D\phi(\vec x)}\, d\vec x
-    = \sum_{\vec k \in \ZZ^n} 
-      \int_{\phi^{-1}(Q^N_{\vec k})} F^N_{\vec k} \abs{\det D\phi(\vec x)}\, d\vec x\\
-    &\ge \int_{\Omega} f(\phi(\vec x)) \abs{\det D\phi(\vec x)}\, d\vec x.
+  \int_{E} (f\circ \phi)\cdot \abs{\det D\phi}
+  &= \lim_{N\to+\infty} \int_{E_N} (f\circ \phi)\cdot \abs{\det D\phi}\\
+  &= \lim_{N\to+\infty} \int_{F_N} f
+  = \int_{F} f.
 \end{align*}
-
-
-*************
-  \emph{Caso 1: supponiamo $E$ compatto.}
-Allora $\Abs{D\phi}$ ha massimo $L$ su $E$, e $f$ ha massimo $M$ 
-su $\phi(E)$. 
-
-Visto che $D\phi$ è continua su $E$, è anche uniformemente continua e 
-usando il teorema di Lagrange si può mostrare che per ogni $\eps>0$ 
-esiste $\delta>0$ tale che
-\[
- \abs{\vec x - \vec y}<\delta 
- \implies 
- \abs{\phi(\vec x)-\phi(\vec y)-D\phi(\vec y)(\vec x - \vec y)}
- \le \eps (\vec x - \vec y).
-\]
-Sia dato $\eps\in(0,1)$.
-Sia $N\in \NN$ abbastanza grande in modo che, posto
-\begin{align*}
-  K&=\ENCLOSE{\vec k\in \ZZ^n\colon Q^N_{\vec k}\subset E},\\
-  K'&=\ENCLOSE{\vec k\in \ZZ^n\setminus K \colon Q^N_{\vec k}\cap E\neq \emptyset}.
-\end{align*}
-e posto, per $\vec k \in K$,dove 
-\[
-  \deg(\phi,\vec y) = \sum_{\phi(\vec x)=\vec y} \sgn \det \phi(\vec x).
-\]
-
-\begin{gather*}
-  \vec x^N_{\vec k} = 2^{-N}\vec k,\\
-  f^N_{\vec k} = f(\phi(\vec x^N_{\vec k})),\\ 
-  \Phi^N_{\vec k} = D\phi(\vec x^N_{\vec k}), 
-\end{gather*}
-si abbia
-\begin{gather*}
-  M L^d (S^N(1_E)-S_N(1_E)) < \eps,\\
-  \forall \vec k\in K \colon \forall \vec x \in Q^N_{\vec k}\colon
-    \abs{f(\phi(\vec x))-f^N_{\vec k}} < \eps,\\
-  \forall \vec k\in K \colon \forall \vec x \in Q^N_{\vec k}\colon
-    \abs{\phi(\vec x) - \phi(\vec x^N_{\vec k})-\Phi^N_{\vec k}[\vec x-\vec x^N_{\vec k}]} < \eps 2^{-N}.
-\end{gather*}
-
-Per il Lemma, sappiamo che se $\vec k \in K$ allora $\phi(Q^N_{\vec k})$ è PJ-misurabile 
-e si ha 
-\[
- \abs{\phi(Q^N_{\vec k})} 
- \le (L\sqrt n)^d 2^{-nN}
-\]
-
-\begin{align*}
-  \abs{\int_{\phi(E)} f(\vec y)\, d\vec y 
-  - \sum_{\vec k \in K} \int_{\phi(Q^N_{\vec k})} f(\vec y)\, d\vec y}
-  &\le M \cdot \#K' \cdot (\sqrt n K 2^{-N})^n \\
-  &\le M (S^N(1_E)-S_N(1_E)) (\sqrt n K)^n
-  \le \eps 
-\end{align*}
-
-\begin{align*}
-\sum_{\vec k \in K}\int_{\phi(Q^N_{\vec k})} \abs{f(\vec y) - f^N_{\vec k}}\, d\vec y
-&\le  \abs{\phi(E)} \eps 
-\end{align*}
-
-Ora notiamo che siccome per $\vec x \in Q^N_{\vec k}$ si ha 
-\[
-  \abs{
-    \phi(\vec x) - \phi(\vec x^N_{\vec k}) 
-    - \Phi^N_{\vec k}(\vec x - \vec x^N_{\vec k})} \le \eps 2^{-N}
-\]
-risulta 
-\begin{align*}
- \phi(Q^N_{\vec k}) - \phi(\vec x^N_{\vec k}) \subset \Phi(Q^N_{\vec k})+B_{\eps 2^{-N}}
-\end{align*}
-
-\begin{align*}
-\sum_{\vec k \in K}
-  \int_{\phi(Q^N_{\vec k})} f^N_{\vec k}\, d\vec y 
-= \sum_{\vec k in K} f^N_{\vec k} \abs{\phi(Q^N_{\vec k})}
-\end{align*}
-
-***
-
-Per Taylor per ogni $N\in \NN$ e $\vec k\in \ZZ^n$,
-posto ${\vec x}^N_{\vec k} = 2^{-N}\vec k$ e $\Phi^N_{\vec k}=D\phi({\vec x}^N_{\vec k})$,
-si ha 
-\begin{align*}
-  \phi(\vec x) &= \phi({\vec x}^N_{\vec k}) + \Phi^N_{\vec k} (\vec x - {\vec x}^N_{\vec k}) + \eps 2^{-Nn}\\
-  f(\phi(\vec x)) &= F^N_{\vec k} + \eps\\
-  \abs{f(\vec x)} & \le M\\
-  \abs{\det D\phi(\vec x)} & \le M\\
-\end{align*}
-cosicché
-\begin{align}
-  \abs{
-    F^N_{\vec k}  2^{-Nn} \det \Phi^N_{\vec k}
-    - \int_{Q^N_{\vec k}} f(\phi(\vec x)) \det D\phi(\vec x)\, dx
-  }
-  &\le \int_{Q^N_{\vec k}}  \Enclose{M \eps 2^{-nN} + \eps M}\, dx \\
-  &\le 2M\eps 2^{-nN}. 
-\end{align}
-ma 
-\begin{align*}
-    F^N_{\vec k} 2^{-nN} \det \Phi^N_{\vec k} 
-    &= F^N_{\vec k}\abs{\phi(Q^N_{\vec k})}.
-\end{align*}
-e
-\begin{align*}
-  \int_{\phi(Q^N_{\vec k})} f(\vec y) \deg(\phi,\vec y)\, dy 
-  &=
-  \sum
-\end{align*}
-\end{proof}
+\end{remark}

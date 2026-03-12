@@ -401,6 +401,8 @@ Dunque si potrebbe anche scrivere
 \]
 \end{example}
 
+\section{differenziale di una forma}
+
 Possiamo definire il \emph{differenziale} $d\omega$ di una forma differenziale $\omega$, 
 definendo il differenziale delle forme \emph{elementari}
 \[
@@ -424,6 +426,50 @@ si ripete due volte lo stesso differenziali.
 Invece $dz\wedge dx \wedge dy = dx \wedge dy \wedge dz$ perché si tratta di una permutazione 
 pari (due trasposizioni). Si avrebbe invece $dx\wedge dz\wedge dy = - dx\wedge dy\wedge dz$.
 \end{example} 
+
+Abbiamo già visto sulle $1$-forme che se $\omega = df$ (cioè $\omega$ è esatta) 
+allora $d\omega = d(df) = 0$ (cioè $\omega$ è chiusa).
+
+In generale si può dimostrare che vale:
+\[
+  d(d\omega) = 0.
+\]
+
+\section{pull-back}
+
+Se $\phi\colon A\subset \RR^m \to \RR^n$ è una funzione differenziabile e $\omega\in \Omega^k(\phi(A))$
+possiamo definire il pull-back $\phi^* \omega \in \Omega^k(A)$ tramite la formula
+\[
+  (\phi^* \omega)(x)[v_1,\dots,v_k] = \omega(\phi(x))[d\phi(x)[v_1],\dots, d\phi(x)[v_k]].
+\]
+
+Osserviamo che per definizione l'integrale di una $k$-forma differenziale 
+su una $k$-superficie parametrizzata da $\phi\colon [0,1]^k \to \RR^n$
+si definisce come l'integrale del pull-back della $k$-forma:
+\[ 
+  \int_\phi \omega \defeq \int_{[0,1]^k} \phi^* \omega
+  = \int_{[0,1]^k} f(\vec x) d\vec x
+\]
+dove $f\colon [0,1]^k \to \RR$ è la funzione che rappresenta $\phi^* \omega$
+in quanto $\phi^* \omega$ è una $k$-forma su $[0,1]^k$ e dunque si rappresenta 
+con una funzione scalare $f$: $\phi^* \omega(\vec x) = f(\vec x) dx_1 \wedge \dots \wedge dx_k$.
+
+In particolare, visto che il pull-back di una composizione è ovviamente 
+la composizione dei pull-back, se $\vec u \colon [0,1]^k\to \RR^m$, 
+$\phi\colon \RR^m\to \RR^n$ e $\omega\in \Omega^k(\RR^n)$
+si ha 
+\[
+   \int_{\vec u} \phi^* \omega = \int_{\phi \circ \vec u} \omega 
+\]
+in quanto entrambi si riconducono a
+\[
+  \int_{[0,1]^k} (\phi \circ \vec u)^* \omega.
+\]
+
+In generale si può dimostrare che 
+\[
+    \phi^* (d\omega) = d(\phi^* \omega).
+\]
 
 \section{$k$-forme in $\RR^3$}
 
@@ -558,3 +604,64 @@ Inoltre
 \end{align*}
 Dunque la funzione che rappresenta la $3$-forma $d\omega$ 
 è la divergenza del campo vettoriale che rappresenta la $2$-forma $\omega$.
+
+\begin{exercise}
+Verifichiamo che vale l'identità
+\[
+  d \phi^* \omega = \phi^* d\omega
+\]
+quando $\omega$ è una $1$-forma in $\RR^3$.
+\end{exercise}
+\begin{proof}[Svolgimento.]
+Possiamo rappresentare $\omega$ con un campo vettoriale $\xi\colon \RR^3\to \RR^3$:
+\[
+\omega = \xi_1 dx + \xi_2 dy + \xi_3 dz.
+\]
+Allora abbiamo già visto che 
+\[
+  (d\omega)[v,w] = \det \enclose{\rot \xi, v, w}.
+\]
+Allora 
+\[
+\phi^*(d\omega)[v,w] = (d\omega)[d\phi[v],d\phi[w]]
+ = \det \enclose{\rot \xi, \frac{\partial \phi}{\partial v}, \frac {\partial \phi}{\partial w}}.
+\]
+
+D'altro canto
+\[
+ \phi^* \omega [v] 
+ = \omega[d\phi[v]] 
+ = \xi \cdot \frac{\partial \phi}{\partial v}.
+\]
+Ora se $\phi^* \omega$ si rappresenta tramite un 
+campo vettoriale $\eta$ in $\RR^2$ (usando le coordinate $t,s$ in \RR^2$):
+\[
+  \phi^* \omega = \eta_1 dt + \ets_2 ds
+\]
+si ha 
+\begin{align*}
+ \eta_1 &= (\phi^*\omega)[e_1] 
+ = \xi \cdot \frac{\partial \phi}{\partial s}\\
+ \eta_2 &= (\phi^*\omega)[e_2]
+ = \xi \cdot \frac{\partial \phi}{\partial t}
+\end{align*}
+dunque
+\begin{align*}
+d(\phi^* \omega) 
+ &= \enclose{\frac{\partial \eta_2}{\partial s} - \frac{\partial \eta_1}{\partial t}} ds \wedge dt\\
+ &= \enclose{\frac{\partial \xi}{\partial s}\cdot \frac{\partial \phi}{\partial t}
+  + \xi \frac{\partial^2 \phi}{\partial s \partial t}}
+  - \enclose{\frac{\partial \xi}{\partial t}\cdot \frac{\partial \phi}{\partial s}
+  + \xi \cdot \frac{\partial^2 \phi}{\partial t\partial s}
+  }\\
+  &= \sum_k \enclose{
+    \frac{\partial \xi^k}{\partial s} \frac{\partial \phi^k}{\partial t}
+    - \frac{\partial \xi^k}{\partial t} \frac{\partial \phi^k}{\partial s}
+  }\\
+  &= \sum_{j\neq k} \enclose{
+    \frac{\partial \xi^k}{\partial x_j} \frac{\partial \phi^j}{\partial s} \frac{\partial \phi^k}{\partial t}
+    - \dots
+  }
+\end{align*}
+
+\end{proof}

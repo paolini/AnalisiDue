@@ -5,7 +5,7 @@
 Se $f\colon A\subset \RR^n \to \RR$ è una funzione differenziabile il suo 
 differenziale $df \colon A \to \mathcal L (\RR^n, \RR)$ è una forma differenziale lineare
 ($1$-forma).
-Si tratta di una funzione che ad ogni punto $x\in A$ associa una forma lineare 
+Si tratta di una funzione che ad ogni punto $x\in A$ associa una applicazione lineare 
 $df(x)\colon \RR^n \to \RR$ e dunque ad ogni $v\in \RR^n$ associa un numero reale 
 $df(x)[v]$. 
 Se sfruttiamo il prodotto scalare standard su $\RR^n$ 
@@ -18,40 +18,62 @@ induce un isomorfismo $V \to V^*$, $v \mapsto (w \mapsto v \cdot w)$.
 
 \begin{definition}[forme differenziali lineari]
     Sia $A\subset \RR^n$ un aperto.
-    Denotiamo con $A^1(A)$ l'insieme di tutte le funzioni $\omega\colon A \to (\RR^n)^*$
-    che ad ogni punto $x\in A$ associano una forma lineare $\omega(x)\colon \RR^n \to \RR$.
+    Denotiamo con $\Omega^1(A)$ l'insieme di tutte le funzioni $\omega\colon A \to (\RR^n)^*$
+    che ad ogni punto $x\in A$ associano una applicazione lineare $\omega(x)\colon \RR^n \to \RR$,
+    $v\mapsto \omega(x)[v]$.
 \end{definition}
 
-Grazie all'isomorfismo dato dal prodotto scalare sappiamo 
-che la dimensione di $(\RR^n)^*$ è $n$. 
-Determiniamo una base canonica di questo spazio.
-Denotiamo con $e_1, \dots e_n$ la base canonica di $\RR^n$.
-Denotiamo con $x_1, \dots x_n$ le funzioni $\RR^n \to \RR$ 
-che ad ogni punto $p\in \RR^n$ associano la $k$-esima coordinata di $p$:
-$x_k(p) = p_k = p\cdot e_k$.
-Possiamo allora osservare che il differenziale $dx_k$ 
-è tale che
+\begin{remark}
+Le forme differenziali sono funzioni di due variabili: $(x,v)\mapsto \omega(x)[v]$.
+La dipendenza da $x$ non è lineare (e in generale lo spazio ambiente potrebbe non essere uno 
+spazio vettoriale, dunque non avrebbe senso richiedere la linearità in $x$)
+mentre la dipendenza da $v$ è lineare. 
+A volte si fissa una delle due variabili ma non l'altra.
+Per questo utilizziamo le parentesi quadre per distinguere la seconda variabile dalla prima.
+In generale useremo le parentesi quadre per ricordare che la dipendenza da quella variabile è lineare.
+
+Le forme differenziali si definiscono più in generale sulle \emph{varietà differenziabili}, che sono una 
+generalizzazione a più dimensioni delle superfici regolari.
+La variabile $x$ rappresenta un punto sulla superficie mentre $v$ è un vettore tangente 
+a quel punto. Lo spazio prodotto dove vive la coppia $(x,v)$ si chiama \emph{fibrato tangente}.
+
+Purtroppo sullo spazio piatto $\RR^n$ si può facilmente fare confusione tra le due varibili 
+perché lo spazio tangente ad $\RR^n$ in ogni punto è $\RR^n$ stesso.
+Bisogna pensare ad $x\in \RR^n$ come un punto, 
+mentre $v\in \RR^n$ è un vettore applicato in quel punto.
+\end{remark}
+
+Sappiamo, dall'algebra lineare, che il duale di uno spazio vettoriale 
+di dimensione finita ha la stessa dimensione dello spazio stesso. 
+Inoltre se $e_1,\dots, e_n$ è la base canonica di $\RR^n$,
+la corrispondente base dello spazio duale $(\RR^n)^*$ è data 
+dalle applicazioni lineari $\lambda_1,\dots, \lambda_n$ definite 
+da 
 \[
-  dx_k(p)[e_j] = \frac{\partial x_k}{x_j} = \delta_{jk} 
-  = \begin{cases}
-    1 & j=k\\
-    0 & j\neq k.
-  \end{cases}  
+  \lambda_k(e_j)=\delta_{kj} = \begin{cases}
+  1 & \text{se } k=j,\\
+  0 & \text{altrimenti.}
+  \end{cases}
 \]
-In effetti per ogni $p\in A$ le applicazioni lineari 
-$dx_1(p), \dots, dx_n(p)$ sono una base di $(\RR^n)^*$. 
+Se denotiamo con $x_k\colon \RR^n \to \RR$ la funzione $\vec x \mapsto x_k$ 
+che restituisce la $k$-esima coordinata di un punto $\vec x = (x_1,\dots, x_n)$, 
+possiamo osservare che $dx_k[e_j] = \frac{\partial x_k}{\partial x_j} = \delta_{kj}$ 
+e dunque $dx_k = \lambda_k$ è in effetti la base canonica di $(\RR^n)^*$. 
 Significa che ogni $\omega \in \Omega^1(A)$ può essere scritto 
 nella forma 
 \[
    \omega(p) = \xi_1 dx_1 + \xi_2 dx_2 + \dots + \xi_n dx_n.
 \]
 Dunque c'è un isomorfismo $\omega \mapsto \xi$ che mette in 
-corrispondenza le forme differenziali lineari $\omega \in A^1(A)$ 
+corrispondenza le forme differenziali lineari $\omega \in \Omega^1(A)$ 
 con i campi vettoriali $\xi \colon A\to \RR^n$.
 In questo isomorfismo:
 \[
-  \omega(p)[v] = \xi(p) \cdot v.
+  \omega(p)[v] = \xi(p) \cdot v
 \]
+(abbiamo qui sfruttato il fatto che sullo spazio $\RR^n$ è fissato un prodotto 
+scalare canonico che induce un isomorfismo canonico tra $\RR^n$ 
+e il suo duale).
 
 \section{integrale di una forma differenziale}
 
@@ -474,7 +496,8 @@ in modo tale che si abbia
 \]
 
 Se consideriamo $f\colon A\subset \RR^3\to \RR$ una $0$-forma, 
-e $\omega = df$, il vettore che rappresenta $\omega$ è $\grad f$:
+il suo differenziale $\omega = df$ è una $1$-forma, che si rappresenta 
+con il vettore $\nabla f$:
 \[
 df = \frac{\partial f}{\partial x}\, dx 
 + \frac{\partial f}{\partial y} dy\, \frac{\partial f}{\partial z}\, dz.
@@ -492,12 +515,12 @@ In questo caso si ha
     & \quad + (\partial x \vec g_3 dx + \partial y \vec g_3 dy + \partial z \vec g_3 dz)\wedge dz \\    
     &= (\partial_y \vec g_3 - \partial_z \vec g_2)\, dy \wedge dz
        + (\partial_z \vec g_1 - \partial_x \vec g_3)\, dz\wedge dx 
-       + (\partial_x \vec g_2 - \partial_y \vec g_1)\, dx \wedge dy
+       + (\partial_x \vec g_2 - \partial_y \vec g_1)\, dx \wedge dy\\
     &= (\rot \vec g)_1 \, dy \wedge dz
        + (\rot \vec g)_2\, dz\wedge dx 
        + (\rot \vec g)_3\, dx \wedge dy.
 \end{align*}
-Dunque se rappresentiamo $\omega\in \Omega^2(A)$, $A\subset\RR^3$ tramite 
+Dunque se rappresentiamo $d\omega\in \Omega^2(A)$, $A\subset\RR^3$ tramite 
 il campo vettoriale $\xi\colon A\to \RR^3$
 definito da 
 \[
@@ -507,10 +530,11 @@ definito da
 \]
 si avrà
 \begin{equation}\label{eq:fkjtpd}
-  \omega = \xi_1\, dy \wedge dz + \xi_2\, dz\wedge dx + \xi_3\, dx\wedge dy.
+  d \omega = \xi_1\, dy \wedge dz + \xi_2\, dz\wedge dx + \xi_3\, dx\wedge dy.
 \end{equation}
-In tal caso il campo vettoriale che rappresenta $d\omega$ sarà
-$\rot \xi$.
+Abbiamo quindi verificato che se $\xi$ è il campo vettoriale che rappresenta 
+la $1$-forma $\omega$, il campo (pseudo)-vettoriale che rappresenta $d\omega$
+è $\rot \xi$.
 
 Consideriamo infine $\omega \in \Omega^2(A)$ una $2$-forma 
 definita su un aperto $A\subset\RR^3$.

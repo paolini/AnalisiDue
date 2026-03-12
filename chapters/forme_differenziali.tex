@@ -612,6 +612,7 @@ Verifichiamo che vale l'identità
 \]
 quando $\omega$ è una $1$-forma in $\RR^3$.
 \end{exercise}
+
 \begin{proof}[Svolgimento.]
 Possiamo rappresentare $\omega$ con un campo vettoriale $\xi\colon \RR^3\to \RR^3$:
 \[
@@ -634,9 +635,9 @@ D'altro canto
  = \xi \cdot \frac{\partial \phi}{\partial v}.
 \]
 Ora se $\phi^* \omega$ si rappresenta tramite un 
-campo vettoriale $\eta$ in $\RR^2$ (usando le coordinate $t,s$ in \RR^2$):
+campo vettoriale $\eta$ in $\RR^2$ (usando le coordinate $t,s$ in $\RR^2$):
 \[
-  \phi^* \omega = \eta_1 dt + \ets_2 ds
+  \phi^* \omega = \eta_1 dt + \eta_2 ds
 \]
 si ha 
 \begin{align*}
@@ -664,4 +665,50 @@ d(\phi^* \omega)
   }
 \end{align*}
 
+
+\end{proof}
+
+
+\section{Formula di Cauchy-Binet}
+
+\begin{theorem}[formula di Cauchy-Binet]
+  Siano $A$ una matrice $m\times n$ e $B$ una matrice $n\times m$.
+  Allora 
+  \[
+    \det (AB) = \sum_{\vec k} \det A^{\vec k}\cdot \det B_{\vec k}
+  \]
+  dove 
+  $\vec k = (k_1,\dots,k_m) \in \ENCLOSE{1,\dots,n}^m$ 
+  è un elenco crescente di indici: $1\le k_1 < \dots < k_m\le n$
+  e $A^{\vec k}$ e $B_{\vec k}$ sono le matrici $m\times m$ che 
+  rappresentano i \emph{minori} di $A$ e $B$:
+  \[
+    (A^{\vec k})_{i,j} = A_{i,k_j}, \qquad
+    (B_{\vec k})_{i,j} = B_{k_i, j}.
+  \]
+\end{theorem}
+\begin{proof}
+Denotiamo con $\Sigma_m$ il gruppo delle permutazioni 
+di $\ENCLOSE{1,\dots,m}$ 
+e con $(-1)^\sigma$ il segno della permutazione.
+Si ha
+\begin{align*}
+  \det (AB) &= \sum_{\sigma \in \Sigma_n} (-1)^\sigma \prod_{i=1}^m (AB)_{i,\sigma(i)} \\
+    &= \sum_\sigma (-1)^\sigma \prod_i \sum_{k=1}^n A_{i,k} B_{k,\sigma(i)} \\
+    &= \sum_\sigma (-1)^\sigma \sum_{k_1=1^n} \dots \sum_{k_m=1}^n \prod_i A_{i,k} B_{k,\sigma(i)} \\
+    &= \sum_\sigma \sum_{\vec k\in \ENCLOSE{1,\dots,n}^m} \prod_i A_{i,k} (-1)^\sigma \prod_i B_{k,\sigma(i)} \\    
+    &= \sum_\sigma \sum_{\vec k\in \ENCLOSE{1,\dots,n}^m} \prod_i A_{i,k} \det B_{\vec k}
+\end{align*}
+Notiamo ora che se $\vec k = (k_1,\dots,k_m)$ non è iniettiva, cioè se $k_i = k_j$ per qualche 
+$i\neq j$, la matrice $B_{\vec k}$ ha due righe uguali e quindi $\det B_{\vec k}=0$. 
+Possiamo dunque restringere $\vec k$ alle funzioni iniettive.
+Se $\vec k\colon\ENCLOSE{1,\dots,m}\to\ENCLOSE{1,\dots,n}$ è iniettiva c'è una 
+unica permutazione $\phi$ tale che $i\mapsto k_{\phi(i)}$ è strettamente crescente.
+Dunque ogni $\vec k$ iniettiva si ottiene prendendo tutte le $\vec k$ strettamente crescenti 
+e componendole con tutte le permutazioni $\phi$ di $\ENCLOSE{1,\dots,m}$. 
+Dunque
+\begin{align*}
+  \det(AB) &= \sum_\sigma \sum_{1\le k_1<\dots<k_m\le n}\sum_{\phi\in \Sigma_m} 
+    \prod_i A_{i,k_{\tau}} \det B_{\vec k} ......
+\end{align*}
 \end{proof}

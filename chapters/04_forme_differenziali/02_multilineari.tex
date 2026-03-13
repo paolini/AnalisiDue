@@ -127,13 +127,13 @@ Sia $\omega\in \Omega(\RR^3)$, $\omega = f dx \wedge dy - g dy\wedge dz$ con $f,
 Allora 
 \begin{align*}
   d\omega 
-  &= df \wedge dx \wedge dy - dg \wedge dy \wedge dz
-  = (f_x dx + f_y dy + f_z dz) \wedge dx \wedge dy - (g_x dx + g_y dy + g_z dz)\wedge dy \wedge dz\\
-  = f_z dz\wedge dx \wedge dy - g_x dx \wedge dy \wedge dz \\
-  = (f_z - g_x) dx \wedge dy \wedge dz.
+  &= df \wedge dx \wedge dy - dg \wedge dy \wedge dz\\
+  &= (f_x dx + f_y dy + f_z dz) \wedge dx \wedge dy - (g_x dx + g_y dy + g_z dz)\wedge dy \wedge dz\\
+  &= f_z dz\wedge dx \wedge dy - g_x dx \wedge dy \wedge dz \\
+  &= (f_z - g_x) dx \wedge dy \wedge dz.
 \end{align*}
 Ricordiamo che termini come $dx\wedge dx \wedge dy$ o $dy \wedge dx \wedge dy$ sono nulli in quanto 
-si ripete due volte lo stesso differenziali. 
+si ripete due volte lo stesso differenziale. 
 Invece $dz\wedge dx \wedge dy = dx \wedge dy \wedge dz$ perché si tratta di una permutazione 
 pari (due trasposizioni). Si avrebbe invece $dx\wedge dz\wedge dy = - dx\wedge dy\wedge dz$.
 \end{example} 
@@ -182,20 +182,42 @@ In generale si può dimostrare che
     \phi^* (d\omega) = d(\phi^* \omega).
 \]
 
+\section{$k$-forme in $\RR^2$}
+Se $\omega\in \Omega^1(A)$, con $A$ aperto di $\RR^2$, si ha 
+\[
+  \omega(x,y) = a(x,y) dx + b(x,y) dy
+\]
+con $a,b\colon A \to \RR$.
+
+Calcoliamo il differenziale di $\omega$. 
+Si ha 
+\begin{equation}
+  \label{eq:differenziale_bidimensionale}
+  \begin{aligned}
+ d \omega 
+  &= da\wedge dx + db\wedge dy\\
+  &= \enclose{\frac{\partial a}{\partial x} dx + \frac{\partial a}{\partial y}dy}\wedge dx 
+   + \enclose{\frac{\partial b}{\partial x} dx + \frac{\partial b}{\partial y}dy}\wedge dy \\
+  &= \frac{\partial a}{\partial y} dy\wedge dx 
+   + \frac{\partial b}{\partial x} dx \wedge dy \\
+  &= \enclose{\frac{\partial b}{\partial x} 
+    - \frac{\partial a}{\partial y}} dx \wedge dy.
+\end{aligned}
+\end{equation}
+
+
 \section{$k$-forme in $\RR^3$}
 
 \begin{definition}[prodotto vettore]
 Siano $v,w\in \RR^3$.
 Definiamo il \emph{prodotto vettore} $v\times w\in \RR^3$ 
-come il vettore $\xi$ che rappresenta l'applicazione lineare $\lambda\in (\RR^3)^*$:
-\[
- \lambda[u] = \det\enclose{u,v,w}.
-\]
-Cioè $u\times v$ è univocamente determinato dalla proprietà 
+come l'unico vettore tale che per ogni $u\in \RR^3$ si abbia
 \[
   u \cdot (v\times w) = \det\enclose{u, v, w} \qquad\text{(prodotto triplo)}.
 \]
-valida per ogni $u,v,w\in \RR^3$.
+Questa uguaglianza definisce univocamente $v\times w$ in quanto 
+il lato destro è una applicazione lineare in $u$ e dunque 
+c'è un unico vettore che la rappresenta mediante prodotto scalare.
 \end{definition}
 
 In coordinate, se $\xi = v\times w$ con $v=(v_1,v_2,v_3)$, $w=(w_1,w_2,w_3)$
@@ -205,7 +227,8 @@ con
   \xi_1 &= e_1 \cdot \xi = \det\enclose{e_1,v,w} = v_2 w_3 - v_3 w_2,\\ 
   \xi_2 &= e_2 \cdot \xi = \det\enclose{e_2,v,w} = v_3 w_1 - v_1 w_3,\\
   \xi_3 &= e_2 \cdot \xi = \det\enclose{e_3,v,w} = v_1 w_2 - v_2 w_1.
-\end{align*}\
+\end{align*}
+
 Più espressivamente si può scrivere
 \[
   \xi = \det\begin{pmatrix}
@@ -216,6 +239,7 @@ Più espressivamente si può scrivere
 
 \begin{definition}[rotore]
 Sia $A$ un aperto di $\RR^3$ e $\xi \colon A \to \RR^3$ una funzione differenziabile.
+Sia $e_1,e_2,e_3$ la base canonica di $\RR^3$.
 Definiamo allora il \emph{rotore} di $\xi$ come il vettore $\rot \xi \in \RR^3$ 
 definito da 
 \[
@@ -246,7 +270,7 @@ dove $\partial_x = \frac{\partial}{\partial x}$, $\partial y = \frac{\partial}{\
 \end{definition}
 
 Abbiamo già visto che una $1$-forma $\omega$ in un aperto $A$ di $\RR^3$ può essere rappresentata 
-con un capo vettoriale $\xi\colon A \subset \RR^3 \to \RR^3$ 
+con un campo vettoriale $\xi\colon A \subset \RR^3 \to \RR^3$ 
 in modo tale che si abbia 
 \[
   \omega(x,y,z)[v] = \xi(x,y,z)\cdot v.
@@ -262,7 +286,7 @@ df = \frac{\partial f}{\partial x}\, dx
 
 Se $\omega\in \Omega^1(A)$, possiamo scrivere $\omega$ nella forma 
 \[
- \omega = \vec g_1\, dx + \vec g_2\, dy + \vec g_3\, dz
+ \omega = g_1\, dx + g_2\, dy + g_3\, dz
 \]
 in modo che $\vec g \colon A\to\RR^3$ sia il campo vettoriale che rappresenta $\omega$.
 In questo caso si ha 
@@ -277,7 +301,7 @@ In questo caso si ha
        + (\rot \vec g)_2\, dz\wedge dx 
        + (\rot \vec g)_3\, dx \wedge dy.
 \end{align*}
-Dunque se rappresentiamo $d\omega\in \Omega^2(A)$, $A\subset\RR^3$ tramite 
+Dunque se rappresentiamo $d\omega\in \Omega^2(A)$, tramite 
 il campo vettoriale $\xi\colon A\to \RR^3$
 definito da 
 \[
@@ -299,16 +323,16 @@ Sappiamo che $\omega$ si rappresenta tramite un campo
 vettoriale $\xi \colon A \subset \RR^3 \to \RR^3$  
 come in~\eqref{eq:fkjtpd}.
 Osserviamo che allora si ha 
-\[
+\begin{align*}
   \omega[v,w] 
-  = \xi_1 (v_1 w_3 - v_3 w_2) + \xi_2 (v_3 w_1 - v_1 w_3)
-   + \xi_3 (v_1 w_2 - v_2 w_1) 
-   = \det \enclose{\xi, v, w} = \xi \cdot (v\times w).
-\]
+  &= \xi_1 (v_1 w_3 - v_3 w_2) + \xi_2 (v_3 w_1 - v_1 w_3)
+   + \xi_3 (v_1 w_2 - v_2 w_1) \\
+   &= \det \enclose{\xi, v, w} = \xi \cdot (v\times w).
+\end{align*}
 Inoltre
 \begin{align*}
- d\omega &= (\partial_x \xi_1 dx + \partial_y \xi_1 dy + \partial_z \xi_1 dz) \wedge dy \wedge dz 
-        + (\partial_x \xi_2 dx + \partial_y \xi_2 dy + \partial_z \xi_2 dz) \wedge dz \wedge dx \\
+ d\omega &= (\partial_x \xi_1 dx + \partial_y \xi_1 dy + \partial_z \xi_1 dz) \wedge dy \wedge dz \\
+    &\quad + (\partial_x \xi_2 dx + \partial_y \xi_2 dy + \partial_z \xi_2 dz) \wedge dz \wedge dx \\
     &\quad + (\partial_x \xi_3 dx + \partial_y \xi_3 dy + \partial_z \xi_3 dz) \wedge dx \wedge dy \\
     &= (\partial_x \xi_1 + \partial_y \xi_2 + \partial_z \xi_3)\, dx \wedge dy \wedge dz\\
     &= (\div \xi)\, dx \wedge dy \wedge dz.
@@ -319,7 +343,7 @@ Dunque la funzione che rappresenta la $3$-forma $d\omega$
 \begin{exercise}
 Verifichiamo che vale l'identità
 \[
-  d \phi^* \omega = \phi^* d\omega
+  d (\phi^* \omega) = \phi^* d\omega
 \]
 quando $\omega$ è una $1$-forma in $\RR^3$.
 \end{exercise}
@@ -333,7 +357,7 @@ Allora abbiamo già visto che
 \[
   (d\omega)[v,w] = \det \enclose{\rot \xi, v, w}.
 \]
-Allora 
+Dunque
 \[
 \phi^*(d\omega)[v,w] = (d\omega)[d\phi[v],d\phi[w]]
  = \det \enclose{\rot \xi, \frac{\partial \phi}{\partial v}, \frac {\partial \phi}{\partial w}}.
@@ -367,12 +391,16 @@ d(\phi^* \omega)
   + \xi \cdot \frac{\partial^2 \phi}{\partial t\partial s}
   }\\
  &= \sum_k \enclose{
-    \frac{\partial \xi^k}{\partial s} \frac{\partial \phi^k}{\partial t}
-    - \frac{\partial \xi^k}{\partial t} \frac{\partial \phi^k}{\partial s}
+    \frac{\partial \xi_k}{\partial s} \frac{\partial \phi_k}{\partial t}
+    - \frac{\partial \xi_k}{\partial t} \frac{\partial \phi_k}{\partial s}
   }\\
- &= \sum_{j\neq k} \enclose{
-    \frac{\partial \xi^k}{\partial x_j} \frac{\partial \phi^j}{\partial s} \frac{\partial \phi^k}{\partial t}
-    - \dots
-  }
+ &= \sum_j \enclose{
+    \frac{\partial \xi_k}{\partial x_j} \frac{\partial \phi^j}{\partial s} \frac{\partial \phi_k}{\partial t}
+    - \frac{\partial \xi_k}{\partial x_j} \frac{\partial \phi_j}{\partial t}\frac{\partial \phi_k}{\partial s}
+  } \\
+ &= \sum_{j\neq k} \frac{\partial \xi_k}{\partial x_j} \enclose{
+  \frac{\partial \phi_j}{\partial s} \frac{\partial \phi_j}{\partial t}
+  - \frac{\partial \phi_j}{\partial t} \frac{\partial \phi_k}{\partial s}}\\
+  &= \det\enclose{\rot xi, \frac{\partial \phi}{\partial s}, \frac{\partial \phi}{\partial t}}.
 \end{align*}
 \end{proof}

@@ -11,3 +11,7 @@ AnalisiDue.toc
 AnalisiDue.pdf
 AnalisiDue.myaux
 *.aux
+AnalisiDue.bbl
+.gitignore
+.gitignore
+AnalisiDue.blg

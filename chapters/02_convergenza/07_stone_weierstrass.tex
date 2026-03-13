@@ -1,77 +1,50 @@
-\section*{Stone--Weierstrass}
+\section{teorema di Stone Weierstrass}
 
-\begin{theorem}[Stone--Weierstrass]
+\begin{theorem}[Stone Weierstrass]
 Sia $X$ uno spazio compatto.
-Sia $\mathfrak A \subset C(X)$ un'algebra 
+Sia ${\mathcal A} \subset C(X)$ un'algebra 
 cioè un sottospazio vettoriale dello spazio delle funzioni continue 
 su $X$ a valori in $\RR$
-tale che se $f,g\in \mathfrak A$ allora anche $f\cdot g\in \mathfrak A$.
-
-\begin{itemize}
-\item $1 \in \mathfrak A$
-\item $\mathfrak A$ separa i punti di $X$, cioè
+tale che se $f,g\in {\mathcal A}$ allora anche $f\cdot g\in {\mathcal A}$.
+Supponiamo che
+\begin{enumerate}
+\item $1 \in {\mathcal A}$
+\item ${\mathcal A}$ separa i punti di $X$, cioè
 \[
-\forall x \neq y \in X \quad \exists f \in \mathfrak A \text{ tale che } f(x)\neq f(y).
+\forall x \neq y \in X \quad \exists f \in {\mathcal A} \text{ tale che } f(x)\neq f(y).
 \]
-\end{itemize}
+\end{enumerate}
 
-Allora $\mathfrak A$ è densa in $C(X)$ rispetto alla norma uniforme:
-\[
-\overline{\mathfrak A}^{\|\cdot\|_\infty} = C(X)
-\]
+Allora ${\mathcal A}$ è densa in $C(X)$ rispetto alla norma uniforme,
 cioè 
 \[
-\forall \eps>0 \forall f\in C(X)\exists g\in \mathfrak A\colon \Abs{f-g}_\infty < \eps.
+\forall \eps>0 \forall f\in C(X)\exists g\in {\mathcal A}\colon \Abs{f-g}_\infty < \eps.
 \]
 \end{theorem}
 
 Per la dimostrazione ci servono alcuni lemmi intermedi.
 
-% Se $x,y\in X$ con $x\neq y$, per ipotesi esiste
-% $f\in\mathfrak A$ tale che
-% 
-% \[
-% f(x)\neq f(y).
-% \]
-% 
-% Riscalando la funzione possiamo assumere
-% 
-% \[
-% f(x)=0, \qquad f(y)=1 .
-% \]
-% 
-% Per continuità esistono intorni $U_x,U_y$ tali che
-% 
-% \[
-% f(U_x) \subset (-\tfrac13,\tfrac13),
-% \qquad
-% f(U_y) \subset (\tfrac23,\tfrac43).
-% \]
-% 
-% Quindi in $U_x$ la funzione è vicina a $0$ mentre in $U_y$
-% è vicina a $1$.
-
 \begin{lemma}
-Siano $X$ e $\mathfrak A$ come nelle ipotesi del teorema.
+Siano $X$ e ${\mathcal A}$ come nelle ipotesi del teorema.
 Dato $x_0\in X$, dato $U$ intorno aperto di $x_0$
 esiste $V$ intorno di $x_0$, $V\subset U$
 tale che per ogni $\eps>0$ 
-esiste $f\in \mathfrak A$ tale che 
-\begin{gather*}
-    0 \le f(x) \le 1\\
-    f(x) < \eps\qquad \forall x\in V\\
-    f(x) > 1-\eps \qquad \forall x \in X\setminus U
-\end{gather*}
+esiste $f\in {\mathcal A}$ tale che 
+\begin{enumerate}
+\item    $0 \le f \le 1$,
+\item    $f(x) < \eps$ per ogni $x\in V$,
+\item    $f(x) > 1-\eps$ per ogni $x \in X\setminus U$.
+\end{enumerate}
 \end{lemma}
 \begin{proof}
 Per ogni $x\in X\setminus U$ 
-consideriamo $g_x \in mathfrak A$ 
+consideriamo $g_x \in {\mathcal A}$ 
 tale che $g_x(x)\neq g_x(x_0)$.
-Definiamo $h_x = g_x - g_x(x_0)\cdot 1 \in \mathfrak A$.
+Definiamo $h_x = g_x - g_x(x_0)\cdot 1 \in {\mathcal A}$.
 Così $h_x(x) \neq  h_x(x_0) = 0$.
 Definiamo
 \[
- p_x = \frac{h_x^2}{\Abs{h_x}_\infty} \in \mathfrak A
+ p_x = \frac{h_x^2}{\Abs{h_x}_\infty} \in {\mathcal A}
 \]
 così $p_x(x_0)=0$, $p_x(x)>0$,
 $0\le p_x \le 1$.
@@ -83,22 +56,18 @@ U_x = \ENCLOSE{g\in X\colon p_x(y)>0}
 è un intorno aperto di $x$
 dunque $X\setminus U$ è un compatto 
 ricoperto dagli $U_x$ al variare di $x\in X\setminus U$.
-
 Posso estrarre un sottoricoprimento finito:
 dunque esistono $x_1,\dots,x_n\in X\setminus U$ 
 tali che $X\setminus U \subset U_{x_1} \cup \dots \cup U_{x_m}$.
-
 Poniamo
 \[
-  p = \frac{p_{x_1}+ \dots + p_{x_m}}{m} \in \mathfrak A
+  p = \frac{p_{x_1}+ \dots + p_{x_m}}{m} \in {\mathcal A}
 \]
 così da avere $0\le p \le 1$, $p(x_0)=0$,
 $p(x)>0$ per ogni $x\in X\setminus U$.
-
 Visto che $X\setminus U$ è compatto 
 esiste $\delta = \min p(X\setminus U)>0$ 
 e dunque $p(x)\ge \delta > 0$ e $0<\delta\le 1$.
-
 Sia 
 \[
   V= \ENCLOSE{x\in X \colon p(x) < \frac \delta 2}.
@@ -107,7 +76,6 @@ Visto che $p(x_0)=0$ si ha che $V$ è un intorno di $x_0$,
 e visto che 
 $p(x) \ge \delta$ su $X\setminus U$
 risulta $V\subset U$.
-
 Sia $k\in \NN$ tale che 
 \[
  \frac 1 \delta < k \le \frac 1 \delta + 1 
@@ -115,10 +83,9 @@ Sia $k\in \NN$ tale che
  < \frac 2 \delta
 \]
 così $1 < k \delta < 2$.
-
 Poniamo
 \[
- q_n(x) = \Enclose{1-p^n(x)}^{k^n} \in \mathfrak A
+ q_n(x) = \Enclose{1-p^n(x)}^{k^n} \in {\mathcal A}
 \]
 così $0\le q_n \le 1$, $q_n(x_0) = 1$.
 Ricordando la disuguaglianza di Bernoulli
@@ -155,14 +122,14 @@ La funzione $f=1-q_n$ soddisfa le proprietà richieste.
 \end{proof}
 
 \begin{lemma}
-Siano $X$ e $\mathfrak A$ come nel teorema.
+Siano $X$ e ${\mathcal A}$ come nel teorema.
 Siano $A,B\subset X$ compatti disgiunti.
-Per ogni $\eps>0$ esiste $f\in \mathfrak A$ tale che 
-\begin{gather*}
-    0 \le f \le 1, \\
-    f(x) < \eps \qquad \forall x\in A,\\
-    f(x) > 1-\eps \qquad \forall x \in B.
-\end{gather*}
+Per ogni $\eps>0$ esiste $f\in {\mathcal A}$ tale che 
+\begin{enumerate}
+\item    $0 \le f \le 1$,
+\item    $f(x) < \eps$ per ogni  $x\in A$,
+\item    $f(x) > 1-\eps$ per ogni $x \in B$.
+\end{enumerate}
 \end{lemma}
 %
 \begin{proof}
@@ -172,7 +139,7 @@ un intorno aperto di $x$ come nel lemma precedente.
 Gli aperti $V_x$ ricoprono il compatto $A$ 
 dunque esistono $x_1, \dots, x_m\in A$ tali che 
 $V_{x_1} \cup \dots \cup V_{x_m} \supset A$
-ed esistono $g_1, \dots, g_m \in \mathfrak A$ 
+ed esistono $g_1, \dots, g_m \in {\mathcal A}$ 
 tali che $0\le g_k \le 1$, $g_i < \frac \eps m$ su $V_{x_i}$
 e $g_i > 1 - \frac \eps m$ su $X\setminus U$.
 
@@ -199,8 +166,8 @@ e consideriamo $n$ tale che $(n-1)\eps \ge \Abs{f}_\infty$.
 
 Per $j=0, \dots, n$ definiamo 
 \begin{align*}
-    A_j &= \ENCLOSE{x\in X\colon f(x) \le \enclose{j-\frac 1 3}\eps}\\
-    B_j &= \ENCLOSE{X\in X\colon f(x) \ge \enclose{j+\frac 1 3}\eps}
+    A_j &= \ENCLOSE{x\in X\colon f(x) \le \enclose{j-\tfrac 1 3}\eps}\\
+    B_j &= \ENCLOSE{X\in X\colon f(x) \ge \enclose{j+\tfrac 1 3}\eps}
 \end{align*}
 così $A_j\cap B_j\neq \emptyset$, $A_j$ e $B_j$ sono chiusi,
 \begin{gather*}
@@ -210,10 +177,10 @@ così $A_j\cap B_j\neq \emptyset$, $A_j$ e $B_j$ sono chiusi,
 
 
 Per il lemma precedente esiste
-$g_j\in\mathfrak A$ tale che
+$g_j\in{\mathcal A}$ tale che
 $g_j \le \frac \epsilon n$
 su $A_j$ 
-mentre $g_j \ge 1 - \frac \eps n$ su $B_j$.
+mentre $g_j \ge 1 - \tfrac \eps n$ su $B_j$.
 
 Si definisce
 \[
@@ -223,12 +190,12 @@ così per ogni $x\in X$ esiste $j$
 tale che se $x\in A_j \setminus A_{j-1}$
 si ha 
 \[
- \enclose{j - \frac 4 3} \eps 
+ \enclose{j - \tfrac 4 3} \eps 
  < f(x) 
- \le \enclose{j - \frac 1 3} \eps.
+ \le \enclose{j - \tfrac 1 3} \eps.
 \]
 Per ogni $i\le j-2$ se $x\in B_i$ 
-si ha $g_i(x) < 1 - \frac \eps n$.
+si ha $g_i(x) < 1 - \tfrac \eps n$.
 
 Posto
 \[
@@ -237,23 +204,23 @@ g(x) = \eps \sum_{i=0}^{j-1} g_i(x)
 si ha  
 \[
 g(x)\le \eps \sum_{i=j}^{n} g_i(x)
-\le j\eps + \eps (n-j+1)\frac \eps n
+\le j\eps + \eps (n-j+1)\tfrac \eps n
 \le j\eps + \eps^2 
-< \enclose{j+\frac 1 3}\eps
+< \enclose{j+\tfrac 1 3}\eps
 \]
 e
 \[
 g(x) 
 \ge \eps \sum_{i=0}^{j-2} g_i(x) 
-\ge (j-1) \eps \enclose{1-\frac \eps n}
+\ge (j-1) \eps \enclose{1-\tfrac \eps n}
 = (j-1)\eps - \frac{j-1}{n}\eps^2 
-> \dots > \enclose{j-\frac 4 3} \eps.
+> \dots > \enclose{j-\tfrac 4 3} \eps.
 \]
 
 In conclusione 
 \[
   \abs{f(x) - g(x)} 
-  \le \enclose{j+\frac 1 3} \eps - \enclose{j-\frac 4 3} \eps 
+  \le \enclose{j+\tfrac 1 3} \eps - \enclose{j-\tfrac 4 3} \eps 
   < 2 \eps.
 \]
 \end{proof}

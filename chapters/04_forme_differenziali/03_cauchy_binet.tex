@@ -1,4 +1,41 @@
-\section{Formula di Cauchy-Binet}
+\section{Interpretazione geometrica del determinante Jacobiano}
+
+\begin{theorem}[significato geometrico Jacobiano]
+  \label{th:significato_geometrico_jacobiano}
+  Sia $L\colon \RR^m \to \RR^n$ una funzione lineare
+  e sia $V$ l'immagine di $L$.
+  Sia $M\colon V \to \RR^m$ una isometria.
+  Sia $E\subset \RR^m$.
+  Visto che le isometrie preservano le aree
+  è naturale definire la $m$-area di $L(E)$ in $\RR^n$ 
+  come la misura $m$-dimensionale di $M(L(Q))$ in $\RR^m$
+  Cioè per il teorema~\ref{th:significato_geometrico_determinante}
+  \[
+    m-\mathrm{area}(L(E)) = \abs{\det (M\circ L)}\cdot \abs{E}.
+  \]
+  Allora si ha 
+  \[
+    m-\mathrm{area}(L(E)) = \sqrt{\det (L^t L)}\cdot \abs{E}.
+  \]
+\end{theorem}
+\begin{proof}
+Estendiamo $M$ ad una isometria su tutto $\RR^n$, $\tilde M\colon \RR^n \to \RR^n$.
+Dunque $\tilde M$ si rappresenta con una matrice ortogonale, cioè $\tilde M^t = \tilde M^{-1}$.
+Sia $P\colon \RR^n \to \RR^m$ la proiezione ortogonale $P(x_1,\dots,x_n) = (x_1,\dots,x_m)$.
+Dunque $M$ è la restrizione di $P\tilde M$ a $V$
+e $M\circ L = P\tilde M L$.
+Osserviamo che $P^t P\colon \RR^n\to \RR^n$ è l'applicazione 
+lineare che azzera le ultime $n-m$ coordinate
+ma visto che $M$ manda $V$ in $\RR^m$ si ha $P^t P \tilde ML = ML$. 
+Dunque 
+\[
+ (\det(M\circ L))^2 
+ = \det((P \tilde M L)^t (P \tilde M L)) 
+ = \det(L^t \tilde M^t P^t P \tilde M L) 
+ = \det(L^t \tilde M^t M L) = \det(L^t L)
+\]
+come volevamo dimostrare.
+\end{proof}.
 
 \begin{theorem}[formula di Cauchy-Binet]
   Siano $A$ una matrice $m\times n$ e $B$ una matrice $n\times m$.

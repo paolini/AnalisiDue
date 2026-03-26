@@ -1,4 +1,4 @@
-\section{$k$-forme}
+\section{forme differenziali multilineari}
 
 Una funzione $\lambda\colon (\RR^n)^k$, 
 $(v_1,\dots, v_k)\mapsto \lambda[v_1,\dots, v_k]$
@@ -14,7 +14,7 @@ Denotiamo con $\Lambda^k(V)$
 l'insieme delle applicazioni multilineari alternanti.
 
 Cioè $\lambda \in \Lambda^k(V)$ se 
-$\lambda\colon (V)^k\to \RR$ e
+$\lambda\colon V^k\to \RR$ e
 \begin{enumerate}
 \item è lineare nella prima entrata:
 \[
@@ -44,7 +44,7 @@ Allora esiste $c\in \RR$ tale che
 \]
 \end{example}
 
-\begin{definition}[$k$-forme differenziali]
+\begin{definition}[forme differenziali multilineari]
 Sia $A$ un aperto di $\RR^n$.
 Una $k$-forma differenziale $\omega$ è una funzione 
 $\omega\colon A \to \Lambda^k(\RR^n)$.
@@ -54,7 +54,8 @@ L'insieme delle $k$-forme su $A$ si denota con $\Omega^k(A)$.
 Abbiamo già considerato lo spazio delle $1$-forme e abbiamo 
 visto che possono essere rappresentate nella forma 
 \[
-  \omega = \xi_1 dx_1 + \dots + \xi_n dx_n, \qquad \omega(x)[v] = \xi(x)\cdot v
+  \omega = \xi_1\, dx_1 + \dots + \xi_n\, dx_n, 
+  \qquad \omega_x[v] = \xi(x)\cdot v
 \]
 con $\xi\colon A \to \RR^n$.
 
@@ -62,9 +63,11 @@ Le $0$-forme sono banalmente le funzioni scalari, in quanto $\Lambda^0(\RR^n)= \
 e dunque $f \in \Omega^k(A)$ significa $f\colon A \to \RR$.
 
 Visto che $\Lambda^n(\RR^n)$ contiene solamente i multipli del determinante, 
-anche le $n$-forme in $\RR^n$ si rappresentano con una funzione $f\colon A\to\RR$, 
+anche le $n$-forme in $\RR^n$ si rappresentano con una funzione $f\colon A\to\RR$,
+moltiplicata per il determinante: 
 \[
- \omega(x)[v_1,\dots,v_n] = f(x) \det(v_1, \dots, v_n),\qquad f(x) = \omega(x)[e_1,\dots,e_n].
+ \omega_x[v_1,\dots,v_n] = f(x) \det(v_1, \dots, v_n),
+ \qquad f(x) = \omega_x[e_1,\dots,e_n].
 \]
 
 I casi intermedi sono più complicati da capire.
@@ -75,27 +78,27 @@ In particolare se ci sono due vettori uguali $v_k=v_j$ con $k\neq j$, il risulta
 Dunque $\lambda$ è non nullo solamente sulle $k$-uple di vettori $(v_1,\dots,v_k)$ 
 che non hanno ripetizioni. E il valore su una $k$-upla determina il valore su tutte le sue 
 permutazioni. 
-Si capisce dunque che la $\dim \Lambda^k(\RR^n) = {k \choose n}$.
+Si capisce dunque che $\dim \Lambda^k(\RR^n) = {k \choose n}$.
 
 Infatti abbiamo già visto che $\dim \Lambda^0(\RR^n)=\dim \Lambda^n(\RR^n) = 1$.
 
 Proviamo a capire come è fatta $\Omega^2(\RR^n)$. 
 Consideriamo $dx_1,\dots, dx_n \in \Omega^1(\RR^n)$. 
-Sono definiti in modo che $dx_k(p)[v] = v_k$.
+Sono definiti in modo che $dx_k[v] = v_k$.
 Definiamo allora 
 $dx_k \wedge dx_j\in \Omega^2(\RR^n)$ tramite
 \[
-    (dx_k\wedge dx_j)(p) [v,w] = dx_k(p)[v] dx_j(p)[w] - dx_k(p)[w] dx_j(p)[v]
+    (dx_k\wedge dx_j) [v,w] = dx_k[v]\, dx_j[w] - dx_k[w]\, dx_j[v]
       = v_k w_j - v_j w_k. 
 \]
 E' chiaro che questa è una forma bilineare alternante.
 E, dalla discussione precedente, è chiaro che ogni forma bilineare alternante 
 è combinazione lineare di queste.
 Infatti se $\omega \in \Omega^2(\RR^n)$ 
-posto $\xi_{jk}(x) = \omega(x)[v_j,v_k]$ per ogni $1\le j<k\le n$
+posto $\xi_{jk}(x) = \omega_x[v_j,v_k]$ per ogni $1\le j<k\le n$
 si ha 
 \[
-  \omega(x) = \sum_{1\le j < k \le n} \xi_{jk}(x) dx_j\wedge dx_k.
+  \omega_x = \sum_{1\le j < k \le n} \xi_{jk}(x)\, dx_j\wedge dx_k.
 \] 
 
 \begin{example}[$2$-forme in $\RR^3$]
@@ -103,12 +106,12 @@ Sia $\omega \in \Omega^2(\RR^3)$.
 Denotiamo con $x,y,z$ le tre coordinate di $\RR^3$ (invece che $x_1,x_2,x_3$).
 Allora
 \[
-  \omega = \xi_{12} dx\wedge dy + \xi_{13} dx\wedge dz + \xi_{23} dy \wedge dz.
+  \omega = \xi_{12}\, dx\wedge dy + \xi_{13}\, dx\wedge dz + \xi_{23}\, dy \wedge dz.
 \] 
 Notiamo che si ha $dy\wedge dx = - dx\wedge dy$ e lo stesso per le altre coordinate.
 Dunque si potrebbe anche scrivere 
 \[
- \omega = \xi_{23} dy \wedge dz - \xi_{13} dz\wedge dx + \xi_{12} dx\wedge dy.
+ \omega = \xi_{23}\, dy \wedge dz - \xi_{13}\, dz\wedge dx + \xi_{12}\, dx\wedge dy.
 \]
 \end{example}
 
@@ -117,20 +120,21 @@ Dunque si potrebbe anche scrivere
 Possiamo definire il \emph{differenziale} $d\omega$ di una forma differenziale $\omega$, 
 definendo il differenziale delle forme \emph{elementari}
 \[
-  d( f dx_{j_1} \wedge \dots  \wedge dx_{j_k})
-  = \sum_i \frac{\partial f}{\partial x_i} x_i \wedge dx_{j_1} \wedge \dots \wedge dx_{j_k}.
+  d( f\, dx_{j_1} \wedge \dots  \wedge dx_{j_k})
+  = \sum_i \frac{\partial f}{\partial x_i}\, dx_i \wedge dx_{j_1} \wedge \dots \wedge dx_{j_k}.
 \]
 Lo si capisce con un esempio.
 
 \begin{example}[calcolo del differenziale]
-Sia $\omega\in \Omega(\RR^3)$, $\omega = f dx \wedge dy - g dy\wedge dz$ con $f,g\colon \RR^3\to \RR$.
+Sia $\omega\in \Omega(\RR^3)$, $\omega = f\, dx \wedge dy - g\, dy\wedge dz$ 
+con $f,g\colon \RR^3\to \RR$.
 Allora 
 \begin{align*}
   d\omega 
   &= df \wedge dx \wedge dy - dg \wedge dy \wedge dz\\
-  &= (f_x dx + f_y dy + f_z dz) \wedge dx \wedge dy - (g_x dx + g_y dy + g_z dz)\wedge dy \wedge dz\\
-  &= f_z dz\wedge dx \wedge dy - g_x dx \wedge dy \wedge dz \\
-  &= (f_z - g_x) dx \wedge dy \wedge dz.
+  &= (f_x\, dx + f_y\, dy + f_z\, dz) \wedge dx \wedge dy - (g_x\, dx + g_y\, dy + g_z\, dz)\wedge dy \wedge dz\\
+  &= f_z\, dz\wedge dx \wedge dy - g_x\, dx \wedge dy \wedge dz \\
+  &= (f_z - g_x)\, dx \wedge dy \wedge dz.
 \end{align*}
 Ricordiamo che termini come $dx\wedge dx \wedge dy$ o $dy \wedge dx \wedge dy$ sono nulli in quanto 
 si ripete due volte lo stesso differenziale. 
@@ -140,30 +144,46 @@ pari (due trasposizioni). Si avrebbe invece $dx\wedge dz\wedge dy = - dx\wedge d
 
 Abbiamo già visto sulle $1$-forme che se $\omega = df$ (cioè $\omega$ è esatta) 
 allora $d\omega = d(df) = 0$ (cioè $\omega$ è chiusa).
-
-In generale si può dimostrare che vale:
+Dagli esempi fatti si intuisce che questo è un fatto generale,
+per ogni $k$-forma $\omega$ si ha 
 \[
-  d(d\omega) = 0.
+  d(d\omega) = 0
 \]
+ed è anche vero l'analogo del lemma di Poincaré, se $d\omega = 0$ allora, 
+localmente, esiste $\eta$ tale che $d \eta = 0$.
 
-\section{pull-back}
+Si dirà che la catena di morfismi
+\[
+  0 \stackrel d \longrightarrow
+  \Omega^0 \stackrel d \longrightarrow 
+  \Omega^1 \stackrel d \longrightarrow \dots
+  \stackrel d \longrightarrow \Omega^{n-1}
+  \stackrel d \longrightarrow \Omega^n
+  \stackrel d \longrightarrow 0
+\]
+è una \emph{successione esatta}, in quanto l'immagine di un morfismo
+è contenuta nel nucleo di quello successivo.
+
+\section{pull-back e integrale di una $k$-forma}
 
 Se $\phi\colon A\subset \RR^m \to \RR^n$ è una funzione differenziabile e $\omega\in \Omega^k(\phi(A))$
 possiamo definire il pull-back $\phi^* \omega \in \Omega^k(A)$ tramite la formula
 \[
-  (\phi^* \omega)(x)[v_1,\dots,v_k] = \omega(\phi(x))[d\phi(x)[v_1],\dots, d\phi(x)[v_k]].
+  (\phi^* \omega)_x[v_1,\dots,v_k] 
+  = \omega_{\phi(x)}[d\phi(x)[v_1],\dots, d\phi(x)[v_k]].
 \]
 
-Osserviamo che per definizione l'integrale di una $k$-forma differenziale 
+L'integrale di una $k$-forma differenziale 
 su una $k$-superficie parametrizzata da $\phi\colon [0,1]^k \to \RR^n$
 si definisce come l'integrale del pull-back della $k$-forma:
 \[ 
   \int_\phi \omega \defeq \int_{[0,1]^k} \phi^* \omega
-  = \int_{[0,1]^k} f(\vec x) d\vec x
+  = \int_{[0,1]^k} f(\vec x)\, dx_1 \dots dx_k
 \]
 dove $f\colon [0,1]^k \to \RR$ è la funzione che rappresenta $\phi^* \omega$
 in quanto $\phi^* \omega$ è una $k$-forma su $[0,1]^k$ e dunque si rappresenta 
-con una funzione scalare $f$: $\phi^* \omega(\vec x) = f(\vec x) dx_1 \wedge \dots \wedge dx_k$.
+con una funzione scalare $f$: 
+$\phi^* \omega_{\vec x} = f(\vec x)\, dx_1 \wedge \dots \wedge dx_k$.
 
 In particolare, visto che il pull-back di una composizione è ovviamente 
 la composizione dei pull-back, se $\vec u \colon [0,1]^k\to \RR^m$, 
@@ -178,14 +198,31 @@ in quanto entrambi si riconducono a
 \]
 
 In generale si può dimostrare che 
-\[
+\begin{equation}\label{eq:pullback-differenziale}
     \phi^* (d\omega) = d(\phi^* \omega).
+\end{equation}
+Faremo la dimostrazione esplicita nei casi specifici 
+di nostro interesse, nei seguenti capitoli.
+
+\section{$k$-superfici parametrizzate}
+
+\begin{definition}[$k$-superfici parametrizzate]
+Sia $\phi\colon [0,1]^k \to \RR^n$ una funzione di classe $C^1$ (significa che 
+$\phi$ può essere estesa ad una funzione $C^1$ su un aperto contenente $[0,1]^k$) 
+e sia $\omega$ una $k$ forma differenziale definita su un aperto $A\subset \RR^n$.
+Se $\phi([0,1]^k) \subset A$ possiamo definire 
+\[
+   \int_\phi \omega = \int_{[0,1]^n} \phi^* \omega.
 \]
 
-\section{$k$-forme in $\RR^2$}
+\end{definition}
+
+
+\section{forme differenziali multilineari in $\RR^2$}
+
 Se $\omega\in \Omega^1(A)$, con $A$ aperto di $\RR^2$, si ha 
 \[
-  \omega(x,y) = a(x,y) dx + b(x,y) dy
+  \omega = a dx + b dy
 \]
 con $a,b\colon A \to \RR$.
 
@@ -196,17 +233,59 @@ Si ha
   \begin{aligned}
  d \omega 
   &= da\wedge dx + db\wedge dy\\
-  &= \enclose{\frac{\partial a}{\partial x} dx + \frac{\partial a}{\partial y}dy}\wedge dx 
-   + \enclose{\frac{\partial b}{\partial x} dx + \frac{\partial b}{\partial y}dy}\wedge dy \\
-  &= \frac{\partial a}{\partial y} dy\wedge dx 
-   + \frac{\partial b}{\partial x} dx \wedge dy \\
+  &= \enclose{\frac{\partial a}{\partial x}\, dx + \frac{\partial a}{\partial y}\, dy}\wedge dx 
+   + \enclose{\frac{\partial b}{\partial x}\, dx + \frac{\partial b}{\partial y}\, dy}\wedge dy \\
+  &= \frac{\partial a}{\partial y}\, dy\wedge dx 
+   + \frac{\partial b}{\partial x}\, dx \wedge dy \\
   &= \enclose{\frac{\partial b}{\partial x} 
-    - \frac{\partial a}{\partial y}} dx \wedge dy.
+    - \frac{\partial a}{\partial y}}\, dx \wedge dy.
 \end{aligned}
 \end{equation}
 
+\begin{theorem}[Stokes $2D$]
+  \label{th:stokes-2d}
+  Sia $A\subset \RR^2$ un aperto che contiene il quadrato 
+  unitario $A\supset [0,1]^2$ e sia $\omega\in \Omega(A)$ una 
+  $2$-forma differenziale di classe $C^1$ definita su $A$.
+  Allora sia ha 
+  \[
+  \int_{[0,1]^2} d \omega 
+  = \int_{\partial [0,1]^2} \omega
+  \]
+  dove si intende
+  \[
+  \int_{\partial [0,1]^2} \omega
+  = \int_\phi \omega
+  \]
+  con $\phi\colon [0,1]\to \RR^2$ la curva che percorre 
+  la frontiera del quadrato $[0,1]^2$ una volta in senso antiorario.
+\end{theorem}
+\begin{proof}
+Siano $a,b$ i coefficienti di $\omega$:
+\[
+\omega = a dx + b dy.
+\]
+Dunque, per~\eqref{eq:differenziale_bidimensionale}
+\begin{align*}
+  \int_{[0,1]^2} d\omega 
+  &= \int_{[0,1]^2} \enclose{\partial_x b-\partial_y a}dx \wedge dy \\
+  &= \int_0^1 \int_0^1 \partial_x b\, dx\,dy - \int_0^1 \int_0^1 \partial_y a\, dy dx \\
+  &= \int_0^1 \Enclose{b(1,y)- b(0,y)}\, dy - \int_0^1 \Enclose{a(x,1)-a(x,0)}\, dx
+\end{align*}
+Si verifica facilmente che quest'ultima espressione non è altro che l'integrale 
+di $\omega$ lungo i quattro lati del quadrato, parametrizzati 
+dalle curve $\phi_1(x) = (x,0)$, $\phi_2(y)=(1,y)$, $\phi_3(x)=(x,1)$, $\phi_4(y)=(0,y)$ definite per $x,y\in [0,1]$,
+infatti:
+\begin{align*}
+  \int_{\partial[0,1]^2}\omega
+  &= \int_{\phi_1}\omega + \int_{\phi_2} \omega - \int_{\phi_3} \omega - \int_{\phi_4} \omega\\
+  &= \int_0^1 a(\phi_1(x))\, dx + \int_0^1 b(\phi_2(y))\, dy - \int_0^1 a(\phi_3)\, dx - \int_0^1 b(\phi_4)\, dy\\
+  &= \int_0^1 a(x,0)\, dx + \int_0^1 b(1,y)\, dy - \int_0^1 a(x,1)\, dx - \int_0^1 b(0,y)\, dy.
+\end{align*}
+\end{proof}
 
-\section{$k$-forme in $\RR^3$}
+
+\section{forme differenziali multilineari in $\RR^3$}
 
 \begin{definition}[prodotto vettore]
 Siano $v,w\in \RR^3$.
@@ -224,30 +303,30 @@ In coordinate, se $\xi = v\times w$ con $v=(v_1,v_2,v_3)$, $w=(w_1,w_2,w_3)$
 si ha dunque $\xi=(\xi_1,\xi_2,\xi_3)$ 
 con
 \begin{align*}
-  \xi_1 &= e_1 \cdot \xi = \det\enclose{e_1,v,w} = v_2 w_3 - v_3 w_2,\\ 
-  \xi_2 &= e_2 \cdot \xi = \det\enclose{e_2,v,w} = v_3 w_1 - v_1 w_3,\\
-  \xi_3 &= e_2 \cdot \xi = \det\enclose{e_3,v,w} = v_1 w_2 - v_2 w_1.
+  \xi_1 &= \vec e_1 \cdot \xi = \det\enclose{\vec e_1,v,w} = v_2 w_3 - v_3 w_2,\\ 
+  \xi_2 &= \vec e_2 \cdot \xi = \det\enclose{\vec e_2,v,w} = v_3 w_1 - v_1 w_3,\\
+  \xi_3 &= \vec e_2 \cdot \xi = \det\enclose{\vec e_3,v,w} = v_1 w_2 - v_2 w_1.
 \end{align*}
 
 Più espressivamente si può scrivere
 \[
   \xi = \det\begin{pmatrix}
-    e_1 & v_1 & w_1 \\ e_2 & v_2 & w_2 \\ e_3 & v_3 & w_3
+    \vec e_1 & v_1 & w_1 \\ \vec e_2 & v_2 & w_2 \\ \vec e_3 & v_3 & w_3
   \end{pmatrix}
-  = (v_2 w_3 - v_3 w_2) e_1 + (v_3 w_1 - v_1 w_3) e_2 + (v_1 w_2 - v_w w_1) e_3. 
+  = (v_2 w_3 - v_3 w_2)\, \vec e_1 + (v_3 w_1 - v_1 w_3)\,  \vec e_2 + (v_1 w_2 - v_w w_1)\, \vec e_3. 
 \]
 
 \begin{definition}[rotore]
 Sia $A$ un aperto di $\RR^3$ e $\xi \colon A \to \RR^3$ una funzione differenziabile.
-Sia $e_1,e_2,e_3$ la base canonica di $\RR^3$.
+Sia $\vec e_1,\vec e_2,\vec e_3$ la base canonica di $\RR^3$.
 Definiamo allora il \emph{rotore} di $\xi$ come il vettore $\rot \xi \in \RR^3$ 
 definito da 
 \[
    \rot \xi = \nabla \times \xi
     = \det \begin{pmatrix}
-    e_1 & \partial_x & \xi_1 \\
-    e_2 & \partial_y & \xi_2 \\
-    e_3 & \partial_z & \xi_3 
+    \vec e_1 & \partial_x & \xi_1 \\
+    \vec e_2 & \partial_y & \xi_2 \\
+    \vec e_3 & \partial_z & \xi_3 
     \end{pmatrix}
     = \begin{pmatrix}
     \frac{\partial \xi_3}{\partial y} - \frac{\partial \xi_2}{\partial z} \smallskip \\
@@ -273,7 +352,7 @@ Abbiamo già visto che una $1$-forma $\omega$ in un aperto $A$ di $\RR^3$ può e
 con un campo vettoriale $\xi\colon A \subset \RR^3 \to \RR^3$ 
 in modo tale che si abbia 
 \[
-  \omega(x,y,z)[v] = \xi(x,y,z)\cdot v.
+  \omega_{(x,y,z)}[v] = \xi(x,y,z)\cdot v.
 \]
 
 Se consideriamo $f\colon A\subset \RR^3\to \RR$ una $0$-forma, 
@@ -291,9 +370,9 @@ Se $\omega\in \Omega^1(A)$, possiamo scrivere $\omega$ nella forma
 in modo che $\vec g \colon A\to\RR^3$ sia il campo vettoriale che rappresenta $\omega$.
 In questo caso si ha 
 \begin{align*}
-    d\omega &= (\partial_x \vec g_1 dx + \partial_y \vec g_1 dy + \partial z \vec g_3 dz)\wedge dx 
-    + (\partial x \vec g_2 dx + \partial y \vec g_2 dy + \partial z \vec g_3 dz)\wedge dy \\
-    & \quad + (\partial x \vec g_3 dx + \partial y \vec g_3 dy + \partial z \vec g_3 dz)\wedge dz \\    
+    d\omega &= (\partial_x \vec g_1 dx + \partial_y \vec g_1 dy + \partial_z \vec g_3 dz)\wedge dx 
+    + (\partial_x \vec g_2 dx + \partial_y \vec g_2 dy + \partial_z \vec g_3 dz)\wedge dy \\
+    & \quad + (\partial_x \vec g_3 dx + \partial_y \vec g_3 dy + \partial_z \vec g_3 dz)\wedge dz \\    
     &= (\partial_y \vec g_3 - \partial_z \vec g_2)\, dy \wedge dz
        + (\partial_z \vec g_1 - \partial_x \vec g_3)\, dz\wedge dx 
        + (\partial_x \vec g_2 - \partial_y \vec g_1)\, dx \wedge dy\\
@@ -305,9 +384,9 @@ Dunque se rappresentiamo $d\omega\in \Omega^2(A)$, tramite
 il campo vettoriale $\xi\colon A\to \RR^3$
 definito da 
 \[
-\xi_1(\vec p) = \omega(\vec p)[e_2,e_3], \qquad
-\xi_2(\vec p) = \omega(\vec p)[e_3,e_1], \qquad
-\xi_3(\vec p) = \omega(\vec p)[e_1,e_2]
+\xi_1(\vec p) = \omega_{\vec p}[\vec e_2,\vec e_3], \qquad
+\xi_2(\vec p) = \omega_{\vec p}[\vec e_3,\vec e_1], \qquad
+\xi_3(\vec p) = \omega_{\vec p}[\vec e_1,\vec e_2]
 \]
 si avrà
 \begin{equation}\label{eq:fkjtpd}
@@ -340,12 +419,14 @@ Inoltre
 Dunque la funzione che rappresenta la $3$-forma $d\omega$ 
 è la divergenza del campo vettoriale che rappresenta la $2$-forma $\omega$.
 
-\begin{exercise}
-Verifichiamo che vale l'identità
+\begin{exercise}\label{ex:bullback-differenziale1}
+Verifichiamo che,
+se $\omega$ è una $1$-forma in $\RR^3$,
+e $\phi\colon \RR^2\to\RR^3$
+vale l'identità~\eqref{eq:pullback-differenziale}
 \[
-  d (\phi^* \omega) = \phi^* d\omega
+  d (\phi^* \omega) = \phi^* d\omega.
 \]
-quando $\omega$ è una $1$-forma in $\RR^3$.
 \end{exercise}
 
 \begin{proof}[Svolgimento.]
@@ -401,6 +482,26 @@ d(\phi^* \omega)
  &= \sum_{j\neq k} \frac{\partial \xi_k}{\partial x_j} \enclose{
   \frac{\partial \phi_j}{\partial s} \frac{\partial \phi_j}{\partial t}
   - \frac{\partial \phi_j}{\partial t} \frac{\partial \phi_k}{\partial s}}\\
-  &= \det\enclose{\rot xi, \frac{\partial \phi}{\partial s}, \frac{\partial \phi}{\partial t}}.
+  &= \det\enclose{\rot \xi, \frac{\partial \phi}{\partial s}, \frac{\partial \phi}{\partial t}}.
 \end{align*}
 \end{proof}
+
+Una volta verificato che $d(\phi^*)\omega = \phi^* d\omega$ 
+se $\phi\colon [0,1]^2\to \RR^2$ è la parametrizzazione di una 
+superficie, si ha
+\begin{align*}
+  \int_{\phi} d\omega &= \int_{[0,1]^2} d\phi^*\omega
+  \\
+  \int_{\phi \llcorner [0,1]^2} \omega &= \int_{\llcorner [0,1]^2} \phi^* \omega,
+\end{align*}
+e quindi la formula di Stokes
+\[
+ \int_{\phi} d\omega = \int_{\phi\llcorner\partial[0,1]^2} \omega
+\]
+segue dal teorema~\ref{th:stokes-2d}.
+
+\section{$n-1$ forme in $\RR^n$}
+
+Generalizziamo il teorema~\ref{th:stokes-2d} in $n$ variabili per le $n-1$ forme.
+
+\begin{theorem}[divergenza]

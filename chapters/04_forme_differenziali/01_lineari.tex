@@ -4,12 +4,12 @@ Se $f\colon A\subset \RR^n \to \RR$ è una funzione differenziabile il suo
 differenziale $df \colon A \to \mathcal L (\RR^n, \RR)$ è una forma differenziale lineare
 ($1$-forma).
 Si tratta di una funzione che ad ogni punto $x\in A$ associa una applicazione lineare 
-$df(x)\colon \RR^n \to \RR$ e dunque ad ogni $v\in \RR^n$ associa un numero reale 
-$df(x)[v]$. 
+$df_x\colon \RR^n \to \RR$ e dunque ad ogni $v\in \RR^n$ associa un numero reale 
+$df_x[v]$. 
 Se sfruttiamo il prodotto scalare standard su $\RR^n$ 
-possiamo identificare l'applicazione lineare $df(x)$ con il vettore $\nabla f(x)$:
+possiamo identificare l'applicazione lineare $df_x$ con il vettore $\nabla f(x)$:
 \[
-    df(x)[v] = \frac{\partial f}{\partial v}(x) = \nabla f(x) \cdot v.
+    df_x[v] = \frac{\partial f}{\partial v}(x) = \nabla f(x) \cdot v.
 \]
 Infatti il prodotto scalare su uno spazio vettoriale $V$ 
 induce un isomorfismo $V \to V^*$, $v \mapsto (w \mapsto v \cdot w)$.
@@ -17,17 +17,18 @@ induce un isomorfismo $V \to V^*$, $v \mapsto (w \mapsto v \cdot w)$.
 \begin{definition}[forme differenziali lineari]
     Sia $A\subset \RR^n$ un aperto.
     Denotiamo con $\Omega^1(A)$ l'insieme di tutte le funzioni $\omega\colon A \to (\RR^n)^*$
-    che ad ogni punto $x\in A$ associano una applicazione lineare $\omega(x)\colon \RR^n \to \RR$,
-    $v\mapsto \omega(x)[v]$.
+    che ad ogni punto $x\in A$ associano una applicazione lineare $\omega_x\colon \RR^n \to \RR$,
+    $v\mapsto \omega_x[v]$.
 \end{definition}
 
 \begin{remark}
-Le forme differenziali sono funzioni di due variabili: $(x,v)\mapsto \omega(x)[v]$.
+Le forme differenziali sono funzioni di due variabili: $(x,v)\mapsto \omega_x[v]$.
 La dipendenza da $x$ non è lineare (e in generale lo spazio ambiente potrebbe non essere uno 
 spazio vettoriale, dunque non avrebbe senso richiedere la linearità in $x$)
 mentre la dipendenza da $v$ è lineare. 
-A volte si fissa una delle due variabili ma non l'altra.
-Per questo utilizziamo le parentesi quadre per distinguere la seconda variabile dalla prima.
+A volte si fissa una delle due variabili ma non l'altra,
+per questo le due variabili vengono posizionate in modo diverso: 
+una come pedice, una tra parentesi quadre.
 In generale useremo le parentesi quadre per ricordare che la dipendenza da quella variabile è lineare.
 
 Le forme differenziali si definiscono più in generale sulle \emph{varietà differenziabili}, che sono una 
@@ -48,7 +49,7 @@ la corrispondente base dello spazio duale $(\RR^n)^*$ è data
 dalle applicazioni lineari $\lambda_1,\dots, \lambda_n$ definite 
 da 
 \[
-  \lambda_k(e_j)=\delta_{kj} = \begin{cases}
+  \lambda_k[e_j]=\delta_{kj} = \begin{cases}
   1 & \text{se } k=j,\\
   0 & \text{altrimenti.}
   \end{cases}
@@ -60,27 +61,28 @@ e dunque $dx_k = \lambda_k$ è in effetti la base canonica di $(\RR^n)^*$.
 Significa che ogni $\omega \in \Omega^1(A)$ può essere scritto 
 nella forma 
 \[
-   \omega(p) = \xi_1 dx_1 + \xi_2 dx_2 + \dots + \xi_n dx_n.
+   \omega = \xi_1 dx_1 + \xi_2 dx_2 + \dots + \xi_n dx_n.
 \]
 Dunque c'è un isomorfismo $\omega \mapsto \xi$ che mette in 
 corrispondenza le forme differenziali lineari $\omega \in \Omega^1(A)$ 
 con i campi vettoriali $\xi \colon A\to \RR^n$.
 In questo isomorfismo:
 \[
-  \omega(p)[v] = \xi(p) \cdot v
+  \omega_x[v] = \xi(x) \cdot v
 \]
 (abbiamo qui sfruttato il fatto che sullo spazio $\RR^n$ è fissato un prodotto 
 scalare canonico che induce un isomorfismo canonico tra $\RR^n$ 
 e il suo duale).
 
-\section{integrale di una forma differenziale}
+\section{integrale di una forma differenziale lineare}
 
 Se $u\colon [a,b]\to A\subset \RR^n$ è una curva regolare e $\omega\in \Omega^1(A)$ 
 è una $1$-forma differenziale, possiamo definire l'integrale della forma differenziale lungo la curva:
 \[
- \int_u \omega \defeq \int_a^b \omega(u(t))[u'(t)]\, dt.
+ \int_u \omega \defeq \int_a^b \omega_{u(t)}[u'(t)]\, dt.
 \]
-Osserviamo che se $\omega$ si rappresenta con il campo vettoriale $\xi$, si ha $\omega(x)[v] = \xi(x)\cdot v$ 
+Osserviamo che se $\omega$ si rappresenta con il campo vettoriale $\xi$, 
+si ha $\omega_x[v] = \xi(x)\cdot v$ 
 e dunque 
 \[
  \int_u \omega = \int_a^b \xi(u(t))\cdot u'(t)\, dt.
@@ -92,10 +94,10 @@ Infatti se $\phi\colon [A,B]\to [a,b]$ con $\phi(A)=a$ e $\phi(B)=b$
 posto $t=\phi(s)$ si ha $(u\circ \phi)'(s)\, ds = u'(\phi(s)) \phi'(s)\, ds = u'(t)\, dt$.
 Dunque la formula del cambio di variabile garantisce l'uguaglianza
 \begin{align*}
-\int_{u\circ \phi} \omega 
-&= \int_A^B \omega(u(\phi(s)))[(u\circ \phi)'(s)]\, ds
-= \int_A^B \omega(u(\phi(s)))[u'(\phi(s))] \phi'(s)\, ds\\
-&= \int_a^b \omega(t)[u'(t)]\, dt = \int_u \omega.
+  \int_{u\circ \phi} \omega 
+  &= \int_A^B \omega_{u(\phi(s))}[(u\circ \phi)'(s)]\, ds
+  = \int_A^B \omega_{u(\phi(s))}[u'(\phi(s))]\, \phi'(s)\, ds\\
+  &= \int_a^b \omega_{u(t)}[u'(t)]\, dt = \int_u \omega.
 \end{align*}
 
 In generale se $\phi \colon A\subset \RR^m \to \RR^n$ 
@@ -108,7 +110,7 @@ Formalmente si definisce il \emph{pull-back}
 $\phi^*\colon \Omega^1(\phi(A)) \to \Omega^1(A)$ 
 tramite la formula
 \[
-   (\phi^* \omega)(x)[v] = \omega(\phi(x))[d\phi(x)[v]].
+   (\phi^* \omega)_x[v] = \omega_{\phi(x)}[d\phi_x[v]].
 \]
 
 Osserviamo che se $u\colon I\to A\subset \RR^n$ 
@@ -125,7 +127,7 @@ sull'intervallo $[a,b]$, possiamo notare che si ha
 \]
 in quanto (qui $e_1=1$ è l'unico vettore della base canonica di $\RR$)
 \[
-  u^* \omega(t)[e_1] = \omega(u(t))[u'(t)]\, dt.
+  (u^* \omega)_t[e_1] = \omega_{u(t)}[u'(t)]\, dt.
 \]
 
 \section{forme chiuse, forme esatte}
@@ -139,9 +141,9 @@ L'integrale di un differenziale esatto risulta banale. Se $\omega = df$
 \begin{align*}    
     \int_u \omega 
     &= \int_u df 
-    = \int_a^b df(u(t))[u'(t)]\, dt 
-    = \int_a^b \frac{\partial f(u(t))}{u'(t)}\, u'(t) \, dt\\
-    &= \int_a^b (f\circ u)'(t) \, dt 
+    = \int_a^b df_{u(t)}[u'(t)]\, dt 
+    = \int_a^b \nabla f(u(t)) \cdot u'(t) \, dt\\
+    &= \int_a^b (f(u(t)))' \, dt 
     = f(u(b)) - f(u(a)).
 \end{align*}
 In questo caso se due curve hanno gli stessi estremi l'integrale è lo stesso,
@@ -165,8 +167,8 @@ e, per il teorema di Schwartz si ha
 \begin{definition}[forma chiusa]
 Sia $\omega\in \Omega^1(A)$ una $1$-forma di classe $C^1$
 ovvero tale che esiste $\xi\in C^1(A,\RR^n)$ tale che 
-$\omega(x)[v] = \xi(x)\cdot v$. 
-Diremo che $\omega$ è chiusa se vale~\eqref{eq:forma-chiusa}
+$\omega_x[v] = \xi(x)\cdot v$. 
+Diremo che $\omega$ è chiusa se vale~\eqref{eq:forma-chiusa}.
 \end{definition}
 
 Se $df = \omega$ diremo che $f$ è una primitiva di $\omega$ 
@@ -186,7 +188,7 @@ per il teorema fondamentale del calcolo.
 In più variabili la condizione non è vuota. 
 
 \begin{example}[forma differenziale non chiusa]
-Sia $\omega(x,y) = y dx$, $\omega \in \Omega^1(\RR^2)$ è una forma di classe $C^\infty$ 
+Sia $\omega_{(x,y)} = y dx$, $\omega \in \Omega^1(\RR^2)$ è una forma di classe $C^\infty$ 
 associata al campo vettoriale $\xi(x,y) = (y,0)$.
 L'equazione~\eqref{eq:forma-chiusa} diventa $1=0$ e dunque questa forma non è chiusa e non 
 può essere il differenziale di una funzione.
@@ -195,22 +197,24 @@ può essere il differenziale di una funzione.
 \begin{theorem}[Lemma di Poincaré]
     \label{th:lemma-poincare}
 Sia $A$ un aperto \emph{stellato} di $\RR^n$
-(cioè esiste $x\in A$ tale che per ogni $y\in A$ si ha $[x,y]\subset A$). 
+(cioè esiste $x_0\in A$ tale che per ogni $y\in A$ si ha $[x_0,y]\subset A$). 
 Sia $\omega\in \Omega^1(A)$ una forma differenziale chiusa.
 Allora $\omega$ è esatta 
 (cioè esiste $f\colon A\to \RR$ tale che $df = \omega$).
 \end{theorem}
 %
 \begin{proof}
-Senza perdita di generalità possiamo supporre $x=0 \in A$.
+Senza perdita di generalità possiamo supporre $x_0 = 0 \in A$.
 Sia $\xi$ il campo vettoriale che rappresenta $\omega$.
-Definiamo $f\colon A\to\RR$ come
+Definiamo $f\colon A\to\RR$ come l'integrale di $\omega$ lungo il segmento 
+che congiunge $0$ ad $x$:
 \[
    f(x) = \int_{[0,x]} \omega = \int_0^1 \xi(tx)\cdot x\, dt 
    = \int_0^1 \sum_j x_j \xi_j(tx) \, dt.
 \]
-Ricordiamo che se $\omega$ è chiusa si ha $\frac{\partial \xi_j}{\partial x_k} = \frac{\xi_k}{\partial x_j}$.
-Si ha 
+Ricordiamo che se $\omega$ è chiusa si ha 
+$\frac{\partial \xi_j}{\partial x_k} = \frac{\partial \xi_k}{\partial x_j}$.
+Dunque
 \begin{align*}
  \frac{\partial}
  {\partial x_k}\sum_j x_j \xi_j(tx)
@@ -245,7 +249,7 @@ a(x,y) = \frac{-y}{x^2+y^2},
 \qquad 
 b(x,y) = \frac{x}{x^2+y^2}
 \]
-cosicché $\omega = a(x,y)\,dx + b(x,y)\,dy$.
+cosicché $\omega = a\,dx + b\,dy$.
 Allora da verifica diretta si osserva che 
 \[
  \frac{\partial a}{\partial y} =

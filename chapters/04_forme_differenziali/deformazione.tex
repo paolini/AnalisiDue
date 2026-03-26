@@ -1,0 +1,341 @@
+\documentclass[a4paper,11pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath, amssymb, amsthm}
+\usepackage{geometry}
+\geometry{margin=2.5cm}
+
+\title{Definizione dell'integrale di una forma su una superficie\\
+tramite approssimazione diadica}
+\author{}
+\date{}
+
+\theoremstyle{definition}
+\newtheorem{definition}{Definizione}
+\newtheorem{theorem}{Teorema}
+\newtheorem{proposition}{Proposizione}
+
+\begin{document}
+
+\maketitle
+
+\section{Idea generale}
+
+Costruiamo l'integrale di una $k$-forma differenziale su una superficie parametrizzata
+utilizzando approssimazioni su reticoli diadici e correnti poliedrali.
+
+L'idea è:
+\begin{itemize}
+\item discretizzare lo spazio tramite una griglia diadica;
+\item definire l'integrazione su oggetti discreti;
+\item approssimare superfici lisce con tali oggetti;
+\item passare al limite.
+\end{itemize}
+
+\section{Correnti diadiche}
+
+Sia $\mathcal{G}_N$ la griglia diadica di passo $2^{-N}$ in $\mathbb{R}^n$.
+
+\begin{definition}
+Una \emph{$k$-corrente diadica} è una combinazione lineare finita di celle
+$k$-dimensionali della griglia $\mathcal{G}_N$, orientate.
+\end{definition}
+
+Se $P$ è una corrente diadica e $\omega$ è una $k$-forma liscia, si definisce:
+\[
+P(\omega) := \sum_i \int_{Q_i} \omega,
+\]
+dove $Q_i$ sono le celle.
+
+\section{Teorema di Stokes (caso diadico)}
+
+\begin{proposition}
+Se $P$ è una corrente diadica e $\omega$ è una $(k-1)$-forma liscia, allora:
+\[
+P(d\omega) = \partial P(\omega).
+\]
+\end{proposition}
+
+\noindent
+La dimostrazione è immediata: vale su ogni cella e le facce interne si cancellano.
+
+\section{Approssimazione di correnti}
+
+Sia $T$ una $k$-corrente (regolare). Esiste una successione di correnti diadiche $P_N$
+tali che:
+\[
+T = P_N + \partial S_N + R_N,
+\]
+con stime:
+\[
+\mathbf{M}(S_N) \le C 2^{-N}, \qquad \mathbf{M}(R_N) \to 0.
+\]
+
+In particolare, per ogni forma liscia $\omega$:
+\[
+P_N(\omega) \to T(\omega).
+\]
+
+\section{Correnti parametrizzate}
+
+Sia $\varphi : Q \subset \mathbb{R}^k \to \mathbb{R}^n$ una funzione continua.
+
+\begin{definition}
+La corrente parametrizzata associata a $\varphi$ è definita da:
+\[
+T_\varphi(\omega) := \lim_{N\to\infty} P_N(\omega),
+\]
+dove $P_N$ è una approssimazione diadica della superficie $\varphi(Q)$.
+\end{definition}
+
+La convergenza segue dalle stime:
+\[
+|(P_N - P_M)(\omega)| \le C 2^{-N} \|d\omega\|_\infty + o(1),
+\]
+quindi $(P_N(\omega))$ è di Cauchy.
+
+\section{Formula classica (caso regolare)}
+
+\begin{theorem}
+Sia $\varphi : Q \subset \mathbb{R}^k \to \mathbb{R}^n$ di classe $C^1$.
+Allora, per ogni $k$-forma liscia $\omega$:
+\[
+T_\varphi(\omega) = \int_Q \varphi^* \omega.
+\]
+\end{theorem}
+
+\subsection*{Idea della dimostrazione}
+
+\begin{itemize}
+\item Si suddivide $Q$ in cubi diadici $Q_i$ di lato $2^{-N}$.
+\item Su ogni cubo:
+\[
+\varphi(x) = \varphi(x_i) + D\varphi(x_i)(x-x_i) + O(2^{-2N}).
+\]
+\item Quindi $\varphi$ è approssimata da una mappa affine.
+\item L'integrale su ciascun cubo è approssimato dall'integrale sul piano tangente.
+\item L'errore totale è $O(2^{-N}) \to 0$.
+\end{itemize}
+
+Passando al limite si ottiene:
+\[
+\lim_{N\to\infty} P_N(\omega) = \int_Q \varphi^*\omega.
+\]
+
+\section{Forma esplicita}
+
+Se
+\[
+\omega = f\, dx^{i_1} \wedge \cdots \wedge dx^{i_k},
+\]
+allora:
+\[
+\varphi^*\omega =
+f(\varphi(u)) \cdot
+\det\left( \frac{\partial(\varphi^{i_1}, \dots, \varphi^{i_k})}{\partial(u_1, \dots, u_k)} \right)
+\, du_1 \cdots du_k.
+\]
+
+\section{Conclusione}
+
+Abbiamo costruito l'integrale di una forma su una superficie:
+\begin{itemize}
+\item a partire da oggetti discreti (correnti diadiche);
+\item passando al limite;
+\item recuperando la formula classica nel caso regolare.
+\end{itemize}
+
+\section{Lemma di deformazione (versione diadica)}
+
+\begin{theorem}[Lemma di deformazione]
+Sia $T$ una $k$-corrente a massa finita in $\mathbb{R}^n$.
+Per ogni $N \in \mathbb{N}$, sia $\mathcal{G}_N$ la griglia diadica di passo $2^{-N}$.
+
+Allora esistono:
+\begin{itemize}
+\item una $k$-corrente diadica $P_N$ supportata sullo scheletro $k$-dimensionale di $\mathcal{G}_N$,
+\item una $(k+1)$-corrente $S_N$,
+\item una $k$-corrente $R_N$,
+\end{itemize}
+tali che:
+\[
+T = P_N + \partial S_N + R_N,
+\]
+e valgono le stime:
+\[
+\mathbf{M}(P_N) \le C\,\mathbf{M}(T),
+\]
+\[
+\mathbf{M}(S_N) \le C\,2^{-N}\,\mathbf{M}(T),
+\]
+\[
+\mathbf{M}(R_N) \le C\,2^{-N}\,\mathbf{M}(\partial T),
+\]
+dove $C$ dipende solo da $n$ e $k$.
+
+Inoltre, se $\partial T = 0$, allora si può scegliere $R_N = 0$, cioè:
+\[
+T = P_N + \partial S_N.
+\]
+\end{theorem}
+
+\medskip
+
+\noindent
+\textbf{Conseguenza.}
+Per ogni $k$-forma liscia $\omega$ con coefficienti limitati,
+si ha:
+\[
+\lim_{N\to\infty} P_N(\omega) = T(\omega).
+\]
+
+Infatti, per $N < M$:
+\[
+(P_M - P_N)(\omega)
+= (S_N - S_M)(d\omega) + (R_N - R_M)(\omega),
+\]
+da cui segue la stima:
+\[
+|(P_M - P_N)(\omega)|
+\le C\,2^{-N}\,\|d\omega\|_\infty
++ o(1),
+\]
+che implica che la successione $(P_N(\omega))$ è di Cauchy.
+
+\section{Dimostrazione del lemma di deformazione}
+
+\begin{proof}
+L'idea della dimostrazione è deformare progressivamente la corrente $T$
+verso lo scheletro $k$-dimensionale della griglia diadica $\mathcal{G}_N$,
+riducendo passo dopo passo la dimensione del supporto.
+
+\medskip
+
+\noindent
+\textbf{Passo 1: riduzione allo scheletro $(n-1)$-dimensionale.}
+
+Sia $\mathcal{G}_N$ la griglia diadica di passo $2^{-N}$.
+Consideriamo un cubo $Q$ di dimensione $n$ della griglia.
+
+Fissato un punto $x_Q$ nell'interno di $Q$, definiamo una mappa di proiezione radiale
+\[
+\pi_Q : Q \setminus \{x_Q\} \to \partial Q
+\]
+che manda ogni punto sul bordo lungo il segmento che unisce $x_Q$ al punto stesso.
+
+Questa mappa è lipschitziana su ogni compatto di $Q \setminus \{x_Q\}$.
+Applicando $\pi_Q$ a ciascun cubo e incollando le mappe,
+otteniamo una deformazione globale
+\[
+\pi^{(n)} : \mathbb{R}^n \to \mathbb{R}^n
+\]
+che manda lo spazio nello scheletro $(n-1)$-dimensionale della griglia.
+
+Definiamo la corrente deformata:
+\[
+T^{(n-1)} := \pi^{(n)}_{\#} T.
+\]
+
+\medskip
+
+\noindent
+\textbf{Passo 2: formula di omotopia.}
+
+La mappa $\pi^{(n)}$ è omotopa all'identità tramite un'omotopia lipschitziana
+$H : [0,1]\times \mathbb{R}^n \to \mathbb{R}^n$.
+
+Dalla formula di omotopia per correnti si ottiene:
+\[
+T^{(n-1)} - T = \partial S^{(n)} + R^{(n)},
+\]
+dove:
+\begin{itemize}
+\item $S^{(n)}$ è una $(k+1)$-corrente associata all'omotopia,
+\item $R^{(n)}$ è un termine di errore che dipende da $\partial T$.
+\end{itemize}
+
+Inoltre si ha la stima:
+\[
+\mathbf{M}(S^{(n)}) \le C\,2^{-N}\,\mathbf{M}(T),
+\]
+poiché lo spostamento indotto da $\pi^{(n)}$ è dell'ordine di $2^{-N}$.
+
+\medskip
+
+\noindent
+\textbf{Passo 3: iterazione.}
+
+Si ripete lo stesso procedimento sugli scheletri successivi.
+
+Costruiamo mappe:
+\[
+\pi^{(n-1)}, \pi^{(n-2)}, \dots, \pi^{(k+1)}
+\]
+che deformano rispettivamente:
+\[
+(n-1)\text{-scheletro} \to (n-2)\text{-scheletro} \to \cdots \to k\text{-scheletro}.
+\]
+
+Definendo ricorsivamente:
+\[
+T^{(j-1)} := \pi^{(j)}_{\#} T^{(j)},
+\]
+si ottiene alla fine una corrente:
+\[
+P_N := T^{(k)}
+\]
+supportata sullo scheletro $k$-dimensionale della griglia.
+
+\medskip
+
+\noindent
+\textbf{Passo 4: decomposizione finale.}
+
+Sommando le relazioni di omotopia ottenute a ogni passo,
+si ottiene:
+\[
+T = P_N + \partial S_N + R_N,
+\]
+dove:
+\[
+S_N := \sum_j S^{(j)}, \qquad R_N := \sum_j R^{(j)}.
+\]
+
+\medskip
+
+\noindent
+\textbf{Passo 5: stime di massa.}
+
+Le stime seguono dal fatto che:
+\begin{itemize}
+\item ogni deformazione sposta i punti di una quantità $\lesssim 2^{-N}$,
+\item le mappe coinvolte hanno costante lipschitziana controllata.
+\end{itemize}
+
+Quindi:
+\[
+\mathbf{M}(S_N) \le C\,2^{-N}\,\mathbf{M}(T),
+\]
+\[
+\mathbf{M}(R_N) \le C\,2^{-N}\,\mathbf{M}(\partial T).
+\]
+
+\medskip
+
+\noindent
+\textbf{Passo 6: caso senza bordo.}
+
+Se $\partial T = 0$, allora tutti i termini $R^{(j)}$ sono nulli,
+e quindi:
+\[
+T = P_N + \partial S_N.
+\]
+
+\medskip
+
+\noindent
+Questo conclude la dimostrazione.
+\end{proof}
+
+\end{document}

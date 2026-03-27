@@ -8,14 +8,14 @@
   Sia $E\subset \RR^m$.
   Visto che le isometrie preservano le aree
   è naturale definire la $m$-area di $L(E)$ in $\RR^n$ 
-  come la misura $m$-dimensionale di $M(L(Q))$ in $\RR^m$
+  come la misura $m$-dimensionale di $M(L(E))$ in $\RR^m$
   Cioè per il teorema~\ref{th:significato_geometrico_determinante}
   \[
-    m-\mathrm{area}(L(E)) = \abs{\det (M\circ L)}\cdot \abs{E}.
+    \mathrm{m-area}(L(E)) = \abs{\det (M\circ L)}\cdot \abs{E}.
   \]
   Allora si ha 
   \[
-    m-\mathrm{area}(L(E)) = \sqrt{\det (L^t L)}\cdot \abs{E}.
+    \mathrm{m-area}(L(E)) = \sqrt{\det (L^t L)}\cdot \abs{E}.
   \]
 \end{theorem}
 \begin{proof}
@@ -59,9 +59,9 @@ di $\ENCLOSE{1,\dots,m}$
 e con $(-1)^\sigma$ il segno della permutazione.
 Si ha
 \begin{align*}
-  \det (AB) &= \sum_{\sigma \in \Sigma_n} (-1)^\sigma \prod_{i=1}^m (AB)_{i,\sigma(i)} \\
+  \det (AB) &= \sum_{\sigma \in \Sigma_m} (-1)^\sigma \prod_{i=1}^m (AB)_{i,\sigma(i)} \\
     &= \sum_\sigma (-1)^\sigma \prod_i \sum_{k=1}^n A_{i,k} B_{k,\sigma(i)} \\
-    &= \sum_\sigma (-1)^\sigma \sum_{k_1=1^n} \dots \sum_{k_m=1}^n \prod_i A_{i,k} B_{k,\sigma(i)} \\
+    &= \sum_\sigma (-1)^\sigma \sum_{k_1=1}^n \dots \sum_{k_m=1}^n \prod_i A_{i,k} B_{k,\sigma(i)} \\
     &= \sum_\sigma \sum_{\vec k\in \ENCLOSE{1,\dots,n}^m} \prod_i A_{i,k} (-1)^\sigma \prod_i B_{k,\sigma(i)} \\    
     &= \sum_\sigma \sum_{\vec k\in \ENCLOSE{1,\dots,n}^m} \prod_i A_{i,k} \det B_{\vec k}
 \end{align*}
@@ -90,7 +90,10 @@ cambia segno al determinante e dunque si ha $\det B_{\vec k\circ \phi} = (-1)^\p
 
 
 \section{integrale di superficie}
-$\phi\colon B\subset \RR^k \to A\subset \RR^n$.
+
+Dato $\phi\colon B\subset \RR^k \to A\subset \RR^n$
+e data $f\colon A\subset \RR^n\to \RR$ 
+possiamo definire
 \[
   \int_\phi f(y) \, d\sigma(y) 
   \defeq \int_B f(\phi(x)) \sqrt{\det ((D\phi)^t D\phi)}\, dx.
@@ -110,3 +113,75 @@ avendo fatto il cambio di variabile:
   y = u(x), \qquad dy = \abs{\det Du} dx = \sqrt{\det ((Du)^t Du)}\, dx.
 \]
 
+Se $D\phi(x)$ ha rango massimo, i vettori $\phi_{x_1},\dots,\phi_{x_k}$
+sono linearmente indipendenti e dunque 
+generano uno spazio vettoriale $k$-dimensionale 
+che si chiama spazio tangente alla superficie definita da $\phi$ nel punto $\phi(x)$.
+
+
+\section{ipersuperifici}
+
+Se $k=n-1$, $\phi\colon B\subset \RR^{n-1} \to A\subset \RR^n$ 
+rappresenta una \emph{ipersuperficie} in $\RR^n$ o superficie di codimensione $1$.
+Se $D\phi$ ha rango massimo in un punto $x$, 
+i vettori $\phi_{x_1},\dots,\phi_{x_{n-1}}$ 
+sono linearmente indipendenti e dunque
+generano lo spazio tangente alla superficie definita da $\phi$ nel punto $\phi(x)$.
+Per ogni $v\in \RR^n$ possiamo considerare il determinante $\det(v, D\phi)$ 
+della matrice quadrata ottenuta aggiungendo la colonna $v$ alla matrice $D\phi$.
+Chiamiamo $\xi_\phi$ il vettore che rappresenta l'applicazione lineare $v\mapsto \det(v, D\phi)$, 
+cioè $\xi_\phi$ è definito univocamente dalla proprietà
+\[
+  \xi_\phi \cdot v = \det(v,D\phi).
+\]
+Chiaramente $\xi_\phi$ è ortogonale a tutte le colonne di $D\phi$ perché
+$\xi_\phi \cdot \phi_{x_i} = \det(\phi_{x_i}, D\phi) = 0$,
+dunque $\xi_\phi$ è un vettore ortogonale allo spazio tangente alla superficie.
+Definiamo $\nu_\phi$ come il versore $\nu_\phi=\xi_\phi/\abs{\xi_\phi}$, 
+che è uno dei due versori normali alla ipersuperficie.
+La direzione di $\nu_\phi$ non cambia se si riparametrizza la superficie
+e il suo verso non cambia se la riparametrizzazione ha jacobiano positivo.
+
+Se $\phi$ non è iniettivo è possibile che la superficie si autointersechi 
+o addirittura che si sovrapponga più volte su se stessa. 
+In questo senso diremo che la superficie ha una \emph{molteplicità}.
+
+Per quanto riguarda il modulo di $\xi_\phi$ si ha 
+\[
+\abs{\xi_\phi} = \xi_\phi \cdot \nu_\phi = \det(\nu_\phi, D\phi).
+\]
+Osserviamo che $\det(\nu_\phi, D\phi)$ è il volume del prisma retto di altezza unitaria costruito 
+sul parallelepipedo generato dalle colonne di $D\phi$ e dunque è uguale all'area del parallelepipedo stesso, 
+cioè, per il significato geometrico del determinante Jacobiano, si ha
+\[
+\abs{\xi_\phi} = \det(\nu_\phi, D\phi)
+= \sqrt{\det((D\phi)^t D\phi)}.
+\]
+Dunque 
+\[
+ \xi_\phi = \nu_\phi \sqrt{\det (D\phi)^t D\phi}.
+\]
+
+Pertanto se $v\in \RR^n$ è un vettore qualsiasi si ha
+\begin{equation}\label{eq:493444}
+\det(v, D\phi)
+= \xi_\phi \cdot v
+= (\nu_\phi \cdot v) \sqrt{\det((D\phi)^t D\phi)}.
+\end{equation}
+
+\subsection{flusso di un campo vettoriale attraverso una ipersuperficie}
+
+Se $\xi\colon A\subset \RR^n\to \RR^n$ è un campo vettoriale, 
+posso definire il flusso di $\xi$ attraverso la superficie parametrizzata da $\phi$,
+grazie a~\eqref{eq:493444}, come
+\begin{align*}
+  \int_\phi \xi \cdot \nu_\phi\, d\sigma
+  &= \int_B (\xi \cdot \nu_\phi) \sqrt{\det ((D\phi)^t D\phi)}\, dx\\
+  &= \int_B \det(\xi, D\phi)\, dx.
+\end{align*}
+Dunque se $\omega$ è la $(n-1)$-forma differenziale associata al campo vettoriale $\xi$
+cioè:
+\[
+  \omega = \xi_1 \widehat{dx_1} + \dots + \xi_n \widehat{dx_n}
+\]
+***********************

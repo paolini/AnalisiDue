@@ -102,17 +102,35 @@ si ha
 \] 
 
 \begin{example}[$2$-forme in $\RR^3$]
-Sia $\omega \in \Omega^2(\RR^3)$. 
 Denotiamo con $x,y,z$ le tre coordinate di $\RR^3$ (invece che $x_1,x_2,x_3$).
-Allora
+Le tre applicazioni bilineari alternanti che generano 
+$\Lambda^2(\RR^3)$ sono $dy\wedge dz$, $dz\wedge dx$ e $dx \wedge dy$
+(le ordino in base all'unico differenziale mancante, $dx$ nella prima, 
+$dy$ nella seconda e $dz$ nella terza).
+Sia $\omega \in \Omega^2(\RR^3)$. 
+Allora 
 \[
-  \omega = \xi_{12}\, dx\wedge dy + \xi_{13}\, dx\wedge dz + \xi_{23}\, dy \wedge dz.
-\] 
-Notiamo che si ha $dy\wedge dx = - dx\wedge dy$ e lo stesso per le altre coordinate.
-Dunque si potrebbe anche scrivere 
-\[
- \omega = \xi_{23}\, dy \wedge dz - \xi_{13}\, dz\wedge dx + \xi_{12}\, dx\wedge dy.
+  \omega = \xi_1\, dy\wedge dz + \xi_2\, dz\wedge dx + \xi_3\, dx \wedge dy.
 \]
+Dunque $\omega$ si rappresenta con un campo 
+vettoriale $\xi = (\xi_1,\xi_2,\xi_3)\colon A\to \RR^3$. 
+\end{example}
+
+\begin{example}[$(n-1)$-forme in $\RR^n$]
+L'esempio precedente si generalizza al caso di codimensione $1$, 
+ovvero al caso di $(n-1)$-forme in $\RR^n$.
+In questo caso lo spazio vettoriale $\Lambda^{n-1}(\RR^n)$ è generato da $n$ applicazioni multilineari alternanti.
+Una base naturale è data dalle forme:
+\[
+  \widehat{dx}_k \defeq dx_{k+1} \wedge dx_{k+2} \wedge \dots \wedge dx_{n} \wedge dx_1 \wedge \dots \wedge dx_{k-1}.
+\]
+In pratica $dx_k$ è l'unico differenziale mancante in $\widehat{dx}_k$.
+Nell'esempio precedente avevamo $\widehat{dx} = dy\wedge dz$, $\widehat{dy} = dz\wedge dx$ e $\widehat{dz} = dx \wedge dy$.
+Dunque se $\omega \in \Omega^{n-1}(A)$, $A\subset \RR^n$, si può scrivere:
+\[
+ \omega = \xi_1 \widehat{dx}_1 + \dots + \xi_n \widehat{dx}_n
+\]
+con $\xi\colon A \to \RR^n$.
 \end{example}
 
 \section{differenziale di una forma}
@@ -214,7 +232,6 @@ Se $\phi([0,1]^k) \subset A$ possiamo definire
 \[
    \int_\phi \omega = \int_{[0,1]^n} \phi^* \omega.
 \]
-
 \end{definition}
 
 
@@ -299,13 +316,28 @@ il lato destro è una applicazione lineare in $u$ e dunque
 c'è un unico vettore che la rappresenta mediante prodotto scalare.
 \end{definition}
 
+Ovviamente il vettore $v\times w$ è perpendicolare sia a $v$ che a $w$,
+perché $v\cdot (v\times w) = \det\enclose{v,v,w} = 0$ e $w\cdot (v\times w) = \det\enclose{w,v,w} = 0$.
+Posto $\nu = \frac{v\times w}{\abs{v\times w}}$ si ha che $\nu$ è un versore normale alla superficie
+generata da $v$ e $w$.
+Inoltre 
+\[ 
+\abs{v\times w} = \nu\cdot(v\times w) = \det\enclose{\nu, v, w}
+\]
+è il volume del prisma retto generato da $v$ e $w$ in direzione $\nu$
+ed essendo $\nu$ unitario è anche l'area del parallelogramma generato da $v$ e $w$ in $\RR^3$.
+Significa che $v\times w$ è un vettore con modulo pari all'area del parallelogramma generato da $v$ e $w$ 
+e con direzione $\nu$ perpendicolare a $v$ e $w$ secondo la regola della mano destra
+(in modo che $\det \enclose{v, w, \nu} > 0$).
+Se $u$ e $v$ sono tra loro paralleli, si ha $u\times v = 0$.
+
 In coordinate, se $\xi = v\times w$ con $v=(v_1,v_2,v_3)$, $w=(w_1,w_2,w_3)$
 si ha dunque $\xi=(\xi_1,\xi_2,\xi_3)$ 
 con
 \begin{align*}
   \xi_1 &= \vec e_1 \cdot \xi = \det\enclose{\vec e_1,v,w} = v_2 w_3 - v_3 w_2,\\ 
   \xi_2 &= \vec e_2 \cdot \xi = \det\enclose{\vec e_2,v,w} = v_3 w_1 - v_1 w_3,\\
-  \xi_3 &= \vec e_2 \cdot \xi = \det\enclose{\vec e_3,v,w} = v_1 w_2 - v_2 w_1.
+  \xi_3 &= \vec e_3 \cdot \xi = \det\enclose{\vec e_3,v,w} = v_1 w_2 - v_2 w_1.
 \end{align*}
 
 Più espressivamente si può scrivere
@@ -313,8 +345,32 @@ Più espressivamente si può scrivere
   \xi = \det\begin{pmatrix}
     \vec e_1 & v_1 & w_1 \\ \vec e_2 & v_2 & w_2 \\ \vec e_3 & v_3 & w_3
   \end{pmatrix}
-  = (v_2 w_3 - v_3 w_2)\, \vec e_1 + (v_3 w_1 - v_1 w_3)\,  \vec e_2 + (v_1 w_2 - v_w w_1)\, \vec e_3. 
+  = (v_2 w_3 - v_3 w_2)\, \vec e_1 + (v_3 w_1 - v_1 w_3)\,  \vec e_2 + (v_1 w_2 - v_2 w_1)\, \vec e_3. 
 \]
+
+Se $\omega\in \Omega^2(A)$ è rappresentata dal campo vettoriale 
+$\xi\colon A\to \RR^3$ 
+e $\phi\colon B\subset \RR^2\to A \subset \RR^3$ 
+osserviamo che $\phi_x = \frac{\partial \phi}{\partial x}$ e $\phi_y = \frac{\partial \phi}{\partial y}$ 
+sono due vettori tangenti alla superficie parametrizzata da $\phi$ e dunque 
+\[
+  \nu_\phi = \frac{\phi_x \times \phi_y}{\abs{\phi_x \times \phi_y}}
+\]
+è il versore normale alla superficie in $\phi(x,y)$ 
+con direzione che dipende dall'orientazione di $\phi$.
+L'integrale di $\omega$ lungo la superficie parametrizzata da $\phi$ si 
+scrive dunque come
+\begin{align*}
+ \int_{\phi} \omega
+ &= \int_B \omega \Enclose{\phi_x, \phi_y}\, dx\, dy
+ = \int_B \det \enclose{\xi, \phi_x, \phi_y}\, dx\, dy\\
+ &= \int_B \xi \cdot \enclose{\phi_x \times \phi_y}\, dx\, dy
+ = \int_B \xi \cdot \nu_\phi\, d\sigma
+\end{align*}
+dove $d\sigma = \abs{\phi_x \times \phi_y}\, dx\, dy$ 
+rappresenta l'elemento di area della superficie parametrizzata da $\phi$.
+Dunque $\int_\phi \omega$ è il flusso del campo vettoriale $\xi$ 
+attraverso la superficie parametrizzata da $\phi$.
 
 \begin{definition}[rotore]
 Sia $A$ un aperto di $\RR^3$ e $\xi \colon A \to \RR^3$ una funzione differenziabile.
@@ -499,6 +555,8 @@ e quindi la formula di Stokes
  \int_{\phi} d\omega = \int_{\phi\llcorner\partial[0,1]^2} \omega
 \]
 segue dal teorema~\ref{th:stokes-2d}.
+
+
 
 \section{$n-1$ forme in $\RR^n$}
 

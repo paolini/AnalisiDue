@@ -87,3 +87,26 @@ si ottiene da $\det B_{\vec k}$ scambiando le righe
 secondo la permutazione $\phi$, ogni scambio di righe 
 cambia segno al determinante e dunque si ha $\det B_{\vec k\circ \phi} = (-1)^\phi \det B_{\vec k}$.
 \end{proof}
+
+
+\section{integrale di superficie}
+$\phi\colon B\subset \RR^k \to A\subset \RR^n$.
+\[
+  \int_\phi f(y) \, d\sigma(y) 
+  \defeq \int_B f(\phi(x)) \sqrt{\det ((D\phi)^t D\phi)}\, dx.
+\]
+
+E' invariante per riparametrizzazioni.
+Se $u\colon C\subset \RR^k \to B\subset \RR^k$ si ha 
+\begin{align*}
+  \int_{\phi\circ u} f(y) \, d\sigma(y) 
+  &= \int_C f(\phi(u(x))) \sqrt{\det ((D(\phi\circ u))^t D(\phi\circ u))}\, dx \\
+  &= \int_C f(\phi(u(x))) \sqrt{\det ((Du)^t (D\phi)^t D\phi Du)}\, dx \\
+  &= \int_C f(\phi(u(x))) \sqrt{\det ((D\phi)^t D\phi)}\cdot \sqrt{\det ((Du)^t Du)}\, dx \\
+  &= \int_B f(\phi(x)) \sqrt{\det ((D\phi)^t D\phi)}\, dx
+\end{align*}
+avendo fatto il cambio di variabile:
+\[
+  y = u(x), \qquad dy = \abs{\det Du} dx = \sqrt{\det ((Du)^t Du)}\, dx.
+\]
+

@@ -294,6 +294,52 @@ se $\phi^*\omega = f\, dy_1 \wedge \dots \wedge dy_k$ si ha
 \end{align*}
 \end{proof}
 
+\begin{theorem}[Stokes]
+Sia $A\subset \RR^n$ un aperto e $\omega\in \Omega^k(A)$ una $k$-forma differenziale di classe $C^1$.
+Sia $\phi\colon[0,1]^k\to A \subset \RR^n$ una funzione di classe $C^1$.
+Allora si ha 
+\[
+  \int_\phi d\omega = \sum_{j=1}^k (-1)^{j-1}\Enclose{\int_{\phi\circ \psi_j^+}\omega - \int_{\phi\circ \psi_j^-}\omega} 
+\]
+dove $\psi_j^\pm\colon [0,1]^{k-1} \to A$ sono le funzioni
+che parametrizzano la frontiera $\partial ([0,1]^k)$ del cubo $[0,1]^k$
+\begin{align*}
+  \phi_j^+(t_1,\dots, t_{k-1}) &= (t_1,\dots, t_{j-1}, 1, t_j, \dots, t_{k-1}), \\
+  \phi_j^-(t_1,\dots, t_{k-1}) &= (t_1,\dots, t_{j-1}, 0, t_j, \dots, t_{k-1}). \\
+\end{align*}
+\end{theorem}
+\begin{proof}
+Osserviamo che $\phi^* \omega$ è una $(k-1)$-forma differenziale in $\RR^k$ e dunque 
+si può scrivere
+\[
+  \phi^* \omega = \sum_{j=1}^k (-1)^{j-1} f_j dx_1 \wedge \dots \wedge \widehat{dx_j} \wedge \dots \wedge dx_k
+\]
+con $f\colon [0,1]^k\to \RR$ funzioni di classe $C^1$.
+\begin{align*}
+  \int_\phi d\omega
+    &= \int_{[0,1]^k} \phi^* (d\omega)[e_1,\dots,e_k] 
+    = \int_{[0,1]^k} d(\phi^* \omega)[e_1,\dots,e_k] \\  
+    &= \sum_{j=1}^k \int_{[0,1]^k} (-1)^{j+1} df_j \wedge dx_1 \wedge \dots \wedge \widehat{dx_j} \wedge \dots \wedge dx_k[e_1,\dots,e_k]\\
+    &= \sum_{j=1}^k \int_{[0,1]^k} \frac{\partial f_j}{\partial x_j}\\
+    &= \sum_{j=1}^k \int_{[0,1]^{k-1}} \Enclose{f_j(t_1,\dots,t_{j-1},1,t_j,\dots, t_{k-1}) - f_j(t_1,\dots,t_{j-1},0,t_j,\dots, t_{k-1})}\, dt_1 \dots dt_{k-1}\\
+    &= \sum_{j=1}^k \int_{[0,1]^{k-1}} \Enclose{f_j\circ \psi_j^+ - f_j\circ \psi_j^-}\\
+    &= \sum_{j=1}^k \Enclose{\int_{\psi_j^+} f_j dt_1 \dots dt_{k-1} - \int_{\psi_j^-} f_j dt_1 \dots dt_{k-1}}\\
+    &= \sum_{j=1}^k (-1)^{j-1}\sum_{i=1}^k\Enclose{\int_{\psi_j^+} f_j\, dx_1 \wedge \dots \wedge \widehat{dx_i}\wedge \dots \wedge dx_k  - \int_{\psi_j^-}  f_j\, dx_1 \wedge \dots \wedge \widehat{dx_i}\wedge \dots \wedge dx_k}\\
+    &= \sum_{j=1}^k (-1)^{j-1}\Enclose{\int_{\psi_j^+} \phi^*\omega - \int_{\psi_j^-} \phi^* \omega}\\
+    &= \sum_{j=1}^k (-1)^{j-1}\Enclose{\int_{\phi\circ \psi_j^+} \omega - \int_{\phi\circ \psi_j^-} \omega}.
+\end{align*}
+Si ha infatti, posto $\vec x = \psi_j^+(\vec t)$, 
+che $\frac{\partial x_l}{\partial t_i}$ vale $1$ se $l=i<j$ e se $l=i\ge j+1$ e vale $0$ altrimenti, dunque 
+\begin{align*}
+  \int_{\psi_j^+} \phi^* \omega
+  &= \int_{[0,1]^{k-1}} \sum_{i=1}^k (-1)^{i-1} f_i\circ \psi_j^+\, d(\psi_j^+)_1 \wedge \dots \wedge \widehat{d(\psi_j^+)_i} \wedge \dots \wedge d(\psi_j^+)_k\\
+  &= \delta_{ij} (-1)^{j-1}(-1)^{i-1} \int_{[0,1]^{k-1}} f_j\circ \psi_j^+\, dt_1 \dots dt_{k-1}
+\end{align*}
+
+\end{proof}
+
+
+
 \section{forme differenziali multilineari in $\RR^2$}
 
 Se $\omega\in \Omega^1(A)$, con $A$ aperto di $\RR^2$, si ha 

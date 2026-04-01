@@ -18,6 +18,7 @@
     \mathrm{m-area}(L(E)) = \sqrt{\det (L^t L)}\cdot \abs{E}.
   \]
 \end{theorem}
+%
 \begin{proof}
 Estendiamo $M$ ad una isometria su tutto $\RR^n$, $\tilde M\colon \RR^n \to \RR^n$.
 Dunque $\tilde M$ si rappresenta con una matrice ortogonale, cioè $\tilde M^t = \tilde M^{-1}$.
@@ -147,41 +148,46 @@ o addirittura che si sovrapponga più volte su se stessa.
 In questo senso diremo che la superficie ha una \emph{molteplicità}.
 
 Per quanto riguarda il modulo di $\xi_\phi$ si ha 
+\begin{align*}
+   \abs{\xi_\phi} &= \det (\nu_\phi, D\phi)
+   = \sqrt{\det \enclose{(\nu_\phi, D\phi)^t (\nu_\phi,D\phi)}}  \\
+   &= \sqrt{\det \begin{pmatrix}
+     1 & 0 \\
+     0 & (D\phi)^t D\phi
+   \end{pmatrix}}
+  = \sqrt{\det((D\phi)^t D\phi)}
+\end{align*}
+dunque 
 \[
-\abs{\xi_\phi} = \xi_\phi \cdot \nu_\phi = \det(\nu_\phi, D\phi).
+  \xi_\phi = \nu_\phi \sqrt{\det (D\phi)^t D\phi}
 \]
-Osserviamo che $\det(\nu_\phi, D\phi)$ è il volume del prisma retto di altezza unitaria costruito 
-sul parallelepipedo generato dalle colonne di $D\phi$ e dunque è uguale all'area del parallelepipedo stesso, 
-cioè, per il significato geometrico del determinante Jacobiano, si ha
-\[
-\abs{\xi_\phi} = \det(\nu_\phi, D\phi)
-= \sqrt{\det((D\phi)^t D\phi)}.
-\]
-Dunque 
-\[
- \xi_\phi = \nu_\phi \sqrt{\det (D\phi)^t D\phi}.
-\]
-
-Pertanto se $v\in \RR^n$ è un vettore qualsiasi si ha
+e per ogni $v\in \RR^n$ si ha
 \begin{equation}\label{eq:493444}
 \det(v, D\phi)
 = \xi_\phi \cdot v
 = (\nu_\phi \cdot v) \sqrt{\det((D\phi)^t D\phi)}.
 \end{equation}
 
+Formalmente, se $\sigma$ rappresenta l'integrazione di superficie vista in precedenza, 
+si ha
+\[
+  \xi_\phi(x) \, dx = \nu_\phi d\sigma.
+\]
+
+
 \subsection{flusso di un campo vettoriale attraverso una ipersuperficie}
 
-Se $\xi\colon A\subset \RR^n\to \RR^n$ è un campo vettoriale, 
-posso definire il flusso di $\xi$ attraverso la superficie parametrizzata da $\phi$,
-grazie a~\eqref{eq:493444}, come
-\begin{align*}
-  \int_\phi \xi \cdot \nu_\phi\, d\sigma
-  &= \int_B (\xi \cdot \nu_\phi) \sqrt{\det ((D\phi)^t D\phi)}\, dx\\
-  &= \int_B \det(\xi, D\phi)\, dx.
-\end{align*}
-Dunque se $\omega$ è la $(n-1)$-forma differenziale associata al campo vettoriale $\xi$
-cioè:
+Ad un campo vettoriale $\xi\colon A\subset \RR^n\to \RR^n$ possiamo associare la 
+$(n-1)$-forma differenziale $\omega$ definita da
 \[
-  \omega = \xi_1 \widehat{dx_1} + \dots + \xi_n \widehat{dx_n}
+  \omega_x[v_2,\dots,v_n] = \det(\xi(x), v_2,\dots,v_n).
 \]
-***********************
+In tal modo, grazie a~\eqref{eq:493444} si ottiene che 
+l'integrale di $\omega$ su una ipersuperficie rappresentata da $\phi\colon B\subset \RR^{n-1} \to \RR^n$
+coincide con il flusso del campo vettoriale $\xi$ attraverso la ipersuperficie rappresentata da $\phi$: 
+\begin{align*}
+  \int_\phi \omega
+  &= \int_B \det (\xi(x), D\phi(x))\, dx \\
+  &= \int_B \xi(x) \cdot \nu_\phi(x) \sqrt{\det((D\phi)^t D\phi)}\, dx \\
+  &= \int_\phi \xi \cdot \nu_\phi\, d\sigma.
+\end{align*}

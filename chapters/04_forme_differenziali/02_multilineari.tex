@@ -104,7 +104,8 @@ si ha
 In generale se $\xi_1, \dots, \xi_k\in (\RR^n)^*$ sono applicazioni lineari, si definisce 
 il prodotto alternante $\xi_1 \wedge \dots \wedge \xi_k$ tramite
 \[
-   (\xi_1 \wedge \dots \wedge \xi_k)[v_1, \dots, v_n] \defeq \sum_{\sigma\in S_n} **********
+   (\xi_1 \wedge \dots \wedge \xi_k)[v_1, \dots, v_k] 
+   \defeq \sum_{\sigma\in S_k} (-1)^\sigma \xi_1[v_{\sigma(1)}]\cdots \xi_k[v_{\sigma(k)}]
 \]
 
 \begin{example}[$2$-forme in $\RR^3$]
@@ -128,13 +129,16 @@ ovvero al caso di $(n-1)$-forme in $\RR^n$.
 In questo caso lo spazio vettoriale $\Lambda^{n-1}(\RR^n)$ è generato da $n$ applicazioni multilineari alternanti.
 Una base naturale è data dalle forme:
 \[
-  \widehat{dx}_k \defeq dx_{k+1} \wedge dx_{k+2} \wedge \dots \wedge dx_{n} \wedge dx_1 \wedge \dots \wedge dx_{k-1}.
+  \lambda_{\hat k} \defeq (-1)^k dx_{1} \wedge \dots \wedge dx_{k-1} \wedge dx_{k+1} \wedge \dots \wedge dx_n.
 \]
-In pratica $dx_k$ è l'unico differenziale mancante in $\widehat{dx}_k$.
-Nell'esempio precedente avevamo $\widehat{dx} = dy\wedge dz$, $\widehat{dy} = dz\wedge dx$ e $\widehat{dz} = dx \wedge dy$.
+In pratica $dx_k$ è l'unico differenziale mancante in $\lambda_{\hat k}$.
+Nell'esempio precedente avevamo $k=3$, $x_1=x$, $x_2=y$, $x_3=z$,
+$\lambda_{\hat 1} = dy\wedge dz$, 
+$\lambda_{\hat 2} = dz\wedge dx$ e $\lambda_{\hat 3} = dx \wedge dy$.
+
 Dunque se $\omega \in \Omega^{n-1}(A)$, $A\subset \RR^n$, si può scrivere:
 \[
- \omega = \xi_1 \widehat{dx}_1 + \dots + \xi_n \widehat{dx}_n
+ \omega = \sum_{i=1}^n (-1)^i \x_i dx_1 \wedge \dots \wedge dx_{i-1} \wedge dx_{i+1} \wedge \dots \wedge dx_{n}
 \]
 con $\xi\colon A \to \RR^n$.
 \end{example}
@@ -188,7 +192,7 @@ Si dirà che la catena di morfismi
 è una \emph{successione esatta}, in quanto l'immagine di un morfismo
 è contenuta nel nucleo di quello successivo.
 
-\section{pull-back}
+\section{pull-back e integrale di una $k$-forma}
 
 Se $\phi\colon A\subset \RR^m \to \RR^n$ è una funzione differenziabile e $\omega\in \Omega^k(\phi(A))$
 possiamo definire il pull-back $\phi^* \omega \in \Omega^k(A)$ tramite la formula
@@ -197,153 +201,48 @@ possiamo definire il pull-back $\phi^* \omega \in \Omega^k(A)$ tramite la formul
   = \omega_{\phi(x)}[d\phi(x)[v_1],\dots, d\phi(x)[v_k]].
 \]
 
-Osserviamo che se $\vec y=\phi(\vec x)$ e 
-$\omega = f\, dy_{j_1} \wedge \dots \wedge dy_{j_k}$ 
-allora
-\[
-  \phi^* \omega = (f\circ \phi)\, d\phi_{j_1} \wedge \dots \wedge d\phi_{j_k}
+L'integrale di una $k$-forma differenziale 
+su una $k$-superficie parametrizzata da $\phi\colon [0,1]^k \to \RR^n$
+si definisce come l'integrale del pull-back della $k$-forma:
+\[ 
+  \int_\phi \omega \defeq \int_{[0,1]^k} \phi^* \omega
+  = \int_{[0,1]^k} f(\vec x)\, dx_1 \dots dx_k
 \]
-in quanto 
-\begin{align*}
-  (\phi^* \omega)_x [v_1,\dots,v_k] 
-  &= \omega_{\phi(x)}[d\phi(x)[v_1],\dots, d\phi(x)[v_k]] \\
-  &= f(\phi(x)) (dy_{j_1} \wedge \dots \wedge dy_{j_k})[d\phi(x)[v_1],\dots, d\phi(x)[v_k]] \\
-  &= f(\phi(x)) \sum_{\sigma \in S_k} (-1)^\sigma d\phi_{j_{\sigma(1)}}[v_1] \dots d\phi_{j_{\sigma(k)}}[v_k] \\
-  &= f(\phi(x)) (d\phi_{j_1} \wedge \dots \wedge d\phi_{j_k})[v_1,\dots,v_k].
-\end{align*}
+dove $f\colon [0,1]^k \to \RR$ è la funzione che rappresenta $\phi^* \omega$
+in quanto $\phi^* \omega$ è una $k$-forma su $[0,1]^k$ e dunque si rappresenta 
+con una funzione scalare $f$: 
+$\phi^* \omega_{\vec x} = f(\vec x)\, dx_1 \wedge \dots \wedge dx_k$.
 
-\begin{theorem}
-  Sia $\phi\colon A\subset \RR^m \to B\subset \RR^n$ una funzione differenziabile 
-  e $\omega\in \Omega^k(B)$ una $k$-forma di classe $C^1$.
-  Allora si ha
-  \begin{equation}\label{eq:pullback-differenziale}
-      \phi^* (d\omega) = d(\phi^* \omega).
-  \end{equation}
-\end{theorem}
-\begin{proof}
-Siano $x_1,\dots, x_m$ le coordinate di $\RR^m$ e $y_1,\dots, y_n$ le coordinate di $\RR^n$,
-con $\vec y=\phi(\vec x)$.
-Per linearità sarà sufficiente dimostrare il risultato per le forme 
-elementari:
-\begin{align*}
-  \omega &= f\, dy_{j_1} \wedge \dots \wedge dy_{j_k},\\
-  d \omega &= \sum_{i=1}^n \frac{\partial f}{\partial y_i}\, dy_i \wedge dy_{j_1} \wedge \dots \wedge dy_{j_k},\\
-  \phi^* \omega &= f\, d\phi_{j_1} \wedge \dots \wedge d\phi_{j_k},\\
-  \phi^*(d \omega) &= \sum_{i=1}^n \frac{\partial f}{\partial y_i}\, d\phi_i \wedge d\phi_{j_1} \wedge \dots \wedge d\phi_{j_k}\\
-    &= \sum_{i=1}^n \frac{\partial f}{\partial y_i}\,  \sum_{l=1}^m \frac{\partial \phi_i}{\partial x_l}\, dx_l \wedge d\phi_{j_1} \wedge \dots \wedge d\phi_{j_k},\\
-  d(\phi^* \omega) &= \sum_{l=1}^m \frac{\partial (f\circ \phi)}{\partial x_l}\, d x_l \wedge d\phi_{j_1} \wedge \dots \wedge d\phi_{j_k}\\
-    &= \sum_{l=1}^m \sum_{i=1}^n \frac{\partial f}{\partial y_i} \cdot \frac{\partial \phi_i}{\partial x_l} \, dx_l \wedge d\phi_{j_1} \wedge \dots \wedge d\phi_{j_k}
-    = \phi^*(d \omega).
-\end{align*}
-\end{proof}
-
-\section{il teorema di Stokes}
-
-\begin{definition}[integrale di una forma]
-Se $\omega$ è una $k$-forma differenziale di classe $\C^0$ definita 
-su un aperto $B\subset \RR^k$ sappiamo che $\omega = f_\omega \, dx_1 \wedge \dots \wedge dx_k$ 
-con $f_\omega\colon B\to \RR$ continua. 
-Ora se $K\subset A$ è un compatto, possiamo definire 
+In particolare, visto che il pull-back di una composizione è ovviamente 
+la composizione dei pull-back, se $\vec u \colon [0,1]^k\to \RR^m$, 
+$\phi\colon \RR^m\to \RR^n$ e $\omega\in \Omega^k(\RR^n)$
+si ha 
 \[
-  \int_K \omega \defeq \int_K f_\omega(\vec x)\, d\vec x.
+   \int_{\vec u} \phi^* \omega = \int_{\phi \circ \vec u} \omega 
 \]
-Osserviamo che formalmente abbiamo semplicemente sostituito 
-$dx_1\wedge \dots \wedge dx_k$ con $d\vec x = dx_1 \dots dx_k$.
-
-Sia ora $\omega$ una $k$-forma differenziale di classe $\C^0$ definita su un aperto $A\subset \RR^n$ 
-e $\phi\in C^1(K, A)$ dove $K$ è un compatto di $\RR^k$ 
-(si intende che $\phi$ può essere estesa ad una funzione di classe $C^1$ 
-definita su un aperto contenente $K$).
-Allora $\phi^* \omega$ è una $k$-forma differenziale di classe $\C^0$ definita su un aperto 
-contenente $K$ e dunque si può definire l'integrale di $\omega$ lungo $\phi$ come
+in quanto entrambi si riconducono a
 \[
-   \int_\phi \omega 
-   \defeq \int_{K} \phi^* \omega.
+  \int_{[0,1]^k} (\phi \circ \vec u)^* \omega.
+\]
+
+In generale si può dimostrare che 
+\begin{equation}\label{eq:pullback-differenziale}
+    \phi^* (d\omega) = d(\phi^* \omega).
+\end{equation}
+Faremo la dimostrazione esplicita nei casi specifici 
+di nostro interesse, nei seguenti capitoli.
+
+\section{$k$-superfici parametrizzate}
+
+\begin{definition}[$k$-superfici parametrizzate]
+Sia $\phi\colon [0,1]^k \to \RR^n$ una funzione di classe $C^1$ (significa che 
+$\phi$ può essere estesa ad una funzione $C^1$ su un aperto contenente $[0,1]^k$) 
+e sia $\omega$ una $k$ forma differenziale definita su un aperto $A\subset \RR^n$.
+Se $\phi([0,1]^k) \subset A$ possiamo definire 
+\[
+   \int_\phi \omega = \int_{[0,1]^n} \phi^* \omega.
 \]
 \end{definition}
-
-\begin{theorem}[invarianza dell'integrale]
-Siano $A \subset \RR^n$ un aperto e $B,C\subset \RR^k$ aperti limitati.
-Sia $\omega \in \Omega^k(A)$ di classe $C^0$
-sia $\phi \in \C^1(\bar B, A)$ e 
-e sia $u\in C^1(\bar C,\bar B)$ tale che $u\colon C\to B$ è bigettiva e $\det Du>0$ su $C$. 
-Allora si ha 
-\[
-   \int_{\phi \circ u} \omega = \int_{\phi} \omega.
-\]
-\end{theorem}
-\begin{proof}
-% Dimostriamo preliminarmente che se $\lambda \in \Lambda^k(\RR^n)$,
-% $M$ è una matrice $k\times k$ e $L$ è una matrice $n\times k$ allora si ha 
-% \begin{equation}\label{eq:494932}
-%   \lamdba[LM] = \det M \cdot \lambda[L]
-% \end{equation}
-% dove si intende che $\lambda$ si applica alle $k$ colonne di $LM$ e di $L$.
-% Infatti basta osservare che sia al lato destro che al lato sinistro 
-% dell'uguaglianza 
-% c'è una applicazione multilineare alternante rispetto alle colonne della matrice $M$.
-% Per la caratterizzazione assiomatica del determinante possiamo quindi 
-% affermare che le due espressioni differiscono solamente per una costante moltiplicativa.
-% Ma scegliendo $M$ la matrice identità si verifica che questa costante è $1$.
-%
-% Allora possiamo verificare la tesi del teorema. 
-
-Posto $\vec y = u(\vec x)$
-se $\phi^*\omega = f\, dy_1 \wedge \dots \wedge dy_k$ si ha
-\begin{align*}
-  \int_{\phi \circ u} \omega 
-  &= \int_{\phi\circ u} (f\circ u)\, du_1 \wedge \dots \wedge du_k
-  = \int_{\phi\circ u} (f\circ u) \cdot \det Du\, dx_1 \wedge \dots \wedge dx_k\\
-  &= \int_C f(u(x)) \cdot \det Du(x) \, d\vec x
-  = \int_B f(\vec y)\, d\vec y
-  = \int_{\phi} \omega.
-\end{align*}
-\end{proof}
-
-\begin{theorem}[Stokes]
-Sia $A\subset \RR^n$ un aperto e $\omega\in \Omega^k(A)$ una $k$-forma differenziale di classe $C^1$.
-Sia $\phi\colon[0,1]^k\to A \subset \RR^n$ una funzione di classe $C^1$.
-Allora si ha 
-\[
-  \int_\phi d\omega = \sum_{j=1}^k (-1)^{j-1}\Enclose{\int_{\phi\circ \psi_j^+}\omega - \int_{\phi\circ \psi_j^-}\omega} 
-\]
-dove $\psi_j^\pm\colon [0,1]^{k-1} \to A$ sono le funzioni
-che parametrizzano la frontiera $\partial ([0,1]^k)$ del cubo $[0,1]^k$
-\begin{align*}
-  \phi_j^+(t_1,\dots, t_{k-1}) &= (t_1,\dots, t_{j-1}, 1, t_j, \dots, t_{k-1}), \\
-  \phi_j^-(t_1,\dots, t_{k-1}) &= (t_1,\dots, t_{j-1}, 0, t_j, \dots, t_{k-1}). \\
-\end{align*}
-\end{theorem}
-\begin{proof}
-Osserviamo che $\phi^* \omega$ è una $(k-1)$-forma differenziale in $\RR^k$ e dunque 
-si può scrivere
-\[
-  \phi^* \omega = \sum_{j=1}^k (-1)^{j-1} f_j dx_1 \wedge \dots \wedge \widehat{dx_j} \wedge \dots \wedge dx_k
-\]
-con $f\colon [0,1]^k\to \RR$ funzioni di classe $C^1$.
-\begin{align*}
-  \int_\phi d\omega
-    &= \int_{[0,1]^k} \phi^* (d\omega)[e_1,\dots,e_k] 
-    = \int_{[0,1]^k} d(\phi^* \omega)[e_1,\dots,e_k] \\  
-    &= \sum_{j=1}^k \int_{[0,1]^k} (-1)^{j+1} df_j \wedge dx_1 \wedge \dots \wedge \widehat{dx_j} \wedge \dots \wedge dx_k[e_1,\dots,e_k]\\
-    &= \sum_{j=1}^k \int_{[0,1]^k} \frac{\partial f_j}{\partial x_j}\\
-    &= \sum_{j=1}^k \int_{[0,1]^{k-1}} \Enclose{f_j(t_1,\dots,t_{j-1},1,t_j,\dots, t_{k-1}) - f_j(t_1,\dots,t_{j-1},0,t_j,\dots, t_{k-1})}\, dt_1 \dots dt_{k-1}\\
-    &= \sum_{j=1}^k \int_{[0,1]^{k-1}} \Enclose{f_j\circ \psi_j^+ - f_j\circ \psi_j^-}\\
-    &= \sum_{j=1}^k \Enclose{\int_{\psi_j^+} f_j dt_1 \dots dt_{k-1} - \int_{\psi_j^-} f_j dt_1 \dots dt_{k-1}}\\
-    &= \sum_{j=1}^k (-1)^{j-1}\sum_{i=1}^k\Enclose{\int_{\psi_j^+} f_j\, dx_1 \wedge \dots \wedge \widehat{dx_i}\wedge \dots \wedge dx_k  - \int_{\psi_j^-}  f_j\, dx_1 \wedge \dots \wedge \widehat{dx_i}\wedge \dots \wedge dx_k}\\
-    &= \sum_{j=1}^k (-1)^{j-1}\Enclose{\int_{\psi_j^+} \phi^*\omega - \int_{\psi_j^-} \phi^* \omega}\\
-    &= \sum_{j=1}^k (-1)^{j-1}\Enclose{\int_{\phi\circ \psi_j^+} \omega - \int_{\phi\circ \psi_j^-} \omega}.
-\end{align*}
-Si ha infatti, posto $\vec x = \psi_j^+(\vec t)$, 
-che $\frac{\partial x_l}{\partial t_i}$ vale $1$ se $l=i<j$ e se $l=i\ge j+1$ e vale $0$ altrimenti, dunque 
-\begin{align*}
-  \int_{\psi_j^+} \phi^* \omega
-  &= \int_{[0,1]^{k-1}} \sum_{i=1}^k (-1)^{i-1} f_i\circ \psi_j^+\, d(\psi_j^+)_1 \wedge \dots \wedge \widehat{d(\psi_j^+)_i} \wedge \dots \wedge d(\psi_j^+)_k\\
-  &= \delta_{ij} (-1)^{j-1}(-1)^{i-1} \int_{[0,1]^{k-1}} f_j\circ \psi_j^+\, dt_1 \dots dt_{k-1}
-\end{align*}
-
-\end{proof}
-
 
 
 \section{forme differenziali multilineari in $\RR^2$}

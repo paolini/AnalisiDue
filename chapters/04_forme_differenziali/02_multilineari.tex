@@ -1,10 +1,10 @@
 \section{forme differenziali multilineari}
 
-Una funzione $\lambda\colon (\RR^n)^k$, 
+Una funzione $\lambda\colon (\RR^n)^k\to \RR$, 
 $(v_1,\dots, v_k)\mapsto \lambda[v_1,\dots, v_k]$
 con $v_1,\dots, v_k \in \RR^n$
-si dice essere \emph{multilineare} se ogni 
-$v_k \mapsto \lambda[v_1,\dots, v_k]$ 
+si dice essere \emph{multilineare} se per ogni $k$ 
+l'applicazione $v_k \mapsto \lambda[v_1,\dots, v_k]$ 
 è lineare e se scambiando due ingressi $v_k$, $v_j$ 
 il risultato cambia segno.
 
@@ -20,8 +20,9 @@ $\lambda\colon V^k\to \RR$ e
 \[
     \lambda[tv + s v', v_2, \dots, v_k] 
     = t\lambda[v,v_2,\dots,v_k]
-    + s \lambda[v',v_2,\vdots, v_k],
+    + s \lambda[v',v_2,\dots, v_k]
 \]
+(con $t,s\in \RR$, $v,v',v_2,\dots, v_n\in V$)
 \item è alternante:
 \[
     \lambda[v_{\sigma(1)}, \dots v_{\sigma(k)}] = 
@@ -30,6 +31,7 @@ $\lambda\colon V^k\to \RR$ e
 per ogni $\sigma$ permutazione degli indici $\ENCLOSE{1,\dots,k}$
 dove $(-1)^\sigma$ è il segno della permutazione.
 \end{enumerate}
+Chiaramente $\Lambda^k(V)$ è uno spazio vettoriale reale.
 \end{definition}
 
 La definizione assiomatica del determinante 
@@ -42,7 +44,12 @@ Allora esiste $c\in \RR$ tale che
     v_1, \dots, v_n
     \end{pmatrix}.
 \]
+In particolare $\dim \Lambda^n(\RR^n) = 1$.
 \end{example}
+
+\begin{remark}
+Si ha banalmente $\Lambda^1(V) = V^*$.
+\end{remark}
 
 \begin{definition}[forme differenziali multilineari]
 Sia $A$ un aperto di $\RR^n$.
@@ -71,46 +78,75 @@ moltiplicata per il determinante:
 \]
 
 I casi intermedi sono più complicati da capire.
-Se $\lambda\in \Lambda^k(\RR^n)$ sappiamo che se scambiamo due vettori 
+In primo luogo se $\lambda\in \Lambda^k(\RR^n)$ 
+dalla multilinearità deduciamo che $\lambda$ è univocamente determinato 
+se conosciamo il suo valore su tutte le $k$-uple di vettori 
+estratti da una base di $\RR^n$.
+Inoltre sappiamo che se scambiamo due vettori 
 in $\lambda[v_1,\dots,v_n]$ il risultato cambia segno. 
 In particolare se ci sono due vettori uguali $v_k=v_j$ con $k\neq j$, il risultato 
 è nullo, in quanto scambiandoli dovrebbe cambiare segno ma si ottiene lo stesso risultato.
 Dunque $\lambda$ è non nullo solamente sulle $k$-uple di vettori $(v_1,\dots,v_k)$ 
-che non hanno ripetizioni. E il valore su una $k$-upla determina il valore su tutte le sue 
-permutazioni. 
-Si capisce dunque che $\dim \Lambda^k(\RR^n) = {k \choose n}$.
+che non hanno ripetizioni. 
+E il valore su una $k$-upla di vettori di una base 
+determina il valore su tutte le permutazioni della stessa $k$-upla.
+Si capisce dunque che $\dim \Lambda^k(\RR^n) = {k \choose n}$ in quanto 
+possiamo fissare a piacere il valore di $\lambda$ su una 
+qualunque delle $k!$ permutazioni di ogni sottoinsieme di $k$ vettori 
+della base di $\RR^n$ e il valore di $\lambda$ sarà univocamente determinato 
+su tutte le $k$-uple di vettori di $\RR^n$.
 
-Infatti abbiamo già visto che $\dim \Lambda^0(\RR^n)=\dim \Lambda^n(\RR^n) = 1$.
-
-Proviamo a capire come è fatta $\Omega^2(\RR^n)$. 
-Consideriamo $dx_1,\dots, dx_n \in \Omega^1(\RR^n)$. 
-Sono definiti in modo che $dx_k[v] = v_k$.
-Definiamo allora 
-$dx_k \wedge dx_j\in \Omega^2(\RR^n)$ tramite
+Vogliamo ora introdurre una notazione che ci permette di costruire una base 
+canonica di $\Lambda^k(\RR^n)$ e di $\Omega^k(\RR^n)$.
+Abbiamo già introdotto le $1$-forme $dx_1,\dots,dx_n$ che rappresentano 
+la base canonica del duale di $\RR^n$: $dx_k[v] = v_k$ per ogni $v\in \RR^n$. 
+Se $j_1, \dots, j_k$ sono $k$ indici distinti in $\ENCLOSE{1,\dots, n}$,
+possiamo definire la $k$-forma 
 \[
-    (dx_k\wedge dx_j) [v,w] = dx_k[v]\, dx_j[w] - dx_k[w]\, dx_j[v]
-      = v_k w_j - v_j w_k. 
+   dx_{j_1} \wedge \dots \wedge dx_{j_k}
 \]
-E' chiaro che questa è una forma bilineare alternante.
-E, dalla discussione precedente, è chiaro che ogni forma bilineare alternante 
-è combinazione lineare di queste.
-Infatti se $\omega \in \Omega^2(\RR^n)$ 
-posto $\xi_{jk}(x) = \omega_x[v_j,v_k]$ per ogni $1\le j<k\le n$
-si ha 
+come quella (unica) forma multilineare alternante che vale $1$ 
+sulla $k$-upla di vettori $e_{j_1}, \dots, e_{j_k}$ 
+e vale $0$ su tutte le altre $k$-uple di vettori della base canonica
+che non siano permutazioni di $e_{j_1}, \dots, e_{j_k}$.
+Più in generale dati $\lambda_1,\dots, \lambda_k\in (\RR^n)^*$ 
+possiamo definire la $k$-forma (prodotto esterno) $\lambda_1 \wedge \dots \wedge \lambda_k$
+con la seguente formula:
 \[
-  \omega_x = \sum_{1\le j < k \le n} \xi_{jk}(x)\, dx_j\wedge dx_k.
+  (\lambda_1 \wedge \dots \wedge \lambda_k)[v_1,\dots, v_k]
+  \defeq \sum_{\sigma\in S_k} (-1)^\sigma \lambda_1[v_{\sigma(1)}]\cdots \lambda_k[v_{\sigma(k)}]
+\]
+dove $S_k$ è l'insieme di tutte le permutazioni degli indici $\ENCLOSE{1,\dots, k}$.
+Una base di $\Lambda^k(\RR^n)$ è quindi data dalle $k$-forme:
+\[
+   dx_{j_1} \wedge \dots \wedge dx_{j_k}
+\]
+al variare di $1\le j_1 < j_2 < \dots < j_k \le n$.
+
+Osserviamo che il prodotto esterno $\lambda_1 \wedge \dots \wedge \lambda_k$ è anch'esso multilineare e alternante, 
+infatti se scambiamo due indici $j_m$ e $j_l$ è come aggiungere uno scambio 
+a tutte le permutazioni $\sigma$ e dunque si ottiene un cambio di segno.
+
+\begin{example}
+Ad esempio fissati $i,j\in \ENCLOSE{1,\dots, n}$
+possiamo considerare la $2$-forma 
+$dx_i \wedge dx_j\in \Omega^2(\RR^n)$ e avremo
+\[
+    (dx_i\wedge dx_j) [v,w] = dx_i[v]\, dx_j[w] - dx_i[w]\, dx_j[v]
+      = v_i w_j - v_j w_i. 
+\]
+Se $\omega \in \Omega^2(\RR^n)$ 
+posto $\xi_{i,j}(x) = \omega_x[v_i,v_j]$ per ogni $1\le i<j\le n$
+si avrà 
+\[
+  \omega_x = \sum_{1\le i < j \le n} \xi_{ij}(x)\, dx_i\wedge dx_j.
 \] 
-
-In generale se $\xi_1, \dots, \xi_k\in (\RR^n)^*$ sono applicazioni lineari, si definisce 
-il prodotto alternante $\xi_1 \wedge \dots \wedge \xi_k$ tramite
-\[
-   (\xi_1 \wedge \dots \wedge \xi_k)[v_1, \dots, v_k] 
-   \defeq \sum_{\sigma\in S_k} (-1)^\sigma \xi_1[v_{\sigma(1)}]\cdots \xi_k[v_{\sigma(k)}]
-\]
+\end{example}
 
 \begin{example}[$2$-forme in $\RR^3$]
 Denotiamo con $x,y,z$ le tre coordinate di $\RR^3$ (invece che $x_1,x_2,x_3$).
-Le tre applicazioni bilineari alternanti che generano 
+Ricordiamo che $\binom{3}{2} = 3$.
+Tre applicazioni bilineari alternanti che generano 
 $\Lambda^2(\RR^3)$ sono $dy\wedge dz$, $dz\wedge dx$ e $dx \wedge dy$
 (le ordino in base all'unico differenziale mancante, $dx$ nella prima, 
 $dy$ nella seconda e $dz$ nella terza).
@@ -129,23 +165,30 @@ ovvero al caso di $(n-1)$-forme in $\RR^n$.
 In questo caso lo spazio vettoriale $\Lambda^{n-1}(\RR^n)$ è generato da $n$ applicazioni multilineari alternanti.
 Una base naturale è data dalle forme:
 \[
-  \lambda_{\hat k} \defeq (-1)^k dx_{1} \wedge \dots \wedge dx_{k-1} \wedge dx_{k+1} \wedge \dots \wedge dx_n.
+  \hat\lambda_i \defeq (-1)^(i-1) dx_{1} \wedge \dots \wedge dx_{i-1} \wedge dx_{i+1} \wedge \dots \wedge dx_n
 \]
-In pratica $dx_k$ è l'unico differenziale mancante in $\lambda_{\hat k}$.
-Nell'esempio precedente avevamo $k=3$, $x_1=x$, $x_2=y$, $x_3=z$,
-$\lambda_{\hat 1} = dy\wedge dz$, 
-$\lambda_{\hat 2} = dz\wedge dx$ e $\lambda_{\hat 3} = dx \wedge dy$.
+con $i=1,\dots, n$.
+In pratica $dx_i$ è l'unico differenziale mancante nel prodotto esterno
+che definisce $\hat\lambda_i$.
+Nell'esempio precedente avevamo $i=3$, $x_1=x$, $x_2=y$, $x_3=z$,
+$\hat\lambda_1 = dy\wedge dz$, 
+$\hat\lambda_2 = -dx\wedge dz = dz\wedge dx$ 
+e $\hat\lambda_3 = dx \wedge dy$.
 
 Dunque se $\omega \in \Omega^{n-1}(A)$, $A\subset \RR^n$, si può scrivere:
 \[
- \omega = \sum_{i=1}^n (-1)^i \x_i dx_1 \wedge \dots \wedge dx_{i-1} \wedge dx_{i+1} \wedge \dots \wedge dx_{n}
+ \omega = \sum_{i=1}^n (-1)^i \xi_i dx_1 \wedge \dots \wedge dx_{i-1} \wedge dx_{i+1} \wedge \dots \wedge dx_{n}
 \]
 con $\xi\colon A \to \RR^n$.
+Questo sarà il modo standard per rappresentare le $(n-1)$-forme $\omega\in \Omega^{n-1}(A)$,
+$A\subset \RR^n$,
+tramite un campo vettoriale $\xi\colon A\to \RR^n$. 
 \end{example}
 
 \section{differenziale di una forma}
 
-Possiamo definire il \emph{differenziale} $d\omega$ di una forma differenziale $\omega$, 
+Possiamo definire il \emph{differenziale} $d\omega\in \Omega^{k+1}(A)$ 
+di una forma differenziale $\omega\in \Omega^k(A)$, 
 definendo il differenziale delle forme \emph{elementari}
 \[
   d( f\, dx_{j_1} \wedge \dots  \wedge dx_{j_k})
@@ -170,15 +213,66 @@ Invece $dz\wedge dx \wedge dy = dx \wedge dy \wedge dz$ perché si tratta di una
 pari (due trasposizioni). Si avrebbe invece $dx\wedge dz\wedge dy = - dx\wedge dy\wedge dz$.
 \end{example} 
 
+\begin{definition}
+Diremo che una $k$-forma $\omega$ di classe $C^1$ è \emph{chiusa} 
+se $d\omega = 0$. Diremo che una $k$ forma $\omega$ di classe $C^0$ 
+è \emph{esatta} se esiste una $k-1$ forma $\eta$ di classe $C^1$ 
+tale che $d\eta = \omega$.
+\end{definition}
+
 Abbiamo già visto sulle $1$-forme che se $\omega = df$ (cioè $\omega$ è esatta) 
 allora $d\omega = d(df) = 0$ (cioè $\omega$ è chiusa).
-Dagli esempi fatti si intuisce che questo è un fatto generale,
-per ogni $k$-forma $\omega$ si ha 
+Dagli esempi fatti si intuisce che questo è un fatto generale.
+
+\begin{theorem}[nilpotenza del differenziale]
+Sia $\omega \in \Omega^k(A)$, $A\subset \RR^n$, 
+una $k$-forma differenziale di classe $C^2$.
+Allora
 \[
-  d(d\omega) = 0
+  d(d\omega) = 0.
 \]
-ed è anche vero l'analogo del lemma di Poincaré, se $d\omega = 0$ allora, 
-localmente, esiste $\eta$ tale che $d \eta = 0$.
+\end{theorem}
+\begin{proof}
+Grazie alla multilinearità è sufficiente dimostrare il risultato 
+per le forme elementari:
+\[
+  \omega = f dx_{j_1}\wedge \dots \wedge dx_{j_k}.
+\]
+Si ha 
+\[
+   d\omega 
+   = df \wedge dx_{j_1}\wedge \dots \wedge dx_{j_k} 
+   = \sum_{i=1}^n \frac{\partial f}{\partial x_i} dx_i \wedge dx_{j_1}\wedge \dots \wedge dx_{j_k}
+\]
+e
+\begin{align*}
+  d^2 \omega &= d(d\omega) 
+  = d \enclose{\sum_{i=1}^n \frac{\partial f}{\partial x_i}} dx_i \wedge dx_{j_1}\wedge \dots \wedge dx_{j_k}\\
+  &= \sum_{i=1}^n \sum_{l=1}^n \frac{\partial^2 f}{\partial x_l \partial x_i} dx_l \wedge dx_i \wedge dx_{j_1}\wedge \dots \wedge dx_{j_k}.
+\end{align*}
+Osserviamo ora che se $l=i$ si ha $dx_l \wedge dx_i = 0$ e dunque i termini con $l=i$ sono nulli.
+Inoltre scambiando $dx_l$ con $dx_i$ si ottiene un cambio di segno, 
+dunque possiamo raccogliere i due termini con $dx_l\wedge dx_i$ e con $dx_i\wedge dx_l$ 
+supponendo $l < i$.
+Si ottiene dunque 
+\[
+  d^2 \omega = \sum_{i=2}^n \sum_{l=1}^{i-1} \enclose{\frac{\partial^2 f}{\partial x_l \partial x_i} - \frac{\partial^2 f}{\partial x_i \partial x_l}} 
+  dx_l \wedge dx_i \wedge dx_{j_1}\wedge \dots \wedge dx_{j_k}
+  = 0
+\]
+per il teorema di Schwarz sulla commutazione delle derivate parziali seconde.
+\end{proof}
+
+Non dimostriamo (e non useremo) il seguente teorema che però è bene tenere presente.
+Ovviamente questa è una estensione del teorema~\ref{th:lemma-poincare}.
+
+\begin{theorem}[lemma di Poincaré multilineare]
+  Sia $A\subset \RR^n$ un aperto stellato e
+  sia $\omega \in \Omega^k(A)$,
+  una $k$ forma di classe $C^1$ tale che $d\omega = 0$.
+  Allora esiste 
+  una $k-1$ forma $\eta \in \Omega^{k-1}(A)$ di classe $C^1$ tale che $d\eta = \omega$.
+\end{theorem}
 
 Si dirà che la catena di morfismi
 \[
@@ -190,19 +284,25 @@ Si dirà che la catena di morfismi
   \stackrel d \longrightarrow 0
 \]
 è una \emph{successione esatta}, in quanto l'immagine di un morfismo
-è contenuta nel nucleo di quello successivo.
+è uguale al nucleo di quello successivo (sugli aperti stellati).
 
 \section{pull-back e integrale di una $k$-forma}
 
-Se $\phi\colon A\subset \RR^m \to \RR^n$ è una funzione differenziabile e $\omega\in \Omega^k(\phi(A))$
+Se $\phi\colon A\subset \RR^m \to B\subset \RR^n$ (con $A$ e $B$ aperti) 
+è una funzione differenziabile e $\omega\in \Omega^k(B)$
 possiamo definire il pull-back $\phi^* \omega \in \Omega^k(A)$ tramite la formula
 \[
   (\phi^* \omega)_x[v_1,\dots,v_k] 
   = \omega_{\phi(x)}[d\phi(x)[v_1],\dots, d\phi(x)[v_k]].
 \]
 
+In generale, se $\phi\colon A \subset \RR^m\to \RR^n$ e se $A$ non è aperto 
+diremo che $\phi$ è di classe $C^k$ su $A$ se $\phi$ può essere estesa ad una funzione 
+di classe $C^k$ su un aperto contenente $A$.
+
 L'integrale di una $k$-forma differenziale 
-su una $k$-superficie parametrizzata da $\phi\colon [0,1]^k \to \RR^n$
+su una $k$-superficie parametrizzata da $\phi\colon [0,1]^k \to \RR^n$,
+con $\phi$ di classe $C^1$,
 si definisce come l'integrale del pull-back della $k$-forma:
 \[ 
   \int_\phi \omega \defeq \int_{[0,1]^k} \phi^* \omega
@@ -225,24 +325,220 @@ in quanto entrambi si riconducono a
   \int_{[0,1]^k} (\phi \circ \vec u)^* \omega.
 \]
 
-In generale si può dimostrare che 
+\begin{theorem}[scambio differenziale e pull-back]
+  Sia $\phi\colon A\subset \RR^m \to B\subset \RR^n$ una funzione di classe $C^1$ 
+  e sia $\omega\in \Omega^k(B)$ una $k$-forma differenziale di classe $C^1$.
+  Allora si ha 
 \begin{equation}\label{eq:pullback-differenziale}
     \phi^* (d\omega) = d(\phi^* \omega).
 \end{equation}
-Faremo la dimostrazione esplicita nei casi specifici 
-di nostro interesse, nei seguenti capitoli.
+\end{theorem}
+\begin{proof}
+Denotiamo con $x_1,\dots, x_m$ le coordinate di $\RR^m$ e con $y_1,\dots, y_n$ le coordinate di $\RR^n$
+così da avere $\vec y = \phi(\vec x)$.
+Grazie alla multilinearità è sufficiente dimostrare il risultato 
+per le forme elementari:
+\[
+  \omega = f\, dy_{j_1} \wedge \dots \wedge dy_{j_k}.
+\]
+Si ha
+\begin{align*}
+  \phi^* \omega 
+    &= (f\circ \phi)\, d\phi_{j_1} \wedge \dots \wedge d\phi_{j_k}, \\
+  d\omega 
+    &=  df \wedge dy_{j_1} \wedge \dots \wedge dy_{j_k} \\
+    &= \sum_{i=1}^n \frac{\partial f}{\partial y_i} dy_i \wedge dy_{j_1} \wedge \dots \wedge dy_{j_k},\\
+  \phi^* (d\omega)
+    &= \sum_{i=1}^n \frac{\partial f}{\partial y_i} \circ \phi\, d\phi_i \wedge d\phi_{j_1} \wedge \dots \wedge d\phi_{j_k},\\
+  d(\phi^* \omega)
+    &= d\enclose{(f\circ \phi)}\, d \phi_{j_1} \wedge \dots \wedge d \phi_{j_k}\\
+    &= \sum_{l=1}^m \frac{\partial (f\circ \phi)}{\partial x_l} dx_l \wedge d\phi_{j_1} \wedge \dots \wedge d\phi_{j_k}\\
+    &= \sum_{l=1}^m \sum_{i=1}^n \enclose{\frac{\partial f}{\partial y_i} \circ \phi}\, \frac{\partial \phi_i}{\partial x_l} dx_l \wedge d\phi_{j_1} \wedge \dots \wedge d\phi_{j_k}\\
+    &= \sum_{i=1}^n \enclose{\frac{\partial f}{\partial y_i} \circ \phi}\, d\phi_i \wedge d\phi_{j_1} \wedge \dots \wedge d\phi_{j_k} \\
+    &\stackrel! = \phi^* (d\omega).
+\end{align*}
+\end{proof}
+
 
 \section{$k$-superfici parametrizzate}
 
+Abbiamo visto che l'integrale $\int_\phi \omega$ è invariante per riparametrizzazioni. 
+Questo ci dà l'idea che $\phi$ è una rappresentazione di una $k$-superficie orientata, 
+e che dunque sia possibile definire la superficie $S$ rappresentata da $\phi$ come 
+una classe di equivalenza di parametrizzazioni equivalenti. 
+Portiamo oltre questo ragionamento per permettere di definire una superficie 
+dividendola a pezzi e rappresentando ogni pezzo con una parametrizzazione. 
+In questo modo potremo prendere in considerazione solamente le parametrizzazione 
+definite sul cubo $[0,1]^k$ con l'idea che superfici più generali possono essere 
+ottenute incollando insieme più pezzi rappresentati da parametrizzazioni definite sui cubi.
+Ancora più banalmente questo ci permette di considerare superfici non connesse,  
+come ad esempio l'unione di due cerchi, rappresentando ogni cerchio con una parametrizzazione definita su un intervallo.
+Abbiamo anche visto che permutando l'ordine dei parametri di $\phi$ 
+si ottiene un cambio di segno nell'integrale (dato dal segno della permutazione), 
+dunque è naturale identificare due parametrizzazioni che differiscono per una permutazione dispari dei parametri, 
+in quanto rappresentano la stessa superficie con orientazione opposta.
+Sarà quindi possibile sommare e sottrarre superfici rappresentate da parametrizzazioni.
+
+Per avere la massima generalità nel riconoscere quando due superifici rappresentate da 
+parametrizzazioni diverse sono in realtà la stessa superficie, decidiamo 
+di identificare due superfici quando il loro integrale è lo stesso contro ogni forma differenziale $\omega$.
+
 \begin{definition}[$k$-superfici parametrizzate]
-Sia $\phi\colon [0,1]^k \to \RR^n$ una funzione di classe $C^1$ (significa che 
-$\phi$ può essere estesa ad una funzione $C^1$ su un aperto contenente $[0,1]^k$) 
-e sia $\omega$ una $k$ forma differenziale definita su un aperto $A\subset \RR^n$.
-Se $\phi([0,1]^k) \subset A$ possiamo definire 
+Sia $A\subset \RR^k$ un compatto e sia 
+$\phi\colon A \to \RR^n$ una funzione di classe $C^1$.
+Denotiamo con $\current \phi\colon \Omega^k(\RR^n)\to \RR$ il funzionale lineare definito da
 \[
-   \int_\phi \omega = \int_{[0,1]^n} \phi^* \omega.
+  \current\phi[\omega] \defeq \int_\phi \omega = \int_A \phi^* \omega.
+\]
+
+Un funzionale lineare $S\colon \Omega^k(\RR^n)\to \RR$ si dice essere una 
+$k$-superficie parametrizzata
+se esistono $\phi_1, \dots, \phi_M \colon [0,1]^k \to \RR^n$ di classe $C^1$ 
+tali che per ogni $\omega \in \Omega^k(\RR^n)$ si ha
+\[
+   S = \current{\phi_1} + \dots + \current{\phi_M}
+\]
+e quindi 
+\[
+  S[\omega] = \sum_{j=1}^M \int_{\phi_j} \omega.
+\]
+
+Scriveremo, in modo più suggestivo, 
+\[
+  \int_S \omega \defeq S[\omega].
 \]
 \end{definition}
+
+Chiaramente se $S$ è una $k$-superficie parametrizzata, 
+allora anche $-S$ (cioè il funzionale $\omega\mapsto -S[\omega]$) 
+è una $k$-superficie parametrizzata, in quanto basta invertire le orientazioni 
+delle parametrizzazioni $\phi_j$ per ottenere il cambio di segno.
+Inoltre è chiaro che la somma di due $k$-superfici parametrizzate è ancora una $k$-superficie parametrizzata.
+Dunque è possibile sommare e sottrarre $k$-superfici parametrizzate.
+
+\begin{example}[la superficie sferica]
+Ci sono molti modi per rappresentare la superficie di una sfera in $\RR^3$.
+Ad esempio possiamo considerare la usuale parametrizzazione 
+data da \emph{latitudine} e \emph{longitudine}, ovvero
+$\psi\colon [-\pi,\pi]\times [-\tfrac{\pi}{2},\tfrac{\pi}{2}] \to \RR^3$ definita da
+\[
+  \psi(\theta,\phi) = (\sin \theta \cos \phi, \sin \theta \sin \phi, \cos \theta)
+\]
+e definire la sfera $S=\current \psi$.
+Osserviamo che $\psi$ è definita su un quadrato invece che su un rettangolo,
+ma è ovvio che a meno di riparametrizzazione possiamo 
+scrivere $\current \psi = \current{\psi'}$ dove $\psi'$ 
+è definita su $[0,1]^2$.
+
+Anzi, possiamo anche definire la sfera $S$ 
+come somma delle due semisfere ottenute come grafico 
+della funzione $f\colon B_1(0)\subset \RR^2 \to \RR$ definita da:
+\[
+  f(x,y) = \sqrt{1-x^2-y^2}.
+\]
+Posto $g^+(x,y) \defeq (x,y,f(x,y))$ 
+e $g^-(x,y) \defeq (x,y,-f(x,y))$,
+potremmo dimostrare che 
+$S= \current \psi = \current {g^+} - \current{g^-}$.
+\end{example}
+
+Vogliamo ora definire il \emph{bordo} $\partial S$ di una $k$-superficie parametrizzata $S$.
+Per fare questo è sufficiente capire qual è il bordo di un cubo 
+per poi estendere la definizione a tutte le $k$-superfici parametrizzate.
+
+Il cubo $[0,1]^k$ in $\RR^k$ ha $2k$ facce ognuna isometrica a $[0,1]^{k-1}$. 
+Le facce posso essere identificate dal loro versorse normale.
+Infatti ogni punto della frontiera topologica $\partial [0,1]^k$ in $\RR^k$ 
+è un punto che ha tutte le coordinate in $[0,1]$ ma almeno 
+una coordinata è uguale a $0$ o a $1$.
+Se una sola delle coordinate è uguale a $0$ o a $1$ 
+allora il punto non si trova su uno spigolo ed è univocamente 
+definito il versore normale uscente dal cubo in quel punto:
+si tratta del versore $e_k$ (il $k$-esimo vettore della base canonica) 
+se è la $k$-esima coordinata ad essere uguale a $1$ e del versore $-e_k$ 
+se la $k$-esima coordinata è uguale a $0$.
+
+Dunque se $Q^k=\current{\id}$ è la $k$-superficie in $\RR^k$ parametrizzata 
+dall'identità $\id\colon [0,1]^k \to \RR^k$, 
+è naturale definire il bordo $\partial Q^k$ di $Q^k$ come la somma delle superfici 
+che parametrizzano le $2k$ facce del cubo, 
+con l'opportuno segno per tenere conto dell'orientazione (il segno è positivo se il versore normale uscente è $e_k$ e negativo se è $-e_k$).
+
+Definiamo quindi le funzioni $\psi^\pm_i\colon [0,1]^{k-1} \to \RR^k$:
+\begin{align*}
+    \psi_i^+(t_1, \dots, t_{k-1}) &= (t_1, \dots, t_{i-1}, 1, t_i, \dots, t_{k-1}),\\
+    \psi_i^-(t_1, \dots, t_{k-1}) &= (t_1, \dots, t_{i-1}, 0, t_i, \dots, t_{k-1})
+\end{align*}
+e poniamo 
+\[
+  \partial Q^k \defeq \sum_{i=1}^k (-1)^{i-1}\enclose{\current {\psi_i^+} - \current{\psi_i^-}}.
+\]
+
+Ad esempio per $k=2$ il quadrato $Q^2$ ha quattro lati parametrizzati 
+da $\psi_1^+(t) = (1,t)$ (lato superiore percorso verso destra), 
+$\psi_1^-(t) = (0,t)$ (lato inferiore percorso verso destra), 
+$\psi_2^+(t) = (t,1)$ (lato destro percorso verso l'alto) e $\psi_2^-(t) = (t,0)$ (lato sinistro percorso verso l'alto).
+Notiamo che i segni che abbiamo scelto nella definizione di $\partial Q^k$
+corrispondono a considerare una orientazione antioraria dei lati del quadrato:
+\[
+ \partial (Q^2) = \current{\psi_1^+} - \current{\psi_1^-} - \current{\psi_2^+} + \current{\psi_2^-}.
+\]
+
+Nel caso $k=3$ il cubo $Q^3$ ha sei facce parametrizzate da 
+$\psi_1^+(t_1,t_2) = (1,t_1,t_2)$, 
+$\psi_1^-(t_1,t_2) = (0,t_1,t_2)$, 
+$\psi_2^+(t_1,t_2) = (t_1,1,t_2)$, 
+$\psi_2^-(t_1,t_2) = (t_1,0,t_2)$, 
+$\psi_3^+(t_1,t_2) = (t_1,t_2,1)$ e $\psi_3^-(t_1,t_2) = (t_1,t_2,0)$.
+In questo caso si ha 
+\[
+\partial Q^3 = \current{\psi_1^+} - \current{\psi_1^-} - \current{\psi_2^+} + \current{\psi_2^-} + \current{\psi_3^+} - \current{\psi_3^-}.
+\]
+Osserviamo che i segni scelti sulle facce opposte sono opposti.
+Inoltre il segno alterno $(-1)^{i-1}$ nella definizione di $\partial Q^k$ 
+fa sì che lungo gli spigoli in comune tra due facce adiacenti, le parametrizzazioni 
+abbiano (considerando il segno) orientazione opposta.
+
+In effetti è possibile incollare le sei parametrizzazioni $\psi_i^\pm$ 
+per ottenere una unica parametrizzazione $\psi$ definita sullo sviluppo 
+planare della frontiera del cubo (una croce), 
+in quanto sugli spigoli le diverse parametrizzazioni,
+tenuto conto del segno, vanno a coincidere:
+\begin{equation}\label{eq:defpsicubo}
+\psi(t,s) \defeq \begin{cases}
+  \psi_1^+(t-1,s-2) & \text{se } (t-1,s-2)\in[0,1]^2,\\
+  \psi_1^-(t-1,1-s)   & \text{se } (t-1,1-s)\in[0,1]^2,\\
+  \psi_2^+(3-t,s-2) & \text{se } (3-t,s-2)\in[0,1]^2,\\
+  \psi_2^-(t,s-2)   & \text{se } (t,s-2)\in[0,1]^2,\\
+  \psi_3^+(4-s,t-1) & \text{se } (4-s,t-1)\in[0,1]^2,\\
+  \psi_3^-(s-1,t-1) & \text{se } (s-1,t-1)\in[0,1]^2.
+\end{cases}
+\end{equation}
+Si può verificare che il dominio di $\psi$ ha forma di una croce e che $\psi$ 
+è continua. Sarà $\current \psi = \partial Q^3$.
+\begin{figure}
+\begin{center}
+\begin{tikzpicture}[scale=1]
+  % disegno dei 6 quadrati dello sviluppo del cubo (coordinate intere non negative)
+  % posizione dei quadrati: (1,2) centro, sopra (1,3), sinistra (0,2), destra (2,2), sotto (1,1), sotto2 (1,0)
+  \foreach \x/\y/\lab in {1/2/$\psi_1^+$,1/3/$\psi_3^+$,0/2/$\psi_2^-$,2/2/$\psi_2^+$,1/1/$\psi_3^-$,1/0/$\psi_1^-$} {
+    \fill[gray!15] (\x,\y) rectangle ++(1,1);
+    \draw[thick] (\x,\y) rectangle ++(1,1);
+    \node at (\x+0.5,\y+0.5) {\lab};
+  }
+  % assi coordinati con etichette t (asse x) e s (asse y)
+  \draw[->, thick] (0,0) -- (3.5,0) node[right] {$t$};
+  \draw[->, thick] (0,0) -- (0,4.5) node[above] {$s$};
+  \foreach \i in {0,1,2,3} {\draw (\i,0.08) -- (\i,-0.08) node[below,yshift=-2pt] {\footnotesize \i};}
+  \foreach \j in {0,1,2,3,4} {\draw (0.08,\j) -- (-0.08,\j) node[left,xshift=-2pt] {\footnotesize \j};}
+\end{tikzpicture}
+\end{center}
+\caption{
+Il dominio della funzione $\psi$ definita in \eqref{eq:defpsicubo}
+è lo sviluppo del bordo cubo con i sei quadrati che rappresentano le sei facce del cubo.
+}
+\end{figure}
+
 
 
 \section{forme differenziali multilineari in $\RR^2$}

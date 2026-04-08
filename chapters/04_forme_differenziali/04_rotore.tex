@@ -1,0 +1,172 @@
+\section{forme differenziali multilineari in $\RR^3$}
+
+\begin{definition}[prodotto vettore]
+Siano $v,w\in \RR^3$.
+Definiamo il \emph{prodotto vettore} $v\times w\in \RR^3$ 
+come l'unico vettore tale che per ogni $u\in \RR^3$ si abbia
+\[
+  u \cdot (v\times w) = \det\enclose{u, v, w} \qquad\text{(prodotto triplo)}.
+\]
+Questa uguaglianza definisce univocamente $v\times w$ in quanto 
+il lato destro è una applicazione lineare in $u$ e dunque 
+c'è un unico vettore che la rappresenta mediante prodotto scalare.
+\end{definition}
+
+Ovviamente il vettore $v\times w$ è perpendicolare sia a $v$ che a $w$,
+perché $v\cdot (v\times w) = \det\enclose{v,v,w} = 0$ e $w\cdot (v\times w) = \det\enclose{w,v,w} = 0$.
+Posto $\nu = \frac{v\times w}{\abs{v\times w}}$ si ha che $\nu$ è un versore normale alla superficie
+generata da $v$ e $w$.
+Inoltre 
+\[ 
+\abs{v\times w} = \nu\cdot(v\times w) = \det\enclose{\nu, v, w}
+\]
+è il volume del prisma retto generato da $v$ e $w$ in direzione $\nu$
+ed essendo $\nu$ unitario è anche l'area del parallelogramma generato da $v$ e $w$ in $\RR^3$.
+Significa che $v\times w$ è un vettore con modulo pari all'area del parallelogramma generato da $v$ e $w$ 
+e con direzione $\nu$ perpendicolare a $v$ e $w$ secondo la regola della mano destra
+(in modo che $\det \enclose{v, w, \nu} > 0$).
+Se $u$ e $v$ sono tra loro paralleli, si ha $u\times v = 0$.
+
+In coordinate, se $\xi = v\times w$ con $v=(v_1,v_2,v_3)$, $w=(w_1,w_2,w_3)$
+si ha dunque $\xi=(\xi_1,\xi_2,\xi_3)$ 
+con
+\begin{align*}
+  \xi_1 &= \vec e_1 \cdot \xi = \det\enclose{\vec e_1,v,w} = v_2 w_3 - v_3 w_2,\\ 
+  \xi_2 &= \vec e_2 \cdot \xi = \det\enclose{\vec e_2,v,w} = v_3 w_1 - v_1 w_3,\\
+  \xi_3 &= \vec e_3 \cdot \xi = \det\enclose{\vec e_3,v,w} = v_1 w_2 - v_2 w_1.
+\end{align*}
+
+Più espressivamente si può scrivere
+\[
+  \xi = \det\begin{pmatrix}
+    \vec e_1 & v_1 & w_1 \\ \vec e_2 & v_2 & w_2 \\ \vec e_3 & v_3 & w_3
+  \end{pmatrix}
+  = (v_2 w_3 - v_3 w_2)\, \vec e_1 + (v_3 w_1 - v_1 w_3)\,  \vec e_2 + (v_1 w_2 - v_2 w_1)\, \vec e_3. 
+\]
+
+Se $\omega\in \Omega^2(A)$ è rappresentata dal campo vettoriale 
+$\xi\colon A\to \RR^3$ 
+e $\phi\colon B\subset \RR^2\to A \subset \RR^3$ 
+osserviamo che $\phi_x = \frac{\partial \phi}{\partial x}$ e $\phi_y = \frac{\partial \phi}{\partial y}$ 
+sono due vettori tangenti alla superficie parametrizzata da $\phi$ e dunque 
+\[
+  \nu_\phi = \frac{\phi_x \times \phi_y}{\abs{\phi_x \times \phi_y}}
+\]
+è il versore normale alla superficie in $\phi(x,y)$ 
+con direzione che dipende dall'orientazione di $\phi$.
+L'integrale di $\omega$ lungo la superficie parametrizzata da $\phi$ si 
+scrive dunque come
+\begin{align*}
+ \int_{\phi} \omega
+ &= \int_B \omega \Enclose{\phi_x, \phi_y}\, dx\, dy
+ = \int_B \det \enclose{\xi, \phi_x, \phi_y}\, dx\, dy\\
+ &= \int_B \xi \cdot \enclose{\phi_x \times \phi_y}\, dx\, dy
+ = \int_B \xi \cdot \nu_\phi\, d\sigma
+\end{align*}
+dove $d\sigma = \abs{\phi_x \times \phi_y}\, dx\, dy$ 
+rappresenta l'elemento di area della superficie parametrizzata da $\phi$.
+Dunque $\int_\phi \omega$ è il flusso del campo vettoriale $\xi$ 
+attraverso la superficie parametrizzata da $\phi$.
+
+\begin{definition}[rotore]
+Sia $A$ un aperto di $\RR^3$ e $\xi \colon A \to \RR^3$ una funzione differenziabile.
+Sia $\vec e_1,\vec e_2,\vec e_3$ la base canonica di $\RR^3$.
+Definiamo allora il \emph{rotore} di $\xi$ come il vettore $\rot \xi \in \RR^3$ 
+definito da 
+\[
+   \rot \xi = \nabla \times \xi
+    = \det \begin{pmatrix}
+    \vec e_1 & \partial_x & \xi_1 \\
+    \vec e_2 & \partial_y & \xi_2 \\
+    \vec e_3 & \partial_z & \xi_3 
+    \end{pmatrix}
+    = \begin{pmatrix}
+    \frac{\partial \xi_3}{\partial y} - \frac{\partial \xi_2}{\partial z} \smallskip \\
+    \frac{\partial \xi_1}{\partial_z} - \frac{\partial \xi_3}{\partial x} \smallskip \\
+    \frac{\partial \xi_2}{\partial x} - \frac{\partial \xi_1}{\partial y}
+    \end{pmatrix}.
+\]
+
+Ricordiamo anche gli operatori \emph{gradiente} e \emph{divergenza}
+\[
+  \grad f = \nabla f = \begin{pmatrix}
+     \frac{\partial f}{\partial x} \smallskip \\
+     \frac{\partial f}{\partial y} \smallskip \\
+     \frac{\partial f}{\partial z}
+  \end{pmatrix}, \qquad 
+  \div f = \nabla \cdot \xi = \frac{\partial \xi_1}{\partial x} + \frac{\partial \xi_2}{\partial y} + \frac{\partial \xi_3}{\partial z}.
+\]
+In tutte queste notazioni abbiamo usato l'operatore \emph{nabla}: $\nabla = (\partial_x, \partial_y, \partial z)$
+dove $\partial_x = \frac{\partial}{\partial x}$, $\partial y = \frac{\partial}{\partial y}$, $\partial_z = \frac{\partial}{\partial z}$:
+\end{definition}
+
+Abbiamo già visto che una $1$-forma $\omega$ in un aperto $A$ di $\RR^3$ può essere rappresentata 
+con un campo vettoriale $\xi\colon A \subset \RR^3 \to \RR^3$ 
+in modo tale che si abbia 
+\[
+  \omega_{(x,y,z)}[v] = \xi(x,y,z)\cdot v.
+\]
+
+Se consideriamo $f\colon A\subset \RR^3\to \RR$ una $0$-forma, 
+il suo differenziale $\omega = df$ è una $1$-forma, che si rappresenta 
+con il vettore $\nabla f$:
+\[
+df = \frac{\partial f}{\partial x}\, dx 
++ \frac{\partial f}{\partial y} dy\, \frac{\partial f}{\partial z}\, dz.
+\]
+
+Se $\omega\in \Omega^1(A)$, possiamo scrivere $\omega$ nella forma 
+\[
+ \omega = g_1\, dx + g_2\, dy + g_3\, dz
+\]
+in modo che $\vec g \colon A\to\RR^3$ sia il campo vettoriale che rappresenta $\omega$.
+In questo caso si ha 
+\begin{align*}
+    d\omega &= (\partial_x \vec g_1 dx + \partial_y \vec g_1 dy + \partial_z \vec g_3 dz)\wedge dx 
+    + (\partial_x \vec g_2 dx + \partial_y \vec g_2 dy + \partial_z \vec g_3 dz)\wedge dy \\
+    & \quad + (\partial_x \vec g_3 dx + \partial_y \vec g_3 dy + \partial_z \vec g_3 dz)\wedge dz \\    
+    &= (\partial_y \vec g_3 - \partial_z \vec g_2)\, dy \wedge dz
+       + (\partial_z \vec g_1 - \partial_x \vec g_3)\, dz\wedge dx 
+       + (\partial_x \vec g_2 - \partial_y \vec g_1)\, dx \wedge dy\\
+    &= (\rot \vec g)_1 \, dy \wedge dz
+       + (\rot \vec g)_2\, dz\wedge dx 
+       + (\rot \vec g)_3\, dx \wedge dy.
+\end{align*}
+Dunque se rappresentiamo $d\omega\in \Omega^2(A)$, tramite 
+il campo vettoriale $\xi\colon A\to \RR^3$
+definito da 
+\[
+\xi_1(\vec p) = \omega_{\vec p}[\vec e_2,\vec e_3], \qquad
+\xi_2(\vec p) = \omega_{\vec p}[\vec e_3,\vec e_1], \qquad
+\xi_3(\vec p) = \omega_{\vec p}[\vec e_1,\vec e_2]
+\]
+si avrà
+\begin{equation}\label{eq:fkjtpd}
+  d \omega = \xi_1\, dy \wedge dz + \xi_2\, dz\wedge dx + \xi_3\, dx\wedge dy.
+\end{equation}
+Abbiamo quindi verificato che se $\xi$ è il campo vettoriale che rappresenta 
+la $1$-forma $\omega$, il campo (pseudo)-vettoriale che rappresenta $d\omega$
+è $\rot \xi$.
+
+Consideriamo infine $\omega \in \Omega^2(A)$ una $2$-forma 
+definita su un aperto $A\subset\RR^3$.
+Sappiamo che $\omega$ si rappresenta tramite un campo
+vettoriale $\xi \colon A \subset \RR^3 \to \RR^3$  
+come in~\eqref{eq:fkjtpd}.
+Osserviamo che allora si ha 
+\begin{align*}
+  \omega[v,w] 
+  &= \xi_1 (v_1 w_3 - v_3 w_2) + \xi_2 (v_3 w_1 - v_1 w_3)
+   + \xi_3 (v_1 w_2 - v_2 w_1) \\
+   &= \det \enclose{\xi, v, w} = \xi \cdot (v\times w).
+\end{align*}
+Inoltre
+\begin{align*}
+ d\omega &= (\partial_x \xi_1 dx + \partial_y \xi_1 dy + \partial_z \xi_1 dz) \wedge dy \wedge dz \\
+    &\quad + (\partial_x \xi_2 dx + \partial_y \xi_2 dy + \partial_z \xi_2 dz) \wedge dz \wedge dx \\
+    &\quad + (\partial_x \xi_3 dx + \partial_y \xi_3 dy + \partial_z \xi_3 dz) \wedge dx \wedge dy \\
+    &= (\partial_x \xi_1 + \partial_y \xi_2 + \partial_z \xi_3)\, dx \wedge dy \wedge dz\\
+    &= (\div \xi)\, dx \wedge dy \wedge dz.
+\end{align*}
+Dunque la funzione che rappresenta la $3$-forma $d\omega$ 
+è la divergenza del campo vettoriale che rappresenta la $2$-forma $\omega$.

@@ -444,7 +444,7 @@ $S= \current \psi = \current {g^+} - \current{g^-}$.
 
 Vogliamo ora definire il \emph{bordo} $\partial S$ di una $k$-superficie parametrizzata $S$.
 Per fare questo è sufficiente capire qual è il bordo di un cubo 
-per poi estendere la definizione a tutte le $k$-superfici parametrizzate.
+per poi estendere la definizione a tutte le $k$-superfici parametrizzate. 
 
 Il cubo $[0,1]^k$ in $\RR^k$ ha $2k$ facce ognuna isometrica a $[0,1]^{k-1}$. 
 Le facce posso essere identificate dal loro versorse normale.
@@ -539,6 +539,106 @@ Il dominio della funzione $\psi$ definita in \eqref{eq:defpsicubo}
 }
 \end{figure}
 
+\begin{definition}[bordo di una $k$-superficie parametrizzata]
+Sia $S$ una $k$-superficie parametrizzata, cioè 
+\[
+   S = \sum_{j=1}^M \current{\phi_j}
+\]
+con $\phi_j\colon [0,1]^k \to \RR^n$ di classe $C^1$.
+Definiamo la $(k-1)$-superficie parametrizzata $\partial S$ come:
+\[
+ \partial S = \sum_{j=1}^M \sum_{i=1}^k (-1)^{i-1}\enclose{\current{\phi_j \circ \psi_i^+} - \current{\phi_j \circ \psi_i^-}}.
+\]
+In questo modo se $\omega$ è una $(k-1)$-forma
+l'integrale $\int_{\partial S} \omega$
+corrisponde esattamente ad integrare la forma $\omega$ 
+lungo la frontiera parametrizzata da $\phi_j$ ristretta alla frontiera del suo dominio cubico.
+\end{definition}
+
+\begin{theorem}[teorema della divergenza per il cubo]
+  Sia $\xi\colon [0,1]^k\to \RR^k$ un campo vettoriale di classe $C^1$.
+  Allora si ha 
+  \[
+     \int_{[0,1]^k} \div \xi = \sum_{i=1}^n \int_{[0,1]^{k-1}} (\xi_i \circ \psi_i^+ - \xi_i \circ \psi_i^-).
+  \]
+  Si osservi che $\pm \xi_i \circ \psi_i^\pm$ corrisponde al prodotto 
+  scalare $\xi \cdot (\pm e_i)$ tra il campo vettoriale $\xi$ e il vettore $\pm e_i$
+  che non è altro che il versore normale alla superficie della faccia parametrizzata da $\psi_i^\pm$
+  dunque l'integrale sul lato destro dell'uguaglianza corrisponde all'integrale 
+  del flusso di $\xi$ attraverso la frontiera del cubo.
+\end{theorem}
+\begin{proof}
+Banalmente si ha
+\begin{align*}
+    \int_{[0,1]^k} \div \xi 
+    &= \sum_{i=1}^n \int_0^1 \dots \int_0^1 \frac{\partial \xi_i}{\partial x_i}(x_1,\dots,x_k) dx_1 \dots dx_k \\
+    &= \sum_{i=1}^n \int_{[0,1]^{k-1}} \enclose{\int_0^1 \frac{\partial \xi_i}{\partial x_i}(x_1,\dots,x_k)\, dx_i}\, dx_1 \dots dx_{i-1} dx_{i+1} \dots dx_k \\ 
+    &= \sum_{i=1}^n \int_{[0,1]^{k-1}} \enclose{\xi_i \circ \psi_i^+ - \xi_i \circ \psi_i^-}
+\end{align*}
+in quanto, per il teorema fondamentale del calcolo integrale, risulta 
+\begin{align*}
+  \int_0^1 \frac{\partial \xi_i}{\partial x_i}(x_1,\dots,x_k) dx_i
+  &= \xi_i(x_1,\dots,x_{i-1},1,x_{i+1},\dots,x_k)\\ 
+  &\quad - \xi_i(x_1,\dots,x_{i-1},0,x_{i+1},\dots,x_k)\\
+  &= (\xi_i \circ \psi_i^+ -\xi_i \circ \psi_i^-)(x_1,\dots,x_{i-1},x_{i+1},\dots,x_k).
+\end{align*}
+\end{proof}
+
+\begin{theorem}[teorema di Stokes]
+  Sia $S$ una $k$-superficie parametrizzata 
+  e sia $\omega\in \Omega^{k-1}(\RR^n)$ una $(k-1)$-forma differenziale di classe $C^1$.
+  
+  Allora si ha 
+  \[
+     \int_S d\omega = \int_{\partial S} \omega.
+  \]
+\end{theorem}
+\begin{proof}
+  Grazie alla linearità è sufficiente dimostrare il risultato quando $S=\current{\phi}$ con 
+  $\phi\colon [0,1]^k \to \RR^n$ di classe $C^1$.
+  Allora osserviamo che $\phi^* \omega$ è una $(k-1)$-forma differenziale su $[0,1]^k$ 
+  e dunque si rappresenta tramite un campo vettoriale $\xi\colon [0,1]^k \to \RR^k$ 
+  con la proprietà:
+  \begin{align*} 
+    \phi^* \omega &= \sum_{i=1}^k (-1)^{i-1}\xi_i\, dx_1 \wedge \dots \wedge dx_{i-1} \wedge dx_{i+1} \wedge \dots \wedge dx_k\\
+    \phi^* (d\omega) &= d(\phi^* \omega) = (\div \xi)\, dx_1 \wedge \dots \wedge dx_k.
+  \end{align*} 
+  Stiamo usando la notazione $x_1,\dots,x_k$ per le coordinate di $[0,1]^k$, 
+  mentre useremo le coordinate $t_1,\dots, t_{k-1}$ per le coordinate di $[0,1]^{k-1}$.
+  Si ha dunque, usando il teorema precedente,
+  \begin{align*}
+    \int_S d\omega 
+    &\defeq \int_\phi d\omega 
+    = \int_{[0,1]^k} \phi^* (d\omega)
+    = \int_{[0,1]^k} \div \xi 
+    = \sum_{i=1}^n \int_{[0,1]^{k-1}} (\xi_i \circ \psi_i^+ - \xi_i \circ \psi_i^-)
+  \end{align*}
+  Osserviamo ora che se $i\neq j$ si ha 
+  \[
+  (d\psi_i^\pm)_1 \wedge \dots \wedge (d\psi_i^\pm)_{j-1} \wedge (d\psi_i^\pm)_{j+1} \wedge \dots \wedge (d\psi_i^\pm)_{k} 
+  = 0
+  \]
+  (in quanto $(\psi_i^\pm)_i$ è costante e quindi ha derivata nulla) 
+  e dunque, posto $(x_1,\dots, x_k) = \psi_i^\pm(t_1,\dots,t_{k-1})$,
+  si ha
+  \begin{align*}
+    (\psi_i^\pm)^* (\phi^* \omega)
+    &= \sum_{j=1}^{k-1} (-1)^{j-1}\enclose{\xi_j \circ \psi_i^\pm}\, (d\psi_i^\pm)_1 \wedge \dots \wedge (d\psi_i^\pm)_{j-1} \wedge (d\psi_i^\pm)_{j+1} \wedge \dots \wedge (d\psi_i^\pm)_{k}\\
+    &= (-1)^{i-1} \enclose{\xi_i \circ \psi_i^\pm}\, dt_1 \wedge \dots \wedge dt_{k-1}
+  \end{align*}
+  da cui
+  \begin{align*}
+    \int_{\psi_i^\pm} \phi^*\omega 
+    &= \int_{[0,1]^{k-1}} (\psi_i^\pm)^* (\phi^* \omega)
+    = (-1)^{i-1} \int_{[0,1]^{k-1}} \enclose{\xi_i \circ \psi_i^\pm}
+  \end{align*}
+  e quindi
+  \[
+    \int_{\partial S} \omega
+    \defeq \sum_{i=1}^n (-1)^{i-1}\enclose{\int_{\psi_i^+} \phi^*\omega - \int_{\psi_i^-} \phi^*\omega}
+    = \int_S d\omega 
+  \]
+\end{proof}
 
 
 \section{forme differenziali multilineari in $\RR^2$}

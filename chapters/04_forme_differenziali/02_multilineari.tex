@@ -286,7 +286,89 @@ Si dirà che la catena di morfismi
 è una \emph{successione esatta}, in quanto l'immagine di un morfismo
 è uguale al nucleo di quello successivo (sugli aperti stellati).
 
-\section{pull-back e integrale di una $k$-forma}
+\section{integrale di una $k$-forma}
+
+In generale, se $\phi\colon A \subset \RR^m\to \RR^n$ e se $A$ non è aperto 
+diremo che $\phi$ è di classe $C^k$ su $A$ se $\phi$ può essere estesa ad una funzione 
+di classe $C^k$ su un aperto contenente $A$.
+
+\begin{definition}[integrale di una $k$-forma differenziale]
+Sia $B\subset \RR^k$ un aperto limitato misurabile, sia $A\subset \RR^n$ un aperto,
+sia $\phi\colon B\to A\subset \RR^n$ una funzione di classe $C^1$
+e sia $\omega \in \Omega^k(A)$ una $k$-forma differenziale di classe $C^0$.
+Allora definiamo l'integrale di $\omega$ lungo $\phi$ come
+\[ 
+  \int_\phi \omega 
+  \defeq \int_B \omega_\phi[D\phi]
+\]
+dove si intende
+\[
+  \int_B \omega_\phi[D\phi]
+  = \int_B \omega_{\phi(x)}\Enclose{\frac{\partial \phi(x)}{\partial x_1}, \dots, \frac{\partial \phi(x)}{\partial x_k}}
+  \, dx.
+\]
+
+Si noti che questa definizione estende la definizione~\ref{def:integrale_forma_1} 
+già data per l'integrazione di una forma differenziale lineare lungo una curva.
+\end{definition}
+
+\begin{lemma}
+  \label{lm:549867}
+  Sia $\lambda\in \Lambda^k(\RR^n)$ e sia $M$ una matrice $n\times n$
+  ed $A$ una matrice $n\times k$.
+  Allora 
+  \[
+     \lambda[AM] = \lambda[A] \cdot \det M.
+  \]
+  Si intende che $\lambda[X] = \lambda[X^1,\dots, X^k]$ dove $X^1,\dots,X^k$ sono 
+  le colonne della matrice $X$.
+\end{lemma}
+\begin{proof}
+Osserviamo che l'applicazione multilineare  
+che manda le $k$ colonne di $M$ in $\lambda[AM]$ è un'applicazione multilineare alternante.
+Infatti scambiando due colonne di $M$ si ottiene uno scambio corrispondente nelle due colonne di $AM$ 
+ed essendo $\lambda$ alternante si ottiene un cambio di segno nel risultato.
+La linearità rispetto alle colonne di $M$ è ovvia, perché ogni colonna di $AM$ si ottiene 
+applicando $A$ alla corrispondente colonna di $M$ e dunque essendo $A$ lineare e $\lambda$ multilineare 
+si ottiene la multilinearità rispetto alle colonne di $M$.
+
+Per la caratterizzazione assiomatica del determinante sappiamo dunque 
+che fissato $A$ l'applicazione multilineare alternante $M\mapsto \lambda[AM]$ è un multiplo del determinante
+di $M$ cioè $\lambda[AM] = c \cdot \det M$ per qualche $c\in \RR$. 
+Ma sostituendo l'identità al posto di $M$ si ottiene $\lambda[A]=c$ 
+da cui il risultato atteso.
+\end{proof}
+
+\begin{theorem}[invarianza per riparametrizzazione]
+  Siano $B$ e $C$ aperti misurabili limitati di $\RR^k$.
+  e sia $u\colon C\to B$ una funzione di classe $C^1$ bigettiva con $\det Du > 0$ su tutto $C$.
+  Sia $A$ un aperto di $\RR^n$ e
+  sia $\phi\colon B\to A$ una funzione di classe $C^1$.
+  Sia $\omega\in \Omega^k(A)$ una $k$-forma differenziale di classe $C^0$.
+  Allora per ogni $\vec u\colon [0,1]^k \to A$ di classe $C^1$ si ha
+  \[
+    \int_{\phi} \omega = \int_{\phi \circ \vec u} \omega.
+  \]
+\end{theorem}
+%
+\begin{proof}
+Osserviamo che, in base al lemma~\ref{lm:549867}, si ha 
+\[
+  \omega [D(\phi\circ u)] = \omega[D\phi] \cdot \det Du.
+\]
+Dunque si tratta di applicare il teorema~\ref{th:cambio_variabile_generalizzato} di cambio di variabile,
+$x=u(t)$, $dx = \abs{\det Du(t)}\, dt = \det Du(t)\, dt$
+per ottenere
+\begin{align*}
+  \int_{\phi\circ \vec u} \omega 
+  &= \int_C \omega_{\phi\circ u}[D(\phi\circ u)] 
+  = \int_C \omega_{\phi\circ u}[D\phi] \cdot \det Du \\
+  &= \int_B \omega_{\phi}[D\phi]
+  = \int_{\phi} \omega.
+\end{align*}
+\end{proof}
+
+\section{pull-back}
 
 Se $\phi\colon A\subset \RR^m \to B\subset \RR^n$ (con $A$ e $B$ aperti) 
 è una funzione differenziabile e $\omega\in \Omega^k(B)$
@@ -296,33 +378,15 @@ possiamo definire il pull-back $\phi^* \omega \in \Omega^k(A)$ tramite la formul
   = \omega_{\phi(x)}[d\phi(x)[v_1],\dots, d\phi(x)[v_k]].
 \]
 
-In generale, se $\phi\colon A \subset \RR^m\to \RR^n$ e se $A$ non è aperto 
-diremo che $\phi$ è di classe $C^k$ su $A$ se $\phi$ può essere estesa ad una funzione 
-di classe $C^k$ su un aperto contenente $A$.
-
-L'integrale di una $k$-forma differenziale 
-su una $k$-superficie parametrizzata da $\phi\colon [0,1]^k \to \RR^n$,
-con $\phi$ di classe $C^1$,
-si definisce come l'integrale del pull-back della $k$-forma:
-\[ 
-  \int_\phi \omega \defeq \int_{[0,1]^k} \phi^* \omega
-  = \int_{[0,1]^k} f(\vec x)\, dx_1 \dots dx_k
-\]
-dove $f\colon [0,1]^k \to \RR$ è la funzione che rappresenta $\phi^* \omega$
-in quanto $\phi^* \omega$ è una $k$-forma su $[0,1]^k$ e dunque si rappresenta 
-con una funzione scalare $f$: 
-$\phi^* \omega_{\vec x} = f(\vec x)\, dx_1 \wedge \dots \wedge dx_k$.
-
-In particolare, visto che il pull-back di una composizione è ovviamente 
-la composizione dei pull-back, se $\vec u \colon [0,1]^k\to \RR^m$, 
-$\phi\colon \RR^m\to \RR^n$ e $\omega\in \Omega^k(\RR^n)$
+Osserviamo che visto che il pull-back di una composizione è ovviamente 
+la composizione dei pull-back, se $\vec u \colon C\subset \RR^k \to B\subset \RR^m$, 
+$\phi\colon B\subset \RR^m\to A\subset \RR^n$ e $\omega\in \Omega^k(A)$
 si ha 
 \[
-   \int_{\vec u} \phi^* \omega = \int_{\phi \circ \vec u} \omega 
-\]
-in quanto entrambi si riconducono a
-\[
-  \int_{[0,1]^k} (\phi \circ \vec u)^* \omega.
+  \int_{\phi \circ \vec u} \omega 
+  = \int_C \omega_{\phi\circ \vec u}[D(\phi\circ \vec u)]
+  = \int_C \omega_{\vec u}[D\vec u]
+  = \int_{\vec u} \phi^* \omega.
 \]
 
 \begin{theorem}[scambio differenziale e pull-back]
@@ -359,8 +423,7 @@ Si ha
 \end{align*}
 \end{proof}
 
-
-\section{$k$-superfici parametrizzate}
+\section{superfici parametrizzate}
 
 Abbiamo visto che l'integrale $\int_\phi \omega$ è invariante per riparametrizzazioni. 
 Questo ci dà l'idea che $\phi$ è una rappresentazione di una $k$-superficie orientata, 
@@ -372,11 +435,13 @@ In questo modo potremo prendere in considerazione solamente le parametrizzazione
 definite sul cubo $[0,1]^k$ con l'idea che superfici più generali possono essere 
 ottenute incollando insieme più pezzi rappresentati da parametrizzazioni definite sui cubi.
 Ancora più banalmente questo ci permette di considerare superfici non connesse,  
-come ad esempio l'unione di due cerchi, rappresentando ogni cerchio con una parametrizzazione definita su un intervallo.
+come ad esempio l'unione di due circonferenze, 
+rappresentando ogni circonferenza tramite una parametrizzazione definita su un intervallo.
 Abbiamo anche visto che permutando l'ordine dei parametri di $\phi$ 
 si ottiene un cambio di segno nell'integrale (dato dal segno della permutazione), 
-dunque è naturale identificare due parametrizzazioni che differiscono per una permutazione dispari dei parametri, 
-in quanto rappresentano la stessa superficie con orientazione opposta.
+dunque è naturale pensare che due parametrizzazioni che si corrispondono tramite 
+un cambio di variabile con determinante negativo rappresentano 
+la stessa superficie ma con orientazione opposta.
 Sarà quindi possibile sommare e sottrarre superfici rappresentate da parametrizzazioni.
 
 Per avere la massima generalità nel riconoscere quando due superifici rappresentate da 
@@ -384,7 +449,7 @@ parametrizzazioni diverse sono in realtà la stessa superficie, decidiamo
 di identificare due superfici quando il loro integrale è lo stesso contro ogni forma differenziale $\omega$.
 
 \begin{definition}[$k$-superfici parametrizzate]
-Sia $A\subset \RR^k$ un compatto e sia 
+Sia $A\subset \RR^k$ un compatto misurabile e sia 
 $\phi\colon A \to \RR^n$ una funzione di classe $C^1$.
 Denotiamo con $\current \phi\colon \Omega^k(\RR^n)\to \RR$ il funzionale lineare definito da
 \[
@@ -396,17 +461,28 @@ $k$-superficie parametrizzata
 se esistono $\phi_1, \dots, \phi_M \colon [0,1]^k \to \RR^n$ di classe $C^1$ 
 tali che per ogni $\omega \in \Omega^k(\RR^n)$ si ha
 \[
-   S = \current{\phi_1} + \dots + \current{\phi_M}
-\]
-e quindi 
-\[
-  S[\omega] = \sum_{j=1}^M \int_{\phi_j} \omega.
+   S = \current{\phi_1} + \dots + \current{\phi_M}.
 \]
 
 Scriveremo, in modo più suggestivo, 
 \[
-  \int_S \omega \defeq S[\omega].
+  \int_S \omega 
+    \defeq S[\omega] 
+    = \sum_{j=1}^M \current{\phi_j}[\omega]
+    = \sum_{j=1}^M \int_{\phi_j} \omega.
 \]
+
+Se $B\subset \RR^{n-1}$ è un compatto misurabile e $f\colon B\to \RR$ è 
+una funzione di classe $C^1$, il grafico di $f$ 
+può essere parametrizzato dalla funzione $\phi\colon B\to \RR^n$ defintita 
+da $\phi(x) = (x,f(x))$ e dunque il grafico di $f$ rappresenta 
+una $(n-1)$-superficie parametrizzata: scriveremo $\current f  = \current \phi$
+per denotare la superficie rappresentata dal grafico di $f$.
+
+Se $B\subset \RR^n$ è un compatto misurabile denotiamo con $\current B\defeq \current{\id\llcorner B}$ 
+la $n$-superficie parametrizzata rappresentata dall'identità $\id\colon B \to \RR^n$.
+In pratica si ha $\int_{\current B} f\, dx_1 \wedge \cdots \wedge dx_n = \int_B f$ 
+se $f\colon B\to \RR$ è una funzione di classe $C^0$.
 \end{definition}
 
 Chiaramente se $S$ è una $k$-superficie parametrizzata, 
@@ -415,6 +491,8 @@ allora anche $-S$ (cioè il funzionale $\omega\mapsto -S[\omega]$)
 delle parametrizzazioni $\phi_j$ per ottenere il cambio di segno.
 Inoltre è chiaro che la somma di due $k$-superfici parametrizzate è ancora una $k$-superficie parametrizzata.
 Dunque è possibile sommare e sottrarre $k$-superfici parametrizzate.
+Tramite somma ripetuta è anche possibile moltiplicare una $k$-superficie parametrizzata per un numero intero,
+si otterrà una superficie \emph{con molteplicità}.
 
 \begin{example}[la superficie sferica]
 Ci sono molti modi per rappresentare la superficie di una sfera in $\RR^3$.
@@ -425,8 +503,9 @@ $\psi\colon [-\pi,\pi]\times [-\tfrac{\pi}{2},\tfrac{\pi}{2}] \to \RR^3$ definit
   \psi(\theta,\phi) = (\sin \theta \cos \phi, \sin \theta \sin \phi, \cos \theta)
 \]
 e definire la sfera $S=\current \psi$.
-Osserviamo che $\psi$ è definita su un quadrato invece che su un rettangolo,
-ma è ovvio che a meno di riparametrizzazione possiamo 
+Osserviamo che $\psi$ è definita su un rettangolo invece che 
+su un quadrato unitario.
+Ma è ovvio che a meno di riparametrizzazione possiamo 
 scrivere $\current \psi = \current{\psi'}$ dove $\psi'$ 
 è definita su $[0,1]^2$.
 
@@ -436,10 +515,8 @@ della funzione $f\colon B_1(0)\subset \RR^2 \to \RR$ definita da:
 \[
   f(x,y) = \sqrt{1-x^2-y^2}.
 \]
-Posto $g^+(x,y) \defeq (x,y,f(x,y))$ 
-e $g^-(x,y) \defeq (x,y,-f(x,y))$,
-potremmo dimostrare che 
-$S= \current \psi = \current {g^+} - \current{g^-}$.
+Si potrebbe infatti dimostrare che 
+$S= \current \psi = \current {f} - \current{-f}$.
 \end{example}
 
 Vogliamo ora definire il \emph{bordo} $\partial S$ di una $k$-superficie parametrizzata $S$.
@@ -447,7 +524,8 @@ Per fare questo è sufficiente capire qual è il bordo di un cubo
 per poi estendere la definizione a tutte le $k$-superfici parametrizzate. 
 
 Il cubo $[0,1]^k$ in $\RR^k$ ha $2k$ facce ognuna isometrica a $[0,1]^{k-1}$. 
-Le facce posso essere identificate dal loro versorse normale.
+Le facce possono essere identificate tramite il loro versorse normale uscente 
+dal cubo.
 Infatti ogni punto della frontiera topologica $\partial [0,1]^k$ in $\RR^k$ 
 è un punto che ha tutte le coordinate in $[0,1]$ ma almeno 
 una coordinata è uguale a $0$ o a $1$.
@@ -458,13 +536,15 @@ si tratta del versore $e_k$ (il $k$-esimo vettore della base canonica)
 se è la $k$-esima coordinata ad essere uguale a $1$ e del versore $-e_k$ 
 se la $k$-esima coordinata è uguale a $0$.
 
-Dunque se $Q^k=\current{\id}$ è la $k$-superficie in $\RR^k$ parametrizzata 
-dall'identità $\id\colon [0,1]^k \to \RR^k$, 
+Dunque se $Q^k=\current{[0,1]^k}$ è la $k$-superficie in $\RR^k$ 
+che rappresenta il cubo $[0,1]^k$
 è naturale definire il bordo $\partial Q^k$ di $Q^k$ come la somma delle superfici 
 che parametrizzano le $2k$ facce del cubo, 
 con l'opportuno segno per tenere conto dell'orientazione (il segno è positivo se il versore normale uscente è $e_k$ e negativo se è $-e_k$).
 
-Definiamo quindi le funzioni $\psi^\pm_i\colon [0,1]^{k-1} \to \RR^k$:
+Definiamo quindi le funzioni $\psi^\pm_i\colon [0,1]^{k-1} \to \RR^k$ 
+in modo che $\pm\current {\psi_i^\pm}$ sia la faccia del cubo $Q^k$ 
+con versore uscente uguale ad $\pm e_i$:
 \begin{align*}
     \psi_i^+(t_1, \dots, t_{k-1}) &= (t_1, \dots, t_{i-1}, 1, t_i, \dots, t_{k-1}),\\
     \psi_i^-(t_1, \dots, t_{k-1}) &= (t_1, \dots, t_{i-1}, 0, t_i, \dots, t_{k-1})
@@ -481,7 +561,7 @@ $\psi_2^+(t) = (t,1)$ (lato destro percorso verso l'alto) e $\psi_2^-(t) = (t,0)
 Notiamo che i segni che abbiamo scelto nella definizione di $\partial Q^k$
 corrispondono a considerare una orientazione antioraria dei lati del quadrato:
 \[
- \partial (Q^2) = \current{\psi_1^+} - \current{\psi_1^-} - \current{\psi_2^+} + \current{\psi_2^-}.
+ \partial Q^2 = \current{\psi_1^+} - \current{\psi_1^-} - \current{\psi_2^+} + \current{\psi_2^-}.
 \]
 
 Nel caso $k=3$ il cubo $Q^3$ ha sei facce parametrizzate da 
@@ -515,7 +595,7 @@ tenuto conto del segno, vanno a coincidere:
 \end{cases}
 \end{equation}
 Si può verificare che il dominio di $\psi$ ha forma di una croce e che $\psi$ 
-è continua. Sarà $\current \psi = \partial Q^3$.
+è continua. Sarà $\current \psi = \partial Q^3$ (si veda la figura~\ref{fig:sviluppocubo}).
 \begin{figure}
 \begin{center}
 \begin{tikzpicture}[scale=1]
@@ -534,9 +614,10 @@ Si può verificare che il dominio di $\psi$ ha forma di una croce e che $\psi$
 \end{tikzpicture}
 \end{center}
 \caption{
-Il dominio della funzione $\psi$ definita in \eqref{eq:defpsicubo}
-è lo sviluppo del bordo cubo con i sei quadrati che rappresentano le sei facce del cubo.
-}
+  Il dominio della funzione $\psi$ definita in \eqref{eq:defpsicubo}
+  è lo sviluppo del bordo cubo con i sei quadrati che rappresentano le sei facce del cubo.
+  }
+\label{fig:sviluppocubo}
 \end{figure}
 
 \begin{definition}[bordo di una $k$-superficie parametrizzata]
@@ -549,10 +630,6 @@ Definiamo la $(k-1)$-superficie parametrizzata $\partial S$ come:
 \[
  \partial S = \sum_{j=1}^M \sum_{i=1}^k (-1)^{i-1}\enclose{\current{\phi_j \circ \psi_i^+} - \current{\phi_j \circ \psi_i^-}}.
 \]
-In questo modo se $\omega$ è una $(k-1)$-forma
-l'integrale $\int_{\partial S} \omega$
-corrisponde esattamente ad integrare la forma $\omega$ 
-lungo la frontiera parametrizzata da $\phi_j$ ristretta alla frontiera del suo dominio cubico.
 \end{definition}
 
 \begin{theorem}[teorema della divergenza per il cubo]
@@ -585,6 +662,7 @@ in quanto, per il teorema fondamentale del calcolo integrale, risulta
 \end{proof}
 
 \begin{theorem}[teorema di Stokes]
+  \label{th:stokes}
   Sia $S$ una $k$-superficie parametrizzata 
   e sia $\omega\in \Omega^{k-1}(\RR^n)$ una $(k-1)$-forma differenziale di classe $C^1$.
   

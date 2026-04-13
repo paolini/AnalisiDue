@@ -1,0 +1,171 @@
+\section{integrali di superficie}
+
+\begin{theorem}[significato geometrico del determinante jacobiano]
+  \label{th:significato_geometrico_jacobiano}
+  Sia $L\colon \RR^m \to \RR^n$ una funzione lineare
+  e sia $V$ l'immagine di $L$.
+  Sia $M\colon V \to \RR^m$ una isometria.
+  Sia $E\subset \RR^m$.
+  Allora si ha 
+  \begin{equation}\label{eq:significato_geometrico_jacobiano}
+    \abs{\det (M\circ L)}\cdot \abs{E} = \sqrt{\det (L^t L)}\cdot \abs{E}.
+  \end{equation}
+  Visto che le isometrie preservano le aree
+  è naturale definire la $m$-area di $L(E)$ in $\RR^n$ 
+  come la misura $m$-dimensionale di $M(L(E))$ in $\RR^m$.
+  Per il teorema~\ref{th:significato_geometrico_determinante}
+  la $m$-area di $L(E)$ è data dal lato sinistro di~\eqref{eq:significato_geometrico_jacobiano}
+  che, guardando il lato destro, non dipende dalla scelta dell'isometria $M$:
+  \[
+    m\text{-}\mathrm{area}(L(E)) = \sqrt{\det (L^t L)}\cdot \abs{E}.
+  \]
+\end{theorem}
+%
+\begin{proof}
+Estendiamo $M$ ad una isometria su tutto $\RR^n$, $\tilde M\colon \RR^n \to \RR^n$.
+Dunque $\tilde M$ si rappresenta con una matrice ortogonale, cioè $\tilde M^t = \tilde M^{-1}$.
+Sia $P\colon \RR^n \to \RR^m$ la proiezione ortogonale $P(x_1,\dots,x_n) = (x_1,\dots,x_m)$.
+Dunque $M$ è la restrizione di $P\tilde M$ a $V$
+e $M\circ L = P\tilde M L$.
+Osserviamo che $P^t P\colon \RR^n\to \RR^n$ è l'applicazione 
+lineare che azzera le ultime $n-m$ coordinate
+ma visto che $M$ manda $V$ in $\RR^m$ si ha $P^t P \tilde ML = ML$. 
+Dunque 
+\[
+ (\det(M\circ L))^2 
+ = \det((P \tilde M L)^t (P \tilde M L)) 
+ = \det(L^t \tilde M^t P^t P \tilde M L) 
+ = \det(L^t \tilde M^t M L) = \det(L^t L)
+\]
+come volevamo dimostrare.
+\end{proof}
+
+\begin{definition}[integrale di superficie]
+  \label{def:integrale_superficie}
+Sia $B\subset \RR^k$ un aperto limitato misurabile e sia $A\subset \RR^n$.
+Data $\phi\colon \bar B\subset \to A$ di classe $C^1$ 
+e data $f\colon A\subset \RR^n\to \RR$ di classe $C^0$
+definiamo
+\begin{equation}\label{eq:def_integrale_superficie}
+  \int_\phi f \, d\sigma 
+  \defeq \int_B f(\phi(x)) \sqrt{\det ((D\phi)^t D\phi)}\, dx.
+\end{equation}
+Le ipotesi su $\phi$, e $f$ garantiscono 
+che la funzione integranda al lato destro di~\eqref{eq:def_integrale_superficie} è
+continua e dunque integrabile su $B$, con integrale finito. 
+Per mettere in evidenza la variabile di integrazione si potrà anche scrivere 
+\[
+  \int_\phi f \, d\sigma = \int_\phi f(\phi(x)) \, d\sigma(x)
+\]
+intendendo quindi
+$d\sigma(x) = \sqrt{\det ((D\phi)^t D\phi)}\, dx$.
+
+Si può estendere la definizione al caso in cui $B$ non è limitato. 
+In tal caso l'integrale potrebbe non esistere e potrebbe essere infinito.
+\end{definition}
+
+\begin{theorem}[invarianza per riparametrizzazioni]
+Siano $B,C$ aperti misurabili limitati di $\RR^k$ e sia $A\subset \RR^n$.
+Sia $\phi\colon \bar B \to A$ di classe $C^1$,
+sia $f\colon A\to \RR$ di classe $C^0$ e sia 
+$u\colon C \to B$ di classe $C^1$ 
+con $u\colon C\to B$ bigettiva e $\det Du \neq 0$.
+Allora 
+\begin{align*}
+  \int_{\phi\circ u} f \, d\sigma
+  &= \int_{\phi} f \, d\sigma.
+\end{align*}
+\end{theorem}
+
+\begin{proof}
+Si ha
+\begin{align*}
+  \int_{\phi\circ u} f \, d\sigma 
+  &= \int_C f(\phi(u(x))) \sqrt{\det ((D(\phi\circ u))^t D(\phi\circ u))}\, dx \\
+  &= \int_C f(\phi(u(x))) \sqrt{\det ((Du)^t (D\phi)^t D\phi Du)}\, dx \\
+  &= \int_C f(\phi(u(x))) \sqrt{\det ((D\phi)^t D\phi)}\cdot \sqrt{\det ((Du)^t Du)}\, dx \\
+  &= \int_B f(\phi(y)) \sqrt{\det ((D\phi)^t D\phi)}\, dy\\
+  &= \int_{\phi} f \, d\sigma
+\end{align*}
+avendo fatto il cambio di variabile:
+\[
+  y = u(x), \qquad dy = \abs{\det Du} dx = \sqrt{\det ((Du)^t Du)}\, dx.
+\]
+\end{proof}
+
+Se $D\phi(x)$ ha rango massimo, i vettori colonna 
+$\frac{\partial \phi}{\partial x_1},\dots,\frac{\partial \phi}{\partial x_k}$
+sono linearmente indipendenti e dunque 
+generano uno spazio vettoriale $k$-dimensionale 
+che si chiama spazio tangente alla superficie definita da $\phi$ nel punto $\phi(x)$.
+
+
+\section{ipersuperfici}
+
+Se $k=n-1$, $\phi\colon B\subset \RR^{n-1} \to A\subset \RR^n$ 
+rappresenta una \emph{ipersuperficie} in $\RR^n$ o superficie di codimensione $1$.
+Se $D\phi$ ha rango massimo in un punto $x$, 
+i vettori $\frac{\partial \phi}{\partial x_1},\dots,\frac{\partial \phi}{\partial x_{n-1}}$ 
+sono linearmente indipendenti e dunque
+generano lo spazio tangente alla superficie definita da $\phi$ nel punto $\phi(x)$.
+Per ogni $v\in \RR^n$ possiamo considerare il determinante $\det(v, D\phi)$ 
+della matrice quadrata ottenuta aggiungendo la colonna $v$ alla matrice $D\phi$.
+Chiamiamo $\xi_\phi$ il vettore che rappresenta l'applicazione lineare $v\mapsto \det(v, D\phi)$, 
+cioè $\xi_\phi$ è definito univocamente dalla proprietà
+\[
+  \xi_\phi \cdot v = \det(v,D\phi).
+\]
+Chiaramente $\xi_\phi$ è ortogonale a tutte le colonne di $D\phi$ perché
+$\xi_\phi \cdot \phi_{x_i} = \det(\phi_{x_i}, D\phi) = 0$,
+dunque $\xi_\phi$ è un vettore ortogonale allo spazio tangente alla superficie.
+Definiamo $\nu_\phi$ come il versore $\nu_\phi=\xi_\phi/\abs{\xi_\phi}$, 
+che è uno dei due versori normali alla ipersuperficie.
+La direzione di $\nu_\phi$ non cambia se si riparametrizza la superficie
+e il suo verso non cambia se la riparametrizzazione ha jacobiano positivo.
+
+Se $\phi$ non è iniettivo è possibile che la superficie si autointersechi 
+o addirittura che si sovrapponga più volte su se stessa. 
+In questo senso diremo che la superficie ha una \emph{molteplicità}.
+
+Per quanto riguarda il modulo di $\xi_\phi$ si ha 
+\begin{align*}
+   \abs{\xi_\phi} &= \det (\nu_\phi, D\phi)
+   = \sqrt{\det \enclose{(\nu_\phi, D\phi)^t (\nu_\phi,D\phi)}}  \\
+   &= \sqrt{\det \begin{pmatrix}
+     1 & 0 \\
+     0 & (D\phi)^t D\phi
+   \end{pmatrix}}
+  = \sqrt{\det((D\phi)^t D\phi)}
+\end{align*}
+dunque 
+\[
+  \xi_\phi = \nu_\phi \sqrt{\det (D\phi)^t D\phi}
+\]
+e per ogni $v\in \RR^n$ si ha
+\begin{equation}\label{eq:493444}
+\det(v, D\phi)
+= \xi_\phi \cdot v
+= (\nu_\phi \cdot v) \sqrt{\det((D\phi)^t D\phi)}.
+\end{equation}
+
+Formalmente, se $\sigma$ rappresenta l'integrazione di superficie vista in precedenza, 
+si ha
+\[
+  \xi_\phi(x) \, dx = \nu_\phi\, d\sigma.
+\]
+
+Nel caso particolare $n=3$, se $\phi(u,v) = (x(u,v), y(u,v), z(u,v))$ è la 
+parametrizzazione di una superficie in $\RR^3$, si ha 
+\[
+  (\xi_\phi(x),v)  = \det\enclose{v, \frac{\partial \phi}{\partial u}, \frac{\partial \phi}{\partial v}}
+\]
+e quindi, in base alla definizione~\ref{def:prodotto_vettore},
+risulta
+\[
+  \xi_\phi = \frac{\partial \phi}{\partial u} \times \frac{\partial \phi}{\partial v}
+\]
+da cui
+\[
+  \nu_\phi\, d\sigma = \enclose{\frac{\partial \phi}{\partial u} \times \frac{\partial \phi}{\partial v}}\, du\, dv.
+\]
+

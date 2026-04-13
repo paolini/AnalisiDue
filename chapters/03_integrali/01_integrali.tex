@@ -1148,13 +1148,16 @@ Ma allora
 da cui segue il risultato.
 \end{proof}
 
-\begin{remark}
-Più in generale siano $E,F$ aperti misurabili di $\RR^n$ (non necessariamente limitati),
+\begin{theorem}[formula del cambio di variabile generalizzato]
+  \label{th:cambio_variabile_generalizzato}
+Siano $E,F$ aperti misurabili di $\RR^n$ (non necessariamente limitati),
 $\phi\colon E\to F$ invertibile, di classe $C^1$, con $\det D\phi\neq 0$,
-sia $f$ integrabile su $F$ e, infine, sia anche $(f\circ \phi)\cdot \abs{\det D\phi}$ 
+sia $f$ integrabile su $F$ e sia anche $(f\circ \phi)\cdot \abs{\det D\phi}$ 
 integrabile su $E$.
-Allora vale comunque~\eqref{eq:cambio-variabile}
-
+Allora vale la formula del cambio di variabile~\eqref{eq:cambio-variabile}.
+\end{theorem}
+%
+\begin{proof}
 Si può infatti approssimare $E$ dall'interno con compatti misurabili $E_N$ e approssimare 
 $F$ dall'interno con $F_N=\phi(E_N)$. 
 Vale allora l'uguaglianza~\eqref{eq:cambio-variabile} su $E_N$.
@@ -1166,4 +1169,4 @@ si ha
   &= \lim_{N\to+\infty} \int_{F_N} f
   = \int_{F} f.
 \end{align*}
-\end{remark}
+\end{proof}

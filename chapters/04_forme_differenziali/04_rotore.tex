@@ -1,6 +1,95 @@
-\section{forme differenziali multilineari in $\RR^3$}
+\section{corrispondenza tra integrali di superficie e integrali di forme differenziali}
+
+In questo capitolo mettiamo in corrispondenza gli integrali di superificie con gli integrali 
+di forme differenziali nei casi più rilevanti, ovvero per $k=1$ (curve), per $k=n-1$ (ipersuperfici) 
+e per $k=n$ (volumi). 
+Nel caso rilevante $n=3$ si esaurisce tutta la casistica, lo tratteremo in particolare.
+
+\subsection{curve}
+Per le curve abbiamo già visto che se $\xi$ è un campo vettoriale in $\RR^n$ 
+possiamo associare a $\xi$ la $1$-forma differenziale $\omega$ definita da
+\[
+  \omega_x[v] = \xi(x) \cdot v.
+\]
+In tal modo si ha
+\[
+   \int_\phi \omega = \int_\phi \xi(x)\cdot \phi'(t)\, dt.
+\]
+Se $\phi'(t) \neq 0$ si può definire $\tau_\phi(t) \defeq \phi'(t)/\abs{\phi'(t)}$ 
+che geometricamente è il versore tangente alla curva rappresentata da $\phi$ e dunque
+si ha 
+\[
+  \phi'(t)\, dt = \tau_\phi \cdot \abs{\phi'(t)}\, dt = \tau_\phi\, ds
+\]
+dove $ds$ è l'elemento di lunghezza della curva (ovvero $s$ è il parametro di lunghezza d'arco della curva).
+Osserviamo che sebbene $\tau_\phi$ non ha senso quando $\phi'(t) = 0$ il prodotto
+$\tau_\phi \abs{\phi'(t)} = \phi'(t)$ è sempre ben definito, dunque gli integrali 
+della forma 
+\[
+  \int_\phi \xi \cdot \tau_\phi\, ds
+\] 
+hanno senso anche se $\phi'(t)$ si annulla.
+
+\subsection{ipersuperfici}
+
+Ad un campo vettoriale $\xi\colon A\subset \RR^n\to \RR^n$ possiamo associare la 
+$(n-1)$-forma differenziale $\omega$ definita da
+\[
+  \omega_x[v_2,\dots,v_n] = \det(\xi(x), v_2,\dots,v_n).
+\]
+In tal modo, grazie a~\eqref{eq:493444} si ottiene che 
+l'integrale di $\omega$ su una ipersuperficie rappresentata da $\phi\colon B\subset \RR^{n-1} \to \RR^n$
+coincide con il flusso del campo vettoriale $\xi$ attraverso la ipersuperficie rappresentata da $\phi$: 
+\begin{align*}
+  \int_\phi \omega
+  &= \int_B \det (\xi(x), D\phi(x))\, dx \\
+  &= \int_B \xi(x) \cdot \nu_\phi(x) \, \sqrt{\det((D\phi)^t D\phi)}\, dx \\
+  &= \int_\phi \xi \cdot \nu_\phi\, d\sigma.
+\end{align*}
+
+Se $S = \current{\phi_1} + \dots + \current{\phi_M}$ è una $(n-1)$-superficie parametrizzata 
+ha quindi senso definire 
+\[
+   \int_S \xi \cdot \nu_S\, d\sigma \defeq \int_S \omega
+\]
+dove $\omega$ è la $(n-1)$-forma differenziale associata a $\xi$ come sopra.
+
+\subsection{volumi}
+
+Se $A\subset \RR^n$ è un aperto limitato e misurabile si può definire $\current A\colon \Omega^n(A) \to \RR$ tramite
+\[
+  \int_{\current{A}} f \, dx_1 \wedge \dots \wedge dx_n 
+  = \int_A f.
+\]
+Se $A$ è sufficientemente regolare sarà possibile scrivere 
+$\current A = \current \phi_1 + \dots + \current \phi_M$ 
+con $\phi_i\colon [0,1]^n \to A$ di classe $C^1$. 
+In tal caso $\current A$ è una $n$-superficie parametrizzata e dunque si potrà definire il suo 
+bordo. 
+
+\begin{theorem}
+Sia $A\subset \RR^n$ un aperto limitato sufficientemente regolare (in modo che $\current A$ sia una $n$-superficie parametrizzata).
+Si $f\colon \bar A \to \RR^n$ una funzione di classe $C^1$.
+Allora 
+\[
+   \int_A \div f = \int_{\partial \current A} f \cdot \nu_{\partial \current A}\, d\sigma.
+\]
+\end{theorem}
+\begin{proof}
+Consideriamo la $(n-1)$-forma $\omega$ associata a $f$.
+Il teorema~\ref{th:stokes} ci dice che 
+\[
+  \int_{A} \div f
+  = \int_{\current A} d\omega 
+  = \int_{\current A} \omega
+  = \int_{\partial \current A} f \cdot \nu_{\partial \current A}\, d\sigma.
+\]
+\end{proof}
+
+\subsection{forme differenziali multilineari in $\RR^3$}
 
 \begin{definition}[prodotto vettore]
+  \label{def:prodotto_vettore}
 Siano $v,w\in \RR^3$.
 Definiamo il \emph{prodotto vettore} $v\times w\in \RR^3$ 
 come l'unico vettore tale che per ogni $u\in \RR^3$ si abbia
@@ -14,8 +103,8 @@ c'è un unico vettore che la rappresenta mediante prodotto scalare.
 
 Ovviamente il vettore $v\times w$ è perpendicolare sia a $v$ che a $w$,
 perché $v\cdot (v\times w) = \det\enclose{v,v,w} = 0$ e $w\cdot (v\times w) = \det\enclose{w,v,w} = 0$.
-Posto $\nu = \frac{v\times w}{\abs{v\times w}}$ si ha che $\nu$ è un versore normale alla superficie
-generata da $v$ e $w$.
+Posto $\nu = \frac{v\times w}{\abs{v\times w}}$ si ha che $\nu$ è un versore normale al piano
+generato da $v$ e $w$.
 Inoltre 
 \[ 
 \abs{v\times w} = \nu\cdot(v\times w) = \det\enclose{\nu, v, w}
@@ -170,3 +259,13 @@ Inoltre
 \end{align*}
 Dunque la funzione che rappresenta la $3$-forma $d\omega$ 
 è la divergenza del campo vettoriale che rappresenta la $2$-forma $\omega$.
+
+Possiamo quindi esprimere il teorema~\ref{th:stokes} in termini di rotore.
+\begin{theorem}[del rotore]
+Sia $\xi\colon A\to \RR^3$ un campo vettoriale di classe $C^1$.
+Allora si ha 
+\[
+ \int_S \rot \xi = \int_{\partial S} \xi
+\]
+
+\end{theorem}

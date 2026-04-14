@@ -16,6 +16,7 @@
     (B_{\vec k})_{i,j} = B_{k_i, j}.
   \]
 \end{theorem}
+%
 \begin{proof}
 Denotiamo con $\Sigma_m$ il gruppo delle permutazioni 
 di $\ENCLOSE{1,\dots,m}$ 
@@ -23,10 +24,10 @@ e con $(-1)^\sigma$ il segno della permutazione.
 Si ha
 \begin{align*}
   \det (AB) &= \sum_{\sigma \in \Sigma_m} (-1)^\sigma \prod_{i=1}^m (AB)_{i,\sigma(i)} \\
-    &= \sum_\sigma (-1)^\sigma \prod_i \sum_{k=1}^n A_{i,k} B_{k,\sigma(i)} \\
-    &= \sum_\sigma (-1)^\sigma \sum_{k_1=1}^n \dots \sum_{k_m=1}^n \prod_i A_{i,k} B_{k,\sigma(i)} \\
-    &= \sum_\sigma \sum_{\vec k\in \ENCLOSE{1,\dots,n}^m} \prod_i A_{i,k} (-1)^\sigma \prod_i B_{k,\sigma(i)} \\    
-    &= \sum_\sigma \sum_{\vec k\in \ENCLOSE{1,\dots,n}^m} \prod_i A_{i,k} \det B_{\vec k}
+    &= \sum_\sigma (-1)^\sigma \prod_{i=1}^m \sum_{k=1}^n A_{i,k} B_{k,\sigma(i)} \\
+    &= \sum_\sigma (-1)^\sigma \sum_{k_1=1}^n \dots \sum_{k_m=1}^n \prod_{i=1}^m A_{i,k_i} B_{k_i,\sigma(i)} \\
+    &= \sum_{k_1,\dots,k_m=1}^n \prod_{i=1}^m A_{i,k_i} \sum_\sigma (-1)^\sigma \prod_{i=1}^m B_{k_i,\sigma(i)} \\
+    &= \sum_{\vec k\in \ENCLOSE{1,\dots,n}^m} \prod_{i=1}^m A_{i,k_i} \det B_{\vec k}
 \end{align*}
 Notiamo ora che se $\vec k = (k_1,\dots,k_m)$ non è iniettiva, cioè se $k_i = k_j$ per qualche 
 $i\neq j$, la matrice $B_{\vec k}$ ha due righe uguali e quindi $\det B_{\vec k}=0$. 
@@ -38,11 +39,11 @@ e componendole con tutte le permutazioni $\phi$ di $\ENCLOSE{1,\dots,m}$.
 Dunque
 \begin{align*}
   \det(AB) 
-    &= \sum_\sigma \sum_{1\le k_1<\dots<k_m\le n}\sum_{\phi\in \Sigma_m} 
+    &= \sum_{1\le k_1<\dots<k_m\le n}\sum_{\phi\in \Sigma_m}
     \prod_i A_{i,k_{\phi(i)}} \det B_{\vec k\circ \phi}\\
-    &= \sum_\sigma \sum_{1\le k_1<\dots<k_m\le n}\sum_{\phi\in \Sigma_m} 
+    &= \sum_{\phi\in \Sigma_m} \sum_{1\le k_1<\dots<k_m\le n}
     \prod_i A_{i,k_{\phi(i)}} (-1)^\phi \det B_{\vec k}\\
-    &= \sum_\sigma \sum_{1\le k_1<\dots<k_m\le n}\sum_{\phi\in \Sigma_m} 
+    &= \sum_{1\le k_1<\dots<k_m\le n} 
     \det A^{\vec k} \det B_{\vec k}
 \end{align*}
 avendo usato il fatto che $\det B_{\vec k\circ \phi}$

@@ -17,7 +17,7 @@
   la $m$-area di $L(E)$ è data dal lato sinistro di~\eqref{eq:significato_geometrico_jacobiano}
   che, guardando il lato destro, non dipende dalla scelta dell'isometria $M$:
   \[
-    m\text{-}\mathrm{area}(L(E)) = \sqrt{\det (L^t L)}\cdot \abs{E}.
+    m\text{-}\area(L(E)) = \sqrt{\det (L^t L)}\cdot \abs{E}.
   \]
 \end{theorem}
 %
@@ -169,3 +169,185 @@ da cui
   \nu_\phi\, d\sigma = \enclose{\frac{\partial \phi}{\partial u} \times \frac{\partial \phi}{\partial v}}\, du\, dv.
 \]
 
+\section{Esempi}
+
+\subsection{area della sfera}
+
+Osservando che la funzione identità: $x\colon \RR^n\to \RR^n$ 
+ha divergenza costante 
+$\div x = \frac{\partial x_1}{\partial x_1} + \dots + \frac{\partial x_n}{\partial x_n} = n$,
+e osservando che $x$ è normale alla sfera $\partial B_R$, 
+si può usare il teorema della divergenza per calcolare l'area della sfera di raggio $R$:
+\[
+\omega_n R^n = \abs{B_R} 
+  = \frac 1 n \int_{B_R} \div x
+  = \frac 1 n \int_{\partial B_R} x \cdot \nu_{\partial B_R}\, d\sigma
+  = \frac 1 n \int_{\partial B_R} R\, d\sigma
+  = \frac{R}{n} \cdot \area(\partial B_R)
+\]
+da cui
+\begin{equation}\label{eq:area_sfera}
+  \area(\partial B_R) 
+  = n \omega_n R^{n-1}.
+\end{equation}
+
+Lo stesso risultato si può ottenere direttamente. 
+Se $\theta\colon B\to \RR^n$ è una qualunque parametrizzazione della sfera $\partial B_1$,
+possiamo parametrizzare la palla $B_R$ con la funzione $\phi \colon B\times [0,R] \to \RR^n$ 
+definita da $\phi(u,\rho) = \rho\theta(u)$.
+Si osserva allora che $D\phi = (\rho D\theta, \theta)$ e, 
+osservando che $\frac{\partial \theta}{\partial u_i}$ 
+è tangente alla sfera, e quindi ortogonale a $\theta$, mentre $\abs{\theta}=1$, 
+risulta
+\[
+  D\phi^t D\phi = \begin{pmatrix}
+  \rho^2 D\theta^t D\theta & \rho D\theta^t \theta \\
+  \rho \theta^t D\theta & 1
+  \end{pmatrix} = \begin{pmatrix}
+  \rho^2 D\theta^t D\theta & 0 \\
+  0 & 1
+  \end{pmatrix}
+\]
+da cui l'elemento di volume sulla palla è dato da 
+\[
+  dV = \rho^{n-1} \sqrt{\det(D\theta^t D\theta)}\, du\, d\rho
+     = \rho^{n-1} d\sigma\, d\rho
+\]
+dove $d\sigma$ è l'elemento di area sulla sfera unitaria $\partial B_1$.
+Allora si ha
+\[
+\abs{B_R} 
+  = \int_{\partial B_1} \int_0^R \rho^{n-1}\, d\rho\, d\sigma 
+  = \frac{R^n}{n} \int_{\partial B_1} d\sigma 
+  = \frac{R^n}{n} \area(\partial B_1)
+\]
+da cui si ottiene nuovamente~\eqref{eq:area_sfera}.
+
+Il calcolo precedente può essere svolto in maniera più 
+informale usando con più disinvoltura le notazioni del calcolo 
+differenziale. 
+Se chiamiamo $x$ la variabile che descrive il punto nella palla $B_R$,
+chiamiamo $\theta$ la variabile che descrive il punto sulla sfera unitaria
+poniamo $\rho=\abs{x}$, $\theta = \frac{x}{\abs{x}}$ e dunque $x = \rho \theta$,
+i passaggi visti sopra si possono esprimere più espressivamente 
+scrivendo $dx = \rho^{n-1} d\theta \, d\rho$ dove $d\theta$ è 
+l'elemento d'area nell'integrazione sulla sfera unitara.
+
+\subsection{grafico di una funzione}
+
+Se $B\subset \RR^n$ è misurabile e $f\colon B\to \RR$, possiamo 
+rappresentare la ipersuperficie $y=f(x)$ in $\RR^{n+1}$
+tramite la parametrizzazione $\phi\colon B\to \RR^{n+1}$, 
+$\phi(x) = (x, f(x))$.
+Si può allora osservare che 
+\[
+  D\phi = \begin{pmatrix}
+    \id \\
+    Df
+  \end{pmatrix},
+  \qquad
+  (D\phi)^t D\phi = \id + (Df)^t Df = \id + \nabla f \otimes \nabla f
+\]
+dove $\id$ è la matrice identità $n\times n$ e 
+$v \otimes w = v w^t$ è il prodotto tensore tra i vettori (colonna) 
+$v$ e $w$ cioè la matrice con componenti $(v \otimes w)_{i,j} = v_i w_j$.
+
+Per verifica diretta si osserva che 
+$(\id + v \otimes v)$ è una matrice simmetrica che 
+ha $v$ come autovettore con autovalore $1+\abs{v}^2$ 
+e che ogni vettore ortogonale a $v$ è un autovettore con autovalore $1$.
+Dunque il determinante di $(\id + v \otimes v)$ è dato dal prodotto degli autovalori,
+e quindi
+\[
+  \sqrt{\det((D\phi)^t D\phi)} = \sqrt{1 + \abs{\nabla f}^2}.
+\]
+La formula per calcolare l'area del grafico di $f$ è dunque
+\[
+  \area(f) = \int_B \sqrt{1 + \abs{\nabla f}^2}\, dx.
+\]
+Non è difficile calcolare il versore normale al grafico della funzione 
+$f$, basta infatti osservare che il vettore $v=(-D f, 1)$ 
+è ortogonale ad ogni colonna $\frac{\partial \phi}{\partial x_i} = (e_i, 1)$ 
+della matrice jacobiana $D\phi$ e dunque, rinormalizzando, 
+si ottiene la normale al grafico di~$f$:
+\[
+  \nu_f = \frac{\begin{pmatrix}
+  -\nabla f\\
+  1
+  \end{pmatrix}}{\sqrt{1 + \abs{\nabla f}^2}}.
+\]
+Dunque, se volessimo calcolare un flusso attraverso la superficie, possiamo usare 
+la formula 
+\[
+  \nu_f\, d\sigma = \begin{pmatrix}
+  -\nabla f\\
+  1
+  \end{pmatrix} dx.
+\]
+
+\begin{example}[area dell'iperboloide]
+Consideriamo l'iperboloide $H$ di equazione $z = x^2 - y^2$
+ con $x^2+y^2\le R$, grafico della funzione $f(x,y) = x^2 - y^2$ su 
+ $B_R = \{(x,y)\in \RR^2\colon x^2+y^2\le R\}$.
+ Si ha $\nabla f = (2x, -2y)$ e dunque, 
+ usando le coordinate polari, 
+ si ottiene
+ \begin{align*}
+ \area(H) 
+  &= \int_{B_R} \sqrt{1+(\nabla f)^2}\, dx\, dy
+  = \int_{B_R} \sqrt{1 + 4(x^2+y^2)}\, dx\, dy \\
+  & = \int_0^{2\pi} \int_0^R \sqrt{1 + 4\rho^2}\cdot \rho\, d\rho\, d\theta
+  = 2 \pi \Enclose{\frac{(1+4R^2)^{\frac 3 2}}{12}}_0^R
+  = \frac{\pi}{6} \Enclose{\enclose{1+4R^2}^{\frac 3 2} - 1}.
+ \end{align*}
+\end{example}
+
+
+\subsection{superfici di rotazione}
+
+
+Se $\gamma\colon [a,b]\to \RR^2$ è una curva di classe $C^1$, 
+posto $\gamma(t) = (\rho(t), z(t))$, 
+possiamo rappresentare la superficie di rotazione 
+$S$ di equazione $x^2+y^2 = \rho(t)^2$, $z=z(t)$ tramite la parametrizzazione
+$\phi(\theta, t) = (\rho(t)\cos\theta, \rho(t)\sin\theta, z(t))$.
+Si ha 
+\begin{align*}
+  D\phi &= \begin{pmatrix}
+  -\rho(t)\sin \theta & \rho'(t)\cos\theta \\
+  \rho(t)\cos\theta & \rho'(t)\sin\theta \\
+  0 & z'(t) 
+  \end{pmatrix},\\
+  \sqrt{\det (D\phi)^t D\phi} 
+    &= \sqrt{\det \begin{pmatrix}
+    \rho(t)^2 & 0 \\
+    0 & \rho'(t)^2 + z'(t)^2
+    \end{pmatrix}}
+    = \rho(t) \sqrt{\rho'(t)^2 + z'(t)^2}\\
+    &= \rho(t) \,\abs{\gamma'(t)}.
+\end{align*}
+Dunque si ottiene la \emph{formula di Guldino}
+\index{formula!di Guldino}%
+\index{Guldino, formula di}%
+\begin{equation}\label{eq:formula_guldino}
+ \area(S) = \int_a^b \int_0^{2\pi} \rho(t) \abs{\gamma'(t)}\, d\theta\, dt 
+  = 2\pi \int_a^b \rho(t) \abs{\gamma'(t)}\, dt
+  = 2\pi \int_\gamma \rho\, ds.
+\end{equation}
+Se denotiamo con 
+\[
+ \bar \rho = \dashint_\gamma \rho = \frac{\int_\gamma \rho}{\ell(\gamma)}
+\]
+il baricentro della curva $\gamma$, si ottiene 
+$\area(S) = 2\pi \bar \rho \ell(\gamma)$ cioè
+l'area di $S$ coincide con l'area si un cilindro 
+con base sulla curva $\gamma$ e altezza pari alla 
+lunghezza della circonferenza percorsa dal baricentro 
+della curva.
+
+\begin{example}[area della superficie di un toro]
+Consideriamo il toro ottenuto facendo ruotare una circonferenza di 
+raggio $r$ attorno ad un asse che dista $R$ dal centro della circonferenza, con $R>r$.
+Il baricentro di una circonferenza è il centro della stessa, 
+dunque l'area del toro è $2\pi R \cdot 2\pi r = 4\pi^2 R r$.
+\end{example}

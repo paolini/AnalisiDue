@@ -137,8 +137,9 @@ Avendo scelto $\delta < \frac{1}{L}$ si ha $\delta L<1$ e quindi effettivamente 
 Sono dunque verificare le ipotesi del teorema~\ref{th:banach-caccioppoli} delle contrazioni
 che garantiscono l'esistenza e unicità del punto fisso $\vec u$.
 
-Ma abbiamo già osservato che $T(\vec u) = \vec u$ è equivalente al problema di Cauchy~\eqref{eq:problema_cauchy}
-e quindi la dimostrazione è terminata.
+Ma abbiamo già osservato che $T(\vec u) = \vec u$ è equivalente al problema di Cauchy~\eqref{eq:problema_cauchy}.
+Abbiamo quindi dimostrato che esiste una unica funzione $\vec u\colon I \to K$ 
+che risolve il problema di Cauchy~\eqref{eq:problema_cauchy}.
 \end{proof}
 
 \begin{definition}[Cauchy-Lipschitz]%
@@ -161,6 +162,9 @@ Sia $\Omega \subset \RR\times \RR^n$ un insieme aperto.
 Se $\vec f\in C^1(\Omega,\RR^m)$ 
 allora $f$ soddisfa la condizione
 di Cauchy-Lipschitz (definizione~\ref{def:cauchy_lipschitz}).
+Più precisamente è sufficiente che $f$ 
+e tutte le derivate parziali $\frac{\partial f}{\partial y_j}$, $j=1,\dots,n$ 
+siano continue.
 
 In particolare, grazie al teorema~\ref{th:cauchy_lipschitz} 
 per ogni $(x_0,\vec y_0)\in \Omega$ esiste un intervallo aperto 
@@ -213,7 +217,7 @@ Le due soluzioni possono
 essere incollate per ottenere una soluzione definita sull'unione dei due intervalli.
 Questo procedimento può essere ripetuto infinite volte ma gli intervalli
 potrebbero diventare sempre più piccoli, quindi non c'è garanzia di ottenere una
-soluzione definita su intervalli sempre più grandi.
+soluzione definita su intervalli arbitrariamente grandi.
 Nel seguito cercheremo di capire quanto grande può essere l'intervallo
 \emph{massimale} su cui si riesce ad estendere la soluzione.
 

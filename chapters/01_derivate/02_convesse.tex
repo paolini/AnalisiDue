@@ -1,0 +1,268 @@
+\section{Funzioni convesse}
+
+\begin{definition}[insieme convesso]
+Sia $A \subset \RR^n$ un insieme. 
+Diremo che $A$ è convesso se per ogni $x,y \in A$ 
+si ha $[x,y]\subset A$ dove $[x,y]$ è il segmento che congiunge $x$ e $y$, cioè
+\[
+    [x,y] = \ENCLOSE{t x + (1-t) y \colon t \in [0,1]}.
+\]
+
+Diremo che $A$ è \emph{strettamente convesso} se per ogni $x,y \in A$, $x\neq y$ si ha
+che $(x,y) \subset \stackrel\circ A$.
+\end{definition}
+
+\begin{definition}[funzione convessa]
+Sia $A\subset \RR^n$ un insieme convesso e sia $f\colon A \to \RR$ una funzione definita su $A$.
+Diremo che $f$ è convessa se per ogni $x,y \in A$ e per ogni $t \in [0,1]$ si ha
+\begin{equation}\label{eq:convex}
+    f(t x + (1-t) y) \leq t f(x) + (1-t) f(y).
+\end{equation}
+
+Diremo che $f$ è concava se $-f$ è convessa ovvero se vale la disuguaglianza 
+opposta di \eqref{eq:convex}.
+Diremo che $f$ è strettamente convessa se è convessa 
+e \eqref{eq:convex} è verificata con disuguaglianza stretta per ogni $x,y \in A$, 
+$x\neq y$ e per ogni $t \in (0,1)$.
+Diremo che $f$ è strettamente concava se $-f$ è strettamente convessa.
+\end{definition}
+
+\begin{theorem}
+Sia $A\subset \RR^n$ un insieme convesso e sia $f\colon A \to \RR$ una funzione.
+Sia 
+\[
+  E_f \defeq \ENCLOSE{(x,y)\in \RR^{n+1}\colon y\ge f(x)}
+\]
+l'epigrafo di $f$.
+Allora sono equivalenti:
+\begin{enumerate}
+    \item $A$ è convesso ed $f$ è convessa;
+    \item $E_f$ è convesso.
+\end{enumerate}
+\end{theorem}
+
+La convessità delle funzioni di più variabili può essere in buona parte 
+ricondotta alla convessità delle funzioni di una variabile. 
+Se $f\colon A\subset \RR^n \to \RR$, $x\in A$ e $v\in \RR^n$ 
+possiamo definire la restrizione di $f$ alla retta passante per $x$ 
+in direzione $v$, ponendo
+\[
+  g(t) = f(x+t v).
+\]
+Osserviamo quindi che $f$ è convessa se e solo se la corrispondente 
+$g$ è convessa per ogni $x\in A$ e $v\in \RR^n$.
+
+Si osserva inoltre che se $f$ è differenziabile si ha 
+\[
+  g'(t) = Df(x+t v)v
+\]
+e se $f$ è differenziabile due volte si ha
+\[
+  g''(t) = v^t D^2 f(x+t v) v.
+\]
+
+I tre seguenti risultati sono quindi conseguenza 
+degli analoghi risultati per le funzioni di una variabile.
+
+\begin{theorem}[criterio di convessità al primo ordine]
+    Sia $A\subset \RR^n$ un insieme aperto convesso e sia $f\colon A \to \RR$.
+    Se $f$ è convessa e $f$ è differenziabile in un punto $x_0 \in \stackrel\circ A$, 
+    allora per ogni $x \in A$ si ha
+    \begin{equation}\label{eq:conv474}    
+        f(x) \ge f(x_0) + df(x_0)[x-x_0].
+    \end{equation}
+    Viceversa, se $f$ è differenziabile in $\stackrel\circ A$ 
+    e \ref{eq:conv474} è verificata per ogni $x \in A$, allora $f$ è convessa.
+\end{theorem}
+\begin{theorem}[criterio di convessità al secondo ordine]
+    Sia $A\subset \RR^n$ un insieme aperto convesso 
+    e sia $f\colon A \to \RR$.
+    Se $f$ è convessa e differenziabile due volte in un punto $x\in A$ 
+    allora la matrice hessiana $D^2 f(x)$ è semidefinita positiva.
+    Viceversa se $f$ è differenziabile due volte in $A$ 
+    e per ogni $x\in A$ la matrice hessiana $D^2 f(x)$ è semidefinita positiva, 
+    allora $f$ è convessa.
+\end{theorem}
+
+
+\begin{theorem}[combinazioni convesse]
+    Sia $A\subset \RR^n$ un insieme convesso 
+    e sia $f\colon A \to \RR$ una funzione convessa.
+    Dati $x_1,\dots, x_N \in A$ e $t_1,\dots, t_N \in [0,1]$ con $\sum_{j=1}^N t_j = 1$ si ha
+    \[
+      f\enclose{\sum_{k=1}^N t_k x_k} \le \sum_{k=1}^N t_k f(x_k).
+    \]
+\end{theorem}
+\begin{proof}
+    Si dimostra per induzione su $N$.
+    Se $N=1$ il risultato è banale. 
+    Supponiamo dunque $N>1$ e supponiamo per induzione che il teorema sia vero
+    per $N-1$ punti.
+    Sia $s = 1-t_N$.
+    Allora $s > 0$ e possiamo definire $s_k = t_k/s$ per $k=1,\dots, N-1$.
+    Per ipotesi di induzione si ha 
+    \[
+      f\enclose{\sum_{k=1}^{N-1} s_k x_k} \le \sum_{k=1}^{N-1} s_k f(x_k).
+    \]
+    D'altra parte, per la convessità di $f$, si ha 
+    \[
+      f\enclose{\sum_{k=1}^N t_k x_k} = f\enclose{s \sum_{k=1}^{N-1} s_k x_k + t_N x_N}
+      \le s f\enclose{\sum_{k=1}^{N-1} s_k x_k} + t_N f(x_N)
+      \le s \sum_{k=1}^{N-1} s_k f(x_k) + t_N f(x_N)
+      = \sum_{k=1}^N t_k f(x_k).
+    \]
+\end{proof}
+
+\begin{theorem}[sottolivelli di una funzione convessa]
+    Sia $A\subset \RR^n$ un insieme convesso e sia $f\colon A \to \RR$ una funzione convessa.
+    Allora per ogni $c\in \RR$ gli insiemi \emph{sottolivello}
+    \[
+        \ENCLOSE{x\in A\colon f(x)\le c},
+        \qquad \text{e} \qquad
+        \ENCLOSE{x\in A\colon f(x) < c}
+    \]
+    sono convessi.
+    Se inoltre $f$ è strettamente convessa, allora i sottolivelli sono strettamente convessi.
+\end{theorem}
+\begin{proof}
+Segue direttamente dalla definizione di convessità.
+\end{proof}
+
+\begin{example}
+Fissato $y\in \RR^n$
+la funzione $f(x) = \abs{x-y}^2$ 
+è strettamente convessa in quando $D^2 f(x) = 2 I$ è definita positiva. 
+Dunque le palle $B_\rho(y)$, e $\bar B_\rho(y)$ essendo sottolivelli 
+di tale funzione, sono strettamente convesse.
+\end{example}
+
+\begin{theorem}
+Sia $A\subset \RR^n$ un insieme aperto convesso e sia $f\colon A \to \RR$ una funzione
+strettamente convessa. Allora $f$ ha al più un punto di minimo globale.
+\end{theorem}
+
+\begin{theorem}[proiezione su un convesso]
+Sia $A\subset \RR^n$ un insieme convesso e chiuso.
+Dato $x\in \RR^n$ esiste un unico punto $y\in A$ tale che
+\[
+    \abs{x-y} = \min_{z\in A} \abs{x-z}.
+\]
+Possiamo quindi definire la proiezione su $A$, $P_A\colon \RR^n \to A$
+che manda $x$ in $y$.
+
+Allora $P_A$ è una funzione $1$-lipschiziana.
+\end{theorem}
+%
+\begin{proof}
+Per prima cosa osserviamo che fissato $y$ la funzione $x\mapsto \abs{x-y}$ 
+è una funzione continua su $A$.
+Inoltre se $A$ è illimitato tale funzione è anche coerciva. 
+Quindi per il teorema di Weiestrass (generalizzato) sappiamo che esiste $y\in A$ 
+che realizza il minimo.
+
+Supponiamo ora che esista un altro punto $y'\in A$ che realizza il minimo.
+Sia $r = \abs{x-y} = \abs{x-y'}$.
+Visto che $\bar B_r(x)$ è strettamente convessa, 
+il segmento $(y,y')$ è contenuto in $B_r(x)$.
+E quindi, se fosse $y\neq y'$ 
+esisterebbe un punto $z\in (y,y')$ che ha 
+distanza da $x$ strettamente inferiore a $r$.
+Ma per la convessità di $A$ l'intero segmento $[y,y']$ 
+è contenuto in $A$ e quindi $z\in A$.
+Questo è assurdo perché $r$ era la distanza minima
+da $x$ a $A$.
+Quindi c'è un unico punto $y\in A$ che realizza il minimo.
+
+Per dimostrare che $P_A$ è $1$-lipschiziana, 
+fissati $x, y \in \RR^n$ dobbiamo 
+dimostrare che 
+\begin{equation}\label{eq:convex4855}
+  \abs{P_C(x) - P_C(y)} \le \abs{x-y}.
+\end{equation}
+Siano $p=P_C(x)$ e $q=P_C(y)$. 
+Andremo ora a dimostrare che 
+\begin{equation}\label{eq:convex4856}
+  (x-p)\cdot (q-p) \le 0.
+\end{equation}
+Consideriamo il punto $p_t = (1-t) p + t q$.
+Per la convessità di $C$ si ha $p_t \in C$ 
+per ogni $t\in [0,1]$ e quindi 
+la funzione $f(t) = \abs{x-p_t}^2$
+ha minimo per $t=0$. 
+Dunque deve essere $f'(0)\ge 0$. 
+Ma  
+\[ 
+ f'(t) = 2 (x-p_t)\cdot q_t'
+  = 2 (x-p_t)\cdot (q-p)
+\]
+e quindi $0\le f'(0) = 2 (x-p)\cdot (q-p)$
+e si ottiene \eqref{eq:convex4856}.
+
+Per concludere la dimostrazione osserviamo che
+per simmetria si ha anche $(y-q)\cdot (p-q) \le 0$
+e, sommando le due disuguaglianze, si ottiene 
+dunque 
+\[
+ 0 \ge (x - p - y + q)\cdot (q-p)
+  = (x-y)\cdot (q-p) + \abs{q-p}^2
+\]
+da cui
+\[
+    \abs{q-p}^2 \le (y-x)\cdot (q-p) \le \abs{y-x}\cdot \abs{q-p}
+\]
+e quindi, dividendo per $\abs{q-p}$, si ottiene \eqref{eq:convex4855}.
+\end{proof}
+
+\begin{theorem}[locale lipschitzianità delle funzioni convesse]
+Sia $A\subset \RR^n$ un aperto convesso e sia $f\colon A \to \RR$ una funzione convessa.
+Allora $f$ è localmente lipschitziana, cioè per ogni $x\in A$ esiste $\rho >0$ 
+per cui $f$ è lipschitziana su $B_\rho(x)$.
+\end{theorem}
+\begin{proof}
+\emph{Passo 1:} mostriamo che $f$ è localmente superiormente limitata.
+Dato $x\in A$ possiamo trovare un cubo $Q$ 
+con centro in $x$ interamente contenuto in $A$.
+Siano $x_1, \dots, x_{2^n}$ i vertici di $Q$.
+Allora ogni punto del cubo è una combinazione convessa 
+dei vertice e quindi il valore della funzione 
+è inferiore alla combinazione convessa dei valori della funzione nei vertici
+e quindi, in particolare, è inferiore al valore massimo 
+sui vertici.
+
+\emph{Passo 2:} mostriamo che $f$ è localmente inferiormente limitata.
+Fissiamo un punto $x_0\in A$ e un cubo $Q$ con centro in $x_0$ 
+su cui $f$ è superiormente limitata da una costante $M$.
+Se $x\in Q$ allora anche $x' = 2 x_0 - x$ è in $Q$
+e si ha $x_0 = (x+x')/2$. 
+Quindi, per la convessità di $f$, si ha 
+\[
+  f(x_0) \le \frac 1 2 f(x) + \frac 1 2 f(x')
+\]
+da cui
+\[
+ f(x) \ge 2 f(x_0) - f(x') \ge 2f(x_0) - M.
+\]
+
+\emph{Conlusione.}
+Dato $x_0\in A$ scegliamo $r>0$ 
+per cui $m \le f(x) \le M$ per ogni $x\in \bar B_{2r}(x_0)$.
+Dati $x,y \in B_r(x_0)$ se $y\neq x$ 
+la semiretta uscente da $y$ passante per $x$ 
+interseca la sfera $\partial B_{2r}(x_0)$ in un punto $z$.
+Si avrà allora $x = (1-t) y + t z$ per un certo $t\in (0,1)$
+e per la convessità di $f$ avremo 
+\[
+  f(x) - f(y) 
+    \le (1-t) f(y) + t f(z) - f(y) 
+    = t (f(z) - f(y))
+    \le t (M-m). 
+\]
+Per stimare $t$, sappiamo che $\abs{x-y}\le 2r$ mentre $\abs{z-y} \ge r$ e quindi
+\[
+  t = \frac{\abs{x-y}}{\abs{z-y}} \le 2.
+\] 
+Dunque $f(x) - f(y) \le 2 (M-m) \abs{x-y}$.
+Scambiando $x$ e $y$ otteniamo anche $f(y) - f(x) \le 2 (M-m) \abs{x-y}$
+e quindi la conclusione.
+\end{proof}
+

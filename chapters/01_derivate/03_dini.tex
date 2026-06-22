@@ -1,0 +1,204 @@
+\section{invertibilità locale e funzione implicita}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{theorem}[inversione locale]
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Sia $\Omega$ un aperto di $\RR^n$, $f\in \CC^1(\Omega,\RR^n)$,
+sia $x_0\in \Omega$ e supponiamo che $Df(x_0)$ 
+sia una matrice invertibile.
+Allora esiste un intorno $U$ di $x_0$ e un intorno $V$ di $f(x_0)$
+per cui $f(U)=V$ e
+\[
+        f_{|U}\colon U\to V
+\]
+\`e bigettiva, la sua inversa $f^{-1}\colon V\to U$ \`e differenziabile e se $f(x)=y$ (con $x\in
+U$) si ha
+\[
+        D(f^{-1}(y))=(Df(x))^{-1}.
+\]
+\end{theorem}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{proof}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Sia $A=(Df(x_0))^{-1}$. Siccome $\Omega$ \`e aperto e $Df\colon
+\Omega\to \RR^n$ \`e continuo, possiamo scegliere $\rho>0$ in modo che
+\[    
+    \overline{B_\rho(x_0)}\subset \Omega
+\qquad \text{e} \qquad
+        \Vert Df(x)-Df(x_0)\Vert \le \frac{1}{2\Vert A\Vert}
+                \quad\forall x\in \overline{B_\rho(x_0)}.
+\]
+Poniamo $r=\frac{\rho}{2\Vert A\Vert}$ e
+$y_0=f(x_0)$.  Fissato $y\in B_r(y_0)$
+consideriamo l'applicazione
+\begin{align*}
+        T\colon \overline{B_\rho(x_0)}&\to \RR^n\\
+        T(x)&= x + A(y-f(x)).
+\end{align*}
+
+Si ha, per $x\in \overline{B_\rho(x_0)}$,
+\[
+        \Vert DT(x)\Vert=\Vert \mathrm{Id}-A Df(x)\Vert \le 
+        \Vert A \Vert\cdot\Vert Df(x_0)-Df(x)\Vert
+        \le \frac{1}{2}
+\]
+e quindi, per il criterio di Lipschitz, la funzione $T$ \`e $\frac 1
+2$-Lipschitziana (ossia una contrazione).
+
+Verifichiamo anche che $T(\overline{B_\rho(x_0)})\subset \overline{B_\rho(x_0)}$.
+Infatti, per $x\in \overline{B_\rho(x_0)}$, si ha
+        \begin{align*}
+        |T(x)-x_0|&\le |T(x)-T(x_0)|+|T(x_0)-x_0|\\
+        &\le \frac 1 2 |x-x_0| + |A (y-y_0)|
+        \le \frac \rho 2 + \Vert A\Vert  r
+        \le \rho.
+        \end{align*}
+
+Dunque $T\colon\overline{B_\rho(x_0)}\to \overline{B_\rho(x_0)}$ \`e una
+contrazione, $\overline{B_\rho(x_0)}$ \`e uno spazio metrico completo
+e quindi, per il Teorema delle contrazioni, 
+esiste un unica soluzione dell'equazione
+        \[
+        T(x)=x,
+        \]
+cio\`e esiste un unico punto $x$ in $\overline{B_\rho(x_0)}$ per cui $f(x)=y$.
+
+Dato $y\in B_r(y_0)$ possiamo dunque trovare un
+$x\in \overline{B_\rho(x_0)}$ che risolve $f(x)=y$, chiamiamo
+$g$ l'applicazione $y\mapsto x$
+        \[
+        g\colon B_r(y_0) \to \overline{B_\rho(x_0)}, \qquad f(g(y))=y.
+        \]
+Poniamo dunque $V=B_r(y_0)$ e $U=g(V)$. Chiaramente $f_{|U}\colon U\to V$ \`e
+bigettiva e ha $g$ come inversa. 
+
+Vogliamo ora dimostrare che $g$ \`e differenziabile in ogni punto
+$y\in B_r(y_0)$ e che il suo differenziale $Dg(y)$ \`e uguale a
+$Df(x)^{-1}$ con $x=g(y)$; ossia
+\[
+\lim_{y'\to y} \frac{g(y')-g(y) - Df(x)^{-1}(y'-y)}{|y'-y|}=0.
+\]
+Dato $y'\in B_r(y_0)$, posto $x'=g(y')$ stiamo considerando la
+seguente quantit\`a
+\begin{align*}
+\frac{g(y')-g(y) - Df(x)^{-1}(y'-y)}{|y'-y|} 
+=
+\frac{x'-x - Df(x)^{-1}(f(x')-f(x))}{|y'-y|}
+\end{align*}
+che per la differenziabilit\`a di $f$ in $x$ possiamo scrivere come
+\begin{equation}
+\label{eq_inv_diff}
+\begin{aligned}
+&=
+\frac{x'-x - Df(x)^{-1}(Df(x)(x'-x)+o(|x'-x|))}{|y'-y|}\\
+&=
+\frac{Df(x)^{-1} o(|x'-x|)}{|y'-y|}
+=
+\frac{Df(x)^{-1} o(|x'-x|)}{|x'-x|}\cdot \frac{|x'-x|}{|y'-y|}.
+\end{aligned}
+\end{equation}
+Vogliamo ora dimostrare che per $y'\to y$ si ha $x'\to x$ cosicch\'e 
+il primo termine di quest'ultimo prodotto tende
+a zero per la definizione di $o$ "<piccolo">. Contemporaneamente 
+dimostreremo che il secondo termine \`e limitato.
+
+Per fare questo consideriamo la mappa $T$ definita in
+precedenza e per la quale si ha $T(x)=x$. 
+Ricordando che $T$ \`e $1/2$-lipschitziana si ha
+\begin{align*}
+\frac 1 2 |x'-x| &\ge |T(x')-T(x)| = |x'+Df(x)(y-f(x'))-x|\\
+&\ge |x'-x| - | Df(x) (y-f(x'))|
+= |x'-x| - \Vert Df(x)\Vert |y-y'|
+\end{align*}
+da cui
+\[
+|x'-x| \le \frac{|y'-y|}{2\Vert Df(x)\Vert}.
+\]
+Questo da un lato ci dice che se $y'\to y$ allora anche $x'\to x$ e
+dall'altro ci dice che il rapporto $|x'-x|/|y'-y|$ \`e limitato.
+Dunque la quantit\`a in~\eqref{eq_inv_diff} tende a zero, 
+la funzione $g$ \`e differenziabile in $y$ e il suo
+differenziale \`e $Dg(y)=Df(x)^{-1}$.
+
+
+Per concludere che $g\in \CC^1$ rimane solo da provare che il 
+differenziale $Dg$ \`e una funzione continua. Ma dato che
+$Dg(y)=Df(g(y))^{-1}$, si osserva che essendo $g$ continua (in quanto
+differenziabile), essendo $Df$ continua (per ipotesi) ed essendo
+continua anche l'operazione di inversione di una matrice, la funzione
+$Dg$ deve essere continua.
+
+L'ultima osservazione \`e che $U$ risulta essere un intorno di $x_0$. 
+Infatti $U=g^{-1}(V)$, ed essendo $V$ aperto e $g$ continua,
+concludiamo che anche $U$ \`e aperto.
+\end{proof}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{theorem}[funzione implicita, Dini]
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Sia $\Omega$ un aperto di $\RR^n\times \RR^m$ e sia $f\in
+\CC^1(\Omega,\RR^m)$. Sia $(x_0,y_0)\in\Omega\subset \RR^n\times \RR^m$.
+Se la matrice $D_yf(x_0,y_0)$ delle derivate di $f(x,y)$ rispetto alle
+variabili $y$
+\[
+D_yf(x_0,y_0)=\left(\frac{\partial f^j}{\partial y^k} (x_0,y_0)\right)_{j,k}
+\qquad j=1,\ldots,m\quad k=1,\ldots,m
+\]
+\`e invertibile, allora esiste un intorno $U\subset \RR^n$ di $x_0$
+e una funzione $g\in\CC^1(U,\RR^m)$
+tale che
+\[
+        f(x,g(x))=f(x_0,y_0)\qquad \forall x\in U.
+\]
+Inoltre, per $y=g(x)$ si ha
+\[
+  Dg(x) = -D_y f(x,y)^{-1} D_y f(x,y).
+\]
+\end{theorem}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{proof}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Consideriamo la funzione $\tilde f\in\CC^1(\Omega,\RR^n\times\RR^m)$
+\[
+        \tilde f(x,y)=(x,f(x,y)).
+\]
+si trova facilmente che 
+\[      
+        D\tilde f(x,y) =
+        \left(
+        \begin{array}{c|c}
+        \mathrm{Id} & 0 \\ \hline
+        D_x f & D_y f
+        \end{array}
+        \right)
+\]
+dove $\mathrm{Id}$ \`e la matrice identit\`a $n\times n$. 
+Dunque essendo $D_y f(x_0,y_0)$ invertibile,
+ anche $D\tilde f(x_0,y_0)$ lo \`e e
+posso applicare il teorema di invertibilit\`a locale a $\tilde f$.
+Dunque esister\`a una funzione $g$ di classe $\CC^1$ in un intorno di
+$(x_0,f(x_0,y_0)$ 
+tale che $\tilde f(\tilde
+g(x,y))=(x,y)$.
+Posto $\tilde g(x,y)=(g_1(x,y),g_2(x,y))$ con $g_1$ a valori in
+$\RR^n$, e $g_2$ a valori in $\RR^m$ si ha dunque
+\[
+        (x,y) 
+        = \tilde f(g_1(x,y),g_2(x,y))
+        = (g_1(x,y),f(g_1(x,y),g_2(x,y)))
+\]
+da cui si ottiene $g_1(x,y)=x$ e
+$f(x,g_2(x,y))=y$.
+Baster\`a dunque porre $g(x)=g_2(x,f(x_0,y_0))$ per ottenere $f(x,g(x))=f(x_0,y_0)$.
+
+Per dimostrare la formula di calcolo di $Dg$ \`e sufficiente
+differenziare l'equazione
+\[
+  f(x,g(x))=f(x_0,y_0)
+\]
+per ottenere
+\[
+  D_x f(x,g(x)) + D_y f(x,g(x)) Dg(x)=0
+\]
+da cui la tesi.
+\end{proof}
+

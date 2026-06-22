@@ -1,4 +1,6 @@
-\section{Funzioni convesse}
+\section{convessità}
+
+\subsection{insiemi convessi}
 
 \begin{definition}[insieme convesso]
 Sia $A \subset \RR^n$ un insieme. 
@@ -11,6 +13,138 @@ si ha $[x,y]\subset A$ dove $[x,y]$ è il segmento che congiunge $x$ e $y$, cio�
 Diremo che $A$ è \emph{strettamente convesso} se per ogni $x,y \in A$, $x\neq y$ si ha
 che $(x,y) \subset \stackrel\circ A$.
 \end{definition}
+
+\begin{theorem}[proiezione su un convesso]
+Sia $A\subset \RR^n$ un insieme convesso e chiuso.
+Dato $x\in \RR^n$ esiste un unico punto $y\in A$ tale che
+\[
+    \abs{x-y} = \min_{z\in A} \abs{x-z}.
+\]
+Possiamo quindi definire la proiezione su $A$, $P_A\colon \RR^n \to A$
+che manda $x$ in $y$.
+
+Allora $P_A$ è una funzione $1$-lipschiziana.
+\end{theorem}
+%
+\begin{proof}
+Per prima cosa osserviamo che fissato $y$ la funzione $x\mapsto \abs{x-y}$ 
+è una funzione continua su $A$.
+Inoltre se $A$ è illimitato tale funzione è anche coerciva. 
+Quindi per il teorema di Weiestrass (generalizzato) sappiamo che esiste $y\in A$ 
+che realizza il minimo.
+
+Supponiamo ora che esista un altro punto $y'\in A$ che realizza il minimo.
+Sia $r = \abs{x-y} = \abs{x-y'}$.
+Visto che $\bar B_r(x)$ è strettamente convessa, 
+il segmento $(y,y')$ è contenuto in $B_r(x)$.
+E quindi, se fosse $y\neq y'$ 
+esisterebbe un punto $z\in (y,y')$ che ha 
+distanza da $x$ strettamente inferiore a $r$.
+Ma per la convessità di $A$ l'intero segmento $[y,y']$ 
+è contenuto in $A$ e quindi $z\in A$.
+Questo è assurdo perché $r$ era la distanza minima
+da $x$ a $A$.
+Quindi c'è un unico punto $y\in A$ che realizza il minimo.
+
+Per dimostrare che $P_A$ è $1$-lipschiziana, 
+fissati $x, y \in \RR^n$ dobbiamo 
+dimostrare che 
+\begin{equation}\label{eq:convex4855}
+  \abs{P_C(x) - P_C(y)} \le \abs{x-y}.
+\end{equation}
+Siano $p=P_C(x)$ e $q=P_C(y)$. 
+Andremo ora a dimostrare che 
+\begin{equation}\label{eq:convex4856}
+  (x-p)\cdot (q-p) \le 0.
+\end{equation}
+Consideriamo il punto $p_t = (1-t) p + t q$.
+Per la convessità di $C$ si ha $p_t \in C$ 
+per ogni $t\in [0,1]$ e quindi 
+la funzione $f(t) = \abs{x-p_t}^2$
+ha minimo per $t=0$. 
+Dunque deve essere $f'(0)\ge 0$. 
+Ma  
+\[ 
+ f'(t) = 2 (x-p_t)\cdot q_t'
+  = 2 (x-p_t)\cdot (q-p)
+\]
+e quindi $0\le f'(0) = 2 (x-p)\cdot (q-p)$
+e si ottiene \eqref{eq:convex4856}.
+
+Per concludere la dimostrazione osserviamo che
+per simmetria si ha anche $(y-q)\cdot (p-q) \le 0$
+e, sommando le due disuguaglianze, si ottiene 
+dunque 
+\[
+ 0 \ge (x - p - y + q)\cdot (q-p)
+  = (x-y)\cdot (q-p) + \abs{q-p}^2
+\]
+da cui
+\[
+    \abs{q-p}^2 \le (y-x)\cdot (q-p) \le \abs{y-x}\cdot \abs{q-p}
+\]
+e quindi, dividendo per $\abs{q-p}$, si ottiene \eqref{eq:convex4855}.
+\end{proof}
+
+\begin{theorem}[piano di supporto]
+  Sia $C\subset \RR^n$ un insieme chiuso e convesso e sia $p\in \partial C$.
+  Allora esiste un semispazio $H$ con $H\supset C$ e $p\in \partial H$.
+\end{theorem}
+\begin{proof}
+Visto che $p\in \partial C$ esiste $p_k\in \RR^n\setminus C$ con $p_k \to p$.
+Grazie al teorema precedente possiamo considerare $q_k\in C$
+il punto di minima distanza da $p_k$.
+Se $r_k = \abs{p_k - q_k}$ allora 
+$B_{r_k}(p_k) \cap C = \emptyset$ 
+altrimenti ci sarebbe un punti di $C$ che dista da $p_k$ meno di $q_k$.
+Consideriamo il semispazio chiuso $H_k$ con $\partial H_k$
+tangente a $B_{r_k}(p_k)$ in $q_k$ e con
+e $H_k \cap B_{r_k}(p_k) = \emptyset$.
+Vogliamo dimostrare che $H_k \supset C$.
+
+Supponismo per assurdo che esista $z\in C \setminus H_k$.
+Allora il segmento $[q_k,z]$ da un lato è contenuto in $C$ 
+per la convessità di $C$, d'altro lato
+tale segmento dovrebbe entrare in $B_{r_k}(p_k)$  
+(perché il complementare di $H_k$ è il tangente a $B_{r_k}(p_k)$ in $q_k$).
+Ma questo è assurdo perché allora sul segmento $[q_k,z]$ ci sarebbe un punto di $C$ che dista da $p_k$ meno di $q_k$.
+Dunque $H_k \supset C$.
+
+Se consideriamo $v_k$ il versore normale a $\partial H_k$ in modo 
+che $H_k = \ENCLOSE{x\in \RR^n\colon v_k\cdot (x-q_k) \le 0}$
+allora visto che $v_k$ è limitata, 
+per il teorema di Bolzano-Weierstrass 
+possiamo estrarre una sottosuccessione $v_{k_j}$ che converge a
+un certo $v$. 
+Per conntinuità si ha $\abs{v_{k_j}} \abs v$ 
+e quindi anche $v$ è un versore.
+Visto che $H_k \supset C$, per ogni $x\in C$ si ha 
+\[
+  v_k \cdot (x-q_k)\le 0.
+\]
+Osservando che $\abs{q_k - p_k} \le \abs{p-p_k} \to 0$,
+passando al limite nella disuguaglianza precedente otteniamo
+\[
+  v \cdot (x-p) \le 0
+\]
+che significa che $x\in H$ e $p\in \partial H$.
+Per l'arbitrarietà di $x\in C$ otteniamo $C\subset H$, 
+come volevamo dimostrare.
+\end{proof}
+
+\begin{corollary}
+Un insieme chiuso $C\subset \RR^n$ è convesso 
+se e solo se $C$ è intersezione (eventualmente infinita) 
+di semispazi chiusi.
+\end{corollary}
+\begin{proof}
+Da un lato è immediato verificare che l'intersezione di convessi 
+è convessa (direttamente dalla definizione).
+Viceversa $C$ è l'intersezione di tutti i semispazi di 
+supporto, in quanto ogni $x\in \RR^n\setminus C$ è separato da $C$ 
+dal semispazio di supporto passante dalla sua proiezione su $C$.
+\end{proof}
+
 
 \begin{definition}[funzione convessa]
 Sia $A\subset \RR^n$ un insieme convesso e sia $f\colon A \to \RR$ una funzione definita su $A$.
@@ -141,82 +275,11 @@ Sia $A\subset \RR^n$ un insieme aperto convesso e sia $f\colon A \to \RR$ una fu
 strettamente convessa. Allora $f$ ha al più un punto di minimo globale.
 \end{theorem}
 
-\begin{theorem}[proiezione su un convesso]
-Sia $A\subset \RR^n$ un insieme convesso e chiuso.
-Dato $x\in \RR^n$ esiste un unico punto $y\in A$ tale che
-\[
-    \abs{x-y} = \min_{z\in A} \abs{x-z}.
-\]
-Possiamo quindi definire la proiezione su $A$, $P_A\colon \RR^n \to A$
-che manda $x$ in $y$.
-
-Allora $P_A$ è una funzione $1$-lipschiziana.
-\end{theorem}
-%
-\begin{proof}
-Per prima cosa osserviamo che fissato $y$ la funzione $x\mapsto \abs{x-y}$ 
-è una funzione continua su $A$.
-Inoltre se $A$ è illimitato tale funzione è anche coerciva. 
-Quindi per il teorema di Weiestrass (generalizzato) sappiamo che esiste $y\in A$ 
-che realizza il minimo.
-
-Supponiamo ora che esista un altro punto $y'\in A$ che realizza il minimo.
-Sia $r = \abs{x-y} = \abs{x-y'}$.
-Visto che $\bar B_r(x)$ è strettamente convessa, 
-il segmento $(y,y')$ è contenuto in $B_r(x)$.
-E quindi, se fosse $y\neq y'$ 
-esisterebbe un punto $z\in (y,y')$ che ha 
-distanza da $x$ strettamente inferiore a $r$.
-Ma per la convessità di $A$ l'intero segmento $[y,y']$ 
-è contenuto in $A$ e quindi $z\in A$.
-Questo è assurdo perché $r$ era la distanza minima
-da $x$ a $A$.
-Quindi c'è un unico punto $y\in A$ che realizza il minimo.
-
-Per dimostrare che $P_A$ è $1$-lipschiziana, 
-fissati $x, y \in \RR^n$ dobbiamo 
-dimostrare che 
-\begin{equation}\label{eq:convex4855}
-  \abs{P_C(x) - P_C(y)} \le \abs{x-y}.
-\end{equation}
-Siano $p=P_C(x)$ e $q=P_C(y)$. 
-Andremo ora a dimostrare che 
-\begin{equation}\label{eq:convex4856}
-  (x-p)\cdot (q-p) \le 0.
-\end{equation}
-Consideriamo il punto $p_t = (1-t) p + t q$.
-Per la convessità di $C$ si ha $p_t \in C$ 
-per ogni $t\in [0,1]$ e quindi 
-la funzione $f(t) = \abs{x-p_t}^2$
-ha minimo per $t=0$. 
-Dunque deve essere $f'(0)\ge 0$. 
-Ma  
-\[ 
- f'(t) = 2 (x-p_t)\cdot q_t'
-  = 2 (x-p_t)\cdot (q-p)
-\]
-e quindi $0\le f'(0) = 2 (x-p)\cdot (q-p)$
-e si ottiene \eqref{eq:convex4856}.
-
-Per concludere la dimostrazione osserviamo che
-per simmetria si ha anche $(y-q)\cdot (p-q) \le 0$
-e, sommando le due disuguaglianze, si ottiene 
-dunque 
-\[
- 0 \ge (x - p - y + q)\cdot (q-p)
-  = (x-y)\cdot (q-p) + \abs{q-p}^2
-\]
-da cui
-\[
-    \abs{q-p}^2 \le (y-x)\cdot (q-p) \le \abs{y-x}\cdot \abs{q-p}
-\]
-e quindi, dividendo per $\abs{q-p}$, si ottiene \eqref{eq:convex4855}.
-\end{proof}
-
 \begin{theorem}[locale lipschitzianità delle funzioni convesse]
 Sia $A\subset \RR^n$ un aperto convesso e sia $f\colon A \to \RR$ una funzione convessa.
 Allora $f$ è localmente lipschitziana, cioè per ogni $x\in A$ esiste $\rho >0$ 
 per cui $f$ è lipschitziana su $B_\rho(x)$.
+In particolare $f$ è continua.
 \end{theorem}
 \begin{proof}
 \emph{Passo 1:} mostriamo che $f$ è localmente superiormente limitata.
@@ -265,4 +328,112 @@ Dunque $f(x) - f(y) \le 2 (M-m) \abs{x-y}$.
 Scambiando $x$ e $y$ otteniamo anche $f(y) - f(x) \le 2 (M-m) \abs{x-y}$
 e quindi la conclusione.
 \end{proof}
+  
+\begin{definition}[sottodifferenziale]
+Sia $A\subset \RR^n$ un insieme aperto convesso e sia $f\colon A \to \RR$ una funzione convessa.
+Dato $x \in A$ definiamo il \emph{sottodifferenziale} di $f$ in $x$ come l'insieme
+\[
+  \partial f(x) = \ENCLOSE{v\in \RR^n\colon f(y) \ge f(x) + v\cdot (y-x) \text{ per ogni } y\in A}.
+\]
+\end{definition}
 
+La condizione al primo ordine per la convessità di $f$ 
+garntisce che se $f$ è convessa e differenziabile in $x$ allora $\nabla f (x) \in \partial f(x)$.
+
+\begin{theorem}[proprietà del sottodifferenziale]
+Sia $A\subset \RR^n$ un insieme aperto convesso e sia $f\colon A \to \RR$ una funzione convessa.
+Allora per ogni $x\in A$:
+\begin{enumerate}
+  \item $\partial f(x)$ è un insieme convesso;
+  \item $\partial f$ è \emph{crescente} nel senso che
+  per ogni $x,y\in A$, $v\in \partial f(x)$ e $w\in \partial f(y)$ si ha
+  \[
+    (v-w)\cdot (y-x) \ge 0;
+  \]
+  \item $\partial f$ è \emph{continuo} nel senso che se $x_k\to x$ e $v_k\in \partial f(x_k)$ con $v_k\to v$ allora $v\in \partial f(x)$.
+  \item $f$ è differenziabile in $x$ se e solo se $\partial f(x)= \ENCLOSE{\nabla f(x)}$;
+  \item $\partial f(x) \neq \emptyset$ per ogni $x\in A$.
+\end{enumerate}
+\end{theorem}
+\begin{proof}
+  Per mostrare che $\partial f(x)$ è convesso, fissiamo $v,w \in \partial f(x)$ e $t\in [0,1]$.
+  Allora per ogni $y\in A$ si ha 
+  \begin{align*}
+    f(y) \ge f(x) + v\cdot (y-x) \\
+    f(y) \ge f(x) + w\cdot (y-x)
+  \end{align*}
+  da cui
+  \[
+    f(y) = (1-t) f(y) + t f(y) 
+      \ge f(x) + ((1-t)v + t w)\cdot (y-x)
+  \]
+  ovvero $(1-t)v + t w \in \partial f(x)$, 
+  che è quanto dovevamo dimostrare.
+
+  Per mostrare che $\partial f$ è crescente, fissiamo $v\in \partial f(x)$ e $w\in \partial f(y)$.
+  Allora si ha 
+  \begin{align*}
+    f(y) \ge f(x) + v\cdot (y-x) \\
+    f(x) \ge f(y) + w\cdot (x-y).
+  \end{align*}
+  Sommando le due disuguaglianze si ottiene il risultato.
+
+  Per la continuità basta osservare che, grazie al teorema 
+  precedente, $f$ è continua e quindi si può passare al limite 
+  nella disuguaglianza che definisce $v_k\in \partial f(x_k)$.
+
+  Per quanto riguarda la differenziabilità, abbiamo già osservato 
+  che $\nabla f(x) \in \partial f(x)$ se $f$ è differenziabile in $x$.
+  Ci rimane da dimostrare che se $\xi,\eta\in \partial f(x)$ 
+  e $\xi\neq\eta$ allora $f$ non è differenziabile in $x$.
+  Se $\xi\neq\eta$ allora esiste $v\in \RR^n$ 
+  tale che $(\xi-\eta)\cdot v \neq 0$.
+  Basta considerare la restrizione di $f$ alla retta passante per $x$ in direzione $v$.
+  Sia $g(t) = f(x+t v)$, allora $g$ è convessa e
+  \begin{align*}
+   g(t) &= f(x+tv) \ge f(x) + \xi\cdot (tv) = g(0) + t \xi\cdot v\\
+   g(t) &= f(x+tv) \ge f(x) + \eta\cdot (tv) = g(0) + t \eta\cdot v
+  \end{align*}
+  da cui $g(t) - g(0) \ge \max\ENCLOSE{t \xi\cdot v, t \eta\cdot v}$.
+  Significa che $g$ non è derivabile in $0$ e quindi $f$ non è differenziabile in $x$.
+
+  Per dimostrare che $\partial f(x) \neq \emptyset$ per ogni $x\in A$
+  consideriamo il piano di supporto all'epigrafo di $f$ in $(x,f(x))$.
+  Tale piano non può essere verticale, altrimenti 
+  la funzione $f$ non sarebbe definita in un intorno di $x$.
+  \end{proof}
+
+
+  \begin{corollary}
+  Sia $A\subset \RR^n$ un insieme aperto convesso e sia $f\colon A \to \RR$ una funzione convessa.
+  Allora $f$ è estremo superiore di una famiglia di funzioni 
+  lineari: 
+  \[
+   f(x) = \sup \ENCLOSE{f(z) + v\cdot (x-z) \colon z\in A, v\in \partial f(z)}.
+  \]
+  \end{corollary}
+
+  \begin{example}[sottodifferenziale della norma]
+  Sia $f(x) = \abs{x}$, $f\colon \RR^n \to \RR$. 
+  Allora $\partial f(x) = \ENCLOSE{\frac{x}{\abs{x}}}$ se $x\neq 0$ e
+  \[
+    \partial f(0) = \bar B_1(0).
+  \]
+  Infatti se $x\neq 0$ allora $f$ è differenziabile in $x$ e $\nabla f(x) = \frac{x}{\abs{x}}$.
+  Se $x=0$ allora $v\in \partial f(0)$ se e solo se $f(y) \ge v\cdot y$ per ogni $y\in \RR^n$.
+  Ma $\abs{y} \ge v\cdot y$ per ogni $y\in \RR^n$ se e solo se $\abs{v}\le 1$.
+  \end{example}
+  \begin{example}[stadio]
+  Sia $f\colon \RR^2\to \RR$ definita da 
+  \[
+    f(x,y) = \begin{cases}
+     \sqrt{x^2+y^2} & \text{se } x\le 0, \\
+     \abs{y} & \text{se } $x\in [0,1]$, \\
+      \sqrt{(x-1)^2+y^2} & \text{se } x\ge 1.
+    \end{cases}
+  \]
+  Allora se $x\in [0,1]$ si ha 
+  \[
+    \partial f (x,0) = \ENCLOSE{0} \times [-1,1].
+  \]
+  \end{example}

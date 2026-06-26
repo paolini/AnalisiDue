@@ -420,6 +420,13 @@ esistono $m,q\in \RR$ tali che:
 \]
 Allora per ogni $x_0\in I$ e per ogni $\vec y_0\in \RR^n$ esiste una funzione
 $\vec u\colon I \to \RR^n$ (definita su tutto $I$) soluzione del problema di Cauchy~\eqref{eq:problema_cauchy}.
+
+Più in generale il risultato è vero se vale la stima 
+\[
+   \abs{\vec f(x,\vec y) \le m(x)\abs{\vec y} + q(x)},
+   \qquad\forall (x,\vec y) \in \Omega
+\]
+dove $m,q\colon I\to\RR$ sono funzioni continue.
 \end{theorem}
 %
 La dimostrazione richiede un lemma preliminare.
@@ -481,5 +488,87 @@ in $\Omega$. Significa allora che $b\not \in I$ e cioè che $b = \sup J = \sup I
 
 In maniera analoga (o per simmetria) si può dimostrare che $\inf J=\inf I$
 e dunque $J=I$ come volevamo dimostrare
+
+Nel caso in cui $m=m(x)$ e $q=q(x)$ siano funzioni continue basta 
+osservare che su ogni intervallo compatto $[\alpha,\beta]\subset I$ 
+le funzioni $m$ e $q$ sono limitate, dunque si applica il passo precedente 
+ottenendo che $\vec u$ è definita su ogni $[\alpha,\beta]\subset I$ e quindi su tutto $I$.
+In questo caso è possibile che la soluzioni $u$ abbia un asintoto 
+verticale, ma solo agli estremi dell'intervallo $I$.
 \end{proof}
 
+\begin{theorem}[dipendenza continua dai dati iniziali]
+\label{th:edo_dipendenza_continua}%
+sia $\Omega \subset \RR\times \RR^n$ un insieme aperto
+e sia $\vec f\colon \Omega \to \RR^n$ una funzione che soddisfa la condizione di Cauchy-Lipschitz
+(definizione~\ref{def:cauchy_lipschitz}).
+Sia $(x_0,\vec y_0)\in \Omega$ e sia $\vec u\colon I \to \RR^n$ la soluzione 
+massimale del problema di Cauchy~\eqref{eq:problema_cauchy}.
+Fissato $x_1\in I$ e $\eps>0$ esiste $\delta>0$ tale che se $\abs{z_0-y_0} < \delta$ 
+allora se $\vec v\colon J\to \RR^n$ è la soluzione massimale del problema di Cauchy
+con la stessa equazione differenziale ma con dato iniziale $(x_0,\vec z_0)$ allora $x_1\in J$ e $\abs{\vec v(x) - \vec u(x)} < \eps$ per ogni 
+$x\in [x_0,x_1]$.
+\end{theorem}
+Per dimostrare questo teorema è necessario un lemma preliminare.
+\begin{lemma}[Gronwall bis]%
+  \label{lm:gronwall_bis}%
+  Sia $u\colon I\to \RR$ una funzione continua e derivabile sull'intervallo $I\subset \RR$,
+  e supponiamo che esista $L\in \RR$ tale che 
+  \[
+    u'(x) \le L u(x), \qquad \forall x \in I.
+  \]
+  Allora per ogni $x_0,x\in I$, $x>x_0$ si ha
+  \[
+    u(x) \le u(x_0) e^{L(x-x_0)}.
+  \]
+\end{lemma}
+\begin{proof}
+Si tratta di una disequazione differenziale lineare del primo ordine, 
+dunque possiamo usare lo stesso metodo del fattore integrante che abbiamo 
+usato per risolvere le equazioni. Si ha 
+\[
+  (u(x) e^{-Lx})' = (u'(x) - L u(x)) e^{-Lx} \le 0
+\]
+da cui si evince che $u(x) e^{-Lx}$ è decrescente. Dunque 
+$u(x) e^{-Lx} \le u(x_0) e^{-Lx_0}$ da cui si ottiene la tesi.
+\end{proof}
+
+\begin{proof}[Dimostrazione teorema~\ref{th:edo_dipendenza_continua}]
+Consideriamo il grafico della funzione $u$ ristretta all'intervallo $[x_0,x_1]$:
+$\Gamma = \ENCLOSE{(x,\vec u(x))\colon x\in [x_0,x_1]}$.
+Questo è un compatto di $\Omega$ e può essere ricoperto quindi con un numero finito 
+di aperti di $\Omega$ su ciascuno dei quali è verificata la stima di Lipschitz con costante $L$.
+Prendendo il massimo delle costanti di Lipschitz possiamo dunque supporre che esista 
+un aperto $U$ con $\Gamma \subset U \subset \Omega$ ed esista $L\in \RR$ tale che 
+\[
+  \abs{f(x,\vec y_1) - f(x,\vec y_2)} \le L \abs{\vec y_1 - \vec y_2}
+\]
+per ogni $x, \vec y_1, \vec y_2$ tali che $(x,\vec y_1), (x,\vec y_2)\in U$.
+Prendiamo $0<\rho<\eps$ tale che dati $x\in [x_0,x_1]$ e $\vec y$ con $\abs{\vec y- \vec u(x)}<\rho$ 
+si abbia $(x,\vec y)\in U$.
+Supponiamo $\delta$ sia abbastanza piccolo da garantire che se $\abs{z_0-y_0} < \delta$ allora il punto $(x_0,\vec z_0)$ sia contenuto in $U$.
+Consideriamo $\vec v\colon J\to\RR^n$ la soluzione massimale del problema di Cauchy con dato iniziale 
+$(x_0,\vec z_0)$ e consideriamo la funzione $w(x) = \abs{\vec v(x) - \vec u(x)}$ definita su $I\cap J$.
+Possiamo supporre che sia $z_0\neq y_0$ altrimenti la tesi è banale.
+Ma allora $w(x) > 0$ perché due diverse soluzioni non possono 
+mai toccarsi (proposizione~\ref{prop:separazione_soluzioni}).
+Significa che $w$ è derivabile e si ha 
+\[
+ w'(x) 
+ = \frac{(\vec v(x) - \vec u(x))\cdot (\vec v'(x) - \vec u'(x))}{\abs{\vec v(x) - \vec u(x)}}
+ \le \abs{\vec v'(x) - \vec u'(x)}
+ \le L w(x).
+\]
+Dunque per il lemma~\ref{lm:gronwall_bis} di Gronwall si ottiene 
+(supponiamo qui $x>x_0$ ma il caso $x<x_0$ è analogo)
+\[
+  w(x) \le w(x_0) e^{L(x-x_0)} = \abs{z_0-y_0} e^{L(x-x_0)}
+  \le \delta e^{L(x_1-x_0)}.
+\]
+Dunque $w(z) < \eps$ se $\delta$ è sufficientemente piccolo.
+
+Dobbiamo infine osservare che la soluzione $\vec v$ deve essere definita 
+su tutto l'intervallo $[x_0,x_1]$ altrimenti, per il teorema~\ref{prop:edo_massimale},
+la soluzione $\vec v$ non uscirebbe dal
+compatto $\ENCLOSE{(x,y)\in \Omega\colon x\in [x_0,x_1]}$
+\end{proof}

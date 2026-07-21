@@ -1,0 +1,96 @@
+\section{funzioni di più variabili}
+
+Uno degli argomenti principali del secondo corso di Analisi Matematica è lo studio 
+delle funzioni di più variabili. 
+Il nostro ambiente di studio privilegiato sarà 
+lo spazio vettoriale reale di dimensione $n$. 
+Si considera assimilata la conoscenza degli spazi vettoriali di dimensione 
+finita. 
+In particolare si considera come fatto noto che ogni spazio 
+vettoriale reale di dimensione $n$ è isomorfo a $\RR^n$. 
+Spesso lo spazio vettoriale sarà naturalmente dotato di prodotto scalare (spazio euclideo) e,
+anche in questo caso, sappiamo che è possibile identificare il prodotto scalare 
+dello spazio euclideo con il prodotto scalare canonico di $\RR^n$.
+Dal prodotto scalare si ottiene la norma euclidea, che induce una metrica e quindi una topologia.
+
+Riprendiamo brevemente questi concetti.
+\begin{definition}
+L'insieme $\RR^n$ è l'insieme delle $n$-uple (ordinate) di numeri reali 
+$\vec x = (x_1,\dots,x_n)$.
+Le operazioni di addizione e di moltiplicazione per uno scalare $t\in \RR$
+sono definite come segue:
+\begin{align*}
+\vec x + \vec y &= (x_1+y_1,\dots,x_n+y_n)\\
+t \vec x &= (t x_1,\dots,t x_n).
+\end{align*}
+Con queste operazioni $\RR^n$ risulta essere uno spazio vettoriale reale di dimensione $n$.
+
+Possiamo definire il prodotto scalare canonico di $\RR^n$ come segue:
+\[
+\vec x \cdot \vec y = x_1 y_1 + \dots + x_n y_n.
+\]
+La norma euclidea di $\vec x$ è definita come
+\[
+\abs{\vec x} = \sqrt{\vec x\cdot \vec x} = \sqrt{x_1^2 + \dots + x_n^2}.
+\]
+\end{definition}
+
+Quando $n=2$ o $n=3$ può essere comodo (e certamente è usuale) nominare 
+le coordinate di $\RR^2$ come $x$ e $y$ e le coordinate di $\RR^3$ come $x$, $y$ e $z$
+(invece che $(x_1,x_2)$ e $(x_1,x_2,x_3)$).
+
+Considereremo funzioni con dominio in $A\subset \RR^n$ e codominio $\RR^m$. 
+Scriveremo $\vec f\colon A \subset \RR^n \to \RR^m$.
+Avremo quindi $\vec y = \vec f(\vec x)$ con $\vec x =(x_1,\dots,x_n)\in A$ e $\vec y = (y_1,\dots,y_m)\in \RR^m$.
+Nel caso $m=1$ la funzione si dice scalare, 
+mentre nel caso $m>1$ la funzione si dice vettoriale.
+Nel caso $n=1$ la funzione si dice di una variabile, 
+mentre nel caso $n>1$ la funzione si dice di 
+più variabili ($n$ variabili per la precisione).
+Una funzione vettoriale $\vec f$ può essere identificata con una 
+$m$-upla di funzioni scalari $f_1,\dots,f_m$ definite su $A$:
+\[
+  \vec f(x_1, \dots, x_n) = \begin{pmatrix}
+    f_1(x_1,\dots, x_n) \\
+    \vdots \\
+    f_m(x_1,\dots, x_n)
+  \end{pmatrix}.
+\]
+
+La norma euclidea definisce una metrica e quindi una topologia 
+su $\RR^n$. 
+
+\begin{definition}[topologia]
+Dato $\vec x \in \RR^n$ e $\rho>0$, la palla aperta di raggio $\rho$ centrata in $\vec x$ è
+\[
+B_\rho(\vec x) = \{\vec y \in \RR^n : \abs{\vec y - \vec x} < \rho\}.
+\]
+
+Se esiste $\rho>0$ per cui $B_\rho(\vec x) \subset A$, diremo che $\vec x$ è un punto interno di $A$
+e diremo che $A$ è un intorno di $\vec x$.
+Possiamo dunque definire la famiglia di intorni di $\vec x$ come segue:
+\[
+  \mathcal U_x = \ENCLOSE{U\subset \RR^n\colon \exists \rho>0\colon B_\rho(\vec x) \subset U}.
+\]
+
+La \emph{parte interna} di $A$ è l'insieme dei punti interni di $A$.
+Un sottoinsieme $A\subset \RR^n$ si dice aperto se 
+è intorno di ogni suo punto. 
+
+Un sottoinsieme $A\subset \RR^n$ si dice chiuso se il suo complementare $\RR^n\setminus A$ è aperto.
+
+Un punto $\vec x\in \RR^n$ si dice essere un punto di accumulazione per $A$ 
+se ogni intorno di $\vec x$ contiene almeno un punto di $A$ diverso da $\vec x$.
+\end{definition}
+
+\begin{definition}[limite]
+Data una funzione $\vec f\colon A\subset \RR^n \to \RR^m$, un punto $\vec x_0\in A$ e un punto $\vec y_0\in \RR^m$, 
+Diremo che $\vec f(\vec x)$ tende a $\vec y_0$ per $\vec x\to \vec x_0$ e scriveremo
+\[
+  \vec f(\vec x) \to \vec y_0 \quad \text{per } \vec x\to \vec x_0
+\]
+se per ogni intorno $U$ di $\vec y_0$ esiste un intorno $V$ di $\vec x_0$ tale che 
+$\vec f(U)\subset V$.
+\end{definition}
+
+

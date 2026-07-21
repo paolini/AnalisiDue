@@ -150,11 +150,11 @@ Come spazio metrico $\CC$ è isomorfo ad $\RR^2$ dunque anch'esso è completo.
 \end{proof}
 
 \begin{theorem}[completezza dei compatti]
-Ogni spazio metrico compatto è completo.
+Ogni spazio metrico sequenzialmente compatto è completo.
 \end{theorem}
 %
 \begin{proof}
-Visto che lo spazio è compatto ogni successione di Cauchy
+Visto che lo spazio è sequenzialmente compatto ogni successione di Cauchy
 ammette una sottosuccessione convergente.
 Ma allora, grazie al lemma~\ref{lm:cauchy_estratta_convergente},
 l'intera successione converge e dunque lo spazio è completo.
@@ -163,10 +163,14 @@ l'intera successione converge e dunque lo spazio è completo.
 \begin{theorem}[chiusi in spazi compatti e in spazi completi]%
 \label{th:chiuso_completo}%
 \label{th:compatto_completo}%
-Sia $(X,d)$ uno spazio metrico e sia $A\subset X$ un sottoinsieme chiuso in $X$. Se $X$ è compatto allora anche $A$ è compatto, se $X$ è completo allora anche $A$ è completo.
+Sia $(X,d)$ uno spazio metrico e sia $A\subset X$ un sottoinsieme chiuso in $X$. 
+Se $X$ è sequenzialmente compatto allora anche $A$ è compatto, 
+se $X$ è completo allora anche $A$ è completo.
 \end{theorem}
+%
 \begin{proof}
-Se $X$ è compatto da ogni successione in $A$ si può estrarre una sottosuccessione convergente ad un punto di $X$. 
+Se $X$ è sequenzialmente compatto da ogni successione in $A$ 
+si può estrarre una sottosuccessione convergente ad un punto di $X$. 
 Ma siccome $A$ è chiuso il punto sta in $A$ e dunque la sottosuccessione è convergente in $A$.
 
 Una successione di Cauchy in $A$ è di Cauchy anche in $X$. 

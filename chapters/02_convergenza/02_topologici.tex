@@ -255,21 +255,14 @@ successione $x_k \in X$ è possibile estrarre una sottosuccessione $x_{k_j}\to x
 convergente ad un punto $x\in X$.
 \end{definition}
 
-La definizione più generale di compattezza viene data negli spazi topologici.
-Nel contesto generale compattezza e compattezza sequenziale sono concetti
-diversi ma nell'ambito degli spazi metrici i due concetti coincidono.
-Per questo potremo scrivere più brevemente \emph{compatto}%
-\mymargin{compatto}\index{compatto}
-al posto di \emph{sequenzialmente compatto} quando lavoriamo negli spazi metrici.
-
 Il teorema di Bolzano-Weierstrass afferma che gli intervalli $[a,b]$ con
-$a,b\in \RR$ sono compatti. 
+$a,b\in \RR$ sono sequenzialmente compatti. 
 Possiamo estendere questo risultato in $\RR^n$.
 
 \begin{theorem}[compattezza in $\RR^n$]%
   \label{th:compattezza_Rn}%
 Sia $K\subset \RR^n$ un insieme chiuso e limitato. 
-Allora $K$ è compatto.
+Allora $K$ è sequenzialmente compatto.
 \end{theorem}
 \begin{proof}
 Sia $\vec x_k\in K$ una qualunque successione di punti. 
@@ -290,19 +283,19 @@ tale per cui ogni componente $(x_k)_j$ converge ad un numero $p_j\in \RR$
 per $j=1,\dots, n$.
 Ma questo significa che $\vec x_k \to \vec p \in \RR^n$ con $\vec p = (p_1,\dots, p_n)$
 
-Visto che $K$ è chiuso deve essere $\vec p\in K$ e dunque $K$ è compatto.
+Visto che $K$ è chiuso deve essere $\vec p\in K$ e dunque $K$ è sequenzialmente compatto.
 \end{proof}
 
 In uno spazio metrico generico non è detto che gli insiemi chiusi e limitati 
-siano compatti (un esempio negativo è dato dalla convergenza uniforme, come
+siano sequenzialmente compatti (un esempio negativo è dato dalla convergenza uniforme, come
 vedremo più avanti). 
 L'implicazione inversa invece è sempre vera, come enunciato nel
 seguente teorema.
 
 \begin{theorem}%
 \mymark{**}%
-Se $A$ è un sottoinsieme sequenzialmente
-compatto di uno spazio metrico $X$
+Se $A$ è un sottoinsieme sequenzialmente compatto 
+di uno spazio metrico $X$
 allora $A$ è chiuso e limitato.
 \end{theorem}
 %
@@ -318,7 +311,8 @@ cioè $d(x_k,a) > k$. Supponiamo allora che esista una sottosuccessione converge
 Ma questo è assurdo in quanto $d(x,a)\in \RR$.
 \end{proof}
 
-\begin{theorem}[Weierstrass: le funzioni continue mandano compatti in compatti]
+\begin{theorem}[Weierstrass: le funzioni continue mandano 
+  compatti in compatti]
   \label{th:weiestrass_metrico}%
   \index{Weiestrass!teorema di}%
   \index{teorema!di Weiestrass}%
@@ -331,13 +325,20 @@ anche $f(K)$ è sequenzialmente compatto.
 \begin{proof}
 Sia $y_k \in f(K)$ una qualunque successione. Allora
 esiste $x_k \in K$ tale che $f(x_k) = y_k$.
-Essendo $K$ compatto possiamo estrarre una sottosuccessione convergente: $x_{k_j}\to x$. Essendo $f$ continua si ha
+Essendo $K$ sequenzialmente compatto possiamo estrarre una sottosuccessione convergente: $x_{k_j}\to x$. 
+Essendo $f$ continua si ha
 \[
   y_{k_j} = f(x_{k_j}) \to f(x) \in f(K).
 \]
 \end{proof}
 
-Nel caso $X=Y=\RR$ recuperiamo l'usuale teorema di Weierstrass, in quanto se $f\colon [a,b]\to \RR$ è continua essendo $[a,b]$ compatto risulta che $f([a,b])$ è compatto. Ma i compatti di $\RR$ sono chiusi e limitati quindi hanno massimo e minimo in quanto l'estremo superiore e l'estremo inferiore sono finiti e sono punti di aderenza dell'insieme.
+Nel caso $X=Y=\RR$ recuperiamo l'usuale teorema di Weierstrass, 
+in quanto se $f\colon [a,b]\to \RR$ è continua essendo $[a,b]$ sequenzialmente compatto 
+risulta che $f([a,b])$ è sequenzialmente compatto. 
+Ma gli insiemi sequenzialmente compatti di $\RR$ sono chiusi e limitati 
+quindi hanno 
+massimo e minimo in quanto l'estremo superiore e l'estremo inferiore 
+sono finiti e sono punti di aderenza dell'insieme.
 
 \begin{definition}[uniforme continuità]
   Sia $f\colon X \to Y$ una funzione definita tra due spazi metrici $X$ e $Y$.
@@ -355,11 +356,36 @@ Nel caso $X=Y=\RR$ recuperiamo l'usuale teorema di Weierstrass, in quanto se $f\
   \index{teorema!di Heine-Cantor}%
   \label{th:HeineCantor}
 Sia $X$ uno spazio metrico sequenzialmente compatto e $Y$ uno spazio metrico.
-Sia $f\colon X\to Y$ una funzione continua. Allora $f$ è uniformemente continua.
+Sia $f\colon X\to Y$ una funzione continua. 
+Allora $f$ è uniformemente continua.
 \end{theorem}
 %
 \begin{proof}
-  La dimostrazione è identica a quella già fatta nel corrispondente 
-  teorema~\ref{th:heine_cantor} per le funzioni di variabile reale.
+Supponiamo per assurdo che $f\colon X\to Y$ sia una funzione continua 
+ma non uniformemente continua. Dunque non vale la condizione di uniforme
+continuità:
+\[
+ \forall \eps>0\, \exists \delta>0, \forall x,y\in X\colon 
+  d(x,y)<\delta \implies d(f(x),f(y))< \eps. 
+\]
+La negazione di tale condizione è 
+(ricordiamo che la negazione inverte i quantificatori 
+e la negazinoe dell'implicazione $P\implies Q$ è $P\land \lnot Q$):
+\[
+ \exists \eps>0\, \forall \delta>0, \exists x,y\in X\colon
+ d(x,y)<\delta \land d(f(x),f(y))\ge \eps.
+\]
+Fissato $\eps>0$ applichiamo la condizione precedente 
+con $\delta = \frac 1 k$ per ogni $k\in \NN$ in modo da ottenere 
+due successioni $x_k$, $y_k$ tali che
+\[
+  d(x_k,y_k)< \frac 1 k, \qquad d(f(x_k),f(y_k))\ge eps.
+\]
+Per la sequenziale compattezza di $X$ esiste una estratta $j_k$ 
+tale che $x_{k_j}\to \bar x$ con $\bar x\in X$.
+Visto che $d(x_k,y_k)\to 0$ si ha anche $y_{k_j}\to \bar x$.
+Dalla continuità di $f$ si ottiene $f(x_{k_j})\to f(\bar x)$ 
+e $f(x_{k_j})\to f(\bar x)$ da cui $d(f(x_{k_j}),f(y_{k_j}))\to 0$.
+Ma questo è in contraddizione con la condizione $d(f(x_k),f(y_k))\ge \eps$.
 \end{proof}
 

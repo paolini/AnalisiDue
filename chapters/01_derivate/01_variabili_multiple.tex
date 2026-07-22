@@ -57,6 +57,56 @@ $m$-upla di funzioni scalari $f_1,\dots,f_m$ definite su $A$:
   \end{pmatrix}.
 \]
 
+Se $I\subset \RR$ è un intervallo, 
+una funzione $\vec u\colon I\subset \RR \to \RR^n$ si chiama 
+\emph{curva}. 
+Se pensiamo a $t\in I$ come il \emph{tempo}, la funzione 
+$t\mapsto \vec u(t)$ rappresenta la dinamica di un punto 
+che si muove nello spazio $\RR^n$.
+L'immagine della funzione $\vec u(I) = \ENCLOSE{\vec u(t)\colon t\in I}$
+si chiama \emph{traiettoria} del punto $\vec u(t)$ o \emph{supporto}
+della curva $\vec u$.
+A volte si denota con $[\vec u]$.
+
+Se ad esempio fissiamo un punto $\vec x_0\in \RR^n$ 
+e un vettore $\vec v\in \RR^n$, la curva $\vec u(t) = \vec x_0 + t \vec v$
+rappresenta il moto rettilineo uniforme di un punto che al tempo $t=0$ 
+si trova in posizione $x_0$ e che si muove con velocità $\vec v$.
+Il supporto di $\vec u$ è in questo caso una retta passante per $x_0$ 
+con direttrice $\vec v$.
+
+Per ricondursi allo studio di funzioni di una variabile 
+è spesso utile studiare la composizione della funzione di più variabili 
+con opportune curve. 
+Se $\vec f\colon A \subset \RR^n\to \RR^m$ e $\vec u\colon I\subset \RR\to A\subset \RR^n$ 
+possiamo considerare la funzione $\vec g\colon I \to \RR^m$ 
+data da $\vec g(t) = \vec f(\vec u(t))$. 
+Si avrà $\vec g = (g_1,\dots, g_m)$ con $g_k(t) = f_k(\vec u(t))$
+dove $\vec f = (f_1,\dots, f_m)$. 
+In definitiva le funzioni $g_k\colon I\subset \RR \to \RR$ 
+sono funzioni scalari di una variabile, e le possiamo studiare 
+come si è fatto nel corso di Analisi Matematica Uno.
+
+\begin{example}[funzioni lineari]
+Fissato $\vec w \in \RR^n$ consideriamo la funzione 
+lineare $f \colon \RR^n \to \RR$ definita da 
+\[
+   f(\vec x) = (\vec x , \vec w).
+\]  
+Fissato $\vec q\in \RR^n$ e $\vec v \in \RR^n$ consideriamo la retta (parametrizzata da)
+$\vec u(t) = t \vec v + \vec q$.
+Si avrà allora 
+\[
+  f(\vec u(t)) = (t \vec v + \vec q, \vec w) = t (\vec v,\vec w) + (\vec q, \vec w).
+\]
+Si osserva ad esempio che se $\vec v$ è ortogonale a $\vec w$,
+cioè $(\vec v, \vec w)=0$, si ha $f(\vec u(t))= (\vec q, \vec v)$ è costante.
+Abbiamo trovato una \emph{curva di livello}, cioè una curva su 
+cui $f$ risulta costante.
+\end{example}
+
+
+\section{continuità e limiti}
 La norma euclidea definisce una metrica e quindi una topologia 
 su $\RR^n$. 
 
@@ -83,14 +133,259 @@ Un punto $\vec x\in \RR^n$ si dice essere un punto di accumulazione per $A$
 se ogni intorno di $\vec x$ contiene almeno un punto di $A$ diverso da $\vec x$.
 \end{definition}
 
-\begin{definition}[limite]
-Data una funzione $\vec f\colon A\subset \RR^n \to \RR^m$, un punto $\vec x_0\in A$ e un punto $\vec y_0\in \RR^m$, 
-Diremo che $\vec f(\vec x)$ tende a $\vec y_0$ per $\vec x\to \vec x_0$ e scriveremo
+Una successione $\vec a_k\in \RR^n$ è una funzione $\vec a \colon \NN\to \RR^n$.
+Ogni punto $\vec a_k$ è una $n$-upla: $\vec a_k = ((a_k)_1,\dots, (a_k)_n) \in \RR^n$.
+
+Una successione $\vec a_k$ converge ad un punto $\vec x\in \RR^n$ 
+se $\abs{\vec a_k - \vec x}\to 0$.
+Scriveremo in tal caso $\vec a_k \to \vec x$ (per $k\to +\infty$).
+Notiamo che $\abs{\vec a_k-\vec x}$ è una successione di numeri reali 
+non negativi, e dunque l'abbiamo già studiata nel corso di \emph{Analisi Matematica Uno}.
+In particolare, se espandiamo la definizione di limite, si vede 
+che $\vec a_k \to \vec x$ significa:
 \[
-  \vec f(\vec x) \to \vec y_0 \quad \text{per } \vec x\to \vec x_0
+ \forall \eps>0\, \exists N\in \NN\, \forall k\ge N\colon \abs{\vec a_k- \vec x} < \eps.
 \]
-se per ogni intorno $U$ di $\vec y_0$ esiste un intorno $V$ di $\vec x_0$ tale che 
-$\vec f(U)\subset V$.
+
+\begin{definition}[continuità]
+Sia $f\colon A \subset \RR^n \to \RR^m$.
+Fissato $x_0 \in A$ diremo che $f$ è \emph{continua} nel punto 
+$x_0$
+se 
+\[
+\forall \eps>0\, \exists \delta>0 \, \forall x\in A\colon
+  \abs{x - x_0} < \delta \implies \abs{f(x) - f(x_0)} < \eps.
+\] 
+
+Una funzione si dice essere \emph{sequenzialmente continua} nel punto 
+$x_0$ se per ogni successione $a_k\in A$ con $a_k\to x_0$
+si ha $f(a_k)\to f(x_0)$.
+
+Una funzione $f\colon A \subset \RR^n \to \RR^m$ si dice essere 
+continua (o sequenzialmente continua) se è continua (o sequenzialmente 
+continua) in ogni punto $x\in A$.
 \end{definition}
 
+\begin{theorem}[equivalenza tra continuità e continuità sequenziale]
+Sia $f\colon A\subset \RR^n\to \RR^m$ e sia $x_0\in A$.
+Allora $f$ è continua in $x_0$ se e solo se $f$ è sequenzialmente 
+continua in $x_0$.
+\end{theorem}
+\begin{proof}
+La dimostrazinoe è la stessa già vista nel corso di Analisi Matematica Uno.
+\end{proof}
 
+\begin{theorem}[continuità della funzione composta]
+Sia $f\colon A\subset \RR^n \to B \subset \RR^k$ una funzione 
+continua (nel punto $x_0\in A$) e sia $g\colon B\subset \RR^k \to \RR^m$ 
+una funzione continua (nel punto $y_0=f(x_0)\in B$).
+Allora la composizione $g\circ f \colon A \subset \RR^n \to \RR^m$ 
+è continua (nel punto $x_0$).
+\end{theorem}
+%
+\begin{proof}
+La dimostrazione è la stessa già vista nel corso di Analisi Matematica Uno.
+\end{proof}
+
+
+
+\section{differenziale}
+
+
+\begin{theorem}[continuità delle applicazioni lineari]
+  \label{th:lineare_continua}
+Ogni applicazinoe lineare $L\colon \RR^n\to \RR^m$ 
+è continua.
+\end{theorem}
+%
+\begin{proof}
+Sia $\vec e_1,\dots, \vec e_n$ la base canonica di $\RR^n$.
+Consideriamo
+\[
+  M = \max\ENCLOSE{\abs{L[\vec e_1]}, \dots, \abs{[L\vec e_n]}}.
+\]
+Si ha allora, per ogni $\vec x\in \RR^n$,
+\[
+  \abs{L[\vec x]}
+  =\abs{L[x_1 \vec e_1 + \dots + x_n \vec e_n]}
+  \le \abs{x_1 L[\vec e_1]} + \dots + \abs{x_n L[\vec e_n]}
+  \le nM\abs{\vec x}.
+\]
+Dunque per $\vec x \to 0$ si ha $\abs{L[\vec x]}\to 0$.
+Significa che $L$ è continua in $0$.
+
+Ma in ogni altro punto si ha 
+\[
+  L[\vec x] - L[\vec x_0] = L[\vec x - \vec x_0] 
+\]
+e dunque se $\vec x\to \vec x_0$ si ottiene che $L[\vec x]\to L[\vec x_0]$.
+\end{proof}
+
+\begin{definition}[norma operatoriale]
+Sia $L\colon \RR^n \to \RR^m$ una applicazione lineare.
+Definiamo la \emph{norma} di $L$ come:
+  \[
+  \Abs{L} = \sup \ENCLOSE{\abs{L[\vec x]}\colon \abs{\vec x}\le 1}.
+  \]
+\end{definition}
+
+\begin{theorem}[proprietà della norma operatoriale]
+Sia $L\colon \RR^n \to \RR^m$ una applicazione lineare. 
+Allora 
+\begin{enumerate}
+\item $\Abs L < +\infty$;
+\item $\Abs L$ è la costante ottimale per cui vale 
+la stima:
+\begin{equation}
+  \label{eq:stima_norma_operatoriale}  
+  \abs{L[\vec v]} \le \Abs L \cdot \abs {\vec v},
+  \qquad \forall \vec v \in \RR^n,
+\end{equation}
+
+inoltre esiste $\vec v\in\RR^n$ per cui vale 
+l'uguaglianza;
+\item se $M\colon \RR^m \to \RR^k$ è un'altra applicazinoe 
+lineare si ha 
+\[
+  \Abs{M\circ L} \le \Abs M \cdot \Abs L.
+\]
+\end{enumerate}
+\end{theorem}
+%
+\begin{proof}
+Per il teorema~\ref{th:lineare_continua} la funzione $\abs{L}$ è continua,
+dunque per il teorema di Weiestrass ammette massimo sul disco
+unitario $\ENCLOSE{\vec x \in \RR^n\colon \abs{x}\le 1}$.
+Dunque $\Abs{L}\in \RR$ è finito ed è realizzato 
+su un vettore di norma unitaria.
+Se $t\in \RR$ e $\vec v$ è unitario si ha
+\[
+  \abs{L[t\vec v]} = \abs{t}\cdot \abs{L[\vec v]}
+  \le \abs{t}\cdot \Abs L \cdot \abs{\vec v} 
+  = \Abs L \cdot \abs{t\vec v}
+\]
+da cui si ottiene~\ref{eq:stima_norma_operatoriale}.
+Per l'ultimo punto osserviamo che per ogni $\vec v\in \RR^n$ si ha 
+\[
+  \Abs{ML[\vec v]} = \Abs{M[L[\vec v]]}
+  \le \Abs{M}\cdot \abs{L[\vec v]}
+  \le \Abs{M}\cdot \Abs{L}\abs{\vec v}.
+\]
+Passando al $\sup$ sui $\vec v$ unitari si ottiene il risultato.
+\end{proof}
+
+\begin{definition}[differenziabilità]
+  Sia $\vec f\colon A \subset \RR^n \to \RR^m$ e sia $\vec x_0\in A$.
+  Diremo che $f$ è differenziabile in $\vec x_0$ se esiste 
+  una applicazione lineare $d \vec f_{\vec x_0}\colon \RR^n \to \RR^m$ tale che 
+  \begin{equation}\label{eq:def_differenziale}
+    \vec f(\vec x) = \vec f(\vec x_0) + d\vec f_{\vec x_0}[\vec x- \vec x_0] + o(\abs{\vec x - \vec x_0}), 
+    \qquad \text{per } \vec x\to \vec x_0.
+  \end{equation}
+  L'applicazione lineare $d \vec f_{\vec x_0}$ si 
+  chiama \emph{differenziale} di $\vec f$ nel punto $\vec x_0$.
+\end{definition}
+
+\begin{theorem}[proprietà delle funzioni differenziabili]
+Sia $\vec f\colon A\subset \RR^n \to \RR^m$ una funzione 
+differenziabile nel punto $\vec x_0\in A$. Allora
+\begin{enumerate}
+  \item $\vec f$ è continua in $\vec x_0$;
+  \item se $\vec x_0$ è un punto interno di $A$
+  il differenziale è unico
+\end{enumerate}
+\end{theorem}
+\begin{proof}
+Visto che le applicazioni lineari sono continue
+si ha $d\vec f_{\vec x_0}[\vec x - \vec x_0]\to 0$ per $\vec x \to \vec x_0$
+e dunque dalla definizione~\eqref{eq:def_differenziale} 
+si ottiene che $\vec f(\vec x) - \vec f(\vec x_0)\to \vec 0$
+per $\vec x \to \vec x_0$. 
+
+Siano ora $L$ e $M$ due differenziali di $\vec f$ in $\vec x_0$
+e sia $\vec v$ un qualunque vettore unitario.
+Prendendo la formula~\eqref{eq:def_differenziale}
+prima con $L$ e poi con $M$ al posto di $d \vec f_{\vec x_0}$,
+e facendone la differenza, si ottiene
+\[
+  (L-M)[\vec x - \vec x_0] = o(\abs{\vec x-\vec x_0}), 
+  \qquad \text{per } \vec x \to \vec x_0.
+\]
+Preso $\vec x = \vec x_0 + t\vec v$ osserviamo che essendo $\vec x_0$ interno 
+ad $A$ avremo che per $t$ sufficientemente piccolo si ha effettivamente 
+$\vec x \in A$. 
+Dunque, per $t\to 0$ si ha $\vec x \to \vec x_0$ e quindi
+\[
+  (L-M)[t \vec v] = o(\abs{t}\cdot \abs{\vec v}) = o(t) = t o(1)
+\] 
+da cui 
+\[
+  (L-M)[\vec v] = o(1).
+\]
+Visto che il lato sinistro non dipende da $t$ 
+significa che $(L-M)[\vec v]=0$ per ogni $\vec v$ unitario.
+Questo significa che $L-M = 0$ ovvero $L=M$.
+\end{proof}
+
+La precedente definizione poteva ugualmente essere data 
+per funzioni definite tra due spazi normati astratti.
+Se lo spazio di partenza non avesse avuto dimensione finita 
+si richiede usualmente che il differenziale $d\vec f_{\vec x_0}$ 
+sia continuo (oltre che lineare), cosa che risulta automatica
+nel caso di dimensione finita.
+
+L'applicazione lineare $d\vec f_{\vec x_0}\colon \RR^n\to\RR^m$ 
+può essere rappresentata tramite una matrice $m\times n$. 
+Tale matrice si chiama \emph{matrice Jacobiana} e si indica 
+di solito con $D\vec f(\vec x_0)$ (oppure $J_{\vec f}(\vec x_0)$)
+Si ha quindi
+\[
+  d \vec f_{\vec x_0} [\vec v] = Df(\vec x_0) \vec v,
+  \qquad \text{per ogni } \vec v\in \RR^n.
+\]
+
+Nel caso $m=1$, cioè $f\colon \RR^n\to \RR$, la matrice Jacobiana
+è formata da una singola riga e si identifica quindi con un 
+vettore di $\RR^n$. 
+Tale vettore si chiama \emph{gradiente} di $f$ e si indica con 
+$\nabla f(\vec x_0)$. 
+Si ha dunque
+\[
+  d f_{\vec x_0}[\vec v] = \langle \nabla f(\vec x_0), \vec v\rangle.
+\]
+
+\begin{theorem}[differenziale della composizione]
+  Sia $\vec f\colon A \subset \RR^n \to B\subset \RR^k$,
+  $\vec g\colon B\subset \RR^k \to \RR^m$, $x_0\in A$.
+  Se $\vec f$ è differenziabile in $\vec x_0$ 
+  e $\vec g$ è differenziabile in $\vec y_0 = \vec f(\vec x_0)$ 
+  allora la funzione composta $\vec g\circ \vec f\colon A \subset \RR^n \to \RR^m$
+  è differenziabile in $\vec x_0$ e si ha 
+  \[
+    d (\vec g \circ \vec f)_{\vec x_0} 
+    = d\vec g_{\vec y_0}\circ d\vec f_{\vec x_0}.
+  \]
+\end{theorem}
+%
+\begin{proof}
+  Facendo il cambio di variabile $\vec y = \vec f(x)$ nella formula~\eqref{eq:def_differenziale}
+  per $\vec g$
+  e inserendo la formula stessa per $\vec f$
+  si ottiene
+  \begin{align*}
+    \vec g(\vec f(\vec x)) 
+    & = \vec g(\vec y_0) 
+        + d\vec g_{\vec y_0}[\vec f(\vec x)-\vec f(\vec x_0)]
+        + o(\abs{\vec f(\vec x)- \vec f(\vec x_0)})\\
+    & = \vec g(\vec f(\vec x_0)) 
+        + d\vec g_{\vec x_0}[d\vec f_{\vec x_0}[\vec x - \vec x_0] 
+          + o(\abs{\vec x - \vec x_0})]
+        + o(\abs{d\vec f_{\vec x_0}[\vec x - \vec x_0] 
+          + o(\abs{\vec x - \vec x_0})})\\
+    & = \vec g(\vec f(\vec x_0))
+       + d\vec g_{\vec x_0}[d\vec f_{\vec x_0}[\vec x - \vec x_0]]
+       + (\Abs{d \vec g_{\vec x_0}}+\Abs{d \vec f_{\vec x_0}} + 1)\cdot o(\abs{\vec x - \vec x_0})
+  \end{align*}
+  che è la condizione di differenziabilità per $\vec g \circ \vec f$ 
+  nel punto $\vec x_0$ con differenziale $d \vec g_{\vec y_0}\circ d \vec f_{\vec x_0}$.
+\end{proof}

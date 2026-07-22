@@ -344,15 +344,35 @@ Si ha quindi
   \qquad \text{per ogni } \vec v\in \RR^n.
 \]
 
-Nel caso $m=1$, cioè $f\colon \RR^n\to \RR$, la matrice Jacobiana
+Nel caso $m=1$, cioè $f\colon A\subset \RR^n\to \RR$, la matrice Jacobiana
 è formata da una singola riga e si identifica quindi con un 
 vettore di $\RR^n$. 
 Tale vettore si chiama \emph{gradiente} di $f$ e si indica con 
-$\nabla f(\vec x_0)$. 
+$\vec\nabla f(\vec x_0)$. 
 Si ha dunque
 \[
-  d f_{\vec x_0}[\vec v] = \langle \nabla f(\vec x_0), \vec v\rangle.
+  d f_{\vec x_0}[\vec v] = \langle \vec\nabla f(\vec x_0), \vec v\rangle.
 \]
+
+In generale si può scrivere $\vec f = (f_1,\dots,f_m)$ con $f_k\colon \RR^n \to \RR$
+e si troverà quindi che le righe della matrice $D\vec f$ jacobiana di $\vec f$
+sono i vettori gradiente $\vec\nabla f_1, \dots, \vec\nabla f_m$.
+
+Nel caso $n=m=1$, cioè $\vec f\colon A\subset \RR\to\RR^m$, $x_0\in A$,
+la matrice Jacobiana è formata da una singola colonna che si denota con
+$\vec f'(x_0) \in \RR^n$.
+Il differenziale si scrive nella forma $d\vec f_{x_0}[h] = h \vec f'(x_0)$.
+La definizione di differenziale diventa
+\[
+ \vec f(x) = \vec f(x_0) + \vec f'(x_0)\cdot (x-x_0) + o(x-x_0)
+\] 
+che è equivalente a 
+\[
+  \frac{\vec f(x) - \vec f(x_0)}{x-x_0} = \vec f'(x_0) + o(1)
+\]
+cioè la definizione di derivata vista nel corso di Analisi Matematica Uno.
+Per le funzioni di una variabile \emph{differenziabile} è quindi equivalente 
+a \emph{derivabile}. 
 
 \begin{theorem}[differenziale della composizione]
   Sia $\vec f\colon A \subset \RR^n \to B\subset \RR^k$,
@@ -388,4 +408,147 @@ Si ha dunque
   \end{align*}
   che è la condizione di differenziabilità per $\vec g \circ \vec f$ 
   nel punto $\vec x_0$ con differenziale $d \vec g_{\vec y_0}\circ d \vec f_{\vec x_0}$.
+\end{proof}
+
+Nel caso particolare in cui 
+$\vec f\colon A\subset \RR^n \to \RR^m$ e $\vec u\colon I\subset \RR\to A\subset \RR^n$,
+la formula per la derivata della funzione composta diventa
+\[
+  \frac{d}{dt} \vec f(\vec u(t))
+  = d\vec f_{\vec u(t)}[\vec u'(t)]
+  = D\vec f(\vec u(t))\vec u'(t)
+\]
+che nel caso $m=1$ si può anche scrivere usando il gradiente
+\[
+  \frac{d}{dt} f(\vec u(t))
+  = \langle \vec\nabla f(\vec u(t)),\vec u'(t)\rangle.
+\]
+
+Dato $\vec v\in\RR^n$ possiamo considerare la retta con direzione $\vec v$
+passante per un punto $\vec x\in \RR^n$: $\vec u(t) = \vec x + t\vec v$.
+Definiamo allora la \emph{derivata direzionale} di $\vec f$ nel punto $\vec x$
+in direzione $\vec v$ come:
+\[
+   \frac{\partial \vec f}{\partial \vec v}(\vec x)
+   = \Enclose{\frac {d}{dt} \vec f(\vec u(t))}_{t=0}.
+\]
+E' possibile che la derivata direzionale esista anche se la funzione $\vec f$ 
+non è differenziabile, perché questa definizione coinvolge i valori della funzinoe 
+solamente sulla retta fissata.
+Ma se $\vec f$ è differenziabile in $\vec x$, visto che $\vec u(t)=\vec x + t\vec v$ 
+è derivabile con derivata $\vec u'(t) = \vec v$ si ha 
+\[
+  \frac{\partial \vec f}{\partial \vec v} (\vec x)
+  = d\vec f_{\vec x}[\vec v]
+  = D\vec f(\vec x) \vec v.
+\]
+E nel caso scalare $m=1$:
+\[
+  \frac{\partial f}{\partial \vec v} (\vec x)
+  = \langle \vec\nabla f(\vec x), \vec v\rangle.
+\]
+
+Si capisce quindi che per determinare il differenziale di una funzione 
+differenziabile è sufficiente 
+calcolare le derivate direzionali negli $n$ vettori di una base.
+In particolare se si scelgono i vettori della base canonica si ottengono
+le cosiddette \emph{derivate parziali}:
+\[
+   \frac{\partial \vec f}{\partial x_k} 
+   = \frac{\partial \vec f}{\partial \vec e_k}
+   = \Enclose{\frac{d}{dt} \vec f(\vec x + t\vec e_k)}_{t=0}.
+\]
+Se poi scriviamo $\vec f = (f_1,\dots,f_m)$ possiamo quindi 
+determinare tutte le componenti della matrice jacobiana:
+\[
+  D\vec f(\vec x)_{jk} = D f_j(\vec x) \vec e_k
+  = \langle \vec\nabla f_j(\vec x),\vec e_k\rangle
+  = (d f_j)_{\vec x}[\vec e_k]
+  = \frac{\partial f_j}{\partial x_k}(\vec x).
+\]
+Dunque 
+\[
+  D\vec f(\vec x) = \begin{pmatrix}
+    \frac{\partial f_1}{\partial x_1} & \dots & \frac{\partial f_1}{\partial x_n}\\
+    \vdots & \ddots & \vdots \\
+    \frac{\partial f_m}{\partial x_1} & \dots & \frac{\partial f_m}{\partial x_n}\\
+  \end{pmatrix}
+\]
+e nel caso $m=1$ 
+\[
+  \vec\nabla f (\vec x) = \begin{pmatrix}
+    \frac{\partial f}{\partial x_1}\\
+    \vdots\\
+    \frac{\partial f}{\partial x_n}
+  \end{pmatrix}.
+\]
+
+Le derivate parziali sono uno strumento molto 
+efficace per calcolare le componenti del differenziale 
+di una funzione di più variabili.
+Il problema è che l'esistenza delle derivate parziali 
+non garantisce la differenziabilità.
+Risulta quindi molto utile il seguente.
+
+\begin{theorem}[del differenziale]
+Sia $A\subset \RR^n$ aperto 
+e sia $\vec f\colon A \to \RR^m$ una funzione 
+tale che per ogni $\vec x\in A$ esistono 
+tutte le derivate parziali $\partial f_k/\partial x_j$
+(si dice a volte: la funzione è \emph{derivabile}).
+Supponiamo inoltre che le derivate parziali siano 
+tutte continue.
+Allora $\vec f$ è differenziabile in ogni punto. 
+\end{theorem}
+\begin{proof}
+\emph{Passo 1:} facciamo il caso $n=2$, $m=1$.
+Scriveremo $(x,y)$ al posto di $\vec x$ 
+e $(x_0,y_0)$ al posto di $\vec x_0$.
+Il vettore obliquo $(x,y)-(x_0,y_0)$ 
+può essere decomposto nella somma dei 
+due vettori paralleli agli assi coordinati
+$(x,y)-(x_0,y)$ e $(x_0,y)-(x_0,y_0)$.
+Alla funzione ristretta 
+alle direzioni orizzontale e verticale possiamo
+applicare il teorema di Lagrange per ottenere
+\begin{align*}
+  f(x,y) - f(x_0,y_0)
+  = f(x,y) - f(x_0,y) + f(x_0,y) - f(x_0,y_0) \\
+  = \frac{\partial f}{\partial x}(\tilde x,y)(x-x_0)
+    + \frac{\partial f}{\partial y}(x_0,\tilde y)(y-y_0)
+\end{align*}
+con $\tilde x \in (x_0,x)$ e $\tilde y\in(y_0,y)$.
+I valori di $\tilde x$ e $\tilde y$ dipendono 
+da $x$ e da $y$, ma tendono rispettivamente 
+a $x_0$ e $y_0$ quando $(x,y)\to (x_0,y_0)$.
+Vogliamo dimostrare che $f$ è differenziabile in $(x_0,y_0)$.
+Se lo è, necessariamente il suo differenziale
+si scriverà nella forma $df[h,k] = h \frac{\partial f}{\partial x} + k \frac{\partial f}{\partial y}$.
+La formula~\eqref{eq:def_differenziale}
+diventa quindi per $(x,y)\to(x_0,y_0)$ si ha 
+\begin{align*}
+  f(x,y) - f(x_0,y_0) 
+  - \frac{\partial f}{\partial x}(x-x_0) - \frac{\partial f}{\partial y}(y-y_0)
+  &= \Enclose{\frac{\partial f}{\partial x}(x_0,y_0) - \frac{\partial f}{\partial x}(\tilde x, y)}(x-x_0)
+  + \Enclose{\frac{\partial f}{\partial y}(x_0,y_0) - \frac{\partial f}{\partial y}(x_0,\tilde y)}(y-y_0)
+  = o(1) (x-x_0) + o(1) (y-y_0)
+\end{align*}
+in quanto per l'ipotesi di continuità delle derivate parziali
+le parentesi quadre tendono a zero quando $(x,y)\to (x_0,y_0)$.
+Osservando infine che $\abs{x-x_0}, \abs{y-y_0}\le \sqrt{(x-x_0)^2 + (y-y_0)^2}$
+si ottiene il risultato voluto.
+
+\emph{Passo 2:} $n>2$, $m=1$.
+Si procede esattamente come nel passo 1, salvo che per 
+passare dal punto $\vec x_0$ al punto $\vec x$ bisogna 
+seguire $n$ segmenti paralleli agli assi su ognuno 
+dei quali si applica il teorema di Lagrange.
+
+\emph{Conclusione.} Se $m>1$ basta applicare il risultato 
+alle componenti $f_1,\dots, f_m$ di $\vec f$ e osservare 
+che la formula \eqref{eq:def_differenziale} è equivalente 
+alle $m$ formule:
+\[
+  f_k(\vec x) = f_k(\vec x_0) + (d f_k)_{\vec x_0}[\vec x-\vec x_0] + o(\abs{\vec x-\vec x_0}).
+\]
 \end{proof}

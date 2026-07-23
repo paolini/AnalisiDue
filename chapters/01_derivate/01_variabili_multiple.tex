@@ -337,7 +337,8 @@ nel caso di dimensione finita.
 L'applicazione lineare $d\vec f_{\vec x_0}\colon \RR^n\to\RR^m$ 
 può essere rappresentata tramite una matrice $m\times n$. 
 Tale matrice si chiama \emph{matrice Jacobiana} e si indica 
-di solito con $D\vec f(\vec x_0)$ (oppure $J_{\vec f}(\vec x_0)$)
+di solito con $D\vec f(\vec x_0)$ (oppure $J_{\vec f}(\vec x_0)$ o anche 
+$\nabla f(\vec x_0)$)
 Si ha quindi
 \[
   d \vec f_{\vec x_0} [\vec v] = Df(\vec x_0) \vec v,
@@ -403,8 +404,8 @@ a \emph{derivabile}.
         + o(\abs{d\vec f_{\vec x_0}[\vec x - \vec x_0] 
           + o(\abs{\vec x - \vec x_0})})\\
     & = \vec g(\vec f(\vec x_0))
-       + d\vec g_{\vec x_0}[d\vec f_{\vec x_0}[\vec x - \vec x_0]]
-       + (\Abs{d \vec g_{\vec x_0}}+\Abs{d \vec f_{\vec x_0}} + 1)\cdot o(\abs{\vec x - \vec x_0})
+       + d\vec g_{\vec x_0}[d\vec f_{\vec x_0}[\vec x - \vec x_0]]\\
+    & \quad + (\Abs{d \vec g_{\vec x_0}}+\Abs{d \vec f_{\vec x_0}} + 1)\cdot o(\abs{\vec x - \vec x_0})
   \end{align*}
   che è la condizione di differenziabilità per $\vec g \circ \vec f$ 
   nel punto $\vec x_0$ con differenziale $d \vec g_{\vec y_0}\circ d \vec f_{\vec x_0}$.
@@ -483,6 +484,12 @@ e nel caso $m=1$
   \end{pmatrix}.
 \]
 
+Si può anche usare una notazione più sintetica che utilizza 
+gli indici per indicare le derivate parziali:
+\[
+   f_{x_k} = \frac{\partial f}{\partial x_k}.
+\]
+
 Le derivate parziali sono uno strumento molto 
 efficace per calcolare le componenti del differenziale 
 di una funzione di più variabili.
@@ -514,8 +521,8 @@ applicare il teorema di Lagrange per ottenere
 \begin{align*}
   f(x,y) - f(x_0,y_0)
   = f(x,y) - f(x_0,y) + f(x_0,y) - f(x_0,y_0) \\
-  = \frac{\partial f}{\partial x}(\tilde x,y)(x-x_0)
-    + \frac{\partial f}{\partial y}(x_0,\tilde y)(y-y_0)
+  = f_x(\tilde x,y)\cdot (x-x_0)
+    + f_y(x_0,\tilde y)\cdot (y-y_0)
 \end{align*}
 con $\tilde x \in (x_0,x)$ e $\tilde y\in(y_0,y)$.
 I valori di $\tilde x$ e $\tilde y$ dipendono 
@@ -523,19 +530,20 @@ da $x$ e da $y$, ma tendono rispettivamente
 a $x_0$ e $y_0$ quando $(x,y)\to (x_0,y_0)$.
 Vogliamo dimostrare che $f$ è differenziabile in $(x_0,y_0)$.
 Se lo è, necessariamente il suo differenziale
-si scriverà nella forma $df[h,k] = h \frac{\partial f}{\partial x} + k \frac{\partial f}{\partial y}$.
+si scriverà nella forma $df[h,k] = h f_x + k f_y$.
 La formula~\eqref{eq:def_differenziale}
-diventa quindi per $(x,y)\to(x_0,y_0)$ si ha 
+diventa quindi per $(x,y)\to(x_0,y_0)$
 \begin{align*}
-  f(x,y) - f(x_0,y_0) 
-  - \frac{\partial f}{\partial x}(x-x_0) - \frac{\partial f}{\partial y}(y-y_0)
-  &= \Enclose{\frac{\partial f}{\partial x}(x_0,y_0) - \frac{\partial f}{\partial x}(\tilde x, y)}(x-x_0)
-  + \Enclose{\frac{\partial f}{\partial y}(x_0,y_0) - \frac{\partial f}{\partial y}(x_0,\tilde y)}(y-y_0)
-  = o(1) (x-x_0) + o(1) (y-y_0)
+  \lefteqn{f(x,y) - f(x_0,y_0) 
+  - f_x(x_0,y_0)\cdot (x-x_0) - f_y(x_0,y_0)\cdot (y-y_0)}\\
+  &= \Enclose{f_x(x_0,y_0) - f_x(\tilde x, y)}(x-x_0)\\
+  & \quad + \Enclose{f_y(x_0,y_0) - f_y(x_0,\tilde y)}(y-y_0)\\
+  & = o(1) (x-x_0) + o(1) (y-y_0)
 \end{align*}
 in quanto per l'ipotesi di continuità delle derivate parziali
 le parentesi quadre tendono a zero quando $(x,y)\to (x_0,y_0)$.
-Osservando infine che $\abs{x-x_0}, \abs{y-y_0}\le \sqrt{(x-x_0)^2 + (y-y_0)^2}$
+Osservando infine che 
+$\abs{x-x_0}, \abs{y-y_0}\le \sqrt{(x-x_0)^2 + (y-y_0)^2}$
 si ottiene il risultato voluto.
 
 \emph{Passo 2:} $n>2$, $m=1$.
@@ -551,4 +559,178 @@ alle $m$ formule:
 \[
   f_k(\vec x) = f_k(\vec x_0) + (d f_k)_{\vec x_0}[\vec x-\vec x_0] + o(\abs{\vec x-\vec x_0}).
 \]
+\end{proof}
+
+\section{derivate successive}
+
+In generale possiamo definire il differenziale di una funzione 
+$f\colon V\to W$
+definita tra spazi vettoriali normati.
+Il differenziale risulta essere allora 
+una funzione $df\colon V \to \L(V,W)$ che manda 
+ogni punto $x\in V$ in cui la funzione è differenziabile
+nell'applicazione lineare $df_x\colon V\to W$.
+Lo spazio $\L(V,W)$ risulta a sua volta essere uno spazio normato
+(dalla norma operatoriale). 
+E' quindi possibile iterativamente differenziare il differenziale.
+
+Nel caso in cui $W=\RR$ il differenziale 
+$df\colon V \to V'$ ha valori nello spazio duale di $V = \L(V,\RR)$
+che, tramite prodotto scalare,
+può essere messo in corrispondenza con $V$ stesso. 
+Il vettore di $V$ che rappresenta il differenziale è il gradiente $\nabla f$:
+$df_{\vec x}[v] = \langle \nabla f, v\rangle$.
+Il differenziale secondo è quindi una funzione $d^2 f\colon V\to \L(V,V')$ 
+che può essere rappresentato tramite una applicazione bilineare 
+$D^2 f$ (o $\nabla^2 f$) per cui si ha
+\[
+   d^2 f_x[v][w] = \langle D^2 f(x) v, w\rangle.
+\]
+La matrice associata a $D^2 f$ si chiama \emph{matrice hessiana}
+(a volte si denota con $Hf$). 
+
+Per le funzioni a valori in $\RR^m$ e per le derivate successive 
+alla seconda la notazione si complica ulteriormente.
+Conviene in tal caso usare i \emph{multi-indici} per indicare tutte le 
+componenti delle derivate successive. 
+Per ogni $j=1,\dots,m$ e per $\vec i = i_1,\dots, i_k = 1,\dots, n$ 
+si considerano le derivate parziali:
+\[
+    f^{(\vec i)}_j = \frac{\partial^k f_j}{\partial x_{i_1} \dots \partial x_{i_k}}.
+\] 
+
+\begin{definition}[classi di regolarità]
+Sia $A\subset \RR^n$ un aperto. 
+Definiamo $C^0(A,\RR^m)$ l'insieme delle funzioni continue
+$\vec f\colon A \to \RR^m$. 
+Per induzione si definisce la classe $C^k(A,\RR^m)$ 
+delle funzioni che hanno tutte le prime $k$ derivate parziali 
+continue:
+\[
+   C^k(A,\RR^m) = \ENCLOSE{\vec f\colon A\to\RR^m\Coloneq
+     \vec f_{x_1}, \dots, \vec f_{x_n} \in C^{k-1}(A,\RR^m)
+   }.
+\]
+
+Si intende poi $C^k(A) = C^k(A,\RR)$.
+\end{definition}
+
+\begin{theorem}[Schwarz]
+Sia $A\subset \RR^n$ un aperto 
+e sia $f\colon A \subset \RR^n \to \RR$.
+Fissati $k,j\in \ENCLOSE{1,\dots,n}$
+supponiamo che in tutti i punti di $A$ esistano le derivate parziali 
+$\frac{\partial f}{\partial x_k}$ 
+e $\frac{\partial f}{\partial x_j}$
+e che a loro volta esistano le derivate seconde miste 
+$\frac{\partial^2 f}{\partial x_j \partial x_k}$
+e $\frac{\partial^2 f}{\partial x_k \partial x_j}$.
+Supponiamo infine che le derivate seconde miste siano continue 
+in un punto $\vec x_0\in A$. Allora sono uguali:
+\[
+ \frac{\partial^2 f}{\partial x_j \partial x_k}(\vec x_0)
+ = \frac{\partial^2 f}{\partial x_k \partial x_j}(\vec x_0).
+\]
+\end{theorem}
+%
+\begin{proof}
+  \emph{Passo 1:} supponiamo $n=2$ e usiamo le variabili $x,y$ invece che 
+  $x_1,x_2$. 
+L'idea è che le derivate seconde miste approssimano l'incremento che si ottiene 
+per andare dal punto $(x_0,y_0)$ al punto $(x,y)$ seguendo due diversi percorsi,
+il primo incrementando prima la $x$ e poi la $y$ e il secondo 
+incrementando prima la $y$ e poi la $x$.
+Consideriamo quindi la seguente identità:
+\[
+\Enclose{f(x,y)-f(x_0,y_0)} - \Enclose{f(x,y_0) - f(x_0,y_0)}
+= \Enclose{f(x,y) - f(x,y_0)} - \Enclose{f(x_0,y) - f(x_0, y_0)}
+\]
+e applichiamo il teorema di Lagrange 
+a sinistra alla funzione $f(x,\cdot) - f(x_0,\cdot)$ nell'intervallo $[y_0,y]$ 
+e a destra alla funzinoe $f(\cdot,y) - f(\cdot,y_0)$ nell'intervallo $[x_0,x]$.
+Si ottiene quindi
+\[
+\Enclose{\frac{\partial f}{\partial y}(x,\tilde y)-\frac{\partial f}{\partial y}(x_0,\tilde y)}(y-y_0)
+= \Enclose{\frac{\partial f}{\partial x}(\tilde x,y)-\frac{\partial f}{\partial x}(\tilde x,y_0)}(x-x_0)
+\]
+per qualche $\tilde x \in (x_0,x)$ e $\tilde y \in (y_0,y)$.
+Applichiamo ora nuovamente il teorema di Lagrange a sinistra
+sull'intervallo $[x_0,x]$ e a destra sull'intervallo $[y_0,y]$ 
+per ottenere
+\[
+\frac{\partial^2 f}{\partial x\partial y}(\hat x,\tilde y)(x-x_0)(y-y_0)
+= \frac{\partial^2 f}{\partial y\partial x}(\tilde x,\hat y)(y-y_0)(x-x_0)
+\]
+ovvero
+\[
+\frac{\partial^2 f}{\partial x\partial y}(\hat x,\tilde y)
+= \frac{\partial^2 f}{\partial y\partial x}(\tilde x,\hat y)
+\]
+per qualche $\hat x \in (x_0,x)$ e $\hat y \in (y_0,y)$.
+
+Per $(x,y)\to(x_0,y_0)$ si ha $\tilde x, \hat x \to x_0$ e $\tilde y, \hat y\to y_0$
+e grazie all'ipotesi di continuità delle derivate seconde miste 
+passando al limite si conclude:
+\[
+\frac{\partial^2 f}{\partial x\partial y}(x_0, y_0)
+= \frac{\partial^2 f}{\partial y\partial x}(x_0, y_0).  
+\]
+
+\emph{Caso generale.}
+Consideriamo la funzione di due variabili ottenuta da $f$ fissando 
+tutte le coordinate diverse da $j$ e $k$ ai valori delle corrispondenti 
+coordinate del punto $\vec x_0$. 
+Si può quindi applicare il passo precedente.
+\end{proof}
+
+\begin{theorem}[Formula di Taylor]
+Sia $A\subset \RR^n$ aperto e 
+sia $f\colon A\subset \RR^n \to \RR$ una funzione di classe $C^2$.
+Allora fissato $\vec x_0\in A$ si ha, per $\vec x \to \vec x_0$
+\begin{equation}\label{eq:taylor_secondo}
+  f(\vec x) = f(\vec x_0) + \langle \vec\nabla f(\vec x_0), \vec x - \vec x_0\rangle 
+  + \frac 1 2 \langle D^2 f(\vec x_0) (\vec x - \vec x_0), \vec x - \vec x_0\rangle
+  + o(\abs{\vec x - \vec x_0}^2).
+\end{equation}
+
+Più in generale, se $f$ è di classe $C^m$ si avrà
+\[
+ f(\vec x) = f(\vec x_0) + \sum_{k=1}^m \frac 1 {k!} d^k f_{\vec x_0}[\vec x-\vec x_0]^k
+  + o(\abs{\vec x - \vec x_0}^k).
+\]
+\end{theorem}
+%
+\begin{proof}
+  \emph{Caso $m=2$ (secondo ordine)}.
+Fissato $\vec x$ (oltre che $\vec x_0$) consideriamo 
+il vettore $\vec v = \vec x - \vec x_0$ e restringiamo la funzione 
+alla retta passante per $\vec x_0$ con direzione $\vec v$.
+Otteniamo una funzione 
+\[
+  g(t) = f(\vec x_0 + t \vec v)
+\]
+le cui derivate sono:
+\begin{align*}
+  g'(t) &= \langle \nabla f(\vec x_0 + t\vec v), \vec v\rangle,\\
+  g''(t) &= \langle D^2 f(\vec x_0+t\vec v)\vec v, \vec v \rangle.
+\end{align*}
+Usando la formula di Taylor con resto di Lagrange per le funzioni di una variabile vista nel 
+corso di Analisi Matematica Uno, si ottiene
+\[
+  g(t) = g(0) + g'(0) t + \frac 1 2 g''(\bar t(\vec x)) t^2
+\]
+per un qualche $\bar t(\vec x)\in (0,t)$. 
+Abbiamo quindi 
+\[
+  f(\vec x) = f(\vec x_0) + \langle \nabla f(x_0), \vec x - \vec x_0\rangle 
+  + \frac 1 2 \langle D^2 f(\vec x_0 + \bar t(\vec x)(\vec x - \vec x_0))(\vec x-\vec x_0), \vec x-\vec x_0\rangle.
+\]
+Visto che per $\vec x \to \vec x_0$ si ha $\bar t(\vec x)\to 0$,
+per la continuità delle derivate seconde
+si ha 
+\[
+  D^2 f(\vec x_0 + \bar t(\vec x)(\vec x - \vec x_0))
+  \to D^2 f(\vec x_0)
+\]
+e dunque segue la tesi.
 \end{proof}

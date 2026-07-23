@@ -16,22 +16,22 @@ Dal prodotto scalare si ottiene la norma euclidea, che induce una metrica e quin
 Riprendiamo brevemente questi concetti.
 \begin{definition}
 L'insieme $\RR^n$ è l'insieme delle $n$-uple (ordinate) di numeri reali 
-$\vec x = (x_1,\dots,x_n)$.
+$ x = (x_1,\dots,x_n)$.
 Le operazioni di addizione e di moltiplicazione per uno scalare $t\in \RR$
 sono definite come segue:
 \begin{align*}
-\vec x + \vec y &= (x_1+y_1,\dots,x_n+y_n)\\
-t \vec x &= (t x_1,\dots,t x_n).
+ x +  y &= (x_1+y_1,\dots,x_n+y_n)\\
+t  x &= (t x_1,\dots,t x_n).
 \end{align*}
 Con queste operazioni $\RR^n$ risulta essere uno spazio vettoriale reale di dimensione $n$.
 
 Possiamo definire il prodotto scalare canonico di $\RR^n$ come segue:
 \[
-\vec x \cdot \vec y = x_1 y_1 + \dots + x_n y_n.
+ x \cdot  y = x_1 y_1 + \dots + x_n y_n.
 \]
-La norma euclidea di $\vec x$ è definita come
+La norma euclidea di $ x$ è definita come
 \[
-\abs{\vec x} = \sqrt{\vec x\cdot \vec x} = \sqrt{x_1^2 + \dots + x_n^2}.
+\abs{ x} = \sqrt{ x\cdot  x} = \sqrt{x_1^2 + \dots + x_n^2}.
 \]
 \end{definition}
 
@@ -40,17 +40,17 @@ le coordinate di $\RR^2$ come $x$ e $y$ e le coordinate di $\RR^3$ come $x$, $y$
 (invece che $(x_1,x_2)$ e $(x_1,x_2,x_3)$).
 
 Considereremo funzioni con dominio in $A\subset \RR^n$ e codominio $\RR^m$. 
-Scriveremo $\vec f\colon A \subset \RR^n \to \RR^m$.
-Avremo quindi $\vec y = \vec f(\vec x)$ con $\vec x =(x_1,\dots,x_n)\in A$ e $\vec y = (y_1,\dots,y_m)\in \RR^m$.
+Scriveremo $ f\colon A \subset \RR^n \to \RR^m$.
+Avremo quindi $ y =  f( x)$ con $ x =(x_1,\dots,x_n)\in A$ e $ y = (y_1,\dots,y_m)\in \RR^m$.
 Nel caso $m=1$ la funzione si dice scalare, 
 mentre nel caso $m>1$ la funzione si dice vettoriale.
 Nel caso $n=1$ la funzione si dice di una variabile, 
 mentre nel caso $n>1$ la funzione si dice di 
 più variabili ($n$ variabili per la precisione).
-Una funzione vettoriale $\vec f$ può essere identificata con una 
+Una funzione vettoriale $ f$ può essere identificata con una 
 $m$-upla di funzioni scalari $f_1,\dots,f_m$ definite su $A$:
 \[
-  \vec f(x_1, \dots, x_n) = \begin{pmatrix}
+   f(x_1, \dots, x_n) = \begin{pmatrix}
     f_1(x_1,\dots, x_n) \\
     \vdots \\
     f_m(x_1,\dots, x_n)
@@ -58,49 +58,49 @@ $m$-upla di funzioni scalari $f_1,\dots,f_m$ definite su $A$:
 \]
 
 Se $I\subset \RR$ è un intervallo, 
-una funzione $\vec u\colon I\subset \RR \to \RR^n$ si chiama 
+una funzione $ u\colon I\subset \RR \to \RR^n$ si chiama 
 \emph{curva}. 
 Se pensiamo a $t\in I$ come il \emph{tempo}, la funzione 
-$t\mapsto \vec u(t)$ rappresenta la dinamica di un punto 
+$t\mapsto  u(t)$ rappresenta la dinamica di un punto 
 che si muove nello spazio $\RR^n$.
-L'immagine della funzione $\vec u(I) = \ENCLOSE{\vec u(t)\colon t\in I}$
-si chiama \emph{traiettoria} del punto $\vec u(t)$ o \emph{supporto}
-della curva $\vec u$.
-A volte si denota con $[\vec u]$.
+L'immagine della funzione $ u(I) = \ENCLOSE{ u(t)\colon t\in I}$
+si chiama \emph{traiettoria} del punto $ u(t)$ o \emph{supporto}
+della curva $ u$.
+A volte si denota con $[ u]$.
 
-Se ad esempio fissiamo un punto $\vec x_0\in \RR^n$ 
-e un vettore $\vec v\in \RR^n$, la curva $\vec u(t) = \vec x_0 + t \vec v$
+Se ad esempio fissiamo un punto $ x_0\in \RR^n$ 
+e un vettore $ v\in \RR^n$, la curva $ u(t) =  x_0 + t  v$
 rappresenta il moto rettilineo uniforme di un punto che al tempo $t=0$ 
-si trova in posizione $x_0$ e che si muove con velocità $\vec v$.
-Il supporto di $\vec u$ è in questo caso una retta passante per $x_0$ 
-con direttrice $\vec v$.
+si trova in posizione $x_0$ e che si muove con velocità $ v$.
+Il supporto di $ u$ è in questo caso una retta passante per $x_0$ 
+con direttrice $ v$.
 
 Per ricondursi allo studio di funzioni di una variabile 
 è spesso utile studiare la composizione della funzione di più variabili 
 con opportune curve. 
-Se $\vec f\colon A \subset \RR^n\to \RR^m$ e $\vec u\colon I\subset \RR\to A\subset \RR^n$ 
-possiamo considerare la funzione $\vec g\colon I \to \RR^m$ 
-data da $\vec g(t) = \vec f(\vec u(t))$. 
-Si avrà $\vec g = (g_1,\dots, g_m)$ con $g_k(t) = f_k(\vec u(t))$
-dove $\vec f = (f_1,\dots, f_m)$. 
+Se $ f\colon A \subset \RR^n\to \RR^m$ e $ u\colon I\subset \RR\to A\subset \RR^n$ 
+possiamo considerare la funzione $ g\colon I \to \RR^m$ 
+data da $ g(t) =  f( u(t))$. 
+Si avrà $ g = (g_1,\dots, g_m)$ con $g_k(t) = f_k( u(t))$
+dove $ f = (f_1,\dots, f_m)$. 
 In definitiva le funzioni $g_k\colon I\subset \RR \to \RR$ 
 sono funzioni scalari di una variabile, e le possiamo studiare 
 come si è fatto nel corso di Analisi Matematica Uno.
 
 \begin{example}[funzioni lineari]
-Fissato $\vec w \in \RR^n$ consideriamo la funzione 
+Fissato $ w \in \RR^n$ consideriamo la funzione 
 lineare $f \colon \RR^n \to \RR$ definita da 
 \[
-   f(\vec x) = (\vec x , \vec w).
+   f( x) = ( x ,  w).
 \]  
-Fissato $\vec q\in \RR^n$ e $\vec v \in \RR^n$ consideriamo la retta (parametrizzata da)
-$\vec u(t) = t \vec v + \vec q$.
+Fissato $ q\in \RR^n$ e $ v \in \RR^n$ consideriamo la retta (parametrizzata da)
+$ u(t) = t  v +  q$.
 Si avrà allora 
 \[
-  f(\vec u(t)) = (t \vec v + \vec q, \vec w) = t (\vec v,\vec w) + (\vec q, \vec w).
+  f( u(t)) = (t  v +  q,  w) = t ( v, w) + ( q,  w).
 \]
-Si osserva ad esempio che se $\vec v$ è ortogonale a $\vec w$,
-cioè $(\vec v, \vec w)=0$, si ha $f(\vec u(t))= (\vec q, \vec v)$ è costante.
+Si osserva ad esempio che se $ v$ è ortogonale a $ w$,
+cioè $( v,  w)=0$, si ha $f( u(t))= ( q,  v)$ è costante.
 Abbiamo trovato una \emph{curva di livello}, cioè una curva su 
 cui $f$ risulta costante.
 \end{example}
@@ -111,16 +111,16 @@ La norma euclidea definisce una metrica e quindi una topologia
 su $\RR^n$. 
 
 \begin{definition}[topologia]
-Dato $\vec x \in \RR^n$ e $\rho>0$, la palla aperta di raggio $\rho$ centrata in $\vec x$ è
+Dato $ x \in \RR^n$ e $\rho>0$, la palla aperta di raggio $\rho$ centrata in $ x$ è
 \[
-B_\rho(\vec x) = \{\vec y \in \RR^n : \abs{\vec y - \vec x} < \rho\}.
+B_\rho( x) = \{ y \in \RR^n : \abs{ y -  x} < \rho\}.
 \]
 
-Se esiste $\rho>0$ per cui $B_\rho(\vec x) \subset A$, diremo che $\vec x$ è un punto interno di $A$
-e diremo che $A$ è un intorno di $\vec x$.
-Possiamo dunque definire la famiglia di intorni di $\vec x$ come segue:
+Se esiste $\rho>0$ per cui $B_\rho( x) \subset A$, diremo che $ x$ è un punto interno di $A$
+e diremo che $A$ è un intorno di $ x$.
+Possiamo dunque definire la famiglia di intorni di $ x$ come segue:
 \[
-  \mathcal U_x = \ENCLOSE{U\subset \RR^n\colon \exists \rho>0\colon B_\rho(\vec x) \subset U}.
+  \mathcal U_x = \ENCLOSE{U\subset \RR^n\colon \exists \rho>0\colon B_\rho( x) \subset U}.
 \]
 
 La \emph{parte interna} di $A$ è l'insieme dei punti interni di $A$.
@@ -129,22 +129,22 @@ Un sottoinsieme $A\subset \RR^n$ si dice aperto se
 
 Un sottoinsieme $A\subset \RR^n$ si dice chiuso se il suo complementare $\RR^n\setminus A$ è aperto.
 
-Un punto $\vec x\in \RR^n$ si dice essere un punto di accumulazione per $A$ 
-se ogni intorno di $\vec x$ contiene almeno un punto di $A$ diverso da $\vec x$.
+Un punto $ x\in \RR^n$ si dice essere un punto di accumulazione per $A$ 
+se ogni intorno di $ x$ contiene almeno un punto di $A$ diverso da $ x$.
 \end{definition}
 
-Una successione $\vec a_k\in \RR^n$ è una funzione $\vec a \colon \NN\to \RR^n$.
-Ogni punto $\vec a_k$ è una $n$-upla: $\vec a_k = ((a_k)_1,\dots, (a_k)_n) \in \RR^n$.
+Una successione $ a_k\in \RR^n$ è una funzione $ a \colon \NN\to \RR^n$.
+Ogni punto $ a_k$ è una $n$-upla: $ a_k = ((a_k)_1,\dots, (a_k)_n) \in \RR^n$.
 
-Una successione $\vec a_k$ converge ad un punto $\vec x\in \RR^n$ 
-se $\abs{\vec a_k - \vec x}\to 0$.
-Scriveremo in tal caso $\vec a_k \to \vec x$ (per $k\to +\infty$).
-Notiamo che $\abs{\vec a_k-\vec x}$ è una successione di numeri reali 
+Una successione $ a_k$ converge ad un punto $ x\in \RR^n$ 
+se $\abs{ a_k -  x}\to 0$.
+Scriveremo in tal caso $ a_k \to  x$ (per $k\to +\infty$).
+Notiamo che $\abs{ a_k- x}$ è una successione di numeri reali 
 non negativi, e dunque l'abbiamo già studiata nel corso di \emph{Analisi Matematica Uno}.
 In particolare, se espandiamo la definizione di limite, si vede 
-che $\vec a_k \to \vec x$ significa:
+che $ a_k \to  x$ significa:
 \[
- \forall \eps>0\, \exists N\in \NN\, \forall k\ge N\colon \abs{\vec a_k- \vec x} < \eps.
+ \forall \eps>0\, \exists N\in \NN\, \forall k\ge N\colon \abs{ a_k-  x} < \eps.
 \]
 
 \begin{definition}[continuità]
@@ -191,285 +191,364 @@ La dimostrazione è la stessa già vista nel corso di Analisi Matematica Uno.
 
 \section{differenziale}
 
+Se $V$ e $W$ sono spazi vettoriali
+denotiamo con $\L(V,W)$ lo spazio vettoriale delle funzioni lineari 
+e continue da $V$ in $W$.
+Se $V$ ha dimensione infinita non serve richiedere la continuità, 
+che è sempre garantita dal seguente.
 
 \begin{theorem}[continuità delle applicazioni lineari]
   \label{th:lineare_continua}
-Ogni applicazinoe lineare $L\colon \RR^n\to \RR^m$ 
+Ogni applicazione lineare $L\colon \RR^n\to \RR^m$ 
 è continua.
 \end{theorem}
 %
 \begin{proof}
-Sia $\vec e_1,\dots, \vec e_n$ la base canonica di $\RR^n$.
+Sia $ e_1,\dots,  e_n$ la base canonica di $\RR^n$.
 Consideriamo
 \[
-  M = \max\ENCLOSE{\abs{L[\vec e_1]}, \dots, \abs{[L\vec e_n]}}.
+  M = \max\ENCLOSE{\abs{L[ e_1]}, \dots, \abs{[L e_n]}}.
 \]
-Si ha allora, per ogni $\vec x\in \RR^n$,
+Si ha allora, per ogni $ x\in \RR^n$,
 \[
-  \abs{L[\vec x]}
-  =\abs{L[x_1 \vec e_1 + \dots + x_n \vec e_n]}
-  \le \abs{x_1 L[\vec e_1]} + \dots + \abs{x_n L[\vec e_n]}
-  \le nM\abs{\vec x}.
+  \abs{L[ x]}
+  =\abs{L[x_1  e_1 + \dots + x_n  e_n]}
+  \le \abs{x_1 L[ e_1]} + \dots + \abs{x_n L[ e_n]}
+  \le nM\abs{ x}.
 \]
-Dunque per $\vec x \to 0$ si ha $\abs{L[\vec x]}\to 0$.
+Dunque per $ x \to 0$ si ha $\abs{L[ x]}\to 0$.
 Significa che $L$ è continua in $0$.
 
 Ma in ogni altro punto si ha 
 \[
-  L[\vec x] - L[\vec x_0] = L[\vec x - \vec x_0] 
+  L[ x] - L[ x_0] = L[ x -  x_0] 
 \]
-e dunque se $\vec x\to \vec x_0$ si ottiene che $L[\vec x]\to L[\vec x_0]$.
+e dunque se $ x\to  x_0$ si ottiene che $L[ x]\to L[ x_0]$.
 \end{proof}
 
 \begin{definition}[norma operatoriale]
 Sia $L\colon \RR^n \to \RR^m$ una applicazione lineare.
 Definiamo la \emph{norma} di $L$ come:
   \[
-  \Abs{L} = \sup \ENCLOSE{\abs{L[\vec x]}\colon \abs{\vec x}\le 1}.
+  \Abs{L} = \sup \ENCLOSE{\abs{L[ x]}\colon \abs{ x}\le 1}.
   \]
+
+Si noti che essendo $L[v]-L[w] = L[v-w]$ per linearità di $L$, 
+la costante $\Abs L$ non è altro che la costante di Lipschitz di $L$.
 \end{definition}
 
 \begin{theorem}[proprietà della norma operatoriale]
-Sia $L\colon \RR^n \to \RR^m$ una applicazione lineare. 
-Allora 
-\begin{enumerate}
-\item $\Abs L < +\infty$;
-\item $\Abs L$ è la costante ottimale per cui vale 
-la stima:
-\begin{equation}
-  \label{eq:stima_norma_operatoriale}  
-  \abs{L[\vec v]} \le \Abs L \cdot \abs {\vec v},
-  \qquad \forall \vec v \in \RR^n,
-\end{equation}
+  Sia $L\colon V \to W$ una applicazione lineare. 
+  Allora 
+  \begin{enumerate}
+    \item $\Abs L < +\infty$;
+    \item $\Abs {tL} = \abs{t}\cdot \Abs{L}$ per ogni $t\in \RR$;
+    \item $\Abs{L+M} \le \Abs L + \Abs M$ per ogni $M\in \L(\RR^n,\RR^m)$;
+    \item se $\Abs L = 0$ allora $L=0$; 
+    \item $\Abs L$ è la costante ottimale per cui vale 
+    la stima:
+    \begin{equation}
+      \label{eq:stima_norma_operatoriale}  
+      \abs{L[ v]} \le \Abs L \cdot \abs { v},
+      \qquad \forall  v \in \RR^n,
+    \end{equation}
 
-inoltre esiste $\vec v\in\RR^n$ per cui vale 
-l'uguaglianza;
-\item se $M\colon \RR^m \to \RR^k$ è un'altra applicazinoe 
-lineare si ha 
-\[
-  \Abs{M\circ L} \le \Abs M \cdot \Abs L.
-\]
-\end{enumerate}
+    inoltre esiste $ v\in\RR^n$ per cui vale 
+    l'uguaglianza;
+    \item se $M\in \L(W,U)$ è un'altra applicazinoe 
+    lineare si ha 
+    \[
+      \Abs{M\circ L} \le \Abs M \cdot \Abs L.
+    \]
+  \end{enumerate}
 \end{theorem}
 %
 \begin{proof}
 Per il teorema~\ref{th:lineare_continua} la funzione $\abs{L}$ è continua,
 dunque per il teorema di Weiestrass ammette massimo sul disco
-unitario $\ENCLOSE{\vec x \in \RR^n\colon \abs{x}\le 1}$.
+unitario $\ENCLOSE{ x \in \RR^n\colon \abs{x}\le 1}$.
 Dunque $\Abs{L}\in \RR$ è finito ed è realizzato 
 su un vettore di norma unitaria.
-Se $t\in \RR$ e $\vec v$ è unitario si ha
+Se $t\in \RR$ e $ v$ è unitario si ha
 \[
-  \abs{L[t\vec v]} = \abs{t}\cdot \abs{L[\vec v]}
-  \le \abs{t}\cdot \Abs L \cdot \abs{\vec v} 
-  = \Abs L \cdot \abs{t\vec v}
+  \abs{L[t v]} = \abs{t}\cdot \abs{L[ v]}
+  \le \abs{t}\cdot \Abs L \cdot \abs{ v} 
+  = \Abs L \cdot \abs{t v}
 \]
-da cui si ottiene~\ref{eq:stima_norma_operatoriale}.
-Per l'ultimo punto osserviamo che per ogni $\vec v\in \RR^n$ si ha 
+da cui si ottiene anche~\ref{eq:stima_norma_operatoriale}.
+Ovviamente se $\Abs L=0$ si ottiene $L[v]=0$ per ogni $v\in V$ 
+e dunque $L=0$.
+La condizione $\Abs{L+M}\le \Abs{L} + \Abs{M}$ 
+discende direttamente dalle proprietà del $\sup$, ricordando 
+che per definizione $(L+M)[v] = L[v] + M[v]$.
+Per l'ultimo punto osserviamo che per ogni $ v\in \RR^n$ si ha 
 \[
-  \Abs{ML[\vec v]} = \Abs{M[L[\vec v]]}
-  \le \Abs{M}\cdot \abs{L[\vec v]}
-  \le \Abs{M}\cdot \Abs{L}\abs{\vec v}.
+  \Abs{ML[ v]} = \Abs{M[L[ v]]}
+  \le \Abs{M}\cdot \abs{L[ v]}
+  \le \Abs{M}\cdot \Abs{L}\abs{ v}.
 \]
-Passando al $\sup$ sui $\vec v$ unitari si ottiene il risultato.
+Passando al $\sup$ sui $ v$ unitari si ottiene il risultato.
 \end{proof}
 
-\begin{definition}[differenziabilità]
-  Sia $\vec f\colon A \subset \RR^n \to \RR^m$ e sia $\vec x_0\in A$.
-  Diremo che $f$ è differenziabile in $\vec x_0$ se esiste 
-  una applicazione lineare $d \vec f_{\vec x_0}\colon \RR^n \to \RR^m$ tale che 
+\begin{definition}[differenziale di Fréchet]
+  Siano $V$ e $W$ spazi vettoriali normati.
+  Sia $f\colon A \subset V \to W$ e sia $x_0\in A$.
+  Diremo che $f$ è differenziabile in $x_0$ se esiste 
+  $L\in \L(V,W)$ tale che 
   \begin{equation}\label{eq:def_differenziale}
-    \vec f(\vec x) = \vec f(\vec x_0) + d\vec f_{\vec x_0}[\vec x- \vec x_0] + o(\abs{\vec x - \vec x_0}), 
-    \qquad \text{per } \vec x\to \vec x_0.
+    f(x) = f(x_0) + L[x- x_0] + o(\abs{x - x_0}), 
+    \qquad \text{per } x\to x_0.
   \end{equation}
-  L'applicazione lineare $d \vec f_{\vec x_0}$ si 
-  chiama \emph{differenziale} di $\vec f$ nel punto $\vec x_0$.
+  L'applicazione lineare $L$
+  si chiama \emph{differenziale} di $f$ nel punto $x_0$
+  e si denota con $Df(x_0)$.
 \end{definition}
 
+\begin{remark}
+Le notazioni per le derivate delle funzioni di più variabili cambiano 
+a seconda degli ambiti di applicazione in maniera spesso incoerente.
+Invece che $Df(x_0)$ si può usare il simbolo $\nabla f(x_0)$ oppure,
+nell'ambito della geometria differenziale, il simbolo $df_{x_0}$. 
+Cercheremo in questo testo di mantenere una notazione coerente, ma
+invitiamo il lettore a comprendere che testi diversi possono avere 
+notazioni diverse. 
+\end{remark}
+
 \begin{theorem}[proprietà delle funzioni differenziabili]
-Sia $\vec f\colon A\subset \RR^n \to \RR^m$ una funzione 
-differenziabile nel punto $\vec x_0\in A$. Allora
+Sia $f\colon A\subset V \to W$ una funzione 
+differenziabile nel punto $x_0\in A$. Allora
 \begin{enumerate}
-  \item $\vec f$ è continua in $\vec x_0$;
-  \item se $\vec x_0$ è un punto interno di $A$
+  \item $f$ è continua in $x_0$;
+  \item se $x_0$ è un punto interno di $A$
   il differenziale è unico
 \end{enumerate}
 \end{theorem}
 \begin{proof}
 Visto che le applicazioni lineari sono continue
-si ha $d\vec f_{\vec x_0}[\vec x - \vec x_0]\to 0$ per $\vec x \to \vec x_0$
+si ha $Df(x_0)[x -  x_0]\to 0$ per $x \to x_0$
 e dunque dalla definizione~\eqref{eq:def_differenziale} 
-si ottiene che $\vec f(\vec x) - \vec f(\vec x_0)\to \vec 0$
-per $\vec x \to \vec x_0$. 
+si ottiene che $f(x) - f(x_0)\to 0$
+per $x \to x_0$. 
 
-Siano ora $L$ e $M$ due differenziali di $\vec f$ in $\vec x_0$
-e sia $\vec v$ un qualunque vettore unitario.
-Prendendo la formula~\eqref{eq:def_differenziale}
-prima con $L$ e poi con $M$ al posto di $d \vec f_{\vec x_0}$,
-e facendone la differenza, si ottiene
+Siano ora $L,M\in \L(V,W)$ che soddisfano entrambi la condizione~\eqref{eq:def_differenziale}
+e sia $v\in V$ un qualunque vettore unitario.
+Facendo la differenza si ottiene
 \[
-  (L-M)[\vec x - \vec x_0] = o(\abs{\vec x-\vec x_0}), 
-  \qquad \text{per } \vec x \to \vec x_0.
+  (L-M)[x - x_0] = o(\abs{x-x_0}), 
+  \qquad \text{per } x \to x_0.
 \]
-Preso $\vec x = \vec x_0 + t\vec v$ osserviamo che essendo $\vec x_0$ interno 
+Preso $x =  x_0 + t v$ osserviamo che essendo $ x_0$ interno 
 ad $A$ avremo che per $t$ sufficientemente piccolo si ha effettivamente 
-$\vec x \in A$. 
-Dunque, per $t\to 0$ si ha $\vec x \to \vec x_0$ e quindi
+$ x \in A$. 
+Dunque, per $t\to 0$ si ha $ x \to  x_0$ e quindi
 \[
-  (L-M)[t \vec v] = o(\abs{t}\cdot \abs{\vec v}) = o(t) = t o(1)
+  (L-M)[t  v] = o(\abs{t}\cdot \abs{ v}) = o(t) = t o(1)
 \] 
 da cui 
 \[
-  (L-M)[\vec v] = o(1).
+  (L-M)[ v] = o(1).
 \]
 Visto che il lato sinistro non dipende da $t$ 
-significa che $(L-M)[\vec v]=0$ per ogni $\vec v$ unitario.
+significa che $(L-M)[ v]=0$ per ogni $ v$ unitario.
 Questo significa che $L-M = 0$ ovvero $L=M$.
 \end{proof}
 
-La precedente definizione poteva ugualmente essere data 
-per funzioni definite tra due spazi normati astratti.
-Se lo spazio di partenza non avesse avuto dimensione finita 
-si richiede usualmente che il differenziale $d\vec f_{\vec x_0}$ 
-sia continuo (oltre che lineare), cosa che risulta automatica
-nel caso di dimensione finita.
+Se $V$ ha dimensione finita, scelta una base $e_1,\dots, e_n$ di $V$ 
+è possibile mettere in corrispondenza $V$ con $\RR^n$ tramite 
+un isomorfismo che associa ad ogni $v\in V$ la $n$-upla delle sue coordinate $x=(x_1,\dots,x_n)$ 
+rispetto alla base scelta.
+Per questo non è riduttivo supporre che dominio e codominio siano
+$V=\RR^n$ e $W=\RR^m$, nel qual caso le coordinate coincidono con i vettori.
+Se $f\colon \RR^n \to \RR^m$ per ogni $x\in \RR^n$ l'applicazione lineare 
+$Df(x)\colon \RR^n \to \RR^m$ 
+si identifica con una matrice $m\times n$
+che con lieve abuso di notazione denoteremo sempre con $Df(x_0)$
+(potremmo usare la notazione $df_{x_0}$ per denotare specificatamente 
+l'applicazione lineare).
+Dunque $Df(x_0)[v] = Df(x_0)\, v$ si può intendere come prodotto matrice/vettore.
+La matrice $Df$ si chiama \emph{matrice Jacobiana} 
+e a volte si denota con $J_f( x_0)$.
 
-L'applicazione lineare $d\vec f_{\vec x_0}\colon \RR^n\to\RR^m$ 
-può essere rappresentata tramite una matrice $m\times n$. 
-Tale matrice si chiama \emph{matrice Jacobiana} e si indica 
-di solito con $D\vec f(\vec x_0)$ (oppure $J_{\vec f}(\vec x_0)$ o anche 
-$\nabla f(\vec x_0)$)
-Si ha quindi
-\[
-  d \vec f_{\vec x_0} [\vec v] = Df(\vec x_0) \vec v,
-  \qquad \text{per ogni } \vec v\in \RR^n.
-\]
-
-Nel caso $m=1$, cioè $f\colon A\subset \RR^n\to \RR$, la matrice Jacobiana
+Nel caso $m=1$, cioè $f\colon \RR^n \to \RR$, la matrice Jacobiana
 è formata da una singola riga e si identifica quindi con un 
 vettore di $\RR^n$. 
 Tale vettore si chiama \emph{gradiente} di $f$ e si indica con 
-$\vec\nabla f(\vec x_0)$. 
+$\nabla f(x)$. 
 Si ha dunque
 \[
-  d f_{\vec x_0}[\vec v] = \langle \vec\nabla f(\vec x_0), \vec v\rangle.
+  Df(x)\, v = \langle \nabla f(x), v\rangle.
 \]
 
-In generale si può scrivere $\vec f = (f_1,\dots,f_m)$ con $f_k\colon \RR^n \to \RR$
-e si troverà quindi che le righe della matrice $D\vec f$ jacobiana di $\vec f$
-sono i vettori gradiente $\vec\nabla f_1, \dots, \vec\nabla f_m$.
+In generale se $f\colon \RR^n \to \RR^m$ 
+si può scrivere $f = (f_1,\dots,f_m)$ con $f_k\colon \RR^n \to \RR$
+e si troverà quindi che le righe della matrice $Df$ jacobiana di $f$
+sono i vettori gradiente $\nabla f_1, \dots, \nabla f_m$.
 
-Nel caso $n=m=1$, cioè $\vec f\colon A\subset \RR\to\RR^m$, $x_0\in A$,
+Nel caso $n=m=1$, cioè $ f\colon A\subset \RR\to\RR^m$, $x\in A$,
 la matrice Jacobiana è formata da una singola colonna che si denota con
-$\vec f'(x_0) \in \RR^n$.
-Il differenziale si scrive nella forma $d\vec f_{x_0}[h] = h \vec f'(x_0)$.
+$f'(x) \in \RR^n$.
+Il differenziale si scrive nella forma $Df(x)[h] = h f'(x_0)$.
 La definizione di differenziale diventa
 \[
- \vec f(x) = \vec f(x_0) + \vec f'(x_0)\cdot (x-x_0) + o(x-x_0)
+  f(x) =  f(x_0) +  f'(x_0)\cdot (x-x_0) + o(x-x_0)
 \] 
 che è equivalente a 
 \[
-  \frac{\vec f(x) - \vec f(x_0)}{x-x_0} = \vec f'(x_0) + o(1)
+  \frac{ f(x) -  f(x_0)}{x-x_0} =  f'(x_0) + o(1)
 \]
 cioè la definizione di derivata vista nel corso di Analisi Matematica Uno.
 Per le funzioni di una variabile \emph{differenziabile} è quindi equivalente 
-a \emph{derivabile}. 
+a \emph{derivabile}.
+
+\begin{example}\label{ex:48993}
+  Si consideri la funzione $f\colon \RR^2\to \RR$, $f(x,y)=(x-1)(y+2)$.
+  Si ha 
+  \[
+  f(x,y) = -2 + 2x - y + xy
+   = f(0,0) + \langle(2,-1),(x,y)\rangle + xy.
+  \]
+  Visto che $\abs{xy} \le x^2+y2 = o(\sqrt{x^2+y^2})$
+  abbiamo verificato che $f$ è differenziabile nel punto $(0,0)$ 
+  e che $\nabla f(0,0) = (2,-1)$.
+\end{example}
 
 \begin{theorem}[differenziale della composizione]
-  Sia $\vec f\colon A \subset \RR^n \to B\subset \RR^k$,
-  $\vec g\colon B\subset \RR^k \to \RR^m$, $x_0\in A$.
-  Se $\vec f$ è differenziabile in $\vec x_0$ 
-  e $\vec g$ è differenziabile in $\vec y_0 = \vec f(\vec x_0)$ 
-  allora la funzione composta $\vec g\circ \vec f\colon A \subset \RR^n \to \RR^m$
-  è differenziabile in $\vec x_0$ e si ha 
+  Sia $ f\colon A \subset \RR^n \to B\subset \RR^k$,
+  $ g\colon B\subset \RR^k \to \RR^m$, $x_0\in A$.
+  Se $ f$ è differenziabile in $x_0$ 
+  e $ g$ è differenziabile in $y_0 =  f(x_0)$ 
+  allora la funzione composta $g\circ  f\colon A \subset \RR^n \to \RR^m$
+  è differenziabile in $x_0$ e si ha 
   \[
-    d (\vec g \circ \vec f)_{\vec x_0} 
-    = d\vec g_{\vec y_0}\circ d\vec f_{\vec x_0}.
+    D (g \circ  f)(x_0) 
+    = D g(y_0) D f(x_0).
   \]
+  Dove il prodotto a secondo membro indica la composizione 
+  delle applicazioni lineari ovvero il prodotto delle matrici corrispondenti.
 \end{theorem}
 %
 \begin{proof}
-  Facendo il cambio di variabile $\vec y = \vec f(x)$ nella formula~\eqref{eq:def_differenziale}
-  per $\vec g$
-  e inserendo la formula stessa per $\vec f$
-  si ottiene
+  Facendo il cambio di variabile $y = f(x)$ nella formula~\eqref{eq:def_differenziale}
+  applicata a $g$ nel punto $y_0$
+  e inserendo la formula corrispondente per $f$ nel punto $x_0$ si ottiene
   \begin{align*}
-    \vec g(\vec f(\vec x)) 
-    & = \vec g(\vec y_0) 
-        + d\vec g_{\vec y_0}[\vec f(\vec x)-\vec f(\vec x_0)]
-        + o(\abs{\vec f(\vec x)- \vec f(\vec x_0)})\\
-    & = \vec g(\vec f(\vec x_0)) 
-        + d\vec g_{\vec x_0}[d\vec f_{\vec x_0}[\vec x - \vec x_0] 
-          + o(\abs{\vec x - \vec x_0})]
-        + o(\abs{d\vec f_{\vec x_0}[\vec x - \vec x_0] 
-          + o(\abs{\vec x - \vec x_0})})\\
-    & = \vec g(\vec f(\vec x_0))
-       + d\vec g_{\vec x_0}[d\vec f_{\vec x_0}[\vec x - \vec x_0]]\\
-    & \quad + (\Abs{d \vec g_{\vec x_0}}+\Abs{d \vec f_{\vec x_0}} + 1)\cdot o(\abs{\vec x - \vec x_0})
+     g(f(x)) 
+    & =  g( y_0) 
+        + D g(y_0)[ f(x)- f(x_0)]
+        + o(\abs{f(x)-  f(x_0)})\\
+    & =  g(y_0) 
+        + D g(x_0)[D f(x_0)[x - x_0] 
+          + o(\abs{ x - x_0})]
+        + o(\abs{D f(x_0)[x - x_0] 
+          + o(\abs{x - x_0})})\\
+    & =  g(f(x_0))
+       + Dg(x_0)[Df(x_0)[x - x_0]]
+       + (\Abs{Dg(x_0} + \Abs{Df(x_0)} + 1)\cdot o(\abs{ x -  x_0})
   \end{align*}
-  che è la condizione di differenziabilità per $\vec g \circ \vec f$ 
-  nel punto $\vec x_0$ con differenziale $d \vec g_{\vec y_0}\circ d \vec f_{\vec x_0}$.
+  che è la condizione di differenziabilità per $ g \circ  f$ 
+  nel punto $ x_0$ con differenziale $Dg(y_0) Df(x_0)$.
 \end{proof}
 
 Nel caso particolare in cui 
-$\vec f\colon A\subset \RR^n \to \RR^m$ e $\vec u\colon I\subset \RR\to A\subset \RR^n$,
+$f\colon A\subset \RR^n \to \RR^m$ e $u\colon I\subset \RR\to A\subset \RR^n$,
 la formula per la derivata della funzione composta diventa
 \[
-  \frac{d}{dt} \vec f(\vec u(t))
-  = d\vec f_{\vec u(t)}[\vec u'(t)]
-  = D\vec f(\vec u(t))\vec u'(t)
+  \frac{d}{dt}  f(u(t))
+  = Df(u(t))[u'(t)]
 \]
 che nel caso $m=1$ si può anche scrivere usando il gradiente
 \[
-  \frac{d}{dt} f(\vec u(t))
-  = \langle \vec\nabla f(\vec u(t)),\vec u'(t)\rangle.
+  \frac{d}{dt} f(u(t))
+  = \langle \nabla f( u(t)), u'(t)\rangle.
 \]
 
-Dato $\vec v\in\RR^n$ possiamo considerare la retta con direzione $\vec v$
-passante per un punto $\vec x\in \RR^n$: $\vec u(t) = \vec x + t\vec v$.
-Definiamo allora la \emph{derivata direzionale} di $\vec f$ nel punto $\vec x$
-in direzione $\vec v$ come:
+Dato $v\in\RR^n$ possiamo considerare la retta con direzione $v$
+passante per un punto $x\in \RR^n$: $u(t) =  x + t v$.
+Definiamo allora la \emph{derivata direzionale} di $f$ nel punto $x$
+in direzione $v$ come la derivata della funzione composta:
 \[
-   \frac{\partial \vec f}{\partial \vec v}(\vec x)
-   = \Enclose{\frac {d}{dt} \vec f(\vec u(t))}_{t=0}.
+   \frac{\partial  f}{\partial  v}(x)
+   = \Enclose{\frac {d}{dt}  f(u(t))}_{t=0}.
 \]
-E' possibile che la derivata direzionale esista anche se la funzione $\vec f$ 
+E' possibile che la derivata direzionale esista anche se la funzione $f$ 
 non è differenziabile, perché questa definizione coinvolge i valori della funzinoe 
-solamente sulla retta fissata.
-Ma se $\vec f$ è differenziabile in $\vec x$, visto che $\vec u(t)=\vec x + t\vec v$ 
-è derivabile con derivata $\vec u'(t) = \vec v$ si ha 
+solamente sulla retta scelta.
+Ma se $f$ è differenziabile in $x$, visto che $u(t)= x + t v$ 
+è derivabile con derivata $u'(t) =  v$ si ha 
 \[
-  \frac{\partial \vec f}{\partial \vec v} (\vec x)
-  = d\vec f_{\vec x}[\vec v]
-  = D\vec f(\vec x) \vec v.
+  \frac{\partial f}{\partial v} (x)
+  = Df(x) [v].
 \]
 E nel caso scalare $m=1$:
 \[
-  \frac{\partial f}{\partial \vec v} (\vec x)
-  = \langle \vec\nabla f(\vec x), \vec v\rangle.
+  \frac{\partial f}{\partial  v} ( x)
+  = \langle \nabla f(x),  v\rangle.
 \]
 
-Si capisce quindi che per determinare il differenziale di una funzione 
+\begin{example}
+Si consideri la funzione $f(x,y) = (x-1)(y+2)$.
+Scelto $v=(\alpha,\beta)\in \RR^2$ possiamo calcolare
+\[
+\frac{\partial f}{\partial v}(0,0)
+= \frac{d}{dt}\Enclose{(\alpha t-1)(\beta t+2)}_{t=0}
+= \frac{d}{dt}\Enclose{-2 + (2\alpha-\beta)t + \alpha\beta t^2}_{t=0}
+= \Enclose{2\alpha-\beta + 2\alpha\beta t}_{t=0}
+= 2\alpha-\beta.
+\]
+Effettivamente sapendo dall'esempio~\ref{ex:48993}
+che $\nabla f(0,0) = (2,-1)$ si verifica che 
+\[
+  2\alpha - \beta = \langle \nabla f(0,0),(\alpha,\beta)\rangle. 
+\]
+\end{example}
+
+\begin{example}
+Si consideri la funzione $f\colon \RR^2\to\RR$ definita da 
+\[
+  f(x,y) = \begin{cases}
+    \frac{x^2 y}{x^2+y^2} &\text{se } (x,y)\neq (0,0)\\
+    0 &\text{se } (x,y)=(0,0).
+  \end{cases}
+\]
+Se fissiamo un qualunque un vettore $v=(\alpha,\beta)$ possiamo facilmente 
+calcolare la derivata direzionale nel punto $(0,0)$:
+\[
+  \frac{\partial f}{\partial v}(0,0) 
+  = \frac{d}{dt}\Enclose{f(\alpha t,\beta t)}_{t=0}
+  = \frac{d}{dt}\Enclose{\frac{\alpha^2\beta}{\alpha^2+\beta^2} t}_{t=0}
+  = \frac{\alpha^2 \beta}{\alpha^2+\beta^2}.
+\]
+Osserviamo che in questo caso $\frac{\partial f}{\partial v}$ non 
+è lineare in $v$ e quindi $f$ non può essere differenziabile in $(0,0)$.
+\end{example}
+
+Si capisce che per determinare il differenziale di una funzione 
 differenziabile è sufficiente 
-calcolare le derivate direzionali negli $n$ vettori di una base.
+calcolare le derivate direzionali lungo gli $n$ vettori di una base.
 In particolare se si scelgono i vettori della base canonica si ottengono
 le cosiddette \emph{derivate parziali}:
 \[
-   \frac{\partial \vec f}{\partial x_k} 
-   = \frac{\partial \vec f}{\partial \vec e_k}
-   = \Enclose{\frac{d}{dt} \vec f(\vec x + t\vec e_k)}_{t=0}.
+   \frac{\partial  f}{\partial x_k} 
+   = \frac{\partial  f}{\partial  e_k}
+   = \Enclose{\frac{d}{dt}  f( x + t e_k)}_{t=0}
+   = \frac{d}{dx_k} f(x_1, \dots, x_k, \dots, x_n)
 \]
-Se poi scriviamo $\vec f = (f_1,\dots,f_m)$ possiamo quindi 
+Calcolare le derivate parziali è molto semplice perché 
+si tratta di derivare la funzione $x_k \mapsto f(x_1,\dots,x_n)$
+come se fosse una funzione di una sola variabile, $x_k$, mentre 
+le altre variabili $x_j$ con $j\neq k$ vanno considerate costanti.
+
+Se poi scriviamo $f = (f_1,\dots,f_m)$ possiamo quindi 
 determinare tutte le componenti della matrice jacobiana:
 \[
-  D\vec f(\vec x)_{jk} = D f_j(\vec x) \vec e_k
-  = \langle \vec\nabla f_j(\vec x),\vec e_k\rangle
-  = (d f_j)_{\vec x}[\vec e_k]
-  = \frac{\partial f_j}{\partial x_k}(\vec x).
+  \enclose{D f( x)}_{jk} = D f_j( x)\,  e_k
+  = \langle \nabla f_j( x), e_k\rangle
+  = (d f_j)_{ x}[ e_k]
+  = \frac{\partial f_j}{\partial x_k}( x).
 \]
 Dunque 
 \[
-  D\vec f(\vec x) = \begin{pmatrix}
+  D f( x) = \begin{pmatrix}
     \frac{\partial f_1}{\partial x_1} & \dots & \frac{\partial f_1}{\partial x_n}\\
     \vdots & \ddots & \vdots \\
     \frac{\partial f_m}{\partial x_1} & \dots & \frac{\partial f_m}{\partial x_n}\\
@@ -477,15 +556,15 @@ Dunque
 \]
 e nel caso $m=1$ 
 \[
-  \vec\nabla f (\vec x) = \begin{pmatrix}
+  \nabla f ( x) = \begin{pmatrix}
     \frac{\partial f}{\partial x_1}\\
     \vdots\\
     \frac{\partial f}{\partial x_n}
   \end{pmatrix}.
 \]
 
-Si può anche usare una notazione più sintetica che utilizza 
-gli indici per indicare le derivate parziali:
+Useremo anche una notazione più compatta che utilizza 
+gli indici per le derivate parziali:
 \[
    f_{x_k} = \frac{\partial f}{\partial x_k}.
 \]
@@ -499,18 +578,18 @@ Risulta quindi molto utile il seguente.
 
 \begin{theorem}[del differenziale]
 Sia $A\subset \RR^n$ aperto 
-e sia $\vec f\colon A \to \RR^m$ una funzione 
-tale che per ogni $\vec x\in A$ esistono 
+e sia $ f\colon A \to \RR^m$ una funzione 
+tale che per ogni $ x\in A$ esistono 
 tutte le derivate parziali $\partial f_k/\partial x_j$
-(si dice a volte: la funzione è \emph{derivabile}).
+(la funzione è \emph{derivabile}).
 Supponiamo inoltre che le derivate parziali siano 
 tutte continue.
-Allora $\vec f$ è differenziabile in ogni punto. 
+Allora $ f$ è differenziabile in ogni punto. 
 \end{theorem}
 \begin{proof}
 \emph{Passo 1:} facciamo il caso $n=2$, $m=1$.
-Scriveremo $(x,y)$ al posto di $\vec x$ 
-e $(x_0,y_0)$ al posto di $\vec x_0$.
+Scriveremo $(x,y)$ al posto di $ x$ 
+e $(x_0,y_0)$ al posto di $ x_0$.
 Il vettore obliquo $(x,y)-(x_0,y_0)$ 
 può essere decomposto nella somma dei 
 due vettori paralleli agli assi coordinati
@@ -536,9 +615,9 @@ diventa quindi per $(x,y)\to(x_0,y_0)$
 \begin{align*}
   \lefteqn{f(x,y) - f(x_0,y_0) 
   - f_x(x_0,y_0)\cdot (x-x_0) - f_y(x_0,y_0)\cdot (y-y_0)}\\
-  &= \Enclose{f_x(x_0,y_0) - f_x(\tilde x, y)}(x-x_0)\\
-  & \quad + \Enclose{f_y(x_0,y_0) - f_y(x_0,\tilde y)}(y-y_0)\\
-  & = o(1) (x-x_0) + o(1) (y-y_0)
+  &= \Enclose{f_x(x_0,y_0) - f_x(\tilde x, y)}(x-x_0)
+   + \Enclose{f_y(x_0,y_0) - f_y(x_0,\tilde y)}(y-y_0)\\
+  & = o(1) \cdot (x-x_0) + o(1) \cdot (y-y_0)
 \end{align*}
 in quanto per l'ipotesi di continuità delle derivate parziali
 le parentesi quadre tendono a zero quando $(x,y)\to (x_0,y_0)$.
@@ -548,71 +627,133 @@ si ottiene il risultato voluto.
 
 \emph{Passo 2:} $n>2$, $m=1$.
 Si procede esattamente come nel passo 1, salvo che per 
-passare dal punto $\vec x_0$ al punto $\vec x$ bisogna 
+passare dal punto $ x_0$ al punto $ x$ bisogna 
 seguire $n$ segmenti paralleli agli assi su ognuno 
 dei quali si applica il teorema di Lagrange.
 
 \emph{Conclusione.} Se $m>1$ basta applicare il risultato 
-alle componenti $f_1,\dots, f_m$ di $\vec f$ e osservare 
+alle componenti $f_1,\dots, f_m$ di $ f$ e osservare 
 che la formula \eqref{eq:def_differenziale} è equivalente 
 alle $m$ formule:
 \[
-  f_k(\vec x) = f_k(\vec x_0) + (d f_k)_{\vec x_0}[\vec x-\vec x_0] + o(\abs{\vec x-\vec x_0}).
+  f_k( x) = f_k( x_0) + (d f_k)_{ x_0}[ x- x_0] + o(\abs{ x- x_0}).
 \]
 \end{proof}
+
+\begin{example}
+Si consideri la funzione $f(x,y) = (x-1)(y+2)$.
+Allora si ha
+\[
+f_x(x,y) = \frac{d}{dx} f(x,y) = y + 2, 
+\quad f_y(x,y) = \frac{d}{dy} f(x,y) = x - 1.
+\]
+Visto che le derivate parziali sono continue la funzione 
+risulta essere differenziabile e $\nabla f(x,y) = (y+2,x-1)$.
+\end{example}
+
+\begin{example}
+Si consideri la funzione $f(x,y) = (x-1)(y+2)$ 
+e la curva $u(t) = (t, t^2)$.
+Si ha 
+\[
+ \frac{d}{dt}f(u(t)) 
+  = \Enclose{(t-1)(t^2+2)}'
+  = (t^3 - t^2 + 2t - 2)'
+  = 3t^2 - 2t + 2.
+\]
+Tralasciando le dipendenze si scriverà più semplicemente
+$f = (x-1)(y+2)$, $x=t$, $y=t^2$.
+La formula per la derivata della funzione composta
+diventa quindi
+\begin{align*}
+  \frac{df}{dt} 
+  &= \frac{\partial f}{\partial x}\cdot \frac{dx}{dt}
+  + \frac{\partial f}{\partial y}\cdot \frac{dy}{dt} \\
+  &= (y+2) + (x-1) 2t = t^2 + 2 + (t - 1)2t \\
+  &= 3t^2 - 2t + 2. 
+\end{align*}
+
+Visto che $x=t$ possiamo anche più direttamente scrivere $y=x^2$.
+In tal caso si scriverà
+\begin{align*}
+  \frac{df}{dx} 
+  &= \frac{\partial f}{\partial x}
+  + \frac{\partial f}{\partial y}\cdot \frac{dy}{dx} \\
+  &= (y+2) + (x-1) 2x = x^2 + 2 + (x - 1)2x \\
+  &= 3x^2 - 2x + 2.
+\end{align*}
+e si capisce quindi la necessità di distinguere tra derivata parziale 
+$\frac{\partial f}{\partial x}$ e derivata totale $\frac{df}{dx}$.
+\end{example}
 
 \section{derivate successive}
 
 In generale possiamo definire il differenziale di una funzione 
-$f\colon V\to W$
-definita tra spazi vettoriali normati.
+$f\colon V\to W$ definita tra due spazi vettoriali normati $V$ e $W$.
 Il differenziale risulta essere allora 
 una funzione $df\colon V \to \L(V,W)$ che manda 
 ogni punto $x\in V$ in cui la funzione è differenziabile
-nell'applicazione lineare $df_x\colon V\to W$.
+nell'applicazione lineare e continua $Df(x) \in \L(V,W)$.
 Lo spazio $\L(V,W)$ risulta a sua volta essere uno spazio normato
 (dalla norma operatoriale). 
 E' quindi possibile iterativamente differenziare il differenziale.
 
-Nel caso in cui $W=\RR$ il differenziale 
-$df\colon V \to V'$ ha valori nello spazio duale di $V = \L(V,\RR)$
-che, tramite prodotto scalare,
-può essere messo in corrispondenza con $V$ stesso. 
+Nel caso in cui $W = \RR$ si definisce $V ' = \L(V,\RR)$ (lo spazio duale) 
+e dunque il differenziale $Df$ è a sua volta una funzione $Df\colon V \to V'$. 
+Lo spazio duale può essere messo in corrispondenza con $V$ se 
+rappresentiamo ogni $L \in V'$ mediante un vettore $\xi \in V$ 
+tramite il prodotto scalare su $V$: $L[v] = \langle \xi, v\rangle$.
 Il vettore di $V$ che rappresenta il differenziale è il gradiente $\nabla f$:
-$df_{\vec x}[v] = \langle \nabla f, v\rangle$.
-Il differenziale secondo è quindi una funzione $d^2 f\colon V\to \L(V,V')$ 
-che può essere rappresentato tramite una applicazione bilineare 
-$D^2 f$ (o $\nabla^2 f$) per cui si ha
+$Df{x}[v] = \langle \nabla f, v\rangle$.
+Il differenziale del differenziale in ogni punto è una funzione lineare $D^2 f(x)\in \L(V,V')$
+ovvero $D^2 f \colon V \to \L(V,V')$. 
+Un elemento di $\L(V,V')$ rappresenta una forma bilineare 
+perché ad ogni $v \in V$ viene associata una applicazione lineare 
+che ad ogni $w\in V$ restituisce uno scalare:
 \[
-   d^2 f_x[v][w] = \langle D^2 f(x) v, w\rangle.
+  D^2 f(x)[v,w] 
+  = \langle D^2 f(x)[v], w\rangle
+  = \frac{\partial^2 f}{\partial w \partial v}(x).
 \]
-La matrice associata a $D^2 f$ si chiama \emph{matrice hessiana}
-(a volte si denota con $Hf$). 
-
-Per le funzioni a valori in $\RR^m$ e per le derivate successive 
-alla seconda la notazione si complica ulteriormente.
-Conviene in tal caso usare i \emph{multi-indici} per indicare tutte le 
-componenti delle derivate successive. 
-Per ogni $j=1,\dots,m$ e per $\vec i = i_1,\dots, i_k = 1,\dots, n$ 
-si considerano le derivate parziali:
+Dunque $D^2f(x)$ si rappresenta mediante una matrice 
+chiamata \emph{matrice hessiana} le cui componenti 
+sono
 \[
-    f^{(\vec i)}_j = \frac{\partial^k f_j}{\partial x_{i_1} \dots \partial x_{i_k}}.
-\] 
+  \enclose{D^2 f(x)}_{jk}
+  = D^2 f(x)[e_j,e_k] = \frac{\partial^2 f}{\partial x_k \partial x_j}
+\]
+ovvero
+\[
+  D^2 f = \begin{pmatrix}
+    \frac{\partial^2 f}{(\partial x_1)^2}, \dots, \frac{\partial^2 f}{\partial x_n \dots \partial x_1} \\
+    \vdots, \ddots, \vdots \\
+    \frac{\partial^2 f}{\partial x_n \partial x_1}, \dots, \frac{\partial^2 f}{(\partial x_n)^2}
+  \end{pmatrix}.
+\]
+
+Per le derivate $k$-esime il differenziale $D^k f$ rappresenta
+una forma $k$-lineare $(v_1, \dots, v_k) \mapsto D^k f(x)[v_1, \dots, v_k]$
+e si rappresenta mediante un tensore a $k$ indici.
 
 \begin{definition}[classi di regolarità]
 Sia $A\subset \RR^n$ un aperto. 
 Definiamo $C^0(A,\RR^m)$ l'insieme delle funzioni continue
-$\vec f\colon A \to \RR^m$. 
+$ f\colon A \to \RR^m$. 
 Per induzione si definisce la classe $C^k(A,\RR^m)$ 
 delle funzioni che hanno tutte le prime $k$ derivate parziali 
 continue:
 \[
-   C^k(A,\RR^m) = \ENCLOSE{\vec f\colon A\to\RR^m\Coloneq
-     \vec f_{x_1}, \dots, \vec f_{x_n} \in C^{k-1}(A,\RR^m)
+   C^k(A,\RR^m) = \ENCLOSE{ f\colon A\to\RR^m\colon
+      f_{x_1}, \dots,  f_{x_n} \in C^{k-1}(A,\RR^m)
    }.
 \]
+Definiamo inoltre
+\[
+  C^\infty(A, \RR^m) = \ENCLOSE{ f\colon A\to \RR^m\colon 
+  f\in C^k(A,\RR^m)\,\forall k\in \NN}.
+\]
 
-Si intende poi $C^k(A) = C^k(A,\RR)$.
+Si intende poi $C^k(A) = C^k(A,\RR)$, $C^\infty(A) = C^\infty(A,\RR)$.
 \end{definition}
 
 \begin{theorem}[Schwarz]
@@ -626,10 +767,10 @@ e che a loro volta esistano le derivate seconde miste
 $\frac{\partial^2 f}{\partial x_j \partial x_k}$
 e $\frac{\partial^2 f}{\partial x_k \partial x_j}$.
 Supponiamo infine che le derivate seconde miste siano continue 
-in un punto $\vec x_0\in A$. Allora sono uguali:
+in un punto $ x_0\in A$. Allora sono uguali:
 \[
- \frac{\partial^2 f}{\partial x_j \partial x_k}(\vec x_0)
- = \frac{\partial^2 f}{\partial x_k \partial x_j}(\vec x_0).
+ \frac{\partial^2 f}{\partial x_j \partial x_k}( x_0)
+ = \frac{\partial^2 f}{\partial x_k \partial x_j}( x_0).
 \]
 \end{theorem}
 %
@@ -642,12 +783,13 @@ il primo incrementando prima la $x$ e poi la $y$ e il secondo
 incrementando prima la $y$ e poi la $x$.
 Consideriamo quindi la seguente identità:
 \[
+\scriptstyle
 \Enclose{f(x,y)-f(x_0,y_0)} - \Enclose{f(x,y_0) - f(x_0,y_0)}
 = \Enclose{f(x,y) - f(x,y_0)} - \Enclose{f(x_0,y) - f(x_0, y_0)}
 \]
 e applichiamo il teorema di Lagrange 
 a sinistra alla funzione $f(x,\cdot) - f(x_0,\cdot)$ nell'intervallo $[y_0,y]$ 
-e a destra alla funzinoe $f(\cdot,y) - f(\cdot,y_0)$ nell'intervallo $[x_0,x]$.
+e a destra alla funzione $f(\cdot,y) - f(\cdot,y_0)$ nell'intervallo $[x_0,x]$.
 Si ottiene quindi
 \[
 \Enclose{\frac{\partial f}{\partial y}(x,\tilde y)-\frac{\partial f}{\partial y}(x_0,\tilde y)}(y-y_0)
@@ -679,58 +821,126 @@ passando al limite si conclude:
 \emph{Caso generale.}
 Consideriamo la funzione di due variabili ottenuta da $f$ fissando 
 tutte le coordinate diverse da $j$ e $k$ ai valori delle corrispondenti 
-coordinate del punto $\vec x_0$. 
+coordinate del punto $ x_0$. 
 Si può quindi applicare il passo precedente.
 \end{proof}
+
+\begin{example}
+Si consideri la funzione $f(x,y,z) = (x+y^2) \sin z$.
+Si ha
+\[
+ f_x = \sin z, \qquad
+ f_y = 2 y \sin z, \qquad
+ f_z = (x+y^2)\cos z
+\]
+e
+\begin{gather*}
+  f_{xx} = 0, \qquad
+  f_{xy} = 0, \qquad 
+  f_{xz} = \cos z \\
+  f_{yx} = 0, \qquad 
+  f_{yy} = 2 \sin z, \qquad
+  f_{yz} = 2y \cos z\\
+  f_{zx} = \cos z, \qquad
+  f_{zy} = 2y\cos z, \qquad
+  f_{zz} = -(x+y^2)\sin z.
+\end{gather*}
+Dunque abbiamo verificato che le derivate 
+seconde commutano: $f_{xy}=f_{yz}$, $f_{xz}=f_{zx}$,
+$f_{yz}=f_{zy}$
+e la matrice hessiana è simmetrica:
+\[
+ D^2 f(x,y) = \begin{pmatrix}
+  0 & 0 & \cos z\\
+  0 & 2\sin z & 2y \cos z \\
+  \cos z & 2y \cos z & -(x+y^2)\sin z
+ \end{pmatrix}.
+\]
+\end{example}
 
 \begin{theorem}[Formula di Taylor]
 Sia $A\subset \RR^n$ aperto e 
 sia $f\colon A\subset \RR^n \to \RR$ una funzione di classe $C^2$.
-Allora fissato $\vec x_0\in A$ si ha, per $\vec x \to \vec x_0$
+Allora fissato $ x_0\in A$ si ha, per $ x \to  x_0$
 \begin{equation}\label{eq:taylor_secondo}
-  f(\vec x) = f(\vec x_0) + \langle \vec\nabla f(\vec x_0), \vec x - \vec x_0\rangle 
-  + \frac 1 2 \langle D^2 f(\vec x_0) (\vec x - \vec x_0), \vec x - \vec x_0\rangle
-  + o(\abs{\vec x - \vec x_0}^2).
+  f( x) = f( x_0) + \langle \nabla f( x_0),  x -  x_0\rangle 
+  + \frac 1 2 \langle D^2 f( x_0) ( x -  x_0),  x -  x_0\rangle
+  + o(\abs{ x -  x_0}^2).
 \end{equation}
 
 Più in generale, se $f$ è di classe $C^m$ si avrà
 \[
- f(\vec x) = f(\vec x_0) + \sum_{k=1}^m \frac 1 {k!} d^k f_{\vec x_0}[\vec x-\vec x_0]^k
-  + o(\abs{\vec x - \vec x_0}^k).
+ f(x) = f(x_0) + \sum_{k=1}^m \frac 1 {k!} D^k f(x_0)[x- x_0, \dots, x-x_0]
+  + o(\abs{ x -  x_0}^k).
 \]
 \end{theorem}
 %
 \begin{proof}
-  \emph{Caso $m=2$ (secondo ordine)}.
-Fissato $\vec x$ (oltre che $\vec x_0$) consideriamo 
-il vettore $\vec v = \vec x - \vec x_0$ e restringiamo la funzione 
-alla retta passante per $\vec x_0$ con direzione $\vec v$.
+\emph{Caso $m=2$ (secondo ordine)}.
+Fissato $ x$ (oltre che $ x_0$) consideriamo 
+il vettore $ v =  x -  x_0$ e restringiamo la funzione 
+alla retta passante per $ x_0$ con direzione $ v$.
 Otteniamo una funzione 
 \[
-  g(t) = f(\vec x_0 + t \vec v)
+  g(t) = f( x_0 + t  v)
 \]
 le cui derivate sono:
 \begin{align*}
-  g'(t) &= \langle \nabla f(\vec x_0 + t\vec v), \vec v\rangle,\\
-  g''(t) &= \langle D^2 f(\vec x_0+t\vec v)\vec v, \vec v \rangle.
+  g'(t) &= \langle \nabla f( x_0 + t v),  v\rangle,\\
+  g''(t) &= \langle D^2 f( x_0+t v)[v],  v \rangle.
 \end{align*}
 Usando la formula di Taylor con resto di Lagrange per le funzioni di una variabile vista nel 
 corso di Analisi Matematica Uno, si ottiene
 \[
-  g(t) = g(0) + g'(0) t + \frac 1 2 g''(\bar t(\vec x)) t^2
+  g(t) = g(0) + g'(0) t + \frac 1 2 g''(\bar t( x)) t^2
 \]
-per un qualche $\bar t(\vec x)\in (0,t)$. 
+per un qualche $\bar t( x)\in (0,t)$. 
 Abbiamo quindi 
 \[
-  f(\vec x) = f(\vec x_0) + \langle \nabla f(x_0), \vec x - \vec x_0\rangle 
-  + \frac 1 2 \langle D^2 f(\vec x_0 + \bar t(\vec x)(\vec x - \vec x_0))(\vec x-\vec x_0), \vec x-\vec x_0\rangle.
+  f( x) = f( x_0) + \langle \nabla f(x_0),  x -  x_0\rangle 
+  + \frac 1 2 \langle D^2 f( x_0 + \bar t( x)(x -  x_0))[x- x_0],  x- x_0\rangle.
 \]
-Visto che per $\vec x \to \vec x_0$ si ha $\bar t(\vec x)\to 0$,
+Visto che per $ x \to  x_0$ si ha $\bar t( x)\to 0$,
 per la continuità delle derivate seconde
 si ha 
 \[
-  D^2 f(\vec x_0 + \bar t(\vec x)(\vec x - \vec x_0))
-  \to D^2 f(\vec x_0)
+  D^2 f( x_0 + \bar t( x)( x -  x_0))
+  \to D^2 f( x_0)
 \]
 e dunque segue la tesi.
+
+\emph{Caso generale.}
+La dimostrazione è analoga, con una discreta complicazione delle notazioni.
 \end{proof}
+
+\section{ottimizzazione}
+
+Data una funzione $f \colon A\subset \RR^n \to \RR$ ci poniamo 
+il problema di determinare eventuali punti di massimo e minimo di $f$ 
+su $A$.
+
+Se $x_0\in A$ diremo che $x_0\in A$ è un minimo assoluto (o globale) 
+di $f$ su $A$ se $f(x_0) \le f(x)$ per ogni $x\in A$. 
+Diremo che è un massimo assoluto se $f(x_0)\ge f(x)$ per ogni $x\in A$.
+Diremo che $x_0$ è un punto di massimo (o minimo) relativo (o locale)
+se è un massimo (o minimo) assoluto per $f$ in un intorno di $x_0$.
+
+\begin{theorem}[condizioni al primo ordine]
+Sia $f\colon A\subset \RR^n \to \RR$ e sia $x_0$ un punto 
+di massimo o minimo relativo di $f$.
+Se $x_0$ è un punto interno di $A$ e se $f$ è derivabile in $x_0$ 
+allora $\nabla f(x_0)=0$.
+Un punto $x_0$ in cui si ha $\nabla f(x_0) = 0$ si chiama 
+\emph{punto critico}.
+\end{theorem}
+\begin{proof}
+Se $x_0$ è minimo (o massimo) relativo per $f$
+allora la funzione $g_k(t) = f(x_0+te_k)$ ha minimo (o massimo)
+relativo nel punto $t=0$. 
+Tale funzione è definita in un intorno di $t=0$ dunque 
+per i criteri già visti nel corso di Analisi Matematica Uno
+si deve avere $g_k'(0)=0$. 
+Ma $g'_k(0) = \frac{\partial f}{\partial x_k}(x_0)$
+Questo è vero per ogni $k=1,\dots,n$, si ottiene quindi $\nabla f(x_0)=0$.
+\end{proof}
+

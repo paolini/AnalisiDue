@@ -141,3 +141,106 @@ dunque la tesi $(L v_k, w_j) = 0$ è verificata per ogni $k\neq j$.
 \end{proof}
 
 
+\section{discesa lungo il gradiente (algorito discreto)}
+
+Sia $f\colon \RR^n\to \RR$ una funzione di classe $C^1$
+coerciva (cioè $f(x)\to +\infty$ per $\abs{x}\to +\infty$).
+Per il teorema di Weiestrass generalizzato sappiamo che 
+$f$ ammette minimo.
+
+Il metodo di discesa lungo il gradiente è un algoritmo
+usato per determinare tale minimo. 
+L'idea è quella di partire da un punto $x$ qualunque
+(possibilmente vicino al minimo) e cercare il minimo
+muovendosi lungo la semiretta uscente da $x$ in direzinoe 
+$-\nabla f(x)$. 
+Sappiamo che questa è la direzione di massima discesa 
+e quindi ci aspettiamo di avvicinarci al punto di minimo.
+
+La funzione $g(t) = f(x-t\nabla f(x))$
+tende a $+\infty$ per $t\to +\infty$, 
+dunque per il teorema di Weiestrass generalizzato, 
+in una variabile, ammette minimo assoluto 
+per $t\in [0,+\infty)$. 
+Denotiamo con $\bar t(x)$ tale punto di minimo assoluto.
+\end{lemma}
+
+Fissato allora $x_0\in \RR^n$ possiamo costruire 
+una successione definita ricorsivamente da
+\begin{equation}\label{eq:discesa_discreta}
+  x_{n+1} = x_n - \bar t(x_n) \nabla f(x_n). 
+\end{equation}
+
+\begin{theorem}
+Sia $f\colon \RR^n\to \RR$ una funzione di classe $C^1$
+coerciva. 
+Sia $x_n$ una successione definita per ricorrenza 
+tramite~\eqref{eq:discesa_discreta}. Allora
+\begin{enumerate}
+  \item $\langle x_{n+2}-x_{n+1}, x_{n+1}-x_n\rangle =0$ per ogni $n\in\NN$;
+  \item $f(x_n)$ è decrescente;
+  \item $x_n$ è limitata e quindi ha punti di accumulazione;
+  \item se $\bar x$ è un punto di accumulazione 
+  per $x_n$ allora $\nabla f(\bar x)=0$.
+\end{enumerate}
+
+In particolare se $f$ ha un unico punto critico 
+la successione converge a tale punto.
+\end{theorem}
+%
+\begin{proof}
+Visto che $f(x_{n+1})$ è il minimo della funzione ristretto 
+ad una semiretta uscente da $x_n$ è ovvio che $f(x_{n+1})\le f(x_n)$
+dunque esiste $\ell = \lim f(x_n)$. 
+Inoltre $\ell\in \RR$ in quanto $f(x_n)$ è decrescente e $f$ è inferiormente 
+limitata.
+Dunque anche $x_n$ è limitata perché altrimenti si avrebbe $\limsup f(x_n)=+\infty$ 
+per la coercività.
+
+Se $\nabla f(x_n)\neq 0$ la funzione
+$g(t) = f(x_n - t \nabla f(x_n))$ 
+ha derivata negativa in per $t=0$, infatti 
+$g'(0) = \langle \nabla f(x_n), -\nabla f(x_n)\rangle < 0$
+e quindi $g(t)<g(0)$ in un intorno destro di $t=0$.
+Significa che in tal caso $f(x_{n+1}) < f(x_n)$.
+Viceversa se $\nabla f(x_n)=0$ si ha $x_{n+1}=x_n$ e la successione
+rimane definitivamente nel punto critico (per cui il teorema è dimostrato).
+
+Possiamo dunque assumere che $\nabla f(x_n)\neq 0$ per ogni $n\in \NN$ 
+e che quindi $f(x_n)$ sia strettamente decrescente.
+Se $g(t) = f(x_n - t \nabla f(x_n))$
+sappiamo che nel punto $\bar t(x_n)>0$ la funzione $g(t)$
+ha minimo e quindi $g'(\bar t(x_n))=0$.
+Ma
+\[
+  g'(t) 
+    = - \langle \nabla f(x_n - t\nabla f(x_n)), \nabla f(x_n)\rangle
+\]
+e dunque $\langle \nabla f(x_{n+1}), \nabla f(x_n)\rangle=0$
+da cui segue $\langle x_{n+2} - x_{n+1}, x_{n+1}-x_n\rangle=0$.
+
+\emph{Affermazione:}
+se $\nabla f(\bar x)\neq 0$ esiste $\rho>0$
+tale che per ogni $x\in B_\rho(\bar x)$ 
+esiste $t>0$ tale che $f(x-t\nabla f(x)) \le f(\bar x)$.
+
+Sia $C=\ENCLOSE{x\colon 2\langle x-\bar x,-\nabla f(\bar x)\rangle > \abs{x-\bar x}}$ il cono 
+di ampiezza 120 gradi centrato in $\bar x=0$ con asse in direzione $-\nabla f(\bar x)$.
+Esiste $R>0$ sufficientemente piccolo per cui 
+se $x\in C\cap B_R(\bar x)$ si ha $\langle \nabla f(x),\nabla f(\bar x)\rangle >0$
+e quindi essendo $\langle \nabla f(x),x-\bar x\rangle < 0$
+si ottiene $f(x) \le f(\bar x)$.
+Ora basta osservare che se $\rho>0$ è sufficientemente piccolo 
+per ogni $x\in B_\rho(\bar x)$ la semiretta $x - t \nabla f(x)$
+incontra certamente $C\cap B_R(\bar x)$ visto che la direzione 
+è interna al cono, e la distanza dal vertice è piccola. 
+Questo conclude la dimostrazione della affermazione.
+
+Ora se $\bar x$ è un punto di accumulazione per la succesione $x_n$ 
+e se fosse $\nabla f(\bar x)\neq 0$,
+ci sarebbe un $x_n$ sufficientemente vicino a $\bar x$ in modo che 
+per un qualche $t>0$ si avrebbe $f(x_{n+1})\le f(x_n+t \nabla f(x)) \le f(\bar x)$.
+Ma $f(\bar x) = \liminf f(x_n) = \ell$ e quindi si ottiene un assurdo 
+avendo assunto che $f(x_n)$ è strettamente decrescente.
+Deve quindi essere $\nabla f(\bar x) = 0$.
+\end{proof}

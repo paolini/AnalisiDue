@@ -1,136 +1,147 @@
 \section{invertibilità locale e funzione implicita}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{theorem}[inversione locale]
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-Sia $\Omega$ un aperto di $\RR^n$, $f\in \CC^1(\Omega,\RR^n)$,
-sia $x_0\in \Omega$ e supponiamo che $Df(x_0)$ 
-sia una matrice invertibile.
-Allora esiste un intorno $U$ di $x_0$ e un intorno $V$ di $f(x_0)$
-per cui $f(U)=V$ e
+\begin{theorem}[Lagrange vettoriale]
+  \label{th:lagrange}
+Sia $\Omega\subset \RR^n$ un aperto convesso, 
+sia $\vec f\colon \Omega\to \RR^m$ una funzione differenziabile.
+Allora dati $\vec x,\vec y \in \Omega$, $\vec x\neq \vec y$, 
+esiste $\vec z \in [\vec x,\vec y]$ (il segmento che congiunge $\vec x$ e $\vec y$)
+tale che 
 \[
-        f_{|U}\colon U\to V
+ \abs{\vec f(\vec y)- \vec f(\vec x)}^2
+ =  D\vec f(\vec z)[\vec y-\vec x]\cdot (\vec f(\vec y)-\vec f(\vec x)).
 \]
-\`e bigettiva, la sua inversa $f^{-1}\colon V\to U$ \`e differenziabile e se $f(x)=y$ (con $x\in
-U$) si ha
+In particolare si ha 
 \[
-        D(f^{-1}(y))=(Df(x))^{-1}.
+\abs{\vec f(\vec y)- \vec f(\vec x)}
+\le \max_{\vec z\in [\vec x,\vec y]} \abs{D\vec f(\vec z)} \cdot \abs{\vec y-\vec x}.
+\]
+\end{theorem}
+\begin{proof}
+Basta applicare il teorema di Lagrange
+alla funzione $g\colon[0,1]\to \RR$
+\begin{align*}
+  g(t) &= \langle f(\vec x + t(\vec y-\vec x)), f(\vec y)-f(\vec x)\rangle
+  g'(t) &= \langle Df(\vec x + t(\vec y - \vec x))[\vec y - \vec x], f(\vec y) - f(\vec x)\rangle
+\end{align*}
+per ottenere che esiste $t\in [0,1]$ e $z=\vec x + t(\vec y - \vec x)$ 
+per cui
+\begin{align*}
+  \abs{f(\vec y) - f(\vec x)}^2 
+    = g(1) - g(0) = g'(t)
+    = \langle Df(z)[\vec y - \vec x], f(\vec y) - f(\vec x)\rangle.
+\end{align*}
+\end{proof}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{theorem}[invertibilità locale]
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Sia $A$ un aperto di $\RR^n$, $f\in \CC^1(A,\RR^n)$,
+$x_0\in A$ e supponiamo che $Df(x_0)$ sia una invertibile.
+Allora esiste $\delta>0$ tale che $f(B_\delta(x_0))$ è aperto, 
+e la restrizione $f\colon B_\delta(x_0)\to f(B_\delta(x_0))$
+è invertibile con inversa di classe $C^1$.
+Inoltre per ogni $x \in B_\delta(x_0)$
+\[
+        D f^{-1}(f(x))=(Df(x))^{-1}.
 \]
 \end{theorem}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{proof}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-Sia $A=(Df(x_0))^{-1}$. Siccome $\Omega$ \`e aperto e $Df\colon
-\Omega\to \RR^n$ \`e continuo, possiamo scegliere $\rho>0$ in modo che
+Sia $M=Df(x_0)^{-1}$. 
+Siccome $A$ è aperto e $Df$ è continuo, 
+possiamo scegliere $\rho>0$ in modo che
 \[    
-    \overline{B_\rho(x_0)}\subset \Omega
-\qquad \text{e} \qquad
-        \Vert Df(x)-Df(x_0)\Vert \le \frac{1}{2\Vert A\Vert}
+    \overline{B_\rho(x_0)}\subset A
+        \qquad \text{e} \qquad
+        \Abs{Df(x)-Df(x_0)} \le \frac{1}{2\Abs M}
                 \quad\forall x\in \overline{B_\rho(x_0)}.
 \]
-Poniamo $r=\frac{\rho}{2\Vert A\Vert}$ e
-$y_0=f(x_0)$.  Fissato $y\in B_r(y_0)$
+Poniamo $r=\frac{\rho}{2\Abs M}$ e
+$y_0=f(x_0)$.  
+Fissato $\bar y\in B_r(y_0)$
 consideriamo l'applicazione
 \begin{align*}
-        T\colon \overline{B_\rho(x_0)}&\to \RR^n\\
-        T(x)&= x + A(y-f(x)).
+        T\colon \overline{B_\rho(x_0)} &\to \RR^n\\
+        T(x) &= x + M[\bar y-f(x)].
 \end{align*}
 
 Si ha, per $x\in \overline{B_\rho(x_0)}$,
 \[
-        \Vert DT(x)\Vert=\Vert \mathrm{Id}-A Df(x)\Vert \le 
-        \Vert A \Vert\cdot\Vert Df(x_0)-Df(x)\Vert
+        \Abs{ DT(x)}
+        = \Abs{ \mathrm{Id}-M Df(x)} \le 
+        \Abs{ M \Abs{\cdot} Df(x_0)-Df(x)}
         \le \frac{1}{2}
 \]
 e quindi, per il criterio di Lipschitz, la funzione $T$ \`e $\frac 1
-2$-Lipschitziana (ossia una contrazione).
+2$-Lipschitziana.
 
 Verifichiamo anche che $T(\overline{B_\rho(x_0)})\subset \overline{B_\rho(x_0)}$.
 Infatti, per $x\in \overline{B_\rho(x_0)}$, si ha
         \begin{align*}
-        |T(x)-x_0|&\le |T(x)-T(x_0)|+|T(x_0)-x_0|\\
-        &\le \frac 1 2 |x-x_0| + |A (y-y_0)|
-        \le \frac \rho 2 + \Vert A\Vert  r
+        |T(x)-x_0|&\le |T(x)-T(x_0)| + |T(x_0)-x_0|\\
+        &\le \frac 1 2 |x-x_0| + |M (\bar y-y_0)|
+        \le \frac \rho 2 + \Abs{ M}  r
         \le \rho.
         \end{align*}
 
-Dunque $T\colon\overline{B_\rho(x_0)}\to \overline{B_\rho(x_0)}$ \`e una
-contrazione, $\overline{B_\rho(x_0)}$ \`e uno spazio metrico completo
+Dunque $T\colon\overline{B_\rho(x_0)}\to \overline{B_\rho(x_0)}$ è una
+contrazione, $\overline{B_\rho(x_0)}$ è uno spazio metrico completo
 e quindi, per il Teorema delle contrazioni, 
-esiste un unica soluzione dell'equazione
-        \[
-        T(x)=x,
-        \]
-cio\`e esiste un unico punto $x$ in $\overline{B_\rho(x_0)}$ per cui $f(x)=y$.
+esiste un unica soluzione dell'equazione $T(x)=x$,
+cioé esiste un unico punto $x$ in $\overline{B_\rho(x_0)}$ per cui $f(x)=\bar y$.
 
-Dato $y\in B_r(y_0)$ possiamo dunque trovare un
-$x\in \overline{B_\rho(x_0)}$ che risolve $f(x)=y$, chiamiamo
-$g$ l'applicazione $y\mapsto x$
-        \[
-        g\colon B_r(y_0) \to \overline{B_\rho(x_0)}, \qquad f(g(y))=y.
-        \]
-Poniamo dunque $V=B_r(y_0)$ e $U=g(V)$. Chiaramente $f_{|U}\colon U\to V$ \`e
-bigettiva e ha $g$ come inversa. 
+Dato $y\in B_r(y_0)$ chiamiamo $g(y)$ l'unico $x\in \overline{B_\rho(x_0)}$
+per cui $f(x)=y$. 
+Abbiamo quindi definito una funzione $g\colon B_r(y_0) \to \overline{B_\rho(x_0)}$
+tale che $f(g(y)) = y$.
 
-Vogliamo ora dimostrare che $g$ \`e differenziabile in ogni punto
-$y\in B_r(y_0)$ e che il suo differenziale $Dg(y)$ \`e uguale a
-$Df(x)^{-1}$ con $x=g(y)$; ossia
-\[
-\lim_{y'\to y} \frac{g(y')-g(y) - Df(x)^{-1}(y'-y)}{|y'-y|}=0.
-\]
-Dato $y'\in B_r(y_0)$, posto $x'=g(y')$ stiamo considerando la
-seguente quantit\`a
+Mostriamo ora che $g$ è lipschitziana. Fissati $y,\bar y \in B_r(y_0)$ 
+consideriamo la mappa $T(x) = x + Df(x)^{-1}[\bar y - f(x)]$ già considarata prima.
+Ricordando che $T$ è $\frac 1 2$-lipschitz, scopriamo che  
 \begin{align*}
-\frac{g(y')-g(y) - Df(x)^{-1}(y'-y)}{|y'-y|} 
-=
-\frac{x'-x - Df(x)^{-1}(f(x')-f(x))}{|y'-y|}
-\end{align*}
-che per la differenziabilit\`a di $f$ in $x$ possiamo scrivere come
-\begin{equation}
-\label{eq_inv_diff}
-\begin{aligned}
-&=
-\frac{x'-x - Df(x)^{-1}(Df(x)(x'-x)+o(|x'-x|))}{|y'-y|}\\
-&=
-\frac{Df(x)^{-1} o(|x'-x|)}{|y'-y|}
-=
-\frac{Df(x)^{-1} o(|x'-x|)}{|x'-x|}\cdot \frac{|x'-x|}{|y'-y|}.
-\end{aligned}
-\end{equation}
-Vogliamo ora dimostrare che per $y'\to y$ si ha $x'\to x$ cosicch\'e 
-il primo termine di quest'ultimo prodotto tende
-a zero per la definizione di $o$ "<piccolo">. Contemporaneamente 
-dimostreremo che il secondo termine \`e limitato.
-
-Per fare questo consideriamo la mappa $T$ definita in
-precedenza e per la quale si ha $T(x)=x$. 
-Ricordando che $T$ \`e $1/2$-lipschitziana si ha
-\begin{align*}
-\frac 1 2 |x'-x| &\ge |T(x')-T(x)| = |x'+Df(x)(y-f(x'))-x|\\
-&\ge |x'-x| - | Df(x) (y-f(x'))|
-= |x'-x| - \Vert Df(x)\Vert |y-y'|
+\frac 1 2 |g(y)-g(\bar y)| 
+        &\ge |T(g(y))-T(g(\bar y))| 
+        = \abs{g(y) - g(\bar y) + Df(g(\bar y))^{-1}[\bar y-f(g(y))]}\\
+        &\ge |g(y)-g(\bar y)| - \Abs{Df(g(\bar y))^{-1}}\cdot \abs{y - \bar y}
 \end{align*}
 da cui
 \[
-|x'-x| \le \frac{|y'-y|}{2\Vert Df(x)\Vert}.
+        \abs{g(y) - g(\bar y)} 
+        \le \frac{\abs{y - \bar y}}{2\Abs{ Df(g(\bar y))^{-1}}}
+        \le L \abs{y - \bar y}
 \]
-Questo da un lato ci dice che se $y'\to y$ allora anche $x'\to x$ e
-dall'altro ci dice che il rapporto $|x'-x|/|y'-y|$ \`e limitato.
-Dunque la quantit\`a in~\eqref{eq_inv_diff} tende a zero, 
-la funzione $g$ \`e differenziabile in $y$ e il suo
-differenziale \`e $Dg(y)=Df(x)^{-1}$.
+in quanto $\Abs{Df(x)^{-1}}$ è una funzione continua 
+su $\overline{B_\rho(x_0)}$ e dunque ammette minimo (non nullo 
+visto che la matrice inversa non è mai nulla).
 
+Dunque per $y \to \bar y$ si ha $g(y) \to g(\bar y)$
+e possiamo dunque scrivere la differenziabilità di $f$ in $g(\bar y)$
+per $y\to \bar y$, 
+\[
+   y - \bar y = f(g(y)) - f(g(\bar y)) = Df(g(\bar y))[g(y) - g(\bar y)] + o(\abs{y - \bar y})
+\]
+da cui si ricava 
+\[
+  g(y) - g(\bar y) 
+  = Df(g(\bar y))^{-1}[y - \bar y + o(\abs{y-\bar y})]
+  = Df(g(\bar y))^{-1}[y - \bar y] + o(\abs{y-\bar y})
+\]
+ovvero $g$ è differenziabile in $\bar y$ e si ha,
+come volevamo dimostrare, 
+\[
+  Dg(\bar y) = (Df(g(\bar y)))^{-1}.
+\]
+Visto che $Df$ è continua e $g$ è continua anche $Dg$ è continua,
+e quindi $g$ è $C^1$.
 
-Per concludere che $g\in \CC^1$ rimane solo da provare che il 
-differenziale $Dg$ \`e una funzione continua. Ma dato che
-$Dg(y)=Df(g(y))^{-1}$, si osserva che essendo $g$ continua (in quanto
-differenziabile), essendo $Df$ continua (per ipotesi) ed essendo
-continua anche l'operazione di inversione di una matrice, la funzione
-$Dg$ deve essere continua.
-
-L'ultima osservazione \`e che $U$ risulta essere un intorno di $x_0$. 
-Infatti $U=g^{-1}(V)$, ed essendo $V$ aperto e $g$ continua,
-concludiamo che anche $U$ \`e aperto.
+La dimostrazione è conclusa. 
+Per la continuità di $f$ esiste $\delta>0$ per cui $f(B_\delta(x_0)) \subset B_r(y_0)$.
+Preso $V=g^{-1}(B_\delta(x_0))$ sappiamo che $V$ è aperto per la continuità
+di $g$, e $g\colon V\to B_\delta(x_0)$ è bigettiva e la sua inversa
+è la restrizione di $f$ a $B_\delta(x_0)$.
 \end{proof}
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{theorem}[funzione implicita, Dini]

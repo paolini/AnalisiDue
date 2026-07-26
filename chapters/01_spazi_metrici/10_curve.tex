@@ -120,11 +120,12 @@ $a = t_0 < t_1 < \dots < t_N = b$ con $t_{k+1}-t_k < \delta$ per cui
 Allora 
 \begin{align*}
   \int_a^b \abs{\vec u'(t)} \, dt
-    &\le \sum_{k=0}^{N-1} \abs{\vec u'(t_k)} (t_{k+1}-t_k) + \eps \\
-    &\le \sum_{k=0}^{N-1} \abs{ \int_{t_k}^{t_{k+1}} \enclose{\vec u'(t_k) - \vec u'(t)} \, dt + \int_{t_k}^{t_{k+1}}\vec u'(t)\, dt} + \eps \\
-    &\le \sum_{k=0}^{N-1} \Enclose{ \eps (t_{k+1}-t_k) + \int_{t_k}^{t_{k+1}} \abs{\vec u'(t)} \, dt} + \eps \\
-    &=  \eps + \sum_{k=0}^{N-1}  \abs{\vec u(t_{k+1}) - \vec u(t_k)} + \eps \\
-    &\le \ell(\vec u) + 2\eps.
+    &\le \sum_{k=0}^{N-1} \abs{\vec u'(t_k)} (t_{k+1}-t_k) + \eps
+    = \sum_{k=0}^{N-1} \abs{ \int_{t_k}^{t_{k+1}} \vec u'(t_k) \, dt} + \eps \\
+    &\le \sum_{k=0}^{N-1} \Enclose{\int_{t_k}^{t_{k+1}} \abs{\vec u'(t_k) - \vec u'(t)} \, dt + \abs{\int_{t_k}^{t_{k+1}} \vec u'(t)\, dt}} + \eps \\
+    &\le \sum_{k=0}^{N-1} \Enclose{ \eps (t_{k+1}-t_k) + \abs{\vec u(t_{k+1}) - \vec u(t_k)}} + \eps \\
+    &=  \eps + \sum_{k=0}^{N-1}  \abs{\vec u(t_{k+1}) - \vec u(t_k)} + \eps
+    \le \ell(\vec u) + 2\eps.
 \end{align*}
 Dall'arbitrarietà di $\eps>0$ si ottiene la disuguaglianza opposta e la tesi.
 \end{proof}
@@ -156,7 +157,13 @@ Viceversa può essere utile considerare una riparametrizzazione che si ferma
 per un certo tempo su un punto: tale riparametrizzazione avrà un tratto costante 
 e quindi non sarà strettamente crescente e non sarà invertibile.
 
-\begin{theorem}[riparametrizzazione]
+Se una riparametrizzazione non è continua può saltare dei tratti 
+e quindi può dare origine ad una curva di lunghezza inferiore.
+Se la riparametrizzazione non è monotona può ripercorrere 
+più volte gli stessi tratti e quindi può dare origine ad una curva di lunghezza 
+superiore. Questo viene formalizzato nel seguente teorema. 
+
+\begin{theorem}[riparametrizzazione]\label{th:riparametrizzazione}
 Sia $u \colon [a,b] \to X$ una curva in uno spazio metrico $X$ 
 e sia $\phi \colon [A,B] \to [a,b]$ una funzione.
 Possiamo considerare la curva $v \colon [A,B] \to X$ definita da
@@ -178,7 +185,7 @@ Se $\phi$ è monotona si ha
 \item se $\phi\colon [A,B] \to [a,b]$ è bigettiva e continua
 si ha:
 \[
-  \ell(u) = \ell(u\circ \phi).
+  \ell(u) = \ell(v).
 \]
 \end{enumerate}
 \end{theorem}
@@ -234,9 +241,10 @@ definita tra due intervalli è necessariamente monotona (per il teorema dei valo
 Sia $u \colon [a,b] \to X$ una curva rettificabile in uno spazio metrico $X$.
 Sia $L = \ell(u)$ la lunghezza della curva.
 La \emph{lunghezza d'arco} di $u$ è la funzione $\sigma\colon [a,b] \to [0,L]$ 
-definita da
+che mi dà la lunghezza percorsa dalla curva $u$ 
+fino al tempo $t$, formalmente è definita da
 \begin{equation}\label{def:lunghezza_arco}
-  \sigma(t) \defeq \ell_a^t(u)
+  \sigma(t) \defeq \ell_a^t(u).
 \end{equation}
 \end{definition}
 
@@ -308,7 +316,7 @@ La curva riparametrizzata $\tilde u\colon [0,L] \to X$ definita da:
   \tilde u(s) = u(\tau(s))
 \]
 si chiama \emph{riparametrizzazione per lunghezza d'arco} di $u$.
-La funzione $\tau$ è strettamente crescente e può avere delle discontinuità 
+La funzione $\tau$ è strettamente crescente ma può avere delle discontinuità 
 di tipo salto. Se $s_0$ è un punto in cui $\tau$ ha un salto denotiamo con 
 $\tau(s_0^-)$ e $\tau(s_0^+)$ i limiti sinistro e destro di $\tau$ in $s_0$.
 Posto $I = [\tau(s_0^-), \tau(s_0^+)]$ 

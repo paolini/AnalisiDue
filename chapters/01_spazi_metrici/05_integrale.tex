@@ -164,7 +164,6 @@ vale il seguente.
   %
 \begin{proof}
   Se $f_n$ e $f$ sono Riemann-integrabili anche $f_n-f$ e $\abs{f_n-f}$ lo sono 
-  (teorema~\ref{th:reticolo})
   e si ha:
   \begin{align*}
     \abs{\int_a^b f_n(x)\, dx - \int_a^b f(x)\, dx}
@@ -315,10 +314,8 @@ viene dimostrato per l'integrale di Lebesgue.
 \index{convergenza!dominata}%
 \index{teorema!Lebesgue}%
 \index{integrale!di Lebesgue}%
-Siamo però in grado di enunciarne una versione un poco più debole valida per gli 
-integrali impropri di Riemann che potrà essere molto utile in tanti casi concreti.
 
-\begin{theorem}[convergenza dominata]
+\begin{theorem}[convergenza dominata caso continuo]
   \mymargin{convergenza dominata}%
   \index{convergenza dominata}%
   \label{th:convergenza_dominata}%
@@ -346,8 +343,8 @@ Si noti che l'indice $k\to +\infty$, $k\in \NN$
 nel teorema~\ref{th:convergenza_dominata_uniforme} 
 può essere tranquillamente sostituito con 
 un parametro continuo $y\to x$, $x\in \RR$
-grazie al teorema~\ref{th:ponte} (collegamento tra limite 
-di funzione e limite di successione).
+grazie al teorema di collegamento tra limite 
+di funzione e limite di successione.
 Vogliamo dunque ricondurci al teorema~\ref{th:convergenza_dominata_uniforme} 
 e per fare questo andremo quindi a dimostrare che fissato $[\alpha,\beta]\subset (a,b)$ 
 e fissato $x\in I$ si ha convergenza uniforme 
@@ -520,8 +517,7 @@ Dimostriamo che
 \end{exercise}
 %
 \begin{proof}[Svolgimento.]
-Come visto nell'esempio~\ref{ex:integrale_gaussiana_finito}
-sappiamo che l'integrale
+Sappiamo che l'integrale
 \[
   I = \int_{0}^{+\infty} e^{-s^2}\, ds
 \]

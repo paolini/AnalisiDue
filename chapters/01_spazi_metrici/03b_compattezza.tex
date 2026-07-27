@@ -1,0 +1,93 @@
+\section{compattezza}
+
+
+
+\begin{definition}[compattezza]
+Sia $X$ uno spazio topologico. 
+Diremo che $X$ è \emph{compatto} se dato un ricoprimento 
+aperto di $X$ (cioè una famiglia $A_i$ di aperti di $X$ tale
+che per ogni $x\in X$ esiste $i$ per cui $x\in A_i$)
+esiste un sottoricoprimento finito 
+(cioè un insieme $i_1,\dots,i_n$
+di indici per cui anche $\ENCLOSE{A_{i_1}, \dots, A_{i_n}}$ 
+è un ricoprimento di $X$)
+\end{definition}
+
+\begin{definition}[totale limitatezza]
+Uno spazio metrico $X$ si dice essere \emph{totalmente limitato}
+se per ogni $\rho>0$ esistono un numero finito di punti 
+$x_1, \dots, x_n$ di $X$ per cui per ogni $x\in X$ 
+esiste $i=1,\dots,n$ tale che $d(x,x_i)<\eps$
+(ovvero $B_\rho(x_1), \dots, B_\rho(x_n)$ 
+è un ricoprimento finito di $X$).
+\end{definition}
+
+\begin{theorem}
+Se $X$ è uno spazio metrico.
+Allora $X$ è compatto se e solo se 
+è sequenzialmente compatto.
+Inoltre se $X$ è (sequenzialmente) compatto
+è anche totalmente limitato.
+\end{theorem}
+\begin{proof}
+\emph{Supponiamo che $X$ sia compatto.}
+
+Per dimostrare che $X$ è totalmente limitato 
+Basta osservare che per ogni $\rho>0$ 
+la famiglia di palle $B_\rho(x)$ al variare di $x\in X$ 
+è ovviamente un ricoprimento di $X$.
+Un sottoricoprimento finito dà quindi la totale 
+limitatezza di $X$.
+
+Sia $x_k$ una successione di punti di $X$
+e supponiamo per assurdo che $x_k$ non abbia estratte 
+convergenti.
+Allora per ogni $y\in X$ esiste $\rho$ 
+per cui $U_y = B_\rho(y)$ contiene solo un numero finito 
+di termini della successione (altrimenti avrei una estratta 
+convergente ad $y$).
+Dunque ogni sottofamiglia finita degli $U_y$ contiene 
+solamente un numero finito di termini della successione.
+Significa che non può essere estratta una sottofamiglia 
+finita che ricopre tutto $X$, ovvero $X$ non è compatto.
+
+
+\emph{Supponiamo che $X$ sia seqenzialmente compatto.}
+
+Supponiamo per assurdo che $X$ non sia totalmente limitato. 
+Allora esiste $\rho>0$ per cui nessun insieme finito 
+di palle di raggio $\rho$ ricopre tutto $X$. 
+Significa che dato un insieme finito di punti è sempre 
+possibile aggiungere un punto che dista più di $\rho$ 
+da tutti i precedenti. 
+Dunque si può costruire una successione $x_k\in X$ 
+tale che $d(x_k,x_j)\ge \rho$ per ogni $k\neq j$.
+Chiaramente una successione con questa proprietà 
+non può avere sottosuccessioni convergenti.
+
+Dimostriamo che $X$ è compatto. 
+Sia $A_i$ un ricoprimento aperto di $X$.
+
+\emph{Affermazione (numero di Lebesgue): }
+esiste $\rho>0$ tale che per ogni $x\in X$ esiste 
+$i$ per cui $B_\rho(x) \subset A_i$.
+In caso contrario fissato $\rho=\frac 1 n$
+esisterebbe $x_n \in X$ tale che $B_{\frac 1 n}(x_n)$ 
+non è interamente contenuto in nessun $A_i$.
+Ma per la sequenziale compattezza posso estrarre una 
+sottosuccessinoe $x_{n_k}$ convergente ad $x\in X$.
+Preso $A_i$ tale che $x\in A_i$ visto che $A_i$ 
+è aperto deve esistere $\rho>0$ 
+per cui $B_\rho(x)\subset A_i$
+ma allora dovrebbe essere $B_{\frac 1 n_k}(x_{n_k})\subset 
+B_\rho(x)\subset A_i$ per $k$ abbastanza grande. Assurdo.
+
+Fissato $\rho$ con la proprietà dell'affermazione,
+sapendo che $X$ è totalmente limitato (teorema precedente) 
+possiamo trovare $x_1, \dots, x_N$ tali che 
+$B_\rho(x_k)$ ricopre $X$ per $k=1,\dots,N$. 
+Ma per ogni $k$ esiste $i=i(k)$ tale che $B_\rho(x_k)\subset A_i$ 
+e quindi il sottoricoprimento $A_{i(1)}, \dots, A_{i(N)}$
+ricopre $X$.
+\end{proof}
+

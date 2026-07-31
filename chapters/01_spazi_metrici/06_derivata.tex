@@ -242,7 +242,17 @@ e per $x\in (-R,R)$ si ha
 \end{corollary}
 %
 \begin{proof}
-Che le due serie abbiano lo stesso raggio di convergenza l'abbiamo già dimostrato nel Teorema~\ref{th:raggio_serie_derivate}. Nel teorema precedente abbiamo mostrato che su ogni intervallo $[-r,r]$ con $r<R$ la serie di potenze con somma $f$ converge totalmente. Dunque converge uniformemente e possiamo scambiare la derivata con la somma per ottenere $f'(x) = g(x)$.
+In base al criterio della radice
+il raggio di convergenza della serie è il reciproco 
+del limite superiore di $\sqrt[k]{a_k}$. 
+Visto che $\sqrt[k]{k} \to 1$, la serie originaria 
+e la serie delle derivate hanno lo stesso raggio di
+convergenza.
+Nel teorema precedente abbiamo mostrato che su ogni 
+intervallo $[-r,r]$ con $r<R$ la serie di potenze 
+con somma $f$ converge totalmente. 
+Dunque converge uniformemente e possiamo scambiare 
+la derivata con la somma per ottenere $f'(x) = g(x)$.
 \end{proof}
 
 \begin{example}
@@ -270,8 +280,9 @@ Abbiamo quindi scoperto che vale
 Osserviamo ora che la serie con somma $f(x)$
 non converge per $x=1$ (serie armonica) ma
 converge per $x=-1$ (criterio di Leibniz).
-Per il Teorema~\ref{th:lemma_abel} (lemma di Abel)
-sappiamo che la funzione $f(x)$ è continua nel punto $x=-1$ e dunque possiamo concludere che
+Per il Lemma di Abel (vedi appunti di Analisi Matematica Uno)
+sappiamo che la funzione $f(x)$ è continua nel punto $x=-1$ 
+e dunque possiamo concludere che
 \[
   \sum_{k=1}^{+\infty} \frac{x^k}{k} = -\ln(1-x)
   \qquad \forall x \in [-1,1).

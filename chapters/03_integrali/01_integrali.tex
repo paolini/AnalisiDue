@@ -73,6 +73,14 @@ e scriveremo
 \[
   \int\!\! f = S^*(f) = S_*(f).
 \]
+\mynote{Per le funzioni di una variabile la notazione $\int f$ 
+rappresentava l'\emph{integrale indefinito} ovvero 
+l'insieme delle primitive della funzione $f$. 
+Per le funzioni di più variabili il concetto di integrale 
+indefinito non ha senso e si usa 
+invece la notazione $\int f$ per indicare 
+l'integrale esteso a tutto lo spazio $\int_{\RR^n} f$.
+}
 
 Volendo rendere esplicita la variabile di integrazione, potremo
 usare la notazione equivalente
@@ -205,6 +213,19 @@ Per la convessità del valore assoluto si ottiene infine
 \]
 \end{proof}
 
+Vogliamo ora estendere la definizinoe di integrale 
+alle funzioni non limitate o con supporto non limitato.
+Faremo uso della funzione \emph{caratteristica}
+di un insieme $A\subset \RR^n$ cioè della funzinoe 
+\[
+  1_A \colon \RR^n \to \RR, 
+  \qquad 
+  1_A(x) \defeq \begin{cases}
+    1 & \text{se } x\in A\\
+    0 & \text{se } x\in \RR^n\setminus A.
+  \end{cases}
+\]
+
 \begin{definition}[integrale di Riemann generalizzato]
 Se $f\colon \RR^n \to [0,+\infty]$ è una funzione (non negativa), per ogni $R>0$ 
 possiamo definire il troncamento $f_R$ 
@@ -218,6 +239,22 @@ e visto che $R\mapsto f_R(\vec x)$ è crescente possiamo definire
  \int\!\! f \defeq \lim_{R\to+\infty} \int\!\! f_R \in [0,+\infty].
 \]
 Se $\int\!\! f<+\infty$ diremo che $f$ è R-integrabile (avendo supposto $f\ge 0$)
+\mynote{%
+Notiamo che se invece dei cubi $[-R,R]^n$ avessimo 
+usato qualunque famiglia crescente di insiemi limitati $B_R$
+tali che per ogni $r>0$ esiste $R$ con $B_R\supset [-r,r]^n$ 
+la definizione non cambierebbe. 
+Grazie alla monotonia dell'integrale (essendo $f\ge 0$)
+il limite per $R\to +\infty$ sarebbe lo stesso.
+Inoltre il troncamento di $f$ ad altezza $R$ 
+può anche essere fatto indipendentemente dal troncamento 
+del dominio suddividendo il limite in due limiti 
+consecutivi: uno per limitare il dominio ed uno per limitare 
+il codominio. Grazie alla monotonia il procedimento 
+darebbe lo stesso risultato (e non dipenderebbe dall'ordine 
+in cui vengono fatte le operazioni).
+}
+
 
 Se $f\colon \RR^n\to \RR$ possiamo scrivere $f= f^+-f^-$ con $f^+,f^-$ funzioni non negative.
 Se $f^+$ e $f^-$ sono localmente R-integrabili e se 
@@ -233,24 +270,7 @@ in senso \emph{assoluto}.
 \end{definition}
 
 \begin{definition}
-Dato $E\subset \RR^n$ potremo definire la misura (di Peano-Jordan) esterna 
-e interna di $E$ come 
-\begin{align*}
- m^N(E) &\defeq S^N(1_E), & m^*(E) &\defeq S^*(1_E),\\
- m_N(E) &\defeq S_N(1_E), & m_*(E) &\defeq S_*(1_E).
-\end{align*}
-
-Diremo che $E$ è \emph{Peano-Jordan misurabile} 
-(PJ-misurabile) se la funzione caratteristica $1_E$ è localmente 
-R-integrabile,
-ovvero se $m^*(E\cap[-R,R]^n) = m_*(E\cap[-R,R]^n)$ per ogni $R>0$.
-In tal caso definiamo la misura di $E$ come 
-\[
-\abs{E} \defeq \int\!\! 1_E \in [0,+\infty] = \lim_{R\to+\infty} \abs{E\cap[-R,R]^n}.
-\]
-
-
-Se $A\subset \RR^n$ è PJ-misurabile e $f\colon A \to \RR$
+Se $A\subset \RR^n$ e $f\colon A \to \RR$
 è una funzione qualunque, possiamo considerare l'estensione 
 $f_A\colon \RR^n \to \RR$ definita da 
 \[
@@ -260,7 +280,7 @@ $f_A\colon \RR^n \to \RR$ definita da
  \end{cases}
 \]
 Diremo che $f$ è localmente R-integrabile in $A$ se $f_A$ 
-è localmente R-integrabile. 
+è localmente R-integrabile.
 Scriveremo:
 \[
  \int_A f = \int\!\! f_A
@@ -276,6 +296,26 @@ scrivere
 \]
 \end{definition}
 
+\begin{definition}
+Dato $E\subset \RR^n$ limitato potremo definire la misura (di Peano-Jordan) esterna 
+e interna di $E$ come 
+\begin{align*}
+ m^N(E) &\defeq S^N(1_E), & m^*(E) &\defeq S^*(1_E),\\
+ m_N(E) &\defeq S_N(1_E), & m_*(E) &\defeq S_*(1_E).
+\end{align*}
+
+Dato $E\subset \RR^n$ qualunque,
+diremo che $E$ è \emph{Peano-Jordan misurabile} 
+(PJ-misurabile) se la funzione caratteristica $1_E$ è localmente 
+R-integrabile,
+ovvero se $m^*(E\cap[-R,R]^n) = m_*(E\cap[-R,R]^n)$ per ogni $R>0$.
+In tal caso definiamo la misura di $E$ come 
+\[
+\abs{E} \defeq \int\!\! 1_E \in [0,+\infty] = \lim_{R\to+\infty} \abs{E\cap[-R,R]^n}.
+\]
+\end{definition}
+
+
 \begin{remark}
 Visto che $\sup_{Q^N_{\vec k}} 1_E = 1$ se $Q^N_{\vec k}$ tocca $E$ e $0$ altrimenti,
 mentre $\inf_{Q^N_{\vec k}} 1_E = 1$ se $Q^N_{\vec k}$ è contenuto in $E$
@@ -286,7 +326,8 @@ si osserva che:
   m_N(E) &= 2^{-nN} \cdot \# \ENCLOSE{\vec k\in \ZZ^N\colon Q_{\vec k}^N \subset E}
 \end{align*}
 e dunque $m^N(E)$ è il volume dell'unione dei cubetti $Q^N_{\vec k}$ che ricoprono $E$ 
-mentre $m_N(E)$ è il volume dell'unione dei cubetti $Q^N_{\vec k}$ che sono contenuti in $E$.
+mentre $m_N(E)$ è il volume dell'unione dei cubetti $Q^N_{\vec k}$ che sono 
+interamente contenuti in $E$.
 \end{remark}
 
 \begin{remark}[caso $n=1$]
@@ -298,6 +339,20 @@ usuale Riemann-integrabilità definita tramite suddivisioni arbitrarie.
 Nel caso $f\colon(a,b)\to \RR$ con $(a,b)$ non limitato oppure $f$ non limitata,
 la definizione data sopra corrisponde invece alla \emph{assoluta convergenza} 
 dell'integrale improprio.
+\mynote{%
+Non ha molto senso cercare di definire gli integrali impropri 
+delle funzioni di più variabili con segno 
+come facevamo per le funzioni di una 
+variabile, cioè facendo i limiti degli integrali su insiemi 
+limitati che tendono a coprire tutto lo spazio. 
+Infatti tale definizione dipenderebbe in modo essenziale dalla forma 
+degli insiemi scelti per invadere lo spazio. 
+Nel caso poi la funzione non fosse limitata potrebbe anche dipendere 
+dalla velocità con cui vengono fatti i troncamenti nel dominio rispetto 
+al codominio.
+Solo richedendo l'integrabilità separatamente di parte positiva 
+e parte negativa si ottiene ad esempio una definizione 
+che sia stabile per cambio di variabile.}
 \end{remark}
 
 \begin{exercise}[misurabilità dei rettangoli cartesiani]
@@ -376,6 +431,26 @@ Inoltre si ha
     \qquad
     \abs{\partial E} = 0.
 \]
+\mynote{%
+La misura di Peano-Jordan è una funzione di insieme \emph{additiva}, 
+nel senso che l'unione di due insiemi misurabili è misurabile e, se gli 
+insiemi sono disgiunti, la misura dell'unione è uguale alla somma delle 
+misure dei due insiemi.
+Ovviamente se questa proprietà vale per l'unione di due insiemi, 
+vale anche per l'unione di un numero finito di insiemi.
+Si dice che una funzione di insieme è $\sigma$-additiva 
+se la stessa proprietà vale per una unione numerabile di insiemi.
+La misura di Peano-Jordan non è $\sigma$-additiva,
+perché ad esempio $\QQ\cap [0,1]$ non è misurabile ma è l'unione 
+numerabile di punti, ciascuno dei quali ha misura PJ-nulla.
+Una estensione $\sigma$-additiva della misura di Peano-Jordan è la misura di Lebesgue.
+Si scopre che un insieme è PJ-misurabile se e solo se 
+la sua frontiera ha misura di Lebesgue nulla.
+Ma esistono insiemi misurabili per Lebesgue 
+la cui frontiera non ha misura di Lebesgue nulla
+(come ad esempio il già menzionato $\QQ\cap [0,1]$ 
+che ha misura nulla ma la cui frontiera è $[0,1]$ che ha misura $1$).
+}
 \end{theorem}
 \begin{proof}
 Per ottenere la misurabilità di $E\setminus F$ e di $E\cap F$, basta osservare che 

@@ -39,9 +39,8 @@ e dunque se $f,g \in \H(a,b)$ anche $f+g\in \H(a,b)$.
 Dunque $\H(a,b)$ è uno spazio vettoriale.
 
 Si noti che se $f$ e $g$ sono localmente Riemann-integrabili 
-allora anche $f+g$ lo è 
-e grazie al teorema~\ref{th:composta_integrabile} anche 
-$f^2$, $g^2$ e $(f+g)^2$ lo sono.
+allora $f+g$, $f^2$, $g^2$ e $(f+g)^2$ lo sono
+(vedi appunti di Analisi Matematica Uno).
 Ma allora, anche $f\cdot g = \frac{(f+g)^2-f^2-g^2}{2}$ 
 è Riemann-integrabile.
 Per $f,g\in \H(a,b)$ possiamo allora definire il prodotto scalare:
@@ -477,8 +476,6 @@ Si veda la figura~\ref{fig:fourier}.
 Risulta naturale chiedersi se quella che abbiamo introdotto è una
 \emph{base hilbertiana} perché solo in tal caso gli sviluppi di Fourier
 approssimano la funzione.
-Per ottenere questo risultato dobbiamo assumere la validità del seguente
-teorema, che sarebbe ora troppo lungo dimostrare.
 
 \begin{theorem}[densità dei polinomi trigonometrici]
 Per ogni funzione continua $f\in C^0([0,2\pi])$
@@ -491,11 +488,23 @@ In particolare l'insieme dei polinomi trigonometrici
 è denso, con la norma uniforme,
 nel sottospazio vettoriale
 \[
-  C^0_0([a,b]) 
-  = \ENCLOSE{u\in C^0([a,b])\colon u(a)=u(b)=0}
-  \subset C^0([a,b]).
+  C^0_0([0,2\pi]) 
+  = \ENCLOSE{u\in C^0([0,2\pi])\colon u(0)=u(2\pi)=0}
+  \subset C^0([0,2\pi]).
 \]
 \end{theorem}
+%
+\begin{proof}
+Si tratta di applicare il teorema di Stone-Weiestrass 
+alla famiglia $\mathcal A$ dei polinomi trigonometrici:
+verifichiamo le ipotesi del teorema.
+Chiaramente $\mathcal A$ è un'algebra in quanto i polinomi 
+lo sono.
+Le costanti sono in $\mathcal A$ in particolare $1\in \mathcal A$.
+Dati $x,y \in [0,2\pi)$ se $x\neq y$ 
+si ha certamente $(\cos x, \sin x) \neq (\cos y, \sin y)$
+e dunque o $\sin$ o $\cos$ assumono valori diversi nei due punti.
+\end{proof}
 
 Osserviamo che la convergenza uniforme è più forte della convergenza
 in $H(a,b)$ in quanto si ha, banalmente:

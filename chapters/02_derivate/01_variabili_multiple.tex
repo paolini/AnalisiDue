@@ -172,7 +172,7 @@ Allora $f$ è continua in $x_0$ se e solo se $f$ è sequenzialmente
 continua in $x_0$.
 \end{theorem}
 \begin{proof}
-La dimostrazinoe è la stessa già vista nel corso di Analisi Matematica Uno.
+La dimostrazione è la stessa già vista nel corso di Analisi Matematica Uno.
 \end{proof}
 
 \begin{theorem}[continuità della funzione composta]
@@ -194,7 +194,7 @@ La dimostrazione è la stessa già vista nel corso di Analisi Matematica Uno.
 Se $V$ e $W$ sono spazi vettoriali
 denotiamo con $\L(V,W)$ lo spazio vettoriale delle funzioni lineari 
 e continue da $V$ in $W$.
-Se $V$ ha dimensione infinita non serve richiedere la continuità, 
+Se $V$ ha dimensione finita non serve richiedere la continuità, 
 che è sempre garantita dal seguente.
 
 \begin{theorem}[continuità delle applicazioni lineari]
@@ -384,7 +384,7 @@ si può scrivere $f = (f_1,\dots,f_m)$ con $f_k\colon \RR^n \to \RR$
 e si troverà quindi che le righe della matrice $Df$ jacobiana di $f$
 sono i vettori gradiente $\nabla f_1, \dots, \nabla f_m$.
 
-Nel caso $n=m=1$, cioè $ f\colon A\subset \RR\to\RR^m$, $x\in A$,
+Nel caso $n=1$, cioè $ f\colon A\subset \RR\to\RR^m$, $x\in A$,
 la matrice Jacobiana è formata da una singola colonna che si denota con
 $f'(x) \in \RR^n$.
 Il differenziale si scrive nella forma $Df(x)[h] = h f'(x_0)$.
@@ -407,7 +407,7 @@ a \emph{derivabile}.
   f(x,y) = -2 + 2x - y + xy
    = f(0,0) + \langle(2,-1),(x,y)\rangle + xy.
   \]
-  Visto che $\abs{xy} \le x^2+y2 = o(\sqrt{x^2+y^2})$
+  Visto che $\abs{xy} \le x^2+y^2 = o(\sqrt{x^2+y^2})$
   abbiamo verificato che $f$ è differenziabile nel punto $(0,0)$ 
   e che $\nabla f(0,0) = (2,-1)$.
 \end{example}
@@ -449,6 +449,8 @@ a \emph{derivabile}.
   nel punto $ x_0$ con differenziale $Dg(y_0) Df(x_0)$.
 \end{proof}
 
+\subsection{derivata direzionale}
+
 Nel caso particolare in cui 
 $f\colon A\subset \RR^n \to \RR^m$ e $u\colon I\subset \RR\to A\subset \RR^n$,
 la formula per la derivata della funzione composta diventa
@@ -471,7 +473,7 @@ in direzione $v$ come la derivata della funzione composta:
    = \Enclose{\frac {d}{dt}  f(u(t))}_{t=0}.
 \]
 E' possibile che la derivata direzionale esista anche se la funzione $f$ 
-non è differenziabile, perché questa definizione coinvolge i valori della funzinoe 
+non è differenziabile, perché questa definizione coinvolge i valori della funzione 
 solamente sulla retta scelta.
 Ma se $f$ è differenziabile in $x$, visto che $u(t)= x + t v$ 
 è derivabile con derivata $u'(t) =  v$ si ha 
@@ -521,6 +523,9 @@ calcolare la derivata direzionale nel punto $(0,0)$:
 Osserviamo che in questo caso $\frac{\partial f}{\partial v}$ non 
 è lineare in $v$ e quindi $f$ non può essere differenziabile in $(0,0)$.
 \end{example}
+
+
+\subsection{derivate parziali}
 
 Si capisce che per determinare il differenziale di una funzione 
 differenziabile è sufficiente 

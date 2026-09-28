@@ -24,12 +24,81 @@ esiste $i=1,\dots,n$ tale che $d(x,x_i)<\eps$
 
 \begin{theorem}
 Se $X$ è uno spazio metrico.
-Allora $X$ è compatto se e solo se 
-è sequenzialmente compatto.
-Inoltre se $X$ è (sequenzialmente) compatto
-è anche totalmente limitato.
+Allora sono equivalenti:
+\begin{enumerate} 
+\item[(i)] $X$ è sequenzialmente compatto,
+\item[(ii)] $X$ è completo e totalmente limitato.
+\item[(iii)] $X$ è compatto, 
 \end{theorem}
 \begin{proof}
+La dimostrazione segue un percorso piuttosto tortuoso. 
+La parte più difficile è dimostrare che la compattezza sequenziale 
+implica compattezza. 
+Questa dimostrazione risulta più semplice se abbiamo anche la totale limitatezza.
+
+Dunque prima dimostreremo che (i) implica (ii), poi che da (i) e (ii) segue (iii)
+e infine che (ii) implica (i) e che (iii) implica (i).
+
+\emph{Supponiamo che $X$ sia sequenzialmente compatto.}
+
+Che $X$ sia completo è facile perché abbiamo già osservato che se una successione
+di Cauchy ha una estratta convergente allora l'intera successione è convergente.
+
+Dimostriamo allora che $X$ è anche totalmente limitato.
+Supponiamo per assurdo che non lo sia.
+Allora esiste $\rho>0$ per cui nessun insieme finito 
+di palle di raggio $\rho$ ricopre tutto $X$. 
+Significa che dato un insieme finito di punti è sempre 
+possibile aggiungere un punto che dista più di $\rho$ 
+da tutti i precedenti. 
+Dunque si può costruire una successione $x_k\in X$ 
+tale che $d(x_k,x_j)\ge \rho$ per ogni $k\neq j$.
+Chiaramente una successione con questa proprietà 
+non può avere sottosuccessioni convergenti.
+
+Passiamo ora a dimostriamo che $X$ è compatto (sapendo che è sequenzialmente 
+compatto e totalmente limitato). 
+Sia $A_i$ un ricoprimento aperto di $X$.
+
+\emph{numero di Lebesgue:} 
+mostriamo che esiste $\rho>0$ tale che per ogni $x\in X$ esiste 
+$i$ per cui $B_\rho(x) \subset A_i$.
+In caso contrario fissato $\rho=\frac 1 n$
+esisterebbe $x_n \in X$ tale che $B_{\frac 1 n}(x_n)$ 
+non è interamente contenuto in nessun $A_i$.
+Ma per la sequenziale compattezza posso estrarre una 
+sottosuccessione $x_{n_k}$ convergente ad $x\in X$.
+Preso $A_i$ tale che $x\in A_i$ visto che $A_i$ 
+è aperto deve esistere $\rho>0$ 
+per cui $B_\rho(x)\subset A_i$
+ma allora dovrebbe essere $B_{\frac 1 {n_k}}(x_{n_k})\subset 
+B_\rho(x)\subset A_i$ per $k$ abbastanza grande. Assurdo.
+
+Fissato $\rho$ con la proprietà dell'affermazione,
+sapendo che $X$ è totalmente limitato (teorema precedente) 
+possiamo trovare $x_1, \dots, x_N$ tali che 
+$B_\rho(x_k)$ ricopre $X$ per $k=1,\dots,N$. 
+Ma per ogni $k$ esiste $i=i(k)$ tale che $B_\rho(x_k)\subset A_i$ 
+e quindi il sottoricoprimento $A_{i(1)}, \dots, A_{i(N)}$
+ricopre $X$.
+
+\emph{Supponiamo che $X$ sia completo e totalmente limitato.}
+Dimostriamo che $X$ è sequenzialmente compatto.
+Data una successione $x_k\in X$ basta mostrare che ha una estratta di Cauchy.
+Consideriamo una successione di raggi $r_k\to 0$. 
+Per la totale limitatezza di $X$ c'è un numero finito di palle di raggio $r_1$ 
+che ricopre $X$. Dunque una di queste palle, chiamiamola $B_1$, 
+contiene un numero infinito di termini 
+della successinoe $x_k$. 
+Prendiamo come $k_1$ un indice per cui $x_{k_1} \in B_1$
+e consideriamo la sottosuccessione interamente inclusa in $B_1$.
+Prendiamo ora un numero finito di palle di raggo $r_2$ che ricoprono $B_1$.
+Una di queste deve contenere infiniti termini della sottosuccessione precedente.
+Chiamiamola $B_2$ e prendiamo $k_2$ per cui $x_{k_2}\in B_2$.
+Procedendo iterativamente abbiamo trovato una successione $x_{k_n}$ per cui 
+$x_{k_n} \in B_m$ per ogni $n\ge m$. 
+Dunque $x_{k_n}$ è di Cauchy, come volevamo dimostrare.
+
 \emph{Supponiamo che $X$ sia compatto.}
 
 Per dimostrare che $X$ è totalmente limitato 
@@ -52,43 +121,5 @@ solamente un numero finito di termini della successione.
 Significa che non può essere estratta una sottofamiglia 
 finita che ricopre tutto $X$, ovvero $X$ non è compatto.
 
-\emph{Supponiamo che $X$ sia seqenzialmente compatto.}
-
-Dimostriamo innanzitutto che $X$ è totalmente limitato.
-Supponiamo per assurdo che non lo sia.
-Allora esiste $\rho>0$ per cui nessun insieme finito 
-di palle di raggio $\rho$ ricopre tutto $X$. 
-Significa che dato un insieme finito di punti è sempre 
-possibile aggiungere un punto che dista più di $\rho$ 
-da tutti i precedenti. 
-Dunque si può costruire una successione $x_k\in X$ 
-tale che $d(x_k,x_j)\ge \rho$ per ogni $k\neq j$.
-Chiaramente una successione con questa proprietà 
-non può avere sottosuccessioni convergenti.
-
-Dimostriamo che $X$ è compatto. 
-Sia $A_i$ un ricoprimento aperto di $X$.
-
-\emph{Numero di Lebesgue:} 
-esiste $\rho>0$ tale che per ogni $x\in X$ esiste 
-$i$ per cui $B_\rho(x) \subset A_i$.
-In caso contrario fissato $\rho=\frac 1 n$
-esisterebbe $x_n \in X$ tale che $B_{\frac 1 n}(x_n)$ 
-non è interamente contenuto in nessun $A_i$.
-Ma per la sequenziale compattezza posso estrarre una 
-sottosuccessione $x_{n_k}$ convergente ad $x\in X$.
-Preso $A_i$ tale che $x\in A_i$ visto che $A_i$ 
-è aperto deve esistere $\rho>0$ 
-per cui $B_\rho(x)\subset A_i$
-ma allora dovrebbe essere $B_{\frac 1 {n_k}}(x_{n_k})\subset 
-B_\rho(x)\subset A_i$ per $k$ abbastanza grande. Assurdo.
-
-Fissato $\rho$ con la proprietà dell'affermazione,
-sapendo che $X$ è totalmente limitato (teorema precedente) 
-possiamo trovare $x_1, \dots, x_N$ tali che 
-$B_\rho(x_k)$ ricopre $X$ per $k=1,\dots,N$. 
-Ma per ogni $k$ esiste $i=i(k)$ tale che $B_\rho(x_k)\subset A_i$ 
-e quindi il sottoricoprimento $A_{i(1)}, \dots, A_{i(N)}$
-ricopre $X$.
 \end{proof}
 

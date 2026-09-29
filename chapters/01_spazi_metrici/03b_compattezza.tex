@@ -22,6 +22,25 @@ esiste $i=1,\dots,n$ tale che $d(x,x_i)<\eps$
 è un ricoprimento finito di $X$).
 \end{definition}
 
+\begin{lemma}
+Se $X$ è uno spazio metrico totalmente limitato e $A\subset X$ allora 
+anche $A$ (spazio metrico con la distanza indotta da $X$) 
+è totalmente limitato.
+\end{lemma}
+\begin{proof}
+Sia dato $\eps>0$ e siano $x_1, \dots, x_n$ tali che 
+$B_\eps(x_1), \dots, B_\eps(x_n)$ ricoprono $X$.
+Riordiniamo gli indici in modo che $B_\eps(x_1), \dots, B_\eps(x_m)$
+siano le palle che intersecano $A$.
+Allora per $i=1,\dots,m$ possiamo trovare $y_i\in B_\eps(x_i)\cap A$.
+Verifichiamo che $B_\eps(y_1), \dots, B_\eps(y_m)$ ricoprono $A$:
+preso $x\in A$ esiste $i=1,\dots,n$ tale che $x\in B_\eps(x_i)$.
+Dunque $i\le m$ (perché $x\in A\cap B_\eps(x_i)$) e 
+$x \in B_\eps(x_i) \subset B_{2\eps}(y_i)$.
+Dunque $B_{2\eps}(y_1), \dots, B_{2\eps}(y_m)$ ricoprono $A$,
+come volevamo dimostrare.
+\end{proof}
+
 \begin{theorem}
 Se $X$ è uno spazio metrico.
 Allora sono equivalenti:
@@ -29,6 +48,7 @@ Allora sono equivalenti:
 \item[(i)] $X$ è sequenzialmente compatto,
 \item[(ii)] $X$ è completo e totalmente limitato.
 \item[(iii)] $X$ è compatto, 
+\end{enumerate}
 \end{theorem}
 \begin{proof}
 La dimostrazione segue un percorso piuttosto tortuoso. 

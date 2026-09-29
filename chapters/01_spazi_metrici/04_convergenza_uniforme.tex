@@ -235,3 +235,86 @@ può denotare nel modo seguente:
   \qquad\text{per $f\in C^0([a,b])$.}
 \]
 
+\section{Ascoli-Arzelà}
+
+\begin{theorem}[Ascoli-Arzelà astratto]
+Siano X e Y spazi metrici compatti e sia $\F\subset C^0(X,Y)$.
+Allora $\F$ è totalmente limitato (rispetto alla distanza uniforme su $C^0(X,Y)$) 
+se e solo se $\F$ è equicontinuo, cioè se vale:
+\begin{equation}\label{eq:equicontinuo}
+  \forall \eps>0 \exists \delta >0\colon \forall f\in \F \forall x,x'\in X\colon
+   d(x,x') < \delta \implies d(f(x),f(x')) < \eps.
+\end{equation}
+\end{theorem}
+\begin{theorem}
+\emph{Prima parte:} mostriamo che \eqref{eq:equicontinuo} è una condizione necessaria 
+affinché $\F$ sia totalmente limitato.
+Fissiamo $\eps>0$ e consideriamo $\mathcal G\subset \F$ un $\eps$-reticolo di $\F$
+cioè un sottoinsieme finito tale che per ogni $f\in \F$ esiste $g\in \mathcal G$ 
+con $d_\infty(f(x), g(x)) < \eps$.
+Ogni $g\in \mathcal G$ è uniformemente continua per il teorema~\ref{th:HeineCantor} di Heine-Cantor,
+dunque per ogni $g\in \mathcal G$ esiste $\delta>0$ per cui $d(x,x')<\delta \implies d(g(x),g(x'))<\eps$.
+Visto che $\mathcal G$ è finito possiamo prendere il minimo di questi $\delta$ e ottenere un 
+unico $\delta$ che va bene per tutti i $g\in \mathcal G$ (cioè $\mathcal G$ è equicontinuo).
+Ma allora presa qualunque $f\in \F$, presa $g\in \G$ con $d_\infty(f(x), g(x)) < \eps$, 
+e presi $x,x'\in X$ con $d(x,x')<\delta$ si ha:
+\[
+  d(f(x), f(x')) 
+    \le d(f(x), g(x)) + d(g(x), g(x')) + d(g(x'), f(x')) < 3\eps.
+\]
+significa che anche $\F$ è equicontinuo, come volevamo dimostrare.
+
+\emph{Seconda parte:} mostriamo che \eqref{eq:equicontinuo} è una condizione sufficiente
+affinché $\F$ sia totalmente limitato.
+Sia $\eps>0$ fissato. 
+Per equicontinuità esiste $\delta>0$ tale che $d(x,x')<\delta \implies d(f(x),f(x'))<\eps$ per ogni $f\in \F$.
+Dato che $X$ è compatto esso è anche totalmente limitato, dunque esiste 
+un $\delta$-reticolo finito $X_\delta\subset X$.
+Anche $Y$ è totalmente limitato dunque esiste un $\eps$-reticolo finito $Y_\eps\subset Y$.
+Dunque per ogni funzione $f\in \F$ esiste una funzione $g\colon X_\delta \to Y_\eps$ tale che
+$d(f(x), g(x)) < \eps$ per ogni $x\in X_\delta$.
+Osserviamo che le funzioni $X_\delta \to Y_\eps$ sono in numero finito, 
+significa che posso trovare un sottoinsieme finito $\G\subset \F$ 
+tale che per ogni $f\in \F$ esiste $g\in \G$ per cui $d(f(x), g(x)) < 2\eps$ per ogni $x\in X_\delta$.
+Vogliamo ora dimostrare che $\mathcal G$ è un $4\eps$-reticolo di $\F$
+sfruttando il fatto che l'equicontinuità di $\F$ permette di stimare la distanza 
+delle funzioni al di fuori dei punti del reticolo $X_\delta$.
+Sia $f\in \F$ e sia $g\in \G$ tale che $d(f(x), g(x)) < 2\eps$ per ogni $x\in X_\delta$.
+Siano $x,x'\in X$ due punti qualsiasi e siano $x_\delta,x'_\delta\in X_\delta$ 
+due punti del reticolo tali che $d(x,x_\delta)<\delta$ e $d(x',x'_\delta)<\delta$.
+Allora per l'equicontinuità di $\F$ e di $\G$ si ha:
+\[
+  d(f(x), g(x)) 
+    \le d(f(x), f(x_\delta)) + d(f(x_\delta), g(x_\delta)) + d(g(x_\delta), g(x)) 
+    < \eps + 2\eps + \eps = 4\eps
+\]
+\end{theorem}
+
+\begin{corollary}[Ascoli-Arzelà in pratica]
+Sia $f_k\colon [a,b]\to \RR$ una successione di funzioni tale che
+\begin{enumerate}
+\item le funzioni $f_k$ sono uniformemente limitate, cioè esiste
+$M>0$ tale che per ogni $k$ e per ogni $x\in [a,b]$ si ha 
+\[
+  \abs{f_k(x)} \le M;
+\]
+\item le funzioni $f_k$ sono equicontinue, cioè per ogni $\eps>0$ esiste 
+$\delta>0$ tale che per ogni $k$ e per ogni $x_1,x_2 \in [a,b]$ si ha 
+\[
+\forall \eps>0 \exists \delta>0\colon \forall k\in \NN, 
+\forall x,x'\in [a,b]\colon
+\abs{x-x'}<\delta \implies 
+\abs{f_k(x) - f_k(x')} < \eps.
+\]
+\end{enumerate}
+Allora esiste una sottosuccessione $f_{k_j}$ che converge uniformemente
+ad una funzione continua $f \colon [a,b] \to \RR$.
+\end{corollary}
+\begin{proof}
+Si applica il teorema precedente con $X=[a,b]$, $Y=[-M,M]$, 
+$\F = \{f_k\colon k\in \NN\}$. 
+La totale limitatezza di $\F$ implica che la chiusura di $\F$ è 
+compatta e dunque sequenzialmente compatta. 
+Significa che è possibile estrarre una sottosuccessione $f_{k_j}$ che converge uniformemente 
+ad una funzione continua $f$.
+\end{proof}

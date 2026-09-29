@@ -365,19 +365,19 @@ sempre una estensione massimale $\vec v\colon J\to \RR^n$, $J\supset I$.
 Supponiamo che $\vec u$ non sia massimale, dunque $\vec u$ ammette estensioni. 
 %In particolare ammette estensioni definite su intervalli aperti, in quanto se una soluzione è definita su un intervallo che non è aperto posso sempre estenderla in un intorno aperto dei punti di frontiera dell'intervallo mediante il teorema di esistenza locale ottenendo quindi una estensione definita su un intervallo aperto.
 
-Sia $\mathcal F$ l'insieme di tutte le estensioni di $\vec u$.
+Sia $\F$ l'insieme di tutte le estensioni di $\vec u$.
 %definite su intervalli aperti. 
-Più precisamente ogni $\vec w\in \mathcal F$ è una funzione 
+Più precisamente ogni $\vec w\in \F$ è una funzione 
 $\vec w\colon J_{\vec w}\to \RR^n$ 
 definita su un intervallo aperto $J_{\vec w}\supset I$ 
 che soddisfa l'equazione differenziale~\eqref{eq:edo_normale_ordine_uno} 
 e che coincide con $\vec u$ su $I$. 
 Definiamo $\vec v\colon J\to\RR^n$ come segue:
 \begin{align*}
-J &= \bigcup_{\vec w \in \mathcal F} J_{\vec w}\\
+J &= \bigcup_{\vec w \in \F} J_{\vec w}\\
 \vec v(x) &= \vec w(x) \qquad\text{se $x\in J_{\vec w}$}.
 \end{align*}
-Si osservi che dato $x\in I$ se $\vec w_1, \vec w_2\in\mathcal F$ 
+Si osservi che dato $x\in I$ se $\vec w_1, \vec w_2\in\F$ 
 sono due estensioni entrambe definite su un punto $x$, 
 allora esse coincidono in $x$ per la 
 Proposizione~\ref{prop:separazione_soluzioni}, 
@@ -397,12 +397,12 @@ $\vec u$ è derivabile e che le derivate coincidono:
 \vec u'(x) = \vec w'(x) = f(x,\vec w(x)) = f(x,\vec u(x)).
 \]
 Dunque anche $\vec u$ è soluzione di~\eqref{eq:edo_normale_ordine_uno}.
-In pratica abbiamo verificato che $\vec v\in \mathcal F$ ed è quindi una estensione di $\vec u$. 
+In pratica abbiamo verificato che $\vec v\in \F$ ed è quindi una estensione di $\vec u$. 
 Questa è una estensione massimale perché se ci fosse una estensione definita su un intervallo 
 più grande 
 %ce ne sarebbe anche una definita su un intervallo più grande aperto, 
 %ma questo è impossibile perché
-sarebbe anch'essa inclusa in $\mathcal F$.
+sarebbe anch'essa inclusa in $\F$.
 \end{proof}
 
 \subsection{esistenza globale}

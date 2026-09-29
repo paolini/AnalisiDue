@@ -17,6 +17,7 @@
 \newcommand{\D}{\mathcal D}
 \newcommand{\E}{\mathcal E}
 \newcommand{\F}{\mathcal F}
+\newcommand{\G}{\mathcal G}
 \newcommand{\FL}{\mathcal F\!\mathcal L}
 \renewcommand{\H}{\mathcal H}
 \newcommand{\K}{\mathcal K}
@@ -114,20 +115,16 @@ qed=,
 ]{axiom_style}
 
 \numberwithin{equation}{chapter}
-\declaretheorem[name=Teorema,numberwithin=chapter]{theorem}
-\declaretheorem[name=Lemma,sibling=theorem]{lemma}
-\declaretheorem[name=Proposizione,sibling=theorem]{proposition}
-\declaretheorem[name=Corollario,sibling=theorem]{corollary}
-\declaretheorem[name=Paradosso,sibling=theorem]{paradox}
-\declaretheorem[%style=axiom_style,
-name=Assioma,sibling=theorem]{axiom}
-\declaretheorem[name=Definizione,sibling=theorem]{definition}
-\declaretheorem[%style=exercise_style,
-name=Esempio,sibling=theorem]{example}
-\declaretheorem[%style=exercise_style,
-name=Esercizio,sibling=theorem]{exercise}
-\declaretheorem[%style=exercise_style,
-name=Osservazione,sibling=theorem]{remark}
+\declaretheorem[name=Teorema,numberwithin=chapter,refname={Teorema,Teoremi}]{theorem}
+\declaretheorem[name=Lemma,numberwithin=chapter,sharenumber=theorem]{lemma}
+\declaretheorem[name=Proposizione,numberwithin=chapter,sharenumber=theorem]{proposition}
+\declaretheorem[name=Corollario,numberwithin=chapter,sharenumber=theorem]{corollary}
+\declaretheorem[name=Paradosso,numberwithin=chapter,sharenumber=theorem]{paradox}
+\declaretheorem[name=Assioma,numberwithin=chapter,sharenumber=theorem]{axiom}
+\declaretheorem[name=Definizione,numberwithin=chapter,sharenumber=theorem]{definition}
+\declaretheorem[name=Esempio,numberwithin=chapter,sharenumber=theorem]{example}
+\declaretheorem[name=Esercizio,numberwithin=chapter,sharenumber=theorem]{exercise}
+\declaretheorem[name=Osservazione,numberwithin=chapter,sharenumber=theorem]{remark}
 
 
 %\newtheorem{theorem}{Teorema}[chapter]

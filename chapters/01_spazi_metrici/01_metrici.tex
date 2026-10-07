@@ -180,3 +180,38 @@ dato $z \in B_\rho(y)$ si ha
 \]
 da cui $B_\rho(y)\subset B_r(x)$ come volevamo dimostrare.
 \end{proof}
+
+\begin{definition}[distanze equivalenti]
+Sia $X$ uno spazio metrico con una distanza $d$.
+La famiglia di tutti gli insiemi aperti in $X$ si chiama 
+\emph{topologia indotta} dalla distanza $d$.
+Se due distanze $d_1$ e $d_2$ su $X$ inducono la stessa topologia 
+si dice che le due distanze sono \emph{equivalenti}%
+\end{definition}
+
+Vedremo che molte proprietà degli spazi metrici possono essere espresse
+in termini di topologia e quindi non dipendono dalla distanza scelta.
+In particolare: limiti, continuità e compattezza sono proprietà topologiche.
+
+\begin{example}
+Consideriamo le norma $\abs{\vec x}_p$ su $\RR^n$ definita nell'esempio~\ref{ex:norma_p}
+con $p\in [1,+\infty]$.
+Si può dimostrare che per ogni $\vec x \in \RR^n$ risulta 
+\[
+  \abs{\vec x}_\infty \le \abs{\vec x}_p \le \abs{\vec x}_1.
+\]
+Visto che si ha anche 
+\[
+  \abs{\vec x}_1 \le n \abs{\vec x}_\infty
+\]
+si evince che la palla di raggio $r$ rispetto ad una qualunque 
+norma-$p$ è contenuta nella palla di raggio $nr$ di una qualunque 
+norma-$q$. 
+Dunque le distanze indotte da queste norme sono equivalenti 
+perché se un insieme $A$ contiene una palla di una norma-$p$ allora 
+contiene anche una palla (centrata nello stesso punto) di una norma-$q$,
+con $p,q\in [1,+\infty]$, e viceversa.
+
+In particolare tutte queste norme sono equivalenti alla norma euclidea 
+e inducono quindi la topologia euclidea canonica su $\RR^n$.
+\end{example}

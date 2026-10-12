@@ -342,3 +342,86 @@ Se $y\in X$ fosse un altro punto fisso si avrebbe:
 che è assurdo se $L<1$ e $x\neq y$.
 \end{proof}
 
+\begin{example}[page-rank]
+Il \emph{page-rank} è un algoritmo che assegna un punteggio ad ogni pagina web in base al numero e alla qualità dei link che riceve.
+Questo algoritmo ha reso possibile il successo del motore di ricerca \emph{google}, che per primo lo ha utilizzato per determinare 
+l'ordine in cui le pagine vengono restituite nei risultati di una ricerca.
+
+Siano $P_i$, $i=1,\dots,N$ le pagine del \emph{world-wide-web}.
+Ogni pagina contiene link ad altre pagine. 
+Denotiamo con $M_{ij}$ la probabilità di passare dalla pagina $P_j$ alla pagina $P_i$ cliccando su un link a 
+caso della pagina $P_j$.
+L'idea è che le pagine più importanti sono quelle che ricevono più link da altre pagine importanti.
+In particolare sono le pagine che è più probabile raggiungere muovendosi a caso 
+tra le pagine del web.
+
+Fissato un parametro $\eps \in [0,1]$, 
+il page-rank $p_i$ della pagina $P_i$ è definito ricorsivamente:
+\begin{equation}\label{eq:page-rank}
+  p_i = (1-\eps) \sum_{j=1}^N M_{ij} p_j + \frac{\eps}{N}.
+\end{equation}
+Osserviamo che $p_i$ è la media pesata (tramite il parametro $\eps$)
+di due contributi. Il primo, con peso $1-\eps$, è la media dei page-rank delle pagine che linkano $P_i$
+pesata in base al numero di link che portano da $P_j$ a $P_i$.
+Il secondo, con peso $\eps$ è un peso costante 
+dato ad ogni pagina. 
+
+Si può dimostrare che se $\eps \in (0,1)$ allora esiste un unico 
+vettore $\vec p = (p_1,\dots,p_N)$ che soddisfa~\eqref{eq:page-rank} e che 
+tale $\vec p$ può essere calcolato iterativamente e in modo efficiente 
+a partire dal vettore iniziale $p_i = 1/N$
+iterando la formula ricorsiva.
+\end{example}
+\begin{proof}
+Consideriamo lo spazio metrico $X\subset \RR^N$ dei vettori $\vec x \in \RR^N$ 
+tali che $x_i\ge 0$ per $i=1,\dots,N$ e $\sum_{i=1}^N x_i = 1$.
+Questo vettore rappresenta una distribuzione di probabilità sulle $N$ pagine web.
+Su $X$ consideriamo la metrica indotta dalla norma-$1$ di $\RR^N$:
+$\abs{x}_1 = \sum_{i=1}^N \abs{x_i}$ dunque 
+$d(\vec x, \vec y) = \abs{\vec x - \vec y}_1$.
+
+E' facile verificare che $X$ è un sottoinsieme chiuso di $\RR^N$ e dunque è completo
+come $\RR^N$. 
+Ricordiamo che le proprietà topologiche come chiusura e completezza coincidono 
+se al posto della distanza euclidea consideriamo la distanza indotta dalla norma-$1$
+in quanto si tratta di norme equivalenti.
+
+Consideriamo l'operatore $T\colon X\to \RR^N$ definito da 
+\[
+  T(\vec x) = (1-\eps) M \vec x + \frac{\eps}{N} \vec 1
+\]
+dove $\vec 1 = (1,\dots,1)$ e $M$ è la matrice delle probabilità $M_{ij}$.
+L'equazione del page-rank diventa l'equazione di punto fisso $\vec p = T(\vec p)$.
+Sarà quindi sufficiente dimostrare che $T$ è una contrazione in $X$.
+
+Innanzitutto dobbiamo verificare che $T$ manda $X$ in $X$.
+Se $\vec x \in X$ allora $x_i\ge 0$ e $\sum_{i=1}^N x_i = 1$. 
+Se $x_i\ge 0$ per ogni $i$, visto che anche $M_{ij}\ge 0$ per ogni $i,j$, 
+si ha che $(M\vec x)_i \ge 0$ per ogni $i$ e dunque $(T(\vec x))_i \ge 0$ per ogni $i$.
+D'altro canto se $\vec x \in X$ si ha 
+\begin{align*}
+  \sum_{i=1}^N (T\vec x)_i 
+  &= \sum_{i=1}^N\abs{(1-\eps) \sum_{j=1}^N M_{ij}x_j + \frac{\eps}{N}} 
+  = (1-\eps) \sum_{j=1}^N \enclose{\sum_{i=1}^N M_{ij}} x_j + \eps\\
+  &= (1-\eps) \sum_{j=1}^N x_j + \eps = 1
+\end{align*}
+in quanto $\sum_{i=1}^N M_{ij} = 1$ essendo questa la probabilità 
+totale di uscire dalla pagina $P_j$ 
+e $\sum_{j=1}^N x_j = 1$ per definizione di $X$.
+
+Verifichiamo ora che $T$ è una contrazione.
+Se $\vec p,\vec q$ sono due vettori in $X$ si ha
+$T(\vec p) - T(\vec q) = (1-\eps) M (\vec p - \vec q)$.
+E posto $\vec x = \vec p - \vec q$ si ha
+\begin{align*}
+  \abs{M \vec x}_1
+  &= \sum_{i=1}^N \abs{\sum_{j=1}^N M_{ij} x_j} 
+  \le \sum_{i=1}^N \sum_{j=1}^N M_{ij} \abs{x_j} 
+  = \sum_{j=1}^N \enclose{\sum_{i=1}^N M_{ij}} \abs{x_j}
+  = \abs{\vec x}_1
+\end{align*}
+da cui 
+\[
+  \abs{T(\vec p) - T(\vec q)}_1 \le (1-\eps)\abs{\vec p - \vec q}_1. 
+\]
+\end{proof}

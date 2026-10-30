@@ -1,6 +1,10 @@
 \section{teorema di Stone Weierstrass}
 
 \begin{theorem}[Stone Weierstrass]
+  \label{th:stone-weierstrass}
+  \index{teorema!di Stone-Weierstrass}
+  \index{Stone-Weierstrass!teorema}
+  \index{Weierstrass!teorema di Stone-Weierstrass}
 Sia $X$ uno spazio metrico compatto.
 Sia ${\mathcal A} \subset C(X)$ un'algebra 
 cioè un sottospazio vettoriale dello spazio delle funzioni continue 
@@ -162,9 +166,12 @@ Sia $f\in C(X)$ e $\eps>0$.
 Voglio mostrare che esiste $g\in {\mathcal A}$ tale che
 $\abs{f-g}_\infty \le \eps$.
 Eventualmente considerando $f + \Abs{f}_\infty$ posso 
-supporre $f\ge 0$.
-Eventualmente considerando $\frac {f}{3\eps}$
-posso supporre $\eps = 3$.
+supporre $f\ge 0$ (perché se esiste $g\in \A$ con $\Abs{g - (f + \Abs{f}_\infty}_\infty < \eps $ 
+allora $\tilde g = g - \Abs{f}_\infty \in \A$ e $\Abs{f - \tilde g}_\infty < \eps$).
+Eventualmente considerando $\dfrac {3}{\eps}\cdot f$ al posto di $f$ 
+posso supporre $\eps = 3$
+(perché se esiste $g\in \A$ con $\Abs{g - \frac 3 \eps \cdot f}_\infty < 3$
+  allora $\tilde g = \dfrac \eps 3 g \in \A$ e $\Abs{f - \tilde g}_\infty < \eps$)
 
 Prendiamo $N\in \NN$, $N \ge \Abs{f}_\infty+1$.
 Per $j=1, \dots, N$ definiamo 
@@ -206,3 +213,32 @@ m - (m+1)
 ovvero $-1 \le f(x) - g(x) \le 3$,
 da cui $\abs{f-g}_\infty \le 3$.
 \end{proof}
+
+La applicazione più ovvia del teorema~\ref{th:stone} di Stone-Weiestrass
+all'algebra dei polinomi ci dice che ogni funzione continua,
+definita su un compatto di $\RR^n$, può essere approssimata 
+uniformemente con polinomi di $n$ variabili.
+
+Un caso molto simile è quello dei polinomi trigonometrici,
+cioè le funzioni della forma $g(x) = P(\sin x, \cos x)$ dove $P$ è un polinomio in due variabili.
+Anche questa è un'algebra di funzioni continue su $\RR$.
+Osserviamo però che tutte queste funzioni sono $2\pi$-periodiche, 
+dunque i punti $0$ e $2\pi$ (ad esempio) non possono 
+essere separati. 
+Bisogna dunque considerare queste funzioni definite sul compatto 
+ottenuto prendendo l'intervallo $[0,2\pi]$ e identificando gli estremi 
+$0$ e $2\pi$: $X = \RR / (2\pi \ZZ)$.
+Si ottiene quindi che ogni funzione continua $2\pi$-periodica 
+definita su $\RR$ può essere approssimata uniformemente
+tramite polinomi trigonometrici. 
+Questo risultato sarà importante per determinare l'approssimabilità 
+di una funzione tramite la sua serie di Fourier (si veda il capitolo~\ref{sec:serie-fourier}).
+
+\begin{exercise}
+Data una funzione continua $f\colon [0,1]\to \RR$ definiamo 
+i suoi \emph{momenti} $m_0, m_1, m_2, \dots$ tramite le formule:
+\[
+  m_n(f) = \int_0^1 f(x) x^n\, dx.
+\]
+Dimostrare che se due funzioni continue hanno gli stessi momenti allora sono uguali.
+\end{exercise}

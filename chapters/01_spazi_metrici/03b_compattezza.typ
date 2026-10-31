@@ -1,0 +1,85 @@
+#import "../../lib.typ": *
+
+= compattezza
+
+#definition[compattezza][
+  Sia $X$ uno spazio topologico. 
+  Diremo che $X$ è _compatto_ se dato un ricoprimento aperto di $X$ (cioè una famiglia $A_i$ di aperti di $X$ tale che per ogni $x in X$ esiste $i$ per cui $x in A_i$) esiste un sottoricoprimento finito (cioè un insieme $i_1, dots, i_n$ di indici per cui anche ${A_(i_1), dots, A_(i_n)}$ è un ricoprimento di $X$).
+]
+
+#definition[totale limitatezza][
+  Uno spazio metrico $X$ si dice essere _totalmente limitato_ se per ogni $rho > 0$ esistono un numero finito di punti $x_1, dots, x_n$ di $X$ per cui per ogni $x in X$ esiste $i = 1, dots, n$ tale che $d(x, x_i) < epsilon$ (ovvero $B_rho(x_1), dots, B_rho(x_n)$ è un ricoprimento finito di $X$).
+]
+
+#lemma[
+  Se $X$ è uno spazio metrico totalmente limitato e $A subset X$ allora anche $A$ (spazio metrico con la distanza indotta da $X$) è totalmente limitato.
+]
+
+#proof[
+  Sia dato $epsilon > 0$ e siano $x_1, dots, x_n$ tali che $B_epsilon(x_1), dots, B_epsilon(x_n)$ ricoprono $X$.
+  Riordiniamo gli indici in modo che $B_epsilon(x_1), dots, B_epsilon(x_m)$ siano le palle che intersecano $A$.
+  Allora per $i = 1, dots, m$ possiamo trovare $y_i in B_epsilon(x_i) inter A$.
+  Verifichiamo che $B_epsilon(y_1), dots, B_epsilon(y_m)$ ricoprono $A$: preso $x in A$ esiste $i = 1, dots, n$ tale che $x in B_epsilon(x_i)$.
+  Dunque $i <= m$ (perché $x in A inter B_epsilon(x_i)$) e $x in B_epsilon(x_i) subset B_(2 epsilon)(y_i)$.
+  Dunque $B_(2 epsilon)(y_1), dots, B_(2 epsilon)(y_m)$ ricoprono $A$, come volevamo dimostrare.
+]
+
+#theorem[
+  Se $X$ è uno spazio metrico.
+  Allora sono equivalenti:
+  + $X$ è sequenzialmente compatto,
+  + $X$ è completo e totalmente limitato.
+  + $X$ è compatto,
+]
+
+#proof[
+  La dimostrazione segue un percorso piuttosto tortuoso. 
+  La parte più difficile è dimostrare che la compattezza sequenziale implica compattezza. 
+  Questa dimostrazione risulta più semplice se abbiamo anche la totale limitatezza.
+
+  Dunque prima dimostreremo che (i) implica (ii), poi che da (i) e (ii) segue (iii) e infine che (ii) implica (i) e che (iii) implica (i).
+
+  _Supponiamo che $X$ sia sequenzialmente compatto._
+
+  Che $X$ sia completo è facile perché abbiamo già osservato che se una successione di Cauchy ha una estratta convergente allora l'intera successione è convergente.
+
+  Dimostriamo allora che $X$ è anche totalmente limitato.
+  Supponiamo per assurdo che non lo sia.
+  Allora esiste $rho > 0$ per cui nessun insieme finito di palle di raggio $rho$ ricopre tutto $X$. 
+  Significa che dato un insieme finito di punti è sempre possibile aggiungere un punto che dista più di $rho$ da tutti i precedenti. 
+  Dunque si può costruire una successione $x_k in X$ tale che $d(x_k, x_j) >= rho$ per ogni $k != j$.
+  Chiaramente una successione con questa proprietà non può avere sottosuccessioni convergenti.
+
+  Passiamo ora a dimostriamo che $X$ è compatto (sapendo che è sequenzialmente compatto e totalmente limitato). 
+  Sia $A_i$ un ricoprimento aperto di $X$.
+
+  _numero di Lebesgue:_ 
+  mostriamo che esiste $rho > 0$ tale che per ogni $x in X$ esiste $i$ per cui $B_rho(x) subset A_i$.
+  In caso contrario fissato $rho = 1/n$ esisterebbe $x_n in X$ tale che $B_(1/n)(x_n)$ non è interamente contenuto in nessun $A_i$.
+  Ma per la sequenziale compattezza posso estrarre una sottosuccessione $x_(n_k)$ convergente ad $x in X$.
+  Preso $A_i$ tale che $x in A_i$ visto che $A_i$ è aperto deve esistere $rho > 0$ per cui $B_rho(x) subset A_i$ ma allora dovrebbe essere $B_(1/n_k)(x_(n_k)) subset B_rho(x) subset A_i$ per $k$ abbastanza grande. Assurdo.
+
+  Fissato $rho$ con la proprietà dell'affermazione, sapendo che $X$ è totalmente limitato (teorema precedente) possiamo trovare $x_1, dots, x_N$ tali che $B_rho(x_k)$ ricopre $X$ per $k = 1, dots, N$. 
+  Ma per ogni $k$ esiste $i = i(k)$ tale che $B_rho(x_k) subset A_i$ e quindi il sottoricoprimento $A_(i(1)), dots, A_(i(N))$ ricopre $X$.
+
+  _Supponiamo che $X$ sia completo e totalmente limitato._
+  Dimostriamo che $X$ è sequenzialmente compatto.
+  Data una successione $x_k in X$ basta mostrare che ha una estratta di Cauchy.
+  Consideriamo una successione di raggi $r_k -> 0$. 
+  Per la totale limitatezza di $X$ c'è un numero finito di palle di raggio $r_1$ che ricopre $X$. 
+  Dunque una di queste palle, chiamiamola $B_1$, contiene un numero infinito di termini della successione $x_k$. 
+  Prendiamo come $k_1$ un indice per cui $x_(k_1) in B_1$ e consideriamo la sottosuccessione interamente inclusa in $B_1$.
+  Prendiamo ora un numero finito di palle di raggo $r_2$ che ricoprono $B_1$.
+  Una di queste deve contenere infiniti termini della sottosuccessione precedente.
+  Chiamiamola $B_2$ e prendiamo $k_2$ per cui $x_(k_2) in B_2$.
+  Procedendo iterativamente abbiamo trovato una successione $x_(k_n)$ per cui $x_(k_n) in B_m$ per ogni $n >= m$. 
+  Dunque $x_(k_n)$ è di Cauchy, come volevamo dimostrare.
+
+  _Supponiamo che $X$ sia compatto._
+
+  Mostriamo ora che $X$ è sequenzialmente compatto.
+  Sia $x_k$ una successione di punti di $X$ e supponiamo per assurdo che $x_k$ non abbia estratte convergenti.
+  Allora per ogni $y in X$ esiste $rho$ per cui $U_y = B_rho(y)$ contiene solo un numero finito di termini della successione (altrimenti avrei una estratta convergente ad $y$).
+  Dunque ogni sottofamiglia finita degli $U_y$ contiene solamente un numero finito di termini della successione.
+  Significa che non può essere estratta una sottofamiglia finita che ricopre tutto $X$, ovvero $X$ non è compatto.
+]

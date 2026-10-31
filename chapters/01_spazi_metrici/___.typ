@@ -1,3 +1,16 @@
 = spazi metrici
 
 #include("00_introduzione.typ")
+#include("01_metrici.typ")
+#include("02_topologici.typ")
+#include("03_completezza.typ")
+#include("03b_compattezza.typ")
+#include("03c_teorema_contrazioni.typ")
+#include("04_convergenza_uniforme.typ")
+#include("05_integrale.typ")
+#include("06_derivata.typ")
+#include("07_convergenza_integrale.typ")
+#include("08_weierstrass.typ")
+#include("09_frattali.typ")
+#include("10_curve.typ")
+#include("90_storia.typ")

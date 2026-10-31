@@ -15,13 +15,31 @@
 }
 
 // Ambienti matematici personalizzati
-#let theorem = theorem.with(fill: rgb("f0f4f8"))
-#let definition = definition.with(fill: rgb("f0f4f8"))
-#let example = example.with(fill: rgb("f9f9f9"))
+#let theorem = theorem.with(
+  fill: rgb("b0a0f8"),
+  outset: 4pt,
+  radius: 4pt,
+)
+
+#let definition = definition.with(
+  fill: rgb("f0f4f8"),
+  outset: 4pt,
+  radius: 4pt,
+)
+
+#let example = example.with(
+  fill: rgb("f9f9f9"),
+  outset: 4pt,
+  radius: 4pt,
+)
+
 #let exercise = thm.with(
   supplement: "Esercizio",
   fill: rgb("fff9e6"),
+  outset: 4pt,
+  radius: 4pt,
 )
+
 #let proof = proof.with(supplement: "Dimostrazione")
 
 // Comandi custom

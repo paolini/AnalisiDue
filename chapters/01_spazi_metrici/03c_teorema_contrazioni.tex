@@ -1,0 +1,59 @@
+\begin{theorem}[delle contrazioni o punto fisso di Banach-Caccioppoli]
+\mymark{***}%
+\mymargin{teor. contrazioni}%
+\index{teorema!di Banach-Caccioppoli}%
+\index{teorema!delle contrazioni}%
+\index{punto!fisso}%
+\index{contrazione}%
+\index{Caccioppoli!teorema delle contrazioni}%
+\index{Banach!teorema delle contrazioni}%
+\label{th:banach-caccioppoli}%
+Sia $X$ uno spazio metrico completo non vuoto e sia $f\colon X \to X$ una funzione $L$-lipschitziana con $L<1$ (diremo che $f$ è una \emph{contrazione}).
+Allora esiste ed è unico un punto
+$x\in X$ tale che $f(x) = x$.
+\end{theorem}
+%
+\begin{proof}
+\mymark{***}
+Si consideri un qualunque punto $p \in X$ e si definisca
+la successione $x_k\in X$ tramite la definizione ricorsiva
+\[
+\begin{cases}
+  x_0 = p \\
+  x_{k+1} = f(x_k).
+\end{cases}
+\]
+Visto che $f$ è $L$-lipschitziana si avrà
+\begin{align*}
+  d(x_2, x_1) &= d(f(x_1),f(x_0)) \le L \cdot d(x_1,x_0) \\
+  d(x_3, x_2) &= d(f(x_2),f(x_1)) \le L \cdot d(x_2,x_1)
+  \le L^2 \cdot d(x_1, x_0) \\
+  d(x_4, x_3) &= d(f(x_3),f(x_2)) \le L \cdot d(x_3,x_2)
+  \le L^3 \cdot d(x_1, x_0) \\
+  &\vdots
+\end{align*}
+possiamo quindi dimostrare induttivamente che
+per ogni $m\in \NN$ si ha
+\[
+  d(x_{m+1}, x_m) \le L^m \cdot d(x_1, x_0).
+\]
+Ma allora per ogni $k\in \NN$ e per ogni $j>k$
+utilizzando la disuguaglianza triangolare e facendo la somma della progressione geometrica
+si ha
+\[
+  d(x_k,x_j) \le \sum_{m=k}^{j-1} d(x_m, x_{m+1})
+   \le \sum_{m=k}^{j-1} L^m \cdot d(x_1, x_0)
+   = \frac{L^k-L^j}{1-L} d(x_1,x_0).
+\]
+Visto che $L<1$ se $k\to +\infty$ e $j>k$ questa quantità tende a zero e quindi
+risulta che $x_k$ è una successione di Cauchy. Essendo per ipotesi $X$ completo sappiamo che la successione converge $x_k \to x$ ad un punto $x\in X$.
+Per la continuità di $f$, passando al limite nell'equazione
+$x_{k+1} = f(x_k)$ si ottiene $x = f(x)$.
+Abbiamo quindi trovato un punto fisso.
+Se $y\in X$ fosse un altro punto fisso si avrebbe:
+\[
+  d(x,y) = d(f(x),f(y)) \le L \cdot d(x,y)
+\]
+che è assurdo se $L<1$ e $x\neq y$.
+\end{proof}
+

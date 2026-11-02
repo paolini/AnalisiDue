@@ -107,15 +107,14 @@ ovvero $q_n \to 1$ uniformemente su $V$.
 Mentre se $x\in X\setminus U$ 
 si ha $kp \ge k\delta > 1$
 \begin{align*}
- q_n(x) 
- &= \Enclose{1-p^n(x)}^{k^n}
- \le \frac{1+k^np^n(x)}{k^np^n(x)}
- \Enclose{1-p^n(x)}^{k^n}\\
- &\le \frac{\Enclose{1+p^n(x)}^{k^n}}{k^n p^n(x)}
- \Enclose{1-p^n(x)}^{k^n}\\
- &= \frac{\Enclose{1-p^{2n}(x)}^{k^n}}{k^n p^n(x)}
- \le \frac{1}{k^n p^n(x)}
- \le \frac{1}{(k\delta)^n} \to 0.
+ q_n 
+ &= (1-p^n)^{k^n} 
+  = \frac{(1+p^n)^{k^n} \cdot (1-p^n)^{k^n}}{(1+p^n)^{k^n}}\\
+  &= \frac{(1-p^{2n})^{k^n}}{(1+p^n)^{k^n}}
+  &\le \frac{1}{(1+p^n)^{k^n}}
+  \le \frac{1}{1+ k^n p^n}
+  \le \frac{1}{(kp)^n} \\
+  &\le \frac {1}{(k\delta)^n} \to 0.
 \end{align*}
 Dunque $q_n\to 0$ uniformemente su $X\setminus U$.
 

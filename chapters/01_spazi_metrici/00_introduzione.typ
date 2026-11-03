@@ -105,7 +105,7 @@ Si noti che l'usuale convergenza in $RR$ non è altro che la convergenza di $RR$
 
 Con l'artificio $d(x_n,y_n) - d(x,y) = d(x_n,y_n) - d(x_n,y) + d(x_n,y) - d(x,y)$ e utilizzando la disuguaglianza triangolare inversa si può facilmente risolvere il seguente.
 
-#exercise[continuità della distanza"][
+#exercise[continuità della distanza][
   Dimostrare che se $x_n -> x$ e $y_n -> y$ allora $d(x_n,y_n) -> d(x,y)$.
 ]
 

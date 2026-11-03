@@ -125,7 +125,7 @@ figure(
 Vedremo che molte proprietà degli spazi metrici possono essere espresse in termini di topologia e quindi non dipendono dalla distanza scelta. In particolare: limiti, continuità e compattezza sono proprietà topologiche.
 
 #example[
-  Consideriamo la norma $abs(vec(x))_p$ su $RR^n$ definita nell'esempio \@ex:norma_p con $p in [1, +infinity]$. Si può dimostrare che per ogni $vec(x) in RR^n$ risulta
+  Consideriamo la norma $abs(vec(x))_p$ su $RR^n$ definita nell'esempio @ex:norma_p con $p in [1, +infinity]$. Si può dimostrare che per ogni $vec(x) in RR^n$ risulta
   $ abs(vec(x))_infinity <= abs(vec(x))_p <= abs(vec(x))_1. $
   Visto che si ha anche
   $ abs(vec(x))_1 <= n abs(vec(x))_infinity $

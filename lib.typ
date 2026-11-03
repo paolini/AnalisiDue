@@ -37,7 +37,10 @@
 
   set heading(numbering: "1.1")
   set text(lang: "it")
-  
+  set par(
+    justify: true,
+    leading: 0.52em,
+  )
   // Numerazione equazioni per capitolo: (1.1)
   set math.equation(numbering: "(1.1)")
   

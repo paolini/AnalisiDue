@@ -1,8 +1,9 @@
 // #import "@preview/bookly:5.2.0": *
 #import "@preview/ctheorems:2.0.0": *
 #import thm-themes.ams: *
-#import "@preview/fletcher:0.5.8": diagram, node, edge
+#import "@preview/fletcher:0.5.8" as fletcher: diagram, node, edge
 #import "@preview/showybox:2.0.4": showybox
+#import "@preview/cetz:0.5.3" as cetz: draw
 
 // Funzione di configurazione globale
 #let setup(doc) = {

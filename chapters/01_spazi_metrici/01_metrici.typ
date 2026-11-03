@@ -19,13 +19,79 @@
   $ B_r(x_0) = { x in X : d(x, x_0) < r }. $
 ] <def:palla>
 
-#figure(
-  [
-    // TODO: Convertire diagramma TikZ in fletcher o immagine
-    _[Diagramma TikZ da convertire]_
-  ],
-  caption: [Un insieme $A$ e la sua parte interna $accent(A, ∘)$, parte esterna, frontiera $partial A$, chiusura $overline(A)$ e punti di accumulazione $A'$.],
-) <fig:int_ext_front>
+#{
+// Parametri condivisi per i punti della sequenza
+let radius = 1.5
+let dots-x = (0.5*radius, 0.75*radius, 0.88*radius, 0.97*radius, 1.0*radius)
+let dot-r = 0.04
+let internal-color = gray.darken(20%)
+let openA = [$accent(A, circle)$] // altrimenti circle e draw.circle confliggono!
+import cetz: canvas, draw
+import draw: rect, arc, circle, content
+
+figure(
+  grid(
+    columns: 3,
+    gutter: 1.5em,
+
+    // 1. Insieme A
+    canvas(length: 0.7cm, {
+      rect((-2, -2), (2, 2), stroke: none)
+      circle((0, 0), radius: radius, fill: internal-color, stroke: none)
+      arc((0, radius), start: 90deg, stop: 270deg, radius: radius, stroke: 1.5pt)
+      for x in dots-x {
+        circle((x, radius), radius: dot-r, fill: black, stroke: none)
+      }
+      content((0, 0), [$A$])
+    }),
+
+    // 2. Parte interna
+    canvas(length: 0.7cm, {
+      rect((-2, -2), (2, 2), stroke: none)
+      circle((0, 0), radius: radius, fill: internal-color, stroke: none)
+      content((0, 0), openA)
+    }),
+
+    // 3. Parte esterna
+    canvas(length: 0.7cm, {
+      rect((-2.5, -2.5), (2.5, 2.5), fill: internal-color, stroke: none)
+      circle((0, 0), radius: radius, fill: white, stroke: none)
+      for x in dots-x {
+        circle((x, radius), radius: dot-r, fill: white, stroke: none)
+      }
+      content((0, radius + 0.5), [parte esterna di $A$])
+    }),
+
+    // 4. Frontiera
+    canvas(length: 0.7cm, {
+      rect((-2, -2), (2, 2), stroke: none)
+      for x in dots-x {
+        circle((x, radius), radius: dot-r, fill: black, stroke: none)
+      }
+      circle((0, 0), radius: radius, stroke: 1.5pt, fill: none)
+      content((0, 0), [$partial A$])
+    }),
+
+    // 5. Chiusura
+    canvas(length: 0.7cm, {
+      rect((-2, -2), (2, 2), stroke: none)
+      for x in dots-x {
+        circle((x, radius), radius: dot-r, fill: black, stroke: none)
+      }
+      circle((0, 0), radius: radius, fill: internal-color, stroke: 1.5pt)
+      content((0, 0), [$overline(A)$])
+    }),
+
+    // 6. Punti di accumulazione
+    canvas(length: 0.7cm, {
+      rect((-2, -2), (2, 2), stroke: none)
+      circle((1, 1), radius: dot-r, fill: black, stroke: none)
+      circle((0, 0), radius: radius, fill: internal-color, stroke: 1.5pt)
+      content((0, 0), [$A'$])
+    }),
+  ),
+  caption: [Un insieme $A$ e la sua parte interna #openA, parte esterna, frontiera $partial A$, chiusura $overline(A)$ e punti di accumulazione $A'$.],
+) } <fig:int_ext_front> 
 
 #definition[relazioni e proprietà topologiche][
   Sia $(X, d)$ uno spazio metrico. Un insieme $A subset X$ si dirà essere un insieme _aperto_ in $X$ se per ogni $x in A$ esiste $r > 0$ tale che $B_r(x) subset A$. Un insieme $A subset X$ si dirà essere un insieme _chiuso_ in $X$ se il suo complementare $X without A$ è aperto.

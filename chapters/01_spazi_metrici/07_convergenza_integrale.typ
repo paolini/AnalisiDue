@@ -192,9 +192,11 @@ Ma visto che sappiamo che $f(x)$ è una funzione reale, la somma delle parti imm
 
 #figure(
   image("../../figure/fourier.png", height: 5cm),
-  caption: [
+  // La formula estesa richiede la colonna principale, non il margine laterale.
+  caption: figure.caption(position: bottom)[
     Lo sviluppo di Fourier della funzione che vale $1$ su $[0,pi]$ e $-1$ su $[pi,2pi]$:
     #text(size: 0.8em)[
+    #set math.equation(numbering: none)
     $ f_(61)(x) 
       &= (4 sin(x)) / pi 
       + (4 sin(3x)) / (3pi) 
@@ -202,20 +204,20 @@ Ma visto che sappiamo che $f(x)$ è una funzione reale, la somma delle parti imm
       + (4 sin(7x)) / (7pi) 
       + (4 sin(9x)) / (9pi) 
       + (4 sin(11x)) / (11pi)
-      + (4 sin(13x)) / (13pi) 
     \ & quad 
+      + (4 sin(13x)) / (13pi)
       + (4 sin(15x)) / (15pi) 
       + (4 sin(17x)) / (17pi) 
       + (4 sin(19x)) / (19pi) 
       + (4 sin(21x)) / (21pi) 
       + (4 sin(23x)) / (23pi) 
-      + (4 sin(25x)) / (25pi) 
     \ & quad  
+      + (4 sin(25x)) / (25pi)
       + (4 sin(27x)) / (27pi) 
       + (4 sin(29x)) / (29pi) 
       + (4 sin(31x)) / (31pi). 
       $]
-    Il codice per calcolare i coefficienti e generare il grafico si trova a pagina \@code:Fourier.
+    Il codice per calcolare i coefficienti e generare il grafico si trova nel listato #ref(<code:Fourier>, supplement: none).
     Si può notare come nel punto di salto $x=pi$ lo sviluppo di Fourier ha una oscillazione maggiore del salto originario (fenomeno di Gibbs). L'incremento dell'oscillazione è circa del 9% ed è indipendente dal numero di termini utilizzati nello sviluppo di Fourier.
   ],
 ) <fig:fourier>

@@ -1,4 +1,5 @@
 #import "@preview/bookly:5.2.0": *
+#import "print-layout.typ": print-title-page, print-page, print-bleed
 #import "@preview/ctheorems:2.0.0": *
 #import thm-themes.ams: *
 #import "@preview/fletcher:0.5.8" as fletcher: diagram, node, edge
@@ -10,6 +11,10 @@
 #let version = "1.1.0"
 #let pdf-url = "https://codeberg.org/paolini/AnalisiDue/releases/download/v" + version + "/AnalisiDueTyp.pdf"
 #let primary-color = rgb("2b6cb0")
+#let alt-margins-input = sys.inputs.at("alt-margins", default: "true")
+#assert(alt-margins-input in ("true", "false"),
+  message: "alt-margins deve essere true oppure false")
+#let alt-margins = alt-margins-input == "true"
 
 // Intestazione e piè di pagina occupano anche i margini, ma non devono
 // registrarsi come note attraverso wideblock durante le misurazioni.
@@ -21,6 +26,34 @@
     right: -(right-margin.width + right-margin.sep),
     body,
   )
+}
+
+// Bookly trasforma le didascalie in note di Marginalia. Durante le
+// misurazioni delle figure queste aggiornano anche lo stato globale delle
+// note, provocando mancata convergenza. Le didascalie restano ancorate alla
+// figura, ma vengono posizionate senza registrarle come note mobili.
+#let book-caption(it) = {
+  let body = context {
+    if it.numbering != none {
+      it.supplement
+      sym.space
+      it.counter.display(it.numbering)
+      [ – ]
+    }
+    it.body
+  }
+  let styled-body = {
+    set text(size: 9.35pt, style: "normal", weight: "regular")
+    set par(spacing: 1.2em, leading: 0.5em, hanging-indent: 0pt)
+    body
+  }
+  box(width: 0pt, context {
+    let right-side = not alt-margins or calc.odd(here().page())
+    let margin = if right-side { marginalia.get-right() } else { marginalia.get-left() }
+    let x = if right-side { page.width - margin.far - margin.width } else { margin.far }
+    let anchor = here().position()
+    place(left, dx: x - anchor.x, block(width: margin.width, styled-body))
+  })
 }
 
 #let book-header = context {
@@ -66,6 +99,8 @@
 // Funzione di configurazione globale
 #let setup(doc) = {
   // Regole show e set per l'intero documento
+  // La smarginatura resta attiva anche nelle pagine create da Bookly.
+  set page(..print-page)
 
   show: bookly.with(
     title: "Appunti di Analisi Matematica Due",
@@ -78,7 +113,7 @@
       body: "Lato",
       math: "Lete Sans Math"
     ),
-    title-page: book-title-page(
+    title-page: print-title-page(
       subtitle: none,
       edition: [Versione #version],
       series: "",
@@ -103,11 +138,17 @@
     ),
     config-options: (
       open-right: true,
-      alt-margins: false
+      alt-margins: alt-margins
     )
   )
 
-  set page(header: book-header, footer: book-footer)
+  // Formato pagina per l'edizione cartacea Amazon KDP.
+  set page(..print-page, header: book-header, footer: book-footer)
+
+  show figure.caption.where(position: top): book-caption
+
+  // I fondi dei capitoli di Bookly devono proseguire oltre la linea di taglio.
+  show rect.where(width: 114%): set rect(outset: print-bleed)
 
   // Bookly usa equate: la regola globale sulle formule di thm-rules
   // entra in ricorsione con equate. Applicare solo le regole necessarie

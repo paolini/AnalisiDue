@@ -1,30 +1,47 @@
-// #import "@preview/bookly:5.2.0": *
+#import "@preview/bookly:5.2.0": *
 #import "@preview/ctheorems:2.0.0": *
 #import thm-themes.ams: *
 #import "@preview/fletcher:0.5.8" as fletcher: diagram, node, edge
 #import "@preview/showybox:2.0.4": showybox
 #import "@preview/cetz:0.5.3" as cetz: draw
 
+#let version = "0.8.0"
+
 // Funzione di configurazione globale
 #let setup(doc) = {
   // Regole show e set per l'intero documento
 
-  show: thm-rules.with(qed-symbol: $square$)
-
-  /*
   show: bookly.with(
-    title: "My document",
-    author: "Author Name",
+    title: "Appunti di Analisi Matematica Due",
+    author: "Emanuele Paolini",
     theme: modern,
-    lang: "en",
+    colors: (primary: rgb("2b6cb0")),
+    lang: "it",
     tufte: false,
     fonts: (
       body: "Lato",
       math: "Lete Sans Math"
     ),
     title-page: book-title-page(
-      series: "Typst book series",
-      institution: "Typst community",
+      subtitle: none,
+      edition: [Versione #version],
+      series: "",
+      institution: "manu-fatto",
+      version-usage: [
+        #block(above: 0pt, below: 8pt)[
+          #link("https://creativecommons.org/licenses/by-sa/4.0/")[
+            #image("figure/cc-by-sa.svg", width: 88pt,
+              alt: "Creative Commons: Attribuzione, Condividi allo stesso modo")
+          ]
+        ]
+        Quest'opera è distribuita con licenza
+        #link("https://creativecommons.org/licenses/by-sa/4.0/")[
+          Creative Commons Attribuzione – Condividi allo stesso modo
+          4.0 Internazionale (CC BY-SA 4.0)
+        ]. È consentito condividere e modificare l'opera, anche per fini
+        commerciali, attribuendo la paternità, indicando le modifiche e
+        distribuendo gli adattamenti con la stessa licenza.
+      ],
       // logo: image("images/typst-logo.svg"),
       // cover: image("images/book-cover.jpg", width: 45%)
     ),
@@ -33,8 +50,23 @@
       alt-margins: false
     )
   )
-  */
 
+  // Bookly usa equate: la regola globale sulle formule di thm-rules
+  // entra in ricorsione con equate. Applicare solo le regole necessarie
+  // agli ambienti, ai riferimenti e al simbolo di fine dimostrazione.
+  show figure.where(kind: "thm-env"): it => {
+    set block(breakable: true)
+    set align(left)
+    it.body
+  }
+  show ref: it => {
+    if it.element != none and it.element.func() == figure and it.element.kind == "thm-env" {
+      thm-rules(it)
+    } else {
+      it
+    }
+  }
+  show metadata.where(value: "thm-qed-symbol"): $square$
 
   set heading(numbering: "1.1")
   set text(lang: "it")
@@ -68,6 +100,9 @@
 )
 
 #let example = example.with(
+  // Gli esempi hanno un contatore autonomo, basato sui titoli.
+  counter: "Example",
+  base: "heading",
   stroke: (left: 3pt + rgb("718096")),
   outset: (left: 8pt, y: 2pt),
   fill: none,

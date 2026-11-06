@@ -50,7 +50,7 @@ $ d x thin d y thin d z = rho thin d rho thin d theta thin d z $
 === coordinate sferiche
 
 #figure(
-  [ _[Diagramma coordinate sferiche]_ ],
+  include "../../figure/coordinate_sferiche.typ",
 )
 
 $ cases(

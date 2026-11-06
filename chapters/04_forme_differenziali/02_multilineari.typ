@@ -322,7 +322,7 @@ $ psi(t,s) := cases(
 Si può verificare che il dominio di $psi$ ha forma di una croce e che $psi$ è continua. Sarà $current(psi) = partial Q^3$ (si veda la @fig:sviluppocubo).
 
 #figure(
-  [ _[Diagramma: Sviluppo del bordo del cubo con i sei quadrati che rappresentano le sei facce del cubo]_ ],
+  include "../../figure/sviluppo_cubo.typ",
   caption: [
     Il dominio della funzione $psi$ definita nella @eq:defpsicubo è lo sviluppo del bordo del cubo con i sei quadrati che rappresentano le sei facce del cubo.
   ],

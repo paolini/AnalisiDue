@@ -373,13 +373,16 @@ Si può verificare che il dominio di $psi$ ha forma di una croce e che $psi$ è 
   $ integral_S d omega
       &:= integral_phi d omega
       = integral_([0,1]^k) phi^* (d omega)
-      = integral_([0,1]^k) op("div") xi
-      = sum_(i=1)^n integral_([0,1]^(k-1)) (xi_i compose psi_i^+ - xi_i compose psi_i^-) $
+      = integral_([0,1]^k) op("div") xi \
+      & = sum_(i=1)^n integral_([0,1]^(k-1)) (xi_i compose psi_i^+ - xi_i compose psi_i^-) $
   Osserviamo ora che se $i != j$ si ha
-  $ (d psi_i^compose)_1 and dots and (d psi_i^compose)_(j-1) and (d psi_i^compose)_(j+1) and dots and (d psi_i^compose)_k = 0 $
+  $ (d psi_i^compose)_1 and dots 
+  and cancel((d psi_i^compose)_j) and dots and (d psi_i^compose)_k = 0 $
   (in quanto $(psi_i^compose)_i$ è costante e quindi ha derivata nulla) e dunque, posto $(x_1, dots, x_k) = psi_i^compose (t_1, dots, t_(k-1))$, si ha
-  $ (psi_i^compose)* (phi^* omega)
-      &= sum_(j=1)^(k-1) (-1)^(j-1) (xi_j compose psi_i^compose) (d psi_i^compose)_1 and dots and (d psi_i^compose)_(j-1) and (d psi_i^compose)_(j+1) and dots and (d psi_i^compose)_k \
+  $ & (psi_i^compose)* (phi^* omega) \
+      &= sum_(j=1)^(k-1) (-1)^(j-1) (xi_j compose psi_i^compose) (d psi_i^compose)_1 and dots 
+      and cancel((d psi_i^compose)_j) 
+      and dots and (d psi_i^compose)_k \
       &= (-1)^(i-1) (xi_i compose psi_i^compose) thin d t_1 and dots and d t_(k-1) $
   da cui
   $ integral_(psi_i^compose) phi^* omega

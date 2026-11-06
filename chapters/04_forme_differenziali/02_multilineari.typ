@@ -110,7 +110,8 @@ Lo si capisce con un esempio.
   Allora
   $ d omega
       &= d f and d x and d y - d g and d y and d z \
-      &= (f_x thin d x + f_y thin d y + f_z thin d z) and d x and d y - (g_x thin d x + g_y thin d y + g_z thin d z) and d y and d z \
+      &= (f_x thin d x + f_y thin d y + f_z thin d z) and d x and d y \
+      & quad - (g_x thin d x + g_y thin d y + g_z thin d z) and d y and d z \
       &= f_z thin d z and d x and d y - g_x thin d x and d y and d z \
       &= (f_z - g_x) thin d x and d y and d z. $
   Ricordiamo che termini come $d x and d x and d y$ o $d y and d x and d y$ sono nulli in quanto si ripete due volte lo stesso differenziale.
@@ -250,19 +251,19 @@ Per avere la massima generalità nel riconoscere quando due superfici rappresent
 
 #definition[$k$-superfici parametrizzate][
   Sia $A subset RR^k$ un compatto misurabile e sia $phi: A -> RR^n$ una funzione di classe $C^1$.
-  Denotiamo con $op("current") phi: Omega^k (RR^n) -> RR$ il funzionale lineare definito da
-  $ op("current") phi [omega] := integral_phi omega = integral_A phi^* omega. $
+  Denotiamo con $current(phi): Omega^k (RR^n) -> RR$ il funzionale lineare definito da
+  $ current(phi) [omega] := integral_phi omega = integral_A phi^* omega. $
 
   Un funzionale lineare $S: Omega^k (RR^n) -> RR$ si dice essere una $k$-superficie parametrizzata se esistono $phi_1, dots, phi_M : [0,1]^k -> RR^n$ di classe $C^1$ tali che per ogni $omega in Omega^k (RR^n)$ si ha
-  $ S = op("current") phi_1 + dots + op("current") phi_M. $
+  $ S = current(phi_1) + dots + current(phi_M). $
 
   Scriveremo, in modo più suggestivo,
-  $ integral_S omega := S[omega] = sum_(j=1)^M op("current") phi_j [omega] = sum_(j=1)^M integral_(phi_j) omega. $
+  $ integral_S omega := S[omega] = sum_(j=1)^M current(phi_j) [omega] = sum_(j=1)^M integral_(phi_j) omega. $
 
-  Se $B subset RR^(n-1)$ è un compatto misurabile e $f: B -> RR$ è una funzione di classe $C^1$, il grafico di $f$ può essere parametrizzato dalla funzione $phi: B -> RR^n$ definita da $phi(x) = (x,f(x))$ e dunque il grafico di $f$ rappresenta una $(n-1)$-superficie parametrizzata: scriveremo $op("current") f = op("current") phi$ per denotare la superficie rappresentata dal grafico di $f$.
+  Se $B subset RR^(n-1)$ è un compatto misurabile e $f: B -> RR$ è una funzione di classe $C^1$, il grafico di $f$ può essere parametrizzato dalla funzione $phi: B -> RR^n$ definita da $phi(x) = (x,f(x))$ e dunque il grafico di $f$ rappresenta una $(n-1)$-superficie parametrizzata: scriveremo $current(f) = current(phi)$ per denotare la superficie rappresentata dal grafico di $f$.
 
-  Se $B subset RR^n$ è un compatto misurabile denotiamo con $op("current") B := op("current") (op("id")|_B)$ la $n$-superficie parametrizzata rappresentata dall'identità $op("id"): B -> RR^n$.
-  In pratica si ha $integral_(op("current") B) f thin d x_1 and dots.c and d x_n = integral_B f$ se $f: B -> RR$ è una funzione di classe $C^0$.
+  Se $B subset RR^n$ è un compatto misurabile denotiamo con $current(B) := current(id|_B)$ la $n$-superficie parametrizzata rappresentata dall'identità $id: B -> RR^n$.
+  In pratica si ha $integral_(current(B)) f thin d x_1 and dots.c and d x_n = integral_B f$ se $f: B -> RR$ è una funzione di classe $C^0$.
 ]
 
 Chiaramente se $S$ è una $k$-superficie parametrizzata, allora anche $-S$ (cioè il funzionale $omega |-> -S[omega]$) è una $k$-superficie parametrizzata, in quanto basta invertire le orientazioni delle parametrizzazioni $phi_j$ per ottenere il cambio di segno.
@@ -274,13 +275,13 @@ Tramite somma ripetuta è anche possibile moltiplicare una $k$-superficie parame
   Ci sono molti modi per rappresentare la superficie di una sfera in $RR^3$.
   Ad esempio possiamo considerare la usuale parametrizzazione data da _latitudine_ e _longitudine_, ovvero $psi: [-pi, pi] times [-pi/2, pi/2] -> RR^3$ definita da
   $ psi(theta, phi.alt) = (sin theta cos phi.alt, sin theta sin phi.alt, cos theta) $
-  e definire la sfera $S = op("current") psi$.
+  e definire la sfera $S = current(psi)$.
   Osserviamo che $psi$ è definita su un rettangolo invece che su un quadrato unitario.
-  Ma è ovvio che a meno di riparametrizzazione possiamo scrivere $op("current") psi = op("current") psi'$ dove $psi'$ è definita su $[0,1]^2$.
+  Ma è ovvio che a meno di riparametrizzazione possiamo scrivere $current(psi) = current(psi')$ dove $psi'$ è definita su $[0,1]^2$.
 
   Anzi, possiamo anche definire la sfera $S$ come somma delle due semisfere ottenute come grafico della funzione $f: B_1 (0) subset RR^2 -> RR$ definita da:
   $ f(x,y) = sqrt(1 - x^2 - y^2). $
-  Si potrebbe infatti dimostrare che $S = op("current") psi = op("current") f - op("current") (-f)$.
+  Si potrebbe infatti dimostrare che $S = current(psi) = current(f) - current(-f)$.
 ]
 
 Vogliamo ora definire il _bordo_ $partial S$ di una $k$-superficie parametrizzata $S$.
@@ -291,21 +292,21 @@ Le facce possono essere identificate tramite il loro versore normale uscente dal
 Infatti ogni punto della frontiera topologica $partial [0,1]^k$ in $RR^k$ è un punto che ha tutte le coordinate in $[0,1]$ ma almeno una coordinata è uguale a $0$ o a $1$.
 Se una sola delle coordinate è uguale a $0$ o a $1$ allora il punto non si trova su uno spigolo ed è univocamente definito il versore normale uscente dal cubo in quel punto: si tratta del versore $e_k$ (il $k$-esimo vettore della base canonica) se è la $k$-esima coordinata ad essere uguale a $1$ e del versore $-e_k$ se la $k$-esima coordinata è uguale a $0$.
 
-Dunque se $Q^k = op("current")([0,1]^k)$ è la $k$-superficie in $RR^k$ che rappresenta il cubo $[0,1]^k$ è naturale definire il bordo $partial Q^k$ di $Q^k$ come la somma delle superfici che parametrizzano le $2k$ facce del cubo, con l'opportuno segno per tenere conto dell'orientazione (il segno è positivo se il versore normale uscente è $e_k$ e negativo se è $-e_k$).
+Dunque se $Q^k = current([0,1]^k)$ è la $k$-superficie in $RR^k$ che rappresenta il cubo $[0,1]^k$ è naturale definire il bordo $partial Q^k$ di $Q^k$ come la somma delle superfici che parametrizzano le $2k$ facce del cubo, con l'opportuno segno per tenere conto dell'orientazione (il segno è positivo se il versore normale uscente è $e_k$ e negativo se è $-e_k$).
 
-Definiamo quindi le funzioni $psi_i^compose : [0,1]^(k-1) -> RR^k$ in modo che $+- op("current") psi_i^compose$ sia la faccia del cubo $Q^k$ con versore uscente uguale ad $+- e_i$:
+Definiamo quindi le funzioni $psi_i^compose : [0,1]^(k-1) -> RR^k$ in modo che $±current(psi_i^compose)$ sia la faccia del cubo $Q^k$ con versore uscente uguale ad $± e_i$:
 $ psi_i^+ (t_1, dots, t_(k-1)) &= (t_1, dots, t_(i-1), 1, t_i, dots, t_(k-1)), \
   psi_i^- (t_1, dots, t_(k-1)) &= (t_1, dots, t_(i-1), 0, t_i, dots, t_(k-1)) $
 e poniamo
-$ partial Q^k := sum_(i=1)^k (-1)^(i-1) (op("current") psi_i^+ - op("current") psi_i^-). $
+$ partial Q^k := sum_(i=1)^k (-1)^(i-1) (current(psi_i^+) - current(psi_i^-)). $
 
 Ad esempio per $k=2$ il quadrato $Q^2$ ha quattro lati parametrizzati da $psi_1^+ (t) = (1,t)$ (lato superiore percorso verso destra), $psi_1^- (t) = (0,t)$ (lato inferiore percorso verso destra), $psi_2^+ (t) = (t,1)$ (lato destro percorso verso l'alto) e $psi_2^- (t) = (t,0)$ (lato sinistro percorso verso l'alto).
 Notiamo che i segni che abbiamo scelto nella definizione di $partial Q^2$ corrispondono a considerare una orientazione antioraria dei lati del quadrato:
-$ partial Q^2 = op("current") psi_1^+ - op("current") psi_1^- - op("current") psi_2^+ + op("current") psi_2^-. $
+$ partial Q^2 = current(psi_1^+) - current(psi_1^-) - current(psi_2^+) + current(psi_2^-). $
 
 Nel caso $k=3$ il cubo $Q^3$ ha sei facce parametrizzate da $psi_1^+ (t_1,t_2) = (1,t_1,t_2)$, $psi_1^- (t_1,t_2) = (0,t_1,t_2)$, $psi_2^+ (t_1,t_2) = (t_1,1,t_2)$, $psi_2^- (t_1,t_2) = (t_1,0,t_2)$, $psi_3^+ (t_1,t_2) = (t_1,t_2,1)$ e $psi_3^- (t_1,t_2) = (t_1,t_2,0)$.
 In questo caso si ha
-$ partial Q^3 = op("current") psi_1^+ - op("current") psi_1^- - op("current") psi_2^+ + op("current") psi_2^- + op("current") psi_3^+ - op("current") psi_3^-. $
+$ partial Q^3 = current(psi_1^+) - current(psi_1^-) - current(psi_2^+) + current(psi_2^-) + current(psi_3^+) - current(psi_3^-). $
 Osserviamo che i segni scelti sulle facce opposte sono opposti.
 Inoltre il segno alterno $(-1)^(i-1)$ nella definizione di $partial Q^k$ fa sì che lungo gli spigoli in comune tra due facce adiacenti, le parametrizzazioni abbiano (considerando il segno) orientazione opposta.
 
@@ -318,7 +319,7 @@ $ psi(t,s) := cases(
   psi_3^+ (4-s,t-1) &text("se ") (4-s,t-1) in [0,1]^2,
   psi_3^- (s-1,t-1) &text("se ") (s-1,t-1) in [0,1]^2.
 ) $ <eq:defpsicubo>
-Si può verificare che il dominio di $psi$ ha forma di una croce e che $psi$ è continua. Sarà $op("current") psi = partial Q^3$ (si veda la @fig:sviluppocubo).
+Si può verificare che il dominio di $psi$ ha forma di una croce e che $psi$ è continua. Sarà $current(psi) = partial Q^3$ (si veda la @fig:sviluppocubo).
 
 #figure(
   [ _[Diagramma: Sviluppo del bordo del cubo con i sei quadrati che rappresentano le sei facce del cubo]_ ],
@@ -329,17 +330,17 @@ Si può verificare che il dominio di $psi$ ha forma di una croce e che $psi$ è 
 
 #definition[bordo di una $k$-superficie parametrizzata][
   Sia $S$ una $k$-superficie parametrizzata, cioè
-  $ S = sum_(j=1)^M op("current") phi_j $
+  $ S = sum_(j=1)^M current(phi_j) $
   con $phi_j : [0,1]^k -> RR^n$ di classe $C^1$.
   Definiamo la $(k-1)$-superficie parametrizzata $partial S$ come:
-  $ partial S = sum_(j=1)^M sum_(i=1)^k (-1)^(i-1) (op("current") (phi_j compose psi_i^+) - op("current") (phi_j compose psi_i^-)). $
+  $ partial S = sum_(j=1)^M sum_(i=1)^k (-1)^(i-1) (current(phi_j compose psi_i^+) - current(phi_j compose psi_i^-)). $
 ]
 
 #theorem[teorema della divergenza per il cubo][
   Sia $xi: [0,1]^k -> RR^k$ un campo vettoriale di classe $C^1$.
   Allora si ha
   $ integral_([0,1]^k) op("div") xi = sum_(i=1)^n integral_([0,1]^(k-1)) (xi_i compose psi_i^+ - xi_i compose psi_i^-). $
-  Si osservi che $+- xi_i compose psi_i^compose$ corrisponde al prodotto scalare $xi dot (+- e_i)$ tra il campo vettoriale $xi$ e il vettore $+- e_i$ che non è altro che il versore normale alla superficie della faccia parametrizzata da $psi_i^compose$ dunque l'integrale sul lato destro dell'uguaglianza corrisponde all'integrale del flusso di $xi$ attraverso la frontiera del cubo.
+  Si osservi che $± xi_i compose psi_i^compose$ corrisponde al prodotto scalare $xi dot (± e_i)$ tra il campo vettoriale $xi$ e il vettore $± e_i$ che non è altro che il versore normale alla superficie della faccia parametrizzata da $psi_i^compose$ dunque l'integrale sul lato destro dell'uguaglianza corrisponde all'integrale del flusso di $xi$ attraverso la frontiera del cubo.
 ]
 
 #proof[
@@ -363,7 +364,7 @@ Si può verificare che il dominio di $psi$ ha forma di una croce e che $psi$ è 
 ] <th:stokes>
 
 #proof[
-  Grazie alla linearità è sufficiente dimostrare il risultato quando $S = op("current") phi$ con $phi: [0,1]^k -> RR^n$ di classe $C^1$.
+  Grazie alla linearità è sufficiente dimostrare il risultato quando $S = current(phi)$ con $phi: [0,1]^k -> RR^n$ di classe $C^1$.
   Allora osserviamo che $phi^* omega$ è una $(k-1)$-forma differenziale su $[0,1]^k$ e dunque si rappresenta tramite un campo vettoriale $xi: [0,1]^k -> RR^k$ con la proprietà:
   $ phi^* omega &= sum_(i=1)^k (-1)^(i-1) xi_i thin d x_1 and dots and d x_(i-1) and d x_(i+1) and dots and d x_k \
     phi^* (d omega) &= d(phi^* omega) = (op("div") xi) thin d x_1 and dots and d x_k. $

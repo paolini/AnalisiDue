@@ -31,29 +31,29 @@ $ integral_phi omega
     &= integral_B xi(x) dot nu_phi (x) sqrt(det((D phi)^t D phi)) thin d x \
     &= integral_phi xi dot nu_phi thin d sigma. $
 
-Se $S = op("current") phi_1 + dots + op("current") phi_M$ è una $(n-1)$-superficie parametrizzata ha quindi senso definire
+Se $S = current(phi_1) + dots + current(phi_M)$ è una $(n-1)$-superficie parametrizzata ha quindi senso definire
 $ integral_S xi dot nu_S thin d sigma := integral_S omega $
 dove $omega$ è la $(n-1)$-forma differenziale associata a $xi$ come sopra.
 
 === volumi
 
-Se $A subset RR^n$ è un aperto limitato e misurabile si può definire $op("current") A: Omega^n (A) -> RR$ tramite
-$ integral_(op("current") A) f thin d x_1 and dots and d x_n = integral_A f. $
+Se $A subset RR^n$ è un aperto limitato e misurabile si può definire $current(A): Omega^n (A) -> RR$ tramite
+$ integral_(current(A)) f thin d x_1 and dots and d x_n = integral_A f. $
 
-Se $A$ è sufficientemente regolare sarà possibile scrivere $op("current") A = op("current") phi_1 + dots + op("current") phi_M$ con $phi_i : [0,1]^n -> A$ di classe $C^1$.
-In tal caso $op("current") A$ è una $n$-superficie parametrizzata e dunque si potrà definire il suo bordo.
+Se $A$ è sufficientemente regolare sarà possibile scrivere $current(A) = current(phi_1) + dots + current(phi_M)$ con $phi_i : [0,1]^n -> A$ di classe $C^1$.
+In tal caso $current(A)$ è una $n$-superficie parametrizzata e dunque si potrà definire il suo bordo.
 
 #theorem[
-  Sia $A subset RR^n$ un aperto limitato sufficientemente regolare (in modo che $op("current") A$ sia una $n$-superficie parametrizzata).
+  Sia $A subset RR^n$ un aperto limitato sufficientemente regolare (in modo che $current(A)$ sia una $n$-superficie parametrizzata).
   Sia $f: macron(A) -> RR^n$ una funzione di classe $C^1$.
   Allora
-  $ integral_A op("div") f = integral_(partial op("current") A) f dot nu_(partial op("current") A) thin d sigma. $
+  $ integral_A op("div") f = integral_(partial current(A)) f dot nu_(partial current(A)) thin d sigma. $
 ]
 
 #proof[
   Consideriamo la $(n-1)$-forma $omega$ associata a $f$.
   Il teorema @th:stokes ci dice che
-  $ integral_A op("div") f = integral_(op("current") A) d omega = integral_(op("current") A) omega = integral_(partial op("current") A) f dot nu_(partial op("current") A) thin d sigma. $
+  $ integral_A op("div") f = integral_(current(A)) d omega = integral_(current(A)) omega = integral_(partial current(A)) f dot nu_(partial current(A)) thin d sigma. $
 ]
 
 == forme differenziali multilineari in $RR^3$

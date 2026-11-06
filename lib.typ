@@ -210,6 +210,6 @@
 
 // Comandi custom
 #let vec(x) = math.bold(x)
-
+#let current(x) = math.lr(math.bracket.l.stroked + x + math.bracket.r.stroked)
 #let Subset = math.subset.double
 #let subset = math.subset.eq

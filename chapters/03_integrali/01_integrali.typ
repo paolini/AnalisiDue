@@ -447,7 +447,7 @@ Una _mossa elementare_ su $RR^n$ è una applicazione lineare $L$ che aggiunge ad
 $ L(x_1, dots, x_n) = (x_1, dots, x_j + lambda x_k, dots, x_n) $
 con $k != j$.
 Chiamiamo _matrice elementare_ una matrice che si ottiene come prodotto di matrici di permutazione e mosse elementari.
-Visto che le matrici di permutazione hanno determinante $+- 1$ e le mosse elementari hanno sempre determinante $1$, tutte le matrici elementari hanno determinante $+- 1$.
+Visto che le matrici di permutazione hanno determinante $± 1$ e le mosse elementari hanno sempre determinante $1$, tutte le matrici elementari hanno determinante $± 1$.
 
 #definition[matrice elementare][
   Dati $k,j in {1, dots, n}$ con $k != j$ e $alpha in RR$ consideriamo la matrice $M=M(k,j,alpha)$ definita sulla base canonica $e_1, dots, e_n$ da
@@ -473,7 +473,7 @@ Visto che le matrici di permutazione hanno determinante $+- 1$ e le mosse elemen
   Più precisamente data una bigezione $sigma: {1, dots, n} -> {1, dots, n}$, si ha $M(e_k) = e_(sigma(k))$ per ogni $k=1, dots, n$.
 
   Una _matrice elementare_ è una matrice che si ottiene come prodotto di matrici di permutazione e mosse elementari.
-  Le matrici elementari sono banalmente invertibili ed hanno tutte determinante $+- 1$.
+  Le matrici elementari sono banalmente invertibili ed hanno tutte determinante $± 1$.
 ]
 
 #theorem[riduzione a scala di Gauss][

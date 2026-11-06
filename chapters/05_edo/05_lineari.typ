@@ -37,7 +37,7 @@ In generale l'equazione @eq:edo_lineare_ordine_n viene chiamata _equazione non o
   Dunque l'insieme $V$ delle soluzioni dell'equazione omogenea non è altro che $op("ker") L$ che notoriamente è uno spazio vettoriale visto che se $L[u]=0$ e $L[v]=0$ allora anche $L[lambda u + mu v] = lambda L[u] + mu L[v] = 0$.
 
   Possiamo ora determinare la dimensione di tale spazio, mettendo in corrispondenza le soluzioni dell'equazione con un loro dato iniziale, tramite l'applicazione $J[u]$ definita da @eq:jet.
-  Chiaramente $J$ è lineare perché l'operatore derivata e la valutazione in un punto sono operatori lineari. Osserviamo che $J$ è suriettivo perché dato un qualunque $arrow(y) in RR^n$ per il teorema @th:cauchy_lipschitz_ordine_n di esistenza (globale) di soluzioni per il problema di Cauchy di ordine $n$ sappiamo esistere una soluzione $u in V$ tale che $J[u] = arrow(y)$. Ma $J$ è anche iniettivo perché se $u,v in V$ sono due soluzioni con $J[u]=J[v]$ significa che $u$ e $v$ verificano lo stesso problema di Cauchy.
+  Chiaramente $J$ è lineare perché l'operatore derivata e la valutazione in un punto sono operatori lineari. Osserviamo che $J$ è suriettivo perché dato un qualunque $vec(y) in RR^n$ per il teorema @th:cauchy_lipschitz_ordine_n di esistenza (globale) di soluzioni per il problema di Cauchy di ordine $n$ sappiamo esistere una soluzione $u in V$ tale che $J[u] = vec(y)$. Ma $J$ è anche iniettivo perché se $u,v in V$ sono due soluzioni con $J[u]=J[v]$ significa che $u$ e $v$ verificano lo stesso problema di Cauchy.
   Per l'unicità della soluzione risulta quindi $u=v$.
   Abbiamo quindi mostrato che $J: V -> RR^n$ è un isomorfismo di spazi vettoriali, quindi $dim V = n$.
 

@@ -32,7 +32,7 @@ $ lambda_k [e_j] = delta_(k j) = cases(
   1 &text("se ") k=j,
   0 &text("altrimenti.")
 ) $
-Se denotiamo con $x_k : RR^n -> RR$ la funzione $arrow(x) |-> x_k$ che restituisce la $k$-esima coordinata di un punto $arrow(x) = (x_1, dots, x_n)$, possiamo osservare che $d x_k [e_j] = (partial x_k) / (partial x_j) = delta_(k j)$ e dunque $d x_k = lambda_k$ è in effetti la base canonica di $(RR^n)^*$.
+Se denotiamo con $x_k : RR^n -> RR$ la funzione $vec(x) |-> x_k$ che restituisce la $k$-esima coordinata di un punto $vec(x) = (x_1, dots, x_n)$, possiamo osservare che $d x_k [e_j] = (partial x_k) / (partial x_j) = delta_(k j)$ e dunque $d x_k = lambda_k$ è in effetti la base canonica di $(RR^n)^*$.
 Significa che ogni $omega in Omega^1 (A)$ può essere scritto nella forma
 $ omega = xi_1 d x_1 + xi_2 d x_2 + dots + xi_n d x_n. $
 Dunque c'è un isomorfismo $omega |-> xi$ che mette in corrispondenza le forme differenziali lineari $omega in Omega^1 (A)$ con i campi vettoriali $xi : A -> RR^n$.

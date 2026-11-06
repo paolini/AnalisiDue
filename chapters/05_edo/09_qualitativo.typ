@@ -82,11 +82,11 @@ Più in generale è interessante capire quando una soluzione di una equazione di
 #proof[
   Supponiamo per assurdo che l'insieme $J = {x in I : x >= x_0 text(" e ") u(x) = v(x)}$ non sia vuoto.
   Tale insieme è chiuso ed inferiormente limitato, quindi se non è vuoto, ammette minimo.
-  Sia overline(x) il minimo di $J$.
-  Sicuramente overline(x) > x_0 in quanto $u(overline(x)) = v(overline(x))$.
-  Inoltre per ogni $x in [x_0, overline(x)[$ si ha $u(x) - v(x) < 0$ e quindi $u'(overline(x)) >= v'(overline(x))$ (in quanto il rapporto incrementale sinistro di $u-v$ è sempre positivo).
+  Sia macron(x) il minimo di $J$.
+  Sicuramente macron(x) > x_0 in quanto $u(macron(x)) = v(macron(x))$.
+  Inoltre per ogni $x in [x_0, macron(x)[$ si ha $u(x) - v(x) < 0$ e quindi $u'(macron(x)) >= v'(macron(x))$ (in quanto il rapporto incrementale sinistro di $u-v$ è sempre positivo).
 
-  Questo è assurdo in quanto per ipotesi si ha invece $u'(overline(x)) = f(overline(x), u(overline(x))) = f(overline(x), v(overline(x))) < v'(overline(x))$.
+  Questo è assurdo in quanto per ipotesi si ha invece $u'(macron(x)) = f(macron(x), u(macron(x))) = f(macron(x), v(macron(x))) < v'(macron(x))$.
 ]
 
 Se ad esempio $v(x)$ è una funzione il cui grafico è contenuto in ${f=0}$ (cioè $f(x,v(x))=0$) allora una soluzione $u(x)$ dell'equazione differenziale può attraversare la curva $v(x)$ dall'alto verso il basso nei punti in cui $v'(x)>0$ e dal basso verso l'alto nei punti in cui $v'(x)<0$.
@@ -114,10 +114,10 @@ Se ad esempio $v(x)$ è una funzione il cui grafico è contenuto in ${f=0}$ (cio
   Consideriamo il compatto $K = {(x,y) : epsilon/2 <= x <= 1/delta^2, 0 <= y <= 1/root(3, x)}$. Il punto $(epsilon, u(epsilon))$ è interno al compatto $K$ ma la soluzione deve uscire dal compatto per un qualche $x > epsilon$.
   La soluzione però non può toccare la retta $y=0$ in quanto all'interno del compatto rimane sempre positiva e crescente.
   Non può neanche toccare il segmento verticale $x = 1/delta^2$, $y in [0, delta]$ in quanto $u(epsilon) = delta$ e per $x>0$ la soluzione è strettamente crescente.
-  Dunque necessariamente la soluzione deve incontrare il grafico della funzione $u_0(x) = 1/root(3, x)$ in un punto overline(x) > 0.
+  Dunque necessariamente la soluzione deve incontrare il grafico della funzione $u_0(x) = 1/root(3, x)$ in un punto macron(x) > 0.
 
-  Nel punto $x = overline(x)$ la soluzione $u(x)$ attraversa la curva $u_0(x)$. Infatti in tale punto $u'(overline(x)) = 0$ mentre $u_0 '(overline(x)) < 0$.
-  Dunque in un intorno destro di overline(x) la soluzione si trova al di sopra della curva $u_0(x)$ e quindi risulta essere decrescente (in overline(x) la soluzione presenta un massimo relativo).
+  Nel punto $x = macron(x)$ la soluzione $u(x)$ attraversa la curva $u_0(x)$. Infatti in tale punto $u'(macron(x)) = 0$ mentre $u_0 '(macron(x)) < 0$.
+  Dunque in un intorno destro di macron(x) la soluzione si trova al di sopra della curva $u_0(x)$ e quindi risulta essere decrescente (in macron(x) la soluzione presenta un massimo relativo).
 
   Il teorema @nonpassa garantisce inoltre che la soluzione non può più riattraversare il grafico della funzione $u_0$ in quanto $u_0 ' < 0$. Dunque la soluzione è decrescente e limitata.
   Dunque (usando come al solito la proposizione @prop:edo_massimale) possiamo dedurre che la soluzione massimale è definita per ogni $x>0$.
@@ -149,7 +149,7 @@ Se ad esempio $v(x)$ è una funzione il cui grafico è contenuto in ${f=0}$ (cio
 
 #theorem[
   Sia $I subset RR$ un intervallo su cui sono definite due funzioni derivabili $f(x)$ e $g(x)$.
-  Siano $x_1 < x_2$ due punti di $I$. Se $f(x_1) < g(x_1)$ e $f(x_2) > g(x_2)$ allora esiste un punto overline(x) in (x_1, x_2) tale che $f(overline(x)) = g(overline(x))$ e $f'(overline(x)) >= g'(overline(x))$.
+  Siano $x_1 < x_2$ due punti di $I$. Se $f(x_1) < g(x_1)$ e $f(x_2) > g(x_2)$ allora esiste un punto macron(x) in (x_1, x_2) tale che $f(macron(x)) = g(macron(x))$ e $f'(macron(x)) >= g'(macron(x))$.
 ]
 
 #theorem[

@@ -7,7 +7,7 @@ Di un campo elettrico vogliamo poter fare il flusso attraverso una superficie $2
 Di un campo magnetico vogliamo poter fare la circuitazione lungo una curva ($1$-superficie).
 La carica elettrica si rappresenta tramite una $3$-forma che vogliamo poter integrare su un volume (ovvero una $3$-superficie).
 L'obiettivo finale di questo capitolo sarà quello di dimostrare i teoremi di Stokes e Gauss-Green, che si possono scrivere in questo modo
-$ integral.double_S (op("rot") arrow(B)) dot d arrow(S) = integral.cont_(partial S) arrow(B) dot d arrow(r), quad integral.triple_V op("div") arrow(E) thin d V = integral.double_(partial V) arrow(E) dot d arrow(S). $
+$ integral.double_S (op("rot") vec(B)) dot d vec(S) = integral.cont_(partial S) vec(B) dot d vec(r), quad integral.triple_V op("div") vec(E) thin d V = integral.double_(partial V) vec(E) dot d vec(S). $
 
 Ovviamente questi concetti sono fondamentali non solo in fisica ma anche in moltissimi ambiti della matematica.
 In particolare vogliamo dare delle definizioni che si generalizzano ad ogni dimensione spaziale, per questo parleremo di $k$-forme, e $k$-superfici in $RR^n$ con $k$ intero, $0 <= k <= n$.

@@ -441,28 +441,28 @@ Ci sarà utile estendere la definizione delle classi di regolarità $C^k$ alle f
 
 == Continuità e compattezza
 
-Lo spazio $RR^n$ è uno spazio metrico con la distanza euclidea (definizione @def:124124) $d(arrow(x), arrow(y)) = |arrow(x) - arrow(y)|$ con
-$ |arrow(x)| = sqrt(x_1^2 + dots + x_n^2). $
+Lo spazio $RR^n$ è uno spazio metrico con la distanza euclidea (definizione @def:124124) $d(vec(x), vec(y)) = |vec(x) - vec(y)|$ con
+$ |vec(x)| = sqrt(x_1^2 + dots + x_n^2). $
 
-Dunque una successione $arrow(x)_k in RR^n$ converge ad un punto $arrow(p) in RR^n$ se vale (definizione @def:convergenza_metrica) $|arrow(x)_k - arrow(p)| -> 0$.
-Se $(x_k)_j$ sono le componenti del punto $arrow(x)_k in RR^n$ e $p_j$ sono le componenti di $arrow(p) in RR^n$ la convergenza $arrow(x)_k -> arrow(p)$ è equivalente alla convergenza di tutte le componenti: $(x_k)_j -> p_j$ per ogni $j=1, dots, n$ per $k -> +infinity$.
+Dunque una successione $vec(x)_k in RR^n$ converge ad un punto $vec(p) in RR^n$ se vale (definizione @def:convergenza_metrica) $|vec(x)_k - vec(p)| -> 0$.
+Se $(x_k)_j$ sono le componenti del punto $vec(x)_k in RR^n$ e $p_j$ sono le componenti di $vec(p) in RR^n$ la convergenza $vec(x)_k -> vec(p)$ è equivalente alla convergenza di tutte le componenti: $(x_k)_j -> p_j$ per ogni $j=1, dots, n$ per $k -> +infinity$.
 
-Una funzione $arrow(f): A subset RR^n -> RR^m$ è _continua_ (definizione @def:continua_metrico) se per ogni successione $arrow(x)_n -> arrow(p)$ con $arrow(x)_n in A$ e $arrow(p) in A$ risulta
-$ arrow(f)(arrow(x)_n) -> arrow(f)(arrow(p)). $
+Una funzione $vec(f): A subset RR^n -> RR^m$ è _continua_ (definizione @def:continua_metrico) se per ogni successione $vec(x)_n -> vec(p)$ con $vec(x)_n in A$ e $vec(p) in A$ risulta
+$ vec(f)(vec(x)_n) -> vec(f)(vec(p)). $
 
-Un insieme $K subset RR^n$ è _chiuso_ se presa una qualunque successione convergente in $RR^n$: $arrow(x)_k -> arrow(x)$ se ogni $arrow(x)_k in K$ allora anche $arrow(x) in K$ (cioè $K$ è chiuso per passaggio al limite, teorema @th:chiuso_sequenziale).
-La palla di raggio $r>0$ centrata nel punto $arrow(p) in RR^n$ è l'insieme (definizione @def:palla):
-$ B_r (arrow(p)) = {arrow(x) in RR^n : |arrow(x) - arrow(p)| < r}. $
-Un insieme $Omega subset RR^n$ è _aperto_ se per ogni $arrow(p) in Omega$ esiste $r>0$ tale che $B_rho (arrow(p)) subset Omega$ (definizione @def:466342).
-Un insieme $B subset RR^n$ si dice essere _limitato_ (definizione @def:spazio_limitato) se esiste $r>0$ e $arrow(p) in RR^n$ tali che $B subset B_r (arrow(p))$ (ma non è restrittivo supporre $arrow(p)=0$).
-Un insieme $K subset RR^n$ si dice essere _compatto_ (definizione @def:sequenzialmente_compatto) se da ogni successione $arrow(x)_k$ di punti di $K$ è possibile estrarre una sottosuccessione $x_(k_j) -> arrow(x)$ convergente ad un punto $arrow(x) in K$.
+Un insieme $K subset RR^n$ è _chiuso_ se presa una qualunque successione convergente in $RR^n$: $vec(x)_k -> vec(x)$ se ogni $vec(x)_k in K$ allora anche $vec(x) in K$ (cioè $K$ è chiuso per passaggio al limite, teorema @th:chiuso_sequenziale).
+La palla di raggio $r>0$ centrata nel punto $vec(p) in RR^n$ è l'insieme (definizione @def:palla):
+$ B_r (vec(p)) = {vec(x) in RR^n : |vec(x) - vec(p)| < r}. $
+Un insieme $Omega subset RR^n$ è _aperto_ se per ogni $vec(p) in Omega$ esiste $r>0$ tale che $B_rho (vec(p)) subset Omega$ (definizione @def:466342).
+Un insieme $B subset RR^n$ si dice essere _limitato_ (definizione @def:spazio_limitato) se esiste $r>0$ e $vec(p) in RR^n$ tali che $B subset B_r (vec(p))$ (ma non è restrittivo supporre $vec(p)=0$).
+Un insieme $K subset RR^n$ si dice essere _compatto_ (definizione @def:sequenzialmente_compatto) se da ogni successione $vec(x)_k$ di punti di $K$ è possibile estrarre una sottosuccessione $x_(k_j) -> vec(x)$ convergente ad un punto $vec(x) in K$.
 In $RR^n$ un insieme è compatto se e solo se è chiuso e limitato (teorema @th:compattezza_Rn).
 Una funzione continua $f: K subset RR^n -> RR$ definita su un compatto $K$ è limitata per il teorema di Weierstrass (teorema @th:weiestrass_metrico).
 
 == Derivate parziali
 
 Se $Omega subset RR^m$ è un insieme aperto e $f: Omega -> RR$ è una funzione, vogliamo definire le _derivate parziali_ di $f$.
-Se $arrow(x) in Omega$ si ha $arrow(x) = (x_1, dots, x_m)$ e quindi $f(arrow(x)) = f(x_1, dots, x_m)$. Se facciamo variare una sola componente $x_j$ mantenendo fisse tutte le altre componenti, otteniamo una funzione di una variabile $x_j |-> g(x_j) = f(x_1, dots, x_j, dots, x_m)$.
+Se $vec(x) in Omega$ si ha $vec(x) = (x_1, dots, x_m)$ e quindi $f(vec(x)) = f(x_1, dots, x_m)$. Se facciamo variare una sola componente $x_j$ mantenendo fisse tutte le altre componenti, otteniamo una funzione di una variabile $x_j |-> g(x_j) = f(x_1, dots, x_j, dots, x_m)$.
 Definiamo dunque la _derivata parziale_ di $f$ rispetto alla variabile $x_j$ come la derivata della funzione $g(x_j)$.
 Denotiamo tale derivata con il simbolo:
 $ (partial f) / (partial x_j). $
@@ -471,8 +471,8 @@ Ad esempio se $f(x,v) = - sin(x) - v$ (come nell'esempio fatto nell'introduzione
 $ (partial f) / (partial x) &= - cos(x) \
   (partial f) / (partial v) &= -1. $
 
-Se $arrow(f): Omega subset RR^m -> RR^n$ è una funzione di più variabili a valori vettoriali potremo scrivere $arrow(f) = (f_1, dots, f_n)$ e considerare le derivate parziali di ogni componente:
-$ (partial arrow(f)) / (partial x_j) = ((partial f_1) / (partial x_j), dots, (partial f_n) / (partial x_j)). $
+Se $vec(f): Omega subset RR^m -> RR^n$ è una funzione di più variabili a valori vettoriali potremo scrivere $vec(f) = (f_1, dots, f_n)$ e considerare le derivate parziali di ogni componente:
+$ (partial vec(f)) / (partial x_j) = ((partial f_1) / (partial x_j), dots, (partial f_n) / (partial x_j)). $
 
 #definition[
   Sia $Omega subset RR^m$ un aperto. Denoteremo con $C^0(Omega, RR^n)$ lo spazio vettoriale di tutte le funzioni continue $f: Omega -> RR^n$.
@@ -505,30 +505,30 @@ $ (partial arrow(f)) / (partial x_j) = ((partial f_1) / (partial x_j), dots, (pa
 == Integrali di funzioni vettoriali
 
 #definition[
-  Sia $arrow(f): [a,b] -> RR^m$, $arrow(f)(x) = (f_1(x), dots, f_m(x))$.
-  Diremo che $arrow(f)$ è integrabile su $[a,b]$ se ogni $f_k: [a,b] -> RR$ è integrabile su $[a,b]$ e in tal caso porremo:
-  $ integral_a^b arrow(f)(x) thin d x = (integral_a^b f_1(x) thin d x, dots, integral_a^b f_m(x) thin d x) in RR^m $
+  Sia $vec(f): [a,b] -> RR^m$, $vec(f)(x) = (f_1(x), dots, f_m (x))$.
+  Diremo che $vec(f)$ è integrabile su $[a,b]$ se ogni $f_k: [a,b] -> RR$ è integrabile su $[a,b]$ e in tal caso porremo:
+  $ integral_a^b vec(f)(x) thin d x = (integral_a^b f_1(x) thin d x, dots, integral_a^b f_m (x) thin d x) in RR^m $
   cosicché per ogni $k=1, dots, m$ si ha:
-  $ (integral_a^b arrow(f)(x) thin d x)_k = integral_a^b f_k(x) thin d x. $
-  Come al solito si pone inoltre $integral_b^a arrow(f) = - integral_a^b arrow(f)$.
+  $ (integral_a^b vec(f)(x) thin d x)_k = integral_a^b f_k (x) thin d x. $
+  Come al solito si pone inoltre $integral_b^a vec(f) = - integral_a^b vec(f)$.
 ]
 
 #theorem[
-  Sia $arrow(f): [a,b] -> RR^m$ integrabile. Allora si ha
-  $ |integral_a^b arrow(f)(x) thin d x| <= integral_a^b |arrow(f)(x)| thin d x. $
+  Sia $vec(f): [a,b] -> RR^m$ integrabile. Allora si ha
+  $ |integral_a^b vec(f)(x) thin d x| <= integral_a^b |vec(f)(x)| thin d x. $
 ] <th:stima_modulo_integrale>
 
 #proof[
   Posto
-  $ arrow(v) = integral_a^b arrow(f)(x) thin d x $
+  $ vec(v) = integral_a^b vec(f)(x) thin d x $
   si ha, usando la linearità dell'integrale e sfruttando la disuguaglianza di Cauchy-Schwarz
-  $ |arrow(v)|^2
-      &= arrow(v) dot arrow(v)
-      = sum_(k=1)^m v_k integral_a^b f_k(x) thin d x
-      = integral_a^b sum_(k=1)^m v_k f_k(x) thin d x \
-      &= integral_a^b (arrow(v), arrow(f)(x)) thin d x
-      <= integral_a^b |arrow(v)| dot |arrow(f)(x)| thin d x
-      = |arrow(v)| integral_a^b |arrow(f)(x)| thin d x. $
-  Se $|arrow(v)| != 0$ possiamo dividere ambo i membri per $|arrow(v)|$ e ottenere la disuguaglianza cercata.
-  Altrimenti se $|arrow(v)|=0$ la disuguaglianza è certamente soddisfatta in quanto il lato destro non può essere negativo.
+  $ |vec(v)|^2
+      &= vec(v) dot vec(v)
+      = sum_(k=1)^m v_k integral_a^b f_k (x) thin d x
+      = integral_a^b sum_(k=1)^m v_k f_k (x) thin d x \
+      &= integral_a^b (vec(v), vec(f)(x)) thin d x
+      <= integral_a^b |vec(v)| dot |vec(f)(x)| thin d x
+      = |vec(v)| integral_a^b |vec(f)(x)| thin d x. $
+  Se $|vec(v)| != 0$ possiamo dividere ambo i membri per $|vec(v)|$ e ottenere la disuguaglianza cercata.
+  Altrimenti se $|vec(v)|=0$ la disuguaglianza è certamente soddisfatta in quanto il lato destro non può essere negativo.
 ]

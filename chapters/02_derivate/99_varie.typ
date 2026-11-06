@@ -5,7 +5,7 @@ Le funzioni continue mandano compatti in compatti.
 Se $A,B$ sono compatti, se $f: A -> B$ e continua e bigettiva allora $f^(-1)$ è continua (cioè $f$ è un omeomorfismo).
 
 #exercise[punto di frontiera][
-  Sia $gamma: [0,1] -> X$ una curva continua in uno spazio topologico $X$ e sia $A subset X$ tale che $gamma(0) in A$ e $gamma(1) not in A$.
+  Sia $gamma: [0,1] -> X$ una curva continua in uno spazio topologico $X$ e sia $A subset X$ tale che $gamma(0) in A$ e $gamma(1) in.not A$.
   Dimostrare che esiste $t in [0,1]$ tale che $gamma(t) in partial A$.
 ] <ex:punto-di-frontiera>
 
@@ -79,10 +79,10 @@ L'idea è quella di partire da un punto $x$ qualunque (possibilmente vicino al m
 Sappiamo che questa è la direzione di massima discesa e quindi ci aspettiamo di avvicinarci al punto di minimo.
 
 La funzione $g(t) = f(x - t nabla f(x))$ tende a $+infinity$ per $t -> +infinity$, dunque per il teorema di Weierstrass generalizzato, in una variabile, ammette minimo assoluto per $t in [0,+infinity)$.
-Denotiamo con $bar(t)(x)$ tale punto di minimo assoluto.
+Denotiamo con $macron(t)(x)$ tale punto di minimo assoluto.
 
 Fissato allora $x_0 in RR^n$ possiamo costruire una successione definita ricorsivamente da
-$ x_(n+1) = x_n - bar(t)(x_n) nabla f(x_n). $ <eq:discesa_discreta>
+$ x_(n+1) = x_n - macron(t)(x_n) nabla f(x_n). $ <eq:discesa_discreta>
 
 #theorem[
   Sia $f: RR^n -> RR$ una funzione di classe $C^1$ coerciva.
@@ -90,7 +90,7 @@ $ x_(n+1) = x_n - bar(t)(x_n) nabla f(x_n). $ <eq:discesa_discreta>
   + $chevron.l x_(n+2)-x_(n+1), x_(n+1)-x_n chevron.r = 0$ per ogni $n in NN$;
   + $f(x_n)$ è decrescente;
   + $x_n$ è limitata e quindi ha punti di accumulazione;
-  + se $bar(x)$ è un punto di accumulazione per $x_n$ allora $nabla f(bar(x))=0$.
+  + se $macron(x)$ è un punto di accumulazione per $x_n$ allora $nabla f(macron(x))=0$.
 
   In particolare se $f$ ha un unico punto critico la successione converge a tale punto.
 ]
@@ -105,19 +105,19 @@ $ x_(n+1) = x_n - bar(t)(x_n) nabla f(x_n). $ <eq:discesa_discreta>
   Viceversa se $nabla f(x_n) = 0$ si ha $x_(n+1) = x_n$ e la successione rimane definitivamente nel punto critico (per cui il teorema è dimostrato).
 
   Possiamo dunque assumere che $nabla f(x_n) != 0$ per ogni $n in NN$ e che quindi $f(x_n)$ sia strettamente decrescente.
-  Se $g(t) = f(x_n - t nabla f(x_n))$ sappiamo che nel punto $bar(t)(x_n) > 0$ la funzione $g(t)$ ha minimo e quindi $g'(bar(t)(x_n)) = 0$.
+  Se $g(t) = f(x_n - t nabla f(x_n))$ sappiamo che nel punto $macron(t)(x_n) > 0$ la funzione $g(t)$ ha minimo e quindi $g'(macron(t)(x_n)) = 0$.
   Ma
   $ g'(t) = - chevron.l nabla f(x_n - t nabla f(x_n)), nabla f(x_n) chevron.r $
   e dunque $chevron.l nabla f(x_(n+1)), nabla f(x_n) chevron.r = 0$ da cui segue $chevron.l x_(n+2) - x_(n+1), x_(n+1) - x_n chevron.r = 0$.
 
-  _Affermazione:_ se $nabla f(bar(x)) != 0$ esiste $rho > 0$ tale che per ogni $x in B_rho (bar(x))$ esiste $t > 0$ tale che $f(x - t nabla f(x)) <= f(bar(x))$.
+  _Affermazione:_ se $nabla f(macron(x)) != 0$ esiste $rho > 0$ tale che per ogni $x in B_rho (macron(x))$ esiste $t > 0$ tale che $f(x - t nabla f(x)) <= f(macron(x))$.
 
-  Sia $C = {x : 2 chevron.l x - bar(x), -nabla f(bar(x)) chevron.r > |x - bar(x)|}$ il cono di ampiezza 120 gradi centrato in $bar(x) = 0$ con asse in direzione $-nabla f(bar(x))$.
-  Esiste $R > 0$ sufficientemente piccolo per cui se $x in C inter B_R (bar(x))$ si ha $chevron.l nabla f(x), nabla f(bar(x)) chevron.r > 0$ e quindi essendo $chevron.l nabla f(x), x - bar(x) chevron.r < 0$ si ottiene $f(x) <= f(bar(x))$.
-  Ora basta osservare che se $rho > 0$ è sufficientemente piccolo per ogni $x in B_rho (bar(x))$ la semiretta $x - t nabla f(x)$ incontra certamente $C inter B_R (bar(x))$ visto che la direzione è interna al cono, e la distanza dal vertice è piccola.
+  Sia $C = {x : 2 chevron.l x - macron(x), -nabla f(macron(x)) chevron.r > |x - macron(x)|}$ il cono di ampiezza 120 gradi centrato in $macron(x) = 0$ con asse in direzione $-nabla f(macron(x))$.
+  Esiste $R > 0$ sufficientemente piccolo per cui se $x in C inter B_R (macron(x))$ si ha $chevron.l nabla f(x), nabla f(macron(x)) chevron.r > 0$ e quindi essendo $chevron.l nabla f(x), x - macron(x) chevron.r < 0$ si ottiene $f(x) <= f(macron(x))$.
+  Ora basta osservare che se $rho > 0$ è sufficientemente piccolo per ogni $x in B_rho (macron(x))$ la semiretta $x - t nabla f(x)$ incontra certamente $C inter B_R (macron(x))$ visto che la direzione è interna al cono, e la distanza dal vertice è piccola.
   Questo conclude la dimostrazione della affermazione.
 
-  Ora se $bar(x)$ è un punto di accumulazione per la successione $x_n$ e se fosse $nabla f(bar(x)) != 0$, ci sarebbe un $x_n$ sufficientemente vicino a $bar(x)$ in modo che per un qualche $t > 0$ si avrebbe $f(x_(n+1)) <= f(x_n + t nabla f(x)) <= f(bar(x))$.
-  Ma $f(bar(x)) = liminf f(x_n) = ell$ e quindi si ottiene un assurdo avendo assunto che $f(x_n)$ è strettamente decrescente.
-  Deve quindi essere $nabla f(bar(x)) = 0$.
+  Ora se $macron(x)$ è un punto di accumulazione per la successione $x_n$ e se fosse $nabla f(macron(x)) != 0$, ci sarebbe un $x_n$ sufficientemente vicino a $macron(x)$ in modo che per un qualche $t > 0$ si avrebbe $f(x_(n+1)) <= f(x_n + t nabla f(x)) <= f(macron(x))$.
+  Ma $f(macron(x)) = liminf f(x_n) = ell$ e quindi si ottiene un assurdo avendo assunto che $f(x_n)$ è strettamente decrescente.
+  Deve quindi essere $nabla f(macron(x)) = 0$.
 ]

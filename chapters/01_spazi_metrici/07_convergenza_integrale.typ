@@ -30,7 +30,7 @@ e dunque garantisce che l'integrale @eq:854392 sia assolutamente convergente. Du
 Per ovviare a questo problema bisogna che identifichiamo due funzioni $f,g in cal(H)(a,b)$ se $norm(f-g)_2=0$:
 $ f ~ g <=> norm(f-g)_2=0. $
 Chiamiamo $H(a,b)$ il quoziente:
-$ H(a,b) = cal(H)(a,b)/~ $
+$ H(a,b) = cal(H)(a,b)_(\/ ~) $
 cioè lo spazio vettoriale delle funzioni in $cal(H)(a,b)$ dove due funzioni vengono identificate se la norma della differenza è nulla.
 
 Lo spazio quoziente $H(a,b)$ risulta finalmente essere uno spazio euclideo.
@@ -76,7 +76,7 @@ Lo spazio $H(a,b)$ è uno spazio vettoriale reale su cui siamo riusciti a defini
   $ |v|^2
       &= |v_N + w_N|^2
       = |v_N|^2 + |w_N|^2 \
-      &>= |v_N|^2 = |sum_(k=0)^N c_k e_k|^2
+      &>= |v_N|^2 = abs(sum_(k=0)^N c_k e_k)^2
       = sum_(k=0)^N c_k^2. $
   Passando al limite per $N -> +infinity$ si ottiene la disuguaglianza di Bessel.
 
@@ -85,14 +85,14 @@ Lo spazio $H(a,b)$ è uno spazio vettoriale reale su cui siamo riusciti a defini
 
 Il nostro obiettivo è ora quello di produrre una base hilbertiana di $H(0,2pi)$. Una base di $H(a,b)$ si potrà ottenere di conseguenza traslando e riscalando opportunamente le funzioni della base di $H(0,2pi)$.
 Il teorema precedente ci dice che se $H(a,b)$ ammette una base hilbertiana $e_k$ allora ogni funzione $u in H(a,b)$ può essere semplicemente rappresentata da una successione numerica $x_k = (u, e_k)$ in modo che
-$ norm(u)_2 = sqrt(sum_k x_k^2). $
 #footnote[
   Se $u$ rappresenta l'intensità del segnale acustico emesso da uno strumento musicale che suona una certa nota, possiamo immaginare che $u$ sia una funzione periodica di frequenza $nu$ pari alla frequenza della nota emessa. Le funzioni $e_k$ della base hilbertiana sono funzioni sinusoidali ognuna con frequenza $nu k$. I coefficienti $x_k$ nella decomposizione $u = sum x_k u_k$ rappresentano le intensità di ognuna di queste frequenze fondamentali e determinano il _timbro_ dello strumento musicale.
 ]
+$ norm(u)_2 = sqrt(sum_k x_k^2). $
 
 Consideriamo le seguenti funzioni trigonometriche #footnote[
   Dal punto di vista algebrico sarebbe molto più semplice considerare le funzioni a valori complessi:
-  $ e_k(x) = e^(i k x) / sqrt(2pi) $
+  $ e_k (x) = e^(i k x) / sqrt(2pi) $
   al variare di $k in ZZ$. Preferiamo però rimanere nell'ambito delle funzioni reali per non dover introdurre la struttura hermitiana degli spazi vettoriali complessi.
 ]:
 $
@@ -115,7 +115,7 @@ $ sin(m x) cos(n x)
     &= sin((m+n)x) / 2 + sin((m-n)x) / 2 $
 da cui se $m != n$:
 $ integral_0^(2pi) sin(m x) cos(n x) thin d x
-    &= - 1 / (2(m+n)) lr([cos((m+n)x)])_0^(2pi) - 1 / (2(m-n)) lr([cos((m-n)x)])_0^(2pi) = 0 $
+    &= - lr([cos((m+n)x)])_0^(2pi)/ (2(m+n)) - lr([cos((m-n)x)])_0^(2pi) / (2(m-n))  = 0 $
 e se $m=n$ si arriva comunque allo stesso risultato.
 Questo significa che $chevron.l e_(2n),e_(2m+1) chevron.r = 0$.
 Discorso analogo si può fare per le funzioni $sin(m x) sin(n x)$ e $cos(m x) cos(n x)$ trovando, anche in quei casi, che tali prodotti hanno integrale nullo nell'intervallo $[0,2pi]$.
@@ -149,9 +149,9 @@ $ cos(n x)
     &= sum_(k=0)^(floor(n / 2)) binom(n, 2k) (-1)^k (sin x)^(2k) (cos x)^(n-2k) \
     &= sum_(k=0)^(floor(n / 2)) binom(n, 2k) (cos^2 x - 1)^k (cos x)^(n-2k) $
 ovvero
-$ cos(n x) = T_n(cos x) $
+$ cos(n x) = T_n (cos x) $
 dove
-$ T_n(x) = sum_(k=0)^(floor(n / 2)) binom(n, 2k) (x^2 - 1)^k x^(n-2k) $
+$ T_n (x) = sum_(k=0)^(floor(n / 2)) binom(n, 2k) (x^2 - 1)^k x^(n-2k) $
 si chiama _polinomio di Chebyshev di prima specie_.
 Questo significa che ognuna delle funzioni $e_k$ che abbiamo introdotto in @eq:54741346 è un polinomio trigonometrico e quindi ogni combinazione finita di tali funzioni è ancora un polinomio trigonometrico.
 
@@ -193,8 +193,28 @@ Ma visto che sappiamo che $f(x)$ è una funzione reale, la somma delle parti imm
 #figure(
   image("../../figure/fourier.png", height: 5cm),
   caption: [
-    Lo sviluppo di Fourier della funzione che vale $1$ su $[0,pi]$ e $-1$ su $[\pi,2pi]$:
-    $ f_(61)(x) = (4 sin(x)) / pi + (4 sin(3x)) / (3pi) + (4 sin(5x)) / (5pi) + (4 sin(7x)) / (7pi) + (4 sin(9x)) / (9pi) + (4 sin(11x)) / (11pi) + (4 sin(13x)) / (13pi) + (4 sin(15x)) / (15pi) + (4 sin(17x)) / (17pi) + (4 sin(19x)) / (19pi) + (4 sin(21x)) / (21pi) + (4 sin(23x)) / (23pi) + (4 sin(25x)) / (25pi) + (4 sin(27x)) / (27pi) + (4 sin(29x)) / (29pi) + (4 sin(31x)) / (31pi). $
+    Lo sviluppo di Fourier della funzione che vale $1$ su $[0,pi]$ e $-1$ su $[pi,2pi]$:
+    #text(size: 0.8em)[
+    $ f_(61)(x) 
+      &= (4 sin(x)) / pi 
+      + (4 sin(3x)) / (3pi) 
+      + (4 sin(5x)) / (5pi) 
+      + (4 sin(7x)) / (7pi) 
+      + (4 sin(9x)) / (9pi) 
+      + (4 sin(11x)) / (11pi)
+      + (4 sin(13x)) / (13pi) 
+    \ & quad 
+      + (4 sin(15x)) / (15pi) 
+      + (4 sin(17x)) / (17pi) 
+      + (4 sin(19x)) / (19pi) 
+      + (4 sin(21x)) / (21pi) 
+      + (4 sin(23x)) / (23pi) 
+      + (4 sin(25x)) / (25pi) 
+    \ & quad  
+      + (4 sin(27x)) / (27pi) 
+      + (4 sin(29x)) / (29pi) 
+      + (4 sin(31x)) / (31pi). 
+      $]
     Il codice per calcolare i coefficienti e generare il grafico si trova a pagina \@code:Fourier.
     Si può notare come nel punto di salto $x=pi$ lo sviluppo di Fourier ha una oscillazione maggiore del salto originario (fenomeno di Gibbs). L'incremento dell'oscillazione è circa del 9% ed è indipendente dal numero di termini utilizzati nello sviluppo di Fourier.
   ],
@@ -277,7 +297,7 @@ Grazie al teorema @th:bessel abbiamo quindi ottenuto il seguente.
 
 Questo significa, dunque, che il sistema ortonormale che abbiamo introdotto è una base hilbertiana e quindi che ogni funzione $f in cal(H)(0,2pi)$ si approssima rispetto alla norma $norm(dot)_2$ con gli sviluppi di Fourier.
 
-Ricordiamo che se $norm(f_N-f)_2 -> 0$ non è detto che si abbia la convergenza puntuale $f_N(x) -> f(x)$ per ogni $x in (0,2pi)$ in quanto il limite è unico in $H(a,b)$ ma non in $cal(H)(a,b)$ e dunque è possibile (e in effetti può succedere) che il limite puntuale degli sviluppi di Fourier differisca, in alcuni punti, dalla funzione che si sta approssimando.
+Ricordiamo che se $norm(f_N-f)_2 -> 0$ non è detto che si abbia la convergenza puntuale $f_N (x) -> f(x)$ per ogni $x in (0,2pi)$ in quanto il limite è unico in $H(a,b)$ ma non in $cal(H)(a,b)$ e dunque è possibile (e in effetti può succedere) che il limite puntuale degli sviluppi di Fourier differisca, in alcuni punti, dalla funzione che si sta approssimando.
 
 Purtroppo lo spazio $H(a,b)$ non risulta essere completo, come si può vedere nel seguente esempio.
 
@@ -287,9 +307,9 @@ Purtroppo lo spazio $H(a,b)$ non risulta essere completo, come si può vedere ne
   Sappiamo che l'insieme $[0,1] inter QQ$ è numerabile, quindi esiste una successione $q_k$ che elenca tutti i numeri razionali nell'intervallo $[0,1]$.
   Poniamo inoltre $r_k = 1 / (4 dot 2^k)$ e consideriamo gli intervalli $I_k = [q_k-r_k,q_k+r_k]$.
   Prendiamo la successione di funzioni $f_n: [0,1] -> RR$ definita da
-  $ f_n(x) = cases(1 &text("se ") x in union.big_(k=1)^n I_k, 0 &text("altrimenti")) $
+  $ f_n (x) = cases(1 &text("se ") x in union.big_(k=1)^n I_k, 0 &text("altrimenti")) $
   A differenza di quanto uno potrebbe pensare, queste funzioni $f_n$ non diventano mai identicamente uguali ad $1$. Anzi, si può osservare che
-  $ integral_0^1 f_n(x) thin d x <= sum_(k=1)^n integral_(q_k-r_k)^(q_k+r_k) 1 thin d x = sum_(k=1)^n 1 / (2 dot 2^k) <= 1 / 2 sum_(k=1)^(+infinity) 1 / 2^k = 1 / 2. $
+  $ integral_0^1 f_n (x) thin d x <= sum_(k=1)^n integral_(q_k-r_k)^(q_k+r_k) 1 thin d x = sum_(k=1)^n 1 / (2 dot 2^k) <= 1 / 2 sum_(k=1)^(+infinity) 1 / 2^k = 1 / 2. $
 
   Si può mostrare che $f_k$ è una successione di Cauchy in $H(0,1)$ e che però non converge in $H(0,1)$.
 ] <ex:incompletezza_di_H>
@@ -306,7 +326,7 @@ Purtroppo lo spazio $H(a,b)$ non risulta essere completo, come si può vedere ne
   Innanzitutto visto che ogni $f_k <= 1$ possiamo supporre che sia anche $f <= 1$ perché altrimenti potremmo prendere $g(x) = min({f(x),1})$ e avremmo chiaramente $norm(f_n - g)_2 <= norm(f_n - f)_2 -> 0$. In pratica stiamo dicendo che modificando la funzione $f$ senza cambiarne l'integrale possiamo supporre che $f(x) <= 1$ per ogni $x in [0,1]$.
 
   Fissato un intervallo $I_n$, per $k -> +infinity$ si ha:
-  $ 0 <= integral_(q_n-r_n)^(q_n+r_n) |f_k(x)-f(x)|^2 thin d x <= integral_0^1 |f_k(x)-f(x)|^2 thin d x = norm(f_k - f)_2^2 -> 0. $
+  $ 0 <= integral_(q_n-r_n)^(q_n+r_n) |f_k (x)-f(x)|^2 thin d x <= integral_0^1 |f_k (x)-f(x)|^2 thin d x = norm(f_k - f)_2^2 -> 0. $
   Ma ora se $k >= n$ risulta che $f_k=1$ su $I_n$ e quindi il valore dell'integrale precedente non dipende da $k$ e dovrà quindi essere identicamente nullo:
   $ integral_(q_n-r_n)^(q_n+r_n) (1-f(x)) thin d x = 0 $
   e quindi possiamo affermare che $sup f(I_n) = 1$ in quanto se fosse $sup f(I_n) = lambda < 1$ l'integrale di $1-f(x)$ sarebbe positivo sull'intervallo $I_n$.
@@ -322,14 +342,14 @@ Purtroppo lo spazio $H(a,b)$ non risulta essere completo, come si può vedere ne
   $ integral_a^b f(x) = 1. $
 
   Vogliamo ora concludere che questo è in contraddizione con la disuguaglianza
-  $ integral_a^b f_n(x) <= 1 / 2 $
+  $ integral_a^b f_n (x) <= 1 / 2 $
   che abbiamo osservato all'inizio.
   Si ha infatti per la disuguaglianza di Cauchy-Schwarz
-  $ integral_0^1 |f(x)-f_n(x)| thin d x <= norm(f-f_n)_2 dot norm(1)_2 -> 0 $
+  $ integral_0^1 |f(x)-f_n (x)| thin d x <= norm(f-f_n)_2 dot norm(1)_2 -> 0 $
   e quindi, per il criterio di convergenza assoluta,
-  $ integral_0^1 (f(x) - f_n(x)) thin d x -> 0. $
+  $ integral_0^1 (f(x) - f_n (x)) thin d x -> 0. $
   Ma abbiamo visto che
-  $ integral_0^1 (f(x) - f_n(x)) thin d x = integral_0^1 f(x) thin d x - integral_0^1 f_n(x) thin d x >= 1 - 1 / 2 = 1 / 2 $
+  $ integral_0^1 (f(x) - f_n (x)) thin d x = integral_0^1 f(x) thin d x - integral_0^1 f_n (x) thin d x >= 1 - 1 / 2 = 1 / 2 $
   ottenendo quindi un assurdo.
 ]
 

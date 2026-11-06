@@ -28,7 +28,7 @@
 
   Supponiamo ora che esista un altro punto $y' in A$ che realizza il minimo.
   Sia $r = |x-y| = |x-y'|$.
-  Visto che $bar(B)_r (x)$ è strettamente convessa, il segmento $(y,y')$ è contenuto in $B_r (x)$.
+  Visto che $macron(B)_r (x)$ è strettamente convessa, il segmento $(y,y')$ è contenuto in $B_r (x)$.
   E quindi, se fosse $y != y'$ esisterebbe un punto $z in (y,y')$ che ha distanza da $x$ strettamente inferiore a $r$.
   Ma per la convessità di $A$ l'intero segmento $[y,y']$ è contenuto in $A$ e quindi $z in A$.
   Questo è assurdo perché $r$ era la distanza minima da $x$ a $A$.
@@ -172,7 +172,7 @@ I tre seguenti risultati sono quindi conseguenza degli analoghi risultati per le
 
 #example[
   Fissato $y in RR^n$ la funzione $f(x) = |x-y|^2$ è strettamente convessa in quanto $D^2 f(x) = 2 I$ è definita positiva.
-  Dunque le palle $B_rho (y)$ e $bar(B)_rho (y)$, essendo sottolivelli di tale funzione, sono strettamente convesse.
+  Dunque le palle $B_rho (y)$ e $macron(B)_rho (y)$, essendo sottolivelli di tale funzione, sono strettamente convesse.
 ]
 
 #theorem[
@@ -200,7 +200,7 @@ I tre seguenti risultati sono quindi conseguenza degli analoghi risultati per le
   $ f(x) >= 2 f(x_0) - f(x') >= 2f(x_0) - M. $
 
   _Conclusione._
-  Dato $x_0 in A$ scegliamo $r>0$ per cui $m <= f(x) <= M$ per ogni $x in bar(B)_(2r)(x_0)$.
+  Dato $x_0 in A$ scegliamo $r>0$ per cui $m <= f(x) <= M$ per ogni $x in macron(B)_(2r)(x_0)$.
   Dati $x,y in B_r (x_0)$ se $y != x$ la semiretta uscente da $y$ passante per $x$ interseca la sfera $partial B_(2r)(x_0)$ in un punto $z$.
   Si avrà allora $x = (1-t) y + t z$ per un certo $t in (0,1)$ e per la convessità di $f$ avremo
   $ f(x) - f(y) <= (1-t) f(y) + t f(z) - f(y) = t (f(z) - f(y)) <= t (M-m). $
@@ -269,7 +269,7 @@ La condizione al primo ordine per la convessità di $f$ garantisce che se $f$ è
 #example[sottodifferenziale della norma][
   Sia $f(x) = |x|$, $f: RR^n -> RR$.
   Allora $partial f(x) = {x / |x|}$ se $x != 0$ e
-  $ partial f(0) = bar(B)_1 (0). $
+  $ partial f(0) = macron(B)_1 (0). $
   Infatti se $x != 0$ allora $f$ è differenziabile in $x$ e $nabla f(x) = x / |x|$.
   Se $x=0$ allora $v in partial f(0)$ se e solo se $f(y) >= v dot y$ per ogni $y in RR^n$.
   Ma $|y| >= v dot y$ per ogni $y in RR^n$ se e solo se $|v| <= 1$.

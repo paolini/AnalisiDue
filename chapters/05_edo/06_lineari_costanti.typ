@@ -107,9 +107,9 @@ Se tutte le radici del polinomio $P$ sono reali, le funzioni $e^(lambda x)$ sono
 #proof[
   È ovvio che se i coefficienti $c_1, dots, c_n$ sono reali e le funzioni $u_1, dots, u_n$ sono reali, facendone una combinazione lineare si ottiene una funzione reale.
 
-  Per dimostrare il viceversa è invece necessario sapere che le funzioni sono anche indipendenti. Infatti se $h(x)$ è reale possiamo scrivere overline(h)(x) - h(x) = 0 cioè, visto che il coniugio attraversa la somma e il prodotto e visto che overline(u)_k (x) = u_k (x), si ha
-  $ (overline(c)_1 - c_1) u_1 (x) + dots + (overline(c)_n - c_n) u_n (x) = 0. $
-  Ma la combinazione lineare nulla si può ottenere solo con tutti i coefficienti nulli (è la definizione di indipendenza lineare) dunque overline(c)_k = c_k per ogni $k$ ovvero i coefficienti sono reali.
+  Per dimostrare il viceversa è invece necessario sapere che le funzioni sono anche indipendenti. Infatti se $h(x)$ è reale possiamo scrivere macron(h)(x) - h(x) = 0 cioè, visto che il coniugio attraversa la somma e il prodotto e visto che macron(u)_k (x) = u_k (x), si ha
+  $ (macron(c)_1 - c_1) u_1 (x) + dots + (macron(c)_n - c_n) u_n (x) = 0. $
+  Ma la combinazione lineare nulla si può ottenere solo con tutti i coefficienti nulli (è la definizione di indipendenza lineare) dunque macron(c)_k = c_k per ogni $k$ ovvero i coefficienti sono reali.
 ]
 
 #example[
@@ -237,7 +237,7 @@ Il primo metodo (di similarità) si applica quando il termine noto $g(x)$ assume
   Siano $u_1, dots, u_n$ funzioni di classe $C^(n-1)$.
   La matrice
   $ W(x) = mat(
-    u_1(x), u_2(x), dots, u_n(x);
+    u_1(x), u_2(x), dots, u_n (x);
     u_1'(x), u_2'(x), dots, u_n'(x);
     dots.v, dots.v, dots.down, dots.v;
     u_1^((n-1))(x), u_2^((n-1))(x), dots, u_n^((n-1))(x)
@@ -261,7 +261,7 @@ Il primo metodo (di similarità) si applica quando il termine noto $g(x)$ assume
   Ovviamente \@item:4736202 implica \@item:4736203.
 
   Dimostriamo che \@item:4736203 implica \@item:4736201.
-  Passando alla implicazione contropositiva dobbiamo mostrare che se $u_1, dots, u_n$ sono linearmente dipendenti allora per ogni $x in I$ si ha $det W(x) = 0$. Ma se le funzioni sono dipendenti significa che esiste $arrow(lambda) != 0$ tale che
+  Passando alla implicazione contropositiva dobbiamo mostrare che se $u_1, dots, u_n$ sono linearmente dipendenti allora per ogni $x in I$ si ha $det W(x) = 0$. Ma se le funzioni sono dipendenti significa che esiste $vec(lambda) != 0$ tale che
   $ lambda_1 u_1 (x) + dots + lambda_n u_n (x) = 0 quad forall x in I. $ <eq:3675893>
   Derivando si ottiene:
   $ cases(
@@ -271,7 +271,7 @@ Il primo metodo (di similarità) si applica quando il termine noto $g(x)$ assume
     lambda_1 u_1^((n-1))(x) + dots + lambda_n u_n^((n-1))(x) = 0
   ) $
   ovvero
-  $ W(x) arrow(lambda) = 0 quad forall x in I. $
+  $ W(x) vec(lambda) = 0 quad forall x in I. $
   Ma allora la matrice $W(x)$ non è invertibile e quindi $det W(x) = 0$, come volevamo dimostrare.
 
   Dimostriamo infine che \@item:4736201 implica \@item:4736202 cioè che se $v_1, dots, v_n$ sono indipendenti allora $det W(x) != 0$ per ogni $x in I$.
@@ -319,10 +319,10 @@ Il primo metodo (di similarità) si applica quando il termine noto $g(x)$ assume
 
   Rimane quindi solo da verificare che esistono funzioni $c_k in C^1(A, CC)$ che soddisfano il sistema @eq:02154676.
   Si osserva che il sistema @eq:02154676 si scrive nella forma
-  $ W(x) arrow(c)'(x) = arrow(b)(x) $
-  dove $W(x)$ è la matrice wronksiana $W(x)$ associata alle soluzioni $v_1, dots, v_n$, $arrow(c)(x) = (c_1 (x), dots, c_n (x))$ e $arrow(b)(x) = (0, dots, 0, b(x))$.
-  Siccome $v_1, dots, v_n$ per ipotesi sono indipendenti, per il teorema @th:wronksiano sappiamo che $det W(x) != 0$ per ogni $x$ e quindi il sistema $W(x) arrow(d)(x) = arrow(b)(x)$ ammette una unica soluzione $arrow(d)(x)$ per ogni $x in I$.
-  Visto che $W(x)$ e $arrow(b)(x)$ hanno coefficienti continui, anche la soluzione $arrow(d)(x) = W(x)^(-1) arrow(b)(x)$ dovrà essere continua (che i coefficienti della matrice $W(x)^(-1)$ siano continui lo si vede ad esempio scrivendo $W(x)^(-1)$ tramite la matrice dei cofattori e sfruttando il fatto che il determinante è una funzione continua) e quindi, fissato un punto $x_0 in I$, potremo definire
+  $ W(x) vec(c)'(x) = vec(b)(x) $
+  dove $W(x)$ è la matrice wronksiana $W(x)$ associata alle soluzioni $v_1, dots, v_n$, $vec(c)(x) = (c_1 (x), dots, c_n (x))$ e $vec(b)(x) = (0, dots, 0, b(x))$.
+  Siccome $v_1, dots, v_n$ per ipotesi sono indipendenti, per il teorema @th:wronksiano sappiamo che $det W(x) != 0$ per ogni $x$ e quindi il sistema $W(x) vec(d)(x) = vec(b)(x)$ ammette una unica soluzione $vec(d)(x)$ per ogni $x in I$.
+  Visto che $W(x)$ e $vec(b)(x)$ hanno coefficienti continui, anche la soluzione $vec(d)(x) = W(x)^(-1) vec(b)(x)$ dovrà essere continua (che i coefficienti della matrice $W(x)^(-1)$ siano continui lo si vede ad esempio scrivendo $W(x)^(-1)$ tramite la matrice dei cofattori e sfruttando il fatto che il determinante è una funzione continua) e quindi, fissato un punto $x_0 in I$, potremo definire
   $ c_k (x) = integral_(x_0)^x d_k (t) thin d t $
   per determinare le funzioni $c_k$.
 ]

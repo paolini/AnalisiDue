@@ -16,7 +16,7 @@
 
 #definition[palla][
   Sia $(X, d)$ uno spazio metrico. Per ogni $r > 0$ e per ogni $x_0 in X$ definiamo la _palla_ di raggio $r$ centrata in $x_0$ come l'insieme
-  $ B_r(x_0) = { x in X : d(x, x_0) < r }. $
+  $ B_r (x_0) = { x in X : d(x, x_0) < r }. $
 ] <def:palla>
 
 #{
@@ -79,7 +79,7 @@ figure(
         circle((x, radius), radius: dot-r, fill: black, stroke: none)
       }
       circle((0, 0), radius: radius, fill: internal-color, stroke: 1.5pt)
-      content((0, 0), [$overline(A)$])
+      content((0, 0), [$macron(A)$])
     }),
 
     // 6. Punti di accumulazione
@@ -90,32 +90,32 @@ figure(
       content((0, 0), [$A'$])
     }),
   ),
-  caption: [Un insieme $A$ e la sua parte interna #openA, parte esterna, frontiera $partial A$, chiusura $overline(A)$ e punti di accumulazione $A'$.],
+  caption: [Un insieme $A$ e la sua parte interna #openA, parte esterna, frontiera $partial A$, chiusura $macron(A)$ e punti di accumulazione $A'$.],
 ) } <fig:int_ext_front> 
 
 #definition[relazioni e proprietà topologiche][
-  Sia $(X, d)$ uno spazio metrico. Un insieme $A subset X$ si dirà essere un insieme _aperto_ in $X$ se per ogni $x in A$ esiste $r > 0$ tale che $B_r(x) subset A$. Un insieme $A subset X$ si dirà essere un insieme _chiuso_ in $X$ se il suo complementare $X without A$ è aperto.
+  Sia $(X, d)$ uno spazio metrico. Un insieme $A subset X$ si dirà essere un insieme _aperto_ in $X$ se per ogni $x in A$ esiste $r > 0$ tale che $B_r (x) subset A$. Un insieme $A subset X$ si dirà essere un insieme _chiuso_ in $X$ se il suo complementare $X without A$ è aperto.
 
-  La famiglia di tutti gli insiemi aperti si chiama _topologia_ dello spazio metrico $X$. Tutte le definizioni che seguono non dipendono dalla distanza $d$ ma solamente dalla topologia: basterà usare aperti qualunque al posto delle palle $B_r(x)$.
+  La famiglia di tutti gli insiemi aperti si chiama _topologia_ dello spazio metrico $X$. Tutte le definizioni che seguono non dipendono dalla distanza $d$ ma solamente dalla topologia: basterà usare aperti qualunque al posto delle palle $B_r (x)$.
 
   Se $A subset X$ è un insieme qualunque e $x in X$ è un punto qualunque diremo che:
-  + $x$ è _punto interno_ ad $A$ se esiste $r > 0$ tale che $B_r(x) subset A$; chiameremo _parte interna_ di $A$ l'insieme dei punti interni di $A$ e la denoteremo con $accent(A, ∘)$;
-  + $A$ è un _intorno_ di $x$ se $x$ è punto interno ad $A$ ovvero esiste $r > 0$ tale che $B_r(x) subset A$;
-  + $x$ è _punto esterno_ ad $A$ se è interno al complementare di $A$ ovvero esiste $r > 0$ tale che $B_r(x) inter A = emptyset$; chiameremo _parte esterna_ di $A$ l'insieme dei punti esterni ad $A$;
-  + $x$ è _punto di frontiera_ per $A$ se non è né interno né esterno ad $A$ ovvero per ogni $r > 0$ l'insieme $B_r(x)$ contiene punti di $A$ e di $X without A$; chiameremo _frontiera_ (o bordo) di $A$ l'insieme dei punti di frontiera che denoteremo con $partial A$;
-  + $x$ è _punto di aderenza_ di $A$ se è interno o di frontiera ovvero se per ogni $r > 0$ si ha $B_r(x) inter A != emptyset$; chiameremo _chiusura_ di $A$ l'insieme dei punti di aderenza, che denoteremo con $overline(A)$;
-  + $x$ è _punto di accumulazione_ di $A$ se è punto di aderenza per $A without {x}$ ovvero se per ogni $r > 0$ l'insieme $A inter B_r(x)$ contiene punti diversi da $x$, chiameremo _derivato_ di $A$ l'insieme dei punti di accumulazione (che si potrebbe denotare con $A'$);
-  + $x$ è _punto isolato_ di $A$ se è un punto di $A$ ma non di accumulazione per $A$ cioè se esiste $r > 0$ per cui $B_r(x) inter A = {x}$.
+  + $x$ è _punto interno_ ad $A$ se esiste $r > 0$ tale che $B_r (x) subset A$; chiameremo _parte interna_ di $A$ l'insieme dei punti interni di $A$ e la denoteremo con $accent(A, circle)$;
+  + $A$ è un _intorno_ di $x$ se $x$ è punto interno ad $A$ ovvero esiste $r > 0$ tale che $B_r (x) subset A$;
+  + $x$ è _punto esterno_ ad $A$ se è interno al complementare di $A$ ovvero esiste $r > 0$ tale che $B_r (x) inter A = emptyset$; chiameremo _parte esterna_ di $A$ l'insieme dei punti esterni ad $A$;
+  + $x$ è _punto di frontiera_ per $A$ se non è né interno né esterno ad $A$ ovvero per ogni $r > 0$ l'insieme $B_r (x)$ contiene punti di $A$ e di $X without A$; chiameremo _frontiera_ (o bordo) di $A$ l'insieme dei punti di frontiera che denoteremo con $partial A$;
+  + $x$ è _punto di aderenza_ di $A$ se è interno o di frontiera ovvero se per ogni $r > 0$ si ha $B_r (x) inter A != emptyset$; chiameremo _chiusura_ di $A$ l'insieme dei punti di aderenza, che denoteremo con $macron(A)$;
+  + $x$ è _punto di accumulazione_ di $A$ se è punto di aderenza per $A without {x}$ ovvero se per ogni $r > 0$ l'insieme $A inter B_r (x)$ contiene punti diversi da $x$, chiameremo _derivato_ di $A$ l'insieme dei punti di accumulazione (che si potrebbe denotare con $A'$);
+  + $x$ è _punto isolato_ di $A$ se è un punto di $A$ ma non di accumulazione per $A$ cioè se esiste $r > 0$ per cui $B_r (x) inter A = {x}$.
 ] <def:466342>
 
 #theorem[le palle sono aperte][
-  Sia $(X, d)$ uno spazio metrico, sia $x in X$ e $r > 0$. Allora la palla $B_r(x)$ è un insieme aperto in $X$.
+  Sia $(X, d)$ uno spazio metrico, sia $x in X$ e $r > 0$. Allora la palla $B_r (x)$ è un insieme aperto in $X$.
 ]
 
 #proof[
-  Sia $y in B_r(x)$: è sufficiente trovare $rho > 0$ tale che $B_rho(y) subset B_r(x)$. Prendendo $rho = r - d(y, x)$ si osserva che $rho > 0$ e, per la disuguaglianza triangolare, dato $z in B_rho(y)$ si ha
+  Sia $y in B_r (x)$: è sufficiente trovare $rho > 0$ tale che $B_rho (y) subset B_r (x)$. Prendendo $rho = r - d(y, x)$ si osserva che $rho > 0$ e, per la disuguaglianza triangolare, dato $z in B_rho (y)$ si ha
   $ d(z, x) <= d(z, y) + d(y, x) < rho + d(y, x) = r $
-  da cui $B_rho(y) subset B_r(x)$ come volevamo dimostrare.
+  da cui $B_rho (y) subset B_r (x)$ come volevamo dimostrare.
 ]
 
 #definition[distanze equivalenti][

@@ -35,7 +35,7 @@ Una funzione vettoriale $f$ può essere identificata con una $m$-upla di funzion
 $ f(x_1, dots, x_n) = mat(
   f_1(x_1, dots, x_n);
   dots.v;
-  f_m(x_1, dots, x_n)
+  f_m (x_1, dots, x_n)
 ). $
 
 Se $I subset RR$ è un intervallo, una funzione $u: I subset RR -> RR^n$ si chiama _curva_.
@@ -48,7 +48,7 @@ Il supporto di $u$ è in questo caso una retta passante per $x_0$ con direttrice
 
 Per ricondursi allo studio di funzioni di una variabile è spesso utile studiare la composizione della funzione di più variabili con opportune curve.
 Se $f: A subset RR^n -> RR^m$ e $u: I subset RR -> A subset RR^n$ possiamo considerare la funzione $g: I -> RR^m$ data da $g(t) = f(u(t))$.
-Si avrà $g = (g_1, dots, g_m)$ con $g_k(t) = f_k(u(t))$ dove $f = (f_1, dots, f_m)$.
+Si avrà $g = (g_1, dots, g_m)$ con $g_k (t) = f_k (u(t))$ dove $f = (f_1, dots, f_m)$.
 In definitiva le funzioni $g_k: I subset RR -> RR$ sono funzioni scalari di una variabile, e le possiamo studiare come si è fatto nel corso di Analisi Matematica Uno.
 
 #example[funzioni lineari][
@@ -305,7 +305,7 @@ $ (partial f) / (partial x_k) = (partial f) / (partial e_k) = lr([d / (d t) f(x 
 Calcolare le derivate parziali è molto semplice perché si tratta di derivare la funzione $x_k |-> f(x_1, dots, x_n)$ come se fosse una funzione di una sola variabile, $x_k$, mentre le altre variabili $x_j$ con $j != k$ vanno considerate costanti.
 
 Se poi scriviamo $f = (f_1, dots, f_m)$ possiamo quindi determinare tutte le componenti della matrice jacobiana:
-$ (D f(x))_(j k) = D f_j (x) e_k = chevron.l nabla f_j(x), e_k chevron.r = (d f_j)_x [e_k] = (partial f_j) / (partial x_k)(x). $
+$ (D f(x))_(j k) = D f_j (x) e_k = chevron.l nabla f_j (x), e_k chevron.r = (d f_j)_x [e_k] = (partial f_j) / (partial x_k)(x). $
 Dunque
 $ D f(x) = mat(
   (partial f_1) / (partial x_1), dots, (partial f_1) / (partial x_n);
@@ -355,7 +355,7 @@ Risulta quindi molto utile il seguente.
   Si procede esattamente come nel passo 1, salvo che per passare dal punto $x_0$ al punto $x$ bisogna seguire $n$ segmenti paralleli agli assi su ognuno dei quali si applica il teorema di Lagrange.
 
   _Conclusione._ Se $m>1$ basta applicare il risultato alle componenti $f_1, dots, f_m$ di $f$ e osservare che la formula @eq:def_differenziale è equivalente alle $m$ formule:
-  $ f_k(x) = f_k(x_0) + (d f_k)_(x_0)[x-x_0] + o(|x-x_0|). $
+  $ f_k (x) = f_k (x_0) + (d f_k)_(x_0)[x-x_0] + o(|x-x_0|). $
 ]
 
 #example[
@@ -484,12 +484,12 @@ Per le derivate $k$-esime il differenziale $D^k f$ rappresenta una forma $k$-lin
   $ g'(t) &= chevron.l nabla f(x_0 + t v), v chevron.r, \
     g''(t) &= chevron.l D^2 f(x_0+t v)[v], v chevron.r. $
   Usando la formula di Taylor con resto di Lagrange per le funzioni di una variabile vista nel corso di Analisi Matematica Uno, si ottiene
-  $ g(t) = g(0) + g'(0) t + 1/2 g'' (bar(t)(x)) t^2 $
-  per un qualche $bar(t)(x) in (0,t)$.
+  $ g(t) = g(0) + g'(0) t + 1/2 g'' (macron(t)(x)) t^2 $
+  per un qualche $macron(t)(x) in (0,t)$.
   Abbiamo quindi
-  $ f(x) = f(x_0) + chevron.l nabla f(x_0), x - x_0 chevron.r + 1/2 chevron.l D^2 f(x_0 + bar(t)(x)(x - x_0))[x-x_0], x-x_0 chevron.r. $
-  Visto che per $x -> x_0$ si ha $bar(t)(x) -> 0$, per la continuità delle derivate seconde si ha
-  $ D^2 f(x_0 + bar(t)(x)(x - x_0)) -> D^2 f(x_0) $
+  $ f(x) = f(x_0) + chevron.l nabla f(x_0), x - x_0 chevron.r + 1/2 chevron.l D^2 f(x_0 + macron(t)(x)(x - x_0))[x-x_0], x-x_0 chevron.r. $
+  Visto che per $x -> x_0$ si ha $macron(t)(x) -> 0$, per la continuità delle derivate seconde si ha
+  $ D^2 f(x_0 + macron(t)(x)(x - x_0)) -> D^2 f(x_0) $
   e dunque segue la tesi.
 
   _Caso generale._

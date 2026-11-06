@@ -75,6 +75,10 @@
   show figure.where(kind: image): set figure(supplement: [Figura])
   show figure.where(kind: table): set figure(supplement: [Tabella])
   
+  set par(
+    justify: true,
+    leading: 0.52em,
+  )
   // Numerazione equazioni per capitolo: (1.1)
   set math.equation(numbering: "(1.1)")
   
@@ -135,3 +139,6 @@
 
 // Comandi custom
 #let vec(x) = math.bold(x)
+
+#let Subset = math.subset.double
+#let subset = math.subset.eq

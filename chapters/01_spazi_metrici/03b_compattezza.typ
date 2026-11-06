@@ -8,7 +8,7 @@
 ]
 
 #definition[totale limitatezza][
-  Uno spazio metrico $X$ si dice essere _totalmente limitato_ se per ogni $rho > 0$ esistono un numero finito di punti $x_1, dots, x_n$ di $X$ per cui per ogni $x in X$ esiste $i = 1, dots, n$ tale che $d(x, x_i) < epsilon$ (ovvero $B_rho(x_1), dots, B_rho(x_n)$ è un ricoprimento finito di $X$).
+  Uno spazio metrico $X$ si dice essere _totalmente limitato_ se per ogni $rho > 0$ esistono un numero finito di punti $x_1, dots, x_n$ di $X$ per cui per ogni $x in X$ esiste $i = 1, dots, n$ tale che $d(x, x_i) < epsilon$ (ovvero $B_rho (x_1), dots, B_rho (x_n)$ è un ricoprimento finito di $X$).
 ]
 
 #lemma[
@@ -16,11 +16,11 @@
 ]
 
 #proof[
-  Sia dato $epsilon > 0$ e siano $x_1, dots, x_n$ tali che $B_epsilon(x_1), dots, B_epsilon(x_n)$ ricoprono $X$.
-  Riordiniamo gli indici in modo che $B_epsilon(x_1), dots, B_epsilon(x_m)$ siano le palle che intersecano $A$.
-  Allora per $i = 1, dots, m$ possiamo trovare $y_i in B_epsilon(x_i) inter A$.
-  Verifichiamo che $B_epsilon(y_1), dots, B_epsilon(y_m)$ ricoprono $A$: preso $x in A$ esiste $i = 1, dots, n$ tale che $x in B_epsilon(x_i)$.
-  Dunque $i <= m$ (perché $x in A inter B_epsilon(x_i)$) e $x in B_epsilon(x_i) subset B_(2 epsilon)(y_i)$.
+  Sia dato $epsilon > 0$ e siano $x_1, dots, x_n$ tali che $B_epsilon (x_1), dots, B_epsilon (x_n)$ ricoprono $X$.
+  Riordiniamo gli indici in modo che $B_epsilon (x_1), dots, B_epsilon (x_m)$ siano le palle che intersecano $A$.
+  Allora per $i = 1, dots, m$ possiamo trovare $y_i in B_epsilon (x_i) inter A$.
+  Verifichiamo che $B_epsilon (y_1), dots, B_epsilon (y_m)$ ricoprono $A$: preso $x in A$ esiste $i = 1, dots, n$ tale che $x in B_epsilon (x_i)$.
+  Dunque $i <= m$ (perché $x in A inter B_epsilon (x_i)$) e $x in B_epsilon (x_i) subset B_(2 epsilon)(y_i)$.
   Dunque $B_(2 epsilon)(y_1), dots, B_(2 epsilon)(y_m)$ ricoprono $A$, come volevamo dimostrare.
 ]
 
@@ -54,13 +54,13 @@
   Sia $A_i$ un ricoprimento aperto di $X$.
 
   _numero di Lebesgue:_ 
-  mostriamo che esiste $rho > 0$ tale che per ogni $x in X$ esiste $i$ per cui $B_rho(x) subset A_i$.
+  mostriamo che esiste $rho > 0$ tale che per ogni $x in X$ esiste $i$ per cui $B_rho (x) subset A_i$.
   In caso contrario fissato $rho = 1/n$ esisterebbe $x_n in X$ tale che $B_(1/n)(x_n)$ non è interamente contenuto in nessun $A_i$.
   Ma per la sequenziale compattezza posso estrarre una sottosuccessione $x_(n_k)$ convergente ad $x in X$.
-  Preso $A_i$ tale che $x in A_i$ visto che $A_i$ è aperto deve esistere $rho > 0$ per cui $B_rho(x) subset A_i$ ma allora dovrebbe essere $B_(1/n_k)(x_(n_k)) subset B_rho(x) subset A_i$ per $k$ abbastanza grande. Assurdo.
+  Preso $A_i$ tale che $x in A_i$ visto che $A_i$ è aperto deve esistere $rho > 0$ per cui $B_rho (x) subset A_i$ ma allora dovrebbe essere $B_(1/n_k)(x_(n_k)) subset B_rho (x) subset A_i$ per $k$ abbastanza grande. Assurdo.
 
-  Fissato $rho$ con la proprietà dell'affermazione, sapendo che $X$ è totalmente limitato (teorema precedente) possiamo trovare $x_1, dots, x_N$ tali che $B_rho(x_k)$ ricopre $X$ per $k = 1, dots, N$. 
-  Ma per ogni $k$ esiste $i = i(k)$ tale che $B_rho(x_k) subset A_i$ e quindi il sottoricoprimento $A_(i(1)), dots, A_(i(N))$ ricopre $X$.
+  Fissato $rho$ con la proprietà dell'affermazione, sapendo che $X$ è totalmente limitato (teorema precedente) possiamo trovare $x_1, dots, x_N$ tali che $B_rho (x_k)$ ricopre $X$ per $k = 1, dots, N$. 
+  Ma per ogni $k$ esiste $i = i(k)$ tale che $B_rho (x_k) subset A_i$ e quindi il sottoricoprimento $A_(i(1)), dots, A_(i(N))$ ricopre $X$.
 
   _Supponiamo che $X$ sia completo e totalmente limitato._
   Dimostriamo che $X$ è sequenzialmente compatto.
@@ -79,7 +79,7 @@
 
   Mostriamo ora che $X$ è sequenzialmente compatto.
   Sia $x_k$ una successione di punti di $X$ e supponiamo per assurdo che $x_k$ non abbia estratte convergenti.
-  Allora per ogni $y in X$ esiste $rho$ per cui $U_y = B_rho(y)$ contiene solo un numero finito di termini della successione (altrimenti avrei una estratta convergente ad $y$).
+  Allora per ogni $y in X$ esiste $rho$ per cui $U_y = B_rho (y)$ contiene solo un numero finito di termini della successione (altrimenti avrei una estratta convergente ad $y$).
   Dunque ogni sottofamiglia finita degli $U_y$ contiene solamente un numero finito di termini della successione.
   Significa che non può essere estratta una sottofamiglia finita che ricopre tutto $X$, ovvero $X$ non è compatto.
 ]

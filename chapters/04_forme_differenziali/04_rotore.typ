@@ -45,7 +45,7 @@ In tal caso $op("current") A$ è una $n$-superficie parametrizzata e dunque si p
 
 #theorem[
   Sia $A subset RR^n$ un aperto limitato sufficientemente regolare (in modo che $op("current") A$ sia una $n$-superficie parametrizzata).
-  Sia $f: bar(A) -> RR^n$ una funzione di classe $C^1$.
+  Sia $f: macron(A) -> RR^n$ una funzione di classe $C^1$.
   Allora
   $ integral_A op("div") f = integral_(partial op("current") A) f dot nu_(partial op("current") A) thin d sigma. $
 ]
@@ -74,12 +74,12 @@ Significa che $v times w$ è un vettore con modulo pari all'area del parallelogr
 Se $u$ e $v$ sono tra loro paralleli, si ha $u times v = 0$.
 
 In coordinate, se $xi = v times w$ con $v=(v_1,v_2,v_3)$, $w=(w_1,w_2,w_3)$ si ha dunque $xi=(xi_1,xi_2,xi_3)$ con
-$ xi_1 &= arrow(e)_1 dot xi = det(arrow(e)_1, v, w) = v_2 w_3 - v_3 w_2, \
-  xi_2 &= arrow(e)_2 dot xi = det(arrow(e)_2, v, w) = v_3 w_1 - v_1 w_3, \
-  xi_3 &= arrow(e)_3 dot xi = det(arrow(e)_3, v, w) = v_1 w_2 - v_2 w_1. $
+$ xi_1 &= vec(e)_1 dot xi = det(vec(e)_1, v, w) = v_2 w_3 - v_3 w_2, \
+  xi_2 &= vec(e)_2 dot xi = det(vec(e)_2, v, w) = v_3 w_1 - v_1 w_3, \
+  xi_3 &= vec(e)_3 dot xi = det(vec(e)_3, v, w) = v_1 w_2 - v_2 w_1. $
 
 Più espressivamente si può scrivere
-$ xi = det mat(arrow(e)_1, v_1, w_1; arrow(e)_2, v_2, w_2; arrow(e)_3, v_3, w_3) = (v_2 w_3 - v_3 w_2) arrow(e)_1 + (v_3 w_1 - v_1 w_3) arrow(e)_2 + (v_1 w_2 - v_2 w_1) arrow(e)_3. $
+$ xi = det mat(vec(e)_1, v_1, w_1; vec(e)_2, v_2, w_2; vec(e)_3, v_3, w_3) = (v_2 w_3 - v_3 w_2) vec(e)_1 + (v_3 w_1 - v_1 w_3) vec(e)_2 + (v_1 w_2 - v_2 w_1) vec(e)_3. $
 
 Se $omega in Omega^2 (A)$ è rappresentata dal campo vettoriale $xi: A -> RR^3$ e $phi: B subset RR^2 -> A subset RR^3$ osserviamo che $phi_x = (partial phi) / (partial x)$ e $phi_y = (partial phi) / (partial y)$ sono due vettori tangenti alla superficie parametrizzata da $phi$ e dunque
 $ nu_phi = (phi_x times phi_y) / |phi_x times phi_y| $
@@ -95,10 +95,10 @@ Dunque $integral_phi omega$ è il flusso del campo vettoriale $xi$ attraverso la
 
 #definition[rotore][
   Sia $A$ un aperto di $RR^3$ e $xi: A -> RR^3$ una funzione differenziabile.
-  Sia $arrow(e)_1, arrow(e)_2, arrow(e)_3$ la base canonica di $RR^3$.
+  Sia $vec(e)_1, vec(e)_2, vec(e)_3$ la base canonica di $RR^3$.
   Definiamo allora il _rotore_ di $xi$ come il vettore $op("rot") xi in RR^3$ definito da
   $ op("rot") xi = nabla times xi
-      = det mat(arrow(e)_1, partial_x, xi_1; arrow(e)_2, partial_y, xi_2; arrow(e)_3, partial_z, xi_3)
+      = det mat(vec(e)_1, partial_x, xi_1; vec(e)_2, partial_y, xi_2; vec(e)_3, partial_z, xi_3)
       = mat((partial xi_3) / (partial y) - (partial xi_2) / (partial z); (partial xi_1) / (partial z) - (partial xi_3) / (partial x); (partial xi_2) / (partial x) - (partial xi_1) / (partial y)). $
 
   Ricordiamo anche gli operatori _gradiente_ e _divergenza_
@@ -114,17 +114,17 @@ $ d f = (partial f) / (partial x) thin d x + (partial f) / (partial y) thin d y 
 
 Se $omega in Omega^1 (A)$, possiamo scrivere $omega$ nella forma
 $ omega = g_1 thin d x + g_2 thin d y + g_3 thin d z $
-in modo che $arrow(g): A -> RR^3$ sia il campo vettoriale che rappresenta $omega$.
+in modo che $vec(g): A -> RR^3$ sia il campo vettoriale che rappresenta $omega$.
 In questo caso si ha
 $ d omega
-    &= (partial_x arrow(g)_1 d x + partial_y arrow(g)_1 d y + partial_z arrow(g)_3 d z) and d x \
-    &quad + (partial_x arrow(g)_2 d x + partial_y arrow(g)_2 d y + partial_z arrow(g)_3 d z) and d y \
-    &quad + (partial_x arrow(g)_3 d x + partial_y arrow(g)_3 d y + partial_z arrow(g)_3 d z) and d z \
-    &= (partial_y arrow(g)_3 - partial_z arrow(g)_2) thin d y and d z + (partial_z arrow(g)_1 - partial_x arrow(g)_3) thin d z and d x \
-    &quad + (partial_x arrow(g)_2 - partial_y arrow(g)_1) thin d x and d y \
-    &= (op("rot") arrow(g))_1 thin d y and d z + (op("rot") arrow(g))_2 thin d z and d x + (op("rot") arrow(g))_3 thin d x and d y. $
+    &= (partial_x vec(g)_1 d x + partial_y vec(g)_1 d y + partial_z vec(g)_3 d z) and d x \
+    &quad + (partial_x vec(g)_2 d x + partial_y vec(g)_2 d y + partial_z vec(g)_3 d z) and d y \
+    &quad + (partial_x vec(g)_3 d x + partial_y vec(g)_3 d y + partial_z vec(g)_3 d z) and d z \
+    &= (partial_y vec(g)_3 - partial_z vec(g)_2) thin d y and d z + (partial_z vec(g)_1 - partial_x vec(g)_3) thin d z and d x \
+    &quad + (partial_x vec(g)_2 - partial_y vec(g)_1) thin d x and d y \
+    &= (op("rot") vec(g))_1 thin d y and d z + (op("rot") vec(g))_2 thin d z and d x + (op("rot") vec(g))_3 thin d x and d y. $
 Dunque se rappresentiamo $d omega in Omega^2 (A)$, tramite il campo vettoriale $xi: A -> RR^3$ definito da
-$ xi_1 (arrow(p)) = omega_arrow(p) [arrow(e)_2, arrow(e)_3], quad xi_2 (arrow(p)) = omega_arrow(p) [arrow(e)_3, arrow(e)_1], quad xi_3 (arrow(p)) = omega_arrow(p) [arrow(e)_1, arrow(e)_2] $
+$ xi_1 (vec(p)) = omega_arrow (p) [vec(e)_2, vec(e)_3], quad xi_2 (vec(p)) = omega_arrow (p) [vec(e)_3, vec(e)_1], quad xi_3 (vec(p)) = omega_arrow (p) [vec(e)_1, vec(e)_2] $
 si avrà
 $ d omega = xi_1 thin d y and d z + xi_2 thin d z and d x + xi_3 thin d x and d y. $ <eq:fkjtpd>
 Abbiamo quindi verificato che se $xi$ è il campo vettoriale che rappresenta la $1$-forma $omega$, il campo (pseudo)-vettoriale che rappresenta $d omega$ è $op("rot") xi$.

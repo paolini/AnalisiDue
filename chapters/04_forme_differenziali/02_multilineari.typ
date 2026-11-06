@@ -192,15 +192,15 @@ In generale, se $phi: A subset RR^m -> RR^n$ e se $A$ non è aperto diremo che $
   e sia $u: C -> B$ una funzione di classe $C^1$ bigettiva con $det D u > 0$ su tutto $C$.
   Sia $A$ un aperto di $RR^n$ e sia $phi: B -> A$ una funzione di classe $C^1$.
   Sia $omega in Omega^k (A)$ una $k$-forma differenziale di classe $C^0$.
-  Allora per ogni $arrow(u): [0,1]^k -> A$ di classe $C^1$ si ha
-  $ integral_phi omega = integral_(phi compose arrow(u)) omega. $
+  Allora per ogni $vec(u): [0,1]^k -> A$ di classe $C^1$ si ha
+  $ integral_phi omega = integral_(phi compose vec(u)) omega. $
 ]
 
 #proof[
   Osserviamo che, in base al lemma @lm:549867, si ha
   $ omega[D(phi compose u)] = omega[D phi] dot det D u. $
   Dunque si tratta di applicare il teorema @th:cambio_variabile_generalizzato di cambio di variabile, $x=u(t)$, $d x = |det D u(t)| thin d t = det D u(t) thin d t$ per ottenere
-  $ integral_(phi compose arrow(u)) omega
+  $ integral_(phi compose vec(u)) omega
       &= integral_C omega_(phi compose u)[D(phi compose u)]
       = integral_C omega_(phi compose u)[D phi] dot det D u \
       &= integral_B omega_phi [D phi] = integral_phi omega. $
@@ -211,8 +211,8 @@ In generale, se $phi: A subset RR^m -> RR^n$ e se $A$ non è aperto diremo che $
 Se $phi: A subset RR^m -> B subset RR^n$ (con $A$ e $B$ aperti) è una funzione differenziabile e $omega in Omega^k (B)$ possiamo definire il pull-back $phi^* omega in Omega^k (A)$ tramite la formula
 $ (phi^* omega)_x [v_1, dots, v_k] = omega_(phi(x))[d phi(x)[v_1], dots, d phi(x)[v_k]]. $
 
-Osserviamo che visto che il pull-back di una composizione è ovviamente la composizione dei pull-back, se $arrow(u): C subset RR^k -> B subset RR^m$, $phi: B subset RR^m -> A subset RR^n$ e $omega in Omega^k (A)$ si ha
-$ integral_(phi compose arrow(u)) omega = integral_C omega_(phi compose arrow(u))[D(phi compose arrow(u))] = integral_C omega_(arrow(u))[D arrow(u)] = integral_arrow(u) phi^* omega. $
+Osserviamo che visto che il pull-back di una composizione è ovviamente la composizione dei pull-back, se $vec(u): C subset RR^k -> B subset RR^m$, $phi: B subset RR^m -> A subset RR^n$ e $omega in Omega^k (A)$ si ha
+$ integral_(phi compose vec(u)) omega = integral_C omega_(phi compose vec(u))[D(phi compose vec(u))] = integral_C omega_(vec(u))[D vec(u)] = integral_arrow (u) phi^* omega. $
 
 #theorem[scambio differenziale e pull-back][
   Sia $phi: A subset RR^m -> B subset RR^n$ una funzione di classe $C^1$ e sia $omega in Omega^k (B)$ una $k$-forma differenziale di classe $C^1$.
@@ -221,7 +221,7 @@ $ integral_(phi compose arrow(u)) omega = integral_C omega_(phi compose arrow(u)
 ]
 
 #proof[
-  Denotiamo con $x_1, dots, x_m$ le coordinate di $RR^m$ e con $y_1, dots, y_n$ le coordinate di $RR^n$ così da avere $arrow(y) = phi(arrow(x))$.
+  Denotiamo con $x_1, dots, x_m$ le coordinate di $RR^m$ e con $y_1, dots, y_n$ le coordinate di $RR^n$ così da avere $vec(y) = phi(vec(x))$.
   Grazie alla multilinearità è sufficiente dimostrare il risultato per le forme elementari:
   $ omega = f thin d y_(j_1) and dots and d y_(j_k). $
   Si ha

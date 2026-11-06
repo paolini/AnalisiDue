@@ -71,8 +71,8 @@ L'esempio precedente ci dice che lo scambio tra il limite e l'integrale in certi
   $ integral_0^1 lim_(n -> +infinity) f_n (x) d x = integral_0^1 0 d x = 0. $
 ]
 
-Il motivo per cui nell'esempio precedente non si può passare al limite sotto il segno di integrale è dovuto al fatto che la funzione $f_n(x)$ pur tendendo a zero in ogni punto $x in RR$ nei punti vicini ad $x=0$ diventa, al crescere di $n$, molto grande.
-In effetti il grafico della funzione $f_n(x)$ si ottiene dal grafico della funzione $f(x) = x / (1+x^4)$ schiacciando la variabile $x$ di un fattore $n$ e dilatando la variabile $y$ dello stesso fattore $n$.
+Il motivo per cui nell'esempio precedente non si può passare al limite sotto il segno di integrale è dovuto al fatto che la funzione $f_n (x)$ pur tendendo a zero in ogni punto $x in RR$ nei punti vicini ad $x=0$ diventa, al crescere di $n$, molto grande.
+In effetti il grafico della funzione $f_n (x)$ si ottiene dal grafico della funzione $f(x) = x / (1+x^4)$ schiacciando la variabile $x$ di un fattore $n$ e dilatando la variabile $y$ dello stesso fattore $n$.
 Questo fa sì che l'area sotto il grafico rimanga invariata.
 La funzione $f_n$ ha un punto di massimo per $x = 1 / (root(4,3) sqrt(n))$ (lo si verifichi studiando il segno della derivata) e in tale punto assume un valore che tende ad infinito quando $n -> +infinity$.
 
@@ -91,14 +91,14 @@ Se però c'è convergenza uniforme e l'integrale non è improprio, vale il segue
 
 #proof[
   Se $f_n$ e $f$ sono Riemann-integrabili anche $f_n-f$ e $|f_n-f|$ lo sono e si ha:
-  $ |integral_a^b f_n (x) d x - integral_a^b f(x) d x|
+  $ abs(integral_a^b f_n (x) d x - integral_a^b f(x) d x)
     &<= integral_a^b |f_n (x) - f(x)| d x \
     &<= integral_a^b sup_(t in [a,b]) |f_n (t) - f(t)| d x \
-    &= sup_(t in [a,b]) |f_n (t) - f(t)| dot integral_a^b 1 d x -> 0. $
+    &= sup_(t in [a,b]) |f_n (t) - f(t)| dot integral_a^b 1 thin d x -> 0. $
 
   Se poi definiamo $F$ e $F_k$ come nell'enunciato, si ha
   $ ||F_k - F||_infinity
-    &= sup_(x in [a,b]) |integral_c^x (f_k (t) - f(t)) d t| \
+    &= sup_(x in [a,b]) abs(integral_c^x (f_k (t) - f(t)) d t) \
     &<= sup_(x in [a,b]) |x - c| dot ||f_k - f||_infinity \
     &<= (b - a) dot ||f_k - f||_infinity -> 0. $
 ]
@@ -141,11 +141,11 @@ Per poter effettuare il passaggio al limite all'interno di un integrale impropri
   Visto che l'integrale improprio è convergente sappiamo che per ogni $epsilon > 0$ esistono $alpha > a$ e $beta < b$ per cui risulta
   $ integral_beta^b g(x) d x < epsilon, quad integral_a^alpha g(x) d x < epsilon. $
   Ma su $[alpha, beta]$ abbiamo la convergenza degli integrali per il teorema precedente dunque esiste $N$ tale che per ogni $k > N$ si ha
-  $ |integral_alpha^beta f_k (x) d x - integral_alpha^beta f(x) d x| <= epsilon. $
+  $ abs(integral_alpha^beta f_k (x) d x - integral_alpha^beta f(x) d x) <= epsilon. $
   Mettendo insieme le due cose si ottiene, per ogni $k > N$:
-  $ |integral_a^b f_k (x) d x - integral_a^b f(x) d x|
-    &<= |integral_alpha^beta f_k (x) d x - integral_alpha^beta f(x) d x| \
-    &quad + |integral_a^alpha (f_k (x) - f(x)) d x| + |integral_beta^b (f_k (x) - f(x)) d x| \
+  $ abs(integral_a^b f_k (x) d x - integral_a^b f(x) d x)
+    &<= abs(integral_alpha^beta f_k (x) d x - integral_alpha^beta f(x) d x) \
+    &quad + abs(integral_a^alpha (f_k (x) - f(x)) d x) + abs(integral_beta^b (f_k (x) - f(x)) d x) \
     &<= epsilon + integral_a^alpha |f_k (x)| d x + integral_a^alpha |f(x)| d x + integral_beta^b |f_k (x)| d x + integral_beta^b |f(x)| d x \
     &<= epsilon + 2 integral_a^alpha g(x) d x + 2 integral_beta^b g(x) d x \
     &<= 5 epsilon. $
@@ -194,7 +194,7 @@ Il teorema di convergenza dominata viene spesso utilizzato per scambiare la deri
   Sia $f: I times (a,b) -> RR$ una funzione continua, dove $I subset RR$ è un intervallo e $-infinity <= a < b <= +infinity$.
   Supponiamo che per ogni $t in (a,b)$ la funzione sia derivabile rispetto a $x$ per ogni $x in I$ e che la derivata $(partial f) / (partial x)$ sia continua su tutto il rettangolo $I times (a,b)$.
   Supponiamo infine che per ogni $x in I$ l'integrale $integral_a^b f(x,t) d t$ sia convergente e che esista una funzione $G: (a,b) -> RR$ localmente Riemann integrabile e con integrale $integral_a^b G(t) d t$ convergente tale che per ogni $x in I$ e per ogni $t in (a,b)$ si abbia
-  $ |(partial f) / (partial x) (x,t)| <= G(t). $
+  $ abs((partial f) / (partial x) (x,t)) <= G(t). $
 
   Allora per ogni $x in I$ si ha
   $ d / (d x) integral_a^b f(x,t) d t = integral_a^b (partial f) / (partial x) (x,t) d t. $
@@ -214,14 +214,14 @@ Il teorema di convergenza dominata viene spesso utilizzato per scambiare la deri
   Basterà quindi dimostrare che è possibile applicare il @th:convergenza_dominata alla funzione $g(x,t)$.
 
   È facile verificare che $G$ domina $g$ in quanto per il teorema di Lagrange sappiamo che per ogni $x$ e per ogni $t$ esiste $x'$ con $|x' - x_0| < |x - x_0|$ tale che
-  $ |g(x,t)| = |(partial f) / (partial x) (x',t)| <= G(t). $
+  $ |g(x,t)| = abs((partial f) / (partial x) (x',t)) <= G(t). $
 
   Ci rimane quindi solo da dimostrare che la funzione $g: I times (a,b) -> RR$ è continua.
   Chiaramente se $x != x_0$ la funzione è continua, bisogna verificare che lo sia anche nei punti $(x_0,t_0)$ per ogni $t_0 in (a,b)$.
   Visto che per ipotesi $(partial f) / (partial x)$ è continua, sappiamo che
-  $ forall epsilon > 0: exists delta > 0: sqrt((x - x_0)^2 + (t - t_0)^2) < delta => |(partial f) / (partial x) (x,t) - (partial f) / (partial x) (x_0,t_0)| < epsilon. $
+  $ forall epsilon > 0: exists delta > 0: sqrt((x - x_0)^2 + (t - t_0)^2) < delta => abs((partial f) / (partial x) (x,t) - (partial f) / (partial x) (x_0,t_0)) < epsilon. $
   Applicando, come prima, il teorema di Lagrange sappiamo che se $(x,t)$ dista da $(x_0,t_0)$ per meno di $delta$ si ha
-  $ |g(x,t) - g(x_0,t_0)| = |(partial f) / (partial x) (x',t) - (partial f) / (partial x) (x_0,t_0)| < epsilon. $
+  $ |g(x,t) - g(x_0,t_0)| = abs((partial f) / (partial x) (x',t) - (partial f) / (partial x) (x_0,t_0)) < epsilon. $
   Questo conclude la dimostrazione della continuità di $g(x,t)$.
 ]
 

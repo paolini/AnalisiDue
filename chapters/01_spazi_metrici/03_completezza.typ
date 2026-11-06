@@ -29,7 +29,7 @@ $ lim_(k -> +infinity) sup_(j >= k) d(x_j, x_k) = 0. $
 Il prototipo di spazio metrico completo è $RR$, come vedremo nel @th:R-completo.
 Un esempio di spazio metrico non completo è $QQ$.
 Infatti se prendiamo una successione $q_n in QQ$ con $q_n -> sqrt(2)$ la successione $q_n$ è convergente in $RR$ e quindi è di Cauchy in $RR$. Ma visto che $q_n in QQ$ risulta che $q_n$ è di Cauchy anche in $QQ$ (la condizione di Cauchy è la stessa).
-Ma in $QQ$ tale successione non converge in quanto $sqrt(2) not in QQ$.
+Ma in $QQ$ tale successione non converge in quanto $sqrt(2) in.not QQ$.
 
 #definition[spazio di Banach][
   Uno spazio vettoriale normato si dice essere uno _spazio di Banach_ se, come spazio metrico, risulta essere completo.
@@ -101,7 +101,7 @@ Ma in $QQ$ tale successione non converge in quanto $sqrt(2) not in QQ$.
 ]
 
 #theorem[estendibilità delle funzioni uniformemente continue][
-  Sia $f: A subset X -> Y$ una funzione definita su un sottoinsieme $A$ di uno spazio metrico $X$ a valori in uno spazio metrico completo $Y$ (ad esempio $X = RR$ e $Y = RR$). Se $f$ è uniformemente continua allora esiste una unica funzione continua $tilde(f): overline(A) -> Y$ tale che per ogni $x in A$ si ha $tilde(f)(x) = f(x)$.
+  Sia $f: A subset X -> Y$ una funzione definita su un sottoinsieme $A$ di uno spazio metrico $X$ a valori in uno spazio metrico completo $Y$ (ad esempio $X = RR$ e $Y = RR$). Se $f$ è uniformemente continua allora esiste una unica funzione continua $tilde(f): macron(A) -> Y$ tale che per ogni $x in A$ si ha $tilde(f)(x) = f(x)$.
   Inoltre $tilde(f)$ è anch'essa uniformemente continua.
 ] <th:estensione_uniformemente_continua>
 
@@ -114,15 +114,15 @@ Ma in $QQ$ tale successione non converge in quanto $sqrt(2) not in QQ$.
   dunque mettendo insieme le due proprietà si ottiene la condizione di Cauchy per $f(a_k)$:
   $ forall epsilon > 0: exists N in NN: k,j > N => d(f(a_k), f(a_j)) < epsilon. $
 
-  Preso un punto $x in overline(A)$ esiste certamente $a_n in A$ con $a_n -> x$.
+  Preso un punto $x in macron(A)$ esiste certamente $a_n in A$ con $a_n -> x$.
   Vogliamo dimostrare che $f(a_n)$ ha limite in $Y$ e che tale limite non dipende dalla successione $a_n$ scelta. Se $a_n -> a$ allora $a_n$ è di Cauchy in $X$ (@th:se_converge_cauchy).
   Per quanto detto prima possiamo affermare che anche $f(a_n)$ è di Cauchy e quindi converge in $Y$, in quanto $Y$ è completo per ipotesi.
   Inoltre il $lim f(a_n)$ non dipende dalla successione scelta perché se $b_n -> x$ fosse un'altra successione potremmo costruire una successione $c_n$ che alterna i punti di $a_n$ e $b_n$ (ponendo, ad esempio, $c_(2n) = a_n$ e $c_(2n+1) = b_n$). Anche $c_n -> x$ ed è di Cauchy, dunque $f(c_n)$ converge.
   Ma $f(a_n)$ e $f(b_n)$ sono sotto-successioni di $f(c_n)$ e dunque convergono allo stesso limite.
-  Abbiamo quindi dimostrato che per ogni $x in overline(A)$ esiste $ell in Y$ tale che se $a_n -> x$, $a_n in A$ allora $f(a_n) -> ell$. Possiamo quindi definire $tilde(f)(x) = ell$. Se esiste una estensione continua di $f$ non può che essere definita in questo modo, in quanto le funzioni continue mandano successioni convergenti in successioni convergenti.
+  Abbiamo quindi dimostrato che per ogni $x in macron(A)$ esiste $ell in Y$ tale che se $a_n -> x$, $a_n in A$ allora $f(a_n) -> ell$. Possiamo quindi definire $tilde(f)(x) = ell$. Se esiste una estensione continua di $f$ non può che essere definita in questo modo, in quanto le funzioni continue mandano successioni convergenti in successioni convergenti.
 
   D'altra parte possiamo dimostrare che $tilde(f)$ è una funzione uniformemente continua.
-  Infatti per ogni $epsilon > 0$ possiamo scegliere $delta > 0$ dato dall'uniforme continuità di $f$: dati $x,y in overline(A)$ con $d(x,y) < delta / 3$ esisteranno $x_n, y_n in A$ con $x_n -> x$, $y_n -> y$. Si potrà quindi trovare $n$ sufficientemente grande in modo che $d(x_n, x) < delta / 3$, $d(y_n, y) < delta / 3$, $d(f(x_n), tilde(f)(x)) < epsilon$, $d(f(y_n), tilde(f)(y)) < epsilon$.
+  Infatti per ogni $epsilon > 0$ possiamo scegliere $delta > 0$ dato dall'uniforme continuità di $f$: dati $x,y in macron(A)$ con $d(x,y) < delta / 3$ esisteranno $x_n, y_n in A$ con $x_n -> x$, $y_n -> y$. Si potrà quindi trovare $n$ sufficientemente grande in modo che $d(x_n, x) < delta / 3$, $d(y_n, y) < delta / 3$, $d(f(x_n), tilde(f)(x)) < epsilon$, $d(f(y_n), tilde(f)(y)) < epsilon$.
   Si avrà allora $d(x_n, y_n) < d(x_n, x) + d(x, y) + d(y, y_n) < delta$, dunque $d(f(x_n), f(y_n)) < epsilon$ e in conclusione
   $ d(f(x), f(y)) <= d(f(x), f(x_n)) + d(f(x_n), f(y_n)) + d(f(y_n), f(y)) <= 3 epsilon. $
   Abbiamo quindi dimostrato l'uniforme continuità di $tilde(f)$ con $3 epsilon$ al posto di $epsilon$ e $delta / 3$ al posto di $delta$.

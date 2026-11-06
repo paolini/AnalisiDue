@@ -29,7 +29,7 @@
 
 #definition[integrale di superficie][
   Sia $B subset RR^k$ un aperto limitato misurabile e sia $A subset RR^n$.
-  Data $phi: bar(B) -> A$ di classe $C^1$ e data $f: A subset RR^n -> RR$ di classe $C^0$ definiamo
+  Data $phi: macron(B) -> A$ di classe $C^1$ e data $f: A subset RR^n -> RR$ di classe $C^0$ definiamo
   $ integral_phi f thin d sigma := integral_B f(phi(x)) sqrt(det((D phi)^t D phi)) thin d x. $ <eq:def_integrale_superficie>
   Le ipotesi su $phi$ e $f$ garantiscono che la funzione integranda al lato destro della @eq:def_integrale_superficie è continua e dunque integrabile su $B$, con integrale finito.
   Per mettere in evidenza la variabile di integrazione si potrà anche scrivere
@@ -42,7 +42,7 @@
 
 #theorem[invarianza per riparametrizzazioni][
   Siano $B,C$ aperti misurabili limitati di $RR^k$ e sia $A subset RR^n$.
-  Sia $phi: bar(B) -> A$ di classe $C^1$, sia $f: A -> RR$ di classe $C^0$ e sia $u: C -> B$ di classe $C^1$ con $u: C -> B$ bigettiva e $det D u != 0$.
+  Sia $phi: macron(B) -> A$ di classe $C^1$, sia $f: A -> RR$ di classe $C^0$ e sia $u: C -> B$ di classe $C^1$ con $u: C -> B$ bigettiva e $det D u != 0$.
   Allora
   $ integral_(phi compose u) f thin d sigma = integral_phi f thin d sigma. $
 ]
@@ -162,8 +162,8 @@ $ D phi &= mat(-rho(t) sin theta, rho'(t) cos theta; rho(t) cos theta, rho'(t) s
 Dunque si ottiene la _formula di Guldino_
 $ op("area")(S) = integral_a^b integral_0^(2 pi) rho(t) |gamma'(t)| thin d theta thin d t = 2 pi integral_a^b rho(t) |gamma'(t)| thin d t = 2 pi integral_gamma rho thin d s. $ <eq:formula_guldino>
 Se denotiamo con
-$ bar(rho) = integral.dash_gamma rho = (integral_gamma rho) / (ell(gamma)) $
-il baricentro della curva $gamma$, si ottiene $op("area")(S) = 2 pi bar(rho) ell(gamma)$ cioè l'area di $S$ coincide con l'area di un cilindro con base sulla curva $gamma$ e altezza pari alla lunghezza della circonferenza percorsa dal baricentro della curva.
+$ macron(rho) = integral.dash_gamma rho = (integral_gamma rho) / (ell(gamma)) $
+il baricentro della curva $gamma$, si ottiene $op("area")(S) = 2 pi macron(rho) ell(gamma)$ cioè l'area di $S$ coincide con l'area di un cilindro con base sulla curva $gamma$ e altezza pari alla lunghezza della circonferenza percorsa dal baricentro della curva.
 
 #example[area della superficie di un toro][
   Consideriamo il toro ottenuto facendo ruotare una circonferenza di raggio $r$ attorno ad un asse che dista $R$ dal centro della circonferenza, con $R>r$.

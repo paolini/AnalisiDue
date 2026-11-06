@@ -89,3 +89,6 @@
 
 // Comandi custom
 #let vec(x) = math.bold(x)
+
+#let Subset = math.subset.double
+#let subset = math.subset.eq

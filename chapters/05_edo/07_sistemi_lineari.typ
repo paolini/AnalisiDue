@@ -3,14 +3,14 @@
 = Sistemi lineari
 
 Un sistema lineare omogeneo a coefficienti costanti del primo ordine si scrive in generale nella forma:
-$ arrow(u)'(x) = A arrow(u)(x) $
-dove $A$ è una matrice $n times n$ costante e la funzione vettoriale incognita sarà $arrow(u): RR -> RR^n$.
+$ vec(u)'(x) = A vec(u)(x) $
+dove $A$ è una matrice $n times n$ costante e la funzione vettoriale incognita sarà $vec(u): RR -> RR^n$.
 Come per i sistemi lineari algebrici sarà utile, se possibile, cercare un sistema di riferimento in cui la matrice $A$ risulti essere diagonale. Se facciamo il cambio di variabile
-$ arrow(u) = M arrow(v) $
-tramite una matrice invertibile $M$, si ottiene $arrow(u)' = (M arrow(v))' = M arrow(v)'$ (si faccia la verifica!... stiamo supponendo che $M$ sia una matrice costante) e dunque il sistema lineare diventa:
-$ M arrow(v)' = A M arrow(v) $
+$ vec(u) = M vec(v) $
+tramite una matrice invertibile $M$, si ottiene $vec(u)' = (M vec(v))' = M vec(v)'$ (si faccia la verifica!... stiamo supponendo che $M$ sia una matrice costante) e dunque il sistema lineare diventa:
+$ M vec(v)' = A M vec(v) $
 ovvero
-$ arrow(v)' = M^(-1) A M arrow(v). $
+$ vec(v)' = M^(-1) A M vec(v). $
 A meno di un cambio di variabili potremo quindi sostituire la matrice $A$ con una qualunque matrice simile ad essa: $M^(-1) A M$. In particolare se la matrice $A$ è diagonalizzabile (ad esempio se gli autovalori di $A$ sono tutti reali e distinti) potremo ricondurci a un sistema diagonale:
 $ cases(
   v_1 ' = lambda_1 v_1,
@@ -22,7 +22,7 @@ La matrice $M$ del cambio di base avrà come vettori colonna gli autovettori del
 $ v_1(x) &= c_1 e^(lambda_1 x) \
   v_2(x) &= c_2 e^(lambda_2 x) \
   &dots.v \
-  v_n(x) &= c_n e^(lambda_n x) $
+  v_n (x) &= c_n e^(lambda_n x) $
 con $c_1, dots, c_n$ costanti arbitrarie.
 
 Se la matrice $A$ non è diagonalizzabile sul campo reale è possibile che risulti diagonalizzabile nel campo complesso. Più in generale la matrice potrà essere portata in forma di Jordan. Per brevità non cercheremo di trattare il caso generale, ma ci concentreremo sul caso $n=2$ che contiene comunque una casistica piuttosto ampia.
@@ -41,8 +41,8 @@ Vedremo che il comportamento del sistema potrà essere classificato in base agli
 Siano $lambda$ e $mu$ gli autovalori (eventualmente complessi) della matrice $A$ cioè gli zeri del polinomio caratteristico:
 $ P(z) = det(A - z I) = z^2 - (a+d) z + a d - b c. $
 
-Se gli autovalori sono reali e distinti la matrice è diagonalizzabile, se $arrow(v), arrow(w)$ sono gli autovettori corrispondenti agli autovalori $lambda, mu$, si potrà quindi fare il cambio di variabile
-$ mat(x; y) = X arrow(v) + Y arrow(w) $
+Se gli autovalori sono reali e distinti la matrice è diagonalizzabile, se $vec(v), vec(w)$ sono gli autovettori corrispondenti agli autovalori $lambda, mu$, si potrà quindi fare il cambio di variabile
+$ mat(x; y) = X vec(v) + Y vec(w) $
 tramite il quale le equazioni si separano:
 $ cases(
   X' = lambda X,
@@ -58,9 +58,9 @@ $ cases(
 Questo ci permette di disegnare le traiettorie delle soluzioni nel piano $(x,y)$. Su tale piano le traslazioni temporali di una soluzione si rappresentano sulla stessa traiettoria.
 Traiettorie diverse non potranno invece mai incontrarsi per l'unicità della soluzione.
 
-Se $a=b=0$ si ottiene la soluzione nulla $X=0$, $Y=0$ che, nel piano delle fasi, si rappresenta con un singolo punto nell'origine. Se $b=0$ le soluzioni sono della forma $X=a e^(lambda t)$, $Y=0$ che ha una traiettoria, nel piano $x y$ lungo la semiretta uscente dall'origine con direzione $arrow(v)$ se $a>0$ e con direzione $-arrow(v)$ se $a<0$.
+Se $a=b=0$ si ottiene la soluzione nulla $X=0$, $Y=0$ che, nel piano delle fasi, si rappresenta con un singolo punto nell'origine. Se $b=0$ le soluzioni sono della forma $X=a e^(lambda t)$, $Y=0$ che ha una traiettoria, nel piano $x y$ lungo la semiretta uscente dall'origine con direzione $vec(v)$ se $a>0$ e con direzione $-vec(v)$ se $a<0$.
 La soluzione andrà verso $0$ (all'aumentare di $t$) se $lambda<0$ e sarà invece uscente da $0$ se $lambda > 0$.
-Analogamente si ha una traiettoria sulle due semirette con direzione $arrow(w)$ e $-arrow(w)$ quando $a=0$ e $b != 0$.
+Analogamente si ha una traiettoria sulle due semirette con direzione $vec(w)$ e $-vec(w)$ quando $a=0$ e $b != 0$.
 
 Se entrambi $a$ e $b$ sono non nulli potremo trovare l'equazione della traiettoria eliminando la variabile $t$ nelle equazioni che rappresentano la soluzione.
 Se $X=a e^(lambda t)$, $Y=b e^(mu t)$ risulta
@@ -91,12 +91,12 @@ Se $lambda$ e $mu$ sono entrambi negativi si ha un _nodo stabile_ in cui tutte l
 Se gli autovalori sono coincidenti $lambda = mu$ e se la matrice è diagonalizzabile allora la matrice è diagonale, tutti i vettori sono autovettori quindi in ogni direzione c'è una traiettoria rettilinea.
 La configurazione si chiama _stella_ (stabile o instabile a seconda del segno negativo o positivo).
 
-Se gli autovalori sono coincidenti $lambda = mu$ e la matrice non è diagonalizzabile consideriamo l'autovettore (unico) $arrow(u)$ con $A arrow(u) = lambda arrow(u)$ e prendiamo un qualunque vettore $arrow(w)$ indipendente da $arrow(u)$. Allora si avrà
-$ A arrow(w) = alpha arrow(u) + beta arrow(w). $
-Certamente $alpha != 0$ altrimenti $arrow(w)$ sarebbe un autovettore e la matrice sarebbe diagonalizzabile.
-Consideriamo allora $arrow(v) = arrow(w) / alpha$ cosicché si ha $A arrow(v) = arrow(u) + beta/alpha arrow(w)$.
-Nella base $arrow(u), arrow(v)$ la matrice $A$ diventa triangolare, e sulla diagonale troviamo i valori $lambda$ e $beta/alpha$.
-Ma allora $beta/alpha = lambda$ in quanto sulla diagonale abbiamo solo gli autovalori. Dunque se $X,Y$ sono le coordinate nel sistema $arrow(u), arrow(v)$, il sistema di equazioni diventa:
+Se gli autovalori sono coincidenti $lambda = mu$ e la matrice non è diagonalizzabile consideriamo l'autovettore (unico) $vec(u)$ con $A vec(u) = lambda vec(u)$ e prendiamo un qualunque vettore $vec(w)$ indipendente da $vec(u)$. Allora si avrà
+$ A vec(w) = alpha vec(u) + beta vec(w). $
+Certamente $alpha != 0$ altrimenti $vec(w)$ sarebbe un autovettore e la matrice sarebbe diagonalizzabile.
+Consideriamo allora $vec(v) = vec(w) / alpha$ cosicché si ha $A vec(v) = vec(u) + beta/alpha vec(w)$.
+Nella base $vec(u), vec(v)$ la matrice $A$ diventa triangolare, e sulla diagonale troviamo i valori $lambda$ e $beta/alpha$.
+Ma allora $beta/alpha = lambda$ in quanto sulla diagonale abbiamo solo gli autovalori. Dunque se $X,Y$ sono le coordinate nel sistema $vec(u), vec(v)$, il sistema di equazioni diventa:
 $ cases(
   X' = lambda X + Y,
   Y' = lambda Y.
@@ -118,15 +118,15 @@ Proviamo a trattare il caso, più interessante, degli autovalori complessi. Se l
 $ lambda = alpha - i beta, quad mu = alpha + i beta $
 con $alpha, beta in RR$, $beta != 0$.
 
-Sia $arrow(v) + i arrow(w)$ un autovettore complesso relativo all'autovalore $alpha - i beta$.
+Sia $vec(v) + i vec(w)$ un autovettore complesso relativo all'autovalore $alpha - i beta$.
 Allora si ha
-$ A arrow(v) + i A arrow(w) = A(arrow(v) + i arrow(w)) = (alpha - i beta)(arrow(v) + i arrow(w)) = alpha arrow(v) + beta arrow(w) + i(-beta arrow(v) + alpha arrow(w)). $
+$ A vec(v) + i A vec(w) = A(vec(v) + i vec(w)) = (alpha - i beta)(vec(v) + i vec(w)) = alpha vec(v) + beta vec(w) + i(-beta vec(v) + alpha vec(w)). $
 Uguagliando parte reale e parte immaginaria si trova
-$ A arrow(v) = alpha arrow(v) + beta arrow(w), quad A arrow(w) = -beta arrow(v) + alpha arrow(w). $
-A questo punto non è difficile verificare che $arrow(v) - i arrow(w)$ è un autovettore relativo all'autovalore coniugato $alpha + i beta$.
-Visto che $arrow(v) +/- i arrow(w)$ sono due autovettori con autovalori distinti sicuramente sono vettori indipendenti.
-Dunque anche $arrow(v)$ e $arrow(w)$ (che si ottengono come multipli di somma e differenza) sono vettori indipendenti (stavolta reali).
-Se $X,Y$ sono le coordinate nella base $arrow(v), arrow(w)$, l'equazione differenziale diventa:
+$ A vec(v) = alpha vec(v) + beta vec(w), quad A vec(w) = -beta vec(v) + alpha vec(w). $
+A questo punto non è difficile verificare che $vec(v) - i vec(w)$ è un autovettore relativo all'autovalore coniugato $alpha + i beta$.
+Visto che $vec(v) +/- i vec(w)$ sono due autovettori con autovalori distinti sicuramente sono vettori indipendenti.
+Dunque anche $vec(v)$ e $vec(w)$ (che si ottengono come multipli di somma e differenza) sono vettori indipendenti (stavolta reali).
+Se $X,Y$ sono le coordinate nella base $vec(v), vec(w)$, l'equazione differenziale diventa:
 $ cases(
   X' = alpha X - beta Y,
   Y' = beta X + alpha Y.
@@ -149,7 +149,7 @@ $ cases(
   X = rho e^(alpha t) cos(beta t + theta),
   Y = rho e^(alpha t) sin(beta t + theta).
 ) $
-Se $alpha != 0$ le traiettorie corrispondenti formano delle spirali ellittiche che si avvitano nella direzione che porta il vettore $arrow(v)$ verso il vettore $arrow(w)$. Se $alpha < 0$ le spirali convergono verso l'origine del sistema: avremo un _fuoco stabile_. Se $alpha > 0$ le orbite divergono chiameremo la configurazione un _fuoco instabile_.
+Se $alpha != 0$ le traiettorie corrispondenti formano delle spirali ellittiche che si avvitano nella direzione che porta il vettore $vec(v)$ verso il vettore $vec(w)$. Se $alpha < 0$ le spirali convergono verso l'origine del sistema: avremo un _fuoco stabile_. Se $alpha > 0$ le orbite divergono chiameremo la configurazione un _fuoco instabile_.
 Se $alpha = 0$ le traiettorie sono delle ellissi concentriche, le soluzioni sono quindi periodiche e la configurazione si chiama _centro_.
 
 Se almeno uno dei due autovalori è nullo il comportamento del sistema è degenere, si hanno delle soluzioni banali che non andremo a investigare.
@@ -157,19 +157,19 @@ Se almeno uno dei due autovalori è nullo il comportamento del sistema è degene
 == Matrice esponenziale
 
 Per risolvere, in astratto, il sistema $n times n$ del primo ordine, lineare omogeneo a coefficienti costanti
-$ arrow(u)' = A arrow(u) $
+$ vec(u)' = A vec(u) $
 introduciamo le seguenti nozioni.
 
 Sia $A$ una matrice quadrata $n times n$. Definiamo la norma (norma operatoriale) di $A$ come segue:
-$ |A| = sup_(|arrow(v)| <= 1) |A arrow(v)| $
-dove $|arrow(v)| = sqrt(v_1^2 + dots + v_n^2)$ è l'usuale norma del vettore $arrow(v) in RR^n$.
-Osserviamo che $arrow(v) |-> A arrow(v)$ è una funzione continua e che ${arrow(v) : |arrow(v)| <= 1}$ è un insieme compatto, dunque il $sup$ nella definizione è in realtà un $max$.
+$ |A| = sup_(|vec(v)| <= 1) |A vec(v)| $
+dove $|vec(v)| = sqrt(v_1^2 + dots + v_n^2)$ è l'usuale norma del vettore $vec(v) in RR^n$.
+Osserviamo che $vec(v) |-> A vec(v)$ è una funzione continua e che ${vec(v) : |vec(v)| <= 1}$ è un insieme compatto, dunque il $sup$ nella definizione è in realtà un $max$.
 
 Per le proprietà del $sup$ si ha:
-$ |A arrow(v)| <= |A| |arrow(v)| quad text("e") quad |A B| <= |A| |B|. $
+$ |A vec(v)| <= |A| |vec(v)| quad text("e") quad |A B| <= |A| |B|. $
 Dunque possiamo affermare che il valore assoluto di ogni elemento di una matrice si stima con la norma della matrice: $|A_(i j)| <= |A|$, infatti:
-$ |A_(i j)| = |(A arrow(e)_j)_i| <= |A arrow(e)_j| <= |A| $
-(dove $arrow(e)_j$ è il $j$-esimo vettore della base canonica di $RR^n$).
+$ |A_(i j)| = |(A vec(e)_j)_i| <= |A vec(e)_j| <= |A| $
+(dove $vec(e)_j$ è il $j$-esimo vettore della base canonica di $RR^n$).
 
 Se $A_k$ è una successione di matrici, diremo che $A_k -> A$ se ogni elemento della matrice $A_k$ converge al corrispondente elemento della matrice $A$: $(A_k)_(i j) -> A_(i j)$. Questo corrisponde a considerare la matrice $n times n$ come un vettore dello spazio $RR^(n^2)$.
 
@@ -198,7 +198,7 @@ $ |e^A| <= e^(|A|). $
   + se $A B = B A$ allora $e^A B = B e^A$;
   + $(e^(t A))' = A e^(t A)$;
   + $e^(-A) = (e^A)^(-1)$ (in particolare la matrice esponenziale è sempre invertibile);
-  + se $arrow(u)(t)$ è una funzione a valori in $RR^n$ che soddisfa l'equazione differenziale $arrow(u)'(t) = A arrow(u)(t)$ allora $arrow(u)(t) = e^(t A) arrow(u)(0)$;
+  + se $vec(u)(t)$ è una funzione a valori in $RR^n$ che soddisfa l'equazione differenziale $vec(u)'(t) = A vec(u)(t)$ allora $vec(u)(t) = e^(t A) vec(u)(0)$;
   + se $A B = B A$ allora $e^(A+B) = e^A e^B$;
   + se $A$ è invertibile allora $e^(A B A^(-1)) = A e^B A^(-1)$;
   + se $A$ è la matrice diagonale $A = op("diag")(lambda_1, dots, lambda_n)$, allora $e^A$ è pure una matrice diagonale con $e^A = op("diag")(e^(lambda_1), dots, e^(lambda_n))$;
@@ -223,7 +223,7 @@ $ |e^A| <= e^(|A|). $
   ($A e^(t A) = e^(t A) A$ in quanto $A$ e $t A$ commutano).
   Dunque $U'(t) = 0$ cioè $U(t)$ è costante ovvero $U(t) = U(0)$. Ma $U(0) = I$ in quanto $e^0 = I$ e quindi $U(t) = I$ per ogni $t$.
 
-  5. Prendiamo l'equazione $arrow(u)' = A arrow(u)$, moltiplicando a sinistra per $e^(-t A)$ l'equazione diventa $e^(-t A) arrow(u)' - e^(-t A) A arrow(u) = 0$ cioè $(e^(-t A) arrow(u))' = 0$. Questo significa che la funzione $e^(-t A) arrow(u) = arrow(c)$ costante e moltiplicando a sinistra per $e^(t A)$ si ottiene dunque $arrow(u) = e^(t A) arrow(c)$ come volevasi dimostrare.
+  5. Prendiamo l'equazione $vec(u)' = A vec(u)$, moltiplicando a sinistra per $e^(-t A)$ l'equazione diventa $e^(-t A) vec(u)' - e^(-t A) A vec(u) = 0$ cioè $(e^(-t A) vec(u))' = 0$. Questo significa che la funzione $e^(-t A) vec(u) = vec(c)$ costante e moltiplicando a sinistra per $e^(t A)$ si ottiene dunque $vec(u) = e^(t A) vec(c)$ come volevasi dimostrare.
 
   6. Per dimostrare la proprietà $e^(A+B) = e^A e^B$ consideriamo la quantità $U(t) = e^(-t(A+B)) e^(t A) e^(t B)$. Se dimostriamo che $U$ è costante, visto che $U(0) = I$ si avrà anche $U(1) = I$ che è equivalente a quanto vogliamo dimostrare. Dunque verifichiamo che la derivata è nulla, sfruttando l'ipotesi $A B = B A$ che ci permette di far commutare i prodotti:
   $ U'(t) &= -(A+B) e^(-t(A+B)) e^(t A) e^(t B) + e^(-t(A+B)) A e^(t A) e^(t B) + e^(-t(A+B)) e^(t A) B e^(t B) \

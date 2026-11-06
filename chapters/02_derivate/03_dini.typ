@@ -3,21 +3,21 @@
 = Invertibilità locale e funzione implicita
 
 #theorem[Lagrange vettoriale][
-  Sia $Omega subset RR^n$ un aperto convesso, sia $arrow(f): Omega -> RR^m$ una funzione differenziabile.
-  Allora dati $arrow(x), arrow(y) in Omega$, $arrow(x) != arrow(y)$, esiste $arrow(z) in [arrow(x), arrow(y)]$ (il segmento che congiunge $arrow(x)$ e $arrow(y)$) tale che
-  $ |arrow(f)(arrow(y)) - arrow(f)(arrow(x))|^2 = D arrow(f)(arrow(z))[arrow(y) - arrow(x)] dot (arrow(f)(arrow(y)) - arrow(f)(arrow(x))). $
+  Sia $Omega subset RR^n$ un aperto convesso, sia $vec(f): Omega -> RR^m$ una funzione differenziabile.
+  Allora dati $vec(x), vec(y) in Omega$, $vec(x) != vec(y)$, esiste $vec(z) in [vec(x), vec(y)]$ (il segmento che congiunge $vec(x)$ e $vec(y)$) tale che
+  $ |vec(f)(vec(y)) - vec(f)(vec(x))|^2 = D vec(f)(vec(z))[vec(y) - vec(x)] dot (vec(f)(vec(y)) - vec(f)(vec(x))). $
   In particolare si ha
-  $ |arrow(f)(arrow(y)) - arrow(f)(arrow(x))| <= max_(arrow(z) in [arrow(x), arrow(y)]) |D arrow(f)(arrow(z))| dot |arrow(y) - arrow(x)|. $
+  $ |vec(f)(vec(y)) - vec(f)(vec(x))| <= max_(vec(z) in [vec(x), vec(y)]) |D vec(f)(vec(z))| dot |vec(y) - vec(x)|. $
 ] <th:lagrange>
 
 #proof[
   Basta applicare il teorema di Lagrange alla funzione $g: [0,1] -> RR$
-  $ g(t) &= chevron.l f(arrow(x) + t(arrow(y) - arrow(x))), f(arrow(y)) - f(arrow(x)) chevron.r \
-    g'(t) &= chevron.l D f(arrow(x) + t(arrow(y) - arrow(x)))[arrow(y) - arrow(x)], f(arrow(y)) - f(arrow(x)) chevron.r $
-  per ottenere che esiste $t in [0,1]$ e $z = arrow(x) + t(arrow(y) - arrow(x))$ per cui
-  $ |f(arrow(y)) - f(arrow(x))|^2
+  $ g(t) &= chevron.l f(vec(x) + t(vec(y) - vec(x))), f(vec(y)) - f(vec(x)) chevron.r \
+    g'(t) &= chevron.l D f(vec(x) + t(vec(y) - vec(x)))[vec(y) - vec(x)], f(vec(y)) - f(vec(x)) chevron.r $
+  per ottenere che esiste $t in [0,1]$ e $z = vec(x) + t(vec(y) - vec(x))$ per cui
+  $ |f(vec(y)) - f(vec(x))|^2
       &= g(1) - g(0) = g'(t) \
-      &= chevron.l D f(z)[arrow(y) - arrow(x)], f(arrow(y)) - f(arrow(x)) chevron.r. $
+      &= chevron.l D f(z)[vec(y) - vec(x)], f(vec(y)) - f(vec(x)) chevron.r. $
 ]
 
 #theorem[invertibilità locale][
@@ -30,46 +30,46 @@
 #proof[
   Sia $M = (D f(x_0))^(-1)$.
   Siccome $A$ è aperto e $D f$ è continuo, possiamo scegliere $rho > 0$ in modo che
-  $ bar(B)_rho (x_0) subset A quad text("e") quad norm(D f(x) - D f(x_0)) <= 1 / (2 norm(M)) quad forall x in bar(B)_rho (x_0). $
+  $ macron(B)_rho (x_0) subset A quad text("e") quad norm(D f(x) - D f(x_0)) <= 1 / (2 norm(M)) quad forall x in macron(B)_rho (x_0). $
   Poniamo $r = rho / (2 norm(M))$ e $y_0 = f(x_0)$.
-  Fissato $bar(y) in B_r (y_0)$ consideriamo l'applicazione
-  $ T: bar(B)_rho (x_0) &-> RR^n \
-    T(x) &= x + M[bar(y) - f(x)]. $
+  Fissato $macron(y) in B_r (y_0)$ consideriamo l'applicazione
+  $ T: macron(B)_rho (x_0) &-> RR^n \
+    T(x) &= x + M[macron(y) - f(x)]. $
 
-  Si ha, per $x in bar(B)_rho (x_0)$,
+  Si ha, per $x in macron(B)_rho (x_0)$,
   $ norm(D T(x)) = norm(op("Id") - M D f(x)) <= norm(M (D f(x_0) - D f(x))) <= 1/2 $
   e quindi, per il criterio di Lipschitz, la funzione $T$ è $1/2$-lipschitziana.
 
-  Verifichiamo anche che $T(bar(B)_rho (x_0)) subset bar(B)_rho (x_0)$.
-  Infatti, per $x in bar(B)_rho (x_0)$, si ha
+  Verifichiamo anche che $T(macron(B)_rho (x_0)) subset macron(B)_rho (x_0)$.
+  Infatti, per $x in macron(B)_rho (x_0)$, si ha
   $ |T(x) - x_0|
       &<= |T(x) - T(x_0)| + |T(x_0) - x_0| \
-      &<= 1/2 |x - x_0| + |M(bar(y) - y_0)| \
+      &<= 1/2 |x - x_0| + |M(macron(y) - y_0)| \
       &<= rho / 2 + norm(M) r <= rho. $
 
-  Dunque $T: bar(B)_rho (x_0) -> bar(B)_rho (x_0)$ è una contrazione, $bar(B)_rho (x_0)$ è uno spazio metrico completo e quindi, per il Teorema delle contrazioni, esiste un'unica soluzione dell'equazione $T(x)=x$, cioè esiste un unico punto $x$ in $bar(B)_rho (x_0)$ per cui $f(x)=bar(y)$.
+  Dunque $T: macron(B)_rho (x_0) -> macron(B)_rho (x_0)$ è una contrazione, $macron(B)_rho (x_0)$ è uno spazio metrico completo e quindi, per il Teorema delle contrazioni, esiste un'unica soluzione dell'equazione $T(x)=x$, cioè esiste un unico punto $x$ in $macron(B)_rho (x_0)$ per cui $f(x)=macron(y)$.
 
-  Dato $y in B_r (y_0)$ chiamiamo $g(y)$ l'unico $x in bar(B)_rho (x_0)$ per cui $f(x)=y$.
-  Abbiamo quindi definito una funzione $g: B_r (y_0) -> bar(B)_rho (x_0)$ tale che $f(g(y)) = y$.
+  Dato $y in B_r (y_0)$ chiamiamo $g(y)$ l'unico $x in macron(B)_rho (x_0)$ per cui $f(x)=y$.
+  Abbiamo quindi definito una funzione $g: B_r (y_0) -> macron(B)_rho (x_0)$ tale che $f(g(y)) = y$.
 
-  Mostriamo ora che $g$ è lipschitziana. Fissati $y, bar(y) in B_r (y_0)$ consideriamo la mappa $T(x) = x + (D f(x))^(-1)[bar(y) - f(x)]$ già considerata prima.
+  Mostriamo ora che $g$ è lipschitziana. Fissati $y, macron(y) in B_r (y_0)$ consideriamo la mappa $T(x) = x + (D f(x))^(-1)[macron(y) - f(x)]$ già considerata prima.
   Ricordando che $T$ è $1/2$-lipschitziana, scopriamo che
-  $ 1/2 |g(y) - g(bar(y))|
-      &>= |T(g(y)) - T(g(bar(y)))| \
-      &= |g(y) - g(bar(y)) + (D f(g(bar(y))))^(-1)[bar(y) - f(g(y))]| \
-      &>= |g(y) - g(bar(y))| - norm((D f(g(bar(y))))^(-1)) dot |y - bar(y)| $
+  $ 1/2 |g(y) - g(macron(y))|
+      &>= |T(g(y)) - T(g(macron(y)))| \
+      &= |g(y) - g(macron(y)) + (D f(g(macron(y))))^(-1)[macron(y) - f(g(y))]| \
+      &>= |g(y) - g(macron(y))| - norm((D f(g(macron(y))))^(-1)) dot |y - macron(y)| $
   da cui
-  $ |g(y) - g(bar(y))| <= (|y - bar(y)|) / (2 norm((D f(g(bar(y))))^(-1))) <= L |y - bar(y)| $
-  in quanto $norm((D f(x))^(-1))$ è una funzione continua su $bar(B)_rho (x_0)$ e dunque ammette minimo (non nullo visto che la matrice inversa non è mai nulla).
+  $ |g(y) - g(macron(y))| <= (|y - macron(y)|) / (2 norm((D f(g(macron(y))))^(-1))) <= L |y - macron(y)| $
+  in quanto $norm((D f(x))^(-1))$ è una funzione continua su $macron(B)_rho (x_0)$ e dunque ammette minimo (non nullo visto che la matrice inversa non è mai nulla).
 
-  Dunque per $y -> bar(y)$ si ha $g(y) -> g(bar(y))$ e possiamo dunque scrivere la differenziabilità di $f$ in $g(bar(y))$ per $y -> bar(y)$,
-  $ y - bar(y) = f(g(y)) - f(g(bar(y))) = D f(g(bar(y)))[g(y) - g(bar(y))] + o(|y - bar(y)|) $
+  Dunque per $y -> macron(y)$ si ha $g(y) -> g(macron(y))$ e possiamo dunque scrivere la differenziabilità di $f$ in $g(macron(y))$ per $y -> macron(y)$,
+  $ y - macron(y) = f(g(y)) - f(g(macron(y))) = D f(g(macron(y)))[g(y) - g(macron(y))] + o(|y - macron(y)|) $
   da cui si ricava
-  $ g(y) - g(bar(y))
-      &= (D f(g(bar(y))))^(-1)[y - bar(y) + o(|y - bar(y)|)] \
-      &= (D f(g(bar(y))))^(-1)[y - bar(y)] + o(|y - bar(y)|) $
-  ovvero $g$ è differenziabile in $bar(y)$ e si ha, come volevamo dimostrare,
-  $ D g(bar(y)) = (D f(g(bar(y))))^(-1). $
+  $ g(y) - g(macron(y))
+      &= (D f(g(macron(y))))^(-1)[y - macron(y) + o(|y - macron(y)|)] \
+      &= (D f(g(macron(y))))^(-1)[y - macron(y)] + o(|y - macron(y)|) $
+  ovvero $g$ è differenziabile in $macron(y)$ e si ha, come volevamo dimostrare,
+  $ D g(macron(y)) = (D f(g(macron(y))))^(-1). $
   Visto che $D f$ è continua e $g$ è continua anche $D g$ è continua, e quindi $g$ è $C^1$.
 
   La dimostrazione è conclusa.

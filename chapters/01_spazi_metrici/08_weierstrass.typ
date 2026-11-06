@@ -25,15 +25,15 @@ Per la dimostrazione ci servono alcuni lemmi intermedi.
 ]
 
 #proof[
-  Per ogni $x in X without U$ consideriamo $g_x in cal(A)$ tale che $g_x(x) != g_x(x_0)$.
-  Definiamo $h_x = g_x - g_x(x_0) dot 1 in cal(A)$.
-  Così $h_x(x) != h_x(x_0) = 0$.
+  Per ogni $x in X without U$ consideriamo $g_x in cal(A)$ tale che $g_x (x) != g_x (x_0)$.
+  Definiamo $h_x = g_x - g_x (x_0) dot 1 in cal(A)$.
+  Così $h_x (x) != h_x (x_0) = 0$.
   Definiamo
   $ p_x = h_x^2 / norm(h_x)_infinity in cal(A) $
-  così $p_x(x_0)=0$, $p_x(x)>0$, $0 <= p_x <= 1$.
+  così $p_x (x_0)=0$, $p_x (x)>0$, $0 <= p_x <= 1$.
 
   L'insieme
-  $ U_x = {y in X : p_x(y) > 0} $
+  $ U_x = {y in X : p_x (y) > 0} $
   è un intorno aperto di $x$ dunque $X without U$ è un compatto ricoperto dagli $U_x$ al variare di $x in X without U$.
   Posso estrarre un sottoricoprimento finito: dunque esistono $x_1, dots, x_m in X without U$ tali che $X without U subset U_(x_1) union dots union U_(x_m)$.
   Poniamo
@@ -47,15 +47,15 @@ Per la dimostrazione ci servono alcuni lemmi intermedi.
   $ 1 / delta < k <= 1 / delta + 1 = (delta + 1) / delta < 2 / delta $
   così $1 < k delta < 2$.
   Poniamo
-  $ q_n(x) = (1 - p^n(x))^(k^n) in cal(A) $
-  così $0 <= q_n <= 1$, $q_n(x_0) = 1$.
+  $ q_n (x) = (1 - p^n(x))^(k^n) in cal(A) $
+  così $0 <= q_n <= 1$, $q_n (x_0) = 1$.
   Ricordando la disuguaglianza di Bernoulli
   $ (1+t)^n >= 1 + n t, quad forall t >= -1 $
   per ogni $x in V$ si ha $k p(x) <= k delta / 2 < 1$ dunque
-  $ q_n(x) >= 1 - k^n p^n(x) >= 1 - (k delta / 2)^n -> 1 $
+  $ q_n (x) >= 1 - k^n p^n(x) >= 1 - (k delta / 2)^n -> 1 $
   ovvero $q_n -> 1$ uniformemente su $V$.
   Mentre se $x in X without U$ si ha $k p >= k delta > 1$
-  $ q_n(x)
+  $ q_n (x)
       &= (1 - p^n(x))^(k^n) \
       &<= (1 + k^n p^n(x)) / (k^n p^n(x)) (1 - p^n(x))^(k^n) \
       &<= (1 + p^n(x))^(k^n) / (k^n p^n(x)) (1 - p^n(x))^(k^n) \
@@ -84,8 +84,8 @@ Per la dimostrazione ci servono alcuni lemmi intermedi.
   Gli aperti $V_x$ ricoprono il compatto $A$ dunque esistono $x_1, dots, x_m in A$ tali che $V_(x_1) union dots union V_(x_m) supset.eq A$ ed esistono $g_1, dots, g_m in cal(A)$ tali che $0 <= g_k <= 1$, $g_i < epsilon / m$ su $V_(x_i)$ e $g_i > 1 - epsilon / m$ su $X without U$.
 
   Posto $g = g_1 dot g_2 dots g_m$ si ha $0 <= g <= 1$ e per ogni $x in A$ esiste $x_i$ tale che $x in V_(x_i)$.
-  Visto che $g_i(x) < epsilon / m$ si ha $g(x) < epsilon / m$.
-  Inoltre per ogni $x in B$, $x thin bold(not in) thin union.big V_(x_i)$ e per ogni $i$ si ha $g_i(x) > 1 - epsilon / m$.
+  Visto che $g_i (x) < epsilon / m$ si ha $g(x) < epsilon / m$.
+  Inoltre per ogni $x in B$, $x thin bold(in.not) thin union.big V_(x_i)$ e per ogni $i$ si ha $g_i (x) > 1 - epsilon / m$.
   Dunque
   $ g > (1 - epsilon / m)^m >= 1 - m epsilon / m = 1 - epsilon. $
 ]
@@ -105,7 +105,7 @@ Per la dimostrazione ci servono alcuni lemmi intermedi.
   Per il lemma precedente esiste $g_j in cal(A)$, $0 <= g_j <= 1$ tale che $0 <= g_j <= 1/N$ su $A_j$ e $1 - 1/N <= g_j <= 1$ su $B_j$.
 
   Si definisce
-  $ g = sum_(j=1)^N g_j(x). $
+  $ g = sum_(j=1)^N g_j (x). $
   Per ogni $x in X$ esiste $m in NN$, $0 <= m <= N$, tale che $m <= f(x) <= m+1$.
   Dunque $x in B_j$ per $j=1, dots, m-1$ e $x in A_j$ per $j=m+1, dots, N$.
 
@@ -128,6 +128,6 @@ Questo risultato sarà importante per determinare l'approssimabilità di una fun
 
 #exercise[
   Data una funzione continua $f: [0,1] -> RR$ definiamo i suoi _momenti_ $m_0, m_1, m_2, dots$ tramite le formule:
-  $ m_n(f) = integral_0^1 f(x) x^n thin d x. $
+  $ m_n (f) = integral_0^1 f(x) x^n thin d x. $
   Dimostrare che se due funzioni continue hanno gli stessi momenti allora sono uguali.
 ]

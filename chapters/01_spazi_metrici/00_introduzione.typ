@@ -47,14 +47,14 @@ Per lo stesso motivo mancano completamente da questa classificazione anche altri
     node((-3, 5), text(fill: luma(100), $chevron.l v, w chevron.r$), name: <euclideoT>),
     edge(<euclideoT>, <euclideo>, "-", stroke: luma(180)),
 
-    node((2, 0), text(fill: luma(100), $lim, accent(A, circle), bar(A)$), name: <stT>),
+    node((2, 0), text(fill: luma(100), $lim, accent(A, circle), macron(A)$), name: <stT>),
     edge(<stT>, <st>, "-", stroke: luma(180)),
 
     node((2.5, 1.75), text(fill: luma(100), [$d(x,y)$, Lip]), name: <smT>),
     edge(<smT>, <sm>, "-", stroke: luma(180)),
     
     // --- ESEMPI (Grigio Scuro) ---
-    node((2, 1), text(fill: luma(60), $bar(RR)$), name: <Rbar>),
+    node((2, 1), text(fill: luma(60), $macron(RR)$), name: <Rbar>),
     edge(<Rbar>, <st>, "->", stroke: luma(80)),
 
     node((2, 2.5), text(fill: luma(60), $QQ$), name: <Q>),

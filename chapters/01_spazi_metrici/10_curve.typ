@@ -21,7 +21,7 @@ Sia $X$ uno spazio metrico. Una funzione $u: [a,b] -> X$ viene chiamata _curva_.
 ]
 
 #theorem[proprietà della lunghezza][
-  Sia $arrow(u): [a,b] -> X$ una curva in uno spazio metrico $(X,d)$.
+  Sia $vec(u): [a,b] -> X$ una curva in uno spazio metrico $(X,d)$.
   Allora valgono le seguenti proprietà.
   + (disuguaglianza triangolare) $ell(u) >= d(u(a), u(b))$;
   + (additività) per ogni $c in [a,b]$ si ha $ell_a^b (u) = ell_a^c (u) + ell_c^b (u)$.
@@ -47,34 +47,34 @@ Sia $X$ uno spazio metrico. Una funzione $u: [a,b] -> X$ viene chiamata _curva_.
 ]
 
 #theorem[formula della lunghezza][
-  Sia $arrow(u): [a,b] -> RR^n$ una curva di classe $C^1$.
+  Sia $vec(u): [a,b] -> RR^n$ una curva di classe $C^1$.
   Allora la curva è rettificabile e la sua lunghezza è data da
-  $ ell(arrow(u)) = integral_a^b |arrow(u)'(t)| thin d t. $
+  $ ell(vec(u)) = integral_a^b |vec(u)'(t)| thin d t. $
 ]
 
 #proof[
   Sia $a = t_0 < t_1 < dots < t_N = b$ una suddivisione $P$ di $[a,b]$.
   Osserviamo che
-  $ arrow(u)(t_(k+1)) - arrow(u)(t_k) = integral_(t_k)^(t_(k+1)) arrow(u)'(t) thin d t $
+  $ vec(u)(t_(k+1)) - vec(u)(t_k) = integral_(t_k)^(t_(k+1)) vec(u)'(t) thin d t $
   da cui
-  $ |arrow(u)(t_(k+1)) - arrow(u)(t_k)| <= integral_(t_k)^(t_(k+1)) |arrow(u)'(t)| thin d t $
+  $ |vec(u)(t_(k+1)) - vec(u)(t_k)| <= integral_(t_k)^(t_(k+1)) |vec(u)'(t)| thin d t $
   e quindi
-  $ ell_P (arrow(u)) <= integral_a^b |arrow(u)'(t)| thin d t. $
-  Dall'arbitrarietà di $P$ si ottiene la prima disuguaglianza $ell(arrow(u)) <= integral_a^b |arrow(u)'|$.
+  $ ell_P (vec(u)) <= integral_a^b |vec(u)'(t)| thin d t. $
+  Dall'arbitrarietà di $P$ si ottiene la prima disuguaglianza $ell(vec(u)) <= integral_a^b |vec(u)'|$.
 
-  D'altra parte $arrow(u)'$ è continua in $[a,b]$ dunque è uniformemente continua.
+  D'altra parte $vec(u)'$ è continua in $[a,b]$ dunque è uniformemente continua.
   Dato $epsilon > 0$ esiste $delta > 0$ tale che
-  $ |t-s| < delta => |arrow(u)'(t) - arrow(u)'(s)| < epsilon. $
-  Visto che $|arrow(u)'|$ è integrabile (in quanto continua) esiste una suddivisione $a = t_0 < t_1 < dots < t_N = b$ con $t_(k+1) - t_k < delta$ per cui
-  $ |integral_a^b |arrow(u)'(t)| thin d t - sum_(k=0)^(N-1) inf_(t in [t_k, t_(k+1)]) |arrow(u)'(t_k)| (t_(k+1) - t_k)| < epsilon. $
+  $ |t-s| < delta => |vec(u)'(t) - vec(u)'(s)| < epsilon. $
+  Visto che $|vec(u)'|$ è integrabile (in quanto continua) esiste una suddivisione $a = t_0 < t_1 < dots < t_N = b$ con $t_(k+1) - t_k < delta$ per cui
+  $ |integral_a^b |vec(u)'(t)| thin d t - sum_(k=0)^(N-1) inf_(t in [t_k, t_(k+1)]) |vec(u)'(t_k)| (t_(k+1) - t_k)| < epsilon. $
   Allora
-  $ integral_a^b |arrow(u)'(t)| thin d t
-      &<= sum_(k=0)^(N-1) |arrow(u)'(t_k)| (t_(k+1) - t_k) + epsilon \
-      &= sum_(k=0)^(N-1) |integral_(t_k)^(t_(k+1)) arrow(u)'(t_k) thin d t| + epsilon \
-      &<= sum_(k=0)^(N-1) (integral_(t_k)^(t_(k+1)) |arrow(u)'(t_k) - arrow(u)'(t)| thin d t + |integral_(t_k)^(t_(k+1)) arrow(u)'(t) thin d t|) + epsilon \
-      &<= sum_(k=0)^(N-1) (epsilon (t_(k+1) - t_k) + |arrow(u)(t_(k+1)) - arrow(u)(t_k)|) + epsilon \
-      &= epsilon + sum_(k=0)^(N-1) |arrow(u)(t_(k+1)) - arrow(u)(t_k)| + epsilon \
-      &<= ell(arrow(u)) + 2 epsilon. $
+  $ integral_a^b |vec(u)'(t)| thin d t
+      &<= sum_(k=0)^(N-1) |vec(u)'(t_k)| (t_(k+1) - t_k) + epsilon \
+      &= sum_(k=0)^(N-1) |integral_(t_k)^(t_(k+1)) vec(u)'(t_k) thin d t| + epsilon \
+      &<= sum_(k=0)^(N-1) (integral_(t_k)^(t_(k+1)) |vec(u)'(t_k) - vec(u)'(t)| thin d t + |integral_(t_k)^(t_(k+1)) vec(u)'(t) thin d t|) + epsilon \
+      &<= sum_(k=0)^(N-1) (epsilon (t_(k+1) - t_k) + |vec(u)(t_(k+1)) - vec(u)(t_k)|) + epsilon \
+      &= epsilon + sum_(k=0)^(N-1) |vec(u)(t_(k+1)) - vec(u)(t_k)| + epsilon \
+      &<= ell(vec(u)) + 2 epsilon. $
   Dall'arbitrarietà di $epsilon > 0$ si ottiene la disuguaglianza opposta e la tesi.
 ]
 
@@ -213,7 +213,7 @@ Come applicazione del teorema di Ascoli-Arzelà proponiamo il seguente important
   Posto $L_n = ell(u_n)$ posso considerare la riparametrizzazione di $u_n$ per lunghezza d'arco.
   Questo mi dà una curva $tilde(u)_n: [0,L_n] -> X$ che è $1$-lipschitziana in quanto $ell(tilde(u)_n, s, t) = t-s$.
   Le curve $v_n: [0,1] -> X$ definite da
-  $ v_n(t) = tilde(u)_n (L_n t) $
+  $ v_n (t) = tilde(u)_n (L_n t) $
   saranno invece $L_n$-lipschitziane.
   Per il teorema @th:riparametrizzazione si ha $ell(v_n) = ell(tilde(u)_n) = ell(u_n)$ dunque $v_n in G(x,y)$ e $ell(v_n) = L_n$.
   Poiché $L_n -> L < +infinity$ esiste $M = max L_n < +infinity$ e le curve $v_n$ sono tutte $M$-lipschitziane e dunque sono equicontinue.

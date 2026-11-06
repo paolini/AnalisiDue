@@ -39,27 +39,27 @@ L'equazione del pendolo si può scrivere in questa forma, scegliendo $f(x,u,v) =
 
 Più in generale potremmo considerare _sistemi di equazioni differenziali_ in più incognite.
 Possiamo rappresentare un sistema di $k$ equazioni ordinarie in $m$ incognite nella forma:
-$arrow(F)(x, arrow(u)(x), arrow(u)'(x), dots, arrow(u)^(n)(x)) = arrow(0)$ <eq:375456>
-dove $arrow(u)$ è una funzione vettoriale $arrow(u): I -> RR^m$ le cui componenti sono le $m$ funzioni incognite:
-$arrow(u)(x) = (u_1 (x), dots, u_m (x))$
-mentre la funzione $arrow(F): I times (RR^m)^(n+1) -> RR^k$ è stavolta una funzione a valori vettoriali $arrow(F) = (F_1, dots, F_k)$ cosicché l'equazione vettoriale @eq:375456 è effettivamente equivalente ad un sistema di $k$ equazioni:
-$cases( F_1 (x, arrow(u)(x), arrow(u)'(x), dots, arrow(u)^((n))(x)) = 0, F_2 (x, arrow(u)(x), arrow(u)'(x), dots, arrow(u)^((n))(x)) = 0, dots.v, F_k (x, arrow(u)(x), arrow(u)'(x), dots, arrow(u)^((n))(x)) = 0 )$
-Vedremo che per le equazioni ordinarie del primo ordine è naturale, come accade per le equazioni algebriche, avere lo stesso numero di equazioni e di incognite dunque è tipico avere singole equazioni scalari del primo ordine (cioè in cui l'incognita è una funzione a valori nel campo degli scalari $RR$) o sistemi di $k=m$ equazioni del primo ordine con incognita una funzione vettoriale $arrow(u)$ (cioè una funzione a valori nello spazio vettoriale $RR^m$) ovvero con $m$ incognite $u_1, dots, u_m$ funzioni scalari.
+$vec(F)(x, vec(u)(x), vec(u)'(x), dots, vec(u)^(n)(x)) = vec(0)$ <eq:375456>
+dove $vec(u)$ è una funzione vettoriale $vec(u): I -> RR^m$ le cui componenti sono le $m$ funzioni incognite:
+$vec(u)(x) = (u_1 (x), dots, u_m (x))$
+mentre la funzione $vec(F): I times (RR^m)^(n+1) -> RR^k$ è stavolta una funzione a valori vettoriali $vec(F) = (F_1, dots, F_k)$ cosicché l'equazione vettoriale @eq:375456 è effettivamente equivalente ad un sistema di $k$ equazioni:
+$cases( F_1 (x, vec(u)(x), vec(u)'(x), dots, vec(u)^((n))(x)) = 0, F_2 (x, vec(u)(x), vec(u)'(x), dots, vec(u)^((n))(x)) = 0, dots.v, F_k (x, vec(u)(x), vec(u)'(x), dots, vec(u)^((n))(x)) = 0 )$
+Vedremo che per le equazioni ordinarie del primo ordine è naturale, come accade per le equazioni algebriche, avere lo stesso numero di equazioni e di incognite dunque è tipico avere singole equazioni scalari del primo ordine (cioè in cui l'incognita è una funzione a valori nel campo degli scalari $RR$) o sistemi di $k=m$ equazioni del primo ordine con incognita una funzione vettoriale $vec(u)$ (cioè una funzione a valori nello spazio vettoriale $RR^m$) ovvero con $m$ incognite $u_1, dots, u_m$ funzioni scalari.
 
 Una importante osservazione è il fatto generale che una equazione differenziale di ordine $n$ può essere ricondotta ad un sistema di $n$ equazioni differenziali del primo ordine.
 Basta infatti considerare come incognita il vettore (chiamato _jet_)
-$arrow(u) = (u, u', u'', dots, u^((n-1)))$
+$vec(u) = (u, u', u'', dots, u^((n-1)))$
 comprendente tutte le derivate della funzione scalare $u$ fino all'ordine $n-1$.
-L'equazione @eq:3784643, di ordine $n$, risulta infatti equivalente al sistema di $n$ equazioni del primo ordine nella variabile $arrow(u) = (u_1, dots, u_n)$
+L'equazione @eq:3784643, di ordine $n$, risulta infatti equivalente al sistema di $n$ equazioni del primo ordine nella variabile $vec(u) = (u_1, dots, u_n)$
 $cases( u_2 (x) = u_1 '(x), u_3 (x) = u_2 '(x), dots.v, u_n (x) = u_(n-1)'(x), F(x, u_1 (x), u_2 (x), dots, u_n (x), u_n '(x)) = 0 )$
 Nel caso, più interessante, delle equazioni in forma normale l'equazione @eq:366793 di ordine $n$ diventa un sistema di $n$ equazioni normali del primo ordine in $n$ incognite
 $cases( u_1 '(x) = u_2 (x), u_2 '(x) = u_3 (x), dots.v, u_(n-1)'(x) = u_n (x), u_n '(x) = f(x, u_1 (x), u_2 (x), dots, u_n (x)) )$
 ovvero una equazione differenziale vettoriale del primo ordine
-$arrow(u)'(x) = arrow(f)(x, arrow(u)(x)).$
+$vec(u)'(x) = vec(f)(x, vec(u)(x)).$
 
-Nell'esempio del pendolo @eq:39872 si avrà come incognita una funzione vettoriale $arrow(u)(x) = (u(x), u'(x))$ le cui componenti sono posizione e velocità angolare.
+Nell'esempio del pendolo @eq:39872 si avrà come incognita una funzione vettoriale $vec(u)(x) = (u(x), u'(x))$ le cui componenti sono posizione e velocità angolare.
 Il codominio di tale funzione si chiama _spazio delle fasi_.
-L'equazione (essendo autonoma tralasciamo la dipendenza da $x$) si scriverà nella forma $arrow(u)' = arrow(f)(arrow(u))$ con $arrow(f)(y_1, y_2) = (y_2, -sin(y_1) - y_2)$.
+L'equazione (essendo autonoma tralasciamo la dipendenza da $x$) si scriverà nella forma $vec(u)' = vec(f)(vec(u))$ con $vec(f)(y_1, y_2) = (y_2, -sin(y_1) - y_2)$.
 
 == Equazioni lineari
 
@@ -68,7 +68,7 @@ In tal caso diremo che l'equazione è _lineare omogenea_.
 Più precisamente si avrà#footnote[Per evidenziare il fatto che una funzione $L$ è lineare tenderemo ad utilizzare le parentesi quadre (invece che le tonde) per racchiudere l'argomento della funzione: $L[v] = L(v)$.]
 $F(x, u(x), u'(x), dots, u^((n))(x)) = A_x [u(x), u'(x), dots, u^((n))(x)]$
 con $A_x : RR^(n+1) -> RR$ operatore lineare per ogni $x$ ovvero $A_x$ si rappresenta tramite un vettore i cui coefficienti sono funzioni della variabile $x$:
-$A_x [arrow(y)] = sum_(k=0)^n a_k (x) y_k$
+$A_x [vec(y)] = sum_(k=0)^n a_k (x) y_k$
 e l'equazione differenziale si scrive nella forma
 $a_0 (x) u(x) + a_1 (x) u'(x) + dots + a_n (x) u^((n))(x) = 0.$
 Nel caso in cui i coefficienti $a_k (t)$ non dipendano da $x$ (cioè siano funzioni costanti) diremo che l'equazione è lineare _a coefficienti costanti_.

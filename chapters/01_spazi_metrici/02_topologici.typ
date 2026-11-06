@@ -116,16 +116,16 @@ Anche in questo caso abbiamo considerato due diverse nozioni di continuità che 
 
   Viceversa supponiamo che $f$ sia continua in $x$ e consideriamo una qualunque successione $x_k -> x$.
   Per dimostrare che $f(x_k) -> f(x)$ dobbiamo verificare che per ogni $epsilon > 0$ esiste $K in NN$ tale che per ogni $k > K$ si ha $d(f(x_k), f(x)) < epsilon$.
-  Ma dalla continuità di $f$, dato $epsilon > 0$ sappiamo esistere $delta > 0$ per cui se $d(y, x) < delta$ allora $d(f(y), f(x)) < epsilon$. Visto che $x_k -> x$ certamente esiste $K in NN$ tale che per ogni $k > K$ si ha |x_k - x| < delta e quindi |f(x_k) - f(x)| < epsilon come volevamo dimostrare.
+  Ma dalla continuità di $f$, dato $epsilon > 0$ sappiamo esistere $delta > 0$ per cui se $d(y, x) < delta$ allora $d(f(y), f(x)) < epsilon$. Visto che $x_k -> x$ certamente esiste $K in NN$ tale che per ogni $k > K$ si ha $abs(x_k - x) < delta$ e quindi $abs(f(x_k) - f(x)) < epsilon$ come volevamo dimostrare.
 
   Mostriamo ora che se $f$ è continua e $A$ è aperto in $Y$ allora $f^(-1)(A)$ è aperto in $X$.
   Dato un punto qualunque $x_0 in f^(-1)(A)$ sappiamo che $f(x_0) in A$ dunque, essendo $A$ aperto, esiste $epsilon > 0$ tale che $B_epsilon (f(x_0)) subset A$.
-  Per la continuità di $f$ esiste allora $delta > 0$ tale che se |x - x_0| < delta allora |f(x) - f(x_0)| < epsilon e quindi $f(x) in A$. Significa che $B_delta (x_0) subset f^(-1)(A)$.
+  Per la continuità di $f$ esiste allora $delta > 0$ tale che se $abs(x - x_0) < delta$ allora $abs(f(x) - f(x_0)) < epsilon$ e quindi $f(x) in A$. Significa che $B_delta (x_0) subset f^(-1)(A)$.
   Questo è vero per ogni $x_0 in f^(-1)(A)$ quindi tale insieme è aperto.
 
   Viceversa supponiamo che la controimmagine di ogni aperto sia un aperto e dimostriamo che la funzione è continua in ogni punto.
   Preso un punto $x_0 in X$ e un $epsilon > 0$ consideriamo l'aperto $B_epsilon (f(x_0))$.
-  La sua controimmagine è l'insieme \{ x : |f(x) - f(x_0)| < epsilon \} e per ipotesi sappiamo che è aperto. Significa allora che esiste $delta > 0$ tale $B_delta (x_0)$ è contenuto in tale insieme, ovvero per ogni $x in B_delta (x_0)$ cioè |x - x_0| < delta risulta $f(x) in B_epsilon (f(x_0))$ cioè |f(x) - f(x_0)| < epsilon.
+  La sua controimmagine è l'insieme ${ x : abs(f(x) - f(x_0)) < epsilon }$ e per ipotesi sappiamo che è aperto. Significa allora che esiste $delta > 0$ tale $B_delta (x_0)$ è contenuto in tale insieme, ovvero per ogni $x in B_delta (x_0)$ cioè |x - x_0| < delta risulta $f(x) in B_epsilon (f(x_0))$ cioè $abs(f(x) - f(x_0)) < epsilon$.
   Abbiamo quindi verificato la definizione di continuità nel punto $x_0$.
 ]
 
@@ -157,17 +157,17 @@ Possiamo estendere questo risultato in $RR^n$.
 ] <th:compattezza_Rn>
 
 #proof[
-  Sia $arrow(x)_k in K$ una qualunque successione di punti.
-  Se $K$ è limitato significa che esiste una palla $B_r (arrow(y))$ che contiene $K$ dunque |arrow(x)_k - arrow(y)| < r per ogni $k$.
-  Posto $R = r + |arrow(y)|$ per disuguaglianza triangolare possiamo affermare che |arrow(x)_k| < R per ogni $k$.
-  Denotiamo con $((x_k)_1, ..., (x_k)_n)$ le coordinate del punto $arrow(x)_k in RR^n$.
-  Allora visto che |(x_k)_j| <= |arrow(x)_k| si ottiene $(x_k)_j in [-R, R]$ per ogni $k in NN$ e ogni $j = 1, ..., n$.
+  Sia $vec(x)_k in K$ una qualunque successione di punti.
+  Se $K$ è limitato significa che esiste una palla $B_r (vec(y))$ che contiene $K$ dunque $abs(vec(x)_k - vec(y)) < r$ per ogni $k$.
+  Posto $R = r + abs(vec(y))$ per disuguaglianza triangolare possiamo affermare che $abs(vec(x)_k) < R$ per ogni $k$.
+  Denotiamo con $((x_k)_1, ..., (x_k)_n)$ le coordinate del punto $vec(x)_k in RR^n$.
+  Allora visto che $abs((x_k)_j) <= abs(vec(x)_k)$ si ottiene $(x_k)_j in [-R, R]$ per ogni $k in NN$ e ogni $j = 1, ..., n$.
   Per il teorema di Bolzano-Weierstrass la successione $(x_k)_1$ ha una estratta convergente. Ma da tale estratta possiamo estrarre una sotto-sottosuccessione per cui anche $(x_k)_2$ è convergente.
   Ovviamente su tale sotto-sottosuccessione $(x_k)_1$ continua ad essere convergente.
-  Iterando $n$ volte otteniamo una sotto-sotto-...-sottosuccessione di $arrow(x)_k$ tale per cui ogni componente $(x_k)_j$ converge ad un numero $p_j in RR$ per $j = 1, ..., n$.
-  Ma questo significa che $arrow(x)_k -> arrow(p) in RR^n$ con $arrow(p) = (p_1, ..., p_n)$.
+  Iterando $n$ volte otteniamo una sotto-sotto-...-sottosuccessione di $vec(x)_k$ tale per cui ogni componente $(x_k)_j$ converge ad un numero $p_j in RR$ per $j = 1, ..., n$.
+  Ma questo significa che $vec(x)_k -> vec(p) in RR^n$ con $vec(p) = (p_1, ..., p_n)$.
 
-  Visto che $K$ è chiuso deve essere $arrow(p) in K$ e dunque $K$ è sequenzialmente compatto.
+  Visto che $K$ è chiuso deve essere $vec(p) in K$ e dunque $K$ è sequenzialmente compatto.
 ]
 
 In uno spazio metrico generico non è detto che gli insiemi chiusi e limitati siano sequenzialmente compatti (un esempio negativo è dato dalla convergenza uniforme, come vedremo più avanti).
@@ -212,13 +212,13 @@ Ma gli insiemi sequenzialmente compatti di $RR$ sono chiusi e limitati quindi ha
 
 #proof[
   Supponiamo per assurdo che $f: X -> Y$ sia una funzione continua ma non uniformemente continua. Dunque non vale la condizione di uniforme continuità:
-  $ forall epsilon > 0 thin exists delta > 0, forall x, y in X: d(x, y) < delta => d(f(x), f(y)) < epsilon. $
+  $ forall epsilon > 0: exists delta > 0: forall x, y in X: d(x, y) < delta => d(f(x), f(y)) < epsilon. $
   La negazione di tale condizione è (ricordiamo che la negazione inverte i quantificatori e la negazione dell'implicazione $P => Q$ è $P and not Q$):
-  $ exists epsilon > 0 thin forall delta > 0, exists x, y in X: d(x, y) < delta and d(f(x), f(y)) >= epsilon. $
+  $ exists epsilon > 0: forall delta > 0: exists x, y in X: d(x, y) < delta and d(f(x), f(y)) >= epsilon. $
   Fissato $epsilon > 0$ applichiamo la condizione precedente con $delta = 1/k$ per ogni $k in NN$ in modo da ottenere due successioni $x_k$, $y_k$ tali che
   $ d(x_k, y_k) < 1/k, quad d(f(x_k), f(y_k)) >= epsilon. $
-  Per la sequenziale compattezza di $X$ esiste una estratta $j_k$ tale che $x_(k_j) -> bar(x)$ con $bar(x) in X$.
-  Visto che $d(x_k, y_k) -> 0$ si ha anche $y_(k_j) -> bar(x)$.
-  Dalla continuità di $f$ si ottiene $f(x_(k_j)) -> f(bar(x))$ e $f(x_(k_j)) -> f(bar(x))$ da cui $d(f(x_(k_j)), f(y_(k_j))) -> 0$.
+  Per la sequenziale compattezza di $X$ esiste una estratta $j_k$ tale che $x_(k_j) -> macron(x)$ con $macron(x) in X$.
+  Visto che $d(x_k, y_k) -> 0$ si ha anche $y_(k_j) -> macron(x)$.
+  Dalla continuità di $f$ si ottiene $f(x_(k_j)) -> f(macron(x))$ e $f(x_(k_j)) -> f(macron(x))$ da cui $d(f(x_(k_j)), f(y_(k_j))) -> 0$.
   Ma questo è in contraddizione con la condizione $d(f(x_k), f(y_k)) >= epsilon$.
 ]

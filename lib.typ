@@ -154,6 +154,10 @@
     book: alt-margins,
   )
 
+  // Sovrascrivere la modalità di Equate impostata da Bookly: numerare solo
+  // formule etichettate o singole righe con una label, senza salti nel contatore.
+  show: equate.with(breakable: true, sub-numbering: true, number-mode: "label")
+
   // Formato pagina per l'edizione cartacea Amazon KDP.
   set page(..print-page, header: book-header, footer: book-footer)
 
@@ -191,8 +195,13 @@
 
   set heading(numbering: "1.1")
   set text(lang: "it")
-  // Bookly nasconde i nomi nei riferimenti; ripristinarli automaticamente.
-  set ref(supplement: element => lower(element.supplement))
+  // Equazioni: solo il numero tra parentesi; gli altri riferimenti hanno il nome.
+  set ref(supplement: element => {
+    // Equate rappresenta le righe numerate come figure di tipo math.equation.
+    if element.func() == math.equation or (
+      element.func() == figure and element.kind == math.equation
+    ) { [] } else { lower(element.supplement) }
+  })
   show figure.where(kind: image): set figure(supplement: [Figura])
   show figure.where(kind: table): set figure(supplement: [Tabella])
   

@@ -39,6 +39,19 @@ teoremi, che sporgono verso sinistra, restano oltre i 12,7 mm richiesti per la
 rilegatura. La colonna delle note è larga 41 mm; la larghezza del testo
 principale resta invariata.
 
+### Numerazione delle equazioni
+
+Vengono numerate soltanto le formule con una label:
+
+```typ
+$ a = b $                 // Senza numero
+$ a = b $ <eq:esempio>    // Numerata e richiamabile con @eq:esempio
+```
+
+Per una formula su più righe, una label esterna numera tutte le righe del
+gruppo; una label interna (`#<eq:riga>`) numera soltanto la riga corrispondente.
+Le formule senza label non incrementano il contatore.
+
 ## Copertina per KDP
 
 `copertina.typ` genera una sola pagina con quarta, dorso e prima di copertina,

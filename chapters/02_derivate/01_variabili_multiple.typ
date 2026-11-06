@@ -248,9 +248,12 @@ Per le funzioni di una variabile _differenziabile_ è quindi equivalente a _deri
 #proof[
   Facendo il cambio di variabile $y = f(x)$ nella formula @eq:def_differenziale applicata a $g$ nel punto $y_0$ e inserendo la formula corrispondente per $f$ nel punto $x_0$ si ottiene
   $ g(f(x))
-      &= g(y_0) + D g(y_0)[f(x)-f(x_0)] + o(|f(x)-f(x_0)|) \
-      &= g(y_0) + D g(x_0)[D f(x_0)[x - x_0] + o(|x - x_0|)] + o(|D f(x_0)[x - x_0] + o(|x - x_0|)|) \
-      &= g(f(x_0)) + D g(x_0)[D f(x_0)[x - x_0]] + (norm(D g(x_0)) + norm(D f(x_0)) + 1) dot o(|x - x_0|) $
+      &= g(y_0) + D g(y_0)[f(x)-f(x_0)] \
+      & quad + o(|f(x)-f(x_0)|) \
+      &= g(y_0) + D g(x_0)[D f(x_0)[x - x_0] + o(|x - x_0|)] \
+      & quad + o(|D f(x_0)[x - x_0] + o(|x - x_0|)|) \
+      &= g(f(x_0)) + D g(x_0)[D f(x_0)[x - x_0]] \
+      & quad + (norm(D g(x_0)) + norm(D f(x_0)) + 1) dot o(|x - x_0|) $
   che è la condizione di differenziabilità per $g compose f$ nel punto $x_0$ con differenziale $D g(y_0) D f(x_0)$.
 ]
 

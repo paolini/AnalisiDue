@@ -8,7 +8,7 @@
 #import "@preview/marginalia:0.3.1" as marginalia
 #import "@preview/hydra:0.6.3": hydra
 
-#let version = "1.1.0"
+#let version = "1.1.1"
 #let pdf-url = "https://codeberg.org/paolini/AnalisiDue/releases/download/v" + version + "/AnalisiDueTyp.pdf"
 #let primary-color = rgb("2b6cb0")
 #let alt-margins-input = sys.inputs.at("alt-margins", default: "true")
@@ -142,13 +142,28 @@
     )
   )
 
+  // Bookly usa 12.5 mm sul bordo: non bastano per la rilegatura KDP,
+  // soprattutto con le barre dei teoremi che sporgono di circa 3 mm.
+  // Conservare la larghezza della colonna principale (80 mm totali di
+  // margini e spazio note), riducendo soltanto la colonna delle note.
+  show: marginalia.setup.with(
+    inner: (far: 17mm, width: 0mm, sep: 0mm),
+    outer: (far: 17mm, width: 41mm, sep: 5mm),
+    top: 25mm,
+    bottom: 25mm,
+    book: alt-margins,
+  )
+
   // Formato pagina per l'edizione cartacea Amazon KDP.
   set page(..print-page, header: book-header, footer: book-footer)
 
   show figure.caption.where(position: top): book-caption
 
-  // I fondi dei capitoli di Bookly devono proseguire oltre la linea di taglio.
-  show rect.where(width: 114%): set rect(outset: print-bleed)
+  // Con i margini fisici più larghi, il fondo di Bookly largo 114% richiede
+  // un'estensione aggiuntiva a destra per arrivare alla smarginatura.
+  show rect.where(width: 114%): set rect(
+    outset: (right: print-bleed + 10mm, rest: print-bleed),
+  )
 
   // Bookly usa equate: la regola globale sulle formule di thm-rules
   // entra in ricorsione con equate. Applicare solo le regole necessarie

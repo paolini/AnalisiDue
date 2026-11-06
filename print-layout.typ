@@ -31,9 +31,14 @@
   }
 
   let footer = {
-    box(fill: states.colors.get().primary, width: 100%, inset: 1em, outset: print-bleed)[
-      #set align(center + horizon)
-      #text(fill: white, size: 1.5em)[#strong(delta: 400)[#institution]]
+    // Alzare il testo rispetto al bordo di taglio; il fondo blu continua
+    // fino alla smarginatura senza modificare l'impaginazione del frontespizio.
+    move(dy: -8mm)[
+      #box(fill: states.colors.get().primary, width: 100%, inset: 1em,
+        outset: (x: print-bleed, top: print-bleed, bottom: print-bleed + 8mm))[
+        #set align(center + horizon)
+        #text(fill: white, size: 1.5em)[#strong(delta: 400)[#institution]]
+      ]
     ]
   }
 

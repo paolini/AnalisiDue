@@ -34,6 +34,11 @@ Il flag equivalente per la compilazione diretta è
 `typst compile --input alt-margins=false AnalisiDue.typ AnalisiDue.pdf`.
 Le didascalie seguono la scelta dei margini.
 
+Per la stampa KDP i margini fisici laterali sono di 17 mm: anche le barre dei
+teoremi, che sporgono verso sinistra, restano oltre i 12,7 mm richiesti per la
+rilegatura. La colonna delle note è larga 41 mm; la larghezza del testo
+principale resta invariata.
+
 ## Copertina per KDP
 
 `copertina.typ` genera una sola pagina con quarta, dorso e prima di copertina,

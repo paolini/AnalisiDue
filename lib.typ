@@ -17,7 +17,7 @@
     theme: modern,
     colors: (primary: rgb("2b6cb0")),
     lang: "it",
-    tufte: false,
+    tufte: true,
     fonts: (
       body: "Lato",
       math: "Lete Sans Math"
@@ -70,6 +70,10 @@
 
   set heading(numbering: "1.1")
   set text(lang: "it")
+  // Bookly nasconde i nomi nei riferimenti; ripristinarli automaticamente.
+  set ref(supplement: auto)
+  show figure.where(kind: image): set figure(supplement: [Figura])
+  show figure.where(kind: table): set figure(supplement: [Tabella])
   
   // Numerazione equazioni per capitolo: (1.1)
   set math.equation(numbering: "(1.1)")
@@ -79,6 +83,7 @@
 
 // Ambienti matematici personalizzati (stile con bordo sinistro)
 #let theorem = theorem.with(
+  supplement: "Teorema",
   stroke: (left: 3pt + rgb("2b6cb0")),
   outset: (left: 8pt, y: 2pt),
   fill: none,
@@ -93,6 +98,7 @@
 )
 
 #let definition = definition.with(
+  supplement: "Definizione",
   stroke: (left: 3pt + rgb("2f855a")),
   outset: (left: 8pt, y: 2pt),
   fill: none,
@@ -100,6 +106,7 @@
 )
 
 #let example = example.with(
+  supplement: "Esempio",
   // Gli esempi hanno un contatore autonomo, basato sui titoli.
   counter: "Example",
   base: "heading",
@@ -118,6 +125,13 @@
 )
 
 #let proof = proof.with(supplement: "Dimostrazione")
+
+#let proposition = proposition.with(supplement: "Proposizione")
+#let corollary = corollary.with(supplement: "Corollario")
+#let conjecture = conjecture.with(supplement: "Congettura")
+#let problem = problem.with(supplement: "Problema", counter: "Problem")
+#let remark = remark.with(supplement: "Osservazione")
+#let claim = claim.with(supplement: "Affermazione")
 
 // Comandi custom
 #let vec(x) = math.bold(x)

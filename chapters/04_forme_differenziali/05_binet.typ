@@ -1,6 +1,6 @@
 #import "../../lib.typ": *
 
-= Formula di Cauchy-Binet
+== formula di Cauchy-Binet
 
 #theorem[formula di Cauchy-Binet][
   Siano $A$ una matrice $m times n$ e $B$ una matrice $n times m$.

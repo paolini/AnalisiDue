@@ -1,8 +1,8 @@
 #import "../../lib.typ": *
 
-= Esempi di calcolo di integrali multipli
+== esempi di calcolo di integrali multipli
 
-== Coordinate polari
+=== coordinate polari
 
 Se la funzione integranda o il dominio di integrazione hanno una simmetria circolare può essere conveniente effettuare un cambio di variabili in coordinate polari:
 $ cases(
@@ -33,7 +33,7 @@ $ integral_0^(2 pi) d theta = 2 pi $
 Risultato:
 $ integral.double_(B_R (0)) 1 thin d x thin d y = R^2 / 2 dot 2 pi = pi R^2 $
 
-= Coordinate cilindriche
+=== coordinate cilindriche
 
 $ cases(
   x = rho cos theta,
@@ -47,7 +47,7 @@ $ J = rho $
 Elemento di volume:
 $ d x thin d y thin d z = rho thin d rho thin d theta thin d z $
 
-= Coordinate sferiche
+=== coordinate sferiche
 
 #figure(
   [ _[Diagramma coordinate sferiche]_ ],

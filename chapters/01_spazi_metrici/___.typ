@@ -1,4 +1,4 @@
-= spazi metrici
+= spazi metrici e convergenza uniforme
 
 #include("00_introduzione.typ")
 #include("01_metrici.typ")

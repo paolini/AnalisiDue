@@ -1,6 +1,6 @@
 #import "../../lib.typ": *
 
-= Teorema di Stone-Weierstrass
+== teorema di Stone-Weierstrass
 
 #theorem[Stone-Weierstrass][
   Sia $X$ uno spazio metrico compatto.

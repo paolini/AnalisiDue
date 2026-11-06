@@ -1,11 +1,11 @@
 #import "../../lib.typ": *
 
-= Corrispondenza tra integrali di superficie e integrali di forme differenziali
+== corrispondenza tra integrali di superficie e integrali di forme differenziali
 
 In questo capitolo mettiamo in corrispondenza gli integrali di superficie con gli integrali di forme differenziali nei casi più rilevanti, ovvero per $k=1$ (curve), per $k=n-1$ (ipersuperfici) e per $k=n$ (volumi).
 Nel caso rilevante $n=3$ si esaurisce tutta la casistica, lo tratteremo in particolare.
 
-== Curve
+=== curve
 
 Per le curve abbiamo già visto che se $xi$ è un campo vettoriale in $RR^n$ possiamo associare a $xi$ la $1$-forma differenziale $omega$ definita da
 $ omega_x [v] = xi(x) dot v. $
@@ -20,7 +20,7 @@ Osserviamo che sebbene $tau_phi$ non ha senso quando $phi'(t) = 0$ il prodotto $
 $ integral_phi xi dot tau_phi thin d s $
 hanno senso anche se $phi'(t)$ si annulla.
 
-== Ipersuperfici
+=== ipersuperfici
 
 Ad un campo vettoriale $xi: A subset RR^n -> RR^n$ possiamo associare la $(n-1)$-forma differenziale $omega$ definita da
 $ omega_x [v_2, dots, v_n] = det(xi(x), v_2, dots, v_n). $
@@ -35,7 +35,7 @@ Se $S = op("current") phi_1 + dots + op("current") phi_M$ è una $(n-1)$-superfi
 $ integral_S xi dot nu_S thin d sigma := integral_S omega $
 dove $omega$ è la $(n-1)$-forma differenziale associata a $xi$ come sopra.
 
-== Volumi
+=== volumi
 
 Se $A subset RR^n$ è un aperto limitato e misurabile si può definire $op("current") A: Omega^n (A) -> RR$ tramite
 $ integral_(op("current") A) f thin d x_1 and dots and d x_n = integral_A f. $
@@ -56,7 +56,7 @@ In tal caso $op("current") A$ è una $n$-superficie parametrizzata e dunque si p
   $ integral_A op("div") f = integral_(op("current") A) d omega = integral_(op("current") A) omega = integral_(partial op("current") A) f dot nu_(partial op("current") A) thin d sigma. $
 ]
 
-== Forme differenziali multilineari in $RR^3$
+== forme differenziali multilineari in $RR^3$
 
 #definition[prodotto vettore][
   Siano $v,w in RR^3$.

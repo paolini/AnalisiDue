@@ -1,6 +1,6 @@
 #import "../../lib.typ": *
 
-= Equazioni lineari di ordine $n$ <sec:edo_lineari>
+== equazioni lineari di ordine $n$ <sec:edo_lineari>
 
 Le equazioni differenziali ordinarie lineari di ordine $n$ in forma normale possono essere scritte nella forma:
 $ u^((n))(x) + a_(n-1)(x) dot u^((n-1))(x) + dots + a_1(x) dot u'(x) + a_0(x) dot u(x) = b(x) $ <eq:edo_lineare_ordine_n>

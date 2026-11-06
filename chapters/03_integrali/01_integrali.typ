@@ -1,7 +1,5 @@
 #import "../../lib.typ": *
 
-= Integrale di Riemann
-
 Se $x,y in RR$ definiamo:
 $ x or y := max({x,y}), quad x and y := min({x,y}), quad x^+ := x or 0, quad x^- := (-x)^+ := -(x and 0). $
 Si ha
@@ -364,7 +362,7 @@ $ 1_A : RR^n -> RR, quad 1_A (x) := cases(
       &= integral_(RR^n) |E_arrow (x)| thin d vec(x). $
 ]
 
-= La formula del cambiamento di variabile
+== la formula del cambiamento di variabile
 
 #lemma[disuguaglianza di Lagrange][
   Sia $Omega$ un aperto di $RR^n$ e sia $f in C^1(Omega, RR)$.

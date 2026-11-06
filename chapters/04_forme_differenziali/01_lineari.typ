@@ -1,6 +1,6 @@
 #import "../../lib.typ": *
 
-= Forme differenziali lineari
+== forme differenziali lineari
 
 Se $f: A subset RR^n -> RR$ è una funzione differenziabile il suo differenziale $d f: A -> cal(L)(RR^n, RR)$ è una forma differenziale lineare ($1$-forma).
 Si tratta di una funzione che ad ogni punto $x in A$ associa una applicazione lineare $d f_x : RR^n -> RR$ e dunque ad ogni $v in RR^n$ associa un numero reale $d f_x [v]$.
@@ -40,7 +40,7 @@ In questo isomorfismo:
 $ omega_x [v] = xi(x) dot v $
 (abbiamo qui sfruttato il fatto che sullo spazio $RR^n$ è fissato un prodotto scalare canonico che induce un isomorfismo canonico tra $RR^n$ e il suo duale).
 
-= Integrale di una forma differenziale lineare
+== integrale di una forma differenziale lineare
 
 Se $u: [a,b] -> A subset RR^n$ è una curva regolare e $omega in Omega^1 (A)$ è una $1$-forma differenziale, possiamo definire l'integrale della forma differenziale lungo la curva:
 $ integral_u omega := integral_a^b omega_(u(t)) [u'(t)] thin d t. $ <def:integrale_forma_1>
@@ -67,7 +67,7 @@ $ integral_u omega = integral_I u^* omega $
 in quanto (qui $e_1=1$ è l'unico vettore della base canonica di $RR$)
 $ (u^* omega)_t [e_1] = omega_(u(t)) [u'(t)] thin d t. $
 
-= Forme chiuse, forme esatte
+== forme chiuse, forme esatte
 
 #definition[forma esatta][
   Una forma differenziale $omega in Omega^1 (A)$ si dice essere _esatta_ se esiste $f: A -> RR$ tale che $omega = d f$.

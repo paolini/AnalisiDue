@@ -1,6 +1,6 @@
 #import "../../lib.typ": *
 
-= Topologia degli spazi metrici
+== topologia degli spazi metrici
 
 #definition[distanza indotta][
   Se $d: X times X -> RR$ è una distanza su $X$ e $A subset X$ allora restringendo $d$ ad $A times A$ si ottiene ancora (ovviamente) una distanza. Tale restrizione si chiama _distanza indotta_ da $X$ su $A$. Dunque se $A$ è un sottoinsieme di uno spazio metrico $(X, d)$ anche $A$ ha una struttura di spazio metrico.
@@ -125,7 +125,7 @@ figure(
 Vedremo che molte proprietà degli spazi metrici possono essere espresse in termini di topologia e quindi non dipendono dalla distanza scelta. In particolare: limiti, continuità e compattezza sono proprietà topologiche.
 
 #example[
-  Consideriamo la norma $abs(vec(x))_p$ su $RR^n$ definita nell'esempio @ex:norma_p con $p in [1, +infinity]$. Si può dimostrare che per ogni $vec(x) in RR^n$ risulta
+  Consideriamo la norma $abs(vec(x))_p$ su $RR^n$ definita nell'@ex:norma_p con $p in [1, +infinity]$. Si può dimostrare che per ogni $vec(x) in RR^n$ risulta
   $ abs(vec(x))_infinity <= abs(vec(x))_p <= abs(vec(x))_1. $
   Visto che si ha anche
   $ abs(vec(x))_1 <= n abs(vec(x))_infinity $

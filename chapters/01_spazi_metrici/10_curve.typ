@@ -1,6 +1,6 @@
 #import "../../lib.typ": *
 
-= Curve e lunghezza
+== curve e lunghezza
 
 Sia $X$ uno spazio metrico. Una funzione $u: [a,b] -> X$ viene chiamata _curva_.
 
@@ -78,7 +78,7 @@ Sia $X$ uno spazio metrico. Una funzione $u: [a,b] -> X$ viene chiamata _curva_.
   Dall'arbitrarietà di $epsilon > 0$ si ottiene la disuguaglianza opposta e la tesi.
 ]
 
-== Riparametrizzazioni
+== riparametrizzazioni
 
 Se $u: [a,b] -> X$ è una curva e $phi: [A,B] -> [a,b]$ è una funzione, possiamo considerare la curva $v: [A,B] -> X$ definita da
 $ v(s) = u(phi(s)), quad s in [A,B]. $

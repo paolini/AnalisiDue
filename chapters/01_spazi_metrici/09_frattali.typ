@@ -1,6 +1,6 @@
 #import "../../lib.typ": *
 
-= Distanza di Hausdorff
+== distanza di Hausdorff
 
 In questo capitolo mostriamo una applicazione geometrica del teorema delle contrazioni.
 Considereremo uno spazio metrico i cui punti sono le figure geometriche e vedremo che i frattali autosimili non sono altro che punti fissi di opportune mappe contrattive.

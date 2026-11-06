@@ -1,6 +1,6 @@
 #import "../../lib.typ": *
 
-= Equazioni lineari di ordine $n$ a coefficienti costanti
+=== equazioni lineari di ordine $n$ a coefficienti costanti
 
 Una equazione differenziale ordinaria di ordine $n$ a coefficienti costanti è una equazione del tipo:
 $ a_n dot u^((n))(x) + a_(n-1) dot u^((n-1))(x) + dots + a_1 dot u'(x) + a_0 dot u(x) = g(x) $ <eq:edo_lineare_omogenea_coeff_costanti_non_omogenea>
@@ -34,7 +34,7 @@ L'equazione lineare omogenea a coefficienti costanti @eq:edo_lineare_omogenea_co
 $ P(D)[u] = 0. $
 Visto che $a_n != 0$ si avrà $op("deg") P = n$.
 
-== Equazioni omogenee
+=== equazioni omogenee
 
 #theorem[
   Sia $P$ un polinomio e sia $lambda in CC$ una radice di $P$ con molteplicità $m$.
@@ -174,7 +174,7 @@ In totale abbiamo quindi sempre $n = op("deg") P$ soluzioni indipendenti.
   $ a cos(beta x) + b sin(beta x) = rho (cos theta cos(beta x) + sin theta sin(beta x)) = rho cos(beta x - theta). $
 ]
 
-== Equazioni lineari non omogenee
+=== equazioni lineari non omogenee
 
 Il teorema @th:edo_lineare_ordine_n ci dice che le soluzioni di una equazione lineare non omogenea (non importa se a coefficienti costanti o meno)
 $ L[u] = g $

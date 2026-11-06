@@ -1,6 +1,6 @@
 #import "../../lib.typ": *
 
-= Integrali di superficie
+== integrali di superficie
 
 #theorem[significato geometrico del determinante jacobiano][
   Sia $L: RR^m -> RR^n$ una funzione lineare e sia $V$ l'immagine di $L$.
@@ -61,7 +61,7 @@
 
 Se $D phi(x)$ ha rango massimo, i vettori colonna $(partial phi) / (partial x_1), dots, (partial phi) / (partial x_k)$ sono linearmente indipendenti e dunque generano uno spazio vettoriale $k$-dimensionale che si chiama spazio tangente alla superficie definita da $phi$ nel punto $phi(x)$.
 
-= Ipersuperfici
+== ipersuperfici
 
 Se $k=n-1$, $phi: B subset RR^(n-1) -> A subset RR^n$ rappresenta una _ipersuperficie_ in $RR^n$ o superficie di codimensione $1$.
 Se $D phi$ ha rango massimo in un punto $x$, i vettori $(partial phi) / (partial x_1), dots, (partial phi) / (partial x_(n-1))$ sono linearmente indipendenti e dunque generano lo spazio tangente alla superficie definita da $phi$ nel punto $phi(x)$.
@@ -95,9 +95,9 @@ $ xi_phi = (partial phi) / (partial u) times (partial phi) / (partial v) $
 da cui
 $ nu_phi thin d sigma = ((partial phi) / (partial u) times (partial phi) / (partial v)) thin d u thin d v. $
 
-= Esempi
+== esempi
 
-== Area della sfera
+=== area della sfera
 
 Osservando che la funzione identità: $x: RR^n -> RR^n$ ha divergenza costante $op("div") x = (partial x_1) / (partial x_1) + dots + (partial x_n) / (partial x_n) = n$, e osservando che $x$ è normale alla sfera $partial B_R$, si può usare il teorema della divergenza per calcolare l'area della sfera di raggio $R$:
 $ omega_n R^n = |B_R|
@@ -122,7 +122,7 @@ da cui si ottiene nuovamente la @eq:area_sfera.
 Il calcolo precedente può essere svolto in maniera più informale usando con più disinvoltura le notazioni del calcolo differenziale.
 Se chiamiamo $x$ la variabile che descrive il punto nella palla $B_R$, chiamiamo $theta$ la variabile che descrive il punto sulla sfera unitaria poniamo $rho = |x|$, $theta = x / |x|$ e dunque $x = rho theta$, i passaggi visti sopra si possono esprimere più espressivamente scrivendo $d x = rho^(n-1) d theta thin d rho$ dove $d theta$ è l'elemento d'area nell'integrazione sulla sfera unitaria.
 
-== Grafico di una funzione
+=== grafico di una funzione
 
 Se $B subset RR^n$ è misurabile e $f: B -> RR$, possiamo rappresentare la ipersuperficie $y=f(x)$ in $RR^(n+1)$ tramite la parametrizzazione $phi: B -> RR^(n+1)$, $phi(x) = (x, f(x))$.
 Si può allora osservare che
@@ -150,7 +150,7 @@ $ nu_f thin d sigma = mat(-nabla f; 1) d x. $
       = pi / 6 ((1 + 4 R^2)^(3/2) - 1). $
 ]
 
-== Superfici di rotazione
+=== superfici di rotazione
 
 Se $gamma: [a,b] -> RR^2$ è una curva di classe $C^1$, posto $gamma(t) = (rho(t), z(t))$, possiamo rappresentare la superficie di rotazione $S$ di equazione $x^2+y^2 = rho(t)^2$, $z=z(t)$ tramite la parametrizzazione $phi(theta, t) = (rho(t) cos theta, rho(t) sin theta, z(t))$.
 Si ha

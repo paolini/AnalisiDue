@@ -1,6 +1,6 @@
 #import "../../lib.typ": *
 
-= Classificazione
+== classificazione
 
 Le equazioni differenziali sono una classe di _equazioni funzionali_ ovvero equazioni in cui l'incognita non è un numero (come accade nelle equazioni algebriche) ma è una funzione. La funzione incognita $u$, sarà quindi funzione di una variabile indipendente $u=u(x)$.
 Ad esempio $u$ potrebbe essere la traiettoria di un proiettile che descrive la posizione nello spazio in funzione del tempo $x$. Se nelle equazioni algebriche il nome di gran lunga più utilizzato per l'incognita è $x$, nelle equazioni funzionali a seconda dei contesti le convenzioni possono cambiare in maniera drastica. Si dovrà utilizzare un nome per la funzione e un nome per la sua variabile indipendente: $x=x(t)$, $y=y(x)$, $y=y(t)$, $u=u(x)$ sono alcune delle scelte più utilizzate.
@@ -61,7 +61,7 @@ Nell'esempio del pendolo @eq:39872 si avrà come incognita una funzione vettoria
 Il codominio di tale funzione si chiama _spazio delle fasi_.
 L'equazione (essendo autonoma tralasciamo la dipendenza da $x$) si scriverà nella forma $vec(u)' = vec(f)(vec(u))$ con $vec(f)(y_1, y_2) = (y_2, -sin(y_1) - y_2)$.
 
-== Equazioni lineari
+== equazioni lineari
 
 Un caso molto particolare ma decisamente importante è quello in cui la funzione $F$ (per le equazioni in forma implicita) o la funzione $f$ (per le equazioni in forma normale) sono funzioni lineari per ogni $t$ rispetto alla variabile $u$.
 In tal caso diremo che l'equazione è _lineare omogenea_.
@@ -101,7 +101,7 @@ Questa equazione è lineare non omogenea.
 
 Come nel caso generale le equazioni lineari di ordine $n$ si riconducono a sistemi lineari di $n$ equazioni del primo ordine.
 
-== Problema di Cauchy
+== problema di Cauchy
 
 Andremo a dimostrare non solo che le equazioni lineari di ordine $n$ (omogenee o non omogenee) hanno come insieme delle soluzioni uno spazio lineare (vettoriale o affine) di dimensione $n$, ma, più in generale, che l'insieme delle soluzioni di una equazione differenziale anche non lineare, può essere descritto tramite $n$ parametri (dunque tale insieme di soluzioni può essere pensato come una "superficie" di dimensione $n$ nello spazio vettoriale di dimensione infinita di tutte le funzioni derivabili).
 

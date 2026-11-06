@@ -1,4 +1,4 @@
-= Forme Differenziali
+= forme differenziali
 
 #include("00_introduzione.typ")
 #include("01_lineari.typ")

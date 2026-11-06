@@ -1,6 +1,6 @@
 #import "../../lib.typ": *
 
-= Il problema di Cauchy per equazioni di ordine $n$
+== il problema di Cauchy per equazioni di ordine $n$
 
 Il problema di Cauchy per le equazioni di ordine $n$ è il problema di determinare la soluzione di una equazione differenziale ordinaria di ordine $n$ in forma normale accoppiato ad una condizione iniziale per il valore della funzione e di tutte le sue derivate fino all'ordine $n-1$.
 Dato $Omega subset RR times RR^n$ aperto, $f in C^0(Omega)$, $vec(y) = (y_1, dots, y_n) in RR^n$ si tratta quindi di trovare un intervallo $I subset RR$ e una funzione $u in C^n(I)$ che soddisfi le seguenti condizioni:

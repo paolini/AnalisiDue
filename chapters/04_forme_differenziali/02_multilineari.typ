@@ -1,6 +1,6 @@
 #import "../../lib.typ": *
 
-= Forme differenziali multilineari
+== forme differenziali multilineari
 
 Una funzione $lambda: (RR^n)^k -> RR$, $(v_1, dots, v_k) |-> lambda[v_1, dots, v_k]$ con $v_1, dots, v_k in RR^n$ si dice essere _multilineare_ se per ogni $k$ l'applicazione $v_k |-> lambda[v_1, dots, v_k]$ è lineare e se scambiando due ingressi $v_k$, $v_j$ il risultato cambia segno.
 
@@ -99,7 +99,7 @@ Osserviamo che il prodotto esterno $lambda_1 and dots and lambda_k$ è anch'esso
   Questo sarà il modo standard per rappresentare le $(n-1)$-forme $omega in Omega^(n-1)(A)$, $A subset RR^n$, tramite un campo vettoriale $xi: A -> RR^n$.
 ]
 
-= Differenziale di una forma
+== differenziale di una forma
 
 Possiamo definire il _differenziale_ $d omega in Omega^(k+1)(A)$ di una forma differenziale $omega in Omega^k (A)$, definendo il differenziale delle forme _elementari_
 $ d(f thin d x_(j_1) and dots and d x_(j_k)) = sum_i (partial f) / (partial x_i) thin d x_i and d x_(j_1) and dots and d x_(j_k). $
@@ -157,7 +157,7 @@ Si dirà che la catena di morfismi
 $ 0 thin -->^d thin Omega^0 thin -->^d thin Omega^1 thin -->^d thin dots thin -->^d thin Omega^(n-1) thin -->^d thin Omega^n thin -->^d thin 0 $
 è una _successione esatta_, in quanto l'immagine di un morfismo è uguale al nucleo di quello successivo (sugli aperti stellati).
 
-= Integrale di una $k$-forma
+== integrale di una $k$-forma
 
 In generale, se $phi: A subset RR^m -> RR^n$ e se $A$ non è aperto diremo che $phi$ è di classe $C^k$ su $A$ se $phi$ può essere estesa ad una funzione di classe $C^k$ su un aperto contenente $A$.
 
@@ -206,7 +206,7 @@ In generale, se $phi: A subset RR^m -> RR^n$ e se $A$ non è aperto diremo che $
       &= integral_B omega_phi [D phi] = integral_phi omega. $
 ]
 
-= Pull-back
+== pull-back
 
 Se $phi: A subset RR^m -> B subset RR^n$ (con $A$ e $B$ aperti) è una funzione differenziabile e $omega in Omega^k (B)$ possiamo definire il pull-back $phi^* omega in Omega^k (A)$ tramite la formula
 $ (phi^* omega)_x [v_1, dots, v_k] = omega_(phi(x))[d phi(x)[v_1], dots, d phi(x)[v_k]]. $
@@ -236,7 +236,7 @@ $ integral_(phi compose vec(u)) omega = integral_C omega_(phi compose vec(u))[D(
       &= phi^* (d omega). $
 ]
 
-= Superfici parametrizzate
+== superfici parametrizzate
 
 Abbiamo visto che l'integrale $integral_phi omega$ è invariante per riparametrizzazioni.
 Questo ci dà l'idea che $phi$ è una rappresentazione di una $k$-superficie orientata, e che dunque sia possibile definire la superficie $S$ rappresentata da $phi$ come una classe di equivalenza di parametrizzazioni equivalenti.

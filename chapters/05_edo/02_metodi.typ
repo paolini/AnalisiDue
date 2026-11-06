@@ -1,6 +1,6 @@
 #import "../../lib.typ": *
 
-= Metodi risolutivi
+== metodi risolutivi
 
 Una tipologia di equazioni differenziali che abbiamo già trattato è data dalle equazioni della forma:
 $ u'(x) = f(x). $
@@ -19,7 +19,7 @@ $ cases(
 possiamo identificare una unica soluzione che si scrive nella forma:
 $ u(x) = y_0 + integral_(x_0)^x f(t) thin d t. $
 
-== Equazioni lineari del primo ordine
+=== equazioni lineari del primo ordine
 
 Le equazioni differenziali ordinarie del primo ordine in forma normale possono essere scritte nella forma:
 $ u'(x) + a(x) u(x) = b(x). $ <eq:47744>
@@ -124,7 +124,7 @@ Si dirà quindi che la soluzione esiste _globalmente_.
   Abbiamo quindi una famiglia di soluzioni definite per $x<0$ e una famiglia di soluzioni definite per $x>0$.
 ]
 
-== Equazioni a variabili separabili
+=== equazioni a variabili separabili
 
 Si chiamano equazioni a variabili separabili le equazioni del tipo:
 $ u'(x) = f(x) dot g(u(x)). $ <eq:edo_separabile>
@@ -297,7 +297,7 @@ $ u(x) = H^(-1)(F(x) + c). $
   ) $
 ]
 
-== Altri metodi risolutivi
+=== altri metodi risolutivi
 
 Nella sezione precedente abbiamo visto che le equazioni lineari del primo ordine e le equazioni a variabili separabili possono essere ricondotte al calcolo di una primitiva.
 Nella sezione @sec:edo_lineari verranno esposti i metodi risolutivi per le equazioni lineari di ordine $n$ a coefficienti costanti.
@@ -435,74 +435,7 @@ Non potremo dilungarci su questi metodi ma può essere utile, come riferimento n
       &= 1 + u_0^2 / 2^4 + 11/(2^(10) dot 3) u_0^4 + 173/(2^14 dot 3^2 dot 5) u_0^6 + 22931/(2^22 dot 3^2 dot 5 dot 7) u_0^8 + o(u_0^8). $
 ]
 
-= Alcuni risultati preparatori sulle funzioni vettoriali e di più variabili
-
-Ci sarà utile estendere la definizione delle classi di regolarità $C^k$ alle funzioni vettoriali (cioè con codominio $RR^n$) e di più variabili (cioè con dominio $RR^m$).
-
-== Continuità e compattezza
-
-Lo spazio $RR^n$ è uno spazio metrico con la distanza euclidea (definizione @def:124124) $d(vec(x), vec(y)) = |vec(x) - vec(y)|$ con
-$ |vec(x)| = sqrt(x_1^2 + dots + x_n^2). $
-
-Dunque una successione $vec(x)_k in RR^n$ converge ad un punto $vec(p) in RR^n$ se vale (definizione @def:convergenza_metrica) $|vec(x)_k - vec(p)| -> 0$.
-Se $(x_k)_j$ sono le componenti del punto $vec(x)_k in RR^n$ e $p_j$ sono le componenti di $vec(p) in RR^n$ la convergenza $vec(x)_k -> vec(p)$ è equivalente alla convergenza di tutte le componenti: $(x_k)_j -> p_j$ per ogni $j=1, dots, n$ per $k -> +infinity$.
-
-Una funzione $vec(f): A subset RR^n -> RR^m$ è _continua_ (definizione @def:continua_metrico) se per ogni successione $vec(x)_n -> vec(p)$ con $vec(x)_n in A$ e $vec(p) in A$ risulta
-$ vec(f)(vec(x)_n) -> vec(f)(vec(p)). $
-
-Un insieme $K subset RR^n$ è _chiuso_ se presa una qualunque successione convergente in $RR^n$: $vec(x)_k -> vec(x)$ se ogni $vec(x)_k in K$ allora anche $vec(x) in K$ (cioè $K$ è chiuso per passaggio al limite, teorema @th:chiuso_sequenziale).
-La palla di raggio $r>0$ centrata nel punto $vec(p) in RR^n$ è l'insieme (definizione @def:palla):
-$ B_r (vec(p)) = {vec(x) in RR^n : |vec(x) - vec(p)| < r}. $
-Un insieme $Omega subset RR^n$ è _aperto_ se per ogni $vec(p) in Omega$ esiste $r>0$ tale che $B_rho (vec(p)) subset Omega$ (definizione @def:466342).
-Un insieme $B subset RR^n$ si dice essere _limitato_ (definizione @def:spazio_limitato) se esiste $r>0$ e $vec(p) in RR^n$ tali che $B subset B_r (vec(p))$ (ma non è restrittivo supporre $vec(p)=0$).
-Un insieme $K subset RR^n$ si dice essere _compatto_ (definizione @def:sequenzialmente_compatto) se da ogni successione $vec(x)_k$ di punti di $K$ è possibile estrarre una sottosuccessione $x_(k_j) -> vec(x)$ convergente ad un punto $vec(x) in K$.
-In $RR^n$ un insieme è compatto se e solo se è chiuso e limitato (teorema @th:compattezza_Rn).
-Una funzione continua $f: K subset RR^n -> RR$ definita su un compatto $K$ è limitata per il teorema di Weierstrass (teorema @th:weiestrass_metrico).
-
-== Derivate parziali
-
-Se $Omega subset RR^m$ è un insieme aperto e $f: Omega -> RR$ è una funzione, vogliamo definire le _derivate parziali_ di $f$.
-Se $vec(x) in Omega$ si ha $vec(x) = (x_1, dots, x_m)$ e quindi $f(vec(x)) = f(x_1, dots, x_m)$. Se facciamo variare una sola componente $x_j$ mantenendo fisse tutte le altre componenti, otteniamo una funzione di una variabile $x_j |-> g(x_j) = f(x_1, dots, x_j, dots, x_m)$.
-Definiamo dunque la _derivata parziale_ di $f$ rispetto alla variabile $x_j$ come la derivata della funzione $g(x_j)$.
-Denotiamo tale derivata con il simbolo:
-$ (partial f) / (partial x_j). $
-Le derivate parziali si calcolano dunque come le usuali derivate per le funzioni di una variabile, solamente bisogna considerare costanti tutte le variabili tranne quella coinvolta nella derivazione.
-Ad esempio se $f(x,v) = - sin(x) - v$ (come nell'esempio fatto nell'introduzione) si ha
-$ (partial f) / (partial x) &= - cos(x) \
-  (partial f) / (partial v) &= -1. $
-
-Se $vec(f): Omega subset RR^m -> RR^n$ è una funzione di più variabili a valori vettoriali potremo scrivere $vec(f) = (f_1, dots, f_n)$ e considerare le derivate parziali di ogni componente:
-$ (partial vec(f)) / (partial x_j) = ((partial f_1) / (partial x_j), dots, (partial f_n) / (partial x_j)). $
-
-#definition[
-  Sia $Omega subset RR^m$ un aperto. Denoteremo con $C^0(Omega, RR^n)$ lo spazio vettoriale di tutte le funzioni continue $f: Omega -> RR^n$.
-
-  Denotiamo con $C^1(Omega, RR^n)$ lo spazio vettoriale delle funzioni in $C^0(Omega, RR^n)$ tali che ognuna delle loro derivate parziali $(partial f) / (partial x_j)$ esiste in ogni punto di $Omega$ ed è a sua volta una funzione continua (cioè in $C^0(Omega, RR^n)$).
-  Ricorsivamente si definisce $C^k(Omega, RR^n)$ per $k>1$, come lo spazio delle funzioni $Omega -> RR^n$ tali che tutte le loro derivate parziali stanno in $C^(k-1)(Omega, RR^n)$.
-
-  Quando lo spazio di arrivo non è indicato si sottointende sempre $RR$, quindi $C^k(Omega) = C^k(Omega, RR)$.
-]
-
-#theorem[stabilità delle funzioni regolari][
-  Sia $Omega subset RR^n$ un aperto.
-  Se $f,g in C^k(Omega)$ allora anche $f+g$, $f-g$, $f dot g$ e $f/g$ (dove è definita) sono di classe $C^k$. Se $f in C^k(Omega)$ e $g in C^k(RR)$ allora $g compose f in C^k(Omega)$.
-]
-
-#proof[
-  Il fatto che la composizione di funzioni continue sia una funzione continua è vero in generale in qualunque spazio metrico.
-  Infatti se $f: X -> Y$ e $g: Y -> Z$ e se $x_k -> x$ in $X$ allora $f(x_k) -> f(x)$ in $Y$ (per la continuità di $f$) e quindi $g(f(x_k)) -> g(f(x))$ in $Z$ (per la continuità di $g$).
-  Dunque $(g compose f)(x_k) -> (g compose f)(x)$ e $g compose f: X -> Z$ è continua.
-
-  Possiamo dunque osservare che le funzioni di due variabili $s(x,y) = x+y$, $d(x,y)=x-y$ e $m(x,y)=x y$ sono funzioni continue da $RR^2 -> RR$ (grazie al teorema \@th:operazioni_limiti).
-  Questo garantisce che la somma, la differenza e il prodotto di funzioni continue siano funzioni continue.
-  Anche il reciproco di funzioni continue è una funzione continua in quanto la funzione $r(x)=1/x$ è continua.
-  Ne consegue che il rapporto di funzioni continue è una funzione continua.
-
-  Veniamo ora alle derivate parziali.
-  Per le regole di derivazione delle funzioni di una variabile sappiamo che somma, prodotto, differenza, rapporto (ove definito) e composizione di funzioni derivabili sono a loro volta funzioni derivabili e la derivata si esprime sempre mediante somma, prodotto, differenza e rapporto delle funzioni coinvolte e delle loro derivate. Dunque quello che si ottiene combinando tra loro funzioni di classe $C^k$ è una funzione continua le cui derivate parziali esistono e sono di classe $C^(k-1)$, dunque è una funzione di classe $C^k$.
-]
-
-== Integrali di funzioni vettoriali
+== integrali di funzioni vettoriali
 
 #definition[
   Sia $vec(f): [a,b] -> RR^m$, $vec(f)(x) = (f_1(x), dots, f_m (x))$.

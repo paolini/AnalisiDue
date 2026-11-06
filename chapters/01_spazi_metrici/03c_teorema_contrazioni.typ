@@ -1,5 +1,7 @@
 #import "../../lib.typ": *
 
+== teorema delle contrazioni
+
 #theorem[delle contrazioni o punto fisso di Banach-Caccioppoli][
   Sia $X$ uno spazio metrico completo non vuoto e sia $f: X -> X$ una funzione $L$-lipschitziana con $L < 1$ (diremo che $f$ è una _contrazione_).
   Allora esiste ed è unico un punto $x in X$ tale che $f(x) = x$.

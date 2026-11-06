@@ -1,6 +1,6 @@
 #import "../../lib.typ": *
 
-= Invertibilità locale e funzione implicita
+== invertibilità locale e funzione implicita
 
 #theorem[Lagrange vettoriale][
   Sia $Omega subset RR^n$ un aperto convesso, sia $vec(f): Omega -> RR^m$ una funzione differenziabile.

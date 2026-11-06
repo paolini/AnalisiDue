@@ -1,6 +1,6 @@
 #import "../../lib.typ": *
 
-= compattezza
+== compattezza
 
 #definition[compattezza][
   Sia $X$ uno spazio topologico. 

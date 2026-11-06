@@ -1,6 +1,6 @@
 #import "../../lib.typ": *
 
-= Studio qualitativo delle soluzioni <sec:studio_qualitativo_edo>
+== studio qualitativo delle soluzioni <sec:studio_qualitativo_edo>
 
 Non sempre è possibile determinare esplicitamente le soluzioni di una equazione differenziale.
 Ci proponiamo quindi di trovare dei metodi per determinare alcune proprietà salienti delle soluzioni, senza doverle determinare esplicitamente.
@@ -25,7 +25,7 @@ Inoltre la proposizione @prop:edo_massimale ci dice che le soluzioni massimali e
 
 #figure(
   image("../../figure/edo_4630b.pdf", width: 100%),
-  caption: [Studio qualitativo dell'esempio @ex:edo_4630b.],
+  caption: [Studio qualitativo dell'@ex:edo_4630b.],
 ) <fig:edo_4630b>
 
 #proof[Svolgimento][
@@ -58,7 +58,7 @@ Inoltre la proposizione @prop:edo_massimale ci dice che le soluzioni massimali e
   Si veda la figura @fig:edo_4630b.
 ]
 
-== Monotonia e punti critici delle soluzioni
+=== monotonia e punti critici delle soluzioni
 
 Dopo aver determinato le zone di $Omega$ su cui vale il teorema di esistenza e unicità, è utile studiare il segno di $f$. Infatti le soluzioni $u(x)$ dell'equazione differenziale @eqdiff saranno strettamente crescenti dove $f>0$, strettamente decrescenti dove $f<0$ e avranno un punto critico dove $f=0$.
 
@@ -93,7 +93,7 @@ Se ad esempio $v(x)$ è una funzione il cui grafico è contenuto in ${f=0}$ (cio
 
 #figure(
   image("../../figure/ex843.pdf", width: 80%),
-  caption: [Il grafico della soluzione del problema di Cauchy nell'esempio @ex843.],
+  caption: [Il grafico della soluzione del problema di Cauchy nell'@ex843.],
 ) <fig:ex843>
 
 #example[
@@ -145,7 +145,7 @@ Se ad esempio $v(x)$ è una funzione il cui grafico è contenuto in ${f=0}$ (cio
   A questo punto si applica, come al solito, la proposizione @prop:edo_massimale ai compatti $K_M = [-M, M] times [-2, 2]$ mostrando che la soluzione deve avere esistenza globale.
 ]
 
-== Teoremi di confronto
+=== teoremi di confronto
 
 #theorem[
   Sia $I subset RR$ un intervallo su cui sono definite due funzioni derivabili $f(x)$ e $g(x)$.

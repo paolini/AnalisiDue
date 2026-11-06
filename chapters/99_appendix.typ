@@ -1,6 +1,6 @@
 #import "../lib.typ": *
 
-= Listati
+= listati
 
 Il seguente codice è scritto in _python 3_ un linguaggio di programmazione molto utilizzato per il calcolo numerico e scientifico.
 

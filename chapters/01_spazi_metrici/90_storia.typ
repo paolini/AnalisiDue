@@ -1,6 +1,6 @@
 #import "../../lib.typ": *
 
-= Note storiche <note:Basilea>
+== note storiche <note:Basilea>
 
 Il problema di Basilea è un problema posto da Mengoli nel 1650 e risolto da Eulero nel 1734 dopo che i maggiori matematici del tempo (tra cui i famosi membri della famiglia Bernoulli che vivevano appunto a Basilea) avevano tentato invano di risolverlo.
 Si tratta di determinare la somma della serie @eq:basilea.

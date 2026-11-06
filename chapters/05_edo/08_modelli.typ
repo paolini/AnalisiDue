@@ -1,8 +1,8 @@
 #import "../../lib.typ": *
 
-= Modelli biologici di crescita
+== modelli biologici di crescita
 
-== Modello di Malthus
+=== modello di Malthus
 
 Il più semplice modello di crescita di una popolazione è quello in cui si suppone che la popolazione abbia nutrimento e spazio sufficiente per una crescita indeterminata.
 In questo modello la funzione $u(x)$ rappresenta la quantità di individui al tempo $x$ e si suppone che la velocità di crescita della popolazione $u'(x)$ sia proporzionale al numero di individui:
@@ -12,7 +12,7 @@ La soluzione di questa semplice equazione lineare (esercizio @ex:58230978) è $u
 Significa che se $A>1$ la popolazione cresce indefinitamente tendendo a $+infinity$ per $x -> +infinity$ con velocità esponenziale.
 Se $A<1$ invece la popolazione tende a zero (cioè si estingue) sempre con velocità esponenziale.
 
-== Equazione logistica
+=== equazione logistica
 
 Per rendere il modello di Malthus più realistico bisogna tenere conto del fatto che gli individui condividono uno spazio comune e che la presenza di molti individui nello stesso spazio diminuisce le risorse e quindi contribuisce in negativo alla crescita della popolazione.
 Supponiamo quindi che l'effetto negativo su una unità di popolazione sia proporzionale alla popolazione totale: $-B u$ mentre l'aumento Malthusiano è sempre dato dal coefficiente $A$ per unità di popolazione.
@@ -52,7 +52,7 @@ $ u(x) = 1 - 1/(1 +/- e^(x-x_0)). $
 Il grafico di queste funzioni è rappresentato in figura @fig:ode_logistica.
 Nel capitolo @sec:studio_qualitativo_edo vedremo come risulta molto semplice ottenere l'andamento qualitativo dei grafici delle soluzioni di questa equazione senza doverne determinare esplicitamente le soluzioni.
 
-== Il modello di Volterra-Lotka
+=== il modello di Volterra-Lotka
 
 Il modello preda/predatore di Volterra-Lotka è il primo esempio di modello matematico applicato alla biologia.
 Il matematico italiano Vito Volterra si era interessato al problema di capire, tramite un modello matematico, il fenomeno apparentemente paradossale per cui il calo delle attività di pesca durante la prima guerra mondiale ha causato alla ripresa della pesca una diminuzione della quantità di pesce commestibile e un contemporaneo relativo aumento delle specie predatorie come gli squali.

@@ -1,7 +1,5 @@
 #import "../../lib.typ": *
 
-= Funzioni di più variabili
-
 Uno degli argomenti principali del secondo corso di Analisi Matematica è lo studio delle funzioni di più variabili.
 Il nostro ambiente di studio privileged sarà lo spazio vettoriale reale di dimensione $n$.
 Si considera assimilata la conoscenza degli spazi vettoriali di dimensione finita.
@@ -61,7 +59,7 @@ In definitiva le funzioni $g_k: I subset RR -> RR$ sono funzioni scalari di una 
   Abbiamo trovato una _curva di livello_, cioè una curva su cui $f$ risulta costante.
 ]
 
-= Continuità e limiti
+== continuità e limiti
 
 La norma euclidea definisce una metrica e quindi una topologia su $RR^n$.
 
@@ -118,7 +116,7 @@ $ forall epsilon>0 quad exists N in NN quad forall k >= N : |a_k - x| < epsilon.
   La dimostrazione è la stessa già vista nel corso di Analisi Matematica Uno.
 ]
 
-= Differenziale
+== differenziale
 
 Se $V$ e $W$ sono spazi vettoriali denotiamo con $cal(L)(V,W)$ lo spazio vettoriale delle funzioni lineari e continue da $V$ in $W$.
 Se $V$ ha dimensione finita non serve richiedere la continuità, che è sempre garantita dal seguente.
@@ -256,7 +254,7 @@ Per le funzioni di una variabile _differenziabile_ è quindi equivalente a _deri
   che è la condizione di differenziabilità per $g compose f$ nel punto $x_0$ con differenziale $D g(y_0) D f(x_0)$.
 ]
 
-== Derivata direzionale
+== derivata direzionale
 
 Nel caso particolare in cui $f: A subset RR^n -> RR^m$ e $u: I subset RR -> A subset RR^n$, la formula per la derivata della funzione composta diventa
 $ d / (d t) f(u(t)) = D f(u(t))[u'(t)] $
@@ -279,7 +277,7 @@ $ (partial f) / (partial v) (x) = chevron.l nabla f(x), v chevron.r. $
       &= lr([d / (d t) ((alpha t-1)(beta t+2))])_(t=0) \
       &= lr([d / (d t) (-2 + (2alpha-beta)t + alpha beta t^2)])_(t=0) \
       &= lr([2alpha-beta + 2alpha beta t])_(t=0) = 2alpha-beta. $
-  Effettivamente sapendo dall'esempio @ex:48993 che $nabla f(0,0) = (2,-1)$ si verifica che
+  Effettivamente sapendo dall'@ex:48993 che $nabla f(0,0) = (2,-1)$ si verifica che
   $ 2alpha - beta = chevron.l nabla f(0,0), (alpha,beta) chevron.r. $
 ]
 
@@ -297,7 +295,7 @@ $ (partial f) / (partial v) (x) = chevron.l nabla f(x), v chevron.r. $
   Osserviamo che in questo caso $(partial f) / (partial v)$ non è lineare in $v$ e quindi $f$ non può essere differenziabile in $(0,0)$.
 ]
 
-== Derivate parziali
+== derivate parziali
 
 Si capisce che per determinare il differenziale di una funzione differenziabile è sufficiente calcolare le derivate direzionali lungo gli $n$ vettori di una base.
 In particolare se si scelgono i vettori della base canonica si ottengono le cosiddette _derivate parziali_:
@@ -385,7 +383,7 @@ Risulta quindi molto utile il seguente.
   e si capisce quindi la necessità di distinguere tra derivata parziale $(partial f) / (partial x)$ e derivata totale $(d f) / (d x)$.
 ]
 
-= Derivate successive
+== derivate successive
 
 In generale possiamo definire il differenziale di una funzione $f: V -> W$ definita tra due spazi vettoriali normati $V$ e $W$.
 Il differenziale risulta essere allora una funzione $d f: V -> cal(L)(V,W)$ che manda ogni punto $x in V$ in cui la funzione è differenziabile nell'applicazione lineare e continua $D f(x) in cal(L)(V,W)$.
@@ -496,7 +494,7 @@ Per le derivate $k$-esime il differenziale $D^k f$ rappresenta una forma $k$-lin
   La dimostrazione è analoga, con una discreta complicazione delle notazioni.
 ]
 
-= Ottimizzazione
+== ottimizzazione
 
 Data una funzione $f: A subset RR^n -> RR$ ci poniamo il problema di determinare eventuali punti di massimo e minimo di $f$ su $A$.
 

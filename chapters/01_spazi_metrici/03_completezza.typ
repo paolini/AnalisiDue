@@ -1,6 +1,6 @@
 #import "../../lib.typ": *
 
-= completezza
+== completezza
 
 #definition[successioni di Cauchy][
   Sia $(X,d)$ uno spazio metrico e $x_k$ una successione di punti di $X$.

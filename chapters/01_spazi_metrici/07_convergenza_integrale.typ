@@ -1,6 +1,6 @@
 #import "../../lib.typ": *
 
-= Convergenza integrale <sec:convergenza_integrale>
+== convergenza integrale <sec:convergenza_integrale>
 
 Motivati da come viene definita la norma di un vettore in $RR^n$ risulta naturale dare la seguente definizione di _norma euclidea_ per una funzione $f: (a,b) -> RR$:
 $ norm(f)_2 = sqrt(integral_a^b |f(x)|^2 thin d x). $
@@ -37,12 +37,12 @@ Lo spazio quoziente $H(a,b)$ risulta finalmente essere uno spazio euclideo.
 Mantiene infatti la struttura vettoriale (in quanto l'insieme delle $f in cal(H)(a,b)$ con $norm(f)_2=0$ è uno spazio vettoriale) e il prodotto scalare $chevron.l f,g chevron.r$ (e di conseguenza la norma $norm(f)_2$) è ben definito su $H(a,b)$ e oltre alle proprietà che già abbiamo dimostrato possiamo ora affermare che $chevron.l f,f chevron.r = norm(f)_2=0$ se e solo se $f=0$.
 
 #remark[
-  La notazione $H(a,b)$ che scegliamo di utilizzare per definire questo spazio non è standard. La lettera $H$ rimanda ad Hilbert in quanto lo studio di questo spazio in particolare ha spinto verso l'astrazione del concetto di spazio di Hilbert. Quello che vedremo nel seguito è che questo spazio non risulta essere completo e dunque in realtà non è uno spazio di Hilbert. In effetti l'utilizzo degli integrali impropri è un tentativo di estendere l'integrale di Riemann in modo da rendere completo questo spazio. Solo con la definizione di integrale di Lebesgue (1875–1941) si è riusciti ad estendere l'integrale di Riemann ad una classe più ampia di funzioni fino a completare lo spazio. L'analogo dello spazio $H(a,b)$ definito tramite integrale di Lebesgue viene usualmente chiamato $L^2$. L'esponente $2$ è dovuto al fatto che sarebbe possibile definire gli spazi $L^p$ in maniera analoga a quanto fatto nell'esempio @ex:norma_p. Si avrebbe ancora che solo per $p=2$ questi spazi normati sono euclidei, cioè solo per $p=2$ la norma è indotta da un prodotto scalare. Tutti gli spazi $L^p$ sono completi e dunque sono spazi di Banach. Ma $L^2$ è anche uno spazio di Hilbert, in quanto è dotato di prodotto scalare. Anzi potremmo dire che $L^2$ è lo spazio di Hilbert per antonomasia e viene denotato anche con il nome $H^0$ (in questo caso l'esponente denota la derivabilità delle funzioni, come in $C^0$).
+  La notazione $H(a,b)$ che scegliamo di utilizzare per definire questo spazio non è standard. La lettera $H$ rimanda ad Hilbert in quanto lo studio di questo spazio in particolare ha spinto verso l'astrazione del concetto di spazio di Hilbert. Quello che vedremo nel seguito è che questo spazio non risulta essere completo e dunque in realtà non è uno spazio di Hilbert. In effetti l'utilizzo degli integrali impropri è un tentativo di estendere l'integrale di Riemann in modo da rendere completo questo spazio. Solo con la definizione di integrale di Lebesgue (1875–1941) si è riusciti ad estendere l'integrale di Riemann ad una classe più ampia di funzioni fino a completare lo spazio. L'analogo dello spazio $H(a,b)$ definito tramite integrale di Lebesgue viene usualmente chiamato $L^2$. L'esponente $2$ è dovuto al fatto che sarebbe possibile definire gli spazi $L^p$ in maniera analoga a quanto fatto nell'@ex:norma_p. Si avrebbe ancora che solo per $p=2$ questi spazi normati sono euclidei, cioè solo per $p=2$ la norma è indotta da un prodotto scalare. Tutti gli spazi $L^p$ sono completi e dunque sono spazi di Banach. Ma $L^2$ è anche uno spazio di Hilbert, in quanto è dotato di prodotto scalare. Anzi potremmo dire che $L^2$ è lo spazio di Hilbert per antonomasia e viene denotato anche con il nome $H^0$ (in questo caso l'esponente denota la derivabilità delle funzioni, come in $C^0$).
 ]
 
 Gli elementi di $H(a,b)$ non sono funzioni, ma classi di equivalenza di funzioni. Nel seguito, però, tratteremo $f in H(a,b)$ come se fosse $f in cal(H)(a,b)$ facendo attenzione che le nostre affermazioni rimangano valide se al posto di una funzione $f$ si prende una funzione a lei equivalente. In particolare avrà senso considerare gli integrali di queste funzioni, perché il valore dell'integrale non dipende dal rappresentante scelto, ma non avrà senso considerare il valore che le funzioni assumono in un singolo punto, perché questo dipende dal rappresentante.
 
-== Serie di Fourier <sec:serie_fourier>
+== serie di Fourier <sec:serie_fourier>
 
 Lo spazio $H(a,b)$ è uno spazio vettoriale reale su cui siamo riusciti a definire un prodotto scalare e quindi una norma. Vorremmo trovare su $H(a,b)$ una base ortonormale rispetto alla quale sia possibile scrivere le coordinate dei vettori (cioè delle funzioni) di $H(a,b)$. Visto che $H(a,b)$ non ha dimensione finita non potremo sperare di trovare una base con un numero finito di elementi. Introduciamo quindi la seguente.
 
@@ -363,7 +363,7 @@ $ c_k = phi(f) = chevron.l f, e_k chevron.r. $
 
 Chiaramente tale $phi$ è lineare. Visto che $e_k$ è una base hilbertiana è facile verificare che $phi$ è anche iniettivo. Se su $ell^2$ definiamo il prodotto scalare e la norma corrispondente:
 $ chevron.l x,y chevron.r = sum_(k=0)^(+infinity) x_k y_k, quad |x|_2 = sqrt(sum_(k=0)^(+infinity) x_k^2) $
-l'uguaglianza di Bessel ci dice che $phi$ mantiene la norma e quindi la struttura di spazio euclideo. Si potrebbe dimostrare che $ell^2$ è completo e questo significa che $phi$ non è suriettiva in quanto la successione $f_n$ considerata nell'esempio @ex:incompletezza_di_H è di Cauchy in $H(0,2pi)$, dunque $phi(f_n)$ è di Cauchy in $ell^2$ e dunque converge in $ell^2$. Il limite $c$ della successione $phi(f_n)$ rappresenta una successione di coefficienti di Fourier che non possono essere ottenuti da nessuna funzione $f in H(0,2pi)$.
+l'uguaglianza di Bessel ci dice che $phi$ mantiene la norma e quindi la struttura di spazio euclideo. Si potrebbe dimostrare che $ell^2$ è completo e questo significa che $phi$ non è suriettiva in quanto la successione $f_n$ considerata nell'@ex:incompletezza_di_H è di Cauchy in $H(0,2pi)$, dunque $phi(f_n)$ è di Cauchy in $ell^2$ e dunque converge in $ell^2$. Il limite $c$ della successione $phi(f_n)$ rappresenta una successione di coefficienti di Fourier che non possono essere ottenuti da nessuna funzione $f in H(0,2pi)$.
 
 Possiamo utilizzare le serie di Fourier per risolvere il seguente #footnote[vedi note storiche a pag \@note:Basilea].
 

@@ -1,6 +1,6 @@
 #import "../../lib.typ": *
 
-= Scambio della derivata con il limite
+== scambio della derivata con il limite
 
 #theorem[scambio del limite con la derivata][
   Sia $I subset RR$ un intervallo e siano $f_k in C^1(I)$ funzioni tali che $f_k (x_0)$ converge per almeno un punto $x_0 in I$ e la successione delle derivate $f_k'$ converge ad una funzione $g: I -> RR$ uniformemente su ogni intervallo chiuso e limitato $[a,b] subset I$. Allora esiste $f in C^1(I)$ tale che $f'=g$ e $f_k$ converge a $f$ uniformemente su ogni intervallo chiuso e limitato $[a,b] subset I$.
@@ -21,7 +21,7 @@
       &<= |f_k (x_0) - y_0| + (b-a) norm(f_k' - g) -> 0. $
 ]
 
-Lo spazio $C^1([a,b])$ è un sottospazio vettoriale di $C^0([a,b])$ ma non è chiuso, come si deduce dall'esempio @ex:466533 (si potrebbe anzi dimostrare che $C^1$ è denso in $C^0$) dunque $C^1$ non è completo rispetto alla norma uniforme.
+Lo spazio $C^1([a,b])$ è un sottospazio vettoriale di $C^0([a,b])$ ma non è chiuso, come si deduce dall'@ex:466533 (si potrebbe anzi dimostrare che $C^1$ è denso in $C^0$) dunque $C^1$ non è completo rispetto alla norma uniforme.
 Per trasformare lo spazio $C^1([a,b])$ in uno spazio di Banach possiamo definire una norma più forte, come ad esempio questa:
 $ norm(f)_(C^1) = norm(f)_infinity + norm(f')_infinity. $
 
@@ -38,7 +38,7 @@ $ norm(f)_(C^1) = norm(f)_infinity + norm(f')_infinity. $
 
 Il teorema di scambio del limite con l'integrale ci dice che l'operatore integrale $S: C^0 -> C^1$ è continuo tra i due spazi di Banach. Anche l'operatore differenziale $D: C^1 -> C^0$ $f |-> D f = f'$ è ovviamente continuo.
 
-== Serie di funzioni
+== serie di funzioni
 
 Se $f_k: A -> RR$ è una successione di funzioni definite su uno stesso insieme $A$, possiamo considerare (come abbiamo già fatto per le successioni numeriche) la successione delle somme parziali:
 $ S_n (x) = sum_(k=0)^n f_k (x), quad x in A. $

@@ -18,12 +18,12 @@ Per lo stesso motivo mancano completamente da questa classificazione anche altri
     node((0, 0), [insieme], name: <insieme>),
     node((-1, 1), [sp. vettoriale], name: <sv>),
     node((-1, 3), [sp. normato], name: <sn>),
-    node((-1, 5), [sp. euclideo], name: <euclideo>),
+    node((-1, 4), [sp. euclideo], name: <euclideo>),
     node((1, 1), [sp. topologico], name: <st>),
     node((1, 2), [sp. metrico], name: <sm>),
-    node((1, 3.5), [sp. completo], name: <completo>),
-    node((0, 4.5), [Banach], name: <banach>),
-    node((0, 6), [Hilbert], name: <hilbert>),
+    node((1, 3), [sp. completo], name: <completo>),
+    node((0, 4), [Banach], name: <banach>),
+    node((0, 5), [Hilbert], name: <hilbert>),
 
     // --- FRECCE "è un" (Nero) ---
     edge(<sv>, <insieme>, "->", stroke: black),
@@ -45,10 +45,10 @@ Per lo stesso motivo mancano completamente da questa classificazione anche altri
     node((-3, 1), text(fill: color1, $+, dot$), name: <svT>),
     edge(<svT>, <sv>, "-", stroke: color2),
 
-    node((-3, 3), text(fill: color1, $norm(v)$), name: <snT>),
+    node((-3, 2.5), text(fill: color1, $norm(v)$), name: <snT>),
     edge(<snT>, <sn>, "-", stroke: color2),
 
-    node((-3, 5), text(fill: color1, $chevron.l v, w chevron.r$), name: <euclideoT>),
+    node((-3, 4.5), text(fill: color1, $chevron.l v, w chevron.r$), name: <euclideoT>),
     edge(<euclideoT>, <euclideo>, "-", stroke: color2),
 
     node((2, 0), text(fill: color1, $lim, accent(A, circle), macron(A)$), name: <stT>),
@@ -64,16 +64,16 @@ Per lo stesso motivo mancano completamente da questa classificazione anche altri
     node((2, 2.5), text(fill: color3, $QQ$), name: <Q>),
     edge(<Q>, <sm>, "->", stroke: color4),
 
-    node((2, 4), text(fill: color3, $bb(S)^n$), name: <Sn>),
+    node((2, 3.5), text(fill: color3, $bb(S)^n$), name: <Sn>),
     edge(<Sn>, <completo>, "->", stroke: color4),
 
-    node((1.2, 5), text(fill: color3, $cal(C)^n, L^p, ell^p$), name: <Cn>),
+    node((1.2, 4.5), text(fill: color3, $cal(C)^n, L^p, ell^p$), name: <Cn>),
     edge(<Cn>, <banach>, "->", stroke: color4),
 
-    node((1.2, 6.5), text(fill: color3, $L^2, ell^2$), name: <L2>),
+    node((1, 5.5), text(fill: color3, $L^2, ell^2$), name: <L2>),
     edge(<L2>, <hilbert>, "->", stroke: color4),
 
-    node((0, 7), text(fill: color3, $RR^n$), name: <Rn>),
+    node((0, 6), text(fill: color3, $RR^n$), name: <Rn>),
     edge(<Rn>, <hilbert>, "->", stroke: color4),
   )],
   caption: [

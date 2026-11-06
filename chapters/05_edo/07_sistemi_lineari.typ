@@ -1,6 +1,6 @@
 #import "../../lib.typ": *
 
-= Sistemi lineari
+== sistemi lineari
 
 Un sistema lineare omogeneo a coefficienti costanti del primo ordine si scrive in generale nella forma:
 $ vec(u)'(x) = A vec(u)(x) $
@@ -27,7 +27,7 @@ con $c_1, dots, c_n$ costanti arbitrarie.
 
 Se la matrice $A$ non è diagonalizzabile sul campo reale è possibile che risulti diagonalizzabile nel campo complesso. Più in generale la matrice potrà essere portata in forma di Jordan. Per brevità non cercheremo di trattare il caso generale, ma ci concentreremo sul caso $n=2$ che contiene comunque una casistica piuttosto ampia.
 
-== Sistemi $2 times 2$
+=== sistemi $2 times 2$
 
 Nel caso $n=2$ sarà comodo usare $t$ come variabile indipendente (al posto di $x$) e chiamare $x(t)$ e $y(t)$ le due coordinate della funzione vettoriale incognita.
 Il sistema che vogliamo trattare sarà quindi della forma:
@@ -154,7 +154,7 @@ Se $alpha = 0$ le traiettorie sono delle ellissi concentriche, le soluzioni sono
 
 Se almeno uno dei due autovalori è nullo il comportamento del sistema è degenere, si hanno delle soluzioni banali che non andremo a investigare.
 
-== Matrice esponenziale
+=== matrice esponenziale
 
 Per risolvere, in astratto, il sistema $n times n$ del primo ordine, lineare omogeneo a coefficienti costanti
 $ vec(u)' = A vec(u) $

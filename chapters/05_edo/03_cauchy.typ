@@ -1,6 +1,6 @@
 #import "../../lib.typ": *
 
-= Il problema di Cauchy
+== il problema di Cauchy
 
 Il problema di Cauchy per i sistemi del primo ordine consiste nel trovare una soluzione di un sistema di $n$ equazioni differenziali ordinarie del primo ordine in $n$ incognite $u_1, dots, u_n$ con un dato iniziale fissato.
 Cioè dato $x_0 in RR$, e $vec(y)_0 in RR^n$ si cerca un intervallo $I subset RR$ con $x_0 in I$ e una funzione $vec(u): I -> RR^n$, $vec(u) = (u_1, dots, u_n)$, tale che $vec(u)$ sia derivabile e soddisfi:
@@ -9,7 +9,7 @@ $ cases(
   vec(u)(x_0) = vec(y)_0.
 ) $ <eq:problema_cauchy>
 
-== Esistenza e unicità locale
+=== esistenza e unicità locale
 
 #theorem[Cauchy-Lipschitz: esistenza e unicità locale][
   Siano $a <= x_0 <= b$, $R>0$, $vec(y)_0 in RR^n$.
@@ -200,7 +200,7 @@ $ cases(
   Questa è una estensione massimale perché se ci fosse una estensione definita su un intervallo più grande sarebbe anch'essa inclusa in $cal(F)$.
 ]
 
-== Esistenza globale
+=== esistenza globale
 
 #theorem[esistenza globale][
   Sia $I = (a,b) subset RR$ un intervallo aperto, $Omega = I times RR^n$ e sia $vec(f): Omega -> RR^n$, $vec(f) = vec(f)(x, vec(y))$ una funzione che soddisfa la proprietà di Cauchy-Lipschitz e che sia sublineare in $vec(y)$ uniformemente rispetto a $x$, cioè esistono $m,q in RR$ tali che:

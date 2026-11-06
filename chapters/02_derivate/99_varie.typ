@@ -69,7 +69,7 @@ Se $A,B$ sono compatti, se $f: A -> B$ e continua e bigettiva allora $f^(-1)$ è
   dunque la tesi $(L v_k, w_j) = 0$ è verificata per ogni $k != j$.
 ]
 
-= Discesa lungo il gradiente (algoritmo discreto)
+== discesa lungo il gradiente (algoritmo discreto)
 
 Sia $f: RR^n -> RR$ una funzione di classe $C^1$ coerciva (cioè $f(x) -> +infinity$ per $|x| -> +infinity$).
 Per il teorema di Weierstrass generalizzato sappiamo che $f$ ammette minimo.

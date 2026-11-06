@@ -1,6 +1,6 @@
 #import "../../lib.typ": *
 
-= Convergenza uniforme
+== convergenza uniforme
 
 #definition[Convergenza uniforme][
   Sia $A$ un insieme non vuoto e $f: A -> RR$. Definiamo la _norma uniforme_ (o norma del $sup$) di $f$ come
@@ -124,11 +124,11 @@ risulta essere un insieme chiuso e limitato che però non è compatto.
 La norma uniforme è la norma naturale su $C^0([a,b])$ in quanto lo rende uno spazio completo. Per questo motivo la norma uniforme sulle funzioni continue viene anche chiamata _norma $C^0$_ e si può denotare nel modo seguente:
 $ norm(f)_(C^0) = norm(f)_(C^0([a,b])) = norm(f)_oo quad "per " f in C^0([a,b]). $
 
-= Ascoli-Arzelà
+== Ascoli-Arzelà
 
 #theorem[Ascoli-Arzelà astratto][
   Siano $X$ e $Y$ spazi metrici compatti e sia $cal(F) subset C^0(X,Y)$. Allora $cal(F)$ è totalmente limitato (rispetto alla distanza uniforme su $C^0(X,Y)$) se e solo se $cal(F)$ è equicontinuo, cioè se vale:
-  $ forall epsilon > 0 thin exists delta > 0 : forall f in cal(F) thin forall x, x' in X : d(x, x') < delta => d(f(x), f(x')) < epsilon. $ <eq:equicontinuo>
+  $ forall epsilon > 0 thin exists delta > 0 : forall f in cal(F): forall x, x' in X : d(x, x') < delta => d(f(x), f(x')) < epsilon. $ <eq:equicontinuo>
 ]
 
 #proof[
@@ -137,7 +137,9 @@ $ norm(f)_(C^0) = norm(f)_(C^0([a,b])) = norm(f)_oo quad "per " f in C^0([a,b]).
   significa che anche $cal(F)$ è equicontinuo, come volevamo dimostrare.
 
   _Seconda parte:_ mostriamo che @eq:equicontinuo è una condizione sufficiente affinché $cal(F)$ sia totalmente limitato. Sia $epsilon > 0$ fissato. Per equicontinuità esiste $delta > 0$ tale che $d(x, x') < delta => d(f(x), f(x')) < epsilon$ per ogni $f in cal(F)$. Dato che $X$ è compatto esso è anche totalmente limitato, dunque esiste un $delta$-reticolo finito $X_delta subset X$. Anche $Y$ è totalmente limitato dunque esiste un $epsilon$-reticolo finito $Y_epsilon subset Y$. Dunque per ogni funzione $f in cal(F)$ esiste una funzione $g: X_delta -> Y_epsilon$ tale che $d(f(x), g(x)) < epsilon$ per ogni $x in X_delta$. Osserviamo che le funzioni $X_delta -> Y_epsilon$ sono in numero finito, significa che posso trovare un sottoinsieme finito $cal(G) subset cal(F)$ tale che per ogni $f in cal(F)$ esiste $g in cal(G)$ per cui $d(f(x), g(x)) < 2 epsilon$ per ogni $x in X_delta$. Vogliamo ora dimostrare che $cal(G)$ è un $4 epsilon$-reticolo di $cal(F)$ sfruttando il fatto che l'equicontinuità di $cal(F)$ permette di stimare la distanza delle funzioni al di fuori dei punti del reticolo $X_delta$. Sia $f in cal(F)$ e sia $g in cal(G)$ tale che $d(f(x), g(x)) < 2 epsilon$ per ogni $x in X_delta$. Siano $x, x' in X$ due punti qualsiasi e siano $x_delta, x'_delta in X_delta$ due punti del reticolo tali che $d(x, x_delta) < delta$ e $d(x', x'_delta) < delta$. Allora per l'equicontinuità di $cal(F)$ e di $cal(G)$ si ha:
-  $ d(f(x), g(x)) <= d(f(x), f(x_delta)) + d(f(x_delta), g(x_delta)) + d(g(x_delta), g(x)) < epsilon + 2 epsilon + epsilon = 4 epsilon. $
+  $ d(f(x), g(x)) 
+    & <= d(f(x), f(x_delta)) + d(f(x_delta), g(x_delta)) + d(g(x_delta), g(x)) 
+    \ &< epsilon + 2 epsilon + epsilon = 4 epsilon. $
 ]
 
 #corollary[Ascoli-Arzelà in pratica][
@@ -145,7 +147,7 @@ $ norm(f)_(C^0) = norm(f)_(C^0([a,b])) = norm(f)_oo quad "per " f in C^0([a,b]).
   + le funzioni $f_k$ sono uniformemente limitate, cioè esiste $M > 0$ tale che per ogni $k$ e per ogni $x in [a,b]$ si ha
     $ |f_k (x)| <= M; $
   + le funzioni $f_k$ sono equicontinue, cioè per ogni $epsilon > 0$ esiste $delta > 0$ tale che per ogni $k$ e per ogni $x_1, x_2 in [a,b]$ si ha
-    $ forall epsilon > 0 thin exists delta > 0 : forall k in NN, thin forall x, x' in [a,b] : |x - x'| < delta => |f_k (x) - f_k (x')| < epsilon. $
+    $    |x - x'| < delta => |f_k (x) - f_k (x')| < epsilon. $
   Allora esiste una sottosuccessione $f_(k_j)$ che converge uniformemente ad una funzione continua $f: [a,b] -> RR$.
 ]
 

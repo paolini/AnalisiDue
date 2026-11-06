@@ -1,8 +1,6 @@
 #import "../../lib.typ": *
 
-= Convessità
-
-== Insiemi convessi
+== convessità
 
 #definition[insieme convesso][
   Sia $A subset RR^n$ un insieme.

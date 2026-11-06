@@ -1,7 +1,7 @@
 #import "../../lib.typ": *
 
 /*
-= Spazi topologici
+== spazi topologici
 
 #definition[Spazio topologico][
   Sia $X$ un insieme e sia $tau subset cal(P)(X)$ una famiglia di sottoinsiemi di $X$.
@@ -142,7 +142,7 @@ Anche in questo caso abbiamo considerato due diverse nozioni di continuità che 
   Sia $X$ uno spazio metrico o un sottoinsieme di uno sottospazio metrico. Si dirà che $X$ è _limitato_ se è contenuto in una palla ovvero se esiste $x_0 in X$ e $R > 0$ tale che $X subset B_R (x_0)$.
 ] <def:spazio_limitato>
 
-= Compattezza sequenziale
+== compattezza sequenziale
 
 #definition[Compattezza sequenziale][
   Sia $X$ uno spazio metrico o un sottoinsieme di uno spazio metrico. Si dirà che $X$ è _sequenzialmente compatto_ se da ogni successione $x_k in X$ è possibile estrarre una sottosuccessione $x_(k_j) -> x$ convergente ad un punto $x in X$.

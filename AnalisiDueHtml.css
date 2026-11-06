@@ -1,0 +1,33 @@
+body {
+  max-width: 54rem;
+  margin: 3rem auto;
+  padding: 0 1.25rem;
+  color: #202830;
+  background: white;
+  font: 1.1rem/1.65 Georgia, serif;
+}
+h1, h2, h3, h4, nav {
+  font-family: Lato, system-ui, sans-serif;
+}
+h1, h2, h3, h4, a { color: #2b6cb0; }
+h1 { line-height: 1.2; }
+h2 { margin-top: 3rem; border-bottom: 1px solid #dbe5ef; }
+a { text-underline-offset: .15em; }
+nav { padding: 1rem 1.5rem; background: #f4f7fb; border-radius: .5rem; }
+nav h2 { margin-top: 0; }
+nav ol { padding-left: 1.25rem; }
+section { margin: 1.5rem 0; padding: .25rem 1rem; border-left: 3px solid #2b6cb0; }
+section.example { border-color: #eab308; }
+section.definition { border-color: #2f855a; }
+section.exercise { border-color: #d69e2e; }
+section > :first-child { margin-top: .25rem; }
+section > :last-child { margin-bottom: .25rem; }
+figure { margin: 2rem 0; text-align: center; }
+figcaption { margin-top: .75rem; font-size: .9em; }
+img, svg { max-width: 100%; height: auto; }
+math[display="block"] { overflow-x: auto; padding: .5rem 0; }
+pre { padding: 1rem; background: #f4f7fb; overflow-x: auto; font-size: .85em; }
+@media (max-width: 600px) {
+  body { margin: 1.5rem auto; font-size: 1rem; }
+  nav { padding: .75rem; }
+}

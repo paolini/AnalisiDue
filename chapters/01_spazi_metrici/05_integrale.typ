@@ -3,10 +3,10 @@
 = Passaggio al limite sotto il segno di integrale <sec:scambio_integrale_limite>
 
 #example[La funzione $Gamma$ di Eulero][
-  Si definisce $Gamma: (0,+infinity) -> RR$ come
-  $ Gamma(x) = integral_0^(+infinity) e^(-t) t^(x-1) d t. $
+  Si definisce $Gamma: (0,+oo) -> RR$ come
+  $ Gamma(x) = integral_0^(+oo) e^(-t) t^(x-1) d t. $
 
-  L'integrale converge per ogni $x > 0$ in quanto posto $f(t) = e^(-t) t^(x-1)$ per $t -> 0^+$ si ha $f(t) ~ t^(x-1)$ che ha integrale convergente in un intorno di $0$ mentre per $t -> +infinity$ si ha $f(t) << e^(-t/2)$ che ha integrale convergente in un intorno di $+infinity$.
+  L'integrale converge per ogni $x > 0$ in quanto posto $f(t) = e^(-t) t^(x-1)$ per $t -> 0^+$ si ha $f(t) ~ t^(x-1)$ che ha integrale convergente in un intorno di $0$ mentre per $t -> +oo$ si ha $f(t) << e^(-t/2)$ che ha integrale convergente in un intorno di $+oo$.
 
   Integrando per parti si ottiene una interessante proprietà della funzione $Gamma$:
   $ integral_0^(+infinity) e^(-t) t^x d t

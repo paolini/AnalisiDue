@@ -5,11 +5,15 @@ Gli spazi vettoriali (algebra lineare) li diamo per noti, in quanto sono usualme
 Gli spazi topologici verranno solamente accennati in quanto non saranno direttamente utili ai nostri scopi e una trattazione completa richiederebbe molto tempo.
 Per lo stesso motivo mancano completamente da questa classificazione anche altri spazi molto rilevanti (ad esempio i gruppi e le varietà differenziali).
 
-#figure(
+#{
+  let color1 = purple
+  let color2 = purple.darken(20%)
+  let color3 = blue
+  let color4 = blue.darken(20%)
+  figure(
   text(size: 8.5pt)[
   #diagram(
     spacing: (0.1cm, 0.7cm),
-//    cell-size: 5mm, 
     // --- NODI PRINCIPALI (Strutture) ---
     node((0, 0), [insieme], name: <insieme>),
     node((-1, 1), [sp. vettoriale], name: <sv>),
@@ -34,43 +38,43 @@ Per lo stesso motivo mancano completamente da questa classificazione anche altri
     edge(<sn>, <sm>, "->", stroke: black),
     edge(<banach>, <sn>, "->", stroke: black),
 
-    // --- OPERAZIONI TIPICHE (Grigio Chiaro) ---
-    node((-1, 0), text(fill: luma(100), $in, subset, union$), name: <insiemeT>),
+    // --- OPERAZIONI TIPICHE (color2/color3) ---
+    node((-1, 0), text(fill: purple, $in, subset, union$), name: <insiemeT>),
 
-    edge(<insiemeT>, <insieme>, "-", stroke: luma(180)),
-    node((-3, 1), text(fill: luma(100), $+, dot$), name: <svT>),
-    edge(<svT>, <sv>, "-", stroke: luma(180)),
+    edge(<insiemeT>, <insieme>, "-", stroke: color2),
+    node((-3, 1), text(fill: color1, $+, dot$), name: <svT>),
+    edge(<svT>, <sv>, "-", stroke: color2),
 
-    node((-3, 3), text(fill: luma(100), $norm(v)$), name: <snT>),
-    edge(<snT>, <sn>, "-", stroke: luma(180)),
+    node((-3, 3), text(fill: color1, $norm(v)$), name: <snT>),
+    edge(<snT>, <sn>, "-", stroke: color2),
 
-    node((-3, 5), text(fill: luma(100), $chevron.l v, w chevron.r$), name: <euclideoT>),
-    edge(<euclideoT>, <euclideo>, "-", stroke: luma(180)),
+    node((-3, 5), text(fill: color1, $chevron.l v, w chevron.r$), name: <euclideoT>),
+    edge(<euclideoT>, <euclideo>, "-", stroke: color2),
 
-    node((2, 0), text(fill: luma(100), $lim, accent(A, circle), macron(A)$), name: <stT>),
-    edge(<stT>, <st>, "-", stroke: luma(180)),
+    node((2, 0), text(fill: color1, $lim, accent(A, circle), macron(A)$), name: <stT>),
+    edge(<stT>, <st>, "-", stroke: color2),
 
-    node((2.5, 1.75), text(fill: luma(100), [$d(x,y)$, Lip]), name: <smT>),
-    edge(<smT>, <sm>, "-", stroke: luma(180)),
+    node((2.5, 1.75), text(fill: color1, [$d(x,y)$, Lip]), name: <smT>),
+    edge(<smT>, <sm>, "-", stroke: color2),
     
-    // --- ESEMPI (Grigio Scuro) ---
-    node((2, 1), text(fill: luma(60), $macron(RR)$), name: <Rbar>),
-    edge(<Rbar>, <st>, "->", stroke: luma(80)),
+    // --- ESEMPI (color3/color4) ---
+    node((2, 1), text(fill: color3, $macron(RR)$), name: <Rbar>),
+    edge(<Rbar>, <st>, "->", stroke: color4),
 
-    node((2, 2.5), text(fill: luma(60), $QQ$), name: <Q>),
-    edge(<Q>, <sm>, "->", stroke: luma(80)),
+    node((2, 2.5), text(fill: color3, $QQ$), name: <Q>),
+    edge(<Q>, <sm>, "->", stroke: color4),
 
-    node((2, 4), text(fill: luma(60), $bb(S)^n$), name: <Sn>),
-    edge(<Sn>, <completo>, "->", stroke: luma(80)),
+    node((2, 4), text(fill: color3, $bb(S)^n$), name: <Sn>),
+    edge(<Sn>, <completo>, "->", stroke: color4),
 
-    node((1.2, 5), text(fill: luma(60), $cal(C)^n, L^p, ell^p$), name: <Cn>),
-    edge(<Cn>, <banach>, "->", stroke: luma(80)),
+    node((1.2, 5), text(fill: color3, $cal(C)^n, L^p, ell^p$), name: <Cn>),
+    edge(<Cn>, <banach>, "->", stroke: color4),
 
-    node((1.2, 6.5), text(fill: luma(60), $L^2, ell^2$), name: <L2>),
-    edge(<L2>, <hilbert>, "->", stroke: luma(80)),
+    node((1.2, 6.5), text(fill: color3, $L^2, ell^2$), name: <L2>),
+    edge(<L2>, <hilbert>, "->", stroke: color4),
 
-    node((0, 7), text(fill: luma(60), $RR^n$), name: <Rn>),
-    edge(<Rn>, <hilbert>, "->", stroke: luma(80)),
+    node((0, 7), text(fill: color3, $RR^n$), name: <Rn>),
+    edge(<Rn>, <hilbert>, "->", stroke: color4),
   )],
   caption: [
     Strutture matematiche che astraggono lo spazio $RR^n$.
@@ -78,7 +82,7 @@ Per lo stesso motivo mancano completamente da questa classificazione anche altri
     la freccia scura: "è un esempio di",
     la linea chiara: "è una operazione tipica di".
   ],
-) <fig:spazi>
+)} <fig:spazi>
 
 #definition[spazio metrico][
   Diremo che $d: X times X -> RR$ è una _distanza_ su $X$ se per ogni $x,y,z in X$ valgono le seguenti proprietà:
@@ -189,7 +193,9 @@ Dunque uno spazio euclideo ha, in modo naturale, una struttura di spazio normato
 
   Le proprietà di positività, omogeneità, simmetria e separazione della norma $abs(v)$ seguono direttamente dalle proprietà analoghe del prodotto scalare $chevron.l v,w chevron.r$.
   La disuguaglianza triangolare segue invece dalla disuguaglianza di Schwarz, infatti:
-  $ abs(v+w)^2 = chevron.l v+w, v+w chevron.r = abs(v)^2 + abs(w)^2 + 2 chevron.l v,w chevron.r <= abs(v)^2 + abs(w)^2 + 2 abs(v) dot abs(w) = (abs(v) + abs(w))^2 $
+  $ abs(v+w)^2
+    & = chevron.l v+w, v+w chevron.r = abs(v)^2 + abs(w)^2 + 2 chevron.l v,w chevron.r \
+    & <= abs(v)^2 + abs(w)^2 + 2 abs(v) dot abs(w) = (abs(v) + abs(w))^2 $
   da cui $abs(v+w) <= abs(v) + abs(w)$.
  
   Per quanto riguarda la continuità ricordiamoci che $v_k -> v$ significa $abs(v_k - v) -> 0$. Possiamo allora scrivere

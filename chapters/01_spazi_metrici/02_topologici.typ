@@ -159,9 +159,9 @@ Possiamo estendere questo risultato in $RR^n$.
 #proof[
   Sia $vec(x)_k in K$ una qualunque successione di punti.
   Se $K$ è limitato significa che esiste una palla $B_r (vec(y))$ che contiene $K$ dunque $abs(vec(x)_k - vec(y)) < r$ per ogni $k$.
-  Posto $R = r + abs(vec(y))$ per disuguaglianza triangolare possiamo affermare che $abs(vec(x)_k) < R$ per ogni $k$.
-  Denotiamo con $((x_k)_1, ..., (x_k)_n)$ le coordinate del punto $vec(x)_k in RR^n$.
-  Allora visto che $abs((x_k)_j) <= abs(vec(x)_k)$ si ottiene $(x_k)_j in [-R, R]$ per ogni $k in NN$ e ogni $j = 1, ..., n$.
+  Posto $R = r + |vec(y)|$ per disuguaglianza triangolare possiamo affermare che $|vec(x)_k| < R$ per ogni $k$.
+  Denotiamo con $((vec(x)_k)_1, ..., (vec(x)_k)_n)$ le coordinate del punto $vec(x)_k in RR^n$.
+  Allora visto che $|(vec(x)_k)_j| <= |vec(x)_k|$ si ottiene $(vec(x)_k)_j in [-R, R]$ per ogni $k in NN$ e ogni $j = 1, ..., n$.
   Per il teorema di Bolzano-Weierstrass la successione $(x_k)_1$ ha una estratta convergente. Ma da tale estratta possiamo estrarre una sotto-sottosuccessione per cui anche $(x_k)_2$ è convergente.
   Ovviamente su tale sotto-sottosuccessione $(x_k)_1$ continua ad essere convergente.
   Iterando $n$ volte otteniamo una sotto-sotto-...-sottosuccessione di $vec(x)_k$ tale per cui ogni componente $(x_k)_j$ converge ad un numero $p_j in RR$ per $j = 1, ..., n$.

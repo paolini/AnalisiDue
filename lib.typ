@@ -7,7 +7,7 @@
 #import "@preview/marginalia:0.3.1" as marginalia
 #import "@preview/hydra:0.6.3": hydra
 
-#let version = "0.8.0"
+#let version = "1.1.0"
 #let pdf-url = "https://codeberg.org/paolini/AnalisiDue/releases/download/v" + version + "/AnalisiDue.pdf"
 #let primary-color = rgb("2b6cb0")
 

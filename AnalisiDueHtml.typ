@@ -45,6 +45,8 @@
 #title[Appunti di Analisi Matematica Due]
 Emanuele Paolini · Versione #version
 
+#link(pdf-url)[Scarica il PDF — versione #version]
+
 #link("https://creativecommons.org/licenses/by-sa/4.0/")[
   Creative Commons Attribuzione – Condividi allo stesso modo 4.0 Internazionale
 ]

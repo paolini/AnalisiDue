@@ -8,6 +8,7 @@
 #import "@preview/hydra:0.6.3": hydra
 
 #let version = "0.8.0"
+#let pdf-url = "https://codeberg.org/paolini/AnalisiDue/releases/download/v" + version + "/AnalisiDue.pdf"
 #let primary-color = rgb("2b6cb0")
 
 // Intestazione e piè di pagina occupano anche i margini, ma non devono

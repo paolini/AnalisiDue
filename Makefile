@@ -8,7 +8,8 @@ TYPST ?= typst
 all: pdf html
 
 pdf:
-	$(TYPST) compile AnalisiDueTyp.typ AnalisiDueTyp.pdf
+	$(TYPST) compile AnalisiDue.typ AnalisiDue.pdf
 
 html:
-	$(TYPST) compile --features html AnalisiDueHtml.typ AnalisiDueTyp.html
+	$(TYPST) compile --features html AnalisiDueHtml.typ AnalisiDue.html
+	

@@ -3,8 +3,9 @@ TYPST_JOBS ?= 1
 ALT_MARGINS ?= true
 PAGINE ?= 221
 COPERTINA_OPZIONI ?=
+PAGES_REMOTE ?= origin
 
-.PHONY: all pdf html copertina
+.PHONY: all pdf html copertina pages
 
 # Evita due compilazioni simultanee, anche con make -j.
 .NOTPARALLEL:
@@ -18,5 +19,7 @@ copertina:
 	$(TYPST) compile --jobs $(TYPST_JOBS) --input pagine=$(PAGINE) $(COPERTINA_OPZIONI) copertina.typ copertina.pdf
 
 html:
-	$(TYPST) compile --jobs $(TYPST_JOBS) --features html AnalisiDueHtml.typ AnalisiDue.html
-	
+	$(TYPST) compile --jobs $(TYPST_JOBS) --features html AnalisiDue.typ AnalisiDue.html
+
+pages: html
+	sh scripts/update-pages.sh "$(PAGES_REMOTE)"

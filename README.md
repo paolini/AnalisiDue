@@ -15,9 +15,25 @@ make pdf   # Genera AnalisiDueTyp.pdf
 make html  # Genera AnalisiDueTyp.html (esportazione sperimentale)
 make       # Genera entrambi i formati
 make copertina  # Genera copertina.pdf (quarta, dorso e prima)
+make pages  # Genera l'HTML e aggiorna il branch pages su origin
 ```
 
-La versione del libro è definita in `lib.typ`. Il repository contiene anche i sorgenti della precedente versione LaTeX.
+`make pages` esegue il fetch di `pages`, copia `AnalisiDue.html` come
+`index.html` in un worktree temporaneo e fa commit e push sul remoto `origin`.
+Il branch di lavoro e le modifiche locali restano al loro posto. Se l'HTML
+non è cambiato non crea commit. Per scegliere un altro remoto, usare
+`make pages PAGES_REMOTE=github`. Il push non forza la sovrascrittura di
+eventuali aggiornamenti concorrenti.
+
+I metadati del libro (titolo, autore, versione, lingua, editore, link al PDF e
+licenza) sono raccolti nel dizionario `book-info` in `lib.typ`, condiviso dai
+due formati. Il repository contiene anche i sorgenti della precedente versione LaTeX.
+
+Entrambi i formati sono compilati da `AnalisiDue.typ`. La configurazione
+comune è in `setup` (`lib.typ`), che rileva il formato con `target()`.
+Riferimenti e numerazione sono condivisi; `setup-print.typ` contiene
+l'impaginazione cartacea e `setup-html.typ` le regole di esportazione HTML.
+I due setup ricevono i metadati da `lib.typ` come parametro.
 
 ### Margini alternati o fissi
 

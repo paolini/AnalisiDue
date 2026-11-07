@@ -2,8 +2,10 @@
 
 #show: setup
 
-#tableofcontents
-#pagebreak(weak: true)
+#context if target() != "html" {
+  tableofcontents
+  pagebreak(weak: true)
+}
 
 // Capitoli e appendice.
 #include "chapters/01_spazi_metrici/___.typ"

@@ -8,7 +8,7 @@
 #import "@preview/marginalia:0.3.1" as marginalia
 #import "@preview/hydra:0.6.3": hydra
 
-#let version = "1.1.1"
+#let version = "1.1.2"
 #let pdf-url = "https://codeberg.org/paolini/AnalisiDue/releases/download/v" + version + "/AnalisiDueTyp.pdf"
 #let primary-color = rgb("2b6cb0")
 #let alt-margins-input = sys.inputs.at("alt-margins", default: "true")

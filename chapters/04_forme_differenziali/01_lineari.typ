@@ -75,10 +75,10 @@ $ (u^* omega)_t [e_1] = omega_(u(t)) [u'(t)] thin d t. $
 
 L'integrale di un differenziale esatto risulta banale. Se $omega = d f$
 $ integral_u omega
-    &= integral_u d f \
-    &= integral_a^b d f_(u(t)) [u'(t)] thin d t \
-    &= integral_a^b nabla f(u(t)) dot u'(t) thin d t \
-    &= integral_a^b (f(u(t)))' thin d t \
+    &= integral_u d f 
+    = integral_a^b d f_(u(t)) [u'(t)] thin d t \
+    &= integral_a^b nabla f(u(t)) dot u'(t) thin d t 
+    = integral_a^b (f(u(t)))' thin d t \
     &= f(u(b)) - f(u(a)). $
 In questo caso se due curve hanno gli stessi estremi l'integrale è lo stesso, e se la curva è chiusa, cioè se $u(b) = u(a)$, l'integrale è nullo.
 Se dobbiamo calcolare l'integrale di una forma differenziale $omega$ sarà dunque interessante capire se tale forma è esatta.
@@ -106,7 +106,7 @@ E, in effetti, tutte le funzioni continue, in una variabile, sono integrabili pe
 In più variabili la condizione non è vuota.
 
 #example[forma differenziale non chiusa][
-  Sia $omega_((x,y)) = y d x$, $omega in Omega^1 (RR^2)$ è una forma di classe $C^infinity$ associata al campo vettoriale $xi(x,y) = (y,0)$.
+  Sia $omega_((x,y)) = y thin d x$, $omega in Omega^1 (RR^2)$ è una forma di classe $C^infinity$ associata al campo vettoriale $xi(x,y) = (y,0)$.
   L'equazione @eq:forma-chiusa diventa $1=0$ e dunque questa forma non è chiusa e non può essere il differenziale di una funzione.
 ]
 
@@ -136,14 +136,14 @@ In più variabili la condizione non è vuota.
 #example[forma chiusa ma non esatta][
   Si consideri $A = RR^2 without {(0,0)}$.
   Sia $omega in Omega^1 (A)$
-  $ omega := (-y d x + x d y) / (x^2 + y^2). $
+  $ omega := (-y thin d x + x thin d y) / (x^2 + y^2). $
   Allora $omega$ è chiusa ma non è esatta.
 ]
 
 #proof[
   Poniamo
   $ a(x,y) = (-y) / (x^2 + y^2), quad b(x,y) = x / (x^2 + y^2) $
-  cosicché $omega = a d x + b d y$.
+  cosicché $omega = a thin d x + b thin d y$.
   Allora da verifica diretta si osserva che
   $ (partial a) / (partial y) = (partial b) / (partial x) = (y^2 - x^2) / (x^2 + y^2)^2 $
   e quindi effettivamente $omega$ è chiusa.
@@ -162,5 +162,6 @@ L'esempio precedente non viola il teorema @th:lemma-poincare perché $A$ è un e
 Osserviamo che se da $A$ rimuoviamo l'asse delle $y$, la funzione
 $ f(x,y) = arctan(y / x) $
 è ben definita e si ha
-$ d f = 1 / (1 + y^2 / x^2) dot ((-y) / x^2 d x + 1 / x d y) = (-y d x + x d y) / (x^2 + y^2). $
+$ d f = 1 / (1 + y^2 / x^2) dot ((-y) / x^2 d x + 1 / x d y) 
+= (-y thin d x + x thin d y) / (x^2 + y^2). $
 Si capisce dunque che l'esattezza di una forma chiusa dipende sostanzialmente dal dominio in cui la forma è definita.

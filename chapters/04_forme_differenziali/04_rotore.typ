@@ -13,10 +13,12 @@ $ omega_x [v] = xi(x) dot v. $
 In tal modo si ha
 $ integral_phi omega = integral_phi xi(x) dot phi'(t) thin d t. $
 
-Se $phi'(t) != 0$ si può definire $tau_phi (t) := phi'(t) / |phi'(t)|$ che geometricamente è il versore tangente alla curva rappresentata da $phi$ e dunque si ha
-$ phi'(t) thin d t = tau_phi dot |phi'(t)| thin d t = tau_phi thin d s $
+Se $phi'(t) != 0$ si può definire $tau_phi (t) := (phi'(t)) / abs(phi'(t))$ che geometricamente è il versore tangente alla curva rappresentata da $phi$ e dunque si ha
+$ phi'(t) thin d t 
+  = tau_phi dot abs(phi'(t)) thin d t 
+  = tau_phi thin d s $
 dove $d s$ è l'elemento di lunghezza della curva (ovvero $s$ è il parametro di lunghezza d'arco della curva).
-Osserviamo che sebbene $tau_phi$ non ha senso quando $phi'(t) = 0$ il prodotto $tau_phi |phi'(t)| = phi'(t)$ è sempre ben definito, dunque gli integrali della forma
+Osserviamo che sebbene $tau_phi$ non ha senso quando $phi'(t) = 0$ il prodotto $tau_phi abs(phi'(t)) = phi'(t)$ è sempre ben definito, dunque gli integrali della forma
 $ integral_phi xi dot tau_phi thin d s $
 hanno senso anche se $phi'(t)$ si annulla.
 
@@ -66,9 +68,9 @@ In tal caso $current(A)$ è una $n$-superficie parametrizzata e dunque si potrà
 ] <def:prodotto_vettore>
 
 Ovviamente il vettore $v times w$ è perpendicolare sia a $v$ che a $w$, perché $v dot (v times w) = det(v,v,w) = 0$ e $w dot (v times w) = det(w,v,w) = 0$.
-Posto $nu = (v times w) / |v times w|$ si ha che $nu$ è un versore normale al piano generato da $v$ e $w$.
+Posto $nu = (v times w) / abs(v times w)$ si ha che $nu$ è un versore normale al piano generato da $v$ e $w$.
 Inoltre
-$ |v times w| = nu dot (v times w) = det(nu, v, w) $
+$ abs(v times w) = nu dot (v times w) = det(nu, v, w) $
 è il volume del prisma retto generato da $v$ e $w$ in direzione $nu$ ed essendo $nu$ unitario è anche l'area del parallelogramma generato da $v$ e $w$ in $RR^3$.
 Significa che $v times w$ è un vettore con modulo pari all'area del parallelogramma generato da $v$ e $w$ e con direzione $nu$ perpendicolare a $v$ e $w$ secondo la regola della mano destra (in modo che $det(v, w, nu) > 0$).
 Se $u$ e $v$ sono tra loro paralleli, si ha $u times v = 0$.
@@ -82,7 +84,7 @@ Più espressivamente si può scrivere
 $ xi = det mat(vec(e)_1, v_1, w_1; vec(e)_2, v_2, w_2; vec(e)_3, v_3, w_3) = (v_2 w_3 - v_3 w_2) vec(e)_1 + (v_3 w_1 - v_1 w_3) vec(e)_2 + (v_1 w_2 - v_2 w_1) vec(e)_3. $
 
 Se $omega in Omega^2 (A)$ è rappresentata dal campo vettoriale $xi: A -> RR^3$ e $phi: B subset RR^2 -> A subset RR^3$ osserviamo che $phi_x = (partial phi) / (partial x)$ e $phi_y = (partial phi) / (partial y)$ sono due vettori tangenti alla superficie parametrizzata da $phi$ e dunque
-$ nu_phi = (phi_x times phi_y) / |phi_x times phi_y| $
+$ nu_phi = (phi_x times phi_y) / abs(phi_x times phi_y) $
 è il versore normale alla superficie in $phi(x,y)$ con direzione che dipende dall'orientazione di $phi$.
 L'integrale di $omega$ lungo la superficie parametrizzata da $phi$ si scrive dunque come
 $ integral_phi omega

@@ -13,5 +13,4 @@
 #include "chapters/03_integrali/___.typ"
 #include "chapters/04_forme_differenziali/___.typ"
 #include "chapters/05_edo/___.typ"
-// #include "chapters/code/___.typ"
 #include "chapters/99_appendix.typ"

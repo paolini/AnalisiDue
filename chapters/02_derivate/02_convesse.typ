@@ -266,9 +266,9 @@ La condizione al primo ordine per la convessità di $f$ garantisce che se $f$ è
 
 #example[sottodifferenziale della norma][
   Sia $f(x) = |x|$, $f: RR^n -> RR$.
-  Allora $partial f(x) = {x / |x|}$ se $x != 0$ e
+  Allora $partial f(x) = {x / abs(x)}$ se $x != 0$ e
   $ partial f(0) = macron(B)_1 (0). $
-  Infatti se $x != 0$ allora $f$ è differenziabile in $x$ e $nabla f(x) = x / |x|$.
+  Infatti se $x != 0$ allora $f$ è differenziabile in $x$ e $nabla f(x) = x / abs(x)$.
   Se $x=0$ allora $v in partial f(0)$ se e solo se $f(y) >= v dot y$ per ogni $y in RR^n$.
   Ma $|y| >= v dot y$ per ogni $y in RR^n$ se e solo se $|v| <= 1$.
 ]

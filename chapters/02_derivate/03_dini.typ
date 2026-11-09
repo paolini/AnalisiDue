@@ -106,3 +106,61 @@
   $ D_x f(x,g(x)) + D_y f(x,g(x)) D g(x) = 0 $
   da cui la tesi.
 ]
+
+== varietà regolari
+
+#definition[varietà][
+  Sia $M subset RR^n$.
+  Diremo che $M$ è una varietà di dimensione $m$ e di classe $C^k$ se per ogni $p in M$ esiste un intorno aperto $U subset RR^n$ di $p$, un aperto $V subset RR^m$ e una funzione iniettiva $phi in C^k (V, RR^n)$ tale che
+  $phi(V) = M inter U$, $phi$ è iniettiva 
+  con inversa $phi^(-1): M inter U -> V$ continua
+  e inoltre $op("rank")(D phi(x)) = m$ 
+  per ogni $x in V$.
+
+  La funzione $phi$ si dice _carta_ locale di $M$ in $p$.
+]
+
+#definition[piano tangente][
+  Sia $M subset RR^n$ e sia $p in M$.
+  Diremo che un vettore $v in RR^n$ è 
+  un vettore tangente a $M$ nel punto $p$ 
+  se esistono una successione $x_k in M$ 
+  e una successione $lambda_k>=0$
+  tali che $x_k -> p$ e $lambda_k (x_k - p) -> v$.
+
+  Denotiamo con $T_p M$ l'insieme dei vettori tangenti a $M$ nel punto $p$.
+]
+
+#theorem[piano tangente ad una varietà][
+  Se $M subset RR^n$ è una varietà di dimensione $m$ e di classe $C^1$, allora per ogni $p in M$ il piano tangente a $M$ in $p$ è un sottospazio vettoriale di dimensione $m$ di $RR^n$.
+]
+
+#proof[
+  Sia $phi: V -> RR^n$ una carta locale di $M$ in $p$ e sia $x_0 in V$ tale che $phi(x_0) = p$.
+  Dimostriamo che $T_p M = op("Im")(D phi(x_0))$.
+
+  Per ogni $w in RR^m$, essendo $V$ aperto, possiamo scegliere una successione $t_k > 0$ con $t_k -> 0$ e $x_0 + t_k w in V$.
+  Posti $y_k = phi(x_0 + t_k w)$ e $lambda_k = 1/t_k$, si ha $y_k -> p$ e
+  $ lambda_k (y_k - p) = (phi(x_0 + t_k w) - phi(x_0)) / t_k -> D phi(x_0)[w]. $
+  Dunque $op("Im")(D phi(x_0)) subset T_p M$.
+
+  Viceversa, sia $v in T_p M$ e siano $y_k in M$ e $lambda_k >= 0$ tali che $y_k -> p$ e $lambda_k (y_k - p) -> v$.
+  Eliminando un numero finito di termini, possiamo supporre $y_k in M inter U = phi(V)$.
+  Posto $x_k = phi^(-1)(y_k)$, per la continuità dell'inversa si ha $x_k -> x_0$.
+
+  Poiché $D phi(x_0)$ ha rango $m$, è iniettiva e quindi esiste $c > 0$ tale che
+  $ abs(D phi(x_0)[w]) >= c abs(w) quad forall w in RR^m. $
+  Per la differenziabilità di $phi$ possiamo scrivere
+  $ phi(x_0 + h) - phi(x_0) = D phi(x_0)[h] + r(h), quad r(h) = o(abs(h)). $
+  Per $h$ sufficientemente piccolo si ha $abs(r(h)) <= c/2 abs(h)$, da cui
+  $ abs(phi(x_0 + h) - phi(x_0)) >= c/2 abs(h). $
+  Applicando questa stima a $h_k = x_k - x_0$, per $k$ sufficientemente grande otteniamo
+  $ lambda_k abs(h_k) <= 2/c abs(lambda_k (y_k - p)). $
+  Il secondo membro è limitato perché $lambda_k (y_k - p)$ converge.
+  Quindi anche $lambda_k abs(h_k)$ è limitata e, essendo $r(h_k) = o(abs(h_k))$, si ha $lambda_k r(h_k) -> 0$.
+  Ne segue che
+  $ D phi(x_0)[lambda_k h_k] = lambda_k (y_k - p) - lambda_k r(h_k) -> v. $
+  L'immagine di $D phi(x_0)$ è un sottospazio vettoriale di $RR^n$ e dunque è chiusa: pertanto $v in op("Im")(D phi(x_0))$.
+
+  Abbiamo così provato che $T_p M = op("Im")(D phi(x_0))$, che è un sottospazio vettoriale di dimensione $m$ perché $D phi(x_0)$ ha rango $m$.
+]

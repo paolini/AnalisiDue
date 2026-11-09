@@ -1,4 +1,4 @@
-= spazi metrici e convergenza uniforme
+= spazi metrici e convergenza uniforme <cap:spazi_metrici>
 
 #include("00_introduzione.typ")
 #include("01_metrici.typ")

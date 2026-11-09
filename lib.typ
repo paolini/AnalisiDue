@@ -67,6 +67,14 @@
     numbering("(1.1a)", chapter, ..n)
   })
   
+  show ref: it => {
+    if query(it.target).len() > 0 {
+      it
+    } else {
+      text(fill: red)[?#str(it.target)]
+    }
+}
+
   doc
 }
 

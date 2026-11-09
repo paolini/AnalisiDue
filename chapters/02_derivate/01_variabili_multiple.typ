@@ -61,60 +61,8 @@ In definitiva le funzioni $g_k: I subset RR -> RR$ sono funzioni scalari di una 
 
 == continuità e limiti
 
-La norma euclidea definisce una metrica e quindi una topologia su $RR^n$.
-
-#definition[topologia][
-  Dato $x in RR^n$ e $rho>0$, la palla aperta di raggio $rho$ centrata in $x$ è
-  $ B_rho (x) = {y in RR^n : |y - x| < rho}. $
-
-  Se esiste $rho>0$ per cui $B_rho (x) subset A$, diremo che $x$ è un punto interno di $A$ e diremo che $A$ è un intorno di $x$.
-  Possiamo dunque definire la famiglia di intorni di $x$ come segue:
-  $ cal(U)_x = {U subset RR^n : exists rho>0 : B_rho (x) subset U}. $
-
-  La _parte interna_ di $A$ è l'insieme dei punti interni di $A$.
-  Un sottoinsieme $A subset RR^n$ si dice aperto se è intorno di ogni suo punto.
-
-  Un sottoinsieme $A subset RR^n$ si dice chiuso se il suo complementare $RR^n without A$ è aperto.
-
-  Un punto $x in RR^n$ si dice essere un punto di accumulazione per $A$ se ogni intorno di $x$ contiene almeno un punto di $A$ diverso da $x$.
-]
-
-Una successione $a_k in RR^n$ è una funzione $a: NN -> RR^n$.
-Ogni punto $a_k$ è una $n$-upla: $a_k = ((a_k)_1, dots, (a_k)_n) in RR^n$.
-
-Una successione $a_k$ converge ad un punto $x in RR^n$ se $|a_k - x| -> 0$.
-Scriveremo in tal caso $a_k -> x$ (per $k -> +infinity$).
-Notiamo che $|a_k - x|$ è una successione di numeri reali non negativi, e dunque l'abbiamo già studiata nel corso di _Analisi Matematica Uno_.
-In particolare, se espandiamo la definizione di limite, si vede che $a_k -> x$ significa:
-$ forall epsilon>0 quad exists N in NN quad forall k >= N : |a_k - x| < epsilon. $
-
-#definition[continuità][
-  Sia $f: A subset RR^n -> RR^m$.
-  Fissato $x_0 in A$ diremo che $f$ è _continua_ nel punto $x_0$ se
-  $ forall epsilon>0 quad exists delta>0 quad forall x in A : |x - x_0| < delta => |f(x) - f(x_0)| < epsilon. $
-
-  Una funzione si dice essere _sequenzialmente continua_ nel punto $x_0$ se per ogni successione $a_k in A$ con $a_k -> x_0$ si ha $f(a_k) -> f(x_0)$.
-
-  Una funzione $f: A subset RR^n -> RR^m$ si dice essere continua (o sequenzialmente continua) se è continua (o sequenzialmente continua) in ogni punto $x in A$.
-]
-
-#theorem[equivalenza tra continuità e continuità sequenziale][
-  Sia $f: A subset RR^n -> RR^m$ e sia $x_0 in A$.
-  Allora $f$ è continua in $x_0$ se e solo se $f$ è sequenzialmente continua in $x_0$.
-]
-
-#proof[
-  La dimostrazione è la stessa già vista nel corso di Analisi Matematica Uno.
-]
-
-#theorem[continuità della funzione composta][
-  Sia $f: A subset RR^n -> B subset RR^k$ una funzione continua (nel punto $x_0 in A$) e sia $g: B subset RR^k -> RR^m$ una funzione continua (nel punto $y_0=f(x_0) in B$).
-  Allora la composizione $g compose f: A subset RR^n -> RR^m$ è continua (nel punto $x_0$).
-]
-
-#proof[
-  La dimostrazione è la stessa già vista nel corso di Analisi Matematica Uno.
-]
+La norma euclidea definisce una metrica e quindi una topologia su $RR^n$ come abbiamo 
+già visto nel @cap:spazi_metrici.
 
 == differenziale
 
@@ -248,8 +196,7 @@ Per le funzioni di una variabile _differenziabile_ è quindi equivalente a _deri
 #proof[
   Facendo il cambio di variabile $y = f(x)$ nella formula @eq:def_differenziale applicata a $g$ nel punto $y_0$ e inserendo la formula corrispondente per $f$ nel punto $x_0$ si ottiene
   $ g(f(x))
-      &= g(y_0) + D g(y_0)[f(x)-f(x_0)] \
-      & quad + o(|f(x)-f(x_0)|) \
+      &= g(y_0) + D g(y_0)[f(x)-f(x_0)] + o(|f(x)-f(x_0)|) \
       &= g(y_0) + D g(x_0)[D f(x_0)[x - x_0] + o(|x - x_0|)] \
       & quad + o(|D f(x_0)[x - x_0] + o(|x - x_0|)|) \
       &= g(f(x_0)) + D g(x_0)[D f(x_0)[x - x_0]] \
@@ -470,7 +417,8 @@ Per le derivate $k$-esime il differenziale $D^k f$ rappresenta una forma $k$-lin
 #theorem[Formula di Taylor][
   Sia $A subset RR^n$ aperto e sia $f: A subset RR^n -> RR$ una funzione di classe $C^2$.
   Allora fissato $x_0 in A$ si ha, per $x -> x_0$
-  $ f(x) = f(x_0) + chevron.l nabla f(x_0), x - x_0 chevron.r + 1/2 chevron.l D^2 f(x_0) (x - x_0), x - x_0 chevron.r + o(|x - x_0|^2). $ <eq:taylor_secondo>
+  $ f(x) &= f(x_0) + chevron.l nabla f(x_0), x - x_0 chevron.r + 1/2 chevron.l D^2 f(x_0) (x - x_0), x - x_0 chevron.r \
+  & quad + o(|x - x_0|^2). $ <eq:taylor_secondo>
 
   Più in generale, se $f$ è di classe $C^m$ si avrà
   $ f(x) = f(x_0) + sum_(k=1)^m 1 / (k!) D^k f(x_0)[x-x_0, dots, x-x_0] + o(|x - x_0|^k). $
@@ -516,4 +464,119 @@ Diremo che $x_0$ è un punto di massimo (o minimo) relativo (o locale) se è un 
   Tale funzione è definita in un intorno di $t=0$ dunque per i criteri già visti nel corso di Analisi Matematica Uno si deve avere $g_k' (0)=0$.
   Ma $g_k' (0) = (partial f) / (partial x_k)(x_0)$.
   Questo è vero per ogni $k=1, dots, n$, si ottiene quindi $nabla f(x_0)=0$.
+]
+
+Ricordiamo che $D^2 f(x_0)$, la matrice hessiana di $f$, è una matrice simmetrica che rappresenta una forma bilineare $b: RR^n times RR^n -> RR$,
+$b(v,w) = v^T D^2 f(x_0) w$.
+Una forma bilineare simmetrica $b$ si dice _definita positiva_ se $b(v,v) > 0$ per ogni $v != 0$, _definita negativa_ se $b(v,v) < 0$ per ogni $v != 0$, _semi-definita positiva_ se $b(v,v) >= 0$ per ogni $v$ e _semi-definita negativa_ se $b(v,v) <= 0$ per ogni $v$.
+Per il teorema spettrale, esiste una base ortonormale di $RR^n$ in cui la matrice che rappresenta la forma bilineare è diagonale,
+con gli autovalori sulla diagonale.
+La forma bilineare è definita positiva (o negativa) se e solo se tutti gli autovalori sono positivi (o negativi).
+
+#theorem[condizioni al secondo ordine][
+  Sia $A subset RR^n$ un insieme aperto, sia $f: A -> RR$ di classe $C^2$ e sia $x_0 in A$ un punto critico.
+  Allora:
+  + se la matrice hessiana $D^2 f(x_0)$ è definita positiva allora $x_0$ è un minimo relativo stretto;
+  + se la matrice hessiana $D^2 f(x_0)$ è definita negativa allora $x_0$ è un massimo relativo stretto;
+  + se la matrice hessiana $D^2 f(x_0)$ ha sia autovalori positivi che negativi allora 
+  il punto $x_0$ non è né un massimo né un minimo relativo.
+
+  Viceversa, se $x_0$ è un minimo (o massimo) relativo di $f$, allora $x_0$ è un punto critico e la matrice hessiana $D^2 f(x_0)$ è semi-definita positiva (o negativa).
+]
+#proof[
+ Se $x_0$ è un punto critico e supponiamo che $D^2 f(x_0)$ sia definita positiva (o negativa).
+ La formula di Taylor @eq:taylor_secondo si scrive
+  $ f(x) = f(x_0) + 1/2 chevron.l D^2 f(x_0) (x - x_0), x - x_0 chevron.r + o(|x - x_0|^2) $
+  da cui segue che
+  $ f(x) - f(x_0) = 1/2 chevron.l D^2 f(x_0) (x - x_0), x - x_0 chevron.r (1 + o(1)) $.
+  Visto che $1+o(1) -> 1$ per $x -> x_0$ e quindi,
+  per la permanenza del segno, esiste un intorno 
+  di $x_0$ in cui $1+o(1)>0$. 
+  In tale intorno $f(x)-f(x_0)$ ha dunque lo stesso segno di $chevron.l D^2 f(x_0) (x - x_0), x - x_0 chevron.r$ e quindi $f(x_0) <= f(x)$ è un minimo relativo
+  se $D^2 f(x_0)$ è definita positiva e $f(x_0) >= f(x)$ è un massimo relativo se $D^2 f(x_0)$ è definita negativa.
+
+  Se $D^2 f(x_0)$ ha un autovalore positivo la 
+  restrizione di $f$ alla retta passante per $x_0$ con direzione un autovettore corrispondente a tale autovalore avrà derivata prima nulla e derivata seconda positiva in $x_0$ e quindi avrà un minimo relativo in $x_0$. 
+  Viceversa la restrizione di $f$ alla retta passante per $x_0$ con direzione un autovettore corrispondente a un autovalore negativo avrà derivata prima nulla e derivata seconda negativa in $x_0$ e quindi avrà un massimo relativo in $x_0$. 
+  Dunque la funzione $f$ non può avere né un massimo né un minimo relativo in $x_0$.
+
+  Viceversa, se $x_0$ è un minimo relativo, allora per ogni direzione $v$ la funzione $g(t) = f(x_0 + t v)$ ha un minimo relativo in $t=0$ 
+  e quindi $g'(0)=0$ e $g''(0) >= 0$.
+  Ma $g'(0) = nabla f(x_0) \cdot v$ e $g''(0) = chevron.l D^2 f(x_0)[v], v chevron.r $
+  dunque $x_0$ è un punto critico e $D^2 f(x_0)$ 
+  è semi-definita positiva.
+  Risultato analogo si ha nel caso in cui $x_0$ è un massimo relativo, con $D^2 f(x_0)$ semi-definita negativa.
+]  
+
+== massimi e minimi vincolati
+
+#theorem[moltiplicatori di Lagrange][
+  Sia $A subset RR^n$ un aperto e 
+  siano $f: A-> RR$ e $vec(g): A -> RR^k$ funzioni di classe $C^1$ con $1 <= k < n$.
+  Sia $X = {vec(x) in A : vec(g)(vec(x)) = 0}$
+  e sia $vec(p) in X$ un punto di massimo o minimo 
+  locale di $f$ su $X$.
+  Allora se $nabla g_1(vec(p)), dots, nabla g_k(vec(p))$ sono linearmente indipendenti allora 
+  $nabla f(vec(p))$ è combinazione lineare di
+  tali vettori. Ovvero esistono $lambda_1, dots, lambda_k in RR$ tali che
+  $ nabla f(vec(p)) = sum_(j=1)^k lambda_j nabla g_j(vec(p)). $
+] 
+#proof[
+  Supponiamo $vec(p)$ sia un punto di minimo 
+  locale di $f$ su $X$.
+  Fissato $n in NN$ consideriamo la funzione _penalizzata_
+  $ f_n (vec(x)) := f(vec(x)) + abs(vec(x) - vec(p))^2 + n abs(vec(g)(vec(x)))^2. $
+  Sia $K=overline(B)_epsilon (vec(p))$ un intorno compatto di $vec(p)$
+  per cui si abbia $f(vec(p)) <= f(vec(x))$ per ogni $vec(x) in X inter K$.
+  Sia $vec(q)_n$ un punto di minimo assoluto 
+  per $f_n (vec(x))$ su $K$.
+  Per Bolzano-Weierstrass esiste $n_j->oo$ 
+  tale che $vec(q)_(n_j) -> vec(q)$.
+  Visto che $f_n (vec(q)_n) <= f_n (vec(p)) = f(vec(p))$
+  si ha
+  $
+  abs(vec(g)(vec(q)_n))^2 
+  = (f_n (vec(q)_n) - f(vec(q)_n) - abs(vec(q)_n - vec(p))^2) / n
+  <= (f(vec(p)) - f(vec(q)_n) - abs(vec(q)_n - vec(p))^2) / n
+  -> 0
+  $
+  in quanto $f$ è limitata in $K$.
+  Visto che $vec(q)_(n_j) -> vec(q)$ 
+  si ha dunque $vec(g)(vec(q)) = 0$ 
+  ovvero $vec(q) in X$.
+  Ma allora $f(vec(p)) <= f(vec(q))$
+  dunque
+  $
+  abs(vec(q)_(n_j) - vec(p))^2
+  <= f_n (vec(q)_(n_j)) - f(vec(q)_(n_j))
+  <= f(vec(p)) - f(vec(q)_(n_j))
+  <= f(vec(q)) - f(vec(q)_(n_j)) -> 0
+  $
+  da cui segue $vec(q) = vec(p)$.
+
+  Ora sappiamo che $vec(q)_n$ è definitivamente 
+  un punto interno a $K$ e dunque è un punto critico: $nabla f_n (vec(q)_n) = 0$.
+  Per calcolare $nabla f_n$ osserviamo che 
+  $abs(vec(g))^2 = sum_(i=1)^k g_i^2$ e dunque
+  $ nabla f_n (vec(x)) = nabla f(vec(x)) + 2 (vec(x) - vec(p)) + 2 n sum_(i=1)^k g_i (vec(x)) nabla g_i (vec(x)). $
+
+  Ponendo $nabla f_n(vec(q)_n) = 0$, isoliamo la combinazione lineare dei gradienti del vincolo:
+  $ nabla f(vec(q)_n) + 2(vec(q)_n - vec(p)) = sum_(i=1)^k (- 2 n g_i (vec(q)_n)) nabla g_i (vec(q)_n). $
+
+  Definiamo i coefficienti $mu_(i, n) := - 2 n g_i (vec(q)_n)$ per ogni $i = 1, dots, k$, ottenendo:
+  $ nabla f(vec(q)_n) + 2(vec(q)_n - vec(p)) = sum_(i=1)^k mu_(i, n) nabla g_i (vec(q)_n). $
+
+  Rinormalizziamo ponendo $mu_(0,n)=1$ e 
+  $ lambda_(i, n) := mu_(i, n) / sqrt(1+sum_(i=0)^k abs(mu_(i, n))^2), 
+   quad "per" i=0, dots, k
+  $
+  così da ottenere
+  $ lambda_(0, n) nabla f(vec(q)_n) + 2 lambda_(0, n) (vec(q)_n - vec(p)) = sum_(i=1)^k lambda_(i, n) nabla g_i (vec(q)_n). $
+  Chiaramente $lambda_(0,n) <= 1$ dunque, a meno di sottosuccessioni,
+  supponendo che $lambda_(i,n) -> lambda_i$, si ottiene, passando al limite per $n -> oo$:
+  $ lambda_0 nabla f(vec(p)) = sum_(i=1)^k lambda_i nabla g_i (vec(p)). $
+  <eq:lagrange_proof>
+
+  Visto che i $lambda_i$ non sono tutti nulli (in quanto $lambda_0^2 + lambda_1^2 + dots + lambda_k^2=1$) scopriamo che se $lambda_0 = 0$ allora i vettori $nabla g_1 (vec(p)), dots, nabla g_k (vec(p))$ sono linearmente dipendenti. 
+  Dunque se tali gradienti sono linearmente indipendenti possiamo dividere @eq:lagrange_proof per $lambda_0$ e ottenere la tesi.
 ]

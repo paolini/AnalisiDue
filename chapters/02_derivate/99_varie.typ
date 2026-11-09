@@ -1,8 +1,10 @@
 #import "../../lib.typ": *
 
-Norme equivalenti sullo spazio delle matrici. Lipschitzianità delle funzioni $C^1$.
-Le funzioni continue mandano compatti in compatti.
-Se $A,B$ sono compatti, se $f: A -> B$ e continua e bigettiva allora $f^(-1)$ è continua (cioè $f$ è un omeomorfismo).
+== applicazioni ed esempi
+
+// Norme equivalenti sullo spazio delle matrici. Lipschitzianità delle funzioni $C^1$.
+// Le funzioni continue mandano compatti in compatti.
+// Se $A,B$ sono compatti, se $f: A -> B$ e continua e bigettiva allora $f^(-1)$ è continua (cioè $f$ è un omeomorfismo).
 
 #exercise[punto di frontiera][
   Sia $gamma: [0,1] -> X$ una curva continua in uno spazio topologico $X$ e sia $A subset X$ tale che $gamma(0) in A$ e $gamma(1) in.not A$.

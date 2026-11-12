@@ -16,6 +16,7 @@ make html  # Genera AnalisiDueTyp.html (esportazione sperimentale)
 make       # Genera entrambi i formati
 make copertina  # Genera copertina.pdf (quarta, dorso e prima)
 make pages  # Genera l'HTML e aggiorna il branch pages su origin
+make github-release  # Rispecchia su GitHub la release Codeberg (archiviata su Zenodo)
 ```
 
 `make pages` esegue il fetch di `pages`, copia `AnalisiDue.html` come
@@ -24,6 +25,12 @@ Il branch di lavoro e le modifiche locali restano al loro posto. Se l'HTML
 non è cambiato non crea commit. Per scegliere un altro remoto, usare
 `make pages PAGES_REMOTE=github`. Il push non forza la sovrascrittura di
 eventuali aggiornamenti concorrenti.
+
+`make github-release` va eseguito dopo aver pubblicato la release su Codeberg:
+fa il push del tag sul remoto `github` e crea su GitHub una release con lo
+stesso titolo, testo e allegati. GitHub la notifica a Zenodo, che la archivia
+con i metadati di `.zenodo.json`. Il tag predefinito è `v` seguito dalla
+versione in `lib.typ`; per sceglierne un altro: `make github-release TAG=v1.1.0`.
 
 I metadati del libro (titolo, autore, versione, lingua, editore, link al PDF e
 licenza) sono raccolti nel dizionario `book-info` in `lib.typ`, condiviso dai

@@ -4,8 +4,11 @@ ALT_MARGINS ?= true
 PAGINE ?= 221
 COPERTINA_OPZIONI ?=
 PAGES_REMOTE ?= origin
+GITHUB_REMOTE ?= github
+VERSION := $(shell sed -n 's/^\#let version = "\(.*\)"/\1/p' lib.typ)
+TAG ?= v$(VERSION)
 
-.PHONY: all pdf html copertina pages
+.PHONY: all pdf html copertina pages github-release
 
 # Evita due compilazioni simultanee, anche con make -j.
 .NOTPARALLEL:
@@ -23,3 +26,6 @@ html:
 
 pages: html
 	sh scripts/update-pages.sh "$(PAGES_REMOTE)"
+
+github-release:
+	sh scripts/github-release.sh "$(TAG)" "$(GITHUB_REMOTE)"

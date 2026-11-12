@@ -1,0 +1,35 @@
+{
+  "upload_type": "lesson",
+  "title": "Appunti di Analisi Matematica Due",
+  "description": "<p>Appunti del corso di Analisi Matematica Due di Emanuele Paolini (Università di Pisa), scritti in Typst: spazi metrici, calcolo differenziale in più variabili, integrali multipli, forme differenziali, equazioni differenziali ordinarie.</p><p>Questo record contiene il PDF del libro e l'archivio con i sorgenti Typst.</p><p>Libro online: <a href=\"https://paolini.codeberg.page/AnalisiDue/\">https://paolini.codeberg.page/AnalisiDue/</a></p><p>Lecture notes (in Italian) for the second-year course in mathematical analysis (calculus of several variables) at the University of Pisa.</p>",
+  "creators": [
+    {
+      "name": "Paolini, Emanuele",
+      "affiliation": "Università di Pisa",
+      "orcid": "0000-0001-7021-7537"
+    }
+  ],
+  "license": "cc-by-sa-4.0",
+  "language": "ita",
+  "keywords": [
+    "lecture notes",
+    "mathematical analysis",
+    "multivariable calculus",
+    "metric spaces",
+    "multiple integrals",
+    "differential forms",
+    "ordinary differential equations"
+  ],
+  "related_identifiers": [
+    {
+      "identifier": "https://codeberg.org/paolini/AnalisiDue",
+      "relation": "isSupplementTo",
+      "resource_type": "software"
+    },
+    {
+      "identifier": "https://paolini.codeberg.page/AnalisiDue/",
+      "relation": "isVariantFormOf",
+      "resource_type": "publication-book"
+    }
+  ]
+}

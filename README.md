@@ -1,3 +1,5 @@
+[![DOI](https://zenodo.org/badge/941942420.svg)](https://doi.org/10.5281/zenodo.24169127)
+
 # Appunti di Analisi Matematica Due
 
 Appunti del corso di Analisi Matematica Due di Emanuele Paolini, scritti in Typst.

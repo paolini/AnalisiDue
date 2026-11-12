@@ -12,8 +12,8 @@ codeberg_api=https://codeberg.org/api/v1/repos/paolini/AnalisiDue
 github_repo=paolini/AnalisiDue
 
 # La directory temporanea sta nella home perché gh installato via snap
-# non può leggere /tmp.
-temp_dir=$(mktemp -d "$HOME/.analisidue-release.XXXXXX")
+# non può leggere /tmp né i file nascosti della home.
+temp_dir=$(mktemp -d "$HOME/analisidue-release.XXXXXX")
 trap 'rm -rf "$temp_dir"' EXIT
 trap 'exit 1' HUP INT TERM
 

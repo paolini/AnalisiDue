@@ -33,14 +33,14 @@
   Quindi c'è un unico punto $y in A$ che realizza il minimo.
 
   Per dimostrare che $P_A$ è $1$-lipschitziana, fissati $x, y in RR^n$ dobbiamo dimostrare che
-  $ |P_C (x) - P_C (y)| <= |x-y|. $ <eq:convex4855>
+  $ |P_A (x) - P_A (y)| <= |x-y|. $ <eq:convex4855>
 
-  Siano $p=P_C (x)$ e $q=P_C (y)$.
+  Siano $p=P_A (x)$ e $q=P_A (y)$.
   Andremo ora a dimostrare che
   $ (x-p) dot (q-p) <= 0. $ <eq:convex4856>
 
   Consideriamo il punto $p_t = (1-t) p + t q$.
-  Per la convessità di $C$ si ha $p_t in C$ per ogni $t in [0,1]$ e quindi la funzione $f(t) = |x-p_t|^2$ ha minimo per $t=0$.
+  Per la convessità di $A$ si ha $p_t in A$ per ogni $t in [0,1]$ e quindi la funzione $f(t) = |x-p_t|^2$ ha minimo per $t=0$.
   Dunque deve essere $f'(0) >= 0$.
   Ma
   $ f'(t) = 2 (x-p_t) dot q_t' = 2 (x-p_t) dot (q-p) $

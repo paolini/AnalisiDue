@@ -16,7 +16,9 @@
   $ |x-y| = min_(z in A) |x-z|. $
   Possiamo quindi definire la proiezione su $A$, $P_A: RR^n -> A$ che manda $x$ in $y$.
 
-  Allora $P_A$ è una funzione $1$-lipschitziana.
+  Inoltre per ogni $z in A$ si ha
+  $ (x - P_A (x)) dot (z - P_A (x)) <= 0 $ <eq:convex4856>
+  e $P_A$ è una funzione $1$-lipschitziana.
 ]
 
 #proof[
@@ -32,19 +34,18 @@
   Questo è assurdo perché $r$ era la distanza minima da $x$ a $A$.
   Quindi c'è un unico punto $y in A$ che realizza il minimo.
 
-  Per dimostrare che $P_A$ è $1$-lipschitziana, fissati $x, y in RR^n$ dobbiamo dimostrare che
-  $ |P_A (x) - P_A (y)| <= |x-y|. $ <eq:convex4855>
-
-  Siano $p=P_A (x)$ e $q=P_A (y)$.
-  Andremo ora a dimostrare che
-  $ (x-p) dot (q-p) <= 0. $ <eq:convex4856>
-
-  Consideriamo il punto $p_t = (1-t) p + t q$.
+  Dimostriamo ora la @eq:convex4856.
+  Sia $p = P_A (x)$, fissato $z in A$ consideriamo il punto $p_t = (1-t) p + t z$.
   Per la convessità di $A$ si ha $p_t in A$ per ogni $t in [0,1]$ e quindi la funzione $f(t) = |x-p_t|^2$ ha minimo per $t=0$.
   Dunque deve essere $f'(0) >= 0$.
   Ma
-  $ f'(t) = 2 (x-p_t) dot q_t' = 2 (x-p_t) dot (q-p) $
-  e quindi $0 <= f'(0) = 2 (x-p) dot (q-p)$ e si ottiene la @eq:convex4856.
+  $ f'(t) = -2 (x-p_t) dot p_t' = -2 (x-p_t) dot (z-p) $
+  e quindi $0 <= f'(0) = -2 (x-p) dot (z-p)$ da cui si ottiene la @eq:convex4856.
+
+  Per dimostrare che $P_A$ è $1$-lipschitziana, fissati $x, y in RR^n$ dobbiamo dimostrare che
+  $ |P_A (x) - P_A (y)| <= |x-y|. $ <eq:convex4855>
+  Siano $p=P_A (x)$ e $q=P_A (y)$.
+  Per la @eq:convex4856 si ha $(x-p) dot (q-p) <= 0$.
 
   Per concludere la dimostrazione osserviamo che per simmetria si ha anche $(y-q) dot (p-q) <= 0$ e, sommando le due disuguaglianze, si ottiene dunque
   $ 0 >= (x - p - y + q) dot (q-p) = (x-y) dot (q-p) + |q-p|^2 $
@@ -59,25 +60,16 @@
 ]
 
 #proof[
-  Visto che $p in partial C$ esiste $p_k in RR^n without C$ con $p_k -> p$.
-  Grazie al teorema precedente possiamo considerare $q_k in C$ il punto di minima distanza da $p_k$.
-  Se $r_k = |p_k - q_k|$ allora $B_(r_k)(p_k) inter C = emptyset$ altrimenti ci sarebbe un punto di $C$ che dista da $p_k$ meno di $q_k$.
-  Consideriamo il semispazio chiuso $H_k$ con $partial H_k$ tangente a $B_(r_k)(p_k)$ in $q_k$ e con $H_k inter B_(r_k)(p_k) = emptyset$.
-  Vogliamo dimostrare che $H_k supset.eq C$.
-
-  Supponiamo per assurdo che esista $z in C without H_k$.
-  Allora il segmento $[q_k,z]$ da un lato è contenuto in $C$ per la convessità di $C$, d'altro lato tale segmento dovrebbe entrare in $B_(r_k)(p_k)$ (perché il complementare di $H_k$ è il tangente a $B_(r_k)(p_k)$ in $q_k$).
-  Ma questo è assurdo perché allora sul segmento $[q_k,z]$ ci sarebbe un punto di $C$ che dista da $p_k$ meno di $q_k$.
-  Dunque $H_k supset.eq C$.
-
-  Se consideriamo $v_k$ il versore normale a $partial H_k$ in modo che $H_k = {x in RR^n : v_k dot (x-q_k) <= 0}$ allora visto che $v_k$ è limitata, per il teorema di Bolzano-Weierstrass possiamo estrarre una sottosuccessione $v_(k_j)$ che converge a un certo $v$.
-  Per continuità si ha $|v_(k_j)| -> |v|$ e quindi anche $v$ è un versore.
-  Visto che $H_k supset.eq C$, per ogni $x in C$ si ha
-  $ v_k dot (x-q_k) <= 0. $
-  Osservando che $|q_k - p_k| <= |p-p_k| -> 0$, passando al limite nella disuguaglianza precedente otteniamo
-  $ v dot (x-p) <= 0 $
-  che significa che $x in H$ e $p in partial H$.
-  Per l'arbitrarietà di $x in C$ otteniamo $C subset H$, come volevamo dimostrare.
+  Visto che $p in partial C$ esiste una successione $p_k in RR^n without C$ con $p_k -> p$.
+  Sia $q_k = P_C (p_k)$ e sia $v_k = (p_k - q_k)/(|p_k - q_k|)$ (ben definito perché $p_k in.not C$).
+  Per la @eq:convex4856 si ha
+  $ v_k dot (x - q_k) <= 0 quad forall x in C. $
+  Inoltre, visto che $p in C$, si ha $|q_k - p_k| <= |p - p_k|$ e quindi
+  $ |q_k - p| <= |q_k - p_k| + |p_k - p| <= 2|p_k - p| -> 0. $
+  I $v_k$ sono versori: per il teorema di Bolzano-Weierstrass esiste una sottosuccessione $v_(k_j) -> v$ e, per continuità della norma, anche $v$ è un versore.
+  Passando al limite nella disuguaglianza precedente lungo la sottosuccessione si ottiene
+  $ v dot (x - p) <= 0 quad forall x in C. $
+  Dunque il semispazio $H = {x in RR^n : v dot (x - p) <= 0}$ contiene $C$ e ha $p in partial H$.
 ]
 
 #corollary[

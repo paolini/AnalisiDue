@@ -5,10 +5,11 @@ PAGINE ?= 221
 COPERTINA_OPZIONI ?=
 PAGES_REMOTE ?= origin
 GITHUB_REMOTE ?= github
+RELEASE_GITHUB ?= no
 VERSION := $(shell sed -n 's/^\#let version = "\(.*\)"/\1/p' lib.typ)
 TAG ?= v$(VERSION)
 
-.PHONY: all pdf html copertina pages github-release capitoli
+.PHONY: all pdf html copertina pages release github-release capitoli
 
 # Evita due compilazioni simultanee, anche con make -j.
 .NOTPARALLEL:
@@ -35,6 +36,10 @@ html:
 
 pages: html
 	sh scripts/update-pages.sh "$(PAGES_REMOTE)"
+
+# Release su Codeberg (RELEASE_GITHUB=yes per rispecchiarla su GitHub/Zenodo).
+release:
+	RELEASE_GITHUB=$(RELEASE_GITHUB) sh scripts/release.sh "$(TAG)" "$(PAGES_REMOTE)"
 
 github-release:
 	sh scripts/github-release.sh "$(TAG)" "$(GITHUB_REMOTE)"

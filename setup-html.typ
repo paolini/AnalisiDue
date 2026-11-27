@@ -28,7 +28,7 @@
   title(book-info.title)
   [#book-info.author · Versione #book-info.version]
   parbreak()
-  link(book-info.pdf-url)[Scarica il PDF — versione #book-info.version]
+  link(book-info.pdf-url)[Scarica il PDF (ultima versione pubblicata)]
   parbreak()
   link(book-info.license.url, book-info.license.name)
   parbreak()

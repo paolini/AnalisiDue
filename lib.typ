@@ -14,7 +14,7 @@
   version: version,
   lang: "it",
   institution: "manu-fatto",
-  pdf-url: "https://codeberg.org/paolini/AnalisiDue/releases/download/v" + version + "/AnalisiDueTyp.pdf",
+  pdf-url: "https://codeberg.org/paolini/AnalisiDue/releases/download/latest/AnalisiDueTyp.pdf",
   license: (
     url: "https://creativecommons.org/licenses/by-sa/4.0/",
     name: "Creative Commons Attribuzione – Condividi allo stesso modo 4.0 Internazionale",

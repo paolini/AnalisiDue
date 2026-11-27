@@ -65,7 +65,7 @@ L'equazione (essendo autonoma tralasciamo la dipendenza da $x$) si scriverà nel
 
 Un caso molto particolare ma decisamente importante è quello in cui la funzione $F$ (per le equazioni in forma implicita) o la funzione $f$ (per le equazioni in forma normale) sono funzioni lineari per ogni $t$ rispetto alla variabile $u$.
 In tal caso diremo che l'equazione è _lineare omogenea_.
-Più precisamente si avrà#footnote[Per evidenziare il fatto che una funzione $L$ è lineare tenderemo ad utilizzare le parentesi quadre (invece che le tonde) per racchiudere l'argomento della funzione: $L[v] = L(v)$.]
+Più precisamente si avrà#note[Per evidenziare il fatto che una funzione $L$ è lineare tenderemo ad utilizzare le parentesi quadre (invece che le tonde) per racchiudere l'argomento della funzione: $L[v] = L(v)$.]
 $F(x, u(x), u'(x), dots, u^((n))(x)) = A_x [u(x), u'(x), dots, u^((n))(x)]$
 con $A_x : RR^(n+1) -> RR$ operatore lineare per ogni $x$ ovvero $A_x$ si rappresenta tramite un vettore i cui coefficienti sono funzioni della variabile $x$:
 $A_x [vec(y)] = sum_(k=0)^n a_k (x) y_k$
@@ -80,7 +80,7 @@ $L[u](x) = F(x, u(x), u'(x), dots, u^((n))(x))$
 Se l'equazione differenziale è lineare allora $L$ è un operatore lineare sullo spazio vettoriale $RR^I$ e lo spazio delle soluzioni dell'equazione differenziale non è altro che $op("ker") L$, il nucleo dell'operatore, ed è noto che $op("ker") L$ è un sottospazio vettoriale.
 Nonostante $RR^I$ sia uno spazio vettoriale di dimensione infinita scopriremo che (sotto opportune ipotesi) lo spazio vettoriale delle soluzioni ha dimensione finita $n$, uguale al grado dell'equazione.
 
-Nel caso in cui la funzione $F$ (o la corrispondente $f$) sia affine#footnote[Una funzione $f: V -> W$ definita tra due spazi vettoriali si dice essere _affine_ se può essere scritta nella forma $f(v) = L[v] + q$ con $L: V -> W$ operatore lineare e $q in W$ fissato. Una equazione lineare $L[v]=w$ può quindi sempre essere scritta nella forma $f(v)=0$ con $f$ affine.] si dirà che l'equazione differenziale è una equazione _lineare (non omogenea)_.
+Nel caso in cui la funzione $F$ (o la corrispondente $f$) sia affine#note[Una funzione $f: V -> W$ definita tra due spazi vettoriali si dice essere _affine_ se può essere scritta nella forma $f(v) = L[v] + q$ con $L: V -> W$ operatore lineare e $q in W$ fissato. Una equazione lineare $L[v]=w$ può quindi sempre essere scritta nella forma $f(v)=0$ con $f$ affine.] si dirà che l'equazione differenziale è una equazione _lineare (non omogenea)_.
 L'equazione non omogenea avrà la forma:
 $a_0 (x) u(x) + a_1 (x) u'(x) + dots + a_n (x) u^((n))(x) = g(x).$
 Se $v_0$ e $v_1$ sono due soluzioni di questa equazione è chiaro che la differenza $u = v_1 - v_0$ è soluzione dell'equazione omogenea

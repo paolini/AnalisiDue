@@ -30,13 +30,11 @@ Useremo questi cubetti per misurare il volume di insiemi arbitrari.
   Osservando che $N |-> S^N (f)$ è decrescente mentre $N |-> S_N (f)$ è crescente, definiamo l'integrale superiore e inferiore:
   $ S^*(f) &:= inf_N S^N (f) = lim_(N -> +infinity) S^N (f) in RR, \
     S_*(f) &:= sup_N S_N (f) = lim_(N -> +infinity) S_N (f) in RR. $
-  Se $S^*(f) = S_*(f)$ diremo che $f$ è Riemann integrabile (o R-integrabile) e scriveremo
-  $ integral f = S^*(f) = S_*(f). $
-
-  #footnote[
+  Se $S^*(f) = S_*(f)$ diremo che $f$ è Riemann integrabile (o R-integrabile) e scriveremo#note[
     Per le funzioni di una variabile la notazione $integral f$ rappresentava l'_integrale indefinito_ ovvero l'insieme delle primitive della funzione $f$.
     Per le funzioni di più variabili il concetto di integrale indefinito non ha senso e si usa invece la notazione $integral f$ per indicare l'integrale esteso a tutto lo spazio $integral_(RR^n) f$.
   ]
+  $ integral f = S^*(f) = S_*(f). $
 
   Volendo rendere esplicita la variabile di integrazione, potremo usare la notazione equivalente
   $ integral f(x) thin d x := integral f. $
@@ -122,9 +120,7 @@ $ 1_A : RR^n -> RR, quad 1_A (x) := cases(
   La funzione $f_R$ è limitata ed ha supporto limitato.
   Se $f_R$ è Riemann-integrabile per ogni $R>0$ diremo che $f$ è localmente R-integrabile e visto che $R |-> f_R (vec(x))$ è crescente possiamo definire
   $ integral f := lim_(R -> +infinity) integral f_R in [0,+infinity]. $
-  Se $integral f < +infinity$ diremo che $f$ è R-integrabile (avendo supposto $f >= 0$).
-
-  #footnote[
+  Se $integral f < +infinity$ diremo che $f$ è R-integrabile (avendo supposto $f >= 0$).#note[
     Notiamo che se invece dei cubi $[-R,R]^n$ avessimo usato qualunque famiglia crescente di insiemi limitati $B_R$ tali che per ogni $r>0$ esiste $R$ con $B_R supset.eq [-r,r]^n$ la definizione non cambierebbe.
     Grazie alla monotonia dell'integrale (essendo $f >= 0$) il limite per $R -> +infinity$ sarebbe lo stesso.
     Inoltre il troncamento di $f$ ad altezza $R$ può anche essere fatto indipendentemente dal troncamento del dominio suddividendo il limite in due limiti consecutivi: uno per limitare il dominio ed uno per limitare il codominio. Grazie alla monotonia il procedimento darebbe lo stesso risultato (e non dipenderebbe dall'ordine in cui vengono fatte le operazioni).
@@ -174,9 +170,7 @@ $ 1_A : RR^n -> RR, quad 1_A (x) := cases(
 #remark[caso $n=1$][
   Nel caso $n=1$ se $f: [a,b] -> RR$ è una funzione limitata, si osserva che la suddivisione in cubetti di lato $2^(-N)$ induce una partizione su $[a,b]$ e la definizione di Riemann-integrabilità data sopra coincide con la usuale Riemann-integrabilità definita tramite suddivisioni arbitrarie.
 
-  Nel caso $f: (a,b) -> RR$ con $(a,b)$ non limitato oppure $f$ non limitata, la definizione data sopra corrisponde invece alla _assoluta convergenza_ dell'integrale improprio.
-
-  #footnote[
+  Nel caso $f: (a,b) -> RR$ con $(a,b)$ non limitato oppure $f$ non limitata, la definizione data sopra corrisponde invece alla _assoluta convergenza_ dell'integrale improprio.#note[
     Non ha molto senso cercare di definire gli integrali impropri delle funzioni di più variabili con segno come facevamo per le funzioni di una variabile, cioè facendo i limiti degli integrali su insiemi limitati che tendono a coprire tutto lo spazio.
     Infatti tale definizione dipenderebbe in modo essenziale dalla forma degli insiemi scelti per invadere lo spazio.
     Nel caso poi la funzione non fosse limitata potrebbe anche dipendere dalla velocità con cui vengono fatti i troncamenti nel dominio rispetto al codominio.
@@ -225,11 +219,7 @@ $ 1_A : RR^n -> RR, quad 1_A (x) := cases(
 ]
 
 #theorem[algebra dei misurabili][
-  Se $E,F subset RR^n$ sono PJ-misurabili allora anche $macron(E)$, $partial E$, $E without F$, $E inter F$ ed $E union F$ sono PJ-misurabili.
-  Inoltre si ha
-  $ |E union F| + |E inter F| = |E| + |F|, quad |partial E| = 0. $
-
-  #footnote[
+  Se $E,F subset RR^n$ sono PJ-misurabili allora anche $macron(E)$, $partial E$, $E without F$, $E inter F$ ed $E union F$ sono PJ-misurabili.#note[
     La misura di Peano-Jordan è una funzione di insieme _additiva_, nel senso che l'unione di due insiemi misurabili è misurabile e, se gli insiemi sono disgiunti, la misura dell'unione è uguale alla somma delle misure dei due insiemi.
     Ovviamente se questa proprietà vale per l'unione di due insiemi, vale anche per l'unione di un numero finito di insiemi.
     Si dice che una funzione di insieme è $sigma$-additiva se la stessa proprietà vale per una unione numerabile di insiemi.
@@ -238,6 +228,8 @@ $ 1_A : RR^n -> RR, quad 1_A (x) := cases(
     Si scopre che un insieme è PJ-misurabile se e solo se la sua frontiera ha misura di Lebesgue nulla.
     Ma esistono insiemi misurabili per Lebesgue la cui frontiera non ha misura di Lebesgue nulla (come ad esempio il già menzionato $QQ inter [0,1]$ che ha misura nulla ma la cui frontiera è $[0,1]$ che ha misura $1$).
   ]
+  Inoltre si ha
+  $ |E union F| + |E inter F| = |E| + |F|, quad |partial E| = 0. $
 ]
 
 #proof[

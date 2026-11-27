@@ -1,4 +1,5 @@
 #import "@preview/bookly:5.2.0": *
+#import "@preview/bookly:5.2.0": note as bookly-note
 #import "setup-print.typ": setup-print
 #import "setup-html.typ": setup-html
 #import "@preview/ctheorems:2.0.0": *
@@ -24,6 +25,16 @@
   ),
 )
 #let primary-color = rgb("2b6cb0")
+
+// Note a margine: nel PDF sono le note laterali di Bookly (layout Tufte);
+// in HTML, dove Marginalia non può posizionarle, diventano note a piè di pagina.
+#let note(..args) = context {
+  if target() == "html" {
+    footnote(args.pos().last())
+  } else {
+    bookly-note(..args)
+  }
+}
 
 // Configurazione comune con rilevamento automatico del formato di esportazione.
 #let setup(doc) = context {

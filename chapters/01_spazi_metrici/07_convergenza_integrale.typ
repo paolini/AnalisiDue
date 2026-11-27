@@ -367,7 +367,7 @@ Chiaramente tale $phi$ è lineare. Visto che $e_k$ è una base hilbertiana è fa
 $ chevron.l x,y chevron.r = sum_(k=0)^(+infinity) x_k y_k, quad |x|_2 = sqrt(sum_(k=0)^(+infinity) x_k^2) $
 l'uguaglianza di Bessel ci dice che $phi$ mantiene la norma e quindi la struttura di spazio euclideo. Si potrebbe dimostrare che $ell^2$ è completo e questo significa che $phi$ non è suriettiva in quanto la successione $f_n$ considerata nell'@ex:incompletezza_di_H è di Cauchy in $H(0,2pi)$, dunque $phi(f_n)$ è di Cauchy in $ell^2$ e dunque converge in $ell^2$. Il limite $c$ della successione $phi(f_n)$ rappresenta una successione di coefficienti di Fourier che non possono essere ottenuti da nessuna funzione $f in H(0,2pi)$.
 
-Possiamo utilizzare le serie di Fourier per risolvere il seguente #footnote[vedi note storiche a pag \@note:Basilea].
+Possiamo utilizzare le serie di Fourier per risolvere il seguente #footnote[vedi le note storiche nella @note:Basilea.].
 
 #exercise[problema di Basilea][
   Dimostriamo che

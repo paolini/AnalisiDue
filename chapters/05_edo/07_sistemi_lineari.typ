@@ -131,7 +131,7 @@ $ cases(
   X' = alpha X - beta Y,
   Y' = beta X + alpha Y.
 ) $
-Si ha allora #footnote[Si potrebbe osservare che la matrice $mat(alpha, -beta; beta, alpha)$ è la matrice che rappresenta la moltiplicazione complessa per il numero $alpha + i beta$. Dunque chiamando $Z = X + i Y$ il sistema si potrebbe scrivere nella forma $Z' = (alpha + i beta) Z$ e si potrebbe quindi osservare immediatamente che la soluzione deve essere della forma $Z = c e^((alpha + i beta) t)$ con $c$ costante complessa. Ponendo poi $c = rho e^(i theta)$ si ottiene il risultato.]
+Si ha allora #note[Si potrebbe osservare che la matrice $mat(alpha, -beta; beta, alpha)$ è la matrice che rappresenta la moltiplicazione complessa per il numero $alpha + i beta$. Dunque chiamando $Z = X + i Y$ il sistema si potrebbe scrivere nella forma $Z' = (alpha + i beta) Z$ e si potrebbe quindi osservare immediatamente che la soluzione deve essere della forma $Z = c e^((alpha + i beta) t)$ con $c$ costante complessa. Ponendo poi $c = rho e^(i theta)$ si ottiene il risultato.]
 $ X'' = alpha X' - beta Y' = alpha X' - beta (beta X + alpha Y) $
 da cui, usando $beta Y = alpha X - X'$ possiamo eliminare la variabile $Y$ e ottenere una equazione del secondo ordine in $X$:
 $ X'' = alpha X' - beta^2 X - alpha (alpha X - X') = 2 alpha X' - (alpha^2 + beta^2) X $

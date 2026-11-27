@@ -8,7 +8,7 @@
 #import "@preview/showybox:2.0.4": showybox
 #import "@preview/cetz:0.5.3" as cetz: draw
 
-#let version = "1.1.2"
+#let version = "1.1.4"
 #let book-info = (
   title: "Appunti di Analisi Matematica Due",
   author: "Emanuele Paolini",

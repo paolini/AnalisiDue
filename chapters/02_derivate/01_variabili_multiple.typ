@@ -1,7 +1,7 @@
 #import "../../lib.typ": *
 
 Uno degli argomenti principali del secondo corso di Analisi Matematica è lo studio delle funzioni di più variabili.
-Il nostro ambiente di studio privileged sarà lo spazio vettoriale reale di dimensione $n$.
+Il nostro ambiente di studio privilegiato sarà lo spazio vettoriale reale di dimensione $n$.
 Si considera assimilata la conoscenza degli spazi vettoriali di dimensione finita.
 In particolare si considera come fatto noto che ogni spazio vettoriale reale di dimensione $n$ è isomorfo a $RR^n$.
 Spesso lo spazio vettoriale sarà naturalmente dotato di prodotto scalare (spazio euclideo) e, anche in questo caso, sappiamo che è possibile identificare il prodotto scalare dello spazio euclideo con il prodotto scalare canonico di $RR^n$.
